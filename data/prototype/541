@@ -1,0 +1,13 @@
+class BubbleSort:
+    def sort(A):
+        def swap(A, u, v):
+            temp = A[u]
+            A[u] = A[v]
+            A[v] = temp
+            return
+        a_len = len(A)
+        for i in range(0, a_len-1):
+            for j in range(0, a_len-1-i):
+                if (A[j+1] < A[j]):
+                    swap(A, j, j+1)
+        return A

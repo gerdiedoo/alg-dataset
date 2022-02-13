@@ -1,0 +1,59 @@
+package de.ffoerg.sort;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
+public final class LampSort {
+	private LampSort() {
+	}
+	public static <T extends Comparable<? super T>> void sort(List<T> toSort) {
+		if ((toSort == null) || (toSort.size() < 2)) {
+			return;
+		}
+		Stack<Pair<Integer>> intervals = new Stack<Pair<Integer>>();
+		intervals.add(new Pair<Integer>(0, toSort.size() - 1));
+		do {
+			Pair<Integer> curr = intervals.pop();
+			int lo = curr.getFirst();
+			int hi = curr.getSecond();
+			int span = hi - lo;
+			assert ((lo >= 0) && (lo < toSort.size()));
+			assert ((hi >= 0) && (hi < toSort.size()));
+			assert (lo <= hi);
+			if (span >= 2) {
+				int pivotIndex = lo;
+				T pivot = toSort.get(hi);
+				for (int i = lo; i < hi; i++) {
+					if (toSort.get(i).compareTo(pivot) < 0) {
+						Collections.swap(toSort, pivotIndex, i);
+						pivotIndex++;
+					}
+				}
+				Collections.swap(toSort, pivotIndex, hi);
+				Pair<Integer> loPart = new Pair<Integer>(lo, Math.max(lo,
+						pivotIndex - 1));
+				Pair<Integer> hiPart = new Pair<Integer>(Math.min(
+						pivotIndex + 1, hi), hi);
+				intervals.add(loPart);
+				intervals.add(hiPart);
+			} else if (span == 1) {
+				if (toSort.get(lo).compareTo(toSort.get(hi)) > 0) {
+					Collections.swap(toSort, lo, hi);
+				}
+			}
+		} while (!intervals.isEmpty());
+	}
+	private static class Pair<T> {
+		private T fst;
+		private T snd;
+		public Pair(T fst, T snd) {
+			this.fst = fst;
+			this.snd = snd;
+		}
+		public T getFirst() {
+			return fst;
+		}
+		public T getSecond() {
+			return snd;
+		}
+	}
+}

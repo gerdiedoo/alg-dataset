@@ -1,0 +1,29 @@
+"use strict";
+Array.prototype.selectionsort = function(compare) {
+    if ("function" != typeof compare) {
+        var desc = compare || false;
+        compare = function(a, b) {
+            return desc ? a < b : a > b;
+        }
+    }
+    var that = this;
+    function swap(i, j) {
+        var temp = that[i];
+        that[i] = that[j];
+        that[j] = temp;
+    }
+    function minmax(start) {
+        var m = that[start], p = start;
+        for (var i = start + 1; i < that.length; i += 1) {
+            if (compare(m, that[i])) {
+                m = that[i];
+                p = i;
+            }
+        }
+        return p;
+    }
+    for (var i = 0; i < that.length; i += 1) {
+        swap(i, minmax(i));
+    }
+    return this;
+};

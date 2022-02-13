@@ -1,0 +1,16 @@
+public interface LinkedListInterface<T extends Comparable<? super T>> {
+    void addToFront(T data);
+    void addAtIndex(T data, int index);
+    void addToBack(T data);
+    T removeFromFront();
+    T removeAtIndex(int index);
+    T removeFromBack();
+    T get(int index);
+    T findLargestElement();
+    int size();
+    Object[] toArray();
+    void clear();
+    boolean isEmpty();
+    SLLNode<T> getHead();
+    SLLNode<T> getTail();
+}

@@ -1,0 +1,44 @@
+package com.deepak.algorithms.Sorting;
+import java.util.Arrays;
+public class MergeSort {
+	public static void main(String[] args) {
+		int[] valuesToBeSorted = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] sortedValues = performMergeSort(valuesToBeSorted, 0, valuesToBeSorted.length - 1);
+		Arrays.stream(sortedValues).forEach(System.out::println);
+	}
+	public static int[] performMergeSort(int[] list, int low, int high) {
+		if (low < high) {
+			int middle = low + (high - low) / 2;
+			performMergeSort(list, low, middle);
+			performMergeSort(list, middle + 1, high);
+			merge(list, low, middle, high);
+		}
+		return list;
+	}
+	private static int[] merge(int[] list, int low, int middle, int high) {
+		int[] copy = new int[list.length];
+		for (int i = 0; i < list.length; i++ ) {
+			copy[i] = list[i];
+		}
+		int i = low;
+		int j = middle + 1;
+		int k = low;
+		while (i <= middle && j <= high) {
+			if (copy[i] <= copy[j]) {
+				list[k] = copy[i];
+				i++;
+			} else {
+				list[k] = copy[j];
+				j++;
+			}
+			k++;
+		}
+		while (i <= middle) {
+			list[k] = copy[i];
+			k++;
+			i++;
+		}
+		return list;
+	}
+}

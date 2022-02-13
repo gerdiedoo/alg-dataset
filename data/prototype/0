@@ -1,0 +1,10 @@
+@SuppressWarnings("ALL")
+abstract class AbstractHashFunction implements HashFunction {
+  protected int size;
+  protected AbstractHashFunction (int N) {
+    size = N;
+  }
+  public int size () {
+    return size;
+  }
+}

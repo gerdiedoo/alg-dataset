@@ -1,0 +1,100 @@
+class HashTable(object):
+    def __init__(self, size=5):
+        self.size = size
+        self.length = 0
+        self.keys = [LinkedList() for _ in range(self.size)]
+    def add(self, key, value):
+        hash_value = hash_function(key, self.size)
+        linkedlist = self.keys[hash_value]
+        node = linkedlist.search(key)
+        if node is None:
+            linkedlist.add(key, value)
+            self.length += 1
+        else:
+            node.value = value
+    def get(self, key, default=None):
+        hash_value = hash_function(key, self.size)
+        linkedlist = self.keys[hash_value]
+        node = linkedlist.search(key)
+        return node.value if node is not None else default
+    def remove(self, key):
+        hash_value = hash_function(key, self.size)
+        linkedlist = self.keys[hash_value]
+        node = linkedlist.remove(key)
+        if node is None:
+            return None
+        self.length -= 1
+        return node.value
+    def __len__(self):
+        return self.length
+    def __str__(self):
+        string = ''
+        for item in self.keys:
+            node = item.head
+            while node is not None:
+                string += str(node) + ', '
+                node = node.child
+        return '{' + string[:-2] + '}'
+class Node(object):
+    def __init__(self, key, value, child=None):
+        self.key = key
+        self.value = value
+        self.child = child
+    def __str__(self):
+        key = self.key
+        if isinstance(self.key, str):
+            key = "'{}'".format(self.key)
+        value = self.value
+        if isinstance(self.value, str):
+            value = "'{}'".format(self.value)
+        return str(key) + ': ' + str(value)
+class LinkedList(object):
+    def __init__(self):
+        self.head = None
+    def add(self, key, value):
+        node = Node(key, value, child=self.head)
+        self.head = node
+    def search(self, key):
+        current = self.head
+        while current is not None:
+            if current.key == key:
+                return current
+            current = current.child
+        return None
+    def remove(self, key):
+        current = self.head
+        previous = None
+        while current is not None and current.key != key:
+            previous = current
+            current = current.child
+        if previous is None:
+            self.head = current.child
+        elif current is not None:
+            previous.child = current.child
+        return current
+    def __str__(self):
+        string = ''
+        current = self.head
+        while current is not None and current.child is not None:
+            string += str(current) + ' -> '
+            current = current.child
+        string += str(current) + ' -> ' + str(None)
+        return string
+def hash_function(key, size):
+    return sum([i * 256 + ord(v_) for i, v_ in enumerate(str(key))]) % size
+if __name__ in '__main__':
+    ht = HashTable()
+    DATA = {'hello 0123': 0, '1': '1', 1: 1, 0: -1, 4: 4}
+    for k, v in DATA.items():
+        ht.add(k, v)
+        print('add key', k, 'value', v, 'length', len(ht))
+    print('\nhashtable:', ht, '\n')
+    print('add key \'hello 0123\'', 'value', -10, 'length', len(ht))
+    ht.add('hello 0123', -10)
+    print('\nhashtable:', ht, '\n')
+    for k in [4, '1', 100]:
+        ht.remove(k)
+        print('remove key', k, 'length', len(ht))
+    print('\nhashtable:', ht, '\n')
+    for k in [4, 0, 'hello 0123']:
+        print('get value by key', k, 'value:', ht.get(k))

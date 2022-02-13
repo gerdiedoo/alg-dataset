@@ -1,0 +1,34 @@
+function selectionSortDescending(inputArray) {
+  for (let i = 0; i < inputArray.length - 1; i++) {
+    let maxIndex = i;
+    for (let j = i + 1; j < inputArray.length; j++) {
+      if (inputArray[maxIndex] < inputArray[j]) {
+        maxIndex = j; 
+      }
+    }
+    if (maxIndex != i) {
+      const temp = inputArray[maxIndex];
+      inputArray[maxIndex] = inputArray[i];
+      inputArray[i] = temp;
+    }
+    console.log('In progress: ', inputArray);
+  }
+  return inputArray;
+}
+function selectionSort(items) {
+  const length = items.length;
+  for (let i = 0; i < length - 1; i++) {
+    let min = i;  
+    for (let j = i + 1; j < length; j++) {  
+      if (items[j] < items[min]) {  
+        min = j;  
+      }
+    }
+    if (min != i) {
+      const tmp = items[i];
+      items[i] = items[min];
+      items[min] = tmp;
+    }
+  }
+}
+module.exports = {selectionSort, selectionSortDescending};

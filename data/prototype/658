@@ -1,0 +1,22 @@
+from strategy import Order, BadOrderError
+import sys
+__author__ = "Pablo Acereda"
+__copyright__ = "Copyright 2020"
+__credits__ = [ "Pablo Acereda" ]
+__license__ = "Apache License 2.0"
+__version__ = "1.0"
+__maintainer__ = "Pablo Acereda"
+__email__ = "p.aceredag@gmail.com"
+def sort(array:list, order:Order=Order.ASC) -> list:
+    if (order not in [Order.ASC, Order.DESC]):
+        raise BadOrderError("Not Valid Ordering Preference")
+    for i in range(1, len(array)):
+        key = array[i]
+        j = i - 1
+        while (j >= 0 and 
+               order == Order.ASC  and key < array[j] or 
+               order == Order.DESC and key > array[j]):  
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = key
+    return array

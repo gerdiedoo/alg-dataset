@@ -1,0 +1,9 @@
+public interface Map<K,V> {
+	V get(K key);
+	V set(K key, V value);
+	V put(K key, V value);
+	int getIndex(K key);
+	int size();
+	boolean isEmpty();
+	Iterable<Entry<K,V>> entrySet();
+}

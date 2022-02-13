@@ -1,0 +1,18 @@
+aij.selectionSort = function(items) {
+    var sort = function(arr) {
+      var length = arr.length;
+      for (var i = 0; i < length; i++) {
+        var minIndex = i;
+        for (var j = i; j < length; j++) {
+          if (arr[j] < arr[minIndex]) {
+            minIndex = j;
+          }
+        };
+        var min = arr[minIndex];
+        arr.splice(minIndex, 1);
+        arr.splice(i, 0, min);
+      };
+      return arr;
+    };
+    return aij.isSortable(items) ? sort(items) : items;
+};

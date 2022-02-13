@@ -1,0 +1,32 @@
+class Node(object):
+ def __init__(self, data):
+		self.data = data
+  self.left = None
+  self.right = None
+class BinarySearchTree(object):
+ def __init__(self):
+		self.root = None
+ def insert(self, data, root):
+  if root is None:
+			return Node(data)
+  elif data <= root.data:
+			root.left = self.insert(data, root.left)
+  else:
+			root.right = self.insert(data, root.right)
+  return root
+ def inorder(self, node):
+  if node is None:
+			return
+  self.inorder(node.left)
+  print (node.data)
+  self.inorder(node.right)
+def initialize():
+ bst = BinarySearchTree()
+ bst.root = bst.insert(6, bst.root)
+ bst.insert(1, bst.root)
+ bst.insert(9, bst.root)
+ bst.insert(3, bst.root)
+ bst.inorder(bst.root)
+ return bst
+if __name__ == "__main__":
+	initialize()

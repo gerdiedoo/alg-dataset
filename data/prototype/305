@@ -1,0 +1,38 @@
+public class Recursion {
+    public boolean isPalindrome(String text) {
+        if (text == null) {
+            throw new java.lang.IllegalArgumentException("Input text is null.");
+        }
+        return isPalindromeHelper(text);
+    }
+    private boolean isPalindromeHelper(String text) {
+        if (text.length() == 0 || text.length() == 1) {
+            return true;
+        } else if (text.charAt(0) == text.charAt(text.length() - 1)) {
+            return isPalindromeHelper(text.substring(1, text.length() - 1));
+        } else {
+            return false;
+        }
+    }
+    public int gcd(int x, int y) {
+        return gcdHelper(x, y);
+    }
+    private int gcdHelper(int x, int y) {
+        if (x < 0 || y < 0) {
+            return -1;
+        }
+        if (x == 0) {
+            return y;
+        }
+        if (y == 0) {
+            return x;
+        }
+        if (x > y) {
+            return gcdHelper(x - y, y);
+        } else if (y > x) {
+            return gcdHelper(x, y - x);
+        } else {
+            return x;
+        }
+    }
+}

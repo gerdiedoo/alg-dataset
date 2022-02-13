@@ -1,0 +1,20 @@
+package org.joyfulmonster.util.concurrent.internal;
+public class HashStrategy {
+    public static HashStrategy getInstance() {
+        return new WangJinkensHash();
+    }
+    public int hash(int code) {
+        return code;
+    }
+    private static class WangJinkensHash extends HashStrategy{
+        @Override
+        public int hash(int h) {
+            h += (h <<  15) ^ 0xffffcd7d;
+            h ^= (h >>> 10);
+            h += (h <<   3);
+            h ^= (h >>>  6);
+            h += (h <<   2) + (h << 14);
+            return h ^ (h >>> 16);
+        }
+    }
+}

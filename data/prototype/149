@@ -1,0 +1,15 @@
+class MultiplicationMethod extends AbstractHashFunction {
+  private static final int w = 32;
+  private final int bits;
+  private final int seed;
+  public MultiplicationMethod(int p, int s) {
+    super(1 << p);     
+    bits = p;
+    seed = s;
+  }
+  @Override
+  public int compute(Object key) {
+    final int hash = (key.hashCode() % size + size) % size;
+    return ((hash * seed) >>> (w - bits)) % size();
+  }
+}

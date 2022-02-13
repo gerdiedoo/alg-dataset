@@ -1,0 +1,43 @@
+package com.zhokhov.interview.sorting;
+import static com.zhokhov.interview.util.Console.*;
+public class InsertionSort {
+    private int COMPARISONS_COUNT;
+    private int LOOP_COUNT;
+    public void sort(int array[]) {
+        COMPARISONS_COUNT = 0;
+        LOOP_COUNT = 0;
+        for (int index = 1; index < array.length; index++) {
+            LOOP_COUNT++;
+            ____cyan("\n--------\nindex: " + index);
+            insert(array, index);
+        }
+    }
+    private void insert(int array[], int currentIndex) {
+        int value = array[currentIndex];
+        ____grey("value: " + value);
+        ____grey("currentIndex: " + currentIndex);
+        int reverseIndex = currentIndex;
+        ____grey("reverseIndex: " + reverseIndex);
+        for (int i = currentIndex - 1; i >= 0; i--) {
+            LOOP_COUNT++;
+            ____grey("\ni: " + i);
+            COMPARISONS_COUNT++;
+            if (array[i] >= value) {
+                ____blue("Move element " + array[i] + " to position " + (i + 1));
+                ____blue("new reverseIndex: " + i);
+                array[i + 1] = array[i];
+                reverseIndex = i;
+                System.out.print("[" + value + "]");
+                __red(" ==> ");
+                __dump(array);
+            } else {
+                ____grey("breaking");
+                break;
+            }
+        }
+        ____grey("\nreverseIndex (after loop): " + reverseIndex + ", put value here");
+        array[reverseIndex] = value;
+        __red("==> ");
+        __dump(array);
+    }
+}

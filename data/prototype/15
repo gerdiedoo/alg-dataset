@@ -1,0 +1,20 @@
+package org.joyfulmonster.util.concurrent.internal;
+import java.util.concurrent.atomic.AtomicInteger;
+class BucketFactory {
+    private Directory directory;
+    private int bucketSize;
+    private float bucketLoadFactor;
+    private AtomicInteger totalEntryCount;
+    private AtomicInteger totalSplitCount;
+    BucketFactory(Directory directory, int bucketSize, float bucketLoadFactor, AtomicInteger totalEntryCount, AtomicInteger splitCount) {
+        this.directory = directory;
+        this.bucketLoadFactor = bucketLoadFactor;
+        this.bucketSize = bucketSize;
+        this.totalEntryCount = totalEntryCount;
+        this.totalSplitCount = splitCount;
+    }
+    public Bucket newBucket(int localDepth, int bucketIdx) {
+        Bucket result = new LinearProbingBucketImpl(localDepth, bucketIdx, bucketSize, bucketLoadFactor,  totalEntryCount, totalSplitCount).directory(directory);
+        return result;
+    }
+}

@@ -1,0 +1,6 @@
+package org.joyfulmonster.util.concurrent.internal;
+class BucketOverflowError extends IllegalStateException {
+    public BucketOverflowError() {
+        super("The bucket does not have enough capacity");
+    }
+}

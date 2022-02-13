@@ -1,0 +1,8 @@
+def bubblesort(numlist):       
+    for i in range(len(numlist)-1):
+        for j in range(0, len(numlist)-i-1):
+            if numlist[j]> numlist[j+1]:
+                temp = numlist[j]
+                numlist[j]= numlist[j+1]
+                numlist[j+1]= temp
+    return (numlist)

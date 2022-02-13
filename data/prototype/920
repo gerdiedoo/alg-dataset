@@ -1,0 +1,35 @@
+def mergesort(a):
+    b = [*a]
+    n = len(b)
+    if n <= 1:
+        return b
+    mid = n // 2
+    left, right = mergesort(b[:mid]), mergesort(b[mid:])
+    return _merge(left, right, b)
+def _merge(left, right, merged):
+    left_cursor, right_cursor = 0, 0
+    while left_cursor < len(left) and right_cursor < len(right):
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor + right_cursor] = left[left_cursor]
+            left_cursor += 1
+        else:
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+    return merged
+if __name__ == "__main__":
+    import unittest
+    from random import shuffle
+    class TestMergesort(unittest.TestCase):
+        def setUp(self):
+            self.ordered = [x for x in range(20)]
+            self.shuffled = [*self.ordered]
+            while self.ordered == self.shuffled:
+                shuffle(self.shuffled)
+        def test_mergesort(self):
+            self.assertEqual(self.ordered, mergesort(self.shuffled))
+            self.assertNotEqual(self.ordered, self.shuffled)
+    unittest.main()

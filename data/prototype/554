@@ -1,0 +1,14 @@
+package com.deepak.algorithms.Sorting;
+import com.deepak.algorithms.Library.ArrayUtils;
+public class BubbleSort {
+	public static Integer[] performBubbleSort(Integer[] list) {
+		for (int i = 0; i < list.length; i++) {
+			for (int j = 1; j < (list.length - i); j++) {
+				if (list[j - 1] > list[j]) {
+					ArrayUtils.swap(list, j - 1, j);
+				}
+			}
+		}
+		return list;
+	}
+}

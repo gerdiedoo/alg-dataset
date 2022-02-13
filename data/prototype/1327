@@ -1,0 +1,48 @@
+__author__ = "streethacker"
+def simpleBubbleSort(theRef):
+    max = len(theRef) - 1
+    for i in range(max):
+        for j in range(max - i):
+            if theRef[j] > theRef[j + 1]:
+                exchange = theRef[j]
+                theRef[j] = theRef[j + 1]
+                theRef[j + 1] = exchange
+    return
+def advancedBubbleSort(theRef):
+    max = len(theRef) - 1
+    swapFlg = False
+    for i in range(max):
+        for j in range(max - i):
+            if theRef[j] > theRef[j + 1]:
+                swapFlg = True
+                exchange = theRef[j]
+                theRef[j] = theRef[j + 1]
+                theRef[j + 1] = exchange
+        if not swapFlg:
+            break
+    return
+def selectionSort(theRef):
+    max = len(theRef) - 1
+    for i in range(max - 1):
+        smallIdx = i
+        for j in range(i + 1, len(theRef)):
+            if theRef[j] < theRef[smallIdx]:
+                smallIdx = j
+        if smallIdx != i:
+            exchange = theRef[i]
+            theRef[i] = theRef[smallIdx]
+            theRef[smallIdx] = exchange
+    return
+def insertionSort(theRef):
+    for i in range(1, len(theRef)):
+        key = theRef[i]
+        insertIdx = i
+        while insertIdx > 0 and key < theRef[insertIdx - 1]:
+            theRef[insertIdx] = theRef[insertIdx - 1]
+            insertIdx -= 1
+        theRef[insertIdx] = key
+    return
+if __name__ == "__main__":
+    testcase = [2, 3, 1, 10, 6, 30, 27]
+    insertionSort(testcase)
+    print "Sorted list: %s" % testcase

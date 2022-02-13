@@ -1,0 +1,16 @@
+aij.insertionSort = function(items) {
+    var sort = function(arr) {
+      var length = arr.length;
+      for (var i = 0; i < length; i++) {
+        var j = i,
+            item = arr[j];
+        while(j > 0 && arr[j - 1] > item) {
+          arr[j] = arr[j - 1];
+          j--;
+        };
+        arr[j] = item;
+      };
+      return arr;
+    };
+    return aij.isSortable(items) ? sort(items) : items;
+};

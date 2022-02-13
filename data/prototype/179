@@ -1,0 +1,126 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.math.*;
+public class StringSearch {
+	public static List<Integer> boyerMoore(String pattern, String text) {
+		int[] ctable = buildBoyerMooreCharTable(pattern);
+		int n = text.length();
+		int m = pattern.length();
+		int i = m-1;
+		ArrayList<Integer> indices = new ArrayList<Integer>();
+		if (text.length() < pattern.length() || pattern.length() == 0) return indices;
+		if (i > n-1) return indices;
+		int j = m - 1;
+		do {
+			if (pattern.charAt(j) == text.charAt(i))
+				if (j==0){
+					indices.add(i);
+					j = m - 1;
+					i += m;
+				}
+				else{
+					i--;
+					j--;
+				}
+			else {
+				i = i+ m - Math.min(j, 1 + ctable[text.charAt(i)]);
+				j = m - 1;
+			}
+		} while (i <= n - 1);
+		return indices;
+	}
+	public static int[] buildBoyerMooreCharTable(String pattern) {
+		int[] map = new int[Character.MAX_VALUE + 1];
+		int min = 1;
+		int len = pattern.length();
+		int charMax = 0;
+		for (int i = 0; i < len; i++){
+			map[i] = -1;
+		}
+		for (int i = 0; i< len ; i++){
+			map[pattern.charAt(i)]  = i;
+		}
+		return map;
+	}
+	public static List<Integer> kmp(String pattern, String text) {
+		ArrayList<Integer> indices = new ArrayList<Integer>(); 
+		int n = text.length();
+		int m = pattern.length();
+		if (text.length() < pattern.length() || pattern.length() == 0) return indices;
+		int[] st = buildKmpSuffixTable(pattern);
+		int i = 0;
+		int j = 0;
+		while (i<n){
+			if (pattern.charAt(j) == text.charAt(i) && !indices.contains(i-j)){
+				if (j == m-1){
+					indices.add(i - j);
+					i -= j;
+					j=0;
+				}
+				else{
+					i++;
+					j++;
+				}
+			}
+			else if (j > 0) j = st[j-1];
+			else i++;
+		}
+		return indices;
+	}
+	public static int[] buildKmpSuffixTable(String pattern) {
+		int[] st = new int[pattern.length()];
+		st[0] = 0;
+		int m = pattern.length();
+		int j = 0;
+		int i = 1;
+		while( i  < m){
+			if (pattern.charAt(j) == pattern.charAt(i)){
+				st[i] = j + 1;
+				i++;
+				j++;
+			}
+			else if (j>0){
+				j = st[j-1];
+			}
+			else {
+				st[i] = 0;
+				i++;
+			}
+		}
+		return st;
+	}
+	private static final int BASE = 997;
+	public static List<Integer> rabinKarp(String pattern, String text) {
+		ArrayList<Integer> indices = new ArrayList<Integer>();
+		if (text.length() < pattern.length() || pattern.length() == 0) return indices;
+		int hp = hashString(pattern);
+		int ht = hashString(text.substring(0, pattern.length()));
+		for (int i = 0; i+pattern.length() < text.length(); i++){
+			if (hp == ht){
+				indices.add(i);
+			}
+			ht = updateHash(ht, text.charAt(i+pattern.length()), text.charAt(i), pattern.length());
+		}
+		if (hp == ht) indices.add(text.length()-pattern.length());
+		return indices;
+	}
+	public static int hashString(String pattern) {
+		int hashbrown = 0;
+		int pow = 1;
+		for (int i = 0; i < pattern.length(); i++){
+			for (int j =  0; j < pattern.length()-1 -i; j++){
+				pow*=BASE;
+			}
+			hashbrown += pattern.charAt(i)*pow;
+			pow = 1;
+		}
+		return hashbrown;
+	}
+	public static int updateHash(int oldHash, char newChar, char oldChar, int length) {
+		int pow = 1;
+		for (int i = 0; i < length-1; i++){
+			pow*=BASE;
+		}
+		return (oldHash - oldChar*pow)*BASE + newChar;
+	}
+}

@@ -1,0 +1,30 @@
+class linkedList:
+    def __init__(self, value=0, pointer=None):
+        self.value=value
+        self.pointer=pointer
+    def reverse(self, to = None):
+        deepest_node = None
+        if self.pointer != None:
+            deepest_node = self.pointer.reverse(self)
+            self.pointer = to
+        else :
+            self.pointer = to
+            return self
+        return deepest_node
+    def __str__(self):
+        if self.pointer==None:
+            return str(self.value)
+        return f"{self.value} => {str(self.pointer)}"
+def main():
+    import random
+    node = linkedList(0)
+    last=node
+    for i in range(random.randint(10, 25)):
+        newNode=linkedList(random.randint(1, 100))
+        last.pointer=newNode
+        last=newNode
+    print('linked list: ', node)
+    node = node.reverse()
+    print('reversed   : ', node)
+if __name__ == "__main__":
+    main()

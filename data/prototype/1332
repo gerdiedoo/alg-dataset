@@ -1,0 +1,40 @@
+package LinearSearch;
+import java.util.Scanner;
+public class Java_Linear_Search_11 {
+    private static final int linearSearch(int numToFind, int[] arrayOfIntegers){
+        for (int i = 0; i < arrayOfIntegers.length; i++) {
+            if (arrayOfIntegers[i] == numToFind){
+                return (i + 1);
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        long endTime, timeElapsed, startTime;
+        startTime = System.nanoTime();
+        int arrayLength = 0;
+        int numToFind = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of Integers in array >");
+        arrayLength = scanner.nextInt();
+        int[]  arrayOfIntegers = new int[arrayLength];
+        System.out.println("Enter array of Integers > ");
+        for (int i = 0; i < arrayLength; i++){
+            System.out.println("Enter element " + (i +1));
+            arrayOfIntegers[i] = scanner.nextInt();
+        }
+        System.out.println("Enter number to find > ");
+        numToFind = scanner.nextInt();
+        int numPresentInArrayAt = -1;
+        numPresentInArrayAt = linearSearch(numToFind, arrayOfIntegers);
+        if (numPresentInArrayAt == -1){
+            System.out.println(numToFind + " is not found in the entered array...");
+        }else {
+            System.out.println(numToFind + " is present at position " + numPresentInArrayAt);
+        }
+        scanner.close();
+        endTime = System.nanoTime();
+        timeElapsed = endTime - startTime;
+        System.out.println("Time elapsed in nanoSeconds is " + timeElapsed);
+    }
+}

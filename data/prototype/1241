@@ -1,0 +1,23 @@
+function selectionSort (arrData) {
+  'use strict'
+  function _swap (arrData, numSrc, numTgt) {
+    const swap = arrData[numSrc]
+    arrData[numSrc] = arrData[numTgt]
+    arrData[numTgt] = swap
+  }
+  const dataMax = arrData.length
+  console.log('Initial:', arrData.join(), `[Count:${dataMax}]`)
+  for (let indexA = 0; indexA < dataMax - 1; indexA++) {
+    console.log(arrData.join())
+    let indexB = indexA
+    for (let indexC = indexA + 1; indexC < dataMax; indexC++) {
+      if (arrData[indexC] < arrData[indexB]) {
+        indexB = indexC
+      }
+    }
+    if (indexA !== indexB) _swap(arrData, indexA, indexB)
+    console.log('Cycle:', arrData.join())
+  }
+  console.log('Final:', arrData.join())
+  return arrData
+}

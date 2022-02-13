@@ -1,0 +1,37 @@
+package sorters;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+public class MergeSorter<E> extends AbstractSorter<E> {
+	public void sort(List<E> list, Comparator<E> comp) {
+		int n = list.size();
+		if (n <= 1)
+			return;
+		int mid = n / 2;
+		List<E> left = new ArrayList<>(list.subList(0, mid));
+		List<E> right = new ArrayList<>(list.subList(mid, n));
+		sort(left, comp);
+		sort(right, comp);
+		merge(left, right, list, comp);
+	}
+	private void merge(List<E> left, List<E> right, List<E> list, Comparator<E> comp) {
+		int leftIndex = 0;
+		int rightIndex = 0;
+		int listIndex = 0;
+		E item;
+		while (leftIndex < left.size() && rightIndex < right.size()) {
+			item = comp.compare(left.get(leftIndex), right.get(rightIndex)) <= 0 
+					? left.get(leftIndex++) : right.get(rightIndex++);
+			list.set(listIndex++, item);
+		}
+		while (leftIndex < left.size()) {
+			list.set(listIndex++, left.get(leftIndex++));
+		}
+		while (rightIndex < right.size()) {
+			list.set(listIndex++, right.get(rightIndex++));
+		}
+	}
+	public String getName() {
+		return "Merge Sort";
+	}
+}

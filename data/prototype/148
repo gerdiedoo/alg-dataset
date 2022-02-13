@@ -1,0 +1,6 @@
+package org.joyfulmonster.util.concurrent.internal;
+public interface MetricsSupport {
+    int totalSplits();
+    int getBucketCount();
+    int getMaxBucketCountDifference();
+}

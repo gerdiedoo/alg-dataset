@@ -1,0 +1,5 @@
+@SuppressWarnings("ALL")
+interface HashFunction {
+  int size ();
+  int compute (Object key);
+}

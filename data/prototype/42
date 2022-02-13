@@ -1,0 +1,12 @@
+package org.joyfulmonster.util.concurrent.internal;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+interface Directory {
+    public void lock();
+    public void unlock();
+    public int getBucketCount();
+    public Bucket getBucket(int hashCode);
+    public BucketFactory getBucketFactory();
+    AtomicReferenceArray<Bucket> get();
+    public int onSplit(Bucket oldBucket, Bucket[] newBuckets);
+    public int onMerge(Bucket oldBucket);
+}

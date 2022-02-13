@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self, data, next_=None):
+        self.data = data
+        self.next = next_
+    def __str__(self):
+        return str(self.data)
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def add(self, data):
+        node = Node(data, self.head)
+        self.head = node
+    def search(self, value):
+        current = self.head
+        while current is not None:
+            if current.data == value:
+                return current
+            current = current.next
+        return None
+    def remove(self, value):
+        current = self.head
+        previous = None
+        while current is not None and current.data != value:
+            previous = current
+            current = current.next
+        if previous is None:
+            self.head = current.next
+        elif current is not None:
+            previous.next = current.next
+    def __str__(self):
+        string = ''
+        current = self.head
+        while current.next is not None:
+            string += str(current.data) + ' -> '
+            current = current.next
+        string += str(current.data) + ' -> ' + str(None)
+        return string
+if __name__ in "__main__":
+    print('create initial linked list')
+    lst = LinkedList()
+    for i in [1, 7, 2, 3, -10]:
+        print('add {}'.format(i))
+        lst.add(i)
+    print()
+    print('linked list:', lst, '\n')
+    for i in [2, 4, -10]:
+        lst.remove(i)
+        print('remove {}'.format(i))
+        print('linked list:', lst, '\n')
+    for i in [3, 10]:
+        print('search {}'.format(i), lst.search(i))

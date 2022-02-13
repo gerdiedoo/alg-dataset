@@ -1,0 +1,82 @@
+package ie.gmit.dip;
+import java.util.Random;
+public class MergeSort {
+    public static void main(String[] args) {
+        Random g = new Random();
+       int [] number = new int [10000];  
+        System.out.print("Random Numbers:");
+        for (int d = 0 ; d<number.length ; d++){
+            int RandomG = g.nextInt(number.length)+1;
+            number[d] = RandomG;
+            System.out.print(" " +RandomG);
+        }
+        System.out.println("Given Array"); 
+        printArray(number); 
+        long startTime= System.nanoTime();
+        MergeSort ob = new MergeSort(); 
+        ob.sort(number, 0, number.length-1); 
+        System.out.println("\nSorted array"); 
+        printArray(number); 
+        long endTime= System.nanoTime();
+        long elapsed = endTime-startTime;
+        double timeMillis= elapsed/1000000.0;
+        System.out.print("\nSorted In: "+ timeMillis );
+        System.out.print("\n" );
+    }
+    void merge(int number[], int l, int m, int r) 
+    { 
+        int n1 = m - l + 1; 
+        int n2 = r - m; 
+        int L[] = new int [n1]; 
+        int R[] = new int [n2]; 
+        for (int i=0; i<n1; ++i) 
+            L[i] = number[l + i]; 
+        for (int j=0; j<n2; ++j) 
+            R[j] = number[m + 1+ j]; 
+        int i = 0, j = 0; 
+        int k = l; 
+        while (i < n1 && j < n2) 
+        { 
+            if (L[i] <= R[j]) 
+            { 
+                number[k] = L[i]; 
+                i++; 
+            } 
+            else
+            { 
+                number[k] = R[j]; 
+                j++; 
+            } 
+            k++; 
+        } 
+        while (i < n1) 
+        { 
+            number[k] = L[i]; 
+            i++; 
+            k++; 
+        } 
+        while (j < n2) 
+        { 
+            number[k] = R[j]; 
+            j++; 
+            k++; 
+        } 
+    } 
+    void sort(int number[], int l, int r) 
+    { 
+        if (l < r) 
+        { 
+            int m = (l+r)/2; 
+            sort(number, l, m); 
+            sort(number , m+1, r); 
+            merge(number, l, m, r); 
+        } 
+    } 
+    static void printArray(int number[]) 
+    { 
+        int n = number.length; 
+        for (int i=0; i<n; ++i) 
+            System.out.print(number[i] + " "); 
+        System.out.println(); 
+    } 
+} 

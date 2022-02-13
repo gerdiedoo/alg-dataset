@@ -1,0 +1,96 @@
+package com.kevinbohinski.algs;
+import java.util.Arrays;
+public class HashMap<K, V> {
+	private final static int DEFAULT_CAPACITY = 101;
+	private int size;
+	private int numEntries;
+	private HashMapEntry<K, V> entries[];
+	public HashMap(int size) {
+		this.size = size;
+		entries = new HashMapEntry[size];
+		numEntries = 0;
+	}
+	public HashMap() {
+		size = DEFAULT_CAPACITY;
+		entries = new HashMapEntry[size];
+		numEntries = 0;
+	}
+	private int getHash(K key) {
+		return (key.hashCode() & 0x7fffffff) % size;
+	}
+	public boolean set(K key, V value) {
+		if (key == null) {
+			return false;
+		}
+		int hc = getHash(key);
+		HashMapEntry<K, V> tmp = entries[hc];
+		if (tmp != null) {
+			if (tmp.getKey().equals(key)) {
+				tmp.setValue(value);
+				return true;
+			} else {
+				while (tmp.getNext() != null) {
+					tmp = tmp.getNext();
+				}
+				HashMapEntry<K, V> newEntry = new HashMapEntry<K, V>(
+						key, value);
+				tmp.setNext(newEntry);
+				numEntries++;
+				return true;
+			}
+		} else {
+			HashMapEntry<K, V> newEntry = new HashMapEntry<K, V>(key,
+					value);
+			entries[hc] = newEntry;
+			numEntries++;
+			return true;
+		}
+	}
+	public V get(K key) {
+		if (key == null) {
+			return null;
+		}
+		int hc = getHash(key);
+		HashMapEntry<K, V> tmp = entries[hc];
+		while (tmp != null) {
+			if (tmp.getKey().equals(key)) {
+				return tmp.getValue();
+			}
+			tmp = tmp.getNext();
+		}
+		return null;
+	}
+	public V delete(K key) {
+		int hc = getHash(key);
+		HashMapEntry<K, V> tmp = entries[hc];
+		if (tmp != null) {
+			HashMapEntry<K, V> prev = null;
+			while (tmp != null) {
+				if (tmp.getKey().equals(key)) {
+					if (prev == null) {
+						V val = (V) entries[hc].getValue();
+						entries[hc] = entries[hc].getNext();
+						numEntries--;
+						return val;
+					} else {
+						prev.setNext(tmp.getNext());
+						numEntries--;
+						return prev.getNext().getValue();
+					}
+				}
+				prev = tmp;
+				tmp = tmp.getNext();
+			}
+			return null;
+		}
+		return null;
+	}
+	public float load() {
+		return ((float) numEntries / size);
+	}
+	@Override
+	public String toString() {
+		return "HashMap [size=" + size + ", numEntries=" + numEntries
+				+ ", entries=" + Arrays.toString(entries) + "]";
+	}
+}

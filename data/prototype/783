@@ -1,0 +1,25 @@
+package rosberglinhares.datastructuresandalgorithms.algorithms.sorting;
+public class InsertionSort {
+    public <T extends Comparable<T>> void iterativeInsertionSort(T[] items) {
+        for (int i = 1; i < items.length; i++) {
+            T insertItem = items[i];
+            for (int j = i; j >= 1 && (items[j].compareTo(items[j - 1]) < 0); j--) {
+                items[j] = items[j - 1];
+                items[j - 1] = insertItem;
+            }
+        }
+    }
+    public <T extends Comparable<T>> void recursiveInsertionSort(T[] items) {
+        this.recursiveInsertionSort(items, 1);
+    }
+    private <T extends Comparable<T>> void recursiveInsertionSort(T[] items, int itemIndex) {
+        if (itemIndex < items.length) {
+            T insertItem = items[itemIndex];
+            for (int i = itemIndex; i >= 1 && (items[i].compareTo(items[i - 1]) < 0); i--) {
+                items[i] = items[i - 1];
+                items[i - 1] = insertItem;
+            }
+            recursiveInsertionSort(items, itemIndex + 1);
+        }
+    }
+}

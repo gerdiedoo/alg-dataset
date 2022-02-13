@@ -1,0 +1,38 @@
+package ie.peternagy.algorithms.sorting;
+import java.util.Arrays;
+public class MergeSort {
+    public static void sort(Comparable[] items) {
+        sort(items, true);
+    }
+    public static void sort(Comparable[] items, boolean isAsc) {
+        int arrayLength = items.length;
+        mergeSort(items, 0, arrayLength - 1, isAsc);
+    }
+    private static void mergeSort(Comparable[] items, int lowIndex, int highIndex, boolean isAsc) {
+        if (lowIndex < highIndex) {
+            int middle = lowIndex + (highIndex - lowIndex) / 2;
+            mergeSort(items, lowIndex, middle, isAsc);
+            mergeSort(items, middle + 1, highIndex, isAsc);
+            merge(items, lowIndex, middle, highIndex, isAsc);
+        }
+    }
+    private static void merge(Comparable[] items, int lowIndex, int middle, int highIndex, boolean isAsc) {
+        Comparable[] helper = new Comparable[items.length];
+        System.arraycopy(items, lowIndex, helper, lowIndex, (highIndex - lowIndex) + 1);
+        int i = lowIndex;
+        int j = middle + 1;
+        int k = lowIndex;
+        while (i <= middle && j <= highIndex) {
+            if (isAsc && helper[i].compareTo(helper[j]) < 0 ||
+                    !isAsc && helper[i].compareTo(helper[j]) > 0) {
+                items[k] = helper[i];
+                i++;
+            } else {
+                items[k] = helper[j];
+                j++;
+            }
+            k++;
+        }
+        System.arraycopy(helper, i, items, k, (middle - i) + 1);
+    }
+}

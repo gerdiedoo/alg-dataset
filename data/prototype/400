@@ -1,0 +1,10 @@
+package com.namesny.binarysearchtree;
+public interface BinarySearchTree<T extends Comparable<? super T>>{
+    public void insert(T value) throws DuplicateValueException;
+    public void delete(T key);
+    public T find(T key);
+    public void clear();
+    public boolean isEmpty();
+    public T findMin();
+    public T findMax();
+}

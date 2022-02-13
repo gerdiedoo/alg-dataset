@@ -1,0 +1,9 @@
+package searches;
+public class LinearSearch {
+    public static boolean contains(int[] arr, int n) {
+        for(int m : arr)
+            if(m == n)
+                return true;
+        return false;
+    }
+}

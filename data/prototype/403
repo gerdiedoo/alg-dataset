@@ -1,0 +1,89 @@
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+def insert(node, data):
+    if node is None:
+        node = Node(data)
+        return node
+    else:
+        if data <= node.data:
+            node.left = insert(node.left, data)
+        else:
+            node.right = insert(node.right, data)
+    return node
+def search(node, data):
+    if node is None:
+        return None
+    if data < node.data:
+        node = search(node.left, data)
+    elif data > node.data:
+        node = search(node.right, data)
+    elif data == node.data:
+        return node
+    return node
+def minright(node):
+    if node.left is None:
+        return node
+    else:
+        node = minright(node.left)
+    return node
+def delete(root, data):
+    if root is None:
+        return root
+    if data < root.data:
+        root.left = delete(root.left, data)
+    elif data > root.data:
+        root.right = delete(root.right, data)
+    else:
+        if root.left is None:
+            return root.right
+        elif root.right is None:
+            return root.left
+        temp = minright(root.right)
+        root.data = temp.data
+        root.right = delete(root.right, temp.data)
+    return root
+def inorder(root):
+    if root is not None:
+        inorder(root.left)
+        print(root.data)
+        inorder(root.right)
+def preorder(root):
+    if root is not None:
+        print(root.data)
+        preorder(root.left)
+        preorder(root.right)
+def postorder(root):
+    if root is not None:
+        preorder(root.left)
+        preorder(root.right)
+        print(root.data)
+def main():
+    root = None
+    root = insert(root, 5)
+    root = insert(root, 11)
+    root = insert(root, 3)
+    root = insert(root, 1)
+    root = insert(root, 50)
+    root = insert(root, 45)
+    root = insert(root, 30)
+    root = insert(root, 35)
+    print("****** InOrder ******")
+    inorder(root)
+    print("****** PreOrder ******")
+    preorder(root)
+    print("****** PostOrder ******")
+    postorder(root)
+    print("***** search Node ******")
+    temp = search(root, 28)
+    if temp is not None:
+        print("node search==> ", temp.data)
+    else:
+        print("node is not present")
+    print("***** delete Node ******")
+    root = delete(root, 11)
+    inorder(root)
+if __name__ == '__main__':
+    main()

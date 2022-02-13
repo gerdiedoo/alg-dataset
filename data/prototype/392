@@ -1,0 +1,10 @@
+def binarySearch(inputArray,x):
+	if (inputArray[-1] > x):
+		mid = len(inputArray)//2 
+  if (inputArray[mid] == x): 
+			return True    
+  if (inputArray[mid] > x): 
+			return binarySearch(inputArray[:mid],x)
+  return binarySearch(inputArray[mid:],x)
+ else:
+		return False

@@ -1,0 +1,14 @@
+package com.deepak.algorithms.Sorting;
+import com.deepak.algorithms.Library.ArrayUtils;
+public class InsertionSort {
+	public static Integer[] performInsertionSort(Integer[] list) {
+		for (int i = 1; i < list.length; i++) {
+			for (int j = i; j > 0; j--) {
+				if (list[j] < list[j - 1]) {
+					ArrayUtils.swap(list, j, j - 1);
+				}
+			}
+		}
+		return list;
+	}
+}

@@ -1,0 +1,28 @@
+def flip(arr,i):
+    st = 0
+    while st < i:
+        temp = arr[st]
+        arr[st]  = arr[i]
+        arr[i] = temp
+        st+=1
+        i-=1
+def maxx(arr,n):
+    maxx=0
+    for i in range(0,n):
+        if arr[i]>arr[maxx]:
+            maxx=i
+    return maxx
+def PancakeSoritng(arr,n):
+    length = n
+    while length > 1:
+        i = maxx(arr,length)
+        if i!=length-1:
+            flip(arr,i)
+            flip(arr,length-1)
+        length-=1
+user_input = input("Enter input numbers separated by a comma\n").strip()
+arr= [int(elem) for elem in user_input.split(',')]
+n=len(arr)
+print('Length of array is {}'.format(n))
+PancakeSoritng(arr,n)
+print("The Sorted array is \n{}".format(arr))

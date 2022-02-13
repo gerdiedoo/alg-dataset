@@ -1,0 +1,10 @@
+const quickSort = (arr) => {
+  if (arr.length <= 1) return arr;
+  const pivot = arr.splice(Math.floor(Math.random() * (arr.length - 1)), 1);
+  const left = [];
+  const right = [];
+  arr.forEach(el => el < pivot ? left.push(el) : right.push(el));
+  const sortedLeft = quickSort(left);
+  const sortedRight = quickSort(right);
+  return [...sortedLeft, ...pivot, ...sortedRight];
+}

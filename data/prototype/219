@@ -1,0 +1,492 @@
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+public class DLinkedList<E> implements Iterable<E>, Cloneable
+{
+	private Node head;
+	private Node tail;
+	private class Node
+	{
+		E element;
+		Node next;
+		Node previous;
+		Node(E element)
+		{
+			this.element = element;
+		}
+	}
+	public DLinkedList()
+	{
+		head = tail = new Node(null);  
+	}
+	public boolean isEmpty() 
+	{
+		return head.next == null;
+	}
+	public void addFirst(E element)
+	{
+		Node newNode = new Node(element);
+		Node temp = head.next;  
+		head.next = newNode;
+		newNode.previous = head;
+		if (temp == null)
+		{
+			tail = newNode;
+		}
+		else
+		{
+			newNode.next = temp;
+			temp.previous = newNode;
+		}
+	}
+	public void addLast(E element)
+	{
+		Node newNode = new Node(element);
+		tail.next = newNode;
+		newNode.previous = tail;
+		tail = newNode;
+	}
+	public void add(int index, E element) 
+	{		
+		if (index < 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		if (isEmpty() && index == 0)
+		{
+			addFirst(element);
+			return;
+		}
+		int count = 0;
+		try
+		{
+			Node current = head.next;
+			count = 1; 
+			while (index >= count)  
+			{
+				current = current.next;  
+				count++;
+			}
+			Node node = new Node(element);
+			(current.previous).next = node;  
+			node.previous = current.previous;
+			node.next = current;
+			current.previous = node;
+		}
+		catch (NullPointerException ex)
+		{
+			if (index == count-1)
+			{
+				addLast(element);
+				return;
+			}
+			throw new IndexOutOfBoundsException();
+		}
+	}
+	public E getFirst()
+	{
+		try
+		{
+			return (head.next).element;
+		}
+		catch (NullPointerException ex)
+		{
+			throw new NoSuchElementException();
+		}
+	}
+	public E getLast() 
+	{
+		if (isEmpty())
+		{
+			throw new NoSuchElementException();
+		}
+		return tail.element;
+	}
+	public E get(int index)
+	{
+		if (index < 0 || isEmpty())
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		int count = 0;
+		try
+		{
+			Node current = head;
+			while (index >= count) 
+			{
+				current = current.next;  
+				count++;
+			}
+			return current.element;   
+		}
+		catch (NullPointerException ex)
+		{		
+			throw new IndexOutOfBoundsException();
+		}
+	}
+	public E set(int index, E element)
+	{
+		if (index < 0 || isEmpty())
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		int count = 0;
+		try
+		{
+			Node current = head;
+			while (index >= count)
+			{
+				current = current.next;  
+				count++;
+			}
+			E e = current.element;  
+			current.element = element;
+			return e;
+		}
+		catch (NullPointerException ex)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+	}
+	public boolean contains(E element)
+	{
+		Node current = head.next;
+		while (current != null)
+		{
+			if (current.element.equals(element))
+			{
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+	public void clear()
+	{
+		Node current = head;
+		tail = head;  
+		Node temp = current;
+		while (temp != null)
+		{
+			temp = current.next;
+			current.previous = null;
+			current.next = null;
+			current = temp;
+		}
+	}
+	@Override
+	public String toString()
+	{
+		String str = "";
+		Node current = head.next;
+		while (current != null)
+		{
+			str += current.element + " ";
+			current = current.next;
+		}
+		str = "[" + str.trim() + "]";
+		return str;
+	}
+	public String toStringRev()
+	{	
+		String str = "";
+		Node current = tail;
+		while (current != head)
+		{
+			str += current.element + " ";
+			current = current.previous;
+		}
+		str = "[" + str.trim() + "]";
+		return str;
+	}
+	@Override
+	public Iterator<E> iterator() 
+	{
+		return new DLinkedListIterator();
+	}
+	private class DLinkedListIterator implements Iterator<E>
+	{
+		private Node current;
+		private boolean nextCalled;
+		public DLinkedListIterator()
+		{
+			current = head.next;
+		}
+		@Override
+		public boolean hasNext() 
+		{
+			return current != null;
+		}
+		@Override
+		public E next() 
+		{		
+			if (hasNext())
+			{
+				E element = current.element;
+				current = current.next;
+				nextCalled = true;
+				return element;
+			}
+			else
+			{
+				throw new NoSuchElementException();
+			}
+		}
+		@Override
+		public void remove()
+		{
+			if (nextCalled == true)
+			{		
+				if (current == null)
+				{
+					removeLast();
+					nextCalled = false;
+					return;
+				}
+				Node nextNode = current;
+				Node prevNode = current.previous.previous;
+				current.previous.next = null;
+				current.previous.previous = null;
+				prevNode.next = current;
+				nextNode.previous = prevNode;
+				nextCalled = false;
+			} 
+			else
+			{
+				throw new IllegalStateException();
+			}
+		}
+	}
+	public boolean containsIter(E element)
+	{
+		for (E item: this)
+		{
+			if (item.equals(element))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	public E removeFirst() 
+	{
+		if (isEmpty()) 
+		{
+			throw new NoSuchElementException();
+		}
+		Node curr = head.next;
+		if (curr == tail)  
+		{
+			curr.previous = null;
+			head.next = null;
+			tail = head;
+			return curr.element;
+		}
+		Node node = curr.next; 
+		node.previous = head;
+		curr.previous = null;
+		curr.next = null;
+		head.next = node;
+		return curr.element;
+	}
+	public E removeLast() 
+	{
+		if (isEmpty())
+		{
+			throw new NoSuchElementException();
+		}
+		Node node = tail.previous;  
+		tail.previous = null;
+		node.next = null;
+		E ele = tail.element;
+		tail = node;
+		return ele;
+	}
+	public E remove(int index) 
+	{
+		if (index < 0 || isEmpty())
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		Node current = head.next; 
+		int count = 0;
+		while (index > count) 
+		{
+			current = current.next;	
+			if (current == null)
+			{
+				throw new IndexOutOfBoundsException();
+			}
+			count++;
+		}
+		if (current == tail)
+		{
+			return removeLast();
+		}
+		Node prevNode = current.previous;
+		Node nextNode = current.next;
+		nextNode.previous = current.previous;
+		prevNode.next = current.next;
+		current.previous = null;
+		current.next = null;
+		return current.element;
+	}
+	public boolean removeItem(E element)
+	{
+		Node current = head.next;
+		while (current != null)
+		{
+			if (current.element.equals(element))
+			{
+				if (current == tail)
+				{
+					removeLast();
+					return true;
+				}
+				Node prevNode = current.previous;
+				Node nextNode = current.next;
+				nextNode.previous = current.previous;
+				prevNode.next = current.next;
+				current.previous = null;
+				current.next = null;
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+	public boolean removeAll(E element) 
+	{
+		Node current = head.next;
+		boolean removed = false;
+		Node previous;
+		Node nextNode;
+		while (current != null)
+		{
+			if (current.element.equals(element))
+			{ 
+				if (current == tail)
+				{
+					removeLast();
+					current = current.next;
+					removed = true;
+				}
+				else
+				{
+					previous = current.previous;	 
+					nextNode = current.next; 	 
+					current.next = null;
+					current.previous = null;
+					previous.next = nextNode;
+					nextNode.previous = previous;
+					current = nextNode; 
+					removed = true;
+				}
+			}
+			else
+			{
+				current = current.next;
+			}
+		}
+		return removed;
+	}
+	public boolean equals(Object list) 
+	{
+		if (this == list) 
+		{
+			return true;
+		}
+		if (!(list instanceof DLinkedList)) 
+		{   
+			return false;
+		}
+		Iterator<E> thisIter = this.iterator();
+		Iterator<E> listIter = ((Iterable<E>) list).iterator();
+		while (thisIter.hasNext())
+		{
+			if (listIter.hasNext())
+			{
+				if (!thisIter.next().equals(listIter.next())) 
+				{
+					return false;  
+				}
+			}
+			else 
+			{
+				return false;   
+			}
+		}
+		if (listIter.hasNext())
+		{
+			return false;  
+		}
+		return true; 
+	}
+	public Object clone()
+	{
+	    try 
+	    {
+	        DLinkedList<E> copyList = (DLinkedList<E>) super.clone();  
+	        copyList.head = new Node(null); 
+	        copyList.tail = copyList.head; 
+	        for (E element : this)
+	        {
+	        	copyList.addLast(element);
+	        }
+	        return copyList;  
+	    }
+	    catch (CloneNotSupportedException e) 
+	    {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
+	public void addAll(int index, Iterable<E> collection) 
+	{
+		if (index < 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		Node current = head;
+		for (int i = 0; i < index; i++)
+		{
+			current = current.next; 	
+			if (current == null)
+			{
+				throw new IndexOutOfBoundsException();
+			}
+		}
+		for (E element : collection)
+		{
+			Node node = new Node(element);
+			if (current == tail)
+			{
+				current.next = node;
+				node.previous = current;
+				current = node;
+				tail = node;
+			}
+			else
+			{
+				(current.next).previous = node;
+				node.next = current.next;
+				current.next = node;
+				node.previous = current;
+				current = node;
+			}
+		}
+	}
+	public boolean removeAllIter(E element) 
+	{
+		Iterator<E> iterator = this.iterator();
+		boolean removed = false;
+		while (iterator.hasNext())
+		{
+			if (iterator.next().equals(element))
+			{
+				  iterator.remove();
+				  removed = true;
+			}
+		}
+		return removed;
+	}
+}

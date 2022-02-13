@@ -1,0 +1,19 @@
+from __future__ import print_function
+def merge_sort(collection):
+    start, end = [], []
+    while len(collection) > 1:
+        min_one, max_one = min(collection), max(collection)
+        start.append(min_one)
+        end.append(max_one)
+        collection.remove(min_one)
+        collection.remove(max_one)
+    end.reverse()
+    return start + collection + end
+if __name__ == '__main__':
+    try:
+        raw_input          
+    except NameError:
+        raw_input = input  
+    user_input = raw_input('Enter numbers separated by a comma:\n').strip()
+    unsorted = [int(item) for item in user_input.split(',')]
+    print(*merge_sort(unsorted), sep=',')

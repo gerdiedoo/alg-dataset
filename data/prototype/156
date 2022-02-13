@@ -1,0 +1,98 @@
+public class Nashmap {
+    private Bucket[] buckets;
+    private static class Bucket<Type> {
+        Type value;
+        int key;
+        Bucket(int key, Type value) {
+            this.value = value;
+            this.key = key;
+        }
+        Type getValue() {
+            return value;
+        }
+        int getKey() {
+            return key;
+        }
+    }
+    public Nashmap(int size) {
+        this.buckets = new Bucket<?>[size];
+    }
+    private int getHash(String key) {
+        int hash = key.hashCode();
+        if (hash < 0) {
+            hash = hash * -1;
+        }
+        return hash;
+    }
+    private int findObject(int hashedKey) {
+        int i = hashedKey % this.buckets.length;
+        do {
+            if (this.buckets[i] != null && this.buckets[i].getKey() == hashedKey) {
+                return i;
+            }
+            i = (i + 3) % this.buckets.length;
+        } while (buckets[i] == null);
+        return -1;
+    }
+    private int findNull(int hashedKey) {
+        hashedKey = hashedKey % this.buckets.length;
+        do {
+            if (this.buckets[hashedKey] == null) {
+                return hashedKey;
+            }
+            hashedKey = (hashedKey + 3) % this.buckets.length;
+        } while (buckets[hashedKey] != null);
+        return -1;
+    }
+    public boolean put(String key, Object object) {
+        int hashedKey = getHash(key);
+        int index = findNull(hashedKey);
+        if (index >= 0) {
+            this.buckets[index] = new Bucket<>(hashedKey, object);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public Object get(String key) {
+        int index = findObject(getHash(key));
+        if (index >= 0) {
+            return this.buckets[index].getValue();
+        } else {
+            return null;
+        }
+    }
+    public boolean delete(String key) {
+        int index = findObject(getHash(key));
+        if (index >= 0) {
+            this.buckets[index] = null;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean exists(String key) {
+        int index = findObject(getHash(key));
+        return index >= 0;
+    }
+    public int elements() {
+        int elements = 0;
+        for (int i = 0; i < this.buckets.length; i++) {
+            if (this.buckets[i] != null) {
+                elements++;
+            }
+        }
+        return elements;
+    }
+    public boolean isEmpty() {
+        return elements() == 0;
+    }
+    public void clear() {
+        for (int i = 0; i < this.buckets.length; i++) {
+            this.buckets[i] = null;
+        }
+    }
+    public int size() {
+        return this.buckets.length;
+    }
+}

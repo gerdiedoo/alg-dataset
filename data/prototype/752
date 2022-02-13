@@ -1,0 +1,22 @@
+package ie.peternagy.algorithms.sorting;
+public class InsertionSort {
+    public static void sort(Comparable[] items) {
+        sort(items, true);
+    }
+    public static void sort(Comparable[] items, boolean isAsc) {
+        Comparable key;
+        int lowIndex;
+        for (int i = 1; i < items.length; i++) {
+            key = items[i];
+            lowIndex = i;
+            while(--lowIndex >= 0){
+                if((isAsc && items[lowIndex].compareTo(key) > 0)
+                        || (!isAsc && items[lowIndex].compareTo(key) < 0))
+                    items[lowIndex + 1] = items[lowIndex];
+                else
+                    break;
+            }
+            items[lowIndex + 1] = key;
+        }
+    }
+}

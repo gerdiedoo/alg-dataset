@@ -1,0 +1,15 @@
+def bubble_sort(array):
+    for i in range(0, len(array)-1):
+        for j in range(len(array)-1, i, -1):
+            if array[i] > array[j]:
+                array[i], array[j] = array[j], array[i]
+def main():
+    count = int(input())
+    array = []
+    for i in range(count):
+        array.append(int(input()))
+    bubble_sort(array)
+    for i in array:
+        print(i, end=' ')
+if __name__ == "__main__":
+    main()

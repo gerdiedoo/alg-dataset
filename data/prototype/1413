@@ -1,0 +1,18 @@
+package com.intrafoundation;
+import java.util.Arrays;
+public class BaseSort {
+    protected int swaps = 0;
+    public void sort(int[] arr) {
+        swaps = 0;
+        Arrays.sort(arr);
+    }
+    public int getSwaps() {
+        return swaps;
+    }
+    protected void swap(int[] arr, int indexA, int indexB) {
+        final int swapTemp = arr[indexA];
+        arr[indexA] = arr[indexB];
+        arr[indexB] = swapTemp;
+        swaps++;
+    }
+}

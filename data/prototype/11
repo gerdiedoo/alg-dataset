@@ -1,0 +1,154 @@
+package it.angeloavv.bihashmap;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+public class BiHashMap<K, V> implements BHM<K, V>, Cloneable, Serializable {
+	private static final long serialVersionUID = -2346574990449185372L;
+	private HashMap<K, V> left;
+	private HashMap<V, K> right;
+	public BiHashMap() {
+		left = new HashMap<K, V>();
+		right = new HashMap<V, K>();
+	}
+	public BiHashMap(int initialCapacity) {
+		left = new HashMap<K, V>(initialCapacity);
+		right = new HashMap<V, K>(initialCapacity);
+	}
+	public BiHashMap(int initialCapacity, float loadFactor) {
+		left = new HashMap<K, V>(initialCapacity, loadFactor);
+		right = new HashMap<V, K>(initialCapacity, loadFactor);
+	}
+	@Override
+	public int size() {
+		if (isNull()) throw new NullPointerException();
+		return left.size();
+	}
+	@Override
+	public boolean isEmpty() {
+		if (isNull()) throw new NullPointerException();
+		return left.isEmpty();
+	}
+	@Override
+	public boolean containsByKey(K key) {
+		if (isNull()) throw new NullPointerException();
+		return left.containsKey(key);
+	}
+	@Override
+	public boolean containsByValue(V value) {
+		if (isNull()) throw new NullPointerException();
+		return right.containsKey(value);
+	}
+	@Override
+	public boolean contains(Object key) {
+		if (isNull()) throw new NullPointerException();
+		return left.containsKey(key) || right.containsKey(key);
+	}
+	@Override
+	public K getKeyByValue(V value) {
+		if (isNull()) throw new NullPointerException();
+		return right.get(value);
+	}
+	@Override
+	public V getValueByKey(K key) {
+		if (isNull()) throw new NullPointerException();
+		return left.get(key);
+	}
+	@Override
+	public V put(K key, V value) {
+		if (isNull()) throw new NullPointerException();
+		left.put(key, value);
+		right.put(value, key);
+		return value;
+	}
+	@Override
+	public K removeByKey(K key) {
+		if (isNull()) throw new NullPointerException();
+		return right.remove(left.remove(key));
+	}
+	@Override
+	public V removeByValue(V value) {
+		if (isNull()) throw new NullPointerException();
+		return left.remove(right.remove(value));
+	}
+	@Override
+	public void putAllByKey(Map<? extends K, ? extends V> m) {
+		if (isNull()) throw new NullPointerException();
+		for(K key : m.keySet()) {
+			left.put(key, m.get(key));
+			right.put(m.get(key), key);
+		}
+	}
+	@Override
+	public void putAllByValue(Map<? extends V, ? extends K> m) {
+		if (isNull()) throw new NullPointerException();
+		for(V key : m.keySet()) {
+			left.put(m.get(key), key);
+			right.put(key, m.get(key));
+		}
+	}
+	@Override
+	public void clear() {
+		if (isNull()) throw new NullPointerException();
+		left.clear();
+		right.clear();
+	}
+	@Override
+	public Set<K> keySetByKey() {
+		if (isNull()) throw new NullPointerException();
+		return left.keySet();
+	}
+	@Override
+	public Set<V> keySetByValue() {
+		if (isNull()) throw new NullPointerException();
+		return right.keySet();
+	}
+	@Override
+	public Collection<K> valuesByKey() {
+		if (isNull()) throw new NullPointerException();
+		return right.values();
+	}
+	@Override
+	public Collection<V> valuesByValue() {
+		if (isNull()) throw new NullPointerException();
+		return left.values();
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((left == null) ? 0 : left.hashCode());
+		result = prime * result + ((right == null) ? 0 : right.hashCode());
+		return result;
+	}
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BiHashMap other = (BiHashMap) obj;
+		if (left == null) {
+			if (other.left != null)
+				return false;
+		} else if (!left.equals(other.left))
+			return false;
+		if (right == null) {
+			if (other.right != null)
+				return false;
+		} else if (!right.equals(other.right))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "BiHashMap [left=" + left + ", right=" + right + "]";
+	}
+	private boolean isNull() {
+		return left == null && right == null;
+	}
+}

@@ -1,0 +1,7 @@
+@SuppressWarnings("ALL")
+interface HashTable {
+  boolean put(Object key, Object val);
+  Object get(Object key);
+  boolean remove(Object key);
+  void dump();
+}

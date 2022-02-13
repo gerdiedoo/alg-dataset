@@ -1,0 +1,24 @@
+public class SortingAnArray {
+    public static void main(String[] args) {
+        int[] array = {6,4,2,5,0,1,3};
+        System.out.print("Current Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.print("\n");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if(array[i] > array[j]){
+                    int tempVar = array[i];
+                    array[i] = array[j];
+                    array[j] = tempVar;
+                }
+            }
+        }
+        System.out.print("Sorted Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.print("\n");
+    }
+}

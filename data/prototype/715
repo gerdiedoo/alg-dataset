@@ -1,0 +1,21 @@
+package src.algorithms;
+import src.strategy.Order;
+public class InsertionSort<T> extends SortingAlgorithm<T> {
+	@Override
+	@SuppressWarnings("hiding")
+	public<T extends Comparable<T>> T[] sort(T[] elements, Order order) {
+		int numElements = elements.length;
+		for (int i=1; i<numElements; i++) {
+			T edgeElement = elements[i];
+			int j = i - 1;
+			while (j >= 0 && (
+				   order == Order.ASC  && edgeElement.compareTo(elements[j]) < 0   ||
+			       order == Order.DESC && edgeElement.compareTo(elements[j]) > 0)) {
+				elements[j + 1] = elements[j];
+				j -= 1;
+			}
+			elements[j + 1] = edgeElement;
+		}
+		return elements;
+	}
+}

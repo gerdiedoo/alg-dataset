@@ -1,0 +1,120 @@
+package com.lists;
+import java.util.Iterator;
+public class CircularLinkedList<Item> implements Iterable<Item>{
+    LinkedListNode head, tail;
+    int size;
+    public CircularLinkedList(){
+        head = null;
+        tail = null;
+        size = 0;
+    }
+    public int getSize(){
+        return size;
+    }
+    public boolean isEmpty(){
+        return size == 0;
+    }
+    public void add(Item item){
+        LinkedListNode linkedListNode = new LinkedListNode(item);
+        if(isEmpty()){
+            head = linkedListNode;
+            tail = linkedListNode;
+        }
+        else{
+            tail.next = linkedListNode;
+            tail = linkedListNode;
+        }
+        linkedListNode.next = head;
+        size++;
+    }
+    public void add(Item item, int index)throws IndexOutOfBoundsException{
+        if(index < 0 || index > size - 1){
+            throw new IndexOutOfBoundsException();
+        }
+        LinkedListNode linkedListNode = new LinkedListNode(item);
+        if(index == size - 1){
+            add(item);
+        }
+        else if(index == 0){
+            linkedListNode.next = head.next;
+            head = linkedListNode;
+            size++;
+        }
+        else {
+            LinkedListNode start = head;
+            while (index != 1) {
+                index--;
+                start = start.next;
+            }
+            linkedListNode.next = start.next;
+            start.next = linkedListNode;
+            size++;
+        }
+    }
+    public Item get(int index) throws IndexOutOfBoundsException{
+        if(index < 0 || index > size - 1){
+            throw new IndexOutOfBoundsException();
+        }
+        if(index == 0){
+            return head.item;
+        }
+        else if(index == size - 1){
+            return tail.item;
+        }
+        else{
+            LinkedListNode start = head;
+            while (index != 0) {
+                index--;
+                start = start.next;
+            }
+            return start.item;
+        }
+    }
+    public void remove(int index) throws IndexOutOfBoundsException{
+        if(index < 0 || index > size - 1){
+            throw new IndexOutOfBoundsException();
+        }
+        if(index == 0){
+            head = head.next;
+            tail.next = head;
+        }
+        else{
+            LinkedListNode start = head;
+            int temp = index;
+            while(temp != 1){
+                temp--;
+                start = start.next;
+            }
+            start.next = start.next.next;
+            if(index == size - 1){
+                tail = start;
+            }
+            size--;
+        }
+    }
+    public Iterator<Item> iterator(){
+        return new CircularLinkedListIterator();
+    }
+    class CircularLinkedListIterator implements Iterator<Item> {
+        private LinkedListNode current = head;
+        public boolean hasNext(){
+            return true;
+        }
+        public void remove(){
+            throw new UnsupportedOperationException();
+        }
+        public Item next(){
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+    }
+    class LinkedListNode{
+        Item item;
+        LinkedListNode next;
+        LinkedListNode(Item item){
+            this.item = item;
+            next = null;
+        }
+    }
+}

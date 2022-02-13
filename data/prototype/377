@@ -1,0 +1,36 @@
+package rosberglinhares.datastructuresandalgorithms.algorithms.searching;
+public class BinarySearch {
+    public <T extends Comparable<T>> boolean iterativeBinarySearch(T[] elements, T value) {
+        return this.iterativeBinarySearch(elements, 0, elements.length - 1, value);
+    }
+    public <T extends Comparable<T>> boolean iterativeBinarySearch(T[] elements, int lowerIndex, int upperIndex, T value) {
+        while (lowerIndex <= upperIndex) {
+            int middleIndex = (lowerIndex + upperIndex) / 2;
+            if (value.compareTo(elements[middleIndex]) == 0) {
+                return true;
+            } else if (value.compareTo(elements[middleIndex]) < 0) {
+                upperIndex = middleIndex - 1;
+            } else {
+                lowerIndex = middleIndex + 1;
+            }
+        }
+        return false;
+    }
+    public <T extends Comparable<T>> boolean recursiveBinarySearch(T[] elements, T value) {
+        return this.recursiveBinarySearch(elements, 0, elements.length - 1, value);
+    }
+    private <T extends Comparable<T>> boolean recursiveBinarySearch(T[] elements, int lowerIndex, int upperIndex, T value) {
+        if (lowerIndex <= upperIndex) {
+            int middleIndex = (lowerIndex + upperIndex) / 2;
+            if (value.compareTo(elements[middleIndex]) == 0) {
+                return true;
+            } else if (value.compareTo(elements[middleIndex]) < 0) {
+                return this.recursiveBinarySearch(elements, lowerIndex, middleIndex - 1, value);
+            } else {
+                return this.recursiveBinarySearch(elements, middleIndex + 1, upperIndex, value);
+            }
+        } else {
+            return false;
+        }
+    }
+}

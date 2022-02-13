@@ -1,0 +1,13 @@
+def insertionSort(list):
+    length = len(list)
+    for i in range(1, length):
+        currentElement = list[i]
+        currentPosition = i
+        while list[currentPosition - 1] > currentElement and currentPosition > 0:
+            list[currentPosition] = list[currentPosition - 1]
+            currentPosition -= 1
+        list[currentPosition] = currentElement
+    return list
+myList = [343,12,45,13,87,45,25,665,5,234,6,23,5]
+print(myList)
+print(insertionSort(myList))

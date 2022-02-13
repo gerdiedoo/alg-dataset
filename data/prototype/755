@@ -1,0 +1,26 @@
+package raymond.com.sorting;
+public class InsertionSort extends Sorting
+{
+	int [] numberArray;
+	public InsertionSort(int [] array)
+	{
+		numberArray = array;
+	}
+	public int [] sort()
+	{
+		for (int i = 0; i < numberArray.length; i ++)
+		{
+			int smallestIndex = i;
+			for (int j = i; j < numberArray.length; j ++)
+			{
+				if (numberArray[j] < numberArray[smallestIndex])
+				{
+					smallestIndex = j;
+				}
+			}
+			swap(numberArray, i, smallestIndex);
+		}
+		printArray(numberArray);
+		return null;
+	}
+}

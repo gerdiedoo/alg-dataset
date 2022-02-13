@@ -1,0 +1,4 @@
+package org.joyfulmonster.util.concurrent.internal;
+interface BucketMetricsSupport {
+    int getBucketEntries();
+}

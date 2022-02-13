@@ -1,0 +1,11 @@
+@SuppressWarnings("ALL")
+abstract class AbstractHashSequence implements HashSequence {
+  protected HashFunction func;
+  protected int prev;
+  protected AbstractHashSequence(HashFunction f) {
+    func = f;
+  }
+  public int size() {
+    return func.size();
+  }
+}

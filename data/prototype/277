@@ -1,0 +1,156 @@
+import java.util.NoSuchElementException;
+class Node<T> {
+    public T data;      
+    public Node<T> next;      
+    public Node(T input) {
+        this.data = input;
+        this.next = null;
+    }
+}
+class LinkedList<T> {
+    private Node<T> head;      
+    private int sizeOfList = 0;      
+    public LinkedList() {
+        head = null;
+    }
+    public void addFront(T input) {
+        Node<T> newNode = new Node<T>(input);
+        newNode.next = head;
+        head = newNode;
+        sizeOfList++;
+    }
+    public void addLast(T input) {
+        if (head == null) {
+            Node<T> newNode = new Node<T>(input);
+            head = newNode;
+            sizeOfList = 1;
+        }
+        else {
+            Node<T> temp = head;
+            while (temp.next != null)
+                temp = temp.next;
+            Node<T> newNode = new Node<T>(input);
+            temp.next = newNode;
+            sizeOfList++;
+        }
+    }
+    public void add(T input, int index) {
+        if (index < 0 || index > sizeOfList)
+            throw new IndexOutOfBoundsException("Invalid Index");
+        Node<T> temp = head;
+        if (index == 0)
+            addFront(input);
+        else {
+            for (int i = 0; i < index-1; i++)
+                temp = temp.next;
+            Node<T> newNode = new Node<T>(input);
+            newNode.next = temp.next;
+            temp.next = newNode;
+            sizeOfList++;
+        }
+    }
+    public T removeFront() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+        T removedElement = head.data;
+        head = head.next;
+        sizeOfList--;
+        return removedElement;
+    }
+    public T removeLast() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+        T removedElement;
+        if (head.next == null) {
+            removedElement = head.data;
+            head = null;
+        }
+        else {
+            Node<T> temp = head;
+            while (temp.next.next != null)
+                temp = temp.next;
+            removedElement = temp.next.data;
+            temp.next = null;
+        }
+        sizeOfList--;
+        return removedElement;
+    }
+    public T remove(int index) {
+        if (isEmpty())
+            throw new NoSuchElementException();
+        if (index < 0 || index > sizeOfList)
+            throw new IndexOutOfBoundsException("Invalid Index");
+        if (index > 0) {
+            Node<T> temp = head;
+            for (int i = 0; i < index-1; i++)
+                temp = temp.next;
+            T removedElement = temp.next.data;
+            temp.next = temp.next.next;
+            sizeOfList--;
+            return removedElement;
+        }
+        return removeFront();
+    }
+    public int search(T input) {
+        Node<T> temp = head;
+        for (int i = 0; i < sizeOfList; i++) {
+            if (temp.data == input)
+                return i;
+            else
+                temp = temp.next;
+        }
+        return -1;      
+    }
+    public void display() {
+        Node<T> temp = head;
+        if (temp != null) {
+            System.out.print("[");
+            while (temp != null) {
+                System.out.print(temp.data+", ");
+                temp = temp.next;
+            }
+            System.out.print("\b\b]\n");
+        }
+    }
+    public int size() {
+        return sizeOfList;
+    }
+    public boolean isEmpty() {
+        return sizeOfList == 0;
+    }
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<Integer>();      
+        list.addFront(3);
+        list.display();
+        list.addLast(5);
+        list.addLast(6);
+        list.display();
+        list.addFront(2);
+        list.addFront(1);
+        list.display();
+        list.add(4, 3);
+        list.display();
+        list.removeFront();
+        list.display();
+        list.removeLast();
+        list.display();
+        list.remove(2);
+        list.display();
+        int found = list.search(5);
+        if (found >= 0)
+            System.out.println("Element found at index: " + list.search(5));
+        else
+            System.out.println("Element not found");
+        if (list.isEmpty())
+            System.out.println("List is empty");
+        else
+            System.out.println("List is not empty, Size of list: " + list.size());
+        while (!list.isEmpty())
+            list.removeLast();
+        try {
+            list.removeLast();
+        } catch (NoSuchElementException e) {
+            System.out.println("List Empty");
+        }
+    }
+}

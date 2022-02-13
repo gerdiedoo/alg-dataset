@@ -1,0 +1,41 @@
+"use strict";
+Array.prototype.quicksort = function(compare) {
+    if ("function" != typeof compare) {
+        var desc = compare || false;
+        compare = function(a, b) {
+            return desc ? a < b : a > b;
+        }
+    }
+    var that = this;
+    function swap(i, j) {
+        var temp = that[i];
+        that[i] = that[j];
+        that[j] = temp;
+    }
+    function partition(left, right) {
+        var pivot = that[right + left >> 1], i = left, j = right;
+        while (i <= j) {
+            while (compare(pivot, that[i])) {
+                i++;
+            }
+            while (compare(that[j], pivot)) {
+                j--;
+            }
+            if (i <= j) {
+                swap(i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+    function sort(left, right) {
+        if (left < right) {
+            var pivot = partition(left, right);
+            sort(left, pivot - 1);
+            sort(pivot, right);
+        }
+    }
+    sort(0, this.length - 1);
+    return this;
+};

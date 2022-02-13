@@ -1,0 +1,21 @@
+package com.deepak.algorithms.Searching;
+public class BinarySearch {
+	public static int performBinarySearch(int[] listOfValues, int targetValue) {
+		int index = -1;
+		int low = 0;
+		int mid;
+		int high = listOfValues.length - 1;
+		while (high >= low) {
+			mid = (high + low)/2;
+			if (targetValue < listOfValues[mid]) { 
+				high = mid - 1;
+			} else if (targetValue > listOfValues[mid]) {
+				low = mid + 1;
+			} else {
+				index = mid;
+				break;
+			}
+		}
+		return index;
+	}
+}

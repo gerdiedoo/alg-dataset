@@ -1,0 +1,11 @@
+package sortlab.algorithm;
+import java.util.Comparator;
+public final class FatefulSort<T> implements SortAlgorithmInterface<T> {
+  private final Comparator<T> comparator;
+  public FatefulSort(Comparator<T> comparator) {
+    this.comparator = comparator;
+  }
+  public T[] sort(T[] input) {
+    return input;
+  }
+}

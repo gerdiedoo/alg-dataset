@@ -1,0 +1,31 @@
+def mergeSort(list):
+    length = len(list)
+    if length <= 1:
+        return list
+    else:
+        middleIndex = int(length / 2)
+        leftList = list[0:middleIndex]
+        rightList = list[middleIndex:]
+        mergeSort(leftList)
+        mergeSort(rightList)
+        i = j = k = 0
+        while len(leftList) > i and len(rightList) > j:
+            if leftList[i] < rightList[j]:
+                list[k] = leftList[i]
+                i += 1
+            else:
+                list[k] = rightList[j]
+                j += 1
+            k += 1
+        while i < len(leftList):
+            list[k] = leftList[i]
+            i += 1
+            k += 1
+        while j < len(rightList):
+            list[k] = rightList[j]
+            j += 1
+            k += 1
+        return list
+myList = [67,34,3,56,24,77,23,89,56,35,65,764]
+print("List\n", myList)
+print("Sorted List\n", mergeSort(myList))

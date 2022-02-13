@@ -1,0 +1,6 @@
+@SuppressWarnings("ALL")
+interface HashSequence {
+  int size ();
+  int first (Object key);
+  int next ();
+}

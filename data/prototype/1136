@@ -1,0 +1,62 @@
+const array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
+function quicksortBasic(array) {
+  if(array.length < 2) {
+    return array;
+  }
+  const pivot = array[0];
+  const lesser = [];
+  const greater = [];
+  for(let i = 1; i < array.length; i++) {
+    if(array[i] < pivot) {
+      lesser.push(array[i]);
+    } else {
+      greater.push(array[i]);
+    }
+  }
+  return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
+}
+console.log(quicksortBasic(array.slice()));  
+function quicksort(array, left, right) {
+  left = left || 0;
+  right = right || array.length - 1;
+  const pivot = partitionHoare(array, left, right);  
+  if(left < pivot - 1) {
+    quicksort(array, left, pivot - 1);
+  }
+  if(right > pivot) {
+    quicksort(array, pivot, right);
+  }
+  return array;
+}
+function partitionLomuto(array, left, right) {
+  const pivot = right;
+  let i = left;
+  let last = left;
+  for(let j = left; j < right; j++) {
+    if(array[j] <= array[pivot]) {
+      [array[i], array[j]] = [array[j], array[i]];
+      i = i + 1;
+    }
+    last = j + 1;
+  }
+  [array[i], array[last]] = [array[last], array[i]];
+  return i;
+}
+function partitionHoare(array, left, right) {
+  const pivot = Math.floor((left + right) / 2 );
+  while(left <= right) {
+    while(array[left] < array[pivot]) {
+      left++;
+    }
+    while(array[right] > array[pivot]) {
+      right--;
+    }
+    if(left <= right) {
+      [array[left], array[right]] = [array[right], array[left]];
+      left++;
+      right--;
+    }
+  }
+  return left;
+}
+console.log(quicksort(array.slice()));  

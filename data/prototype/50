@@ -1,0 +1,93 @@
+class HashTable(object):
+    def __init__(self, size):
+        self.size = size
+        self.length = 0
+        self.keys = [None for _ in range(self.size)]
+    def add(self, key, value):
+        for i in range(self.size):
+            hash_value = hash_function(key, i, self.size)
+            node = self.keys[hash_value]
+            if node is None:
+                self.keys[hash_value] = Node(key, value)
+                self.length += 1
+                return self.keys[hash_value]
+            elif node.key == key:
+                self.keys[hash_value].value = value
+                if self.keys[hash_value].deleted:
+                    self.length += 1
+                self.keys[hash_value].deleted = False
+                return self.keys[hash_value]
+        raise Exception('The hash table is full')
+    def get(self, key, default=None):
+        for i in range(self.size):
+            hash_value = hash_function(key, i, self.size)
+            node = self.keys[hash_value]
+            if node is None:
+                return default
+            elif not node.deleted and node.key == key:
+                return node.value
+        return default
+    def remove(self, key):
+        for i in range(self.size):
+            hash_value = hash_function(key, i, self.size)
+            node = self.keys[hash_value]
+            if node is None:
+                return None
+            elif node.key == key and not node.deleted:
+                node.deleted = True
+                self.length -= 1
+                return node.value
+        return None
+    def __len__(self):
+        return self.length
+    def __str__(self):
+        string = ''
+        for item in self.keys:
+            if item is None:
+                continue
+            if item.deleted:
+                continue
+            string += str(item) + ', '
+        return '{' + string[:-2] + '}'
+class Node(object):
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.deleted = False
+    def __str__(self):
+        key = self.key
+        if isinstance(self.key, str):
+            key = "'{}'".format(self.key)
+        value = self.value
+        if isinstance(self.value, str):
+            value = "'{}'".format(self.value)
+        return str(key) + ': ' + str(value)
+def hash_function(key, item, size):
+    hash_value = hash_1(key, size)
+    if item == 0:
+        return hash_value
+    return (hash_value + item * hash_2(key, size - 1)) % size
+def hash_1(key, size):
+    return sum([i * 256 + ord(v_) for i, v_ in enumerate(str(key))]) % size
+def hash_2(key, size):
+    return sum([i * 256 + ord(v_) + i for i, v_ in enumerate(str(key))]) % size
+if __name__ in '__main__':
+    ht = HashTable(size=100)
+    DATA = {'hello 0123': 0, '1': '1', 1: 1, 0: -1, 4: 4}
+    for k, v in DATA.items():
+        ht.add(k, v)
+        print('add key', k, 'value', v, 'length', len(ht))
+    print('\nhashtable:', ht, '\n')
+    print('add key \'hello 0123\'', 'value', -10, 'length', len(ht))
+    ht.add('hello 0123', -10)
+    print('\nhashtable:', ht, '\n')
+    for k in [4, '1', 100, 4]:
+        ht.remove(k)
+        print('remove key', k, 'length', len(ht))
+    print('\nhashtable:', ht, '\n')
+    for k in [4]:
+        ht.add(k, k)
+        print('add key', k, 'value', k, 'length', len(ht))
+    print('\nhashtable:', ht, '\n')
+    for k in [4, 0, 'hello 0123']:
+        print('get value by key', k, 'value:', ht.get(k))

@@ -1,0 +1,39 @@
+package com.deepak.data.structures.Hashing;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+public class ConcurrentHashMapImplementation {
+	static Map<String, AtomicLong> ordersMap = new ConcurrentHashMap<>();
+	static void processOrders() {
+		for (String city : ordersMap.keySet()) {
+			for (int i = 0; i < 50; i++) {
+				ordersMap.get(city).getAndIncrement();
+			}
+		}
+	}
+	public static void main(String[] args) throws InterruptedException {
+		ordersMap.put("Delhi", new AtomicLong());
+		ordersMap.put("London", new AtomicLong());
+		ordersMap.put("New York", new AtomicLong());
+		ordersMap.put("Sydney", new AtomicLong());
+		ExecutorService service = Executors.newFixedThreadPool(2);
+		service.submit(new Runnable() {
+			@Override
+			public void run() {
+				processOrders();
+			}
+		});
+		service.submit(new Runnable() {
+			@Override
+			public void run() {
+				processOrders();
+			}
+		});
+		service.awaitTermination(1, TimeUnit.SECONDS);
+		service.shutdown();
+		System.out.println(ordersMap);
+	}
+}

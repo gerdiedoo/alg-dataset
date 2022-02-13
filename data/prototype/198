@@ -1,0 +1,123 @@
+package com.blogspot.mydailyjava.weaklockfree;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicLong;
+public class WeakConcurrentMap<K, V> extends AbstractWeakConcurrentMap<K, V, WeakConcurrentMap.LookupKey<K>> {
+    private static final ThreadLocal<LookupKey<?>> LOOKUP_KEY_CACHE = new ThreadLocal<LookupKey<?>>() {
+        @Override
+        protected LookupKey<?> initialValue() {
+            return new LookupKey<Object>();
+        }
+    };
+    private static final AtomicLong ID = new AtomicLong();
+    private final Thread thread;
+    private final boolean reuseKeys;
+    public WeakConcurrentMap(boolean cleanerThread) {
+        this(cleanerThread, isPersistentClassLoader(LookupKey.class.getClassLoader()));
+    }
+    private static boolean isPersistentClassLoader(ClassLoader classLoader) {
+        try {
+            return classLoader == null  
+                    || classLoader == ClassLoader.getSystemClassLoader()
+                    || classLoader == ClassLoader.getSystemClassLoader().getParent();  
+        } catch (Throwable ignored) {
+            return false;
+        }
+    }
+    public WeakConcurrentMap(boolean cleanerThread, boolean reuseKeys) {
+        this(cleanerThread, reuseKeys, new ConcurrentHashMap<WeakKey<K>, V>());
+    }
+    public WeakConcurrentMap(boolean cleanerThread, boolean reuseKeys, ConcurrentMap<WeakKey<K>, V> target) {
+        super(target);
+        this.reuseKeys = reuseKeys;
+        if (cleanerThread) {
+            thread = new Thread(this);
+            thread.setName("weak-ref-cleaner-" + ID.getAndIncrement());
+            thread.setPriority(Thread.MIN_PRIORITY);
+            thread.setDaemon(true);
+            thread.start();
+        } else {
+            thread = null;
+        }
+    }
+    @Override
+    @SuppressWarnings("unchecked")
+    protected LookupKey<K> getLookupKey(K key) {
+        LookupKey<K> lookupKey;
+        if (reuseKeys) {
+            lookupKey = (LookupKey<K>) LOOKUP_KEY_CACHE.get();
+        } else {
+            lookupKey = new LookupKey<K>();
+        }
+        return lookupKey.withValue(key);
+    }
+    @Override
+    protected void resetLookupKey(LookupKey<K> lookupKey) {
+        lookupKey.reset();
+    }
+    public Thread getCleanerThread() {
+        return thread;
+    }
+    static final class LookupKey<K> {
+        private K key;
+        private int hashCode;
+        LookupKey<K> withValue(K key) {
+            this.key = key;
+            hashCode = System.identityHashCode(key);
+            return this;
+        }
+        void reset() {
+            key = null;
+            hashCode = 0;
+        }
+        @Override
+        public boolean equals(Object other) {
+            if (other instanceof WeakConcurrentMap.LookupKey<?>) {
+                return ((LookupKey<?>) other).key == key;
+            } else {
+                return ((WeakKey<?>) other).get() == key;
+            }
+        }
+        @Override
+        public int hashCode() {
+            return hashCode;
+        }
+    }
+    public static class WithInlinedExpunction<K, V> extends WeakConcurrentMap<K, V> {
+        public WithInlinedExpunction() {
+            super(false);
+        }
+        @Override
+        public V get(K key) {
+            expungeStaleEntries();
+            return super.get(key);
+        }
+        @Override
+        public boolean containsKey(K key) {
+            expungeStaleEntries();
+            return super.containsKey(key);
+        }
+        @Override
+        public V put(K key, V value) {
+            expungeStaleEntries();
+            return super.put(key, value);
+        }
+        @Override
+        public V remove(K key) {
+            expungeStaleEntries();
+            return super.remove(key);
+        }
+        @Override
+        public Iterator<Map.Entry<K, V>> iterator() {
+            expungeStaleEntries();
+            return super.iterator();
+        }
+        @Override
+        public int approximateSize() {
+            expungeStaleEntries();
+            return super.approximateSize();
+        }
+    }
+}

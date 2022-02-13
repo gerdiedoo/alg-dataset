@@ -1,0 +1,36 @@
+package Sorting;
+import Comparing.BaseAreaCompare;
+import Comparing.VolumeCompare;
+import Objects.ThreeDGeoShape;
+public class InsertionSort {
+	public ThreeDGeoShape[] sort(String sortBy, ThreeDGeoShape[] shapeArray) {
+		BaseAreaCompare ac = new BaseAreaCompare();
+		VolumeCompare vc = new VolumeCompare();
+		for(int i = 1; i < shapeArray.length; i++){
+			int j = i - 1;
+			if (sortBy.equalsIgnoreCase("h")) {
+				while(j >= 0 && shapeArray[j].compareTo(shapeArray[j+1]) < 0) {
+					swapElements(shapeArray, j, j+1);
+					j--;
+				}
+			} else if (sortBy.equalsIgnoreCase("a")) {
+				while(j >= 0 && ac.compare(shapeArray[j], shapeArray[j+1]) < 0) {
+					swapElements(shapeArray, j, j+1);
+					j--;
+				}
+			} else if (sortBy.equalsIgnoreCase("v")) {
+				while(j >= 0 && vc.compare(shapeArray[j], shapeArray[j+1]) < 0) {
+					swapElements(shapeArray, j, j+1);
+					j--;
+				}
+			}
+		}
+		return shapeArray;
+	}
+	private static  void swapElements( Object[] array, int i, int j )
+	{
+		Object temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+}

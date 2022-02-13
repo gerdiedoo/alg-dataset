@@ -1,0 +1,40 @@
+package rosberglinhares.datastructuresandalgorithms.datastructures.arrays;
+public class UnorderedArray<T> {
+    private static int ELEMENT_NOT_FOUND = -1;
+    private T[] elements;
+    private int size;
+    @SuppressWarnings("unchecked")
+    public UnorderedArray(int maxSize) {
+        this.elements = (T[])new Object[maxSize];
+        this.size = 0;
+    }
+    public int size() {
+        return this.size;
+    }
+    public void insert(T value) {
+        this.elements[this.size++] = value;
+    }
+    public T get(int index) {
+        return this.elements[index];
+    }
+    public int search(T value) {
+        for (int i = 0; i < this.size; i++) {
+            if (this.elements[i].equals(value)) {
+                return i;
+            }
+        }
+        return ELEMENT_NOT_FOUND;
+    }
+    public boolean delete(T value) {
+        int i = this.search(value);
+        if (i > ELEMENT_NOT_FOUND) {
+            for (; i < this.size - 1; i++) {
+                this.elements[i] = this.elements[i + 1]; 
+            }
+            this.size--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

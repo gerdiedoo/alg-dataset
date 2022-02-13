@@ -1,0 +1,33 @@
+from random import shuffle
+def quicksort(a):
+    b = [*a]
+    shuffle(b)
+    _sort(b, 0, len(b)-1)
+    return b
+def _partition(srt, start, end):
+    follower = leader = start
+    while leader < end:
+        if srt[leader] < srt[end]:
+            srt[follower], srt[leader] = srt[leader], srt[follower]
+            follower += 1
+        leader += 1
+    srt[follower], srt[end] = srt[end], srt[follower]
+    return follower
+def _sort(srt, start, end):
+    if start >= end:
+        return
+    p = _partition(srt, start, end)
+    _sort(srt, start, p-1)
+    _sort(srt, p+1, end)
+if __name__ == "__main__":
+    import unittest
+    class TestQuicksort(unittest.TestCase):
+        def setUp(self):
+            self.ordered = [x for x in range(20)]
+            self.shuffled = [*self.ordered]
+            while self.ordered == self.shuffled:
+                shuffle(self.shuffled)
+        def test_quicksort(self):
+            self.assertEqual(self.ordered, quicksort(self.shuffled))
+            self.assertNotEqual(self.ordered, self.shuffled)
+    unittest.main()

@@ -1,0 +1,145 @@
+import java.util.Arrays;
+public class SuffixArray {
+    char[] string;
+    int n; 
+    int[] rankArr;
+    int[] tempRA;
+    int[] suffixArr;
+    int[] tempSA;
+    int[] c; 
+    int[] phi; 
+    int[] pLCP; 
+    int[] LCP;
+    private static final int MAX_LEN = 100000;
+    public SuffixArray(String str) {
+        str += "$";
+        this.string = str.toCharArray();
+        this.n = this.string.length;
+        System.out.println(str);
+        this.rankArr = new int[MAX_LEN];
+        this.tempRA = new int[MAX_LEN];
+        this.suffixArr = new int[MAX_LEN];
+        this.tempSA = new int[MAX_LEN];
+        this.c = new int[MAX_LEN];
+        phi = new int[MAX_LEN];
+        pLCP = new int[MAX_LEN];
+        LCP = new int[MAX_LEN];
+        constructSA();
+    }
+    private void countingSort(int k) {
+        int maxi = Math.max(300, n); 
+        Arrays.fill(c, 0); 
+        for (int i = 0; i < n; i++) {
+            if (i + k < n)
+                c[rankArr[i + k]]++;
+            else
+                c[0]++;
+        }
+        int sum = 0;
+        for (int i = 0; i < maxi; i++) {
+            int t = c[i];
+            c[i] = sum;
+            sum += t;
+        }
+        for (int i = 0; i < n; i++) { 
+            tempSA[c[suffixArr[i] + k < n ? rankArr[suffixArr[i] + k] : 0]++] = suffixArr[i];
+        }
+        for (int i = 0; i < n; i++) 
+            suffixArr[i] = tempSA[i];
+    }
+    private void constructSA() {
+        for (int i = 0; i < n; i++) 
+            rankArr[i] = string[i];
+        for (int i = 0; i < n; i++) 
+            suffixArr[i] = i;
+        for (int k = 1; k < n; k <<= 1) { 
+            countingSort(k);
+            countingSort(0);
+            int r = 0;
+            tempRA[suffixArr[0]] = 0; 
+            for (int i = 1; i < n; i++) {
+                if (rankArr[suffixArr[i]] == rankArr[suffixArr[i - 1]]  
+                 && rankArr[suffixArr[i] + k] == rankArr[suffixArr[i - 1] + k]) {
+                    tempRA[suffixArr[i]] = r;
+                } else {
+                    tempRA[suffixArr[i]] = ++r;
+                }
+            }
+            for (int i = 0; i < n; i++) { 
+                rankArr[i] = tempRA[i];
+            }
+        }
+    }
+    private int compWithSuffix(char[] a, int i, char[] b, int j, int n){
+        for (int k=0; i+k < a.length && j+k < b.length; k++){
+          if (a[i+k] != b[j+k])
+              return a[i+k] - b[j+k];
+        }
+        return 0;
+    }
+    public int[] stringMatching(String toM) {
+        return stringMatching(toM.toCharArray());
+    }
+    public int[] stringMatching(char[] P) { 
+        int low = 0;
+        int high = n - 1;
+        int mid = 0;
+        while (low < high) {
+            mid = (low + high) / 2;
+            int cmp = compWithSuffix(string, suffixArr[mid], P, 0, P.length);
+            if (cmp >= 0)
+                high = mid;
+            else
+                low = mid + 1;
+        }
+        if (compWithSuffix(string, suffixArr[low], P, 0, P.length) != 0) 
+            return new int[]{-1, -1};
+        int[] ans = new int[2];
+        ans[0] = low; 
+        low = 0;
+        high = n - 1;
+        mid = 0;
+        while (low < high) {
+            mid = (low + high) / 2;
+            int cmp = compWithSuffix(string, suffixArr[mid], P, 0, P.length);
+            if (cmp > 0)
+                high = mid;
+            else
+                low = mid + 1;
+        }
+        if (compWithSuffix(string, suffixArr[low], P, 0, P.length) != 0) 
+            high--;
+        ans[1] = high;
+        return ans; 
+    }
+    private void computeLCP() {
+        int L = 0;
+        phi[suffixArr[0]] = -1;
+        for (int i = 1; i < n; i++)
+            phi[suffixArr[i]] = suffixArr[i - 1]; 
+        for (int i = 0; i < n; i++) {
+            if (phi[i] == -1) {
+                pLCP[i] = 0;
+                continue;
+            }
+            while (string[i + L] == string[phi[i] + L])
+                L++;
+            pLCP[i] = L; 
+            L = Math.max(L - 1, 0);
+        }
+        for (int i = 0; i < n; i++) {
+            LCP[i] = pLCP[suffixArr[i]]; 
+        }
+    }
+    public String LRS() { 
+        int max = 0;
+        int idx = 0;
+        for (int i = 1; i < n; i++) {
+            if (LCP[i] > max) {
+                max = LCP[i];
+                idx = i;
+            }
+        }
+        return new String(string).substring(suffixArr[idx], suffixArr[idx] + max);
+    }
+}

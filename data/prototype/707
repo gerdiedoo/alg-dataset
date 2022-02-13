@@ -1,0 +1,16 @@
+export default function InsertionSort(items: Array<number>): Array<number> {
+  const itemsCopy = [...items];
+  let value;  
+  let i;  
+  let j;  
+  for (i = 0; i < itemsCopy.length; i++) {
+    value = itemsCopy[i];
+    j = i - 1;
+    while (j >= 0 && itemsCopy[j] > value) {
+      itemsCopy[j + 1] = itemsCopy[j];
+      j--;
+    }
+    itemsCopy[j + 1] = value;
+  }
+  return itemsCopy;
+}

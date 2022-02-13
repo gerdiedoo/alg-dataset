@@ -1,0 +1,16 @@
+package org.joyfulmonster.util.concurrent.internal;
+interface Bucket<K, V> {
+    void lock();
+    void unlock();
+    public int getBucketIdx();
+    public int getLocalDepth();
+    public boolean isInvalid();
+    boolean canHandle(int hashCode);
+    public boolean hasMoreSpace();
+    public V put(K key, V value, int hashCode, boolean replaceIfPresent);
+    public V splitAndPut(K key, V value, int hashCode, boolean replaceIfPresent);
+    V transferEntry(K key, V value, int hashCode);
+    public V replace(K key, int hashCode, V oldValue, V newValue);
+    V get(K key, int hashValue);
+    public V remove(K key, int hashValue, V value);
+}

@@ -1,0 +1,7 @@
+package com.simplemapstore;
+import java.io.UnsupportedEncodingException;
+public class PersistentMapException extends RuntimeException {
+    public PersistentMapException(Exception e) {
+        super(e);
+    }
+}

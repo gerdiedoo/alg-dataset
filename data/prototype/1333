@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class LinearSearch {
+    public static void main(String[] args) {
+        System.out.println("How many number are you going to enter? ");
+        Scanner scanner = new Scanner(System.in);
+        int[] numbers = new int[scanner.nextInt()];
+        System.out.println("Enter the numbers and press enter after each line: ");
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        System.out.println("Enter the target: ");
+        int indexOfTarget = linearSearch(numbers, scanner.nextInt());
+        if (indexOfTarget >= 0) {
+            System.out.println("Successful Search! The index of your target is: " + indexOfTarget);
+        } else {
+            System.out.println("The array of numbers does not contain your desired number!");
+        }
+        scanner.close();
+    }
+    private static int linearSearch(int[] numbers, int target) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}

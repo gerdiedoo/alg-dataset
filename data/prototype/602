@@ -1,0 +1,13 @@
+def bubbleSort(list, notSorted):
+    swapped = False
+    for i in range(0, notSorted - 1):
+        if list[i] > list[i + 1]:
+            list[i], list[i + 1] = list[i + 1], list[i]
+            swapped = True
+    if swapped == False:
+        return list
+    else:
+        return bubbleSort(list, notSorted - 1)
+myList = [43,54,15,13,87,545,435,63,245,753,45,2,534,15]
+print(myList)
+print(bubbleSort(myList, len(myList)))

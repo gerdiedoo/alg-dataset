@@ -1,0 +1,57 @@
+from __future__ import print_function
+class LinkedList:           
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    def insertHead(self, x):
+        newLink = Link(x)                            
+        if(self.isEmpty() == True):                  
+            self.tail = newLink
+        else:
+            self.head.previous = newLink             
+        newLink.next = self.head                     
+        self.head = newLink                          
+    def deleteHead(self):
+        temp = self.head
+        self.head = self.head.next                   
+        self.head.previous = None                    
+        if(self.head is None):
+            self.tail = None                         
+        return temp
+    def insertTail(self, x):
+        newLink = Link(x)
+        newLink.next = None                         
+        self.tail.next = newLink                    
+        newLink.previous = self.tail                
+        self.tail = newLink                         
+    def deleteTail(self):
+        temp = self.tail
+        self.tail = self.tail.previous              
+        self.tail.next = None                       
+        return temp
+    def delete(self, x):
+        current = self.head
+        while(current.value != x):                  
+            current = current.next
+        if(current == self.head):
+            self.deleteHead()
+        elif(current == self.tail):
+            self.deleteTail()
+        else: 
+            current.previous.next = current.next 
+            current.next.previous = current.previous 
+    def isEmpty(self):                               
+        return(self.head is None)
+    def display(self):                                
+        current = self.head
+        while(current != None):
+            current.displayLink()
+            current = current.next  
+        print()
+class Link:
+    next = None                                       
+    previous = None                                   
+    def __init__(self, x):
+        self.value = x
+    def displayLink(self):
+        print("{}".format(self.value), end=" ")

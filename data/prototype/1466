@@ -1,0 +1,13 @@
+import MaxHeap from '../DataStructures/MaxHeap';
+export default function HeapSort(items: Array<number>) {
+  const heap = new MaxHeap();
+  const list = [];
+  items.forEach(item => {
+    heap.insert(item);
+  });
+  heap.get().forEach(() => {
+    const node = heap.deleteNodeIndex(0);
+    list.push(node);
+  });
+  return list.reverse();
+}
