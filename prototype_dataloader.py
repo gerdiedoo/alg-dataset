@@ -44,15 +44,15 @@ class CodesDataset(Dataset):
         # Ordering: Qsort, Msort, Ssort, Isort, Bsort, Lsearch, Bsearch, Llist, Hmap
         assert isinstance(row, pd.core.series.Series)
         
-        qsort = int(row["Quicksort"])        # 1
-        msort = int(row["Mergesort"])        # 2
-        ssort = int(row["Selectionsort"])    # 3
-        isort = int(row["Insertionsort"])    # 4
-        bsort = int(row["Bubblesort"])       # 5
-        lsearch = int(row["Linear search"])  # 6 
-        bsearch = int(row["Binary Search"])  # 7
-        llist = int(row["Linked List"])      # 8
-        hmap  = int(row["Hashmap"])          # 9
+        qsort = int(row["quicksort"])        # 1
+        msort = int(row["mergesort"])        # 2
+        ssort = int(row["selectionsort"])    # 3
+        isort = int(row["insertionsort"])    # 4
+        bsort = int(row["bubblesort"])       # 5
+        lsearch = int(row["linearsearch"])  # 6 
+        bsearch = int(row["binarysearch"])  # 7
+        llist = int(row["linkedlist"])      # 8
+        hmap  = int(row["hashmap"])          # 9
         
         lst = [qsort, msort, ssort, isort, bsort, lsearch, bsearch, llist, hmap]
         
