@@ -1,71 +1,34 @@
-package Mini_algorithms;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-public abstract class AbstractMap<K,V> implements Map<K,V>{
-	public boolean isEmpty(){
-		return size() == 0;
-	}
-	protected static class MapEntry<K,V> implements Entry<K,V>{
-		private K k;
-		private V v;
-		public MapEntry(K key, V value){
-			k = key;
-			v = value;
-		}
-		public K getKey() {
-			return k;
-		}
-		public V getValue() {
-			return v;
-		}
-		protected void setKey(K key){
-			k = key;
-		}
-		public V setValue(V value) {
-			V old = v;
-			v = value;
-			return old;
-		}
-	}
-	private class KeyIterator implements Iterator<K>{
-		private Iterator<Entry<K,V>> entries = entrySet().iterator();
-		public boolean hasNext() {
-			return entries.hasNext();
-		}
-		public K next() {
-			return entries.next().getKey();
-		}
-		public void remove(){
-			throw new UnsupportedOperationException();
-		}
-	}
-	private class KeyIterable implements Iterable<K>{
-		public Iterator<K> iterator() {
-			return new KeyIterator();
-		}
-	}
-	public Set<K> keySet() {
-		return (Set<K>) new KeyIterable();
-	}
-	private class ValueIterator implements Iterator<V>{
-		private Iterator<Entry<K,V>> entries = entrySet().iterator();
-		public boolean hasNext() {
-			return entries.hasNext();
-		}
-		public V next() {
-			return entries.next().getValue();
-		}
-		public void remove(){
-			throw new UnsupportedOperationException();
-		}
-	}
-	private class ValueIterable implements Iterable<V>{
-		public Iterator<V> iterator() {
-			return new ValueIterator();
-		}
-	}
-	public Set<V> values() {
-		return (Set<V>) new ValueIterable();
-	}
+package com.cfelde.bohmap;
+import java.util.Arrays;
+public final class Binary {
+    private final byte[] value;
+    public Binary(byte[] value) {
+        if (value == null)
+            throw new NullPointerException("value is null");
+        this.value = value;
+    }
+    public byte[] getValue() {
+        return value;
+    }
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Arrays.hashCode(this.value);
+        return hash;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Binary other = (Binary) obj;
+        return Arrays.equals(this.value, other.value);
+    }
+    @Override
+    public String toString() {
+        return "Binary{" + "value=size(" + value.length + ")}";
+    }
 }

@@ -1,50 +1,115 @@
-import java.util.Scanner;
-public class QuickSort
-{
-    public static void main(String[] args)
+package Sorting;
+public class Selection {
+	public static <T extends Comparable<T>> void SelectionSort(T arr[])
     {
-        Scanner input = new Scanner(System.in);
-        System.out.print("enter array : ");
-        char[] array = input.nextLine().toCharArray();
-        quickSort(array);
-        System.out.print("sorted array : ");
-        for(char x:array)
-            System.out.print(x);
-    }
-    static void quickSort(char[] array)
-    {
-        if(array.length == 1)
-            return;
-        quickSort(array, 0, array.length-1);
-    }
-    static void quickSort(char[] array, int low, int high)
-    {
-        if(low < high)
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
         {
-            int pi = partition(array, low, high);
-            quickSort(array, low, pi-1);
-            quickSort(array, pi+1, high);
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j].compareTo(arr[min_idx]) < 0)
+                    min_idx = j;
+            T temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
         }
     }
-    static int partition(char[] array, int low, int high)
+	public static void SelectionSort(byte arr[])
     {
-        int i = low - 1;
-        int pivot = array[high];
-        for(int j=low;j<high;j++)
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
         {
-            if(array[j] <= pivot)
-            {
-                i++;
-                swap(array, i, j);
-            }
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            byte temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
         }
-        swap(array, i+1, high);
-        return i+1;
     }
-    static void swap(char[] array, int a, int b)
+	public static void SelectionSort(char arr[])
     {
-        char t = array[a];
-        array[a] = array[b];
-        array[b] = t;
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            char temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+	public static void SelectionSort(short arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            short temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+	public static void SelectionSort(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+	public static void SelectionSort(long arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            long temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+	public static void SelectionSort(float arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            float temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+	public static void SelectionSort(double arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+            double temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
     }
 }

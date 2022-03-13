@@ -1,60 +1,36 @@
-function heapSort (arrData) {
-  'use strict'
-  let numTail = arrData.length - 1   
-  const NEED_CHANGE = 1
-  const NO_CHANGE = 0
-  const LEFT_CHILD = 1
-  const RIGHT_CHILD = 2
-  function fnSwap (idx1, idx2) {
-    let swap = arrData[idx1]
-    arrData[idx1] = arrData[idx2]
-    arrData[idx2] = swap
-  }
-  const fnChildId = (parentId, side) => {
-    let childId = (parentId * 2) + side
-    return (childId <= numTail) ? childId : NO_CHANGE
-  }
-  function fnBalanceTriad (parentIdx) {
-    let numBalanced = NO_CHANGE
-    let leftChild = fnChildId(parentIdx, LEFT_CHILD)
-    if (leftChild) {
-      let rightChild = fnChildId(parentIdx, RIGHT_CHILD)
-      if (rightChild &&
-        (arrData[parentIdx] < arrData[rightChild]) &&
-        (arrData[leftChild] < arrData[rightChild])) {
-        fnSwap(parentIdx, rightChild)
-        numBalanced = RIGHT_CHILD
-      } else if (arrData[parentIdx] < arrData[leftChild]) {
-        fnSwap(parentIdx, leftChild)
-        numBalanced = LEFT_CHILD
-      }
-    }
-    return numBalanced
-  }
-  function fnBalanceHeap () {
-    let idx
-    let numBalanced = NEED_CHANGE
-    while (numBalanced) {
-      numBalanced = NO_CHANGE
-      idx = numTail
-      while (idx + 1) numBalanced += fnBalanceTriad(idx--)  
-    }
-  }
-  function fnRemoveHead () {
-    fnSwap(0, numTail--)   
-    let numBalanced = NO_CHANGE
-    let idx = 0  
-    do {
-      numBalanced = fnBalanceTriad(idx)
-      idx += (idx + numBalanced)   
-    } while (numBalanced)  
-  }
-  console.log('Initial:', arrData.join(), `[Count:${numTail}]`)
-  fnBalanceHeap()  
-  while (numTail) {
-    fnRemoveHead()   
-    console.log('Cycle:', arrData.join())
-  }
-  console.log('Final:', arrData.join())
-  return arrData
-}
+class Node(object):
+    def __init__(self, data=None):
+        self.data = data
+        self.pre = None
+        self.next = None
+class DoubleListLink(object):
+    def __init__(self):
+        self.head = Node()
+        self.tail = Node()
+        self.head.next = self.tail
+        self.tail.pre = self.head
+        self.length = 0
+    def append(self, data):
+        node = Node(data)
+        if self.head.data is None:
+            self.head = node
+        pre = self.tail.pre
+        pre.next = node
+        node.next = self.tail
+        self.tail.pre = node
+        node.pre = pre
+        self.length += 1
+    def show(self):
+        if self.length == 0:
+            print('doubleListLink is None')
+        else:
+            tmp = self.head
+            while tmp:
+                print(tmp.data, end=" ")
+                tmp = tmp.next
+            print('\n')
+if __name__ == "__main__":
+    dl = DoubleListLink()
+    dl.append(2)
+    dl.append(3)
+    dl.show()

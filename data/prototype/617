@@ -1,15 +1,13 @@
-def bubble_sort(number_list): 
-	for i, num in enumerate(number_list): 
-		try: 
-			if number_list[i+1] < num: 
-				number_list[i] = number_list[i+1] 
-    number_list[i+1] = num 
-    bubble_sort(number_list) 
-  except IndexError: 
-			pass
- return number_list 
-number_list = [64, 34, 25, 12, 22, 11, 90] 
-bubble_sort(number_list) 
-print("Sorted array:"); 
-for i in range(len(number_list)): 
-	print(number_list[i], end=' ') 
+def insertion_sort(list):
+	for i in range(1,len(list)):
+		x = list[i]
+  j = i-1
+  while (j != -1 and list[j] > x):
+			list[j+1] = list[j]
+   j-=1
+  list[j+1] = x
+ return list
+a = [2,7,4,1,5,3]
+print(a)
+insertion_sort(a)
+print(a)

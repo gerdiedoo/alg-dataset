@@ -1,103 +1,63 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
+package searching;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+import fundamentals.Bag;
+public class BinarySearchST<Key extends Comparable<Key>, Value> {
+  private Key[] keys;
+  private Value[] vals;
+  private int N;
+  public BinarySearchST(int capacity) { 
+    keys = (Key[]) new Comparable[capacity];
+    vals = (Value[]) new Object[capacity];
   }
+  public int size() { 
+    return N; 
+  }
+  public boolean isEmpty() {
+    return N == 0;
+  }
+  public Value get(Key key) {
+    if (isEmpty()) return null;
+    int i = rank(key);
+    if (i < N && keys[i].compareTo(key) == 0) return vals[i];
+    else return null;
+  }
+  public int rank(Key key) {
+    int lo = 0, hi = N-1;
+    while (lo <= hi) {
+      int mid = lo + (hi - lo) / 2;
+      int cmp = key.compareTo(keys[mid]);  
+      if (cmp < 0) hi = mid - 1;
+      else if (cmp > 0) lo = mid + 1;
+      else return mid;
+    }
+    return lo;
+  }
+  public void put(Key key, Value val) { 
+    int i = rank(key);
+    if (i < N && keys[i].compareTo(key) == 0) {  
+      vals[i] = val; return; 
+    }
+    for (int j = N; j > i; j--) { 
+      keys[j] = keys[j-1]; vals[j] = vals[j-1];  
+    }
+    keys[i] = key; vals[i] = val;  
+    N++;
+  }
+  public Iterable<Key> keys() {
+    Bag<Key> stkeys = new Bag<Key>();
+    int lo = 0, hi = N - 1;
+    for (int i = lo; i < hi; i++)
+      stkeys.add(keys[i]);;
+    return stkeys;
+  }
+  public static void main(String[] args) {
+    BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(30);
+    for (int i = 0; !StdIn.isEmpty(); i++) {
+        String key = StdIn.readString();
+        st.put(key, i);
+    }
+    for (String s : st.keys())
+        StdOut.println(s + " " + st.get(s));
+	}
 }
-class SinglyLinkedList {
-  constructor(value) {
-    this.head = new Node(value);
-    this.tail = this.head;
-    this.length = 1;
-  }
-  printLinkedList() {
-    let currentNode = this.head;
-    const listElements = [];
-    while (currentNode) {
-      listElements.push(currentNode.value);
-      currentNode = currentNode.next;
-    }
-    console.log(listElements);
-  }
-  append(value) {
-    const newNode = new Node(value);
-    this.tail.next = newNode;
-    this.tail = newNode;
-    this.length++;
-  }
-  prepend(value) {
-    const newNode = new Node(value);
-    newNode.next = this.head;
-    this.head = newNode;
-    this.length++;
-  }
-  _traverseToIndex(index) {
-    let counter = 0;
-    let currentNode = this.head;
-    while (counter != index) {
-      currentNode = currentNode.next;
-      counter++;
-    }
-    return currentNode;
-  }
-  insert(index, value) {
-    if (index === 0) {
-      this.prepend(value);
-      return;
-    }
-    if (index >= this.length) {
-      this.append(value);
-      return;
-    }
-    const newNode = new Node(value);
-    const leader = this._traverseToIndex(index - 1);
-    const holdingPointer = leader.next;
-    leader.next = newNode;
-    newNode.next = holdingPointer;
-    this.length++;
-  }
-  remove(index) {
-    if (index === 0) {
-      this.head = this.head.next;
-      return;
-    }
-    const leader = this._traverseToIndex(index - 1);
-    const unwantedNode = leader.next;
-    leader.next = unwantedNode.next;
-    this.length--;
-  }
-  reverse() {
-    if (!this.head.next) {
-      return this.head;
-    }
-    let first = this.head;
-    this.tail = this.head;
-    let second = first.next;
-    while(second) {
-      let temp = second.next;
-      second.next = first;
-      first = second;
-      second = temp;
-    }
-    this.head.next = null;
-    this.head = first;
-  }
-}
-const myLinkedList = new SinglyLinkedList(10);
-myLinkedList.printLinkedList();
-myLinkedList.append(20);
-myLinkedList.append(30);
-myLinkedList.prepend(1);
-myLinkedList.printLinkedList();
-console.log(JSON.stringify(myLinkedList));
-myLinkedList.insert(2, 99);
-myLinkedList.insert(2, 69);
-myLinkedList.insert(0, 420);
-myLinkedList.insert(20, 666);
-myLinkedList.printLinkedList();
-myLinkedList.remove(0);
-myLinkedList.remove(2);
-myLinkedList.remove(5);
-myLinkedList.printLinkedList();
-myLinkedList.reverse();
-myLinkedList.printLinkedList();

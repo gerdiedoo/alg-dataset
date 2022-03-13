@@ -1,0 +1,120 @@
+def merge_sort(the_input):
+    if len(the_input) <= 1:
+        return the_input
+    halfway_mark = len(the_input) // 2
+    left_half = the_input[:halfway_mark]
+    right_half = the_input[halfway_mark:]
+    left_half = merge_sort(left_half)
+    right_half = merge_sort(right_half)
+    return merge_while_sorting(left_half, right_half)
+def merge_while_sorting(left_half, right_half):
+    merged_list = []
+    while len(left_half) > 0 or len(right_half) > 0:
+        if len(left_half) > 0 and len(right_half) > 0:
+            if left_half[0] <= right_half[0]:
+                merged_list.append(left_half[0])
+                left_half = left_half[1:]
+            elif right_half[0] < left_half[0]:
+                merged_list.append(right_half[0])
+                right_half = right_half[1:]
+        elif len(left_half) > 0:
+            merged_list.append(left_half[0])
+            left_half = left_half[1:]
+        elif len(right_half) > 0:
+            merged_list.append(right_half[0])
+            right_half = right_half[1:]
+    return merged_list
+if __name__ == '__main__':
+    import random
+    for each_pass in range(0, 100):
+        random_list = []
+        for each_number in range(0, random.randint(3, 40)):
+            random_number = random.randint(0, random.randint(1, 1000))
+            random_list.append(random_number)
+        print("\n* * * * *\n\nUnsorted:\n    " + str(random_list))
+        sorted_random_list = merge_sort(random_list)
+        print("Sorted:\n    " + str(sorted_random_list))
+        assert len(random_list) == len(sorted_random_list)
+        for each_number in range(0, (len(sorted_random_list) - 1)):
+            assert (sorted_random_list[each_number]
+                    <= sorted_random_list[(each_number + 1)])
+    print("\n\n===================\nBegin numeric tests.\n===================")
+    dict_of_lists = {
+        'list_zero': [0, 0, 0, 0, 0, 0, 0, 0],
+        'list_one': [0, 0, 0, 0, 1, 1, 1, 1],
+        'list_two': [0, 1, 0, 1, 0, 1, 0, 1],
+        'list_three': [0, 1, 1, 0, 1, 1, 0, 0],
+        'list_four': [10, 100, 1000000, 10000, 1, 100000, 0, 1000],
+        'list_five': [0001, 0010, 0100, 1000, 1100, 0011, 0101, 0110],
+    }
+    for each_list in dict_of_lists:
+        print("\n* * * * *\n\nUnsorted:\n    " + str(dict_of_lists[each_list]))
+        sorted_list = merge_sort(dict_of_lists[each_list])
+        print("Sorted:\n    " + str(sorted_list))
+    print("\nPerformance is O(nlogn) in the best, worst, and typical cases."
+          "\nIt's very predictable that way."
+          "\n\nHere's performance tests using the timeit module.")
+    import timeit
+    import random
+    giant_quantity_list = []
+    for each_pass in range(0, 10000):
+        giant_quantity_list.append(random.randint(1000, 9999))
+    call_string = 'merge_sort(giant_quantity_list)'
+    setup_string = 'from __main__ import merge_sort, giant_quantity_list'
+    print("\nTime to sort a list of ten thousand"
+          "\nrandom numbers between 10e3 and (10e4) - 1:")
+    time_taken = timeit.Timer(call_string, setup_string)
+    print time_taken.timeit(number=1)
+    not_so_random_order_of_magnitude = (10 ** 30)
+    random_list = []
+    giant_quality_list = []
+    for each_pass in range(0, 10000):
+        topend = (not_so_random_order_of_magnitude * 10) - 1
+        random_number = random.randint(not_so_random_order_of_magnitude,
+                                       topend)
+        giant_quality_list.append(random_number)
+    call_string = 'merge_sort(giant_quality_list)'
+    setup_string = 'from __main__ import merge_sort, giant_quality_list'
+    print("\nTime to sort a list of ten thousand"
+          "\nrandom numbers between 10e30 and (10e31) - 1:")
+    time_taken = timeit.Timer(call_string, setup_string)
+    print time_taken.timeit(number=1)
+    very_predictable_list = []
+    very_predictable_list_with_middle_at_start = []
+    for each_pass in range(0, 900):
+        very_predictable_list.append(each_pass)
+        very_predictable_list_with_middle_at_start.append(each_pass)
+    very_predictable_list_with_middle_at_start.insert(0, 450)
+    print("\nBecause merge_sort is very predictable, it has no worst case."
+          "\nHere's Quicksort's worst case with a 900-point list:")
+    call_string = 'merge_sort(very_predictable_list)'
+    setup_string = 'from __main__ import merge_sort, very_predictable_list'
+    time_taken = timeit.Timer(call_string, setup_string)
+    print time_taken.timeit(number=1)
+    print("\nSame list, midpoint put under what"
+          "\nwould be Quicksort's pivot spot:")
+    call_string = 'merge_sort(very_predictable_list_with_middle_at_start)'
+    setup_string = 'from __main__ import merge_sort, very_predictable_list_with_middle_at_start'
+    time_taken = timeit.Timer(call_string, setup_string)
+    print time_taken.timeit(number=1)
+    raw_input("\n    Press enter to begin testing sorting on strings.")
+    strings_dict = {
+        'list_six': "Not the most useful application for sorting.",
+        'list_seven': "badcfehgjilknmporqtsvuxwzy",
+        'list_eight': "list_seven is not as random as it may appear",
+        'list_nine': "the quick brown fox jumps over the lazy dog",
+    }
+    def sort_string(input_string):
+        sorting_list = []
+        for each_character in input_string:
+            sorting_list.append(ord(each_character))
+        sorting_list = merge_sort(sorting_list)
+        return_list = []
+        for each_number in sorting_list:
+            return_list.append(chr(each_number))
+        return [''.join(return_list)][0]
+    for each_list in strings_dict:
+        print("\n* * * * *\n\nUnsorted:\n    " + str(strings_dict[each_list]))
+        sorted_list = sort_string(strings_dict[each_list])
+        print("Sorted:\n    " + str(sorted_list))
+    print

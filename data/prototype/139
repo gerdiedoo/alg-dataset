@@ -1,72 +1,106 @@
-import java.util.*;
-import java.util.Random;
-public class MainClass {
-	private static String getRandString()
-	{
-		int a;
-		Random r = new Random();
-		StringBuilder sb = new StringBuilder();
-		for(int i=0;i<6;i++)
-		{
-			a=r.nextInt(20);
-			char c = (char)(a + 'a');
-			sb.append(c);
-		}
-		return sb.toString();
+package Mini_algorithms;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+public class UnsortedTableMap<K,V> extends AbstractMap<K,V>{
+	private ArrayList<MapEntry<K,V>> table = new ArrayList<>();
+	public UnsortedTableMap(){	}
+	public void clear() {
+		table.clear();
 	}
-	private static Integer getRandInt() {
-		 Random r = new Random();
-		 return new Integer( r.nextInt() +1);
-		 }
-	public static void main(String[] args) {
-		Student student;
-		LazyStudent lazy;
-		String nume;
-		int varsta;
-		List<Student> list=new ArrayList<Student>();
-		List<Student> list2=new ArrayList<Student>();
-		List<LazyStudent> list3=new ArrayList<LazyStudent>();
-		List<LazyStudent> list4=new ArrayList<LazyStudent>();
-		for(int i=0;i<2000;i++)
-			{
-				nume=MainClass.getRandString();
-				varsta=Math.abs(MainClass.getRandInt()%30);
-				student=new Student(nume,varsta);
-				lazy=new LazyStudent(nume,varsta);
-				list.add(student);
-				list3.add(lazy);
+	private int findIndex(K key){
+		int n = table.size();
+		for(int j = 0; j < n; j++){
+			if(table.get(j).getKey().equals(key)){
+				return j;
 			}
-		list2.addAll(list);
-		MyHashMap<Student,Integer> map=new MyHashMapImpl<Student,Integer>(10);
-		Iterator<Student> it=list.iterator();
-		while(it.hasNext())
-		{
-			student=it.next();
-			map.put(student, MainClass.getRandInt()%10+1);
 		}
-		long time1=System.currentTimeMillis();
-		for(int i=0;i<1000;i++)
-		{
-			student=list2.get(Math.abs(MainClass.getRandInt()%2000));
-			map.get(student);
+		return -1;
+	}
+	private int findValue(V value){
+		int n = table.size();
+		for(int j = 0; j < n; j++){
+			if(table.get(j).getValue() == value){
+				return j;
+			}
 		}
-		long time2=System.currentTimeMillis();
-		System.out.println(time2-time1);
-		list4.addAll(list3);
-		MyHashMap<LazyStudent,Integer> map2=new MyHashMapImpl<LazyStudent,Integer>(10);
-		Iterator<LazyStudent> it2=list3.iterator();
-		while(it2.hasNext())
-		{
-			lazy=it2.next();
-			map2.put(lazy, MainClass.getRandInt()%10+1);
+		return -1;
+	}
+	public boolean containsKey(Object key) {
+		int j = findIndex((K)key);
+		if(j == -1){
+			return false;
+		} else{
+			return true;
 		}
-		long time3=System.currentTimeMillis();
-		for(int i=0;i<1000;i++)
-		{
-			lazy=list4.get(Math.abs(MainClass.getRandInt()%2000));
-			map2.get(lazy);
+	}
+	public boolean containsValue(Object value) {
+		int j = findValue((V)value);
+		if(j == -1){
+			return false;
+		} else{
+			return true;
 		}
-		long time4=System.currentTimeMillis();
-		System.out.println(time4-time3);
+	}
+	private class EntryIterator implements Iterator<Entry<K,V>> {
+		private int j = 0;
+		public boolean hasNext(){
+			return j < table.size();
+		}
+		public Entry<K,V> next(){
+			if(j == table.size()){
+				throw new NoSuchElementException();
+			}
+			return table.get(j++);
+		}
+		public void remove(){
+			throw new UnsupportedOperationException();
+		}
+	}
+	private class EntryIterable implements Iterable<Entry<K,V>> {
+		public Iterator<Entry<K, V>> iterator() {
+			return new EntryIterator();
+		}
+	}
+	public Set<Entry<K, V>> entrySet() {
+		return (Set<Entry<K, V>>) new EntryIterable();
+	}
+	public V get(Object key) {
+		int j = findIndex((K)key);
+		if(j == -1){
+			return null;
+		}
+		return table.get(j).getValue();
+	}
+	public V put(K key, V value) {
+		int j = findIndex(key);
+		if(j == -1){
+			table.add(new MapEntry<>(key,value));
+			return null;
+		} else {
+			return table.get(j).setValue(value);
+		}
+	}
+	public void putAll(Map<? extends K, ? extends V> m) {
+		table.addAll((Collection<? extends MapEntry<K, V>>) m);
+	}
+	public V remove(Object key) {
+		int j = findIndex((K)key);
+		int n = size();
+		if(j == -1){
+			return null;
+		} 
+		V answer = table.get(j).getValue();
+		if(j != n - 1){
+			table.set(j, table.get(n-1));
+		}
+		table.remove(n-1);
+		return answer;
+	}
+	public int size() {
+		return table.size();
 	}
 }

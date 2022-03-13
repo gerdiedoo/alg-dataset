@@ -1,18 +1,11 @@
-import copy
-import sort_tools
-def bubble_sort(data, low, high):
-    for i in range(low, high):
-        for j in range(low, high-low-1):
-            if data[j] > data[j+1]:
-                temp = data[j]
-                data[j] =  data[j+1]
-                data[j+1] = temp
-@sort_tools.timeit('bubble')            
-def sort(data):
-    bubble_sort(data, 0, len(data))
-def main():
-    data = sort_tools.build_data_set(5)
-    unsorted = copy.deepcopy(data)
-    sort(unsorted)
-if __name__ == "__main__":
-    main()
+def bubbleSort(arr):
+	n = len(arr)
+ for i in range(n):
+		for j in range(0, n-i-1):
+			if arr[j] > arr[j+1] :
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+arr = [64, 34, 25, 12, 22, 11, 90]
+bubbleSort(arr)
+print ("Sorted array is:")
+for i in range(len(arr)):
+	print ("%d" %arr[i]), 

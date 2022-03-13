@@ -1,41 +1,19 @@
-package io.github.marioluan.algorithms.sorting;
-public final class MergeSortRecursive extends Sortable {
-    private MergeSortRecursive() {
+function quicksort(values) {
+    if (values.length <= 1) {
+        return values
     }
-    private static final int CUTOFF = 7;
-    @SuppressWarnings("rawtypes")
-    public static void sort(Comparable[] a) {
-        Comparable[] aux = new Comparable[a.length];
-        sort(a, aux, 0, a.length - 1);
-    }
-    @SuppressWarnings("rawtypes")
-    private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        if (hi <= lo + CUTOFF - 1) {
-            InsertionSort.sort(a, lo, hi);
-            return;
-        }
-        int mid = lo + (hi - lo) / 2;
-        sort(a, aux, lo, mid);
-        sort(a, aux, mid + 1, hi);
-        if (!lessOrEqual(a[mid + 1], a[mid]))
-            return;
-        merge(a, aux, lo, mid, hi);
-    }
-    @SuppressWarnings("rawtypes")
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid,
-            int hi) {
-        copy(a, aux, lo, hi);
-        int i = lo;
-        int j = mid + 1;
-        for (int k = lo; k <= hi; k++) {
-            if (i > mid)
-                a[k] = aux[j++];
-            else if (j > hi)
-                a[k] = aux[i++];
-            else if (lessOrEqual(aux[j], aux[i]))
-                a[k] = aux[j++];
-            else
-                a[k] = aux[i++];
+    var lessThanPivot = [];
+    var greaterThanPivot = [];
+    var pivot = values[0];
+    for (var i = 1; i < values.length; i++) {
+        if (values[i] <= pivot) {
+            lessThanPivot.push(values[i]);
+        } else {
+            greaterThanPivot.push(values[i]);
         }
     }
+    return quicksort(lessThanPivot).concat(pivot, quicksort(greaterThanPivot));
 }
+const testValues = [32, 100, 1, 2, 29, 28, 88, 3, 50, 67, 37, 1, 57, 20];
+var sorted = quicksort(testValues);
+console.log(sorted);

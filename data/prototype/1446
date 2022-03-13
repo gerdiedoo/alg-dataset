@@ -1,35 +1,153 @@
-package Sorting.Challenges;
-public class Challenge3 {
-    public static void main(String[] args) {
-        String[] arr={"bcdef","dbaqc","abcde","omadd","bbbbb"};
-        rS(arr,26,5);
-        for(int j=0;j<arr.length;j++){
-            System.out.print(arr[j]+" ");
-        }
-    }
-    public static void rS(String[] arr,int radix,int width){
-        for (int i = width-1; i >=0; i--) {
-            rSS(arr,i,radix);
-        }
-    }
-    public static void rSS(String[] arr, int pos, int radix){
-        int numItems = arr.length;
-        int[] c = new int[radix];
-        for (String value: arr){
-            c[getChar(pos,value)]++;
-        }
-        for (int j = 1; j < radix ; j++) {
-            c[j] += c[j-1];
-        }
-        String[] temp = new String[numItems];
-        for (int ti = numItems-1; ti >=0 ; ti--) {
-            temp[--c[getChar(pos,arr[ti])]] = arr[ti];
-        }
-        for(int ti = 0; ti< numItems ;ti++){
-            arr[ti] = temp[ti];
-        }
-    }
-    public static int getChar(int pos, String value){
-        return value.charAt(pos) - 'a';
-    }
-}
+from __future__ import annotations
+from abc import abstractmethod
+from math import inf, floor, ceil
+from typing import Optional, Tuple, Generic, TypeVar, Protocol, Union
+class Comparable(Protocol):
+    @abstractmethod
+    def __lt__(self: T, other: T) -> bool:
+        pass
+T = TypeVar("T", bound=Comparable)
+class LinkedList(Generic[T]):
+    def __init__(self, data: T, next_: Optional[LinkedList[T]] = None) -> None:
+        self.data = data
+        self.next = next_
+    def __repr__(self) -> str:
+        try:
+            return str(self.data) + (
+                ("-" + repr(self.next)) if self.next is not None else ""
+            )
+        except RecursionError:
+            return str(self.data) + (("-" + "...") if self.next is not None else "")
+    def contains(self, data: T) -> bool:
+        if self.data == data:
+            return True
+        if self.next is None:
+            return False
+        return self.next.contains(data)
+    def get_last(self) -> LinkedList[T]:
+        cur = self
+        while cur.next is not None:
+            cur = cur.next
+        return cur
+    def __len__(self) -> int:
+        if self.next is None:
+            return 1
+        return 1 + len(self.next)
+    def split_equal(self) -> Tuple[LinkedList[T], Optional[LinkedList[T]]]:
+        slow = self
+        fast = self
+        while True:
+            if slow.next is None:
+                return (slow, None)
+            if fast.next is None or fast.next.next is None:
+                front = self
+                back = slow.next
+                slow.next = None  
+                return (front, back)
+            slow = slow.next
+            fast = fast.next.next
+    def is_circular(self) -> bool:
+        slow = self
+        fast = self
+        while True:
+            if slow.next is None or fast.next is None or fast.next.next is None:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+            if fast is None:
+                return False
+            if slow == fast:
+                return True
+    def append(self, data: T) -> None:
+        last = self.get_last()
+        last.next = LinkedList(data, None)
+    def reverse(self: LinkedList[T]) -> LinkedList[T]:
+        r: Optional[LinkedList[T]] = None
+        p = self
+        while p is not None:
+            q = p.next
+            p.next = r
+            r = p
+            if q is None:
+                break
+            p = q
+        return r
+    def pop(self) -> Tuple[T, Optional[LinkedList[T]]]:
+        head = self.data
+        tail = self.next
+        return (head, tail)
+    def insert(self, index: int, data: T) -> None:
+        if index <= 0:
+            raise ValueError("index must be larger than zero")
+        cur = self
+        i = 0
+        while i < index - 1 and cur.next is not None:
+            cur = cur.next
+            i += 1
+        tail = cur.next
+        cur.next = LinkedList(data, tail)
+    @staticmethod
+    def sort(ll: LinkedList[T], method: str = "bubblesort") -> LinkedList[T]:
+        if method == "bubblesort":
+            return _bubblesort(ll)
+        raise NotImplementedError(f"Method '{method}' for sorting is not implemented.")
+    def dedupe(self) -> LinkedList[T]:
+        p = self
+        while p.next is not None:
+            q = p.next
+            if p.data == q.data:
+                if q.next is None:
+                    p.next = None
+                    break
+                else:
+                    p.next = q.next
+                    q = q.next
+            else:
+                p = q
+        return self
+    @staticmethod
+    def merge(list1: LinkedList[T], list2: LinkedList[T]) -> LinkedList[T]:
+        last = list1.get_last()
+        last.next = list2
+        return list1
+    def is_palindrome(self) -> bool:
+        part1, part2 = self.split_equal()
+        if part2 is None:
+            return True
+        part2 = LinkedList.reverse(part2)
+        p = part1
+        q = part2
+        result = None
+        while True:
+            if p.data != q.data:
+                result = False
+                break
+            if p.next is None or q.next is None:
+                result = True
+                break
+            p = p.next
+            q = q.next
+        if p.next is not None:
+            p = p.next
+        p.next = LinkedList.reverse(part2)
+        return result
+def _bubblesort(ll: LinkedList[T]) -> LinkedList[T]:
+    start_node = ll  
+    end = None
+    while end != start_node:
+        r = p = start_node
+        while p.next is not None and p.next != end:
+            q = p.next
+            if p.data > q.data:
+                p.next = q.next
+                q.next = p
+                if p != start_node:
+                    r.next = q
+                else:
+                    start_node = q
+                p, q = q, p
+            r = p
+            assert p.next is not None  
+            p = p.next
+        end = p  
+    return start_node

@@ -1,23 +1,26 @@
-import structures.src.util.sort_util as util
-def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    midpoint = int(len(arr) / 2)
-    return _merge(merge_sort(arr[:midpoint]), merge_sort(arr[midpoint:]))
-def _merge(a, b):
-    out = []
-    i, j = 0, 0
-    while i < len(a) and j < len(b):
-        if i == len(a): 
-            out.append(b[j])
-            j += 1
-        elif j == len(b): 
-            out.append(a[i])
-            i += 1
-        elif a[i] < b[j]: 
-            out.append(a[i])
-            i += 1
-        else: 
-            out.append(b[j])
-            j += 1
-    return out
+function mergeSort (arrData) {
+  'use strict'
+  const dataMax = arrData.length
+  function merge (arrA, arrB) {
+    let arrC = []
+    while (arrA.length && arrB.length) {
+      if (arrA[0] > arrB[0]) {
+        arrC.push(arrB.shift())
+      } else {
+        arrC.push(arrA.shift())
+      }
+    }
+    return arrC.concat(arrA).concat(arrB)
+  }
+  console.log('Initial:', arrData.join(), `[Count:${dataMax}]`)
+  if (dataMax > 1) {
+    let indexA = Math.floor(dataMax / 2)
+    let indexB = arrData.slice(0, indexA)
+    let indexC = arrData.slice(indexA)
+    console.log('Final:', arrData.join())
+    return merge(mergeSort(indexB), mergeSort(indexC))
+  } else {
+    console.log('Cycle:', arrData.join())
+    return arrData
+  }
+}

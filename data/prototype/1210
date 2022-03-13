@@ -1,14 +1,28 @@
-def selection_sort(values):
-    sorted_list = []
-    for _idx in range(0, len(values)):
-        index_to_move = index_of_min(values)
-        sorted_list.append(values.pop(index_to_move))
-    return sorted_list
-def index_of_min(values):
-    min_index = 0
-    for i in range(1, len(values)):
-        if values[i] < values[min_index]:
-            min_index = i
-    return min_index
-numbers = [14, 3, 1, 9, 10, 4, 6, 2, 21, 13]
-print(selection_sort(numbers))
+import java.util.Arrays;
+public class SelectionSort {
+	public void selectionSort(int[] A) {
+		int len = A.length;
+		int minIdx = 0;
+		for (int i = 0; i < len; i ++) {
+			minIdx = i;
+			for (int j = i + 1; j < len; j ++) {
+				if (A[j] < A[minIdx]) {
+					minIdx = j;				
+				}
+			}
+			swap(A, i, minIdx);
+		}
+	}
+	private void swap(int[] A, int idx1, int idx2) {
+		int tmp = A[idx1];
+		A[idx1] = A[idx2];
+		A[idx2] = tmp;
+	}
+	public static void main(String[] args) {
+		SelectionSort ss = new SelectionSort();
+		int[] A = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + Arrays.toString(A));
+		ss.selectionSort(A);
+		System.out.println("sorted: " + Arrays.toString(A));
+	}
+}

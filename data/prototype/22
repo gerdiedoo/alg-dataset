@@ -1,58 +1,92 @@
-package Mini_algorithms;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-public class ChainHashMap<K,V> extends AbstractHashMap<K,V> {
-	private UnsortedTableMap<K,V>[] table;
-	public ChainHashMap() { 
-		super();
-	}
-	public ChainHashMap(int cap) {
-		super(cap);
-	}
-	public ChainHashMap(int cap, int p){
-		super(cap, p);
-	}
-	protected void createTable(){
-		table = (UnsortedTableMap<K,V>[]) new UnsortedTableMap[capacity];
-	}
-	public Set<java.util.Map.Entry<K, V>> entrySet() {
-		ArrayList<Entry<K,V>> buffer = new ArrayList<>();
-		for(int h = 0; h < capacity; h++)
-			if(table[h] != null)
-				for(Entry<K,V> entry: table[h].entrySet())
-					buffer.add(entry);
-		Set<Entry<K,V>> set = new HashSet<Entry<K,V>>(buffer);
-		return set;
-	}
-	protected V bucketGet(int h, K k) {
-		UnsortedTableMap<K,V> bucket = table[h];
-		if(bucket == null) return null;
-		return bucket.get(k);
-	}
-	protected V bucketPut(int h, K k, V v) {
-		UnsortedTableMap<K,V> bucket = table[h];
-		if(bucket == null){
-			bucket = table[h] = new UnsortedTableMap<>();
-		}
-		int oldSize = bucket.size();
-		V answer = bucket.put(k, v);
-		n += (bucket.size() - oldSize);
-		return answer;
-	}
-	protected V bucketRemove(int h, K k) {
-		UnsortedTableMap<K,V> bucket = table[h];
-		if(bucket == null){
-			bucket = table[h] = new UnsortedTableMap<>();
-		}
-		int oldSize = bucket.size();
-		V answer = bucket.remove(k);
-		n -= (oldSize - bucket.size());
-		return answer;
-	}
-	public void clear() {}
-	public boolean containsKey(Object key) {return false;}
-	public boolean containsValue(Object value) {return false;}
-	public void putAll(Map<? extends K, ? extends V> m) {}
+package com.fullstory;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import static com.fullstory.CustomHashMapIterator.DEFAULT_INDEX;
+@SuppressWarnings({"WeakerAccess", "unused"})
+public class CustomHashMap<K, V> implements Iterable<KeyValuePojo<K, V>> {
+    private static int BUCKET_CAPACITY = 64;
+    private DoublyLinkedList<K, V>[] buckets;
+    private final Object editLock = new Object();
+    CustomHashMap(DoublyLinkedList<K, V>[] buckets, int capacity) {
+        this.buckets = buckets;
+        BUCKET_CAPACITY = capacity;
+    }
+    public CustomHashMap() {
+        init();
+    }
+    @SuppressWarnings("unchecked")
+    private void init() {
+        this.buckets = new DoublyLinkedList[BUCKET_CAPACITY];
+        for (int i = 0; i < BUCKET_CAPACITY; i++) {
+            this.buckets[i] = new DoublyLinkedList<>();
+        }
+    }
+    private int hash(K key) {
+        return Math.abs(key.hashCode()) % BUCKET_CAPACITY;
+    }
+    private DoublyLinkedList<K, V> fetchListHoldingKey(K key) {
+        int index = hash(key);
+        return this.buckets[index];
+    }
+    private Stream<DoublyLinkedList<K, V>> nonEmptyBucketsStream() {
+        return Arrays.stream(this.buckets).filter(bucket -> !bucket.isEmpty());
+    }
+    int getNextNonEmptyBucketFromIndex(int index) {
+        if (index >= BUCKET_CAPACITY)
+            return DEFAULT_INDEX;
+        int i = index;
+        while (i < BUCKET_CAPACITY && this.buckets[i].isEmpty())
+            i++;
+        return i == BUCKET_CAPACITY ? DEFAULT_INDEX : i;
+    }
+    DoublyLinkedList<K, V> getListInBucket(int index) {
+        return this.buckets[index];
+    }
+    public void put(K key, V value) {
+        synchronized (editLock) {
+            DoublyLinkedList<K, V> list = fetchListHoldingKey(key);
+            list.add(key, value);
+        }
+    }
+    public V get(K key) throws KeyNotFoundException {
+        return fetchListHoldingKey(key).fetchValueInNodeWithKey(key);
+    }
+    public V get(K key, V defaultValue) {
+        return fetchListHoldingKey(key).fetchValueInNodeWithKey(key, defaultValue);
+    }
+    public V getThreadSafe(K key, V defaultValue) {
+        synchronized (editLock) {
+            return fetchListHoldingKey(key).fetchValueInNodeWithKey(key, defaultValue);
+        }
+    }
+    public void remove(K key) throws KeyNotFoundException {
+        synchronized (editLock) {
+            DoublyLinkedList<K, V> listContainingNodeToRemove = this.fetchListHoldingKey(key);
+            if (!listContainingNodeToRemove.removeNodeWithKeyIfExists(key))
+                throw new KeyNotFoundException(key.toString());
+        }
+    }
+    public void clear() {
+        synchronized (editLock) {
+            init();
+            System.gc();
+        }
+    }
+    public Set<K> keys() {
+        return nonEmptyBucketsStream().flatMap(DoublyLinkedList::getAllKeys).collect(Collectors.toSet());
+    }
+    public List<V> values() {
+        return nonEmptyBucketsStream().flatMap(DoublyLinkedList::getAllValues).collect(Collectors.toList());
+    }
+    public List<KeyValuePojo<K, V>> keyValuePojo() {
+        return nonEmptyBucketsStream().flatMap(DoublyLinkedList::getAllPojo).collect(Collectors.toList());
+    }
+    public boolean isPresent(K key) {
+        return !fetchListHoldingKey(key).isEmpty();
+    }
+    @Override
+    public Iterator<KeyValuePojo<K, V>> iterator() {
+        return new CustomHashMapIterator<>(this, editLock);
+    }
 }

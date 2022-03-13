@@ -1,21 +1,20 @@
-function selectionSort(array) {
-  for (let i = 0; i < array.length - 1; i++) {
-    let min = array[i];
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[j] < min) {
-        min = array[j];
-        array[j] = array[i];
-        array[i] = min;
+export default function SelectionSort(elements: number[]): number[] {
+  const { length } = elements;
+  for (let i = 0; i < length; i++) {
+    let lowestIndex = i;
+    for (let k = i + 1; k < length; k++) {
+      if (elements[k] < elements[lowestIndex]) {
+        lowestIndex = k;
       }
     }
+    if (lowestIndex !== i) {
+      swap(elements, i, lowestIndex);
+    }
   }
+  return elements;
 }
-let myArray = [3, 7, 5, 6, 4, 2];
-selectionSort(myArray);
-console.log(myArray);
-myArray = [1, 2, 3, 4, 5];
-selectionSort(myArray);
-console.log(myArray);
-myArray = [5, 4, 3, 2, 1];
-selectionSort(myArray);
-console.log(myArray);
+function swap(items: number[], firstIndex: number, secondIndex: number) {
+  const temp = items[firstIndex];
+  items[firstIndex] = items[secondIndex];
+  items[secondIndex] = temp;
+}

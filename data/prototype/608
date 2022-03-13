@@ -1,17 +1,22 @@
-let numbers = [5, 7, 10, 4, 1, 8, 11, 14, 6, 2, 17, 14, 3, 9, 20, 13, 18];  
-let countSwap = 0;
-const BubbleSortArray = (numbers) => {
-   countSwap = 0;
-   numbers.forEach((num, index) => {
-      if (numbers[index] > numbers[index + 1]) {
-        countSwap += 1;
-        let temp = numbers[index];
-        numbers[index] = numbers[index + 1];
-        numbers[index + 1] = temp;
-      }
-   });
+package Sorting.Challenges;
+public class Challenge2 {
+    public static void main(String[] args) {
+        int[] arr={20,35,-15,7,55,1,-22};
+        iS(arr,7);
+        for(int j=0;j<arr.length;j++){
+            System.out.print(arr[j]+" ");
+        }
+    }
+    public static void iS(int[] arr,int numItems){
+        if (numItems<2){
+            return;
+        }
+        iS(arr,numItems-1);
+        int newElement = arr[numItems-1];
+        int i;
+        for (i = numItems-1; i > 0 && arr[i-1] > newElement; i--) {
+            arr[i] = arr[i-1];
+        }
+        arr[i] = newElement;
+    }
 }
-do {
-   BubbleSortArray(numbers);
-} while (countSwap > 0);
-console.log(numbers);

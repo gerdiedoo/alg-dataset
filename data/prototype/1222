@@ -1,51 +1,18 @@
-package com.sorting;
-import java.util.Comparator;
-public class Selection {
-	private Selection() {
-	}
-	public static void sort(Comparable[] array) {
-		if(array == null)
-			throw new NullPointerException();
-		int size = array.length;
-		int min;
-		for (int i = 0; i < size; i++) {
-			min = i;
-			for (int j = i + 1; j < size; j++) {
-				if (less(array[j], array[min]))
-					min = j;
-			}
-			exchange(array, i, min);
-		}
-	}
-	public static void sort(Object[] array, Comparator c) {
-		if(array == null)
-			throw new NullPointerException();
-		int size = array.length;
-		int min;
-		for (int i = 0; i < size; i++) {
-			min = i;
-			for (int j = i + 1; j < size; j++) {
-				if (less(c, array[j], array[min]))
-					min = j;
-			}
-			exchange(array, i, min);
-		}
-	}
-	private static boolean less(Comparable v, Comparable w) {
-		return v.compareTo(w) < 0;
-	}
-	private static boolean less(Comparator c, Object v, Object w) {
-		return c.compare(v, w) < 0;
-	}
-	private static void exchange(Object[] a, int i, int j) {
-		Object temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
-	}
-	public static void show(Comparable[] array) {
-		int n = array.length;
-		for (int i = 0; i < n; i++) {
-			System.out.print(array[i] + ",");
-		}
-	}
+package sortAlgorithms;
+import helperUtils.Utility;
+public class SelectionSort {
+  public static void main(String argd[]) {
+    int[] inputArr = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    Utility.printArray(inputArr, true, "Selection Sort");
+    for (int sortedBoundary = inputArr.length - 1; sortedBoundary > 0; sortedBoundary--) {
+      int largestValIndex = 0;
+      for (int i = 1; i <= sortedBoundary; i++) {
+        if (inputArr[i] > inputArr[largestValIndex]) {
+          largestValIndex = i;
+        }
+      }
+      Utility.swap(inputArr, largestValIndex, sortedBoundary);
+    }
+    Utility.printArray(inputArr, false, null);
+  }
 }

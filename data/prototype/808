@@ -1,83 +1,21 @@
-package eu.happycoders.sort.method.mergesort;
-import eu.happycoders.sort.method.Counters;
-import eu.happycoders.sort.method.SortAlgorithm;
-public class InPlaceMergeSort implements SortAlgorithm {
-  @Override
-  public void sort(int[] elements) {
-    int length = elements.length;
-    mergeSort(elements, 0, length - 1);
-  }
-  private void mergeSort(int[] elements, int left, int right) {
-    if (left == right) return;
-    int middle = left + (right - left) / 2;
-    mergeSort(elements, left, middle);
-    mergeSort(elements, middle + 1, right);
-    merge(elements, left, middle + 1, right);
-  }
-void merge(int[] elements, int leftPos, int rightPos, int rightEnd) {
-  int leftEnd = rightPos - 1;
-  while (leftPos <= leftEnd && rightPos <= rightEnd) {
-    int leftValue = elements[leftPos];
-    int rightValue = elements[rightPos];
-    if (leftValue <= rightValue) {
-      leftPos++;
-    } else {
-      int movePos = rightPos;
-      while (movePos > leftPos) {
-        elements[movePos] = elements[movePos - 1];
-        movePos--;
-      }
-      elements[leftPos] = rightValue;
-      leftPos++;
-      leftEnd++;
-      rightPos++;
-    }
-  }
-}
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    int length = elements.length;
-    mergeSort(elements, 0, length - 1, counters);
-  }
-  private void mergeSort(int[] elements, int left, int right,
-                         Counters counters) {
-    if (left == right) return;
-    int middle = left + (right - left) / 2;
-    mergeSort(elements, left, middle, counters);
-    mergeSort(elements, middle + 1, right, counters);
-    merge(elements, left, middle + 1, right, counters);
-  }
-  private void merge(int[] elements, int leftPos, int rightPos, int rightEnd,
-                     Counters counters) {
-    int leftEnd = rightPos - 1;
-    while (isLessThanOrEqual(leftPos, leftEnd, counters) && isLessThanOrEqual(rightPos, rightEnd, counters)) {
-      int leftValue = elements[leftPos];
-      int rightValue = elements[rightPos];
-      counters.addReads(2);
-      counters.incComparisons();
-      if (leftValue <= rightValue) {
-        leftPos++;
-      } else {
-        int movePos = rightPos;
-        while (isGreaterThan(movePos, leftPos, counters)) {
-          counters.incReadsAndWrites();
-          elements[movePos] = elements[movePos - 1];
-          movePos--;
-        }
-        counters.incWrites();
-        elements[leftPos] = rightValue;
-        leftPos++;
-        leftEnd++;
-        rightPos++;
-      }
-    }
-  }
-  private boolean isLessThanOrEqual(int a, int b, Counters counters) {
-    counters.incComparisons();
-    return a <= b;
-  }
-  private boolean isGreaterThan(int a, int b, Counters counters) {
-    counters.incComparisons();
-    return a > b;
-  }
-}
+def merge_sort(values):
+    if len(values) <= 1:
+        return values
+    middle_index = len(values) // 2
+    left_values = merge_sort(values[:middle_index])
+    right_values = merge_sort(values[middle_index:])
+    sorted_values = []
+    left_index = 0
+    right_index = 0
+    while left_index < len(left_values) and right_index < len(right_values):
+        if left_values[left_index] < right_values[right_index]:
+            sorted_values.append(left_values[left_index])
+            left_index += 1
+        else:
+            sorted_values.append(right_values[right_index])
+            right_index += 1
+    sorted_values += left_values[left_index:]
+    sorted_values += right_values[right_index:]
+    return sorted_values
+numbers = [3, 21, 7, 1, 9, 17, 14, 2, 5, 10, 6]
+print(merge_sort(numbers))

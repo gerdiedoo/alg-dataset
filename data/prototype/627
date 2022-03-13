@@ -1,21 +1,23 @@
-import java.util.*;
-public class RecursiveBubbleSort {
-	public static void main(String[] args) {
-		Scanner scn=new Scanner(System.in);
-		int[] arr=  {5,1,4,2,8};
-		bubbleSort(arr,arr.length);
-		System.out.println("Sorted Array Elements: ");
-		System.out.println(Arrays.toString(arr));
-	}
-	private static void bubbleSort(int[] arr, int n) {
-		if(n==1) return;
-		for(int i=0;i<n-1;i++) {
-			if(arr[i]>arr[i+1]) {		
-				int temp=arr[i];				 
-				arr[i]=arr[i+1];
-				arr[i+1]=temp;
-			}
-		}
-		bubbleSort(arr,n-1);					 
-	}
-}
+def insertion_sort(a):
+    b = [*a]
+    for i in range(len(b)):
+        temp = b[i]
+        j = i - 1
+        while j >= 0 and b[j] > temp:
+            b[j+1] = b[j]
+            j -= 1
+        b[j+1] = temp
+    return b
+if __name__ == "__main__":
+    import unittest
+    from random import shuffle
+    class TestInsertionSort(unittest.TestCase):
+        def setUp(self):
+            self.ordered = [x for x in range(20)]
+            self.shuffled = [*self.ordered]
+            while self.ordered == self.shuffled:
+                shuffle(self.shuffled)
+        def test_insertion_sort(self):
+            self.assertEqual(self.ordered, insertion_sort(self.shuffled))
+            self.assertNotEqual(self.ordered, self.shuffled)
+    unittest.main()

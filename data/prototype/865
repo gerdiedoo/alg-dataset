@@ -1,53 +1,38 @@
+package ie.peternagy.algorithms.sorting;
+import java.util.Arrays;
 public class MergeSort {
-    public static void main(String args[]) {
-        int[] input = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(input, 0, input.length - 1);
-        System.out.println("Merge Sort : Sorted List");
-        for (int i = 0; i < input.length; i++) {
-            System.out.println(input[i] + "");
+    public static void sort(Comparable[] items) {
+        sort(items, true);
+    }
+    public static void sort(Comparable[] items, boolean isAsc) {
+        int arrayLength = items.length;
+        mergeSort(items, 0, arrayLength - 1, isAsc);
+    }
+    private static void mergeSort(Comparable[] items, int lowIndex, int highIndex, boolean isAsc) {
+        if (lowIndex < highIndex) {
+            int middle = lowIndex + (highIndex - lowIndex) / 2;
+            mergeSort(items, lowIndex, middle, isAsc);
+            mergeSort(items, middle + 1, highIndex, isAsc);
+            merge(items, lowIndex, middle, highIndex, isAsc);
         }
     }
-    void sort(int input[], int start, int end) {
-        if (start < end) {
-            int mid = (start + end) / 2;
-            sort(input, start, mid);
-            sort(input, mid + 1, end);
-            merge(input, start, mid, end);
-        }
-    }
-    void merge(int input[], int start, int middle, int end) {
-        int left = middle - start + 1;
-        int right = end - middle;
-        int[] leftArray = new int[left];
-        int[] rightArray = new int[right];
-        for (int i = 0; i < left; ++i) {
-            leftArray[i] = input[start + i];
-        }
-        for (int j = 0; j < right; ++j) {
-            rightArray[j] = input[middle + 1 + j];
-        }
-        int i = 0, j = 0;
-        int k = start;
-        while (i < left && j < right) {
-            if (leftArray[i] <= rightArray[j]) {
-                input[k] = leftArray[i];
+    private static void merge(Comparable[] items, int lowIndex, int middle, int highIndex, boolean isAsc) {
+        Comparable[] helper = new Comparable[items.length];
+        System.arraycopy(items, lowIndex, helper, lowIndex, (highIndex - lowIndex) + 1);
+        int i = lowIndex;
+        int j = middle + 1;
+        int k = lowIndex;
+        while (i <= middle && j <= highIndex) {
+            if (isAsc && helper[i].compareTo(helper[j]) < 0 ||
+                    !isAsc && helper[i].compareTo(helper[j]) > 0) {
+                items[k] = helper[i];
                 i++;
             } else {
-                input[k] = rightArray[j];
+                items[k] = helper[j];
                 j++;
             }
             k++;
         }
-        while (i < left) {
-            input[k] = leftArray[i];
-            i++;
-            k++;
-        }
-        while (j < right) {
-            input[k] = rightArray[j];
-            j++;
-            k++;
-        }
+        System.arraycopy(helper, i, items, k, (middle - i) + 1);
     }
 }

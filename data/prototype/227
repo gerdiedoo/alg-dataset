@@ -1,110 +1,34 @@
-class DoublyLinkedList{
-	private Link head;
-	private Link tail;
-	public DoublyLinkedList(){
-		head = null;
-		tail = null;
-	}
-	public DoublyLinkedList(int[] array){
-		if (array == null) throw new NullPointerException();
-    		for (int i:array) {
-        		insertTail(i);
-   	 	}
-	}
-	public void insertHead(int x){
-		Link newLink = new Link(x);  
-		if(isEmpty())  
-			tail = newLink;
-		else
-			head.previous = newLink;  
-		newLink.next = head;  
-		head = newLink;  
-	}
-	public void insertTail(int x){
-		Link newLink = new Link(x);
-		newLink.next = null;  
-		tail.next = newLink;  
-		newLink.previous = tail;  
-		tail = newLink;  
-	}
-	public void deleteHead(){
-		Link temp = head;
-		head = head.next;  
-		head.previous = null;  
-		if(head == null)
-			tail = null;
-	}
-	public void deleteTail(){
-		Link temp = tail;
-		tail = tail.previous;  
- 		tail.next = null;  
-	}
-	public void delete(int x){
-		Link current = head;
-		while(current.value != x)  
-			current = current.next;
-		if(current == head)
-			deleteHead();
-		else if(current == tail)
-			deleteTail();
-		else{  
-			current.previous.next = current.next;   
-			current.next.previous = current.previous;  
-		}	
-	}
-	public void insertOrdered(int x){
-		Link newLink = new Link(x);
-		Link current = head;
-		while(current != null && x > current.value)  
-			current = current.next;
-		if(current == head)
-			insertHead(x);
-		else if(current == null)
-			insertTail(x);
-		else{  
-			newLink.previous = current.previous;  
-			current.previous.next = newLink;  
-			newLink.next = current;  
-			current.previous = newLink;  
-		}
-	}
-	public boolean isEmpty(){
-		return(head == null);
-	}
-	public void display(){  
-		Link current = head;
-		while(current!=null){
-			current.displayLink();
-			current = current.next;
-		}
-		System.out.println();
-	}
-}
-class Link{
-	public int value;
-	public Link next;
-	public Link previous;
-	public Link(int value){
-		this.value = value;
-	}
-	public void displayLink(){
-		System.out.print(value+" ");
-	}
-	public static void main(String args[]){
-		DoublyLinkedList myList = new DoublyLinkedList();
-		myList.insertHead(13);
-		myList.insertHead(7);
-		myList.insertHead(10);
-		myList.display();  
-		myList.insertTail(11);
-		myList.display();  
-		myList.deleteTail();
-		myList.display();  
-		myList.delete(7);
-		myList.display();  
-		myList.insertOrdered(23);
-		myList.insertOrdered(67);
-		myList.insertOrdered(3);
-		myList.display();  
-	}
-}
+class Queue(object):
+    def __init__(self):
+        self._list = []
+    def count(self):
+        return len(self._list)
+    def is_empty(self):
+        return self.count() == 0
+    def enqueue(self, item):
+        self._list.append(item)
+    def dequeue(self):
+        try:
+            return self._list.pop(0)
+        except IndexError:
+            raise IndexError('pop from empty stack')
+def main():
+    queue = Queue()
+    n = 100
+    print('Empty queue: {0}'.format(queue.is_empty()))
+    while queue.count() < 5:
+        print('pushing elements: {0}'.format(n))
+        queue.enqueue(n)
+        n = n + 100
+    print('Number of items: {0}'.format(queue.count()))
+    print('Empty queue: {0}'.format(queue.is_empty()))
+    while True:
+        try:
+            print('Removing element: {0}'.format(queue.dequeue()))
+        except Exception as e:
+            print('Exception: {0}'.format(e))
+            break
+    print('Number of items: {0}'.format(queue.count()))
+    print('Empty queue: {0}'.format(queue.is_empty()))
+if __name__ == '__main__':
+    main()

@@ -1,22 +1,19 @@
-package sorting.algorithms;
-public class BubbleSort {
-    public int[] sort(int[] inputArray) {
-        int arrayLength = inputArray.length;
-        int j = 0;
-        int temp;
-        boolean swapped = true;
-        while (swapped) {
-            swapped = false;
-            j++;
-            for (int i = 0; i < arrayLength - j; i++) {
-                if (inputArray[i] > inputArray[i + 1]) {
-                    temp = inputArray[i];
-                    inputArray[i] = inputArray[i + 1];
-                    inputArray[i + 1] = temp;
-                    swapped = true;
-                }
-            }
-        }
-        return inputArray;
+package eu.happycoders.sort.method.bubblesort;
+public class BubbleSortParallelOddEven extends BubbleSortParallel {
+  @Override
+  boolean sortPartition(int[] elements, int startPos, int endPos,
+                        boolean even) {
+    boolean swapped = false;
+    if (even) startPos++;
+    for (int i = startPos; i < endPos && i < elements.length - 1; i += 2) {
+      int left = elements[i];
+      int right = elements[i + 1];
+      if (left > right) {
+        elements[i + 1] = left;
+        elements[i] = right;
+        swapped = true;
+      }
     }
+    return swapped;
+  }
 }

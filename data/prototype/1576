@@ -1,0 +1,76 @@
+import node
+class List():
+    def __init__(self, head=None):
+        self._head = head
+    def get_head(self):
+        return self._head
+    def append(self, data):
+        new_node = node.Node(data)
+        if not self._head:
+            self._head = new_node
+        else:
+            temp = self._head
+            while(temp.next):
+                temp = temp.next
+            temp.next = new_node 
+        return self
+    def get_position(self, position):
+        if position < 1: 
+            return None
+        current_pos = 1
+        current = self._head
+        if self._head:
+            while current and current_pos < position:
+                current = current.next
+                current_pos += 1
+            return current
+        else:
+            return None
+    def insert(self, new_data, position):
+        new_node = node.Node(new_data)
+        assert(position >= 1)
+        assert(self._head)
+        current_pos = 1
+        current = self._head
+        while current and current_pos < position - 1:
+            current = current.next
+            current_pos += 1
+        if current:
+            new_node.next = current.next
+            current.next = new_node
+        else:
+            print('\nERROR: Could not insert node. Position', position, 'is out of bounds.')
+    def delete(self, data):
+        current = self._head
+        previous = None
+        while current.data != data and current.next:
+            previous = current
+            current = current.next
+            if current.data == data:
+                if previous:
+                    previous.next = current.next 
+                    current.next = None
+                else:
+                    self._head = current.next
+    def reverse_list_iterative(self):
+        prev = None
+        curr = self._head
+        next = None
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        self._head = prev
+    def reverse_list_recursive(self, curr, prev=None, next=None):
+        if not curr: 
+            self._head = prev
+        else:
+            next = curr.next
+            curr.next = prev
+            self.reverse_list_recursive(next, curr)
+    def print_list(self):
+        temp = self._head
+        while(temp):
+            print(temp)
+            temp = temp.next

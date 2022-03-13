@@ -1,4 +1,77 @@
-public interface WeakConcurrentHashMapListener<K,V> {
-	public void notifyOnAdd(K key, V value);
-	public void notifyOnRemoval(K key, V value);
+package list;
+public class LinkedList<T> {
+    private T value;
+    private LinkedList<T> next;
+    private boolean empty;
+    public LinkedList() { empty = true; }
+    private LinkedList(T value) {
+        this.empty = false;
+        this.value = value;
+    }
+    public int length() {
+        if(empty) {
+            return 0;
+        } else if(next == null) {
+            return 1;
+        } else {
+            return 1 + next.length();
+        }
+    }
+    public boolean isEmpty() {
+        return empty;
+    }
+    public T get(int index) {
+        if(index < 0 || index > this.length() - 1) {
+            throw new IndexOutOfBoundsException();
+        } else if(index == 0) {
+            return this.value;
+        } else {
+            return next.get(index - 1);
+        }
+    }
+    public void add(T value) {
+        if(empty) {
+            this.value = value;
+            empty = false;
+        } else if(next == null) {
+            next = new LinkedList<>(value);
+        } else {
+            next.add(value);
+        }
+    }
+    public void add(T value, int index) {
+        if(index < 0 || index > this.length()) {
+            throw new IndexOutOfBoundsException();
+        } else if(index == 0){
+            this.value = value;
+            empty = false;  
+        } else if(index == 1) {
+            LinkedList<T> tmp = next;
+            next = new LinkedList<>(value);
+            next.next = tmp;
+        } else {
+            next.add(value, index - 1);
+        }
+    }
+    public void set(T value, int index) {
+        if(index < 0 || index > this.length() - 1) {
+            throw new IndexOutOfBoundsException();
+        } else if(index == 0) {
+            this.value = value;
+        } else {
+            next.set(value, index - 1);
+        }
+    }
+    public int indexOf(T target) {
+        if(!this.contains(target)) {
+            return -1;
+        } else if(this.value.equals(target)) {
+            return 0;
+        } else {
+            return next.indexOf(target) + 1;
+        }
+    }
+    public boolean contains(T target) {
+        return this.value.equals(target) || (this.next != null && this.next.contains(target));
+    }
 }

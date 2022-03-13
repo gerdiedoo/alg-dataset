@@ -1,41 +1,17 @@
-import java.util.*;
-public class MST {
-     public static int prim(int n, int[][] adj) {
-        int[] dist = new int[n];
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        boolean[] used = new boolean[n];
-        int[] parent = new int[n];
-        int size = 1;
-        int cost = 0;
-        used[0] = true;
-        int minNode = -1;
-        int minDist = Integer.MAX_VALUE;
-        for (int i = 0; i < n; i++) {
-            dist[i] = adj[0][i];
-            parent[i] = 0;
-            if (dist[i] < minDist && i != 0) {
-                minDist = dist[i];
-                minNode = i;
-            }
-        }
-        while (size < n) {
-            size++;
-            cost += dist[minNode];
-            used[minNode] = true;
-            for (int i = 0; i < n; i++) {
-                if (dist[i] > adj[i][minNode]) {
-                    dist[i] = adj[i][minNode];
-                    parent[i] = minNode;
-                }
-            }
-            minDist = Integer.MAX_VALUE;
-            for (int i = 0; i < n; i++) {
-                if (dist[i] < minDist && !used[i]) {
-                    minDist = dist[i];
-                    minNode = i;
-                }
-            }
-        }
-        return cost;
-    }
-}
+def swap(list , pos1 , pos2):
+	list[pos1] , list [pos2] = list[pos2] , list [pos1]
+ return list
+def bubble_sort(list):
+	for i in range(0 , len(list)-1):
+		flag = 0
+  for j in range(0,len(list)-1 - i):
+			if list[j] > list[j+1]:
+				flag = 1
+    list = swap(list , j , j+1)
+  if flag==0:
+			break
+ return list
+a = [2,7,4,1,5,3]
+print(a)
+bubble_sort(a)
+print(a)

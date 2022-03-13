@@ -1,145 +1,40 @@
-class Node {
-	constructor (data) {
-		this.data = data;
-		this.next = null;
-	}
-}
-class LinkedList {
-	constructor (size = 0) {
-		this.head = null;
-		this.length = size;
-	}
-	add (value, index) {
-		let temp = this.head;
-		if (index === 0) {
-			let n = new Node(value);
-			n.next = this.head;
-			this.head = n;
-		} else if (index < 0 || index >= this.length) {
-			throw new Error('Index Out of Bound');
-		} else {
-			for (let i = 0; i < index - 1; i++) {
-				temp = temp.next;
-			}
-			let n = new Node(value);
-			n.next = temp.next;
-			temp.next = n;
-		}
-		this.length++;
-	}
-	addFirst (value) {
-		return this.add(value, 0);
-	}
-	addLast (value) {
-		if (this.head === null) {
-			this.addFirst(value);
-		} else {
-			let temp = this.head;
-			while (temp.next !== null) {
-				temp = temp.next;
-			}
-			let n = new Node(value);
-			temp.next = n;
-			this.length++;
-		}
-	}
-	remove (index) {
-		if (this.isEmpty()) {
-			throw new Error('List is Empty');
-		} else if (index < 0 || index >= this.length) {
-			throw new Error('Index out of Bound');
-		} else if (index === 0) {
-			this.head = this.head.next;
-		} else {
-			let temp = this.head;
-			if (temp.next == null) {
-				this.head = null;
-			} else {
-				for (let i = 0; i < index - 1; i++) {
-					temp = temp.next;
-				}
-				temp.next = temp.next.next;
-			}
-		}
-		this.length--;
-	}
-	removeFront () {
-		this.remove(0);
-	}
-	removeLast () {
-		this.remove(this.length - 1);
-	}
-	removeByValue (value) {
-		this.remove(this.findFirst(value));
-	}
-	search (input) {
-		let head = this.head;
-		for (let i = 0; i < this.length; i++) {
-			if (head.data === input) {
-				return i;
-			} else {
-				head = head.next;
-			}
-		}
-		throw new Error('Value not found');
-	}
-	findFirst (input) {
-		return this.search(input);
-	}
-	findLast (input) {
-		let newList = new LinkedList();
-		newList = this.clone();
-		newList.reverse();
-		return this.length - newList.search(input) - 1;
-	}
-	setData (input, index) {
-		if (index >= this.length) {
-			this.add(input, index);
-		} else {
-			let head = this.head;
-			for (let i = 0; i < this.length; i++) {
-				if (i === index) {
-					head.data = input;
-				}
-				head = head.next;
-			}
-		}
-	}
-	clone () {
-		let newList = new LinkedList();
-		let temp = this.head;
-		while (temp.next) {
-			newList.addLast(temp.data);
-			temp = temp.next;
-		}
-		newList.addLast(temp.data);
-		return newList;
-	}
-	reverse () {
-		let prev = null;
-		let current = this.head;
-		while (current) {
-			let next = current.next;
-			current.next = prev;
-			prev = current;
-			current = next;
-		}
-		this.head = prev;
-	}
-	isEmpty () {
-		return (this.length === 0);
-	}
-	clear () {
-		this.head = null;
-		this.length = 0;
-	}
-	show () {
-		let list = [];
-		let head = this.head;
-		while (head) {
-			list.push(head.data);
-			head = head.next;
-		}
-		return list;
-	}
+import java.util.List;
+import java.lang.Comparable;
+public class BinarySearch<T extends Comparable<T>> implements SearchingAlg<T> {
+    @Override
+    public int indexOf(List<T> elements, T target) {
+        if (elements == null || target == null)
+            return NIL;
+        return indexOf(elements, target, 0, elements.size() - 1);
+    }
+    private int indexOf(List<T> elements, T target, int min, int max) {
+        if (min <= max) {
+            int mid = (max + min) >> 1;
+            if (elements.get(mid).equals(target))
+                return mid;
+            if (isLessThan(elements.get(mid), target))
+                return indexOf(elements, target, mid + 1, max);
+            return indexOf(elements, target, min, mid - 1);
+        }
+        return NIL;
+    }
+    private boolean isLessThan(T first, T second) {
+        return (first.compareTo(second) < 0);
+    }
+    public static void main(String[] args) {
+        List<Integer> data = new java.util.ArrayList<Integer>();
+        for (int i = 0; i < 100; i++)
+            data.add(i);
+        SearchingAlg<Integer> alg = new BinarySearch<Integer>();
+        for (int i = 0; i < data.size(); i++) {
+            int result = alg.indexOf(data, i);
+            if (result == NIL)
+                throw new java.lang.RuntimeException("Result shouldn't be NIL");
+            data.remove(new Integer(i));
+            result = alg.indexOf(data, i);
+            if (result != NIL)
+                throw new java.lang.RuntimeException("Result should be NIL");
+        }
+        System.out.println("All tests passed.");
+    }
 }

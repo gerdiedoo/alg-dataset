@@ -1,26 +1,85 @@
-from __future__ import print_function
-def mergesort(lst):
-    if len(lst) < 2:
-        return lst
-    middle = len(lst) // 2
-    lst1 = mergesort(lst[:middle])
-    lst2 = mergesort(lst[middle:])
-    return merge(lst1, lst2)
-def merge(lst1, lst2):
-    lst = []
-    while len(lst1) != 0 and len(lst2) != 0:
-        if lst1[0] < lst2[0]:
-            lst.append(lst1[0])
-            lst1.remove(lst1[0])
-        else:
-            lst.append(lst2[0])
-            lst2.remove(lst2[0])
-    if len(lst1) == 0:
-        lst += lst2
-    else:
-        lst += lst1
-    return lst
-if __name__ in "__main__":
-    LIST = [1, 0, 2, 4, 5, 6, 2, 7, 9, 1, 3, 8, -1]
-    print('list      :', LIST)
-    print('merge sort:', mergesort(LIST))
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+public class MergeSortAny<T extends MaxValue<T> & Comparable<T>>
+{
+    public static <T extends MaxValue<T> & Comparable<T>> void sort(ArrayList<T> arrayList)
+    {
+        mergeSortSplit(arrayList, 0, arrayList.size()-1);
+    }
+    private static <T extends MaxValue<T> & Comparable<T>> void mergeSortSplit(ArrayList<T> listToSort, int start, int end)
+    {
+        if (start < end)
+        {
+            int middle = (start + end) / 2;
+            mergeSortSplit(listToSort, start, middle);
+            mergeSortSplit(listToSort, middle+1, end);
+            merge(listToSort, start, middle, end);
+        }
+    }
+    private static <T extends MaxValue<T> & Comparable<T>> void merge(ArrayList<T> listToSort, int start, int middle, int end)
+    {
+        ArrayList<T> A = new ArrayList<T>(listToSort.subList(start, middle+1));
+        ArrayList<T> B = new ArrayList<T>(listToSort.subList(middle+1, end+1));
+        A.add(A.get(0).getMaxObject());
+        B.add(B.get(0).getMaxObject());
+        int i = 0;
+        int j = 0;
+        for (int k = start; k <= end; k++)
+        {
+            if (A.get(i).compareTo(B.get(j)) <= 0)
+            {
+                listToSort.set(k, A.get(i));
+                i++;
+            }
+            else
+            {
+                listToSort.set(k, B.get(j));
+                j++;
+            }
+        }
+    }
+    public static <T extends MaxValue<T> & Comparable<T>> void sort(T[] array)
+    {
+        mergeSortSplitArray(array, 0, array.length-1);
+    }
+    private static <T extends MaxValue<T> & Comparable<T>> void mergeSortSplitArray(T[] listToSort, int start, int end)
+    {
+        if (start < end)
+        {
+            int middle = (start + end) / 2;
+            mergeSortSplitArray(listToSort, start, middle);
+            mergeSortSplitArray(listToSort, middle+1, end);
+            mergeArray(listToSort, start, middle, end);
+        }
+    }
+    private static <T extends MaxValue<T> & Comparable<T>> void mergeArray(T[] listToSort, int start, int middle, int end)
+    {
+        T[] A = (T[]) Array.newInstance(listToSort[0].getClass(),middle-start +2);
+        T[] B = (T[]) Array.newInstance(listToSort[0].getClass(),end - middle +1);
+        cloneArray(listToSort, A, start);
+        cloneArray(listToSort, B, middle+1);
+        int i = 0;
+        int j = 0;
+        for (int k = start; k <= end; k++)
+        {
+            if (A[i].compareTo(B[j]) <= 0)
+            {
+                listToSort[k] = A[i];
+                i++;
+            }
+            else
+            {
+                listToSort[k] = B[j];
+                j++;
+            }
+        }
+    }
+    private static <T extends MaxValue<T> & Comparable<T>> void cloneArray(T[] listIn, T[] cloneInto, int start)
+    {
+        for (int i = start; i < start+cloneInto.length-1; i++)
+        {
+            cloneInto[i - start] = listIn[i];
+        }
+        cloneInto[cloneInto.length-1] = listIn[0].getMaxObject();
+    }
+}

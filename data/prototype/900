@@ -1,56 +1,33 @@
-public class MergeSort
-{
-    public MergeSort(int[] data)
-    {
-        sort(data, 0, data.length);
+package Sorting;
+public class MergeSort {
+    public static void main(String[] args) {
+        int[] arr={20,35,-15,7,55,1,-22};
+        MS(arr,0,arr.length);
+        for(int j=0;j<arr.length;j++) {
+            System.out.print(arr[j] + " ");
+        }
     }
-    public int[] sort(int[] A, int i, int j)
-    {
-        if ((j-i) > 1)
-        {
-            int mid = (int) Math.floor((j-i)/2.0);
-            int[] B = sort(A, 0, mid-1);
-            int[] C = sort(B, mid, j);
-            merge(B, C, A);
+    public static void MS(int [] arr,int start,int end){
+        if(end - start<2){
+            return;
         }
-        return A;
+        int mid = (start+end)/2;
+        MS(arr,start,mid);  
+        MS(arr,mid,end);  
+        merge(arr,start,mid,end);
     }
-    public void merge(int[] B, int[] C, int[] A)
-    {
-        int i = 0;
-        int j = 0;
-        int k = 0;
-        while(i < B.length && j < C.length)
-        {
-            if(B[i] < C[j])
-            {
-                A[k] = B[i];
-                i++;
-            }
-            else 
-            {
-                A[k] = C[j];
-                j++;
-            }
-            k++;
+    public static void merge(int[] arr,int start,int mid,int end){
+        int[] temp = new int[end-start];
+        if(arr[mid-1]<= arr[mid]){
+            return;
         }
-        if(i < B.length)
-        {
-            for(int p=i; p<B.length; p++)
-            {
-                A[k] = B[p];
-                k++;
-                p++;
-            }
+        int i = start;
+        int j = mid;
+        int ti = 0;
+        while(i<mid && j<end){
+            temp[ti++] = arr[i] <= arr[j] ? arr[i++] : arr[j++];
         }
-        else
-        {
-            for(int q=j; q<C.length; q++)
-            {
-                A[k] = C[q];
-                k++;
-                q++;
-            }
-        }
+        System.arraycopy(arr,i,arr,start+ti,mid - i);
+        System.arraycopy(temp,0,arr,start,ti);
     }
 }

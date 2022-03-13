@@ -1,62 +1,163 @@
-class SinglyLinkedList{
-	private Node head;
-	public SinglyLinkedList(){
-		head = null;
-	}
-	public void insertHead(int x){
-		Node newNode = new Node(x);  
-		newNode.next = head; 		 
-		head = newNode; 			 
-	}
-    Node InsertNth(Node head, int data, int position) {
-        Node newNode = new Node();
-        newNode.data = data;
-        if (position == 0) {
-            newNode.next = head;
-            return newNode;
-        }
-        Node current = head;
-        while (--position > 0) {
-            current = current.next;
-        }
-        newNode.next = current.next;
-        current.next = newNode;
-        return head;
+import java.util.NoSuchElementException;
+class Node {	 
+    public int data;
+    public Node left;
+    public Node right;
+    public Node(int data) {	 
+        this.data = data;
+        this.left = null;
+        this.right = null;
     }
-	public Node deleteHead(){
-		Node temp = head;
-		head = head.next;  
-		return temp;
-	}
-	public boolean isEmpty(){
-		return(head == null);
-	}
-	public void display(){
-		Node current = head;
-		while(current!=null){
-			System.out.print(current.getValue()+" ");
-			current = current.next;
-		}
-		System.out.println();
-	}
-	public static void main(String args[]){
-		SinglyLinkedList myList = new SinglyLinkedList();
-		System.out.println(myList.isEmpty());  
-		myList.insertHead(5);
-		myList.insertHead(7);
-		myList.insertHead(10);
-		myList.display();  
-		myList.deleteHead();
-		myList.display();  
-	}
 }
-class Node{
-	public int value;
-	public Node next;  
-	public Node(int valuein){
-		value = valuein;
-	}
-	public int getValue(){
-		return value;
-	}
+class BST {
+    private Node root;	 
+    public BST() {	 
+        root = null;
+    }
+    public BST(int data) {	 
+        root = new Node(data);
+    }
+    public void insert(int data) {
+        if (root == null) {
+            root = new Node(data);	 
+            return;
+        }
+        Node newNode = new Node(data);	 
+        Node iterator = root;	 
+        Node parent = null;	 
+        while (iterator != null) {
+            parent = iterator;
+            if (data <= iterator.data) {
+                iterator = iterator.left;
+            }
+            else {
+                iterator = iterator.right;
+            }
+        }
+        if (data <= parent.data) {
+            parent.left = newNode;
+        }
+        else {
+            parent.right = newNode;
+        }
+    }
+    public Node search(int data) {	 
+        Node iterator = root;
+        while (iterator != null) {
+            if (iterator.data == data)
+                return iterator;
+            else if (data <= iterator.data)
+                iterator = iterator.left;
+            else
+                iterator = iterator.right;
+        }
+        throw new NoSuchElementException("Element is not found in BST");
+    }
+    public boolean delete(int data) {	 
+        if (root == null) {
+            throw new NoSuchElementException("Cannot perform delete operation, BST is empty");
+        }
+        Node iterator = root;
+        Node parent = null;
+        while (iterator != null) {
+            if (data == iterator.data) {
+                return deleteNode(data, parent);
+            } else  {
+                parent = iterator;
+                if (data <= iterator.data)
+                    iterator = iterator.left;
+                else
+                    iterator = iterator.right;
+            }
+        }
+        throw new NoSuchElementException("Delete Unsuccessful! Element was not found in BST");
+    }
+    private boolean deleteNode(int data, Node parent) {
+        Node child = null;
+        boolean position = false;	 
+        if (data <= parent.data) {
+            child = parent.left;
+            position = true;
+        }
+        else
+            child = parent.right;
+        if (child.left == child.right) {	 
+            child = null;
+            if (position)
+                parent.left = null;
+            else
+                parent.right = null;
+            return true;
+        } else if (child.right == null) {	 
+            if (position)
+                parent.left = child.left;
+            else
+                parent.right = child.left;
+            child.left = null;
+            child = null;
+            return true;
+        } else if (child.left == null) {	 
+            if (position)
+                parent.left = child.right;
+            else
+                parent.right = child.right;
+            child.right = null;
+            child = null;
+            return true;
+        }
+        else {	 
+            Node iterator = child.right;
+            Node parentOfIterator = null;
+            while(iterator.left != null) {	 
+                parentOfIterator = iterator;
+                iterator = iterator.left;
+            }
+            child.data = iterator.data;
+            parentOfIterator.left = null;
+            iterator = null;
+            return true;
+        }
+    }
+    public void printInOrder() {	 
+        if (root == null)
+            throw new NoSuchElementException("Cannot print! BST is empty");
+        print(root);
+        System.out.println("");
+    }
+    private void print(Node iterator) {
+        if (iterator != null) {
+            print(iterator.left);
+            System.out.print(iterator.data + " ");
+            print(iterator.right);
+        }
+    }
+}
+public class BinarySearchTree {
+    public static void main(String[] args) {
+        BST tree = new BST();
+        tree.insert(10);
+        tree.insert(9);
+        tree.insert(3);
+        tree.insert(12);
+        tree.insert(14);
+        tree.insert(7);
+        tree.insert(6);
+        tree.insert(11);
+        tree.insert(1);
+        tree.insert(2);
+        tree.printInOrder();
+        tree.delete(9);
+        tree.printInOrder();
+        try {
+            tree.search(4);
+            System.out.println("Node was found successfully.");
+        } catch (NoSuchElementException e) {
+            System.out.println("Invalid Search");
+        }
+        try {
+            tree.delete(9);
+        } catch (NoSuchElementException  e) {
+            System.out.println("Cannot delete, Node not present.");
+        }
+    }
 }

@@ -1,49 +1,10 @@
-package eu.happycoders.sort.method;
-public class SelectionSort implements SortAlgorithm {
-  @Override
-  public void sort(int[] elements) {
-    int length = elements.length;
-    for (int i = 0; i < length - 1; i++) {
-      int minPos = i;
-      int min = elements[minPos];
-      for (int j = i + 1; j < length; j++) {
-        if (elements[j] < min) {
-          minPos = j;
-          min = elements[minPos];
-        }
-      }
-      if (minPos != i) {
-        elements[minPos] = elements[i];
-        elements[i] = min;
-      }
-    }
-  }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    int length = elements.length;
-    for (int i = 0; i < length - 1; i++) {
-      counters.incIterations();
-      int minPos = i;
-      int min = elements[minPos];
-      counters.incReads();
-      counters.incLocalVariableAssignments();
-      for (int j = i + 1; j < length; j++) {
-        counters.incIterations();
-        int numAtJ = elements[j];
-        counters.incReads();
-        counters.incComparisons();
-        if (numAtJ < min) {
-          minPos = j;
-          min = numAtJ;
-          counters.incLocalVariableAssignments();
-        }
-      }
-      if (minPos != i) {
-        elements[minPos] = elements[i];
-        counters.incReads();
-        elements[i] = min;
-        counters.incWrites();
-      }
-    }
-  }
-}
+def selection_sort(nums):
+    for i in range(len(nums)):
+        lowest_value_index = i
+        for j in range(i + 1, len(nums)):
+            if nums[j] < nums[lowest_value_index]:
+                lowest_value_index = j
+        nums[i], nums[lowest_value_index] = nums[lowest_value_index], nums[i]
+random_list_of_nums = [12, 8, 3, 20, 11]
+selection_sort(random_list_of_nums)
+print(random_list_of_nums)

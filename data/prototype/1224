@@ -1,49 +1,21 @@
-public class Sorting {
-	public static void InsertionSort(String[] words)
-	{
-		String key;
-		int count;
-		for (int i = 1; i < words.length; i++)
-		{
-			key = words[i];
-			count = i-1;
-			while (count >= 0 && words[count].compareToIgnoreCase(key) > 0)
-			{
-				words[count+1] = words[count];
-				count = count-1;
-			}
-			words[count+1] = key;
-		}
-	}
-	public static int[] SelectionSort(int[] A)
-	{
-		int temp = A[0];
-		int largest = A[0];
-		int [] sortedNumbers = new int[A.length];
-		for (int a = 0; a < A.length; a++)
-		{
-			for (int i = 0; i < A.length; i++)
-			{
-				if (temp > (A[i]))
-				{
-					temp = A[i];
-				}
-				if (largest < A[i])
-				{
-					largest = A[i];
-				}
-			}
-			sortedNumbers[a] = temp;
-			for (int i = 0; i < A.length; i++)
-			{
-				if (A[i] == temp)
-				{
-					A[i] = largest + 1;
-					break;
-				}
-			}
-			temp = largest;
-		}
-		return sortedNumbers;	
-	}
+var array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
+function swap(array, i, j) {
+  var temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
 }
+function selectionSort(array) {
+  for(var i = 0; i < array.length; i++) {
+    var min = i;
+    for(var j = i + 1; j < array.length; j++) {
+      if(array[j] < array[min]) {
+        min = j;
+      }
+    }
+    if(i !== min) {
+      swap(array, i, min);
+    }
+  }
+  return array;
+}
+console.log(selectionSort(array));  

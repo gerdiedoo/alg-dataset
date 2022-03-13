@@ -1,21 +1,57 @@
-package project1.sorts;
-import project1.ExperimentalResultsData;
-public final class InsertionSort<E extends Comparable<E>> implements Sort<E> {
-    @Override
-    public SortType sort(ExperimentalResultsData experimentalResultsData, E[] list) {
-        for (int i = 0; i < list.length; i++) {
-            E currentElement = list[i];
-            int k;
-            experimentalResultsData.setComparisons(experimentalResultsData.getComparisons() + 1);
-            for (k = i - 1; k >= 0 && list[k].compareTo(currentElement) > 0; k--) {
-                experimentalResultsData.setComparisons(experimentalResultsData.getComparisons() + 1);
-                list[k + 1] = list[k];
-            }
-            if (k + 1 != i) {
-                experimentalResultsData.setMovements(experimentalResultsData.getMovements() + 1);
-            }
-            list[k + 1] = currentElement;
-        }
-        return SortType.INSERTION_SORT;
+package Sorting;
+import java.util.ArrayList;
+public class Merge {
+	public static <T extends Comparable<T>> void mergeSort(T arr[])
+    {
+		mergeSortHelper(arr,0,arr.length - 1);
     }
-}
+	private static <T extends Comparable<T>> void mergeSortHelper(T arr[], int left, int right)
+    {
+        if (left < right)
+        {
+            int middle = (left + right)/2;
+            mergeSortHelper(arr, left, middle);
+            mergeSortHelper(arr , middle + 1, right);
+            merge(arr, left, middle, right);
+        }
+    }
+	private static <T extends Comparable<T>> void merge(T arr[], int left, int middle, int right)
+    {
+        int first = middle - left + 1;
+        int second = right - middle;
+        ArrayList<T> L = new ArrayList <T>();
+        ArrayList<T> R = new ArrayList <T>();
+        for (int i=0; i<first; ++i)
+            L.add(i,arr[left + i]);
+        for (int j=0; j<second; ++j)
+        	R.add(j,arr[middle + j + 1]);
+        int i = 0, j = 0;
+        int k = left;
+        while (i < first && j < second)
+        {
+            if (L.get(i).compareTo(R.get(j)) <= 0)
+            {
+                arr[k] = L.get(i);
+                i++;
+            }
+            else
+            {
+                arr[k] = R.get(j);
+                j++;
+            }
+            k++;
+        }
+        while (i < first)
+        {
+            arr[k] = L.get(i);
+            i++;
+            k++;
+        }
+        while (j < second)
+        {
+            arr[k] = R.get(j);
+            j++;
+            k++;
+        }
+    }
+ }

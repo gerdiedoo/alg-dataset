@@ -1,22 +1,18 @@
-function mergeSort(items) {
-  if (items.length < 2) {
-    return items;
-  }
-  const middle = Math.floor(items.length / 2);
-  const left = items.slice(0, middle);
-  const right = items.slice(middle);
-  const params = _merge(mergeSort(left), mergeSort(right));
-  params.unshift(0, items.length);
-  items.splice(...params);
-  return items;
-  function _merge(left, right) {
-    const result = [];
-    let il = 0;
-    let ir = 0;
-    while (il < left.length && ir < right.length) {
-      result.push(left[il] < right[ir] ? left[il++] : right[ir++]);
-    }
-    return result.concat(left.slice(il)).concat(right.slice(ir));
-  }
-}
-module.exports = {mergeSort};
+from __future__ import print_function
+def quick_sort(ARRAY):
+    ARRAY_LENGTH = len(ARRAY)
+    if( ARRAY_LENGTH <= 1):
+        return ARRAY
+    else:
+        PIVOT = ARRAY[0]
+        GREATER = [ element for element in ARRAY[1:] if element > PIVOT ]
+        LESSER = [ element for element in ARRAY[1:] if element <= PIVOT ]
+        return quick_sort(LESSER) + [PIVOT] + quick_sort(GREATER)
+if __name__ == '__main__':
+    try:
+        raw_input          
+    except NameError:
+        raw_input = input  
+    user_input = raw_input('Enter numbers separated by a comma:\n').strip()
+    unsorted = [ int(item) for item in user_input.split(',') ]
+    print( quick_sort(unsorted) )

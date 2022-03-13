@@ -1,28 +1,36 @@
+package sortingalgorithms;
+import cnode.CNode;
+import java.util.ArrayList;
 import java.util.Arrays;
-public class InsertionSort {
-	private int [] input;
-	public InsertionSort(int [] input) {
-		this.input = input.clone();
-	}
-	public int [] sort(){
-		for (int i = 1; i < this.input.length; i++) {
-			int j = i;
-			while (j > 0 && this.input[j] < this.input[j - 1]){
-				swap(j - 1,j);
-				j--;
-			}
-		}
-		return this.input;
-	}
-	private void swap(int i, int j){  
-		int tmp = this.input[i];
-		this.input[i] = this.input[j];
-		this.input[j] = tmp;
-	}
-	public static void main(String[] args) {
-		int array[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
-		InsertionSort insertionsort = new InsertionSort(array);
-		System.out.println("Unsorted Array -> "+ Arrays.toString(array));
-		System.out.println("InsertionSort -> "+ Arrays.toString(insertionsort.sort()));  
-	}
+import java.util.List;
+import javafx.animation.FillTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.Transition;
+import javafx.scene.paint.Color;
+public class InsertionSort extends AbstractSort {
+  private ArrayList<Transition> transitions;
+  public InsertionSort() {
+    this.transitions = new ArrayList<>();
+  }
+  @Override
+  public ArrayList<Transition> startSort(CNode[] arr) {
+    for (int i = 1; i < arr.length; i++) {
+      int j = i - 1;
+      CNode key = arr[i];
+      int keyIndx = i;
+      ParallelTransition pt = new ParallelTransition();
+      transitions.add(colorCNode(arr, SELECT_COLOR, i));
+      while(j >= 0 && arr[j].getValue() > key.getValue()) {
+        pt.getChildren().add(arr[j].moveX(DX));
+        arr[j + 1] = arr[j];
+        j--;
+      }
+      arr[j + 1] = key;
+      pt.getChildren().add(key.moveX(DX * (j + 1 - i)));
+      transitions.add(pt);
+      transitions.add(colorCNode(arr, START_COLOR, j + 1));
+    }
+    transitions.add(colorCNode(Arrays.asList(arr), SORTED_COLOR));
+    return transitions;
+  }
 }

@@ -1,27 +1,24 @@
-package Sorting;
-public class BubbleSort {
+public class SortingAnArray {
     public static void main(String[] args) {
-        int[] arr={20,35,-15,7,55,1,-22};
-        BS(arr);
-    }
-    public static void BS(int[] arr){
-        for (int lui = arr.length-1; lui>0; lui--){
-            for(int i=0;i<lui;i++){
-                if (arr[i]>arr[i+1]){
-                    swap(arr,i,i+1);
+        int[] array = {6,4,2,5,0,1,3};
+        System.out.print("Current Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.print("\n");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if(array[i] > array[j]){
+                    int tempVar = array[i];
+                    array[i] = array[j];
+                    array[j] = tempVar;
                 }
             }
         }
-        for(int j=0;j<arr.length;j++){
-            System.out.print(arr[j]+" ");
+        System.out.print("Sorted Array: ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
-    }
-    public static void swap(int[] arr,int i,int j){
-        if (i==j){
-            return;
-        }
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        System.out.print("\n");
     }
 }

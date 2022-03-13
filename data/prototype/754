@@ -1,87 +1,38 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class InsertionSort {
-    private int COMPARISONS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int array[]) {
-        COMPARISONS_COUNT = 0;
-        LOOP_COUNT = 0;
-        for (int index = 1; index < array.length; index++) {
-            LOOP_COUNT++;
-            ____cyan("\n--------\nindex: " + index);
-            insert(array, index);
-        }
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+public class Solution {
+    static void insertionSort2(int n, int[] arr) {
+         for(int i=1;i<n;i++){
+          int key=arr[i];
+          int j=i-1;
+          while( j>=0 && arr[j]>key){
+              arr[j+1]=arr[j];
+              j=j-1;
+          }
+          arr[j+1]=key;
+               for(int k=0;k<n;k++){
+          System.out.print(arr[k]+" ");
+      }
+      System.out.println();
+      }
     }
-    private void insert(int array[], int currentIndex) {
-        int value = array[currentIndex];
-        ____grey("value: " + value);
-        ____grey("currentIndex: " + currentIndex);
-        int reverseIndex = currentIndex;
-        ____grey("reverseIndex: " + reverseIndex);
-        for (int i = currentIndex - 1; i >= 0; i--) {
-            LOOP_COUNT++;
-            ____grey("\ni: " + i);
-            COMPARISONS_COUNT++;
-            if (array[i] >= value) {
-                ____blue("Move element " + array[i] + " to position " + (i + 1));
-                ____blue("new reverseIndex: " + i);
-                array[i + 1] = array[i];
-                reverseIndex = i;
-                System.out.print("[" + value + "]");
-                __red(" ==> ");
-                __dump(array);
-            } else {
-                ____grey("breaking");
-                break;
-            }
-        }
-        ____grey("\nreverseIndex (after loop): " + reverseIndex + ", put value here");
-        array[reverseIndex] = value;
-        __red("==> ");
-        __dump(array);
-    }
-    private void sampleInsert(int array[], int value) {
-        ____grey("value: " + value);
-        int reverseIndex = array.length - 1;
-        ____grey("reverseIndex: " + reverseIndex);
-        for (int i = array.length - 2; i >= 0; i--) {
-            ____grey("\ni: " + i);
-            if (array[i] >= value) {
-                ____blue("Move element to: " + (i + 1));
-                ____blue("new reverseIndex: " + i);
-                array[i + 1] = array[i];
-                reverseIndex = i;
-            } else {
-                ____grey("breaking");
-                break;
-            }
-        }
-        ____grey("\nreverseIndex (after loop): " + reverseIndex + ", put value here");
-        array[reverseIndex] = value;
-    }
+    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        InsertionSort insertionSort = new InsertionSort();
-        insertionSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(insertionSort.COMPARISONS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(insertionSort.LOOP_COUNT);
-        System.out.print("\n");
-        System.out.println("***********************\n");
-        System.out.println("Insert item to sorted array.");
-        int sortedArray[] = {1, 2, 3, 4, 5, 6, Integer.MAX_VALUE};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nInserting");
-        insertionSort.sampleInsert(sortedArray, 4);
-        __green("\nResult: ");
-        __dump(sortedArray);
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        int[] arr = new int[n];
+        String[] arrItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        for (int i = 0; i < n; i++) {
+            int arrItem = Integer.parseInt(arrItems[i]);
+            arr[i] = arrItem;
+        }
+        insertionSort2(n, arr);
+        scanner.close();
     }
 }

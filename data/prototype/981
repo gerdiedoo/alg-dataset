@@ -1,25 +1,28 @@
-mergev2Sort = (function() {
-  var merge = function(a, b, left, right, end) {
-    for (var i = left, j = right, k = left; k < end; k++) {
-      if (i < right && (j >= end || a[i] <= a[j]))
-        b[k] = a[i++];
-      else
-        b[k] = a[j++];
-    }
-  };
-  var impl = function(a, b, n) {
-    for (var width = 1; width < n; width <<= 1) {
-      for (var i = 0; i < n; i = i + (width << 1)) {
-        merge(a, b, i, Math.min(i + width, n), Math.min(i + (width << 1), n));
-      }
-      for (i = 0; i < n; i++)
-        a[i] = b[i];
-    }
-  };
-  return function(array) {
-    var a = array.slice(0),
-        b = a.slice(0);
-    impl(a, b, a.length);
-    return a;
-  };
-})();
+from __future__ import print_function
+def quick_sort_3partition(sorting, left, right):
+    if right <= left:
+        return
+    a = i = left
+    b = right
+    pivot = sorting[left]
+    while i <= b:
+        if sorting[i] < pivot:
+            sorting[a], sorting[i] = sorting[i], sorting[a]
+            a += 1
+            i += 1
+        elif sorting[i] > pivot:
+            sorting[b], sorting[i] = sorting[i], sorting[b]
+            b -= 1
+        else:
+            i += 1
+    quick_sort_3partition(sorting, left, a - 1)
+    quick_sort_3partition(sorting, b + 1, right)
+if __name__ == '__main__':
+    try:
+        raw_input          
+    except NameError:
+        raw_input = input  
+    user_input = raw_input('Enter numbers separated by a comma:\n').strip()
+    unsorted = [ int(item) for item in user_input.split(',') ]
+    quick_sort_3partition(unsorted,0,len(unsorted)-1)
+    print(unsorted)

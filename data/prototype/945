@@ -1,56 +1,43 @@
-import java.lang.Comparable;
-import java.util.List;
-import java.util.ArrayList;
-public class MergeSort<T extends Comparable<T>> implements SortingAlg<T> {
-    private List<T> buffer;
-    @Override
-    public void sort(List<T> elements) {
-        if (elements == null)
-            return;
-        this.buffer = new ArrayList<T>(elements.size());
-        sort(elements, 0, elements.size() - 1);
-        this.buffer = null;
+public class MyClass {
+    public static void main(String args[]) {
+     int[] arr={29,40,1,30,22};
+     int leng=arr.length;
+     MyClass qsm=new MyClass();
+     qsm.quickSortMiddle(arr,0,leng-1);
+      printArray(arr);
     }
-    private void sort(List<T> elements, int min, int max) {
-        if (min == max)
-            return;
-        int mid = (min + max) >> 1;
-        sort(elements, min, mid);
-        sort(elements, mid + 1, max);
-        merge(elements, min, mid, max);
-    }
-    private void merge(List<T> elements, int min, int mid, int max) {
-        if (lessThanOrEquals(elements.get(mid), elements.get(mid+1)))
-            return;
-        for (int k = min; k <= max; k++)
-            this.buffer.add(k, elements.get(k));
-        int left = min;
-        int right = mid + 1;
-        for (int k = min; k <= max; k++) {
-            if (left > mid)
-                elements.set(k, this.buffer.get(right++));
-            else if (right > max)
-                elements.set(k, this.buffer.get(left++));
-            else if (lessThan(this.buffer.get(left), this.buffer.get(right)))
-                elements.set(k, this.buffer.get(left++));
-            else
-                elements.set(k, this.buffer.get(right++));
+    int partition(int[] arr,int low,int high){
+        int pivot=arr[(low+high)/2];
+        while(low<=high){
+            while(arr[low]<pivot){
+                low++;
+            }
+            while(arr[high]>pivot){
+                high--;
+            }
+            if(low<=high){
+                int temp=arr[low];
+                arr[low]=arr[high];
+                arr[high]=temp;
+                low++;
+                high--;
+            }
         }
+        return low;
     }
-    private boolean lessThanOrEquals(T first, T second) {
-        return (first.compareTo(second) <= 0);
+    void quickSortMiddle(int[] arr,int low,int high){
+        int pi=partition(arr,low,high);
+        if(low<pi-1){
+            quickSortMiddle(arr,low,pi-1);
+       }
+       if(pi<high){
+           quickSortMiddle(arr,pi,high);
+       }
     }
-    private boolean lessThan(T first, T second) {
-        return (first.compareTo(second) < 0);
-    }
-    public static void main(String[] args) {
-        SortingAlg<Integer> alg = new MergeSort<Integer>();
-        List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
-        alg.sort(elems);
-        for (int i = 0; i < elems.size() - 1; i++) {
-            if (elems.get(i).compareTo(elems.get(i+1)) > 0)
-                throw new java.lang.RuntimeException("Elems should be sorted.");
+     static void printArray(int arr[]){
+        int n=arr.length;
+        for(int i=0;i<n;i++){
+            System.out.println(arr[i]+" ");
         }
-        System.out.println("All tests passed.");
     }
 }

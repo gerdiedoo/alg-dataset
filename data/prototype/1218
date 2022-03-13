@@ -1,32 +1,45 @@
-var arrayRandom = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
-var arrayOrdered = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var arrayReversed = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-function swap(array, i, j) {
-  var temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-}
-function selectionSort(array) {
-  var countOuter = 0;
-  var countInner = 0;
-  var countSwap = 0;
-  for(var i = 0; i < array.length; i++) {
-    countOuter++;
-    var min = i;
-    for(var j = i + 1; j < array.length; j++) {
-      countInner++;
-      if(array[j] < array[min]) {
-        min = j;
-      }
-    }
-    if(i !== min) {
-      countSwap++;
-      swap(array, i, min);
-    }
+package sortingalgorithms;
+import cnode.CNode;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javafx.animation.FillTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.Transition;
+import javafx.scene.paint.Color;
+public class SelectionSort extends AbstractSort {
+  private static final Color MININDX_COLOR = Color.ORANGE;
+  private static final Color NEW_MININDX_COLOR = Color.LIGHTGREEN;
+  private ParallelTransition colorCNode(CNode[] arr, int a, int b, Color colorA, Color colorB) {
+    ParallelTransition pt = new ParallelTransition();
+    pt.getChildren().addAll(colorCNode(arr, colorA, a), colorCNode(arr, colorB, b));
+    return pt;
   }
-  console.log('outer:', countOuter, 'inner:', countInner, 'swap:', countSwap);
-  return array;
+  @Override
+  public ArrayList<Transition> startSort(CNode[] arr) {
+    ArrayList<Transition> transitions = new ArrayList<>();
+    int minIndx;
+    for (int i = 0; i < arr.length - 1; i++) {
+      minIndx = i;
+      transitions.add(colorCNode(arr, NEW_MININDX_COLOR, minIndx));
+      for (int j = i + 1; j < arr.length; j++) {
+        transitions.add(colorCNode(arr, SELECT_COLOR, j));
+        if (arr[j].getValue() < arr[minIndx].getValue()) {
+          if (minIndx == i) {
+            transitions.add(colorCNode(arr, minIndx, j, MININDX_COLOR, NEW_MININDX_COLOR));
+          } else {
+            transitions.add(colorCNode(arr, minIndx, j, Color.CRIMSON, NEW_MININDX_COLOR));
+          }
+          minIndx = j;
+        } else {
+          transitions.add(colorCNode(arr, START_COLOR, j));
+        }
+      }
+      if (minIndx != i) {
+        transitions.add(swap(arr, i, minIndx));
+      }
+        transitions.add(colorCNode(arr, START_COLOR, i, minIndx));
+    }
+    transitions.add(colorCNode(Arrays.asList(arr), SORTED_COLOR));
+    return transitions;
+  }
 }
-selectionSort(arrayRandom.slice());  
-selectionSort(arrayOrdered.slice());  
-selectionSort(arrayReversed.slice());  

@@ -1,10 +1,50 @@
-def binarySearch(inputArray,x):
-	if (inputArray[-1] > x):
-		mid = len(inputArray)//2 
-  if (inputArray[mid] == x): 
-			return true    
-  if (inputArray[mid] > x): 
-			return binarySearch(inputArray[:mid],x)
-  return binarySearch(inputArray[mid:],x)
- else:
-		return false
+import java.util.*;
+public class UnionFindDS {
+    private ArrayList<Integer> parent; 
+    private ArrayList<Integer> rank; 
+    private ArrayList<Integer> setSize; 
+    private int numSets; 
+    public UnionFindDS(int nSets) { 
+        parent = new ArrayList<Integer>(nSets);
+        rank = new ArrayList<Integer>(nSets);
+        setSize = new ArrayList<Integer>(nSets);
+        numSets = nSets;
+        for (int i = 0; i < nSets; i++) {
+            parent.add(i); 
+            rank.add(0); 
+            setSize.add(1); 
+        }
+    }
+    public int findSetOf(int elem)  { 
+        if (parent.get(elem) == elem) 
+            return elem;
+        int ret = findSetOf(parent.get(elem)); 
+        parent.set(elem, ret); 
+        return ret;
+    }
+    public boolean inSameSet(int elem1, int elem2) { 
+        return findSetOf(elem1) == findSetOf(elem2);
+    }
+    public void unionSets(int elem1, int elem2) { 
+        if (!inSameSet(elem1, elem2)) {
+            numSets--;
+            int p1 = findSetOf(elem1);
+            int p2 = findSetOf(elem2);
+            if (rank.get(p1) > rank.get(p2)) {
+                parent.set(p2, p1); 
+                setSize.set(p1, setSize.get(p1) + setSize.get(p2)); 
+            } else {
+                parent.set(p1, p2); 
+                setSize.set(p2, setSize.get(p1) + setSize.get(p2)); 
+                if (rank.get(p1) == rank.get(p2)) 
+                    rank.set(p1, rank.get(p1) + 1);
+            }
+        }
+    }
+    public int getNumDisjointSets() {
+        return numSets;
+    }
+    public int sizeOfSet(int elem) {
+        return setSize.get(findSetOf(elem));
+    }
+}

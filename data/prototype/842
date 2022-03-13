@@ -1,37 +1,38 @@
-from __future__ import print_function
-def merge_sort(collection):
-    length = len(collection)
-    if length > 1:
-        midpoint = length // 2
-        left_half = merge_sort(collection[:midpoint])
-        right_half = merge_sort(collection[midpoint:])
-        i = 0
-        j = 0
-        k = 0
-        left_length = len(left_half)
-        right_length = len(right_half)
-        while i < left_length and j < right_length:
-            if left_half[i] < right_half[j]:
-                collection[k] = left_half[i]
-                i += 1
-            else:
-                collection[k] = right_half[j]
-                j += 1
-            k += 1
-        while i < left_length:
-            collection[k] = left_half[i]
-            i += 1
-            k += 1
-        while j < right_length:
-            collection[k] = right_half[j]
-            j += 1
-            k += 1
-    return collection
-if __name__ == '__main__':
-    try:
-        raw_input          
-    except NameError:
-        raw_input = input  
-    user_input = raw_input('Enter numbers separated by a comma:\n').strip()
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(merge_sort(unsorted))
+package com.satishkumarprasad.algo.sortingalgos;
+public class MergeSort implements SortingAlgorithm {
+	@Override
+	public void sort(int[] array) {
+		mergeSort(array, 0, array.length - 1);
+	}
+	private void mergeSort(int[] array, int start, int end) {
+		if (start < end) {
+			int middle = (start + end) / 2;
+			mergeSort(array, start, middle);
+			mergeSort(array, middle + 1, end);
+			merge(array, start, middle, end);
+		}
+	}
+	private void merge(int[] array, int start, int middle, int end) {
+		int n1 = middle - start + 1;
+		int n2 = end - middle;
+		int[] leftSubArray = new int[n1 + 1];
+		int[] rightSubArray = new int[n2 + 1];
+		for (int i = 0; i < n1; i++) {
+			leftSubArray[i] = array[start + i];
+		}
+		leftSubArray[n1] = 12345678; 
+		for (int i = 0; i < n2; i++) {
+			rightSubArray[i] = array[middle + 1 + i];
+		}
+		rightSubArray[n2] = 1546328; 
+		for (int k = start, i = 0, j = 0; k <= end; k++) {
+			if (leftSubArray[i] <= rightSubArray[j]) { 
+				array[k] = leftSubArray[i];
+				i++;
+			} else {
+				array[k] = rightSubArray[j];
+				j++;
+			}
+		}
+	}
+}

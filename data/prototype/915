@@ -1,49 +1,92 @@
-package me.gilday.revision.sorting.merge;
-import java.util.Arrays;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-public class MergeSort {
-	private static Logger logger = LoggerFactory.getLogger(MergeSort.class);
-	public static int[] sort(int[] values) {
-		logger.trace("Sorting {}", Arrays.toString(values));
-		if(values.length <= 1) {
-			return values;
-		}
-		int elementsInLeft = values.length / 2;
-		int elementsInRight = values.length - elementsInLeft;
-		int[] left, right;
-		left = new int[elementsInLeft];
-		right = new int[elementsInRight];
-		logger.trace("Left {} and Right {}", Arrays.toString(left), Arrays.toString(right));
-		for (int i = 0; i < elementsInLeft; i++) {
-			left[i] = values[i];
-		}
-		for (int i = elementsInLeft; i <values.length; i++) {
-			right[i - elementsInLeft] = values[i];
-		}
-		logger.trace("Left {} and Right {}", Arrays.toString(left), Arrays.toString(right));
-		left = sort(left);
-		right = sort(right);
-		return merge(left, right);
-	}
-	private static int[] merge(int[] left, int[] right) {
-		logger.trace("Merging {} with {}", Arrays.toString(left), Arrays.toString(right));
-		int[] result = new int[left.length + right.length];
-		int i=0, l=0, r=0;
-		while(l != left.length && r != right.length) {
-			if(left[l] < right[r]) {
-				result[i++] = left[l++];
-			} else {
-				result[i++] = right[r++];
-			}
-		}
-		while(l != left.length) {
-			result[i++] = left[l++];
-		}
-		while(r != right.length) {
-			result[i++] = right[r++];
-		}
-		logger.trace("Merge result: {}", Arrays.toString(result));
-		return result;
-	}
+package eu.happycoders.sort.method.mergesort;
+import eu.happycoders.sort.method.*;
+public class MergeSort2 implements SortAlgorithm {
+  private static final int MAX_INPUT_SIZE = 1 << 28;
+  @Override
+  public void sort(int[] elements) {
+    mergeSort(elements, 0, elements.length - 1);
+  }
+  private void mergeSort(int[] elements, int left, int right) {
+    if (left == right) return;
+    int middle = left + (right - left) / 2;
+    mergeSort(elements, left, middle);
+    mergeSort(elements, middle + 1, right);
+    merge(elements, left, middle, right);
+  }
+  void merge(int[] elements, int leftStart, int leftEnd, int rightEnd) {
+    int leftPos = leftStart;
+    int rightPos = leftEnd + 1;
+    int length = rightEnd + 1 - leftPos;
+    int[] target = new int[length];
+    int targetPos = 0;
+    while (leftPos <= leftEnd && rightPos <= rightEnd) {
+      int leftValue = elements[leftPos];
+      int rightValue = elements[rightPos];
+      if (leftValue <= rightValue) {
+        target[targetPos++] = leftValue;
+        leftPos++;
+      } else {
+        target[targetPos++] = rightValue;
+        rightPos++;
+      }
+    }
+    while (leftPos <= leftEnd) {
+      target[targetPos++] = elements[leftPos++];
+    }
+    while (rightPos <= rightEnd) {
+      target[targetPos++] = elements[rightPos++];
+    }
+    System.arraycopy(target, 0, elements, leftStart, length);
+  }
+  @Override
+  public void sort(int[] elements, Counters counters) {
+    mergeSort(elements, 0, elements.length - 1, counters);
+  }
+  private void mergeSort(int[] elements, int left, int right,
+                         Counters counters) {
+    if (left == right) return;
+    int middle = left + (right - left) / 2;
+    mergeSort(elements, left, middle, counters);
+    mergeSort(elements, middle + 1, right, counters);
+    merge(elements, left, middle, right, counters);
+  }
+  void merge(int[] elements, int leftStart, int leftEnd, int rightEnd,
+             Counters counters) {
+    int leftPos = leftStart;
+    int rightPos = leftEnd + 1;
+    int length = rightEnd + 1 - leftPos;
+    int[] target = new int[length];
+    int targetPos = 0;
+    while (leftPos <= leftEnd && rightPos <= rightEnd) {
+      counters.incIterations();
+      int leftValue = elements[leftPos];
+      int rightValue = elements[rightPos];
+      counters.addReads(2);
+      counters.incComparisons();
+      counters.incWrites();
+      if (leftValue <= rightValue) {
+        target[targetPos++] = leftValue;
+        leftPos++;
+      } else {
+        target[targetPos++] = rightValue;
+        rightPos++;
+      }
+    }
+    while (leftPos <= leftEnd) {
+      counters.incIterations();
+      target[targetPos++] = elements[leftPos++];
+      counters.incReadsAndWrites();
+    }
+    while (rightPos <= rightEnd) {
+      counters.incIterations();
+      target[targetPos++] = elements[rightPos++];
+      counters.incReadsAndWrites();
+    }
+    System.arraycopy(target, 0, elements, leftStart, length);
+    counters.addReadsAndWrites(length);
+  }
+  @Override
+  public boolean isSuitableForInputSize(int size) {
+    return size <= MAX_INPUT_SIZE;
+  }
 }

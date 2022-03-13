@@ -1,13 +1,13 @@
-public class binarySearch{
-	public static boolean search(int[] inputArray, int x){
-		if (x > inputArray[inputArray.length-1] ){
-			int mid = inputArray.length/2;
-			if (inputArray[mid] == x){
-				return true;
-			}if (inputArray[mid]>x){
-				return search(Arrays.copyOfRange(inputArray,0,mid),x);
+package com.deepak.algorithms.Searching;
+public class LinearSearch {
+	public static int performLinearSearch(int[] listOfValues, int targetValue) {
+		int index = -1;
+		for (int i=0; i < listOfValues.length; i++) {
+			if (listOfValues[i] == targetValue) {
+				index = i;
+				break;
 			}
-			return search(Arrays.copyOfRange(inputArray,mid,inputArray[inputArray.length-1]),x);
 		}
+		return index;
 	}
 }

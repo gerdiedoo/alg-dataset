@@ -1,70 +1,42 @@
-Pseudo Code for recursive QuickSort function :
-quickSort(arr[], low, high)
-{
-    if (low < high)
-    {
-        pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);   
-        quickSort(arr, pi + 1, high);  
+package dev.jeffreybender.sort;
+import java.util.Comparator;
+public final class QuickSort {
+    private QuickSort() {
     }
-}
-Pseudo code for partition():
-partition (arr[], low, high)
-{
-    pivot = arr[high];  
-    i = (low - 1)   
-    for (j = low; j <= high- 1; j++)
-    {
-        if (arr[j] < pivot)
-        {
-            i++;     
-            swap arr[i] and arr[j]
+    public static <T> void sort(T[] array, Comparator<? super T> comparator) {
+        if (array.length <= 1) {
+            return;
+        }
+        if (comparator == null) {
+            comparator = SortUtils.getDefaultComparator();
+        }
+        quickSort(array, 0, array.length - 1, comparator);
+    }
+    public static <T extends Comparable<? super T>> void sort(T[] array) {
+        sort(array, null);
+    }
+    private static <T> void quickSort(T[] array, int low, int high, Comparator<T> comparator) {
+        if (low < high) {
+            int partitionIndex = partition(array, low, high, comparator);
+            quickSort(array, low, partitionIndex, comparator);
+            quickSort(array, partitionIndex + 1, high, comparator);
         }
     }
-    swap arr[i + 1] and arr[high])
-    return (i + 1)
+    private static <T> int partition(T[] array, int low, int high, Comparator<T> comparator) {
+        T pivot = array[low + ((high - low) / 2)];
+        int left = low - 1;
+        int right = high + 1;
+        while (left < right) {
+            do {
+                left++;
+            } while (comparator.compare(array[left], pivot) < 0);
+            do {
+                right--;
+            } while (comparator.compare(array[right], pivot) > 0);
+            if (left < right) {
+                SortUtils.swap(array, left, right);
+            }
+        }
+        return right;
+    }
 }
-*/
-class QuickSort 
-{ 
-	int partition(int arr[], int low, int high) 
-	{ 
-		int pivot = arr[high]; 
-		int i = (low-1);  
-		for (int j=low; j<high; j++) 
-		{ 
-			if (arr[j] < pivot) 
-			{ 
-				i++; 
-				int temp = arr[i]; 
-				arr[i] = arr[j]; 
-				arr[j] = temp; 
-			} 
-		} 
-		int temp = arr[i+1]; 
-		arr[i+1] = arr[high]; 
-		arr[high] = temp; 
-		return i+1; 
-	} 
-	void sort(int arr[], int low, int high) 
-	{ 
-		if (low < high) 
-		{ 
-			int pi = partition(arr, low, high); 
-			sort(arr, low, pi-1); 
-			sort(arr, pi+1, high); 
-		} 
-	} 
-	public static void main(String args[]) 
-	{ 
-		int arr[] = {10, 7, 8, 9, 1, 5}; 
-		int n = arr.length; 
-		QuickSort ob = new QuickSort(); 
-		ob.sort(arr, 0, n-1); 
-		System.out.println("sorted array"); 
-		int n = arr.length; 
-		for (int i=0; i<n; ++i) 
-			System.out.print(arr[i]+" "); 
-		System.out.println();  
-	} 
-} 

@@ -1,22 +1,14 @@
-import copy
-import sort_tools
-def selection_sort(data, low, high):
-    for i in range(low, high):
-        min = i
-        for j in range(i+1, high):
-            if data[j] < data[min]:
-                min = j
-        temp = data[i]
-        data[i] = data[min]
-        data[min] = temp
-@sort_tools.timeit('selection')            
-def sort(data):
-    selection_sort(data, 0, len(data))
-def main():
-    data = sort_tools.build_data_set(20)
-    unsorted = copy.deepcopy(data)
-    sort(unsorted)
-    print(data)
-    print(unsorted)
-if __name__ == "__main__":
-    main()
+exports.selectionSort = ({ list }, { shouldSwap, swap }) => {
+  for (let i = 0; i < list.length - 1; i += 1) {
+    let selectedIndex = i;
+    for (let j = i + 1; j < list.length; j += 1) {
+      if (shouldSwap(selectedIndex, j)) {
+        selectedIndex = j;
+      }
+    }
+    if (selectedIndex !== i) {
+      swap(selectedIndex, i);
+    }
+  }
+  return list;
+};

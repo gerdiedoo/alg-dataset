@@ -1,37 +1,25 @@
-package sorting;
-import java.util.Arrays;
-public class MergeSort<T extends Comparable<T>> implements Sort<T> {
-    private final PartialSort<T> algorithmSmallN;
-    private final int thresholdSmallN;
-    public MergeSort(PartialSort<T> algorithmSmallN, int thresholdSmallN) {
-        this.algorithmSmallN = algorithmSmallN;
-        this.thresholdSmallN = thresholdSmallN;
+mergev2Sort = (function() {
+  var merge = function(a, b, left, right, end) {
+    for (var i = left, j = right, k = left; k < end; k++) {
+      if (i < right && (j >= end || a[i] <= a[j]))
+        b[k] = a[i++];
+      else
+        b[k] = a[j++];
     }
-    @Override
-    public void sort(T[] items) {
-        sort(items, 0, items.length - 1);
+  };
+  var impl = function(a, b, n) {
+    for (var width = 1; width < n; width <<= 1) {
+      for (var i = 0; i < n; i = i + (width << 1)) {
+        merge(a, b, i, Math.min(i + width, n), Math.min(i + (width << 1), n));
+      }
+      for (i = 0; i < n; i++)
+        a[i] = b[i];
     }
-    public void sort(T[] items, int min, int max) {
-        if (max - min + 1 < thresholdSmallN) {
-            algorithmSmallN.sortPartially(items, min, max + 1);
-        } else {
-            int mid = min + (max - min + 1) / 2;
-            sort(items, min, mid);
-            sort(items, mid, max);
-            merge(items, min, mid, max);
-        }
-    }
-    private void merge(T items[], int min, int mid, int max) {
-        T buf[] = Arrays.copyOfRange(items, min, mid);
-        int readBuf = 0;
-        int readArray = mid;
-        int write = min;
-        while (readBuf < buf.length) {
-            if (readArray == max || buf[readBuf].compareTo(items[readArray]) < 0) {
-                items[write++] = buf[readBuf++];
-            } else {
-                items[write++] = items[readArray++];
-            }
-        }
-    }
-}
+  };
+  return function(array) {
+    var a = array.slice(0),
+        b = a.slice(0);
+    impl(a, b, a.length);
+    return a;
+  };
+})();

@@ -1,75 +1,78 @@
-package vlsi.utils;
-import com.github.andrewoma.dexx.collection.Pair;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-class CompactHashMapClassEmptyDefaults<K, V> extends CompactHashMapClass<K, V> {
-    private Map<K, CompactHashMapClassEmptyDefaults<K, V>> key2newKlass;
-    private Map<Map<K, V>, CompactHashMapClass<K, V>> defValues2Klass;
-    public CompactHashMapClassEmptyDefaults(com.github.andrewoma.dexx.collection.Map<K, Integer> key2Slot) {
-        super(key2Slot);
+package com.blogspot.mydailyjava.weaklockfree;
+public class DetachedThreadLocal<T> implements Runnable {
+    final WeakConcurrentMap<Thread, T> map;
+    public DetachedThreadLocal(Cleaner cleaner) {
+        switch (cleaner) {
+            case THREAD:
+            case MANUAL:
+                map = new WeakConcurrentMap<Thread, T>(cleaner == Cleaner.THREAD) {
+                    @Override
+                    protected T defaultValue(Thread key) {
+                        return DetachedThreadLocal.this.initialValue(key);
+                    }
+                };
+                break;
+            case INLINE:
+                map = new WeakConcurrentMap.WithInlinedExpunction<Thread, T>() {
+                    @Override
+                    protected T defaultValue(Thread key) {
+                        return DetachedThreadLocal.this.initialValue(key);
+                    }
+                };
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+    public T get() {
+        return map.get(Thread.currentThread());
+    }
+    public T getIfPresent() {
+      return map.getIfPresent(Thread.currentThread());
+    }
+    public void set(T value) {
+        map.put(Thread.currentThread(), value);
+    }
+    public void clear() {
+        map.remove(Thread.currentThread());
+    }
+    public void clearAll() {
+        map.clear();
+    }
+    public T pushTo(Thread thread) {
+        T value = get();
+        if (value != null) {
+            map.put(thread, inheritValue(value));
+        }
+        return value;
+    }
+    public T fetchFrom(Thread thread) {
+        T value = map.get(thread);
+        if (value != null) {
+            set(inheritValue(value));
+        }
+        return value;
+    }
+    public T get(Thread thread) {
+        return map.get(thread);
+    }
+    public void define(Thread thread, T value) {
+        map.put(thread, value);
+    }
+    protected T initialValue(Thread thread) {
+        return null;
+    }
+    protected T inheritValue(T value) {
+        return value;
+    }
+    public WeakConcurrentMap<Thread, T> getBackingMap() {
+        return map;
     }
     @Override
-    protected CompactHashMapClassEmptyDefaults<K, V> getMapWithEmptyDefaults() {
-        return this;
+    public void run() {
+        map.run();
     }
-    protected CompactHashMapClass<K, V> getNewDefaultClass(Map<K, V> newDef) {
-        CompactHashMapClass<K, V> newClass;
-        if (newDef == null || newDef.isEmpty())
-            return this;
-        synchronized (this) {
-            Map<Map<K, V>, CompactHashMapClass<K, V>> defValues2Klass = this.defValues2Klass;
-            if (defValues2Klass == null)
-                this.defValues2Klass = defValues2Klass =
-                        new IdentityHashMap<Map<K, V>, CompactHashMapClass<K, V>>();
-            newClass = defValues2Klass.get(newDef);
-            if (newClass == null) {
-                newClass = new CompactHashMapClassWithDefaults<K, V>(key2slot, newDef, this);
-                defValues2Klass.put(newDef, newClass);
-            }
-        }
-        return newClass;
-    }
-    protected CompactHashMapClass<K, V> getNextKlass(K key, Map<K, V> defaultValues) {
-        CompactHashMapClassEmptyDefaults<K, V> newKlass = null;
-        synchronized (this) {
-            Map<K, CompactHashMapClassEmptyDefaults<K, V>> key2newKlass = this.key2newKlass;
-            if (key2newKlass != null)
-                newKlass = key2newKlass.get(key);
-        }
-        if (defaultValues.containsKey(key))
-            defaultValues = CompactHashMapDefaultValues.getNewDefaultValues(defaultValues, key, REMOVED_OBJECT);
-        if (newKlass != null)
-            return newKlass.getNewDefaultClass(defaultValues);
-        int size = key2slot.size();
-        com.github.andrewoma.dexx.collection.Map<K, Integer> newKey2slot = key2slot;
-        if (size < 3) size -= 3;
-        else if (size == 3) {
-            size = 1;
-            for (Pair<K, Integer> entry : key2slot)
-                if (entry.component2() == -1) {
-                    newKey2slot = newKey2slot.put(entry.component1(), 0);
-                    break;
-                }
-        } else size -= 2;
-        newKey2slot = newKey2slot.put(key, size);
-        newKlass = new CompactHashMapClassEmptyDefaults<K, V>(newKey2slot);
-        synchronized (this) {
-            if (key2newKlass == null) {
-                key2newKlass = Collections.singletonMap(key, newKlass);
-            } else {
-                final CompactHashMapClassEmptyDefaults<K, V> anotherNewKlass = key2newKlass.get(key);
-                if (anotherNewKlass != null)
-                    newKlass = anotherNewKlass;
-                else {
-                    if (key2newKlass.size() == 1) {
-                        key2newKlass = new HashMap<K, CompactHashMapClassEmptyDefaults<K, V>>(key2newKlass);
-                    }
-                    key2newKlass.put(key, newKlass);
-                }
-            }
-        }
-        return newKlass.getNewDefaultClass(defaultValues);
+    public enum Cleaner {
+        THREAD, INLINE, MANUAL
     }
 }

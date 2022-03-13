@@ -1,25 +1,51 @@
-package sort.merge;
-import sort.Sort;
-public class MergeBU extends Sort {
-    private static Comparable[] aux;  
-    public void sortMethod(Comparable[] a) {
-        for (int sz = 1; sz < a.length; sz = sz + sz)  
-            for (int lo = 0; lo < a.length - sz; lo += sz + sz)  
-                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, a.length - 1));
+package dev.jeffreybender.sort;
+import java.util.Arrays;
+import java.util.Comparator;
+public final class MergeSort {
+    private MergeSort() {
     }
-    public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
-        new MergeBU().sortMethod(a);
+    public static <T> void sort(T[] array, Comparator<? super T> comparator) {
+        if (array.length <= 1) {
+            return;
+        }
+        if (comparator == null) {
+            comparator = SortUtils.getDefaultComparator();
+        }
+        mergeSort(array, array.length, comparator);
     }
-    private static void merge(Comparable[] a, int lo, int mid, int hi) {
-        int i = lo, j = mid + 1;
-        for (int k = lo; k <= hi; k++)
-            aux[k] = a[k];
-        for (int k = lo; k <= hi; k++) {
-            if (i > mid) a[k] = aux[j++];  
-            else if (j > hi) a[k] = aux[i++];  
-            else if (less(aux[j], aux[i])) a[k] = aux[j++];  
-            else a[k] = aux[i++];  
+    public static <T extends Comparable<? super T>> void sort(T[] array) {
+        sort(array, null);
+    }
+    private static <T> void mergeSort(T[] array, int endIndex, Comparator<T> comparator) {
+        if (array.length <= 1) {
+            return;
+        }
+        int middleIndex = endIndex / 2;
+        T[] left = Arrays.copyOfRange(array, 0, middleIndex);
+        T[] right = Arrays.copyOfRange(array, middleIndex, endIndex);
+        int leftStop = middleIndex;
+        int rightStop = endIndex - middleIndex;
+        mergeSort(left, middleIndex, comparator);
+        mergeSort(right, endIndex - middleIndex, comparator);
+        merge(array, left, leftStop, right, rightStop, comparator);
+    }
+    private static <T> void merge(T[] array, T[] left, int leftStop, T[] right, int rightStop,
+            Comparator<T> comparator) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int arrayIndex = 0;
+        while (leftIndex < leftStop && rightIndex < rightStop) {
+            if (comparator.compare(left[leftIndex], right[rightIndex]) <= 0) {
+                array[arrayIndex++] = left[leftIndex++];
+            } else {
+                array[arrayIndex++] = right[rightIndex++];
+            }
+        }
+        while (leftIndex < leftStop) {
+            array[arrayIndex++] = left[leftIndex++];
+        }
+        while (rightIndex < rightStop) {
+            array[arrayIndex++] = right[rightIndex++];
         }
     }
 }

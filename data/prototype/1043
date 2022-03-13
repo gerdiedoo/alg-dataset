@@ -1,50 +1,37 @@
-require('../../../common/array-extensions');
-const { isEmpty, isFunction } = require('../../../common/utils');
-const quickSort = function(list) {
-    if (isEmpty(list)) {
-        return list;
+package io.github.marioluan.algorithms.sorting;
+import edu.princeton.cs.algs4.StdRandom;
+@SuppressWarnings("rawtypes")
+public final class QuickSort extends Sortable {
+    private static final int CUTOFF = 10;
+    public static void sort(Comparable[] a) {
+        StdRandom.shuffle(a);
+        sort(a, 0, a.length - 1);
     }
-    if (list.length < 2) {
-        return list;
+    private static void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo + CUTOFF - 1) {
+            InsertionSort.sort(a, lo, hi);
+            return;
+        }
+        int j = partition(a, lo, hi);
+        sort(a, lo, j - 1);
+        sort(a, j + 1, hi);
     }
-    const allItemsComparable = list.reduce(
-        (acc, item) => (acc &= isFunction(item.compareTo)),
-        true
-    );
-    sort(list, 0, list.length, allItemsComparable);
-    return list;
-};
-const sort = (list, start, end, allItemsComparable) => {
-    if (end - start < 2) {
-        return;
+    protected static int partition(Comparable[] a, int lo, int hi) {
+        int i = lo;
+        int j = hi + 1;
+        while (true) {
+            while (less(a[++i], a[lo]))
+                if (i == hi)
+                    break;
+            while (less(a[lo], a[--j])) {
+                if (j == lo)
+                    break;
+            }
+            if (i >= j)
+                break;
+            swap(a, i, j);
+        }
+        swap(a, lo, j);
+        return j;
     }
-    let pivot = partition(list, start, end, allItemsComparable);
-    sort(list, start, pivot, allItemsComparable);
-    sort(list, pivot + 1, end, allItemsComparable);
-};
-const partition = (list, start, end, allItemsComparable) => {
-    let pivot = list[start];
-    let left = start;
-    let right = end;
-    while (left < right) {
-        if (allItemsComparable) {
-            while (left < right && list[--right].compareTo(pivot) >= 0) {}
-        } else {
-            while (left < right && list[--right] >= pivot) {}
-        }
-        if (left < right) {
-            list[left] = list[right];
-        }
-        if (allItemsComparable) {
-            while (left < right && list[++left].compareTo(pivot) <= 0) {}
-        } else {
-            while (left < right && list[++left] <= pivot) {}
-        }
-        if (left < right) {
-            list[right] = list[left];
-        }
-    }
-    list[right] = pivot;
-    return right;
-};
-module.exports = { quickSort };
+}

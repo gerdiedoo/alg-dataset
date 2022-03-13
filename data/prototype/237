@@ -1,148 +1,51 @@
-public class DoublyLinkedList{
-	Node head;   
-	Node tail;   
-	int size;    
-	public DoublyLinkedList(){
-		head=null;
-		tail=null;
-		size=0;
-	}
-	public void pushFront(int data){
-		System.out.println("Inserting data at front : " + data);
-		Node node = new Node(data);
-		if(head==null && tail==null){
-			head=node;
-			tail=node;
-			size++;
-			return;
-		}
-		node.next=head;
-		head.prev=node;
-		head=node;
-		size++;
-	}
-	public void pushBack(int data){
-		System.out.println("Inserting data at back  : " + data);
-		Node node = new Node(data);
-		if(tail==null && head==null){
-			head=node;
-			tail=node;
-			size++;
-			return;
-		}
-		tail.next=node;
-		node.prev=tail;
-		tail=node;
-		size++;
-	}
-	public void popFront() throws Exception{
-		System.out.println("PopFront Operation.");
-		if(head==null && tail==null){
-			throw new Exception("List is empty!");
-		}
-		if(head==tail){
-			head=null;
-			tail=null;
-			size--;
-			return;
-		}
-		head.next.prev=null;
-		head=head.next;
-		size--;
-	}
-	public void popBack() throws Exception{
-		System.out.println("PopBack Operation.");
-		if(head==null && tail==null){
-			throw new Exception("List is empty!");
-		}
-		if(head==tail){
-			head=null;
-			tail=null;
-			size--;
-			return;
-		}
-		tail.prev.next=null;
-		tail=tail.prev;
-		size--;
-	}
-	public int topFront() throws Exception{
-		if(head==null){
-			throw new Exception("List is empty!");
-		}
-		return head.key;
-	}
-	public int topBack() throws Exception{
-		if(tail==null){
-			throw new Exception("List is empty!");
-		}
-		return tail.key;
-	}
-	public boolean Find(int data){
-		Node temp=head;
-		while(temp!=null){
-			if(temp.key==data){
-				return true;
-			}
-			temp=temp.next;
-		}
-		return false;
-	}
-	public int size(){
-		return size;
-	}
-	public void forwardDisplay() throws Exception{
-		System.out.print("List : ");
-		Node temp = head;
-		if(temp==null){
-			throw new Exception("List is empty!");
-		}
-		while(temp!=null){
-			System.out.print(temp.key + " ");
-			temp=temp.next;
-		}
-		System.out.println();
-	}
-	public void reverseDisplay() throws Exception{
-		System.out.print("Reverse List : ");
-		Node temp = tail;
-		if(temp==null){
-			throw new Exception("List is empty!");
-		}
-		while(temp!=null){
-			System.out.print(temp.key + " ");
-			temp=temp.prev;
-		}
-		System.out.println();
-	}
-	public void remove(int data) throws Exception{
-		System.out.println("Remove data : " + data);
-		Node temp = head;
-		Node prevNode = null;
-		if(temp==null){
-			throw new Exception("List is empty!");
-		}
-		size--;
-		if(temp==tail){
-			if(temp.key==data){
-				head=null;
-				tail=null;
-				return;
-			}
-			else{
-				throw new Exception("Data not found");
-			}
-		}
-		if(head.key==data){
-			head=head.next;
-			head.prev=null;
-			return;
-		}
-		while(temp!=null && temp.key!=data){
-			prevNode=temp;
-			temp=temp.next;
-		}
-		prevNode.next=prevNode.next.next;
-		prevNode.next.prev=prevNode;
-		temp=null;
-	}
-}
+class Node:
+    def __init__(self, data, next_=None):
+        self.data = data
+        self.next = next_
+    def __str__(self):
+        return str(self.data)
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def add(self, data):
+        node = Node(data, self.head)
+        self.head = node
+    def search(self, value):
+        current = self.head
+        while current is not None:
+            if current.data == value:
+                return current
+            current = current.next
+        return None
+    def remove(self, value):
+        current = self.head
+        previous = None
+        while current is not None and current.data != value:
+            previous = current
+            current = current.next
+        if previous is None:
+            self.head = current.next
+        elif current is not None:
+            previous.next = current.next
+    def __str__(self):
+        string = ''
+        current = self.head
+        while current.next is not None:
+            string += str(current.data) + ' -> '
+            current = current.next
+        string += str(current.data) + ' -> ' + str(None)
+        return string
+if __name__ in "__main__":
+    print('create initial linked list')
+    lst = LinkedList()
+    for i in [1, 7, 2, 3, -10]:
+        print('add {}'.format(i))
+        lst.add(i)
+    print()
+    print('linked list:', lst, '\n')
+    for i in [2, 4, -10]:
+        lst.remove(i)
+        print('remove {}'.format(i))
+        print('linked list:', lst, '\n')
+    for i in [3, 10]:
+        print('search {}'.format(i), lst.search(i))

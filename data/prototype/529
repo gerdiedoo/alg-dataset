@@ -1,19 +1,45 @@
-import numpy as np
-def bubbleSort(arr):
-    def swap(a, b):
-        arr[a], arr[b] = arr[b], arr[a]
-    length = len(arr)
-    isSwapped = True
-    x = -1
-    while isSwapped:
-        isSwapped = False
-        x = x + 1
-        for i in range(1, length - x):
-            if arr[i-1] > arr[i]:
-                swap(i-1, i)
-                isSwapped = True
-    for i in range(0, length):
-        print(arr[i])
-if __name__ == "__main__":
-    arr = np.array([5, 6 , 1, 23, 87, 78, 98, 76])
-    bubbleSort(arr)
+import java.io.IOException;
+import java.util.ArrayList;
+public class BubbleSort extends Sorts{
+	public ArrayList<Integer> bubbleUp(ArrayList<Integer> unsortedList)
+	{
+		ArrayList<Integer> sortedList = new ArrayList<Integer>();
+		boolean swapped = true;
+		while(swapped)
+		{
+			swapped = false;
+			for(int i = 1; i < unsortedList.size(); i++)
+			{
+				if(unsortedList.get(i) < unsortedList.get(i - 1))
+				{
+					int holder = unsortedList.get(i);
+					unsortedList.set(i, unsortedList.get(i - 1));
+					unsortedList.set(i - 1, holder);
+					swapped = true;
+				}
+			}
+		}
+		sortedList = unsortedList;
+		return sortedList;
+	}
+	public void BubbleTime(IOClass ioStream) throws IOException
+	{
+		ioStream.readFromFile();
+		ArrayList<Integer> sortedList = new ArrayList<Integer>();
+		long timeBefore = System.nanoTime();
+		sortedList = bubbleUp(ioStream.getInputArray());
+		long timeAfter = System.nanoTime();
+		double rawTime = timeAfter - timeBefore;
+		double timeInMilli = rawTime/1000000;
+		if(isSorted(sortedList))
+		{
+			ioStream.setInputArray(sortedList);
+			System.out.print("BubbleSort time (in Milli): "); 
+			System.out.println(timeInMilli);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

@@ -1,0 +1,18 @@
+def binary_search(input_array, value, high, low):
+    if high >= low:
+        mid = (high+low)//2
+        if value == input_array[mid]:
+            return mid
+        elif value > input_array[mid]:
+            return binary_search(input_array, value, high, mid+1)
+        else:
+            return binary_search(input_array, value, mid-1, low)
+    else:
+        return -1
+test_list = [1,3,9,11,15,17,19,29]
+test_val1 = 25
+test_val2 = 15
+test_val3 = 17
+print(binary_search(test_list, test_val1, len(test_list)-1, 0)) 
+print(binary_search(test_list, test_val2, len(test_list)-1, 0)) 
+print(binary_search(test_list, test_val3, len(test_list)-1, 0)) 

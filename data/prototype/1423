@@ -1,10 +1,107 @@
-import numpy as np
-def bogo_sort(arr):
-    while (not is_sorted(arr)):
-        np.random.shuffle(arr)
-    return arr
-def is_sorted(arr):
-    for i in range(len(arr)-1):
-        if arr[i+1] < arr[i]:
-            return False
-    return True
+import java.nio.IntBuffer;
+import java.util.LinkedList;
+public class HashtableChain<K extends Comparable<K>, V extends Comparable<V>> implements KWHashMap<K, V> {
+    private LinkedList<Entry<K, V>>[] table;
+    private int numKeys;
+    private static final int CAPACITY = 400000;
+    private static final double LOAD_THRESHOLD = 3.0;
+    public HashtableChain() {
+        table = new LinkedList[CAPACITY];
+    }
+    @Override
+    public V get(Object key) {
+        int index = key.hashCode() % table.length;
+        if (index < 0)
+            index += table.length;
+        if (table[index] == null)
+            return null;  
+        for (Entry<K, V> nextItem : table[index]) {
+            if (nextItem.getKey().equals(key))
+                return nextItem.getValue();
+        }
+        return null;
+    }
+    @Override
+    public boolean isEmpty() {
+        return size()==0;
+    }
+    @Override
+    public V put(K key, V value) {
+        int index = key.hashCode() % table.length;
+        if (index < 0)
+            index += table.length;
+        if (table[index] == null) {
+            table[index] = new LinkedList<>();
+        }
+        for (Entry<K, V> nextItem : table[index]) {
+            if (nextItem.getKey().equals(key)) {
+                V oldVal = nextItem.getValue();
+                nextItem.setValue(value);
+                return oldVal;
+            }
+        }
+        table[index].addFirst(new Entry<>(key, value));
+        numKeys++;
+        if (numKeys > (LOAD_THRESHOLD * table.length))
+            rehash();
+        return null;
+    }
+    private void rehash() {
+        LinkedList<Entry<K, V>>[] oldTable = table;
+        table = new LinkedList[(CAPACITY *2) +1];
+        numKeys = 0;
+        for (int i = 0; i < oldTable.length; i++) {
+            if ((oldTable[i] != null)) {
+                table[i].addAll(oldTable[i]);
+            }
+        }
+    }
+    @Override
+    public V remove(Object key) {
+        int index = key.hashCode() % table.length;
+        if(index<0){
+            index += table.length;
+        }
+        if (table[index] == null){
+            return null;
+        }
+        for (Entry<K, V> nextItem : table[index]) {
+            if (nextItem.getKey().equals(key)) {
+                V oldVal = nextItem.getValue();
+                nextItem.setValue(null);
+                return oldVal;
+            }
+        }
+        return null;
+    }
+    @Override
+    public int size() {
+        return table.length;
+    }
+    private static class Entry<K extends Comparable<K>,V extends Comparable<V>> implements Comparable<Entry<K,V>>  {
+        private final K key;
+        private V value;
+        public boolean inTable;
+        public boolean isInTable() {
+            return inTable;
+        }
+        public K getKey() {
+            return key;
+        }
+        public V getValue() {
+            return value;
+        }
+        public void setValue(V value) {
+            this.value = value;
+        }
+        public Entry(K key , V value){
+            this.key = key;
+            this.value = value;
+            inTable = true;
+        }
+        @Override
+        public int compareTo(Entry<K, V> o) {
+            return this.key.compareTo(o.getKey());
+        }
+    }
+}

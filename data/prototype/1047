@@ -1,29 +1,40 @@
-import random
-def partition(a, low, high):
-    i = low - 1  
-    pivot = a[high]
-    for j in range(low, high):
-        if a[j] <= pivot:
-            i += 1  
-            a[i], a[j] = a[j], a[i]
-    a[i + 1], a[high] = a[high], a[i + 1]
-    return i + 1
-def quicksort_inplace(a, low=0, high=None):
-    if high is None:
-        high = len(a) - 1
-    if low < high:
-        pivot = partition(a, low, high)
-        quicksort_inplace(a, low, pivot - 1)
-        quicksort_inplace(a, pivot + 1, high)
-unordered_list = []
-for i in range(100):
-    unordered_list.append(i)
-random.shuffle(unordered_list)
-quicksort_inplace(unordered_list)
-print(unordered_list)
-success = True
-for index in range(len(unordered_list) - 1):
-    if unordered_list[index] > unordered_list[index + 1]:
-        success = False
-if success:
-    print("In-place Quicksort successful!")
+package sorting.algorithms;
+public class QuickSort {
+    private int[] inputArray;
+    private int length;
+    public int[] sort(int[] values) {
+        if (values == null || values.length == 0) {
+            return values;
+        }
+        this.inputArray = values;
+        length = values.length;
+        quicksort(0, length - 1);
+        return values;
+    }
+    private void quicksort(int low, int high) {
+        int i = low, j = high;
+        int pivot = inputArray[low + (high - low) / 2];
+        while (i <= j) {
+            while (inputArray[i] < pivot) {
+                i++;
+            }
+            while (inputArray[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchange(i, j);
+                i++;
+                j--;
+            }
+        }
+        if (low < j)
+            quicksort(low, j);
+        if (i < high)
+            quicksort(i, high);
+    }
+    private void exchange(int i, int j) {
+        int temp = inputArray[i];
+        inputArray[i] = inputArray[j];
+        inputArray[j] = temp;
+    }
+}

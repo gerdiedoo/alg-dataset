@@ -1,57 +1,95 @@
-import java.util.Scanner;
-public class HeapSort
-    {
-        static public void sort(int arr[])
-        {
-            int n = arr.length;
-            for (int i = n / 2 - 1; i >= 0; i--)
-                heapify(arr, n, i);
-            for (int i=n-1; i>=0; i--)
-            {
-                int temp = arr[0];
-                arr[0] = arr[i];
-                arr[i] = temp;
-                heapify(arr, i, 0);
-            }
-        }
-       static void heapify(int arr[], int n, int i)
-        {
-            int largest = i;
-            int l = 2*i + 1;
-            int r = 2*i + 2;
-            if (l < n && arr[l] > arr[largest])
-                largest = l;
-            if (r < n && arr[r] > arr[largest])
-                largest = r;
-            if (largest != i)
-            {
-                int swap = arr[i];
-                arr[i] = arr[largest];
-                arr[largest] = swap;
-                heapify(arr, n, largest);
-            }
-        }
-        static void printArray(int arr[])
-        {
-            int n = arr.length;
-            for (int i=0; i<n; ++i)
-                System.out.print(arr[i]+" ");
-            System.out.println();
-        }
-        public static void main(String args[])
-        {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Enter no of elements: ");
-            int n = sc.nextInt();
-            int arr[] = new int[n];
-            System.out.print("Enter elements: ");
-            for(int i=0 ; i<n ; i++)
-                arr[i]=sc.nextInt();
-            HeapSort ob = new HeapSort();
-            System.out.print("Array before sort : ");
-            printArray(arr);
-            ob.sort(arr);
-            System.out.print("Array after sort : ");
-            printArray(arr);
-        }
-    }
+class Node(object):
+    def __init__(self, val, next_node=None, prev_node=None):
+        self.val = val
+        self.next_node = next_node
+        self.prev_node = prev_node
+class DLL(object):
+    def __init__(self, iter=None):
+        self.tail = None
+        self.head = None
+        if iter:
+            for val in iter:
+                self.insert(val)
+    def insert(self, val):
+        new_node = Node(val=val, next_node=self.head)
+        if self.head:
+            self.head.prev_node = new_node
+        else:
+            self.tail = new_node
+        self.head = new_node
+    def append(self, val):
+        new_node = Node(val=val, prev_node=self.tail)
+        if self.tail:
+            self.tail.next_node = new_node
+        else:
+            self.head = new_node
+        self.tail = new_node
+    def pop(self):
+        try:
+            rtn_value = self.head.val
+            new_head = self.head.next_node
+            self.head = new_head
+            if self.head is None:
+                self.tail = None
+                return rtn_value
+            self.head.prev_node = None
+            return rtn_value
+        except AttributeError:
+            return None
+    def shift(self):
+        try:
+            rtn_value = self.tail.val
+            new_tail = self.tail.prev_node
+            self.tail = new_tail
+            if self.tail is None:
+                self.head = None
+                return rtn_value
+            self.tail.next_node = None
+            return rtn_value
+        except AttributeError:
+            return None
+    def remove(self, val):
+        val_search = self.search(val)
+        if val_search is None:
+            raise ValueError
+        try:  
+            val_search.prev_node.next_node = val_search.next_node
+            val_search.next_node.prev_node = val_search.prev_node
+        except AttributeError:
+            try:  
+                if self.head == val_search:
+                    self.head = val_search.next_node
+                    self.head.prev_node = None
+                if self.tail == val_search:
+                    self.tail = val_search.prev_node
+                    self.tail.next_node = None
+            except AttributeError:
+                self.head = None
+                self.tail = None
+        return val_search.val
+    def search(self, val):
+        step_head = self.head
+        while step_head:
+            if step_head.val == val:
+                return step_head
+            step_head = step_head.next_node
+        else:
+            return None
+    def to_string(self):
+        rtn_string = u"("
+        step_head = self.head
+        while step_head:
+            if step_head.next_node is None:
+                rtn_string += str(step_head.val)
+                break
+            rtn_string += str(step_head.val) + u", "
+            step_head = step_head.next_node
+        rtn_string += u")"
+        return rtn_string
+    def size(self):
+        count = 0
+        step_head = self.head
+        while step_head:
+            count += 1
+            step_head = step_head.next_node
+        return count

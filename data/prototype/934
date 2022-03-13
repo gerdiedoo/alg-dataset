@@ -1,120 +1,45 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class MergeSort {
-    private int COMPARISONS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int[] array) {
-        COMPARISONS_COUNT = 0;
-        LOOP_COUNT = 0;
-        mergeSort(array, 0, array.length - 1);
-    }
-    private void mergeSort(int[] array, int left, int right) {
-        __grey("\nmergeSort, left: " + left + ", right: " + right + "  ==> ");
-        ____purple("" + (left < right));
-        COMPARISONS_COUNT++;
-        if (left < right) {
-            int center = (left + right) / 2;
-            ____grey("center: " + center);
-            mergeSort(array, left, center);
-            mergeSort(array, center + 1, right);
-            ____grey("Merging, center: " + center);
-            merge(array, left, center + 1, right);
+package sortingandsearch;
+import java.util.Arrays;
+public class SortedMerge {
+    public static void main(String[] args) {
+        Integer[] array1 = new Integer[12];
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] = (i < 5) ? (i + 10) * 2 * 2 : Integer.MAX_VALUE;
         }
+        Integer[] array2 = new Integer[7];
+        array2[0] = 1;
+        array2[1] = 3;
+        array2[2] = 5;
+        array2[3] = 9;
+        array2[4] = 10;
+        array2[5] = 12;
+        array2[6] = 14;
+        System.out.println(Arrays.toString(array1));
+        System.out.println(Arrays.toString(array2));
+        merge(array1, array2);
     }
-    private void merge(int[] array, int leftArrayBegin,
-                       int rightArrayBegin, int rightArrayEnd) {
-        int leftArrayEnd = rightArrayBegin - 1;
-        int numElements = rightArrayEnd - leftArrayBegin + 1;
-        int[] resultArray = new int[numElements];
-        int resultArrayBegin = 0;
-        ____grey("  leftArrayBegin: " + leftArrayBegin);
-        ____grey("  leftArrayEnd: " + leftArrayEnd);
-        ____grey("  rightArrayBegin: " + rightArrayBegin);
-        ____grey("  rightArrayEnd: " + rightArrayEnd);
-        while (leftArrayBegin <= leftArrayEnd && rightArrayBegin <= rightArrayEnd) {
-            COMPARISONS_COUNT++;
-            if (array[leftArrayBegin] <= array[rightArrayBegin]) {
-                resultArray[resultArrayBegin++] = array[leftArrayBegin++];
-                ____blue(" new leftArrayBegin: " + leftArrayBegin);
+    private static void merge(Integer[] arrA, Integer[] arrB) {
+        int lastIndexA = findLastFilledIndex(arrA);
+        int lastIndexB = arrB.length - 1;
+        int sizeOfMergedArray = lastIndexA + 1 + arrB.length - 1;
+        while (sizeOfMergedArray >= 0) {
+            if (lastIndexA >= 0 && arrA[lastIndexA] > arrB[lastIndexB]) {
+                arrA[sizeOfMergedArray] = arrA[lastIndexA];
+                lastIndexA--;
             } else {
-                resultArray[resultArrayBegin++] = array[rightArrayBegin++];
-                ____blue(" new rightArrayBegin: " + rightArrayBegin);
+                arrA[sizeOfMergedArray] = arrB[lastIndexB];
+                lastIndexB--;
             }
+            sizeOfMergedArray--;
         }
-        while (leftArrayBegin <= leftArrayEnd) {
-            COMPARISONS_COUNT++;
-            resultArray[resultArrayBegin++] = array[leftArrayBegin++];
-            ____blue(" [post] new leftArrayBegin: " + leftArrayBegin);
-        }
-        while (rightArrayBegin <= rightArrayEnd) {
-            COMPARISONS_COUNT++;
-            resultArray[resultArrayBegin++] = array[rightArrayBegin++];
-            ____blue(" [post] new rightArrayBegin: " + rightArrayBegin);
-        }
-        for (int i = numElements - 1; i >= 0; i--, rightArrayEnd--) {
-            LOOP_COUNT++;
-            array[rightArrayEnd] = resultArray[i];
-        }
-        __red("==> ");
-        __dump(array);
+        System.out.println(java.util.Arrays.toString(arrA));
     }
-    public int[] sampleMerge(int[] leftArray, int[] rightArray) {
-        int leftArrayEnd = leftArray.length - 1;
-        int rightArrayEnd = rightArray.length - 1;
-        int leftArrayBegin = 0;
-        int rightArrayBegin = 0;
-        int numElements = leftArray.length + rightArray.length;
-        int[] resultArray = new int[numElements];
-        int resultArrayBegin = 0;
-        ____grey("  leftArrayBegin: " + leftArrayBegin);
-        ____grey("  leftArrayEnd: " + leftArrayEnd);
-        ____grey("  rightArrayBegin: " + rightArrayBegin);
-        ____grey("  rightArrayEnd: " + rightArrayEnd);
-        while (leftArrayBegin <= leftArrayEnd && rightArrayBegin <= rightArrayEnd) {
-            if (leftArray[leftArrayBegin] <= rightArray[rightArrayBegin]) {
-                resultArray[resultArrayBegin++] = leftArray[leftArrayBegin++];
-                ____blue(" new leftArrayBegin: " + leftArrayBegin);
-            } else {
-                resultArray[resultArrayBegin++] = rightArray[rightArrayBegin++];
-                ____blue(" new rightArrayBegin: " + rightArrayBegin);
-            }
+    private static int findLastFilledIndex(Integer[] arrA) {
+        int current = 0;
+        for (Integer i : arrA) {
+            if (i == Integer.MAX_VALUE) break;
+            current++;
         }
-        while (leftArrayBegin <= leftArrayEnd) {
-            resultArray[resultArrayBegin++] = leftArray[leftArrayBegin++];
-            ____blue(" [post] new leftArrayBegin: " + leftArrayBegin);
-        }
-        while (rightArrayBegin <= rightArrayEnd) {
-            resultArray[resultArrayBegin++] = rightArray[rightArrayBegin++];
-            ____blue(" [post] new rightArrayBegin: " + rightArrayBegin);
-        }
-        return resultArray;
-    }
-    public static void main(String args[]) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(mergeSort.COMPARISONS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(mergeSort.LOOP_COUNT);
-        System.out.print("\n");
-        System.out.println("***********************\n");
-        System.out.println("Now demo a simple merge routine.");
-        int leftArray[] = {1, 3, 5, 7};
-        int rightArray[] = {2, 4, 6, 8, 10};
-        __yellow("\nLeft array: ");
-        __dump(leftArray);
-        __yellow("Right array: ");
-        __dump(rightArray);
-        System.out.println("\nMerging");
-        int[] mergedArray = mergeSort.sampleMerge(leftArray, rightArray);
-        __green("\nResult: ");
-        __dump(mergedArray);
+        return current - 1;
     }
 }

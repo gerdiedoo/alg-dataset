@@ -1,25 +1,156 @@
-package search;
-import java.util.Random;
-import java.util.stream.Stream;
-public class LinearSearch implements SearchAlgorithm {
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.LinkedList;
+public class HashMap<K, V> implements HashMapInterface<K, V> {
+    private LinkedList<MapEntry<K, V>>[] backingTable;
+    private int size;
+    public HashMap() {
+        backingTable = new LinkedList[INITIAL_CAPACITY];
+        size = 0;
+    }
+    public HashMap(int initialCapacity) {
+        backingTable = new LinkedList[initialCapacity];
+        size = 0;
+    }
     @Override
-    public <T extends Comparable<T>> int find(T[] array, T value) {
-        for (int i = 0; i < array.length ; i++) {
-            if (array[i].compareTo(value) == 0) {
-                return i;
+    public V put(K key, V value) {
+        if (key == null || value == null) {
+            throw new IllegalArgumentException("Input data cannot be null.");
+        }
+        if ((double) (size + 1) / backingTable.length > MAX_LOAD_FACTOR) {
+            resizeBackingTable(backingTable.length * 2 + 1);
+        }
+        int index = Math.abs(key.hashCode()) % backingTable.length;
+        if (backingTable[index] == null) {
+            backingTable[index] = new LinkedList<>();
+        } else {
+            for (MapEntry<K, V> temp : backingTable[index]) {
+                if (temp.getKey() == key) {
+                    V returnValue = temp.getValue();
+                    temp.setValue(value);
+                    return returnValue;
+                }
             }
         }
-        return -1;
+        backingTable[index].addFirst(new MapEntry<>(key, value));
+        ++size;
+        return null;
     }
-    public static void main(String[] args) {
-        Random r = new Random();
-        int size = 200;
-        int maxElement = 100;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).toArray(Integer[]::new);
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
-        LinearSearch search = new LinearSearch();
-        int atIndex = search.find(integers, shouldBeFound);
-        System.out.println(String.format("Should be found: %d. Found %d at index %d. An array length %d"
-                , shouldBeFound, integers[atIndex], atIndex, size));
+    @Override
+    public V remove(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Input key is null");
+        }
+        int index = Math.abs(key.hashCode()) % backingTable.length;
+        MapEntry<K, V> curr;
+        if (backingTable[index] != null) {
+            Iterator<MapEntry<K, V>> it = backingTable[index].iterator();
+            while (it.hasNext()) {
+                curr = it.next();
+                if (curr.getKey() == key) {
+                    V returnValue = curr.getValue();
+                    it.remove();
+                    --size;
+                    return returnValue;
+                }
+            }
+        }
+        throw new java.util.NoSuchElementException("Key does not exist");
+    }
+    @Override
+    public V get(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Input key is null");
+        }
+        int index = Math.abs(key.hashCode()) % backingTable.length;
+        MapEntry<K, V> curr;
+        if (backingTable[index] != null) {
+            Iterator<MapEntry<K, V>> it = backingTable[index].iterator();
+            while (it.hasNext()) {
+                curr = it.next();
+                if (curr.getKey() == key) {
+                    return curr.getValue();
+                }
+            }
+        }
+        throw new java.util.NoSuchElementException("Key does not exist");
+    }
+    @Override
+    public boolean containsKey(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Input key is null");
+        }
+        int index = Math.abs(key.hashCode()) % backingTable.length;
+        MapEntry<K, V> curr;
+        if (backingTable[index] != null) {
+            Iterator<MapEntry<K, V>> it = backingTable[index].iterator();
+            while (it.hasNext()) {
+                curr = it.next();
+                if (curr.getKey() == key) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    @Override
+    public void clear() {
+        backingTable = new LinkedList[INITIAL_CAPACITY];
+        size = 0;
+    }
+    @Override
+    public int size() {
+        return size;
+    }
+    @Override
+    public Set<K> keySet() {
+        Set<K> returnSet = new HashSet<>();
+        for (int i = 0; i < backingTable.length; ++i) {
+            if (backingTable[i] != null) {
+                for (MapEntry<K, V> temp : backingTable[i]) {
+                    returnSet.add(temp.getKey());
+                }
+            }
+        }
+        return returnSet;
+    }
+    @Override
+    public List<V> values() {
+        List<V> returnList = new ArrayList<>();
+        for (int i = 0; i < backingTable.length; ++i) {
+            if (backingTable[i] != null) {
+                for (MapEntry<K, V> temp : backingTable[i]) {
+                    returnList.add(temp.getValue());
+                }
+            }
+        }
+        return returnList;
+    }
+    @Override
+    public void resizeBackingTable(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Input length cannot be "
+                    + "negative");
+        }
+        LinkedList<MapEntry<K, V>>[] tempTable = new LinkedList[length];
+        for (int i = 0; i < backingTable.length; ++i) {
+            if (backingTable[i] != null) {
+                for (MapEntry<K, V> temp : backingTable[i]) {
+                    int index = Math.abs(temp.getKey().hashCode()) % length;
+                    if (tempTable[index] == null) {
+                        tempTable[index] = new LinkedList<>();
+                    }
+                    tempTable[index].addFirst(temp);
+                }
+            }
+        }
+        backingTable = tempTable;
+    }
+    @Override
+    public LinkedList<MapEntry<K, V>>[] getTable() {
+        return backingTable;
     }
 }

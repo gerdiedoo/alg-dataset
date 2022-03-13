@@ -1,30 +1,11 @@
-package piratezpdx.sortathon;
-public class Insertion extends ArrayBased {
-    Insertion(){
-        super();
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let currentVal = arr[i];
+    for (var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+      arr[j + 1] = arr[j];
     }
-    public int sort() throws ArrayIndexOutOfBoundsException{
-        int count = 0;
-        int comparison = 0;
-        int focus_element = 0;
-        int current_element = 0;
-        int array_length = sortingArray.length;
-        boolean inserted;
-        if (array_length < 1){
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        for (focus_element = 1; focus_element < array_length; focus_element++){
-            inserted = false;
-            comparison = sortingArray[focus_element];
-            for (current_element = 0; (current_element < focus_element) && !inserted; current_element++){
-                if (comparison < sortingArray[current_element]){
-                    System.arraycopy(sortingArray,current_element,sortingArray,current_element+1,(focus_element-current_element));
-                    inserted = true;
-                    sortingArray[current_element] = comparison;
-                }
-                count++;
-            }
-        }
-        return count;
-    }
+    arr[j + 1] = currentVal;
+  }
+  return arr;
 }
+insertionSort([2, 1, 9, 76, 4]);

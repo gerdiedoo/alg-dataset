@@ -1,75 +1,89 @@
-package maps.customhashmap;
-public class CustomHashMapImpl<K, V> implements CustomHashMap<K, V> {
-    private int DEFAULT_BUCKET_COUNT = 10;
-    Entry[] entryBuckets;
-    public CustomHashMapImpl() {
-        this.entryBuckets = new Entry[DEFAULT_BUCKET_COUNT];
-    }
-    public CustomHashMapImpl(int size) {
-        this.entryBuckets = new Entry[size];
-    }
-    @Override
-    public void put(K key, V value) {
-        Entry<K, V> newEntry = new Entry<K, V>(key, value);
-        if (key == null) {
-            throw new IllegalArgumentException("Key " + key + " cannot be null.");
-        }
-        int bucketIndex = findBucketUsingHashFunction(key.hashCode());
-        if (entryBuckets[bucketIndex] == null) {
-            entryBuckets[bucketIndex] = newEntry;
-        } else {
-            Entry<K, V> entry = entryBuckets[bucketIndex];
-            if (entry.getKey().equals(key)) {
-                entry.setValue(value);
-            } else {
-                while (entry.getNext() != null) {
-                    entry = entry.getNext();
-                }
-                entry.setNext(newEntry);
-            }
-        }
-    }
-    @Override
-    public V get(K key) {
-        if (key == null) {
-            throw new IllegalArgumentException("Key " + key + " cannot be null.");
-        }
-        int bucketIndex = findBucketUsingHashFunction(key.hashCode());
-        Entry<K, V> entry = entryBuckets[bucketIndex];
-        while (entry != null && !key.equals(entry.getKey())) {
-            entry = entry.getNext();
-        }
-        return entry != null ? entry.getValue() : null;
-    }
-    private int findBucketUsingHashFunction(int hashCode) {
-        return hashCode % entryBuckets.length;
-    }
-    @Override
-    public boolean remove(K key) {
-        return false;
-    }
-    private static class Entry<K, V> {
-        private Entry<K, V> next;
-        private final K key;
-        private V value;
-        public Entry(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-        private V getValue() {
-            return value;
-        }
-        private void setValue(V value) {
-            this.value = value;
-        }
-        private K getKey() {
-            return key;
-        }
-        private Entry<K, V> getNext() {
-            return next;
-        }
-        private void setNext(Entry<K, V> next) {
-            this.next = next;
-        }
-    }
+package com.jamierf.persistenthashmap;
+import java.io.Serializable;
+import java.util.AbstractSet;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+class EntrySet<K extends Serializable, V extends Serializable> extends AbstractSet<Map.Entry<K, V>> {
+	private PersistentHashMap<K, V> map;
+	public EntrySet(PersistentHashMap<K, V> map) {
+		this.map = map;
+	}
+	@Override
+	public Iterator<Map.Entry<K, V>> iterator() {
+		return new EntryIterator<K, V>(map);
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean contains(Object o) {
+		if (!(o instanceof Map.Entry))
+			return false;
+		Map.Entry<K, V> e = (Map.Entry<K, V>) o;
+		V value = map.get(e.getKey());
+		return value != null && value.equals(e.getValue());
+	}
+	@Override
+	public int size() {
+		return map.size();
+	}
+	@Override
+	public void clear() {
+		map.clear();
+	}
+	@Override
+	public boolean add(Map.Entry<K, V> e) {
+		map.put(e.getKey(), e.getValue());
+		return true;
+	}
+	@Override
+	public boolean addAll(Collection<? extends Map.Entry<K, V>> c) {
+		for (Map.Entry<K, V> e : c)
+			map.put(e.getKey(), e.getValue());
+		return true;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean containsAll(Collection<?> c) {
+		Collection<Map.Entry<K, V>> ec = (Collection<Map.Entry<K, V>>) c;
+		for (Map.Entry<K, V> e : ec)
+			if (!contains(e))
+				return false;
+		return true;
+	}
+	@Override
+	public boolean isEmpty() {
+		return map.isEmpty();
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean remove(Object o) {
+		if (!(o instanceof Map.Entry))
+			return false;
+		Map.Entry<K, V> e = (Map.Entry<K, V>) o;
+		if (!contains(e))
+			return false;
+		map.remove(e.getKey());
+		return true;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean removeAll(Collection<?> c) {
+		Collection<Map.Entry<K, V>> ec = (Collection<Map.Entry<K, V>>) c;
+		for (Map.Entry<K, V> e : ec)
+			remove(e);
+		return true;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean retainAll(Collection<?> c) {
+		Collection<Map.Entry<K, V>> ec = (Collection<Map.Entry<K, V>>) c;
+		Iterator<Map.Entry<K, V>> iterator = iterator();
+		Map.Entry<K, V> entry = null;
+		while (iterator.hasNext()) {
+			entry = iterator.next();
+			if (!ec.contains(entry))
+				remove(entry);
+		}
+		return true;
+	}
 }

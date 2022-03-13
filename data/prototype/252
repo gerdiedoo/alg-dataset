@@ -1,30 +1,24 @@
-package Lists.DoublyLinkedList;
-public class EmployeeNode {
-    private Employee employee;
-    private EmployeeNode next;
-    private EmployeeNode previous;
-    public EmployeeNode(Employee employee) {
-        this.employee = employee;
-    }
-    public Employee getEmployee() {
-        return employee;
-    }
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-    public EmployeeNode getNext() {
-        return next;
-    }
-    public void setNext(EmployeeNode next) {
+public class SLLNode<T extends Comparable<? super T>> {
+    private T data;
+    private SLLNode<T> next;
+    public SLLNode(T data, SLLNode<T> next) {
+        this.data = data;
         this.next = next;
     }
-    public EmployeeNode getPrevious() {
-        return previous;
+    public SLLNode(T data) {
+        this(data, null);
     }
-    public void setPrevious(EmployeeNode previous) {
-        this.previous = previous;
+    public T getData() {
+        return data;
     }
+    public SLLNode<T> getNext() {
+        return next;
+    }
+    public void setNext(SLLNode<T> next) {
+        this.next = next;
+    }
+    @Override
     public String toString() {
-        return employee.toString();
+        return "Node containing: " + data;
     }
 }

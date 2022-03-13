@@ -1,23 +1,29 @@
-import Hash from './Hash';
-function HashMap() {
-  this.items = [];
-  this.mapLength = 50;
+public class View{
+	public View() {
+		System.out.print("------ Brent’s Method Hashing ------");
+	}
+	public void printNewSearch() {
+		System.out.print("\n\nSearch : ");
+	}
+	public void printResults(int key, int count, int index) {
+		System.out.println("Key : " + key + 
+						   "\nCount : " + count +
+						   "\nIndex : " + index) ;
+	}
+	public void printNotFound(String search) {
+		System.out.println(search + " is not found in text file.");
+	}
+	public void printClosedMessage() {
+		System.out.println("Program is closed.");
+	}
+	public void printTxtReadError() {
+		System.out.println("\n\nERROR : Txt file is not found.");
+	}
+	public void printTableLine(int i, Key key, int hashCode, int count) {
+		System.out.println(String.format("%d. Key: %-20s HashCode: %-20d Count: %-5d", i, key, hashCode, count));
+	}
+	public void printTotalValues(int word,int differentWords) {
+		System.out.println("\nTotal words : " + word + 
+							"\nTotal unique words : " + differentWords);
+	}
 }
-HashMap.prototype.insert = function insert(key: any, value: any): HashMap {
-  const generatedHashCode = Hash(key, this.mapLength);
-  this.items[generatedHashCode] = value;
-  return this;
-};
-HashMap.prototype.all = function all(): any[] {
-  return this.items.filter((i: any): boolean => !!i);
-};
-HashMap.prototype.get = function get(key: any): any {
-  const generatedHashCode = Hash(key, this.mapLength);
-  return this.items[generatedHashCode];
-};
-HashMap.prototype.remove = function remove(key: any): HashMap {
-  const generatedHashCode = Hash(key, this.mapLength);
-  this.items.splice(generatedHashCode, 1);
-  return this;
-};
-export default HashMap;

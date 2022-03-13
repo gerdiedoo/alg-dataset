@@ -1,20 +1,17 @@
-import random
-def selection_sort(alist):
-    for i in range(len(alist)):
-        min_position = i
-        for j in range (i + 1, len(alist)):
-            if alist[min_position] > alist[j]:
-                min_position = j
-        alist[i], alist[min_position] = alist[min_position], alist[i]
-unordered_list = []
-for i in range(100):
-    unordered_list.append(i)
-random.shuffle(unordered_list)
-selection_sort(unordered_list)
-print(unordered_list)
-success = True
-for index in range(len(unordered_list) - 1):
-    if unordered_list[index] > unordered_list[index + 1]:
-        success = False
-if success:
-    print("Selection Sort successful!")
+export function selectionsort ( compare, a, i, j ) {
+	for ( ; i < j ; ++i ) {
+		let k = i;
+		let t = i;
+		let o = a[t];
+		while ( ++t < j ) {
+			if ( compare( o, a[t] ) > 0 ) {
+				o = a[t];
+				k = t;
+			}
+		}
+		if ( k > i ) {
+			a[k] = a[i];
+			a[i] = o;
+		}
+	}
+}

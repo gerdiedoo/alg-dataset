@@ -1,13 +1,33 @@
-from .hash_table import HashTable
-class QuadraticProbing(HashTable):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-    def _colision_resolution(self, key, data=None):
-        i = 1
-        new_key = self.hash_function(key + i*i)
-        while self.values[new_key] is not None                and self.values[new_key] != key:
-            i += 1
-            new_key = self.hash_function(key + i*i) if not                self.balanced_factor() >= self.lim_charge else None
-            if new_key is None:
-                break
-        return new_key
+package structures;
+public class DoublyLinkedList {
+    int[] next;
+    int[] prev;
+    public DoublyLinkedList(int maxSize) {
+        next = new int[maxSize + 1];
+        prev = new int[maxSize + 1];
+    }
+    public void insert(int x, int insertAfter) {
+        prev[x] = insertAfter;
+        next[x] = next[insertAfter];
+        prev[next[x]] = x;
+        next[prev[x]] = x;
+    }
+    public void remove(int x) {
+        next[prev[x]] = next[x];
+        prev[next[x]] = prev[x];
+    }
+    public static void main(String[] args) {
+        int n = 10;
+        DoublyLinkedList list = new DoublyLinkedList(n);
+        for (int i = 1; i <= n; i++) {
+            list.insert(i, i - 1);
+        }
+        list.remove(1);
+        list.remove(10);
+        list.remove(5);
+        for (int i = list.next[0]; i != 0; i = list.next[i]) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}

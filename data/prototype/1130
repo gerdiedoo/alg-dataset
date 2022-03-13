@@ -1,57 +1,51 @@
-package Sorting;
-import java.util.Scanner;
-public class QuickSort {
-    private static void quickSort(int[] array,int lb,int ub) {
-         if(lb < ub) {
-             int end  = partition(array,lb,ub);
-             quickSort(array,lb,end-1);
-             quickSort(array,end+1,ub);
-         }
-    }
-    private static int partition(int[] array , int lb , int ub) {
-         int pivot = array[lb];
-         int start = lb;
-         int end = ub;
-         while (start < end) {
-             while (array[start] <= pivot && start < array.length - 1) {
-                 start++;
-             }
-             while (array[end] > pivot) {
-                 end--;
-             }
-             if(start < end) {
-                 swap(array,start,end);
-             }
-         }
-         swap(array,lb,end);
-         return end;
-    }
-    private static void swap(int[] array , int i , int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    private static void print(int[] array) {
-        for(int i : array) {
-            System.out.print(i + " ");
-        }
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] array = new int[n];
-        for(int i= 0 ; i < n ; i++) {
-            array[i] = sc.nextInt();
-        }
-        System.out.print("Before Sorting : ");
-        print(array);
-        long startTime = System.nanoTime();
-        quickSort(array,0,array.length-1);
-        long endTime = System.nanoTime();
-        System.out.print("\nAfter Sorting : ");
-        print(array);
-        long totalTime = endTime - startTime;
-        System.out.printf("\nTime in seconds : %.6fs",(totalTime/ 1000000000.0));
-        sc.close();
-    }
+package com.sorting;
+import java.util.Comparator;
+public class Selection {
+	private Selection() {
+	}
+	public static void sort(Comparable[] array) {
+		if(array == null)
+			throw new NullPointerException();
+		int size = array.length;
+		int min;
+		for (int i = 0; i < size; i++) {
+			min = i;
+			for (int j = i + 1; j < size; j++) {
+				if (less(array[j], array[min]))
+					min = j;
+			}
+			exchange(array, i, min);
+		}
+	}
+	public static void sort(Object[] array, Comparator c) {
+		if(array == null)
+			throw new NullPointerException();
+		int size = array.length;
+		int min;
+		for (int i = 0; i < size; i++) {
+			min = i;
+			for (int j = i + 1; j < size; j++) {
+				if (less(c, array[j], array[min]))
+					min = j;
+			}
+			exchange(array, i, min);
+		}
+	}
+	private static boolean less(Comparable v, Comparable w) {
+		return v.compareTo(w) < 0;
+	}
+	private static boolean less(Comparator c, Object v, Object w) {
+		return c.compare(v, w) < 0;
+	}
+	private static void exchange(Object[] a, int i, int j) {
+		Object temp = a[i];
+		a[i] = a[j];
+		a[j] = temp;
+	}
+	public static void show(Comparable[] array) {
+		int n = array.length;
+		for (int i = 0; i < n; i++) {
+			System.out.print(array[i] + ",");
+		}
+	}
 }

@@ -1,53 +1,62 @@
-package Lists.JDKLinkedList;
-public class Employee {
-    private String firstName;
-    private String lastName;
-    private int id;
-    public Employee(String firstName, String lastName, int id) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
+class SinglyLinkedList{
+	private Node head;
+	public SinglyLinkedList(){
+		head = null;
+	}
+	public void insertHead(int x){
+		Node newNode = new Node(x);  
+		newNode.next = head; 		 
+		head = newNode; 			 
+	}
+    Node InsertNth(Node head, int data, int position) {
+        Node newNode = new Node();
+        newNode.data = data;
+        if (position == 0) {
+            newNode.next = head;
+            return newNode;
+        }
+        Node current = head;
+        while (--position > 0) {
+            current = current.next;
+        }
+        newNode.next = current.next;
+        current.next = newNode;
+        return head;
     }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        if (id != employee.id) return false;
-        if (!firstName.equals(employee.firstName)) return false;
-        return lastName.equals(employee.lastName);
-    }
-    @Override
-    public int hashCode() {
-        int result = firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + id;
-        return result;
-    }
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", id=" + id +
-                '}';
-    }
+	public Node deleteHead(){
+		Node temp = head;
+		head = head.next;  
+		return temp;
+	}
+	public boolean isEmpty(){
+		return(head == null);
+	}
+	public void display(){
+		Node current = head;
+		while(current!=null){
+			System.out.print(current.getValue()+" ");
+			current = current.next;
+		}
+		System.out.println();
+	}
+	public static void main(String args[]){
+		SinglyLinkedList myList = new SinglyLinkedList();
+		System.out.println(myList.isEmpty());  
+		myList.insertHead(5);
+		myList.insertHead(7);
+		myList.insertHead(10);
+		myList.display();  
+		myList.deleteHead();
+		myList.display();  
+	}
+}
+class Node{
+	public int value;
+	public Node next;  
+	public Node(int valuein){
+		value = valuein;
+	}
+	public int getValue(){
+		return value;
+	}
 }

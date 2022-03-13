@@ -1,54 +1,119 @@
-public class BitonicSort
-{
-	void compAndSwap(int a[], int i, int j, int dir)
-	{
-		if ( (a[i] > a[j] && dir == 1) ||
-			(a[i] < a[j] && dir == 0))
-		{
-			int temp = a[i];
-			a[i] = a[j];
-			a[j] = temp;
-		}
-	}
-	void Merge(int a[], int low, int count, int dir)
-	{
-		if (cnt>1)
-		{
-			int k = count/2;
-			for (int i=low; i<low+k; i++)
-				compAndSwap(a,i, i+k, dir);
-			Merge(a,low, k, dir);
-			Merge(a,low+k, k, dir);
-		}
-	}
-	void Sort(int a[], int low, int count, int dir)
-	{
-		if (cnt>1)
-		{
-			int k = count/2;
-			Sort(a, low, k, 1);
-			Sort(a,low+k, k, 0);
-			Merge(a, low, cnt, dir);
-		}
-	}
-	void sort(int a[], int N, int up)
-	{
-		Sort(a, 0, N, up);
-	}
-	static void printArray(int arr[])
-	{
-		int n = arr.length;
-		for (int i=0; i<n; ++i)
-			System.out.print(arr[i] + " ");
-		System.out.println();
-	}
-	public static void main(String args[])
-	{
-		int a[] = {3, 7, 4, 8, 6, 2, 1, 5};
-		int up = 1;
-		Sort ob = new Sort();
-		ob.sort(a, a.length,up);
-		System.out.println("\nSorted array");
-		printArray(a);
-	}
-}
+class HashTableEntry:
+    def __init__(self, key, value, next=None):
+        self.key = key
+        self.value = value
+        self.next = next
+MIN_CAPACITY = 8
+class HashTable:
+    def __init__(self, capacity=MIN_CAPACITY):
+        self.capacity = capacity
+        self.storage = [0] * capacity
+        self.itemCount = 0
+    def get_num_slots(self):
+        return len(self.storage)
+    def get_load_factor(self):
+        load = self.itemCount / self.capacity
+        return load
+    def fnv1(self, key):
+    def djb2(self, key):
+        hash = 5381
+        for x in key:
+            hash = ((hash << 5) + hash) + ord(x)
+        return hash & 0xFFFFFFFF
+    def hash_index(self, key):
+        return self.djb2(key) % self.capacity
+    def put(self, key, value):
+        if self.get_load_factor() > 0.7:
+            self.resize(self.capacity * 2)
+        ind = self.hash_index(key)
+        if self.storage[ind] == 0:
+            self.storage[ind] = HashTableEntry(key, value)
+        else:
+            curr = self.storage[ind]
+            while curr.next != None:
+                if curr.key == key:
+                    curr.value = value
+                    self.itemCount += 1
+                    break
+                else:
+                    curr = curr.next
+            curr.next = HashTableEntry(key, value)
+            self.itemCount += 1
+    def delete(self, key):
+        ind = self.hash_index(key)
+        curr = self.storage[ind]
+        prev = curr
+        if curr != 0:
+            count = 0
+            while curr.key != None:
+                if curr.key == key:
+                    if curr.next == None and count == 0:
+                        self.storage[ind] = 0
+                        break
+                    elif curr.next != None and count == 0:
+                        self.storage[ind] = curr.next
+                        break
+                    elif curr.next == None and count > 0:
+                        prev.next = None
+                        break
+                    else:
+                        prev.next = curr.next
+                        break
+                else:
+                    count += 1
+                    prev = prev.next
+                    curr = curr.next
+        else:
+            print('Warning key not found')
+    def get(self, key):
+        ind = self.hash_index(key)
+        result = None
+        if self.storage[ind] != 0:
+            curr = self.storage[ind]
+            while curr:
+                if curr.key == key:
+                    result = curr.value
+                curr = curr.next
+        return result
+    def resize(self, new_capacity):
+        self.capacity= new_capacity
+        oldArr= self.storage
+        newArr= [0] * new_capacity
+        self.storage= newArr
+        for i in range(len(oldArr) -1):
+            if oldArr[i] != 0:
+                curr = oldArr[i]
+                while curr:
+                    ind= self.hash_index(curr.key)
+                    newArr[ind]= curr
+                    curr= curr.next
+if __name__ == "__main__":
+    ht = HashTable(8)
+    ht.put("line_1", "'Twas brillig, and the slithy toves")
+    ht.put("line_2", "Did gyre and gimble in the wabe:")
+    ht.put("line_3", "All mimsy were the borogoves,")
+    ht.put("line_4", "And the mome raths outgrabe.")
+    ht.put("line_5", '"Beware the Jabberwock, my son!')
+    ht.put("line_6", "The jaws that bite, the claws that catch!")
+    ht.put("line_7", "Beware the Jubjub bird, and shun")
+    ht.put("line_8", 'The frumious Bandersnatch!"')
+    ht.put("line_9", "He took his vorpal sword in hand;")
+    ht.put("line_10", "Long time the manxome foe he sought--")
+    ht.put("line_11", "So rested he by the Tumtum tree")
+    ht.put("line_12", "And stood awhile in thought.")
+    ht.put("line_13", "And stood awhile in thought.")
+    ht.put("line_14", "And stood awhile in thought.")
+    ht.put("line_15", "And stood awhile in thought.")
+    ht.put("line_16", "And stood awhile in thought.")
+    ht.put("line_17", "And stood awhile in thought.")
+    print("")
+    for i in range(1, 13):
+        print(ht.get(f"line_{i}"))
+    print('')
+    old_capacity = ht.get_num_slots()
+    ht.resize(ht.capacity * 2)
+    new_capacity = ht.get_num_slots()
+    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
+    for i in range(1, 13):
+        print(ht.get(f"line_{i}"))
+    print("")

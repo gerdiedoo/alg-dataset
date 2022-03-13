@@ -1,24 +1,83 @@
-def heapify(arr, n, i):
-    largest = i  
-    l = 2 * i + 1     
-    r = 2 * i + 2     
-    if l < n and arr[i] < arr[l]:
-        largest = l
-    if r < n and arr[largest] < arr[r]:
-        largest = r
-    if largest != i:
-        arr[i],arr[largest] = arr[largest],arr[i]  
-        heapify(arr, n, largest)
-def heapSort(arr):
-    n = len(arr)
-    for i in range(n, -1, -1):
-        heapify(arr, n, i)
-    for i in range(n-1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]   
-        heapify(arr, i, 0)
-arr = [ 12, 11, 13, 5, 6, 7]
-heapSort(arr)
-n = len(arr)
-print ("Sorted array is")
-for i in range(n):
-    print ("%d" %arr[i]),
+class Node(object):
+    def __init__(self, data=None, next_node=None, prev=None):
+        self.data = data
+        self.next = next_node
+        self.prev = prev
+    def __repr__(self):
+        return "Value: {}".format(self.data)
+class DoubleLinkedList(object):
+    def __init__(self, data=None):
+        self.head = None
+        self.tail = None
+        self._length = 0
+        try:
+            for val in data:
+                self.push(val)
+        except TypeError:
+            if data:
+                self.push(data)
+    def push(self, val):
+        old_head = self.head
+        self.head = Node(val, next_node=old_head)
+        if old_head:
+            old_head.prev = self.head
+        if not self.tail:
+            self.tail = self.head
+        self._length += 1
+    def pop(self):
+        to_return = self.head
+        if self._length < 1:
+            raise IndexError('Cannot pop from an empty list.')
+        new_head = self.head.next
+        if new_head:
+            new_head.prev = None
+        self.head = new_head
+        self._length -= 1
+        if self._length < 1:
+            self.tail = None
+        return to_return.data
+    def append(self, val):
+        old_tail = self.tail
+        self.tail = Node(val, prev=old_tail)
+        if old_tail:
+            old_tail.next = self.tail
+        if self._length < 1:
+            self.head = self.tail
+        self._length += 1
+    def shift(self):
+        to_return = self.tail
+        if self._length < 1:
+            raise IndexError('Cannot shift from an empty list.')
+        new_tail = self.tail.prev
+        if new_tail:
+            new_tail.next = None
+        self.tail = new_tail
+        self._length -= 1
+        if self._length < 1:
+            self.tail = None
+        return to_return.data
+    def remove(self, val):
+        curr = self.head
+        while curr:
+            if curr.data is val:
+                if self._length is 1:
+                    self.head, self.tail = None, None
+                elif curr is not self.head and curr is not self.tail:
+                    curr.next.prev, curr.prev.next = curr.prev, curr.next
+                elif curr is self.head:
+                    self.head, curr.next.prev = curr.next, None
+                elif curr is self.tail:
+                    self.tail, curr.prev.next = curr.prev, None
+                self._length -= 1
+                return
+            curr = curr.next
+        raise ValueError('{} is not in the list'.format(val))
+    def _repr(self):
+        l = []
+        while True:
+            try:
+                popped_data = self.pop()
+                l.append(popped_data)
+            except IndexError:
+                break
+        return l

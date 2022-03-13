@@ -1,40 +1,104 @@
-import java.util.Scanner;
-import java.io.*;
-import java.lang.*;
-public class LinearSearch
-{
-   public static void main(String args[])
-   {
-      Scanner in=new Scanner(System.in);
-      System.out.println("Enter the no. of input integers:");
-      int n=in.nextInt();
-       int arr[] = new int[n];
-       System.out.println("Enter Array Elements : ");
-	    for(int i=0; i<n; i++)
-       {
-           arr[i] = in.nextInt();
-       }
-	    System.out.print("Enter the Number to be Searched...");
-       int num = in.nextInt();
-	     int c=0;
-       int pos=-1;
-       for(int i=0; i<n; i++)
-       {
-           if(arr[i] == num)
-           {
-               c = 1;
-               pos = i+1;
-           }
-           if(c==1)
-           break;
-       }
-       if(c == 0)
-       {
-           System.out.print("Number Not Found..!!");
-       }
-       else
-       {
-           System.out.print(num+ " found at position " + pos);
-       }
-   }
-}
+import hashlib
+from linked_list import LinkedList
+class HashMap:
+    def __init__(self, num_buckets = 8):
+        self.store = self.initialize_store(num_buckets)
+        self.count = 0
+    def __getitem__(self, key):
+        value = self.get_value(key)
+        if value is not None:
+            return value
+        raise KeyError("That key is not included")
+    def get(self, key, default_value = None):
+        value = self.get_value(key)
+        if value is not None:
+            return value
+        return default_value
+    def get_value(self, key):
+        bucket = self.bucket(key)
+        return bucket.get(key)
+    def __setitem__(self, key, value):
+        bucket = self.bucket(key)
+        if bucket.is_included(key):
+            bucket.update(key, value)
+        else:
+            bucket.append(key, value)
+            self.count += 1
+        if self.count > self.num_buckets():
+            self.resize()
+        return value
+    def delete(self, key):
+        value = self.bucket(key).remove(key)
+        if value is not None:
+            self.count -= 1
+            if self.count < self.num_buckets() / 4:
+                self.resize(False)
+        return value
+    def has_key(self, key):
+        bucket = self.bucket(key)
+        return bucket.is_included(key)
+    def update(self, other_hash_map):
+        for key, value in other_hash_map.items():
+            self[key] = value
+        return self
+    def resize(self, grow = True):
+        new_num_buckets = self.num_buckets() * 2 if grow else self.num_buckets() / 2
+        if new_num_buckets < 8:
+            return
+        old_store = self.store
+        self.store = self.initialize_store(new_num_buckets)
+        self.count = 0
+        for bucket in old_store:
+            item = bucket.head.next
+            while item != bucket.tail:
+                self[item.key] = item.value
+                item = item.next
+        return self
+    def __len__(self):
+        return self.count
+    def is_empty(self):
+        return self.count == 0
+    def num_buckets(self):
+        return len(self.store)
+    def bucket(self, key):
+        bucket_idx = hash(key) % self.num_buckets()
+        return self.store[bucket_idx]
+    def initialize_store(self, num_buckets):
+        new_store = []
+        if num_buckets < 8:
+            num_buckets = 8
+        while len(new_store) < num_buckets:
+            new_store.append(LinkedList())
+        return new_store
+    def items(self):
+        return self.get_subset()
+    def keys(self):
+        return self.get_subset("keys")
+    def values(self):
+        return self.get_subset("values")
+    def get_subset(self, subset = "items"):
+        items = []
+        for bucket in self.store:
+            if subset == "keys":
+                items += bucket.keys()
+            elif subset == "values":
+                items += bucket.values()
+            else:
+                items += bucket.items()
+        return items
+    def __str__(self):
+        pretty_items = []
+        for pair in self.items():
+            pretty_pair  = ": ".join(self.format_pair(pair))
+            pretty_items.append(pretty_pair)
+        return "{" + ", ".join(pretty_items) + "}"
+    def pretty_string(self, string):
+        return "'%s'" % string
+    def format_pair(self, pair):
+        pretty_pair = ()
+        for item in pair:
+            if isinstance(item, basestring):
+                pretty_pair += (self.pretty_string(item), )
+            else:
+                pretty_pair += (str(item), )
+        return pretty_pair

@@ -1,117 +1,86 @@
-Array.prototype.elem = function (index) {
-  return this[index-1];
-};
-Array.prototype.elemSwap = function (index1, index2) {
-  var temp = this[index1 - 1];
-  this[index1 - 1] = this[index2 - 1];
-  this[index2 - 1] = temp;
-};
-Array.prototype.swap = function (index1, index2) {
-  var temp = this[index1];
-  this[index1] = this[index2];
-  this[index2] = temp;
-};
-Array.prototype.clone = function() {
-  return this.slice(0);
-};
-var sort = function (algo, arr) {
-  function selectionSort (arr) {
-    for (var i = 0; i < arr.length; i++) {
-      var min = arr[i];
-      var minIndex = i;
-      for (var j = i+1; j < arr.length; j++) {
-        if (arr[j] < min) {
-          min = arr[j];
-          minIndex = j;
+import java.util.*;
+public class MaxHeap {
+    public static void main (String[] args){
+        int ar [] = {4,1,3,2,16,9,10,14,8,7};
+        int size = ar.length;
+        System.out.print("Initial Array : ");
+        printHeap(ar,size);
+        for(int i=size/2; i>0 ; i--){
+               MaxHeapify(ar,i ,size);
+               if(i==1){
+                   System.out.print("Max Heap : ");
+               }else{
+                System.out.print("MaxHeapify steps : ");
+               }
+               printHeap(ar,size);
         }
-      }
-      arr.swap(i, minIndex);
-    }
-    return arr;
-  }
-  function insertSort (arr) {
-    for (var i = 1; i <= arr.length; i++) {
-      for (var j = i-1; j >= 0; j--) {
-        if (arr[j+1] < arr[j]) {
-          arr.swap(j, j+1);
+        System.out.println("Max Value :"+ar[0]);
+        int min=ar[(size/2)+1];
+        for(int i=(size/2)+1 ; i<size ;i++){
+            if(min>ar[i]){
+                min=ar[i];
+            }
         }
-      }
+        System.out.println("Min Value :"+min);
+        HeapDelete(ar,10);
+        size= size-1;
+        System.out.print("after  Delete Element : ");
+        printHeap(ar,size);
+        insertHeap(ar,15,size);
+        size= size+1;
+        System.out.print("after Insert Element : ");
+        printHeap(ar,size);
     }
-    return arr;
-  }
-  function mergeSort (arr) {
-    if (arr.length <= 1) {
-      return arr;
+    public static void MaxHeapify(int[] ar, int i, int n){
+        int l = 2*i-1;
+        System.out.println("L :"+l);
+        int r = 2*i;
+        System.out.println("R :"+r);
+        int largest =i-1;
+        System.out.println("I :"+(i-1));
+        if(l<n && ar[largest]<ar[l]){
+            largest=l;
+        }
+        if(r<n && ar[largest]<ar[r]){
+            largest=r;
+        }
+        if(i-1!=largest){
+            int temp= ar[i-1];
+            ar[i-1]=ar[largest];
+            ar[largest] = temp;
+            MaxHeapify(ar, largest+1 ,n);
+        }
     }
-    var middleIndex = Math.floor(arr.length/2);
-    var leftSorted = mergeSort(arr.slice(0, middleIndex));
-    var rightSorted = mergeSort(arr.slice(middleIndex));
-    return merge(leftSorted, rightSorted);
-  }
-  function merge (left, right) {
-    var sortedArr = [];
-    var leftInd = 0;
-    var rightInd = 0;
-    while (leftInd < left.length || rightInd < right.length) {
-      if (rightInd === right.length || left[leftInd] <= right[rightInd]) {
-        sortedArr.push(left[leftInd]);
-        ++leftInd;
-      } else {
-        sortedArr.push(right[rightInd]);
-        ++rightInd;
-      }
+    public static void HeapDelete(int[] ar,int a){
+        int index =-1; 
+        for(int i=0; i<ar.length ;i++){
+            if (ar[i]==a){
+                index=i;
+            }
+        }
+        if(index==-1){
+            System.out.println("this element not at the array");
+        }
+        else{
+            ar[index]= ar[ar.length-1];
+            MaxHeapify(ar, index+1 ,ar.length-1);
+        }
     }
-    return sortedArr;
-  }
-  function Heap (arr) {
-    this.heapArray = arr.clone();
-    this.heapSize = this.heapArray.length;
-    this.numberOfNonLeaveNodes = Math.ceil(this.heapSize/2);
-    this.buildHeap();
-    this.sortedArray = [];
-  }
-  Heap.prototype.buildHeap = function () {
-    for(var i = this.numberOfNonLeaveNodes; i >= 1; --i) {
-      this.heapifyNode(i);
+    public static void insertHeap (int arr[],int b, int n){
+        arr[n-1]=b;
+        while((n/2)>0){
+            if(arr[(n/2)-1]<arr[n-1]){
+                 int temp=arr[(n/2)-1];
+                 arr[(n/2)-1]=arr[n-1];
+                 arr[n-1]=temp;
+            }
+            n=n/2;
+        }
     }
-  };
-  Heap.prototype.heapifyNode = function (index) {
-    var leftIndex = 2 * index;
-    var rightIndex = 2 * index + 1;
-    var smallest = index;
-    if (leftIndex <= this.heapSize && this.heapArray.elem(leftIndex) < this.heapArray.elem(smallest)) {
-      smallest = leftIndex;
+    public static void printHeap(int[] ar,int n){
+        for(int i=0 ; i<n ; i++){
+            System.out.print(ar[i]+" ");
+        }
+        System.out.println();
     }
-    if (rightIndex <= this.heapSize && this.heapArray.elem(rightIndex) < this.heapArray.elem(smallest)) {
-      smallest = rightIndex;
-    }
-    if (smallest != index) {
-      this.heapArray.elemSwap(index, smallest);
-      this.heapifyNode(smallest);
-    }
-  };
-  Heap.prototype.sort = function () {
-    if (this.sortedArray.length !== 0) {
-      return this.sortedArray;
-    } else {
-      for (var i = 1; i <= this.heapSize; ++i) {
-        this.heapArray.elemSwap(1, this.heapArray.length);
-        this.sortedArray[i - 1] = this.heapArray.pop();
-        this.heapifyNode(1);
-      }
-      return this.sortedArray;
-    }
-  };
-  switch (algo) {
-    case "SELECTION":
-      return selectionSort(arr);
-    case "INSERT":
-      return insertSort(arr);
-    case "MERGE":
-      return mergeSort(arr);
-    case "HEAP":
-      return new Heap(arr).sort();
-    default:
-      throw "Sorting algorithm not found";
-  }
-};
+}

@@ -1,103 +1,112 @@
-public class SinglyLinkedList{
-    class Node{
-        int data;
-        Node next;
-        public Node(int data){
-            this.data=data;
-            this.next=null;
+function Node(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+}
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+    add(data) {
+        const node = new Node(data);
+        if (!this.root) {
+            this.root = node;
+        } else {
+            this.insertNode(node)
         }
     }
-     public Node head=null;
-     public Node tail=null;
-    void addNode(int d){
-        Node new_node=new Node(d);
-        if(head==null){
-            head=new_node;
-            tail=new_node;
-        }else{
-            tail.next=new_node;
-            tail=new_node;
+    insertNode(node) {
+        let current = this.root;
+        while (current) {
+            if (node.data < current.data) {
+                if (!current.left) {
+                    current.left = node;
+                    break;
+                }
+                current = current.left
+            } else if (node.data > current.data) {
+                if (!current.right) {
+                    current.right = node;
+                    break;
+                }
+                current = current.right;
+            } else
+                break;
         }
     }
-    void insertStart(int d){
-        Node new_node=new Node(d);
-        if(head==null){
-            head=new_node;
-            tail=new_node;
-        }else{
-            new_node.next=head;
-            head=new_node;
-        }
+    remove(data) {
+        this.root = this.removeNode(this.root, data);
     }
-    void deleteStart(){
-        if(head==null){
-            System.out.println("List is empty");
-        }else{
-            head=head.next;
+    removeNode(node, data) {
+        if (!node) {
+            return null;
         }
-    }
-    void deleteEnd(){
-        if(head==null){
-            System.out.println("List is empty");
-        }else{
-            Node current=head;
-            while(current.next.next!=null){
-                current=current.next;
+        if (data === node.data) {
+            if (!node.left && !node.right) {
+                return null
             }
-            current.next=null;
-            tail=current;
-        }
-    }
-    void deleteMiddle(int n){
-        if(head==null){
-            System.out.println("List is empty");
-        }else{
-            Node current=head;
-            Node previous=head;
-            for(int i=0;i<n;i++){
-                previous=current;
-                current=current.next;
+            if (!node.left) {
+                return node.right;
             }
-            previous.next=current.next;
-        }
-    }
-    void insertMiddle(int d,int n){
-        Node new_node=new Node(d);
-        if(head==null){
-            System.out.println("List is empty");
-        }else{
-            Node current=head;
-            Node previous=head;
-            for(int i=0;i<n;i++){
-                previous=current;
-                current=current.next;
+            if (!node.right) {
+                return node.left;
             }
-           new_node.next=current;
-           previous.next=new_node;
+            const temp = this.getMin(node.right);
+            node.data = temp;
+            node.right = this.removeNode(node.right, temp);
+            return node;
+        } else if (data < node.data) {
+            node.left = this.removeNode(node.left, data);
+            return node;
+        } else {
+            node.right = this.removeNode(node.right, data);
+            return node;
         }
     }
-    void display(){
-           Node  current=head;
-           while(current!=null){
-               System.out.print("  "+current.data);
-               current=current.next;
-           }
+    getMin(node) {
+        if (!node) {
+            node = this.root;
+        }
+        while (node.left) {
+            node = node.left;
+        }
+        return node.data;
     }
-    public static void main(String args[]){
-        SinglyLinkedList slist=new SinglyLinkedList();
-        slist.addNode(10);
-        slist.addNode(20);
-        slist.addNode(30);
-        slist.addNode(40);
-        slist.addNode(50);
-        slist.insertStart(5);
-        slist.insertStart(7);
-        slist.display();
-        System.out.println("");
-        slist.deleteStart();
-        slist.deleteEnd();
-        slist.deleteMiddle(3);
-        slist.insertMiddle(25,2);
-        slist.display();
+    preOrder(node, fn) {
+        if (node) {
+            if (fn) {
+                fn(node);
+            }
+            this.preOrder(node.left, fn);
+            this.preOrder(node.right, fn);
+        }
+    }
+    traverseDFS(cb, method) {
+        const current = this.root;
+        if (method) {
+            this[`${method}`](current, cb);
+        } else {
+            this.preOrder(current, cb);
+        }
+    }
+    printDFS() {
+        this.traverseDFS((node) => {
+            console.log(
+                `Node.data: ${node.data}`,
+                `Node.left: ${node.left ? node.left.data : null}`,
+                `Node.right: ${node.right ? node.right.data : null}`
+            )
+        })
     }
 }
+(function test() {
+    let tree = new BinarySearchTree()
+    tree.add(5)
+    tree.add(3)
+    tree.add(1)
+    tree.add(4)
+    tree.add(7)
+    tree.add(6)
+    tree.add(9)
+    tree.printDFS();
+})()

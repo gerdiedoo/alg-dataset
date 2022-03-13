@@ -1,38 +1,48 @@
-package ie.peternagy.algorithms.sorting;
-import java.util.Arrays;
-public class MergeSort {
-    public static void sort(Comparable[] items) {
-        sort(items, true);
-    }
-    public static void sort(Comparable[] items, boolean isAsc) {
-        int arrayLength = items.length;
-        mergeSort(items, 0, arrayLength - 1, isAsc);
-    }
-    private static void mergeSort(Comparable[] items, int lowIndex, int highIndex, boolean isAsc) {
-        if (lowIndex < highIndex) {
-            int middle = lowIndex + (highIndex - lowIndex) / 2;
-            mergeSort(items, lowIndex, middle, isAsc);
-            mergeSort(items, middle + 1, highIndex, isAsc);
-            merge(items, lowIndex, middle, highIndex, isAsc);
-        }
-    }
-    private static void merge(Comparable[] items, int lowIndex, int middle, int highIndex, boolean isAsc) {
-        Comparable[] helper = new Comparable[items.length];
-        System.arraycopy(items, lowIndex, helper, lowIndex, (highIndex - lowIndex) + 1);
-        int i = lowIndex;
-        int j = middle + 1;
-        int k = lowIndex;
-        while (i <= middle && j <= highIndex) {
-            if (isAsc && helper[i].compareTo(helper[j]) < 0 ||
-                    !isAsc && helper[i].compareTo(helper[j]) > 0) {
-                items[k] = helper[i];
-                i++;
-            } else {
-                items[k] = helper[j];
-                j++;
-            }
-            k++;
-        }
-        System.arraycopy(helper, i, items, k, (middle - i) + 1);
-    }
+package io.nayuki.sortalgodemo.algo;
+import io.nayuki.sortalgodemo.core.AbstractSortAlgorithm;
+import io.nayuki.sortalgodemo.core.SortAlgorithm;
+import io.nayuki.sortalgodemo.core.SortArray;
+import io.nayuki.sortalgodemo.core.SortArray.ElementState;
+public final class RotationMergeSort extends AbstractSortAlgorithm {
+	public static final SortAlgorithm INSTANCE = new RotationMergeSort();
+	public void sort(SortArray array) {
+		sort(array, 0, array.length());
+		array.setRange(0, array.length(), ElementState.DONE);
+	}
+	private static void sort(SortArray array, int start, int end) {
+		if (!(0 <= start && start <= end && end <= array.length()))
+			throw new IllegalArgumentException();
+		if (end - start <= 1)
+			return;
+		array.setRange(start, end, ElementState.ACTIVE);
+		int mid = (start + end) / 2;
+		array.setRange(mid, end, ElementState.INACTIVE);
+		sort(array, start, mid);
+		array.setRange(start, mid, ElementState.INACTIVE);
+		sort(array, mid, end);
+		merge(array, start, mid, end);
+	}
+	private static void merge(SortArray array, int start, int mid, int end) {
+		if (!(0 <= start && start <= mid && mid <= end && end <= array.length()))
+			throw new IllegalArgumentException();
+		if (start == mid || mid == end)
+			return;
+		array.setRange(start, end, ElementState.ACTIVE);
+		int left = mid - 1;
+		int right = mid;
+		while (start <= left && right < end && array.compare(left, right) > 0) {
+			left--;
+			right++;
+		}
+		int n = right - mid;
+		for (int i = 0; i < n; i++)
+			array.swap(mid - n + i, mid + i);
+		array.setRange(mid, end, ElementState.INACTIVE);
+		merge(array, start, left + 1, mid);
+		array.setRange(start, mid, ElementState.INACTIVE);
+		merge(array, mid, right, end);
+	}
+	private RotationMergeSort() {
+		super("Rotation merge sort");
+	}
 }

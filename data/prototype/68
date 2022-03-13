@@ -1,16 +1,108 @@
-from .hash_table import HashTable
-from collections import deque
-class HashTableWithLinkedList(HashTable):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-    def _set_value(self, key, data):
-        self.values[key] = deque([]) if self.values[key] is None else self.values[key]  
-        self.values[key].appendleft(data)
-        self._keys[key] = self.values[key]
-    def balanced_factor(self):
-        return sum([self.charge_factor - len(slot) for slot in self.values])               / self.size_table * self.charge_factor
-    def _colision_resolution(self, key, data=None):
-        if not (len(self.values[key]) == self.charge_factor
-                and self.values.count(None) == 0):
-            return key
-        return super()._colision_resolution(key, data)
+class HashTableChaining implements HashTable {
+  private final ChainedList[] arr;
+  private final HashFunction func;
+  public HashTableChaining(HashFunction f) {
+    arr = new ChainedList[f.size()];
+    func = f;
+  }
+  @Override
+  public boolean put(Object key, Object val) {
+    if (key == null || val == null) return false;
+    int i = func.compute(key);
+    if (arr[i] == null) {
+      arr[i] = new ChainedList(key, val);
+      return true;
+    }
+    ChainedList.ListElement searchRes = arr[i].search(key);
+    if (searchRes == null) {
+      arr[i].add(key, val);
+      return true;
+    }
+    searchRes.setVal(val);
+    return true;
+  }
+  @Override
+  public Object get(Object key) {
+    if (key == null) return null;
+    int i = func.compute(key);
+    if (arr[i] == null) return null;
+    if (arr[i].search(key) == null) return null;
+    return arr[i].search(key).getVal();
+  }
+  @Override
+  public boolean remove(Object key) {
+    if (key == null) return false;
+    int i = func.compute(key);
+    if (arr[i] == null) return false;
+    return arr[i].remove(key);
+  }
+  @Override
+  public void dump() {
+    StringBuilder out = new StringBuilder();
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] != null) {
+        out.append(arr[i].dump(i));
+      }
+    }
+    System.out.print(out);
+  }
+  private static class ChainedList {
+    private ListElement first;
+    private ChainedList(Object firstKey, Object firstVal) {
+      this.first = new ListElement(null, firstKey, firstVal);
+    }
+    private void add(Object key, Object val) {
+      first = new ListElement(first, key, val);
+    }
+    private boolean remove(Object key) {
+      if (first == null) return false;
+      if (first.key.equals(key)) {
+        first = first.next;
+        return true;
+      }
+      ListElement prevKeyElem = first;
+      while (prevKeyElem.next != null && !prevKeyElem.next.key.equals(key)) {
+        prevKeyElem = prevKeyElem.next;
+      }
+      if (prevKeyElem.next == null) return false;
+      prevKeyElem.next = prevKeyElem.next.next;
+      return true;
+    }
+    private ListElement search(Object key) {
+      if (first == null) return null;
+      return first.search(key);
+    }
+    private String dump(int index) {
+      if (first == null) return "";
+      return first.dump(index);
+    }
+    private static class ListElement {
+      private ListElement next;
+      private final Object key;
+      private Object val;
+      private ListElement(ListElement next, Object key, Object val) {
+        this.next = next;
+        this.key = key;
+        this.val = val;
+      }
+      private void setVal(Object val) {
+        this.val = val;
+      }
+      private Object getVal() {
+        return val;
+      }
+      private ListElement search(Object key) {
+        if (this.key.equals(key)) {
+          return this;
+        }
+        if (next == null) return null;
+        return next.search(key);
+      }
+      private String dump(int index) {
+        String out = String.format("%d %s %s\n", index, key, val);
+        if (next == null) return out;
+        return out += next.dump(index);
+      }
+    }
+  }
+}

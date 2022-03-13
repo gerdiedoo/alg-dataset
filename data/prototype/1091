@@ -1,35 +1,41 @@
-package com.deepak.algorithms.Sorting;
-import java.util.Arrays;
-public class QuickSort {
-	public static void main(String[] args) {
-		int[] valuesToBeSorted = {7, 10, 47, 40, 83, 84, 65, 61, 32, 55, 49, 46, 25, 20, 93, 63, 54, 10};
-		quickSort(valuesToBeSorted, 0, valuesToBeSorted.length - 1);
-		Arrays.stream(valuesToBeSorted).forEach(n -> System.out.print(n + ", "));
-	}
-	private static void quickSort(int[] values, int low, int high) {
-		int middle = low + (high - low) / 2;
-		int pivot = values[middle];
-		int i = low, j = high;
-		while (i < j) {
-			while (values[i] < pivot) {
-				i++;
-			}
-			while (values[j] > pivot) {
-				j--;
-			}
-			if (i <= j) {
-				int temp = values[j];
-				values[j] = values[i];
-				values[i] = temp;
-				i++;
-				j--;
-			}
-			if (low < j) {
-				quickSort(values, low, j);
-			}
-			if (high > i) {
-				quickSort(values, i, high);
-			}
-		}
-	}
-}
+import java.util.*; 
+class QuickSortIterative 
+{ 
+	static int partition(int arr[], int low, int high) 
+	{ 
+		int pivot = arr[high]; 
+		int i = (low-1);  
+		for (int j=low; j<=high-1; j++) 
+		{ 
+			if (arr[j] <= pivot) 
+			{ 
+				i++; 
+				int temp = arr[i]; 
+				arr[i] = arr[j]; 
+				arr[j] = temp; 
+			} 
+		} 
+		int temp = arr[i+1]; 
+		arr[i+1] = arr[high]; 
+		arr[high] = temp; 
+		return i+1; 
+	} 
+	static void qSort(int arr[], int low, int high) 
+	{ 
+		if (low < high) 
+		{ 
+			int pi = partition(arr, low, high); 
+			qSort(arr, low, pi-1); 
+			qSort(arr, pi+1, high); 
+		} 
+	} 
+	public static void main(String args[]) 
+	{ 
+		int n = 5; 
+		int arr[] = {4, 2, 6, 9, 2}; 
+		qSort(arr, 0, n-1); 
+		for(int i =0;i<n;i++){ 
+			System.out.print(arr[i]+" "); 
+		} 
+	} 
+} 

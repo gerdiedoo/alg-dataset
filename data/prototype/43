@@ -1,21 +1,16 @@
-package org.joyfulmonster.util.concurrent.internal;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-class DirectoryFactory {
-    public static Directory create(int bucketCount, int bucketSize, float loadFactor, AtomicInteger totalEntryCount, AtomicInteger splitCount) {
-        int dirSize = bucketCount;
-        int dirMask = dirSize - 1;
-        int globalDepth = Integer.bitCount(dirMask);
-        AtomicReferenceArray<Bucket> bucketsArray = new AtomicReferenceArray<Bucket>(bucketCount);
-        for (int bucketIdex = 0; bucketIdex < bucketCount; bucketIdex++) {
-            bucketsArray.set(bucketIdex, new LinearProbingBucketImpl(globalDepth, bucketIdex, bucketSize, loadFactor, totalEntryCount, splitCount));
-        }
-        DirectoryImpl result = new DirectoryImpl(bucketsArray);
-        for (int i = 0; i < bucketCount; i++) {
-            ((LinearProbingBucketImpl)bucketsArray.get(i)).directory(result);
-        }
-        BucketFactory bucketFactory = new BucketFactory(result, bucketSize, loadFactor, totalEntryCount, splitCount);
-        result.bucketFactory(bucketFactory);
-        return result;
-    }
-}
+from .hash_table import HashTable
+from collections import deque
+class HashTableWithLinkedList(HashTable):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    def _set_value(self, key, data):
+        self.values[key] = deque([]) if self.values[key] is None else self.values[key]  
+        self.values[key].appendleft(data)
+        self._keys[key] = self.values[key]
+    def balanced_factor(self):
+        return sum([self.charge_factor - len(slot) for slot in self.values])               / self.size_table * self.charge_factor
+    def _colision_resolution(self, key, data=None):
+        if not (len(self.values[key]) == self.charge_factor
+                and self.values.count(None) == 0):
+            return key
+        return super()._colision_resolution(key, data)

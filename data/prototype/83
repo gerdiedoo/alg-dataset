@@ -1,13 +1,14 @@
-package com.ks.hashmap;
-public interface HashMap<K, V> {
-    public int size();
-    public float loadFactor();
-    public boolean empty();
-    public boolean hasKey(final K key);
-    public boolean hasValue(final V value);
-    public KeyValuePair<K, V>[] table();
-    public HashFunction hashFunction();
-    public void put(final K key, final V value);
-    public void remove(final K key);
-    public V get(final K key);
+class LinearProbing extends AbstractHashSequence {
+  private int prev;
+  public LinearProbing(HashFunction f) {
+    super(f);
+  }
+  @Override
+  public int first(Object key) {
+    return prev = func.compute(key);
+  }
+  @Override
+  public int next() {
+    return prev = (prev + 1) % size();
+  }
 }

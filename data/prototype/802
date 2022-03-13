@@ -1,21 +1,26 @@
-import java.util.*;
-public class RecursiveInsertionSort {
-	public static void main(String[] args) {
-		int arr[] = {12, 11, 13, 5, 6};
-        insertionSortRecursive(arr, arr.length);
-        System.out.println(Arrays.toString(arr));
-	}
-	private static void insertionSortRecursive(int[] arr, int n) {
-		 if (n <= 1)
-	            return;
-	        insertionSortRecursive( arr, n-1 );
-	        int last = arr[n-1];
-	        int j = n-2;
-	        while (j >= 0 && arr[j] > last)
-	        {
-	            arr[j+1] = arr[j];
-	            j--;
-	        }
-	        arr[j+1] = last;
-	}
-}
+def sort(a):
+    n = len(a)
+    b = [0 for i in range(n)]
+    mergesort_topdown(a, b, n)
+def mergesort_topdown(a, b, n):
+    copy_array(a, 0, n, b)
+    split_merge_topdown(b, 0, n, a)
+def split_merge_topdown(b, begin, end, a):
+    if end - begin < 2:
+        return
+    middle = (end + begin) // 2
+    split_merge_topdown(a, begin, middle, b)
+    split_merge_topdown(a, middle, end, b)
+    merge(b, begin, middle, end, a)
+def merge(a, left, right, end, b):
+    i, j = left, right
+    for k in range(left, end):
+        if i < right and (j >= end or a[i] <= a[j]):
+            b[k] = a[i]
+            i += 1
+        else:
+            b[k] = a[j]
+            j += 1
+def copy_array(a, begin, end, b):
+    for k in range(begin, end):
+        b[k] = a[k]

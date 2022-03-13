@@ -1,9 +1,24 @@
-def bubble_sort(num_list):
-	for items in range(len(num_list)-1,0,-1):
-		for item in range(items):
-			if num_list[item] > num_list[item+1]:
-				temp = num_list[item]
-    num_list[item] = num_list[item+1]
-    num_list[item+1] = temp
- return num_list
-print bubble_sort([54,26,93,17,77,31,44,55,20])
+def bubbleSort(arr):
+    length = len(arr) 
+    for i in range(length): 
+        for j in range(0,length-i-1): 
+            if arr[j]>arr[j+1]: 
+                arr[j], arr[j+1] = arr[j+1], arr[j] 
+    return arr
+def bubbleSortOptimized(arr):
+    length = len(arr) 
+    for i in range(length): 
+        for j in range(0,length-i-1): 
+            swapped = False 
+            if arr[j]>arr[j+1]: 
+                arr[j], arr[j+1] = arr[j+1], arr[j] 
+                swapped = True
+        if swapped==False:
+            break 
+    return arr
+arr = [3,5,2,4,0,1]
+sorted_arr = bubbleSort(arr)
+print(sorted_arr)
+arr = [3,5,2,4,0,1]
+sorted_arr = bubbleSortOptimized(arr)
+print(sorted_arr)

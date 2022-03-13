@@ -1,36 +1,16 @@
-package Sorting;
-import java.util.ArrayList;
-import java.util.Scanner;
-public class BubbleSort {
-    public static void main(String[] args) {
-        ArrayList<Integer> elements = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()) {
-            elements.add(sc.nextInt());
-        }
-        sc.close();
-        int elements_array[] = new int[elements.size()];
-        for (int i = 0; i < elements.size(); i++) {
-            elements_array[i] = elements.get(i);
-        }
-        elements_array = doBubbleSort(elements_array);
-        for (int anElement : elements_array) {
-            System.out.println(anElement);
-        }
+'use strict';
+const bubbleSort = (arr = []) => {
+  let sortedArray = [...arr];
+  let n = sortedArray.length;
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (sortedArray[j] > sortedArray[j + 1]) {
+        let temp = sortedArray[j];
+        sortedArray[j] = sortedArray[j + 1];
+        sortedArray[j + 1] = temp;
+      }
     }
-    private static int[] doBubbleSort(int[] elements_array) {
-        for (int i = 0; i < elements_array.length; i++) {
-            for (int j = 0; j < elements_array.length - 1 - i; j++) {
-                if (elements_array[j] > elements_array[j + 1]) {
-                    doSwap(elements_array, j, j + 1);
-                }
-            }
-        }
-        return elements_array;
-    }
-    private static void doSwap(int[] elements_array, int i, int j) {
-        int temp = elements_array[i];
-        elements_array[i] = elements_array[j];
-        elements_array[j] = temp;
-    }
-}
+  }
+  return sortedArray;
+};
+module.exports = bubbleSort;

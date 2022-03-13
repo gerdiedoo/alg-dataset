@@ -1,20 +1,42 @@
-import numpy as np
-n = int(input('enter the size of the array '))
-arr_str = input("Enter the elements of array ").split(" ")
-arr = [int(num) for num in arr_str]
-print("Original unsorted array ")
-print(arr)
-print("\n")
-for i in range(len(arr)):
-    print(arr[i])
-def insertion_sort(x):
-    for i in range(len(x)):
-        cursor = x[i]
-        posi = i
-        while(posi>0 and x[posi-1]> cursor):
-            arr[posi] = arr[posi-1]
-            posi = posi-1
-        arr[posi] = cursor
-    print(x) 
-if __name__ == "__main__":
-    insertion_sort(arr)
+package eu.happycoders.sort.method;
+public class InsertionSort implements SortAlgorithm {
+  @Override
+  public void sort(int[] elements) {
+    sort(elements, 0, elements.length);
+  }
+  public void sort(int[] elements, int fromIndex, int toIndex) {
+    for (int i = fromIndex + 1; i < toIndex; i++) {
+      int elementToSort = elements[i];
+      int j = i;
+      while (j > fromIndex && elementToSort < elements[j - 1]) {
+        elements[j] = elements[j - 1];
+        j--;
+      }
+      elements[j] = elementToSort;
+    }
+  }
+  @Override
+  public void sort(int[] elements, Counters counters) {
+    sort(elements, 0, elements.length, counters);
+  }
+  public void sort(int[] elements, int fromIndex, int toIndex,
+                   Counters counters) {
+    for (int i = fromIndex + 1; i < toIndex; i++) {
+      counters.incIterations();
+      int number = elements[i];
+      counters.incReads();
+      int j = i;
+      while (j > fromIndex) {
+        counters.incIterations();
+        counters.incComparisons();
+        if (!(number < elements[j - 1])) break;
+        elements[j] = elements[j - 1];
+        counters.incReads();
+        counters.incWrites();
+        j--;
+      }
+      elements[j] = number;
+      counters.incWrites();
+    }
+  }
+}

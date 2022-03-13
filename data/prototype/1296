@@ -1,31 +1,37 @@
-import java.util.List;
-import java.lang.Comparable;
-public class SelectionSort<T extends Comparable<T>> implements SortingAlg<T> {
+package sort;
+import static sort.SortUtils.*;
+class CocktailShakerSort implements SortAlgorithm {
     @Override
-    public void sort(List<T> elements) {
-        if (elements == null) return;
-        for (int i = 0; i < elements.size() - 1; i++) {
-            int min = i;
-            for (int j = i + 1; j < elements.size(); j++) {
-                if (isLessThan(elements.get(j), elements.get(min)))
-                    min = j;
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        int length = array.length;
+        int left = 0;
+        int right = length - 1;
+        int swappedLeft, swappedRight;
+        while (left < right) {
+            swappedRight = 0;
+            for (int i = left; i < right; i++) {
+                if (less(array[i + 1], array[i])) {
+                    swap(array, i, i + 1);
+                    swappedRight = i;
+                }
             }
-            T temp = elements.get(i);
-            elements.set(i, elements.get(min));
-            elements.set(min, temp);
+            right = swappedRight;
+            swappedLeft = length - 1;
+            for (int j = right; j > left; j--) {
+                if (less(array[j], array[j - 1])) {
+                    swap(array, j - 1, j);
+                    swappedLeft = j;
+                }
+            }
+            left = swappedLeft;
         }
+        return array;
     }
-    private boolean isLessThan(T first, T second) {
-        return first.compareTo(second) < 0;
-    }
-    public static void main(String[] args) {
-        SortingAlg<Integer> alg = new SelectionSort<Integer>();
-        List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
-        alg.sort(elems);
-        for (int i = 0; i < elems.size() - 1; i++) {
-            if (elems.get(i).compareTo(elems.get(i+1)) > 0)
-                throw new java.lang.RuntimeException("Elems should be sorted.");
-        }
-        System.out.println("All tests passed.");
-    }
+	public static void main(String[] args) {
+		Integer[] integers = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
+		CocktailShakerSort shakerSort = new CocktailShakerSort();
+		print(shakerSort.sort(integers));
+		String[] strings = { "c", "a", "e", "b", "d" };
+		print(shakerSort.sort(strings));
+	}
 }

@@ -1,42 +1,59 @@
-package sorter;
-public class Sort {
-	public int[] bubble(int[] array) {
-		for (int i = 0; i < array.length; i++) {
-			for (int j = 1; j < array.length; j++) {
-				if (array[j - 1] > array[j]) {
-					int temp = array[j];
-					array[j] = array[j - 1];
-					array[j - 1] = temp;
+package de.ffoerg.sort;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
+public final class LampSort {
+	private LampSort() {
+	}
+	public static <T extends Comparable<? super T>> void sort(List<T> toSort) {
+		if ((toSort == null) || (toSort.size() < 2)) {
+			return;
+		}
+		Stack<Pair<Integer>> intervals = new Stack<Pair<Integer>>();
+		intervals.add(new Pair<Integer>(0, toSort.size() - 1));
+		do {
+			Pair<Integer> curr = intervals.pop();
+			int lo = curr.getFirst();
+			int hi = curr.getSecond();
+			int span = hi - lo;
+			assert ((lo >= 0) && (lo < toSort.size()));
+			assert ((hi >= 0) && (hi < toSort.size()));
+			assert (lo <= hi);
+			if (span >= 2) {
+				int pivotIndex = lo;
+				T pivot = toSort.get(hi);
+				for (int i = lo; i < hi; i++) {
+					if (toSort.get(i).compareTo(pivot) < 0) {
+						Collections.swap(toSort, pivotIndex, i);
+						pivotIndex++;
+					}
+				}
+				Collections.swap(toSort, pivotIndex, hi);
+				Pair<Integer> loPart = new Pair<Integer>(lo, Math.max(lo,
+						pivotIndex - 1));
+				Pair<Integer> hiPart = new Pair<Integer>(Math.min(
+						pivotIndex + 1, hi), hi);
+				intervals.add(loPart);
+				intervals.add(hiPart);
+			} else if (span == 1) {
+				if (toSort.get(lo).compareTo(toSort.get(hi)) > 0) {
+					Collections.swap(toSort, lo, hi);
 				}
 			}
-		}
-		return array;
+		} while (!intervals.isEmpty());
 	}
-	public int[] selection(int[] array) {
-		for (int i = array.length - 1; i > 0; i--) {
-			int highest = array[0];
-			int index = 0;
-			for (int j = 0; j < i; j++) {
-				if (array[j] > highest) {
-					highest = array[j];
-					index = j;
-				}
-			}
-			int temp = array[i - 1] = highest;
-			array[index] = temp;
+	private static class Pair<T> {
+		private T fst;
+		private T snd;
+		public Pair(T fst, T snd) {
+			this.fst = fst;
+			this.snd = snd;
 		}
-		return array;
-	}
-	public static int[] insertion(int[] array) {
-		for (int i = 1; i < array.length; i++) {
-			int index = array[i];
-			int j = i;
-			while ((j > 0) && (array[j - 1] > index)) {
-				array[j] = array[j - 1];
-				j = j - 1;
-			}
-			array[j] = index;
+		public T getFirst() {
+			return fst;
 		}
-		return array;
+		public T getSecond() {
+			return snd;
+		}
 	}
 }

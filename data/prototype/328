@@ -1,48 +1,23 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
+public class FenwickTree {
+    private int[] values;
+    public FenwickTree(int size) {
+        this.values = new int[size];
+    }
+    public void add(int idx, int k) { 
+        while (idx < values.length) {
+            values[idx] += k;
+            idx += _lsb(idx);
+        }
+    } 
+    public int sumTo(int idx) { 
+        int sum = 0;
+        while (idx > 0) {
+            sum += values[idx];
+            idx -= _lsb(idx);
+        }
+        return sum;
+    }
+    private int _lsb(int i) { 
+        return i & -i;
+    }
 }
-class Stack {
-  constructor() {
-    this.top = null;
-    this.bottom = null;
-    this.length = 0;
-  }
-  peek() {
-    return this.top;
-  }
-  push(value) {
-    const newNode = new Node(value);
-    if (!this.bottom) {
-      this.bottom = newNode;
-    }
-    newNode.next = this.top;
-    this.top = newNode;
-    this.length++;
-  }
-  pop() {
-    if (!this.top) {
-      return null;
-    }
-    if (!this.top.next) {
-      this.bottom = null;
-    }
-    const removedNode = this.top;
-    this.top = this.top.next;
-    this.length--;
-    return removedNode;
-  }
-}
-const myStack = new Stack();
-console.log(myStack.peek());
-myStack.push(10);
-myStack.push(20);
-myStack.push(30);
-console.log(JSON.stringify(myStack));
-console.log(myStack.peek());
-console.log(myStack.pop());
-console.log(myStack.pop());
-console.log(myStack.pop());
-console.log(JSON.stringify(myStack));

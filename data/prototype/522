@@ -1,16 +1,13 @@
-const swap = (arr, i, j) => {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-};
-function bubbleSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        swap(arr, j, j + 1);
-      }
-    }
-  }
-  return arr;
+public class BubbleSort {
+	public static void sort(int list[]) {
+		for (boolean swapped = true; swapped == true;) {
+			swapped = false;
+			for (int i = 0; i < list.length-1; i++) {
+				if (list[i] > list[i+1]) {
+					Compare.swap(list, i, i+1);
+					swapped = true;
+				}
+			}
+		}
+	}
 }
-bubbleSort([37, 45, 29, 8]);

@@ -1,18 +1,42 @@
-let bubbleLoop = (first) => {
-    if (typeof first !== "object") {
-        return ["invalid list"];
-    }
-    var i = 0;
-    for (i; i < first.length - 1; i++) {
-        var k = i + 1;
-        for(k; k < first.length; k++) {
-            var compareFirst = first[i];
-            var compareSecond = first[k];
-            if (compareSecond < compareFirst) {
-                first[i] = compareSecond;
-                first[k] = compareFirst;
+public class BubbleSort {
+    static void improvedBubbleSort(int[] arr) {
+        int n = arr.length;
+        int temp = 0;
+        boolean flag = true;
+        for (int i = 0; i < n && flag; i++) {
+            flag = false;
+            for (int j = 1; j < (n - i); j++) {
+                if (arr[j - 1] > arr[j]) {
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                    flag = true;
+                }
             }
         }
     }
-    return first;
+    public static void main(String[] args) {
+        int arr[] = {9, 2, 1, 0, 3, 60, 35, 2, 45, 320, 5};
+        int arr2[] = {6,1,10,2,50,13,34,2,1,5,7,9};
+        System.out.println("Array 01 Before Improved Bubble Sort");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        improvedBubbleSort(arr);
+        System.out.println("Array After Improved Bubble Sort");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println("Array 02 Before Improved Bubble Sort");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr2[i] + " ");
+        }
+        System.out.println();
+        improvedBubbleSort(arr2);
+        System.out.println("Array After Improved Bubble Sort");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr2[i] + " ");
+        }
+    }
 }

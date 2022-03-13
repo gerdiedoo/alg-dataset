@@ -1,13 +1,60 @@
-import MaxHeap from '../DataStructures/MaxHeap';
-export default function HeapSort(items: Array<number>) {
-  const heap = new MaxHeap();
-  const list = [];
-  items.forEach(item => {
-    heap.insert(item);
-  });
-  heap.get().forEach(() => {
-    const node = heap.deleteNodeIndex(0);
-    list.push(node);
-  });
-  return list.reverse();
-}
+import linked_list
+class Node(linked_list.Node):
+    def __init__(self, val, nxt=None, prev=None):
+        super(Node, self).__init__(val, nxt)
+        self.prev = prev
+class DLL(linked_list.LinkedList):
+    def __init__(self, iterable=None):
+        self.tail = None
+        super(DLL, self).__init__(iterable)
+    def push(self, val):
+        old_head = self.head
+        self.head = Node(val, nxt=self.head)
+        self.length += 1
+        if old_head:
+            old_head.prev = self.head
+        else:
+            self.tail = self.head
+    def append(self, val):
+        old_tail = self.tail
+        self.tail = Node(val, prev=self.tail)
+        self.length += 1
+        if old_tail:
+            old_tail.nxt = self.tail
+        else:
+            self.head = self.tail
+    def pop(self):
+        val = super(DLL, self).pop()
+        if self.head:
+            self.head.prev = None
+        else:
+            self.tail = None
+        return val
+    def shift(self):
+        if not self.tail:
+            raise IndexError('Cannot shift from empty list.')
+        val = self.tail.val
+        self.tail = self.tail.prev
+        if self.tail:
+            self.tail.nxt = None
+        else:
+            self.head = None
+        self.length -= 1
+        return val
+    def remove(self, val):
+        if not self.head:
+            raise ValueError('Cannot remove from empty list.')
+        if self.head.val == val:
+            self.pop()
+            return
+        curr = self.head
+        while curr.nxt:
+            if curr.val == val:
+                curr.prev.nxt, curr.nxt.prev = curr.nxt, curr.prev
+                self.length -= 1
+                return
+            curr = curr.nxt
+        if self.tail.val == val:
+            self.shift()
+            return
+        raise ValueError('Value is not in list.')

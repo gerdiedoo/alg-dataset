@@ -1,72 +1,30 @@
-from time import sleep
-from typing import List
-from tkinter import Tk
-from animated import Animator
-class QuickSort(Animator):
-    def partition(self, array: List[int], left: int, right: int, pt: int) -> int:
-        while True:
-            swaps = 0  
-            for i in range(
-                left, pt
-            ):  
-                if array[pt] < array[i]:  
-                    array[pt], array[i] = array[i], array[pt]
-                    self.render(array, cur=(pt, i))
-                    sleep(0.01)
-                    pt = i
-                    swaps += 1
-                    break
-            for i in range(right, pt, -1):  
-                if array[pt] > array[i]:  
-                    array[pt], array[i] = array[i], array[pt]
-                    self.render(array, cur=(pt, i))
-                    sleep(0.01)
-                    pt = i
-                    swaps += 1
-                    break
-            if swaps == 0:
-                break  
-        return pt
-    def sort(self, array: List[int], *args: List[int]) -> None:
-        left, right = 0, len(array) - 1
-        if len(args) == 2:
-            left, right = args
-        if left < right - 1:
-            half = (left + right) // 2  
-            start, middle, end = array[left], array[half], array[right]
-            if (start > end and start < middle) or (start < end and start > middle):
-                pivotPt = left
-            elif (end > start and end < middle) or (end < start and end > middle):
-                pivotPt = right - 1
-            else:
-                pivotPt = half
-            pt = self.partition(array, left, right, pivotPt)
-            self.render(array, cur=(left, right, pivotPt))
-            sleep(0.01)
-            self.sort(array, left, pt)
-            self.render(array, cur=(pt, left))
-            sleep(0.01)
-            self.sort(array, pt, right)
-            self.render(array, cur=(pt, right))
-            sleep(0.01)
-def main() -> int:
-    try:
-        from utils import randomSequence
-    except ModuleNotFoundError:
-        import os, sys  
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        parent_dir_path = os.path.abspath(os.path.join(dir_path, os.pardir))
-        sys.path.insert(0, parent_dir_path)
-        from utils import randomSequence
-    shuffledArray = randomSequence(0, 200)
-    root = Tk()
-    sorter = QuickSort(
-        root,
-        background="black",
-        width=root.winfo_screenwidth(),
-        height=root.winfo_screenheight(),
-    )
-    sorter.pack()
-    sorter.sort(shuffledArray)
-    sorter.finished()
-    return 0
+def quicksort(lis, start, end):
+    assert 0 <= start <= end < len(lis)
+    if start == end:
+        return
+    pivot = lis[start]  
+    lis[start], lis[end] = lis[end], lis[start]  
+    left_index = start
+    iterator = start
+    while iterator < end:  
+        if lis[iterator] <= pivot:
+            lis[left_index], lis[iterator] = lis[iterator], lis[left_index]
+            left_index += 1
+        iterator += 1
+    lis[left_index], lis[end] = lis[end], lis[left_index]
+    if left_index > start:
+        quicksort(lis, start, left_index - 1)
+    if end > (left_index + 1):
+        quicksort(lis, left_index + 1, end)
+def main():
+    lis1 = [4, 1, 2, 3, 9]
+    lis2 = [1]
+    lis3 = [2, 2, 1, -1, 0, 4, 5, 2]
+    quicksort(lis1, 0, 4)
+    assert lis1 == [1, 2, 3, 4, 9]
+    quicksort(lis2, 0, 0)
+    assert lis2 == [1]
+    quicksort(lis3, 0, 7)
+    assert lis3 == [-1, 0, 1, 2, 2, 2, 4, 5]
+if __name__ == '__main__':
+    main()

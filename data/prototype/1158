@@ -1,33 +1,20 @@
-package io.nayuki.sortalgodemo.algo;
-import io.nayuki.sortalgodemo.core.AbstractSortAlgorithm;
-import io.nayuki.sortalgodemo.core.SortAlgorithm;
-import io.nayuki.sortalgodemo.core.SortArray;
-public final class QuickSortSliding extends AbstractSortAlgorithm {
-	public static final SortAlgorithm INSTANCE = new QuickSortSliding();
-	public void sort(SortArray array) {
-		sort(array, 0, array.length());
-	}
-	private static void sort(SortArray array, int start, int end) {
-		if (start == end)
-			return;
-		array.setRange(start, end, SortArray.ElementState.INACTIVE);
-		int partition = start;
-		int pivot = end - 1;   
-		for (int i = start; i < end - 1; i++) {
-			if (array.compare(i, pivot) < 0) {
-				array.swap(i, partition);
-				array.setElement(partition, SortArray.ElementState.INACTIVE);
-				partition++;
+package src.algorithms;
+import src.strategy.Order;
+public class SelectionSort<T> extends SortingAlgorithm<T> {
+	@Override
+	@SuppressWarnings("hiding")
+	public <T extends Comparable<T>> T[] sort(T[] elements, Order order) {
+		int numElements = elements.length;
+		for (int i=0; i<numElements-1; i++) {
+			int posEdgeElement = i;
+			for (int j=i+1; j<numElements; j++) {
+				if ((order == Order.ASC  && elements[posEdgeElement].compareTo(elements[j]) > 0)  ||
+					(order == Order.DESC && elements[posEdgeElement].compareTo(elements[j]) < 0)) {
+					posEdgeElement = j;
+				}
 			}
+			swap(elements, i, posEdgeElement);
 		}
-		array.swap(pivot, partition);
-		pivot = partition;
-		array.setElement(pivot, SortArray.ElementState.DONE);
-		array.setRange(pivot + 1, end, SortArray.ElementState.INACTIVE);
-		sort(array, start, pivot);
-		sort(array, pivot + 1, end);
-	}
-	private QuickSortSliding() {
-		super("Quick sort (sliding)");
+		return elements;
 	}
 }

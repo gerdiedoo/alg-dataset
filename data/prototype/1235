@@ -1,20 +1,14 @@
-export default function SelectionSort(elements: number[]): number[] {
-  const { length } = elements;
-  for (let i = 0; i < length; i++) {
-    let lowestIndex = i;
-    for (let k = i + 1; k < length; k++) {
-      if (elements[k] < elements[lowestIndex]) {
-        lowestIndex = k;
-      }
+public class SelectionSort {
+    public static int[] sort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[min] > array[j]) min = j;
+            }
+            int temp = array[i];
+            array[i] = array[min];
+            array[min] = temp;
+        }
+        return array;
     }
-    if (lowestIndex !== i) {
-      swap(elements, i, lowestIndex);
-    }
-  }
-  return elements;
-}
-function swap(items: number[], firstIndex: number, secondIndex: number) {
-  const temp = items[firstIndex];
-  items[firstIndex] = items[secondIndex];
-  items[secondIndex] = temp;
 }

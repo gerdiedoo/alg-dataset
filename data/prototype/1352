@@ -1,25 +1,58 @@
-package Searching_Algorithm;
-import java.util.Scanner;
-public class Linear_Search {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int A[] = new int[10], Search;
-        boolean flag = false;
-        System.out.println("Enter Search number:");
-        Search = scanner.nextInt();
-        System.out.println("Enter 10 int number:");
-        for (int i=0; i<A.length; i++){
-            A[i] = scanner.nextInt();
-        }
-        for (int i=0; i<A.length; i++){
-            if (A[i] == Search){
-                flag = true;
-            }
-        }
-        if (flag){
-            System.out.println("Found");
-        }else {
-            System.out.println("Not Found");
-        }
-    }
-}
+from linked_list import Linked_List
+from sys import maxsize as max_int
+from random import randrange
+from math import log
+class Hash_Table:
+    def __init__(self):
+        self.table = [Linked_List() for _ in range(4)]
+        self.hash_size = 2
+        self.min_size = 1
+        self.max_size = 4
+        self.num_keys = 0
+        self.rand = randrange(1, max_int)
+        self.word_size = int(log(max_int,2))
+        self.h = lambda key: (self.rand*key % max_int) >> (self.word_size - self.hash_size)
+    def find(self, key):
+        return self.table[self.h(key)].find(key)
+    def insert(self, key, value):
+        if self.find(key):
+            return None
+        if self.num_keys == self.max_size:
+            self.expand()
+        self.num_keys += 1
+        return self.table[self.h(key)].insert(key, value)
+    def delete(self, key):
+        target = self.table[self.h(key)].delete(key)
+        if target:
+            self.num_keys -= 1
+            if self.num_keys == self.min_size and self.hash_size > 2:
+                self.contract()
+        return target
+    def update(self, key, value):
+        target = self.find(key)
+        if target:
+            target.update(key)
+        else:
+            target = self.insert(key, value)
+        return target
+    def expand(self):
+        self.hash_size += 1
+        self.min_size *= 2
+        self.max_size *= 2
+        self.rehash()
+    def contract(self):
+        self.hash_size -= 1
+        self.min_size //= 2
+        self.max_size //= 2
+        self.rehash()
+    def rehash(self):
+        self.num_keys = 0
+        table = self.table
+        self.table = [Linked_List() for slot in range(self.max_size)]
+        for slot in table:
+            element = slot.head
+            while element:
+                self.insert(element.key, element.value)
+                element = element.next
+    def __repr__(self):
+        return "\n".join("  {}: {}".format(key, chain) for (key, chain) in enumerate(self.table))

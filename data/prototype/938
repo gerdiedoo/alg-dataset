@@ -1,46 +1,62 @@
-package com.srt.sort;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.function.BiFunction;
-@SuppressWarnings({"unchecked", "unused"})
-public class MergeSort<T extends Comparable> extends JSort<T> {
-    private Class<T> clazz;
-    public MergeSort(Class<T> clazz) {
-        this.clazz = clazz;
+public class DualPivotQuickSort{
+    static void swap(int[] array, int i, int j)
+    {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
-    private T[] merge(T[] left, T[] right, BiFunction<T, T, Boolean> compare) {
-        int i = 0, j = 0, k = 0;
-        T[] mergedArray = getArray(clazz, left.length + right.length);
-        while (i < left.length || j < right.length) {
-            if (i == left.length) {
-                while (j != right.length)
-                    mergedArray[k++] = right[j++];
-            } else if (j == right.length) {
-                while (i != left.length)
-                    mergedArray[k++] = left[i++];
-            } else if (compare.apply(left[i], right[j])) {
-                mergedArray[k++] = left[i++];
-            } else {
-                mergedArray[k++] = right[j++];
+    static void dualPivotQuickSort(int[] array,int low, int high)
+    {
+        if (low < high)
+        {
+            int[] piv;
+            piv = partition(array, low, high);
+            dualPivotQuickSort(array, low, piv[0] - 1);
+            dualPivotQuickSort(array, piv[0] + 1, piv[1] - 1);
+            dualPivotQuickSort(array, piv[1] + 1, high);
+        }
+    }
+    static int[] partition(int[] arr, int low, int high)
+    {
+        if (arr[low] > arr[high])
+            swap(arr, low, high);
+        int j = low + 1;
+        int g = high - 1, k = low + 1,
+                p = arr[low], q = arr[high];
+        while (k <= g)
+        {
+            if (arr[k] < p)
+            {
+                swap(arr, k, j);
+                j++;
             }
+            else if (arr[k] >= q)
+            {
+                while (arr[g] > q && k < g)
+                    g--;
+                swap(arr, k, g);
+                g--;
+                if (arr[k] < p)
+                {
+                    swap(arr, k, j);
+                    j++;
+                }
+            }
+            k++;
         }
-        return mergedArray;
+        j--;
+        g++;
+        swap(arr, low, j);
+        swap(arr, high, g);
+        return new int[] { j, g };
     }
-    private T[] getArray(Class<T> clazz, int size) {
-        T[] es = (T[]) Array.newInstance(clazz, size);
-        return es;
-    }
-    T[] Sort(T[] array, BiFunction<T, T, Boolean> compare) {
-        if (array.length == 1) {
-            return array;
-        }
-        return merge(Sort(FirstHalf(array), compare),
-                Sort(secondHalf(array), compare), compare);
-    }
-    private T[] secondHalf(T[] array) {
-        return Arrays.copyOfRange(array, array.length / 2, array.length);
-    }
-    private T[] FirstHalf(T[] array) {
-        return Arrays.copyOfRange(array, 0, (array.length / 2));
+    public static void main(String[] args)
+    {
+        int[] arr = { 83, 7, 58, 31, 99, 5, 88, 15 };
+        dualPivotQuickSort(arr, 0, 7);
+        System.out.print("Sorted array: ");
+        for (int i = 0; i < 8; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
     }
 }

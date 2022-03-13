@@ -1,85 +1,33 @@
-from typing import Any
-class Node:
-    def __init__(self, data: Any):
-        self.data = data
-        self.next = None
-    def __repr__(self):
-        return self.data
-class LinkedList:
-    def __init__(self):
-        self.head = None
-    def __repr__(self):
-        node = self.head
-        nodes = []
-        while node is not None:
-            nodes.append(node.data)
-            node = node.next
-        nodes.append("None")
-        return " -> ".join(nodes)
-    def __iter__(self):
-        node = self.head
-        while node is not None:
-            yield node
-            node = node.next
-    def append(self, data: Any) -> None:
-        if self.head is None:
-            self.head = Node(data)
-            return
-        current = self.head
-        while current.next is not None:
-            current = current.next
-        current.next = Node(data)
-    def prepend(self, data: Any) -> None:
-        new_head = Node(data)
-        new_head.next = self.head
-        self.head = new_head
-    def add_after(self, target_data: Any, new_data: Any) -> None:
-        if not self.head:
-            raise Exception("List is empty")
-        current = self.head
-        while current.next is not None:
-            if current.data == target_data:
-                new_node = Node(new_data)
-                new_node.next = current.next
-                current.next = new_node
-                return
-            current = current.next
-    def add_before(self, target_data: Any, new_data: Any) -> None:
-        if not self.head:
-            raise Exception("List is empty")
-        current = self.head
-        while current.next is not None:
-            if current.next.data == target_data:
-                new_node = Node(new_data)
-                new_node.next = current.next
-                current.next = new_node
-                return
-            current = current.next
-    def delete_with_value(self, data: Any) -> None:
-        if self.head is None:
-            return
-        if self.head.data == data:
-            self.head = self.head.next
-            return
-        current = self.head
-        while current.next is not None:
-            if current.next.data == data:
-                current.next = current.next.next
-                return
-            current = current.next
-if __name__ == "__main__":
-    llist = LinkedList()
-    llist.append("a")
-    llist.append("b")
-    llist.append("c")
-    llist.append("d")
-    llist.append("f")
-    print(llist)
-    llist.delete_with_value("c")
-    print(llist)
-    llist.add_after("b", "c")
-    print(llist)
-    llist.delete_with_value("d")
-    print(llist)
-    llist.add_before("f", "d")
-    print(llist)
+package Searching_Algorithm;
+import java.util.Scanner;
+public class Binary_Search {
+     public static void main(String[] args) {
+          Scanner scanner = new Scanner(System.in);
+          int[] A = new int[10];
+          int low, high, Xm, z, mid;
+          boolean flag = false;
+          low = 0;
+          high = A.length - 1;
+          z = 51;        
+          System.out.println("Enter 10 int number:");
+          for (int i=0; i<A.length; i++){
+              A[i] = scanner.nextInt();
+          }
+          do {
+               mid = (low + high)/2;
+               Xm = A[mid];
+               if (Xm < z){
+                    low = mid + 1;
+               }else if (Xm > z){
+                    high = high - 1;
+               }else {
+                    flag = true;
+               }
+          }while (low <= high && !flag);
+          if (flag){
+               System.out.println("Found");
+          }else {
+               System.out.println("Not Found");
+          }
+     }
+}

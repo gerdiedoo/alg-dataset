@@ -1,24 +1,10 @@
-import java.util.Arrays;
-public class RecursiveBubbleSort
-{ 
-    private static void bubbleSort(int arr[], int n)
-    { 
-        if (n == 1) 
-            return; 
-        for (int i=0; i<n-1; i++) 
-            if (arr[i] > arr[i+1]) 
-            { 
-                int temp = arr[i]; 
-                arr[i] = arr[i+1]; 
-                arr[i+1] = temp; 
-            } 
-        bubbleSort(arr, n-1); 
-    } 
-    public static void main(String[] args) 
-    { 
-        int arr[] = {64, 34, 25, 12, 22, 11, 90}; 
-        bubbleSort(arr, arr.length); 
-        System.out.println("Sorted array : "); 
-        System.out.println(Arrays.toString(arr)); 
-    } 
-} 
+def insertion_sort(arr):
+    for k in range(1, len(arr)):
+        key = arr[k]
+        j = k
+        while j > 0 and arr[j-1] > arr[j]:
+            arr[j], arr[j-1] = arr[j-1], arr[j]
+            j = j - 1
+my_list = [24, 81, 13, 57, 16]
+insertion_sort(my_list)
+print(my_list)

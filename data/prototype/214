@@ -1,121 +1,48 @@
-public class CircularLinkedList{
-	static class Node{
-		int key;     
-		Node next;   
-		public Node(int data){
-			this.key=data;
-			this.next=null;
-		}
-	}
-	static Node head;    
-	public CircularLinkedList(){
-		head=null;
-	}
-	static public void pushFront(int number){
-		System.out.println("Inserting data at front : " + number);
-		Node node = new Node(number);
-		if(head==null){
-			head=node;
-			node.next=head;
-			return;
-		}
-		if(head.next==head){
-			node.next=head;
-			head=node;
-			node.next.next=head;   
-			return;
-		}
-		Node temp=head;
-		while(temp.next!=head){
-			temp=temp.next;
-		}
-		node.next=head;
-		head=node;
-		temp.next=head;   
-	}
-	static public void pushBack(int number){
-		System.out.println("Inserting data at back  : " + number);
-		Node node = new Node(number);
-		if(head==null){
-			head=node;
-			node.next=head;
-			return;
-		} 		
-		if(head.next==head){
-			head.next=node;
-			node.next=head;
-			return;
-		}
-		Node temp = head;
-		while(temp.next!=head){
-			temp=temp.next;
-		}
-		temp.next=node;
-		node.next=head;
-	}
-	public static void popFront(){
-		System.out.print("PopFront Operation : ");
-		if(head==null){
-			System.out.println("Empty List.");
-			return;
-		}
-		if(head.next==head){
-			head=null;
-			System.out.println("Successfull.");
-			return;
-		}
-		Node temp=head;
-		while(temp.next!=head){
-			temp=temp.next;
-		}
-		head=head.next;
-		temp.next=head;   
-		System.out.println("Successfull.");
-	}
-	public static void popBack(){
-		System.out.print("PopBack Operation  : ");
-		if(head==null){
-			System.out.println("Empty List.");
-			return;
-		}
-		if(head.next==head){
-			head=null;
-			System.out.println("Successfull.");
-			return;
-		}
-		Node temp=head;
-		while(temp.next.next!=head){
-			temp=temp.next;
-		}
-		temp.next=temp.next.next;  
-		System.out.println("Successfull.");
-	}
-	public static void display(){
-		System.out.print("List : ");
-		if(head==null){
-			System.out.println("Empty List.");
-			return;
-		}
-		Node temp=head;
-		while(temp.next!=head){
-			System.out.print(temp.key + " ");
-			temp=temp.next;
-		}
-		System.out.println(temp.key);
-	}
-	public static void main(String [] args){
-		CircularLinkedList list = new CircularLinkedList();
-		list.pushFront(10);
-		list.pushBack(12);
-		list.pushFront(8);
-		list.pushBack(14);
-		list.display();
-		list.popFront();
-		list.display();
-		list.popBack();
-		list.display();
-		list.popFront();
-		list.popBack();
-		list.display();
-	}
+package Lists.JDKLinkedList;
+import java.util.Iterator;
+import java.util.LinkedList;
+public class Main {
+    public static void main(String[] args) {
+        Employee janeJones = new Employee("Jane", "Jones", 123);
+        Employee johnDoe = new Employee("John", "Doe", 4567);
+        Employee marySmith = new Employee("Mary", "Smith", 22);
+        Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
+        Employee billEnd = new Employee("Bill", "End", 78);
+        LinkedList<Employee> list = new LinkedList<>();
+        list.addFirst(janeJones);
+        list.addFirst(johnDoe);
+        list.addFirst(marySmith);
+        list.addFirst(mikeWilson);
+        Iterator iter = list.iterator();
+        System.out.print("HEAD -> ");
+        while (iter.hasNext()) {
+            System.out.print(iter.next());
+            System.out.print("<=>");
+        }
+        System.out.println("null");
+        list.addLast(billEnd);
+        iter = list.iterator();
+        System.out.print("HEAD -> ");
+        while (iter.hasNext()) {
+            System.out.print(iter.next());
+            System.out.print("<=>");
+        }
+        System.out.println("null");
+        list.removeFirst();
+        iter = list.iterator();
+        System.out.print("HEAD -> ");
+        while (iter.hasNext()) {
+            System.out.print(iter.next());
+            System.out.print("<=>");
+        }
+        System.out.println("null");
+        list.removeLast();
+        iter = list.iterator();
+        System.out.print("HEAD -> ");
+        while (iter.hasNext()) {
+            System.out.print(iter.next());
+            System.out.print("<=>");
+        }
+        System.out.println("null");
+    }
 }

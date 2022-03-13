@@ -1,16 +1,12 @@
-def InsertionSort(A,n):
-    for i in range(1,n):
-        value=A[i]
-        hole=i
-        while(hole>0 and A[hole-1]>value):
-            A[hole]=A[hole-1]
-            hole=hole-1
-        A[hole]=value
-if __name__=="__main__":
-    print("Enter the elements in the array")
-    A=list(map(int,input().split(" ")))
-    n=len(A)
-    InsertionSort(A,n)
-    print("Sorted Array: ",end="")
-    for i in range(0,n):
-        print(A[i],end=" ")
+insertionSort = function(array) {
+  var i, j,
+      a = array.slice(0);
+  for (i = 0, l = a.length; i < l; i++) {
+    j = i;
+    while (j > 0 && a[j - 1] > a[j]) {
+      a[j] = a[j - 1] + (a[j - 1] = a[j], 0);
+      j--;
+    }
+  }
+  return a;
+};

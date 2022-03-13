@@ -1,17 +1,55 @@
-function selectionSort(arr) {
-  let minIdx,
-    aux,
-    len = arr.length;
-  for (let i = 0; i < len; i++) {
-    minIdx = i;
-    for (let j = i + 1; j < len; j++) {
-      if (arr[j] < arr[minIdx]) {
-        minIdx = j;
-      }
-    }
-    aux = arr[i];
-    arr[i] = arr[minIdx];
-    arr[minIdx] = aux;
-  }
-  return arr;
+public class sort {
+	public void exchange (int[] numbers) {
+		int temp;   
+		for (int i = 0; i < numbers.length - 1; i++)  {
+			for (int j = i + 1; j < numbers.length; j++) {
+				if(numbers[i] > numbers[j])          
+				{
+					temp = numbers[i];    
+					numbers[i] = numbers[j];
+					numbers[j] = temp; 
+				}           
+			}
+		}
+	}	
+	public void bubble(int[] numbers) {
+		int i, temp;
+		boolean flag = true;    
+		while (flag) {
+			flag = false;     
+			for(i = 0; i < numbers.length -1; i++)
+			{
+				if(numbers[i] > numbers[i + 1]) {
+					temp = numbers[i];                 
+					numbers[i] = numbers[i + 1];
+					numbers[i + 1] = temp;
+					flag = true;               
+				}
+			}
+		}
+	}
+	public int[] selection (int [] numbers) {
+		int first, temp;
+		for (int i = 0; i < numbers.length; i++) {
+			first = 0;    
+			for(int j = 1; j <= i; j ++) {
+				if(numbers[j] > numbers[first]) first = j;
+			}
+			temp = numbers[first];  
+			numbers[first] = numbers[i];
+			numbers[i] = temp;
+		}
+		return numbers;
+	}
+	public void insertion(int [] numbers) {
+		int j, i;
+		int key;
+		for (j = 1; j < numbers.length; j++) {
+				key = numbers[j];
+				for(i = j - 1; (i >= 0) && (numbers[i] < key); i--) {
+					numbers[i + 1] = numbers[i];
+			}
+			numbers[i + 1] = key;     
+		}
+	}
 }

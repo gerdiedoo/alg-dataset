@@ -1,17 +1,60 @@
-package com.ianramzy;
-public class SelectionSorter implements Sorter {
-    public void sort(int num, int list[]) {
-        int i, j, temp, small;
-        for (i = 0; i < num; i++) {
-            small = i;
-            for (j = i + 1; j < num; j++) {
-                if (list[j] < list[small]) {
-                    small = j;
-                }
-            }
-            temp = list[i];
-            list[i] = list[small];
-            list[small] = temp;
-        }
+function heapSort (arrData) {
+  'use strict'
+  let numTail = arrData.length - 1   
+  const NEED_CHANGE = 1
+  const NO_CHANGE = 0
+  const LEFT_CHILD = 1
+  const RIGHT_CHILD = 2
+  function fnSwap (idx1, idx2) {
+    let swap = arrData[idx1]
+    arrData[idx1] = arrData[idx2]
+    arrData[idx2] = swap
+  }
+  const fnChildId = (parentId, side) => {
+    let childId = (parentId * 2) + side
+    return (childId <= numTail) ? childId : NO_CHANGE
+  }
+  function fnBalanceTriad (parentIdx) {
+    let numBalanced = NO_CHANGE
+    let leftChild = fnChildId(parentIdx, LEFT_CHILD)
+    if (leftChild) {
+      let rightChild = fnChildId(parentIdx, RIGHT_CHILD)
+      if (rightChild &&
+        (arrData[parentIdx] < arrData[rightChild]) &&
+        (arrData[leftChild] < arrData[rightChild])) {
+        fnSwap(parentIdx, rightChild)
+        numBalanced = RIGHT_CHILD
+      } else if (arrData[parentIdx] < arrData[leftChild]) {
+        fnSwap(parentIdx, leftChild)
+        numBalanced = LEFT_CHILD
+      }
     }
+    return numBalanced
+  }
+  function fnBalanceHeap () {
+    let idx
+    let numBalanced = NEED_CHANGE
+    while (numBalanced) {
+      numBalanced = NO_CHANGE
+      idx = numTail
+      while (idx + 1) numBalanced += fnBalanceTriad(idx--)  
+    }
+  }
+  function fnRemoveHead () {
+    fnSwap(0, numTail--)   
+    let numBalanced = NO_CHANGE
+    let idx = 0  
+    do {
+      numBalanced = fnBalanceTriad(idx)
+      idx += (idx + numBalanced)   
+    } while (numBalanced)  
+  }
+  console.log('Initial:', arrData.join(), `[Count:${numTail}]`)
+  fnBalanceHeap()  
+  while (numTail) {
+    fnRemoveHead()   
+    console.log('Cycle:', arrData.join())
+  }
+  console.log('Final:', arrData.join())
+  return arrData
 }

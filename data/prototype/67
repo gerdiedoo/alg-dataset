@@ -1,16 +1,56 @@
-from .hash_table import HashTable
-from collections import deque
-class HashTableWithLinkedList(HashTable):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-    def _set_value(self, key, data):
-        self.values[key] = deque([]) if self.values[key] is None else self.values[key]  
-        self.values[key].appendleft(data)
-        self._keys[key] = self.values[key]
-    def balanced_factor(self):
-        return sum([self.charge_factor - len(slot) for slot in self.values])               / self.size_table * self.charge_factor
-    def _colision_resolution(self, key, data=None):
-        if not (len(self.values[key]) == self.charge_factor
-                and self.values.count(None) == 0):
-            return key
-        return super()._colision_resolution(key, data)
+class HashTable {
+    constructor(size) {
+        this.values = {};
+        this.size = size;
+    }
+    add(key, value) {
+        const hash = this.genHash(key)
+        if(!this.values.hasOwnProperty(hash))  
+            this.values[hash] = {};
+        this.values[hash][key] = value;
+    }
+    remove(key) {
+        const hash = this.genHash(key);
+        if(this.values.hasOwnProperty(hash) &&
+                this.values[hash].hasOwnProperty(key)) {
+            delete this.values[hash][key];  
+        }
+    }
+    genHash(key) {
+        var keyStr = key.toString();
+        var sum = 0;
+        for(let i = 0; i < keyStr.length; i++)
+            sum += keyStr.charCodeAt(i);
+        return sum % this.size
+    }
+    getValue(key) {
+        const hash = this.genHash(key);
+        if(this.values.hasOwnProperty(hash)
+                && this.values[hash].hasOwnProperty(key))
+            return this.values[hash][key];  
+        else
+            return undefined;
+    }
+    printAll() {
+        for(const val in this.values)
+            for(const key in this.values[val])
+                console.log("{", key, ", ", 
+                    this.values[val][key], "}")
+    }
+}
+(function test() {
+    var hashTable = new HashTable(5);
+    hashTable.add("key1", "value1");
+    hashTable.add("key2", "value2");
+    hashTable.add("key3", "value3");
+    hashTable.printAll();
+    console.log(`value of key3: `, hashTable.getValue("key3"))
+    console.log(`delete key3`)
+    hashTable.remove("key3")
+    hashTable.printAll();
+    console.log(`value of key3: `, hashTable.getValue("key3"))
+    console.log(`delete key2 & key1`)
+    hashTable.remove("key2")
+    hashTable.remove("key1")
+    hashTable.printAll();
+})()

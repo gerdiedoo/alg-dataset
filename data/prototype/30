@@ -1,39 +1,18 @@
-package com.deepak.data.structures.Hashing;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-public class ConcurrentHashMapImplementation {
-	static Map<String, AtomicLong> ordersMap = new ConcurrentHashMap<>();
-	static void processOrders() {
-		for (String city : ordersMap.keySet()) {
-			for (int i = 0; i < 50; i++) {
-				ordersMap.get(city).getAndIncrement();
-			}
-		}
-	}
-	public static void main(String[] args) throws InterruptedException {
-		ordersMap.put("Delhi", new AtomicLong());
-		ordersMap.put("London", new AtomicLong());
-		ordersMap.put("New York", new AtomicLong());
-		ordersMap.put("Sydney", new AtomicLong());
-		ExecutorService service = Executors.newFixedThreadPool(2);
-		service.submit(new Runnable() {
-			@Override
-			public void run() {
-				processOrders();
-			}
-		});
-		service.submit(new Runnable() {
-			@Override
-			public void run() {
-				processOrders();
-			}
-		});
-		service.awaitTermination(1, TimeUnit.SECONDS);
-		service.shutdown();
-		System.out.println(ordersMap);
-	}
-}
+from .hash_table import HashTable
+from number_theory.prime_numbers import next_prime, check_prime
+class DoubleHash(HashTable):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    def __hash_function_2(self, value, data):
+        next_prime_gt = next_prime(value % self.size_table)            if not check_prime(value % self.size_table) else value % self.size_table  
+        return next_prime_gt - (data % next_prime_gt)
+    def __hash_double_function(self, key, data, increment):
+        return (increment * self.__hash_function_2(key, data)) % self.size_table
+    def _colision_resolution(self, key, data=None):
+        i = 1
+        new_key = self.hash_function(data)
+        while self.values[new_key] is not None and self.values[new_key] != key:
+            new_key = self.__hash_double_function(key, data, i) if                self.balanced_factor() >= self.lim_charge else None
+            if new_key is None: break 
+            else: i += 1
+        return new_key

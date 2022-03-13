@@ -1,163 +1,103 @@
-package cuckoo;  
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.atomic.AtomicLong;
-public class Cuckoo<K, V> {
-    int size, maxReach;
-    LinkedList<KVStruct<K, V>>[] values;
-    private final AtomicLong txnCtr = new AtomicLong(0);
-    private final AtomicLong lsTxn = new AtomicLong(0);
-    private final Lock lock = new ReentrantLock();
-    protected long getLsTxn() {
-        return lsTxn.get();
+package com.fullstory;
+import java.util.ArrayList;
+import java.util.stream.Stream;
+class DoublyLinkedList<K, V> {
+    private KeyValueNode<K, V> head;
+    private int numberOfNodes;
+    DoublyLinkedList() {
+        this(null, 0);
     }
-    protected long getTxnCtr() {
-        return txnCtr.get();
+    DoublyLinkedList(KeyValueNode<K, V> head, int numberOfNodes) {
+        this.head = head;
+        this.numberOfNodes = numberOfNodes;
     }
-    protected LinkedList<KVStruct<K,V>>[] getValues() {
-        return values;
-    }
-    private Cuckoo(int size, int maxReach, long txnCtr, long lsTxn){
-        this(size, maxReach);
-        this.txnCtr.set(txnCtr);
-        this.lsTxn.set(lsTxn);
-    }
-    public Cuckoo(int size, int maxReach){
-        this.size = size;
-        this.maxReach = maxReach;
-        values = new LinkedList[size];
-        for (int i = 0; i < size; i++) {
-            values[i] =  new LinkedList<KVStruct<K, V>>();
-            values[i].insert(0, new KVStruct<K, V>());
+    private void insertAtBeginning(KeyValueNode<K, V> newKeyValueNode) {
+        if (this.head != null) {
+            newKeyValueNode.next(this.head);
+            this.head.previous(newKeyValueNode);
         }
-        txnCtr.set(1);
-        lsTxn.set(1);
+        this.head = newKeyValueNode;
+        numberOfNodes++;
     }
-    public int hash1(K key){
-        if (key == null)
-            return 0;
-        int h = key.hashCode();
-        h += (h <<  15) ^ 0xffffcd7d;
-        h ^= (h >>> 10);
-        h += (h <<   3);
-        h ^= (h >>>  6);
-        h += (h <<   2) + (h << 14);
-        return Math.abs((h ^ (h >>> 16)) % size);
-    }
-    public int hash2(K key){
-        if (key == null)
-            return 0;
-        int h = key.hashCode();
-        h += (h <<  15) ^ 0xffffcd4d;
-        h ^= (h >>> 10);
-        h += (h <<   3);
-        h ^= (h >>>  6);
-        h += (h <<   2) + (h << 14);
-        h ^= (h >>> 16);
-        return Math.abs((h / 11) % size);
-    }
-    private void insert(long txn, KVStruct kv, int idx){
-        values[idx].insert(txn, kv);
-    }
-    public void put(K key, V value) throws NeedExpansionException {
-        if(key == null || value == null) throw new NullPointerException();
-        try{
-            lock.lock();
-            long txn = txnCtr.getAndIncrement();
-            KVStruct<K, V> current = new KVStruct<K, V>(key, value);
-            int[] idxMod = new int[maxReach];
-            for(int i = 0; i < maxReach; i++) {
-                int idx = hash1(current.key);
-                KVStruct temp = values[idx].getHeadObj();
-                if(temp.equals(new KVStruct())){
-                    insert(txn, current, idx);
-                    lsTxn.set(txn);
-                    return;
-                }
-                idx = hash2(current.key);
-                temp = values[idx].getHeadObj();
-                if(temp.equals(new KVStruct())){
-                    insert(txn, current, idx);
-                    lsTxn.set(txn);
-                    return;
-                }
-                insert(txn, current, idx);
-                idxMod[i] = idx;
-                current = temp;
-            }
-            for(int i=0; i < maxReach; i++){
-                values[idxMod[i]].delete(txn);
-            }
-            throw new NeedExpansionException("Key " + key + " Could not be inserted due to tight table");
-        }finally{
-            lock.unlock();
-        }
-    }
-    public V get(K key) {
-        long version = lsTxn.get();
-        int idx = hash1(key);
-        KVStruct<K, V> kv = values[idx].latestVer(version);
-        if(kv.key != null && kv.key.equals(key)) {
-            return kv.value;
-        }
-        idx = hash2(key);
-        kv = values[idx].latestVer(version);
-        if(kv.key != null && kv.key.equals(key)){
-            return kv.value;
+    private KeyValueNode<K, V> fetchNodeWithKey(K key) {
+        KeyValueNode<K, V> tempPointer = this.head;
+        while (tempPointer != null) {
+            if (tempPointer.key().equals(key))
+                return tempPointer;
+            tempPointer = tempPointer.next();
         }
         return null;
     }
-    public boolean delete(K key){
-        try{
-            lock.lock();
-            long txn = txnCtr.getAndIncrement();
-            int idx = hash1(key);
-            KVStruct kv = values[idx].latestVer(lsTxn.get());
-            if(kv.key != null && kv.key.equals(key)){
-                insert(txn, new KVStruct(), idx);
-                lsTxn.set(txn);
-                return true;
-            }
-            idx = hash2(key);
-            kv = values[idx].latestVer(lsTxn.get());
-            if(kv.key != null && kv.key.equals(key)){
-                insert(txn, new KVStruct(), idx);
-                lsTxn.set(txn);
-                return true;
-            }
-            return false;
-        }finally{
-            lock.unlock();
+    private void deleteNode(KeyValueNode<K, V> node) {
+        numberOfNodes--;
+        KeyValueNode<K, V> previousPointer = node.previous();
+        KeyValueNode<K, V> nextPointer = node.next();
+        if (previousPointer == null) {
+            this.head = node.next();
+        } else if (nextPointer == null) {
+            previousPointer.next(null);
+        } else {
+            node.next(null);
+            node.previous(null);
+            previousPointer.next(nextPointer);
+            nextPointer.previous(previousPointer);
         }
     }
-    private class KVStruct<K, V> {
-        public K key;
-        public V value;
-        public KVStruct() {
+    private Stream<KeyValueNode<K, V>> allNodesStream() {
+        ArrayList<KeyValueNode<K, V>> nodes = new ArrayList<>();
+        KeyValueNode<K, V> tempPointer = this.head;
+        while (tempPointer != null) {
+            nodes.add(tempPointer);
+            tempPointer = tempPointer.next();
         }
-        public K getKey() {
-            return key;
+        return nodes.stream();
+    }
+    void add(K key, V value) {
+        KeyValueNode<K, V> newKeyValueNode = new KeyValueNode<>(key, value);
+        removeNodeWithKeyIfExists(key);
+        insertAtBeginning(newKeyValueNode);
+    }
+    V fetchValueInNodeWithKey(K key, V defaultValue) {
+        KeyValueNode<K, V> node = fetchNodeWithKey(key);
+        if (node == null)
+            return defaultValue;
+        return node.value();
+    }
+    V fetchValueInNodeWithKey(K key) throws KeyNotFoundException {
+        KeyValueNode<K, V> node = fetchNodeWithKey(key);
+        if (node == null)
+            throw new KeyNotFoundException(key.toString());
+        return node.value();
+    }
+    boolean removeNodeWithKeyIfExists(K key) {
+        KeyValueNode<K, V> nodeToDelete = this.fetchNodeWithKey(key);
+        if (nodeToDelete == null)
+            return false;
+        deleteNode(nodeToDelete);
+        return true;
+    }
+    KeyValuePojo<K, V> getPojoOfNodeAtIndex(int index) {
+        if (index >= this.length())
+            return null;
+        KeyValueNode<K, V> tempPointer = this.head;
+        for (int i = 0; i < index; i++) {
+            tempPointer = tempPointer.next();
         }
-        public V getValue() {
-            return value;
-        }
-        public KVStruct(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            KVStruct<?, ?> kvStruct = (KVStruct<?, ?>) o;
-            if (key != null ? !key.equals(kvStruct.key) : kvStruct.key != null) return false;
-            return value != null ? value.equals(kvStruct.value) : kvStruct.value == null;
-        }
-        @Override
-        public int hashCode() {
-            int result = key != null ? key.hashCode() : 0;
-            result = 31 * result + (value != null ? value.hashCode() : 0);
-            return result;
-        }
+        return tempPointer.pojo();
+    }
+    int length() {
+        return numberOfNodes;
+    }
+    boolean isEmpty() {
+        return this.length() == 0;
+    }
+    Stream<K> getAllKeys() {
+        return allNodesStream().map(KeyValueNode::key);
+    }
+    Stream<V> getAllValues() {
+        return allNodesStream().map(KeyValueNode::value);
+    }
+    Stream<KeyValuePojo<K, V>> getAllPojo() {
+        return allNodesStream().map(node -> new KeyValuePojo<>(node.key(), node.value()));
     }
 }

@@ -1,12 +1,20 @@
-def interpolation_search(arr, key, l=0, r=-1):
-    if r < 0:
-        r = len(arr) - 1
-    if (l <= r and key >= arr[l] and key <= arr[r]):
-        pos = l + ((r - l) // (arr[r] - arr[l]) * (key - arr[l]))
-        if arr[pos] == key:
-            return pos
-        if arr[pos] < key:
-            return interpolation_search(arr, key, pos+1, r)
-        if arr[pos] > key:
-            return interpolation_search(arr, key, l, pos-1)
-    return -1
+ellen = int(input("Enter number of elements: "))
+def linearSearch():
+    myel = [] 
+    for num in range(0,ellen): 
+        el = input(f"{(num) + 1}. Element: ")
+        try: 
+            myel.append(int(el))
+        except:  
+            raise Exception("Enter only numbers!")
+    print(f"This is your list: {myel}")
+    value = input("Search a value: ")
+    for pos,num in enumerate(myel):
+        print(num, myel)
+        print(pos)
+        if num == int(value): 
+            print(f"Value found! It's the {pos+1}. value in your list")
+            break
+        if pos+1 == len(myel): 
+            print("Value not found!")
+linearSearch()

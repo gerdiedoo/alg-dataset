@@ -1,17 +1,18 @@
-function insertionSort (arrData) {
-  'use strict'
-  let dataMax = arrData.length
-  console.log('Initial:', arrData.join(), `[Count:${dataMax}]`)
-  for (let indexA = 1; indexA < dataMax; indexA++) {
-    console.log(arrData.join())
-    const indexB = arrData[indexA]
-    let indexC = indexA
-    while (indexC > 0 && arrData[indexC - 1] > indexB) {
-      arrData[indexC] = arrData[--indexC]
+package sorting.algorithms;
+public class InsertionSort {
+    public int[] sort(int[] inputArray) {
+        int arrayLength = inputArray.length;
+        int temp;
+        int j;
+        for (int i = 1; i < arrayLength; i++) {
+            temp = inputArray[i];
+            j = i;
+            while (j > 0 && inputArray[j - 1] > temp) {
+                inputArray[j] = inputArray[j - 1];
+                j--;
+            }
+            inputArray[j] = temp;
+        }
+        return inputArray;
     }
-    arrData[indexC] = indexB
-    console.log('Cycle:', arrData.join())
-  }
-  console.log('Final:', arrData.join())
-  return arrData
 }

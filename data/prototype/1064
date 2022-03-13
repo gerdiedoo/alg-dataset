@@ -1,25 +1,12 @@
-'use strict';
-const partition = (arr = [], start, end) => {
-  let pivot  = arr[end];  
-  let pIndex = start;
-  for (let i = start; i < end; i++) {
-    if (arr[i] <= pivot) {
-      let temp1 = arr[i];
-      arr[i] = arr[pIndex];
-      arr[pIndex] = temp1;
-      pIndex++;
-    }
-  }
-  let temp2 = arr[pIndex];
-  arr[pIndex] = arr[end];
-  arr[end] = temp2;
-  return pIndex;
-};
-const quickSort = (arr = [], start, end) => {
-  if (start < end) {
-    let pIndex = partition(arr, start, end);
-    quickSort(arr, start, pIndex - 1);   
-    quickSort(arr, pIndex + 1, end);  
-  }
-};
-module.exports = quickSort;
+const quickSort = (arry = []) => {
+    if (arry.length === 0)
+        return [];
+    let left = [], right =[], pivot = arry[0];
+    for (let i=1; i< arry.length; i++) {
+        if(arry[i] < pivot)
+            left.push(arry[i]);
+        else
+            right.push(arry[i]);
+    };
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}

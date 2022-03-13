@@ -1,38 +1,28 @@
-package Sorting;
-import java.util.Scanner;
-public class InsertionSort {
-    private static void insertionSort(int[] array) {
-        int n = array.length;
-        for(int i = 1; i < n ; i++) {
-            int temp = array[i];
-            int j;
-            for(j = i-1 ; j >= 0 && array[j] > temp ; j--) {
-                   array[j+1] = array[j];
-            }
-            array[j + 1] = temp;
-        }
-    }
-    private static void print(int[] array) {
-        for(int i : array) {
-            System.out.print(i + " ");
-        }
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] array = new int[n];
-        for(int i= 0 ; i < n ; i++) {
-            array[i] = sc.nextInt();
-        }
-        System.out.print("Before Sorting : ");
-        print(array);
-        long startTime = System.nanoTime();
-        insertionSort(array);
-        long endTime = System.nanoTime();
-        System.out.print("\nAfter Sorting : ");
-        print(array);
-        long totalTime = endTime - startTime;
-        System.out.printf("\nTime in seconds : %.6fs",(totalTime/ 1000000000.0));
-        sc.close();
-    }
-}
+def merge_sort(num_list):
+    if len(num_list)>1:
+        mid = len(num_list)//2
+        left_half = num_list[:mid]
+        right_half = num_list[mid:]  
+        merge_sort(left_half)
+        merge_sort(right_half)
+        i=0
+        j=0
+        k=0
+        while i<len(left_half) and j<len(right_half):
+            if left_half[i]<right_half[j]:
+                num_list[k]=left_half[i]
+                i=i+1
+            else:
+                num_list[k]=right_half[j]
+                j=j+1
+            k=k+1
+        while i<len(left_half):
+            num_list[k]=left_half[i]
+            i=i+1
+            k=k+1
+        while j<len(right_half):
+            num_list[k]=right_half[j]
+            j=j+1
+            k=k+1
+    return num_list
+print merge_sort([54,26,93,17,77,31,44,55,20])

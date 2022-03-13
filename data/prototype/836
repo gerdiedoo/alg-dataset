@@ -1,21 +1,55 @@
-def mergesort(lst):
-    if len(lst)<=1:
-        return lst
-    else:
-        mid = len(lst) // 2
-        left = lst[mid:]
-        right = lst[:mid]
-        mergesort(left)
-        mergesort(right)
-        i = j = k = 0
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                lst[k] = left[i]
-                i += 1
-            else:
-                lst[k] = right[j]
-                j += 1
-            k += 1
-        return lst
-lst = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
-print(lst)
+package sorting;
+import java.util.Scanner;
+class mergeSort{
+    static int[] merge(int a[],int b[]){
+        int l_a=a.length;
+        int l_b=b.length;
+        int combined[] = new int[l_a+l_b];
+        int ptr_c=0;
+        int ptr_p=0,ptr_q=0;
+        while(ptr_p<l_a && ptr_q<l_b){
+            if(a[ptr_p]<b[ptr_q]){
+                combined[ptr_c]=a[ptr_p];
+                ptr_p++;
+                ptr_c++;
+            }
+            else{
+                combined[ptr_c]=b[ptr_q];
+                ptr_q++;
+                ptr_c++;
+            }
+        }
+        if(ptr_p>=l_a){
+            for(int i = 0;i<(l_b-ptr_q);i++){
+                combined[ptr_c+i]=b[ptr_q+i];
+            }
+        }
+        if(ptr_q>=l_b){
+            for (int i = 0;i<(l_a-ptr_p); i++) {
+                combined[ptr_c+i]=a[ptr_p+i];
+            }
+        }
+        return combined;
+    }
+    static int[] mergeSort(int arr[]){
+        int mid=0;
+        if(arr.length>1){
+            mid=(0+arr.length)/2;
+        }
+        else{
+            return arr;
+        }
+        int left[] = new int[mid];
+        for(int i =0;i<mid;i++){
+            left[i]=arr[i];
+        }
+        int right[]=new int[arr.length-mid];
+        for(int i =0;i<(arr.length-mid);i++){
+            right[i]=arr[i+mid];
+        }
+        left=mergeSort(left);
+        right=mergeSort(right);
+        int mergedArr[] = merge(left,right);
+        return mergedArr;
+    }
+}

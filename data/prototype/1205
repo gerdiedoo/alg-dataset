@@ -1,23 +1,13 @@
-def selection_sort(a):
-    b = [*a]
-    n = len(b)
-    for i in range(n):
-        min = i
-        for j in range(i+1, n):
-            if b[j] < b[min]:
-                min = j
-        b[i], b[min] = b[min], b[i]
-    return b
-if __name__ == "__main__":
-    import unittest
-    from random import shuffle
-    class TestSelectionSort(unittest.TestCase):
-        def setUp(self):
-            self.ordered = [x for x in range(20)]
-            self.shuffled = [*self.ordered]
-            while self.ordered == self.shuffled:
-                shuffle(self.shuffled)
-        def test_selection_sort(self):
-            self.assertEqual(self.ordered, selection_sort(self.shuffled))
-            self.assertNotEqual(self.ordered, self.shuffled)
-    unittest.main()
+package io.github.marioluan.algorithms.sorting;
+public final class SelectionSort extends Sortable {
+    private SelectionSort() {
+    }
+    @SuppressWarnings("rawtypes")
+    public static void sort(Comparable[] a) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int min = findMin(a, i, n);
+            swap(a, i, min);
+        }
+    }
+}

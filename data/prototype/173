@@ -1,79 +1,99 @@
-package main;
-public class RedBlackTreeInteger extends RedBlackTree<Integer, Integer>{
-    public Integer increase(Integer key, Integer addition){
-        TreeNode<Integer,Integer> node = find(key);
-        if(node == null){
-            if(addition <= 0){
-                return 0;
-            }else{
-                insert(key, addition);
-            }
-            return addition;
-        }else{
-            node.val = node.val + addition;
-            if(node.val <= 0){
-                delete(key);
-            }
-            return node.val;
-        }
-    }
-    public Integer reduce(Integer key, Integer substraction){
-        TreeNode<Integer,Integer> node = find(key);
-        if(node == null){
-            return 0;
-        }else{
-            node.val = node.val - substraction;
-            Integer value = node.val;
-            if(node.val <= 0){
-                delete(key);
-            }
-            return value < 0 ? 0 : value;
-        }
-    }
-    public Integer count(Integer key){
-        TreeNode<Integer,Integer> node = find(key);
-        if(node == null) return 0;
-        else return node.val;
-    }
-    public Integer inRange(Integer id1, Integer id2){
-        return inRangeHelper(root, id1, id2);
-    }
-    public Integer inRangeHelper(TreeNode<Integer, Integer> node, Integer id1, Integer id2){
-        if(id1 > id2 || node == null) return 0;
-        Integer sum = 0;
-        if(node.key <= id2 && node.key >= id1){
-            sum += node.val;
-        }
-        if(node.key > id1 && node.key < id2){
-            sum += inRangeHelper(node.left, id1, id2);
-            sum += inRangeHelper(node.right, id1, id2);
-        }else if(node.key >= id2){
-            sum += inRangeHelper(node.left, id1, id2);
-        }else if(node.key <= id1){
-            sum += inRangeHelper(node.right, id1, id2);
-        }
-        return sum;
-    }
-    public TreeNode<Integer, Integer> next(Integer theId){
-        TreeNode<Integer, Integer> res = nextHelper(this.root, theId, null);
-        if(res == null) return new TreeNode<Integer,Integer>(Color.BLACK, 0, 0);
-        else return res;
-    }
-    public TreeNode<Integer, Integer> nextHelper(TreeNode<Integer, Integer> node, Integer target, TreeNode<Integer, Integer> candidate){
-        if(node == null) return candidate;
-        if(node.key > target) candidate = node;
-        if(node.key <= target) return nextHelper(node.right, target, candidate);
-        else return nextHelper(node.left, target, candidate);
-    }
-    public TreeNode<Integer, Integer> previous(Integer theId){
-        TreeNode<Integer, Integer> res = previousHelper(this.root, theId, null);
-        if(res == null) return new TreeNode<Integer,Integer>(Color.BLACK, 0, 0);
-        else return res;
-    }
-    public TreeNode<Integer, Integer> previousHelper(TreeNode<Integer, Integer> node, Integer target, TreeNode<Integer, Integer> candidate){
-        if(node == null) return candidate;
-        if(node.key < target) candidate = node;
-        if(node.key < target) return previousHelper(node.right, target, candidate);
-        else return previousHelper(node.left, target, candidate);
-    }
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.previous = null;
+    this.next = null;
+  }
 }
+class DoublyLinkedList {
+  constructor(value) {
+    this.head = new Node(value);
+    this.tail = this.head;
+    this.length = 1;
+  }
+  printLinkedList() {
+    let currentNode = this.head;
+    const listElements = [];
+    while (currentNode) {
+      listElements.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    console.log(listElements);
+  }
+  append(value) {
+    const newNode = new Node(value);
+    newNode.previous = this.tail;
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+  }
+  prepend(value) {
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head.previous = newNode;
+    this.head = newNode;
+    this.length++;
+  }
+  _traverseToIndex(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter != index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  insert(index, value) {
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+    if (index >= this.length) {
+      this.append(value);
+      return;
+    }
+    const newNode = new Node(value);
+    const leader = this._traverseToIndex(index - 1);
+    const follower = leader.next;
+    leader.next = newNode;
+    newNode.previous = leader;
+    newNode.next = follower;
+    follower.previous = newNode;
+    this.length++;
+  }
+  remove(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      this.head.previous = null;
+      this.length--;
+      return;
+    }
+    if (index === this.length - 1) {
+      this.tail = this.tail.previous;
+      this.tail.next = null;
+      this.length--;
+      return;
+    }
+    const leader = this._traverseToIndex(index - 1);
+    const unwantedNode = leader.next;
+    const follower = unwantedNode.next;
+    leader.next = follower;
+    follower.previous = leader;
+    this.length--;
+  }
+}
+const myLinkedList = new DoublyLinkedList(10);
+myLinkedList.printLinkedList();
+myLinkedList.append(20);
+myLinkedList.append(30);
+myLinkedList.prepend(1);
+myLinkedList.printLinkedList();
+myLinkedList.insert(2, 99);
+myLinkedList.insert(2, 69);
+myLinkedList.insert(0, 420);
+myLinkedList.insert(20, 666);
+myLinkedList.printLinkedList();
+myLinkedList.remove(0);
+myLinkedList.remove(2);
+myLinkedList.remove(5);
+myLinkedList.printLinkedList();

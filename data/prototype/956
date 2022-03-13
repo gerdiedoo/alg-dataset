@@ -1,34 +1,49 @@
-package sorts;
-import java.util.Arrays;
-public class MergeSort {
-    public static int[] sort(int[] arr) {
-        if(arr.length == 1) {
-            return arr;
-        }
-        int[] frontHalf = Arrays.copyOfRange(arr, 0, arr.length / 2);
-        int[] backHalf = Arrays.copyOfRange(arr, arr.length / 2, arr.length);
-        return merge(sort(frontHalf), sort(backHalf));
-    }
-    private static int[] merge(int[] a, int[] b) {
-        int i = 0, j = 0;
-        int merged[] = new int[a.length + b.length];
-        while(i < a.length && j < b.length) {
-            if(a[i] < b[j]) {
-                merged[i + j] = a[i];
-                i++;
-            } else {
-                merged[i + j] = b[j];
-                j++;
-            }
-        }
-        while(i < a.length) {
-            merged[i + j] = a[i];
-            i++;
-        }
-        while(j < b.length) {
-            merged[i + j] = b[j];
-            j++;
-        }
-        return merged;
-    }
+package com.sorting;
+public class Quick {
+	private Quick() {
+	}
+	public static void sort(Comparable[] array) {
+		sort(array, 0, array.length - 1);
+	}
+	private static void sort(Comparable[] array, int lo, int hi) {
+		if (hi <= lo)
+			return;
+		int i = lo;
+		int j = hi;
+		int mid = lo + (hi - lo) / 2;
+		Comparable pivot = array[lo + (hi - lo) / 2];
+		while (i <= j) {
+			while (less(array[i], pivot)) {
+				i++;
+			}
+			while (less(pivot, array[j])) {
+				j--;
+			}
+			if (i <= j) {
+				exchange(array, i, j);
+				i++;
+				j--;
+			}
+			if (j < i)
+				break;
+			show(array);
+		}
+		if (lo < j)
+			sort(array, lo, j);
+		if (i < hi)
+			sort(array, i, hi);
+	}
+	private static boolean less(Comparable v, Comparable w) {
+		return v.compareTo(w) < 0;
+	}
+	private static void exchange(Object[] a, int i, int j) {
+		Object swap = a[i];
+		a[i] = a[j];
+		a[j] = swap;
+	}
+	public static void show(Comparable[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + ",");
+		}
+	}
 }

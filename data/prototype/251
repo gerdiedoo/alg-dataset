@@ -1,23 +1,61 @@
-package Lists.SinglyLinkedList;
-public class EmployeeNode {
-    private Employee employee;
-    private EmployeeNode next;
-    public EmployeeNode(Employee employee) {
-        this.employee = employee;
+public class SkipListNode<T extends Comparable<? super T>> {
+    private T data;
+    private int level;
+    private SkipListNode<T> prev;
+    private SkipListNode<T> next;
+    private SkipListNode<T> up;
+    private SkipListNode<T> down;
+    public SkipListNode(T data, int level) {
+        this(data, level, null, null, null, null);
     }
-    public Employee getEmployee() {
-        return employee;
+    public SkipListNode(T data, int level,
+                SkipListNode<T> prev, SkipListNode<T> next, SkipListNode<T> up,
+                SkipListNode<T> down) {
+        this.data = data;
+        this.level = level;
+        this.prev = prev;
+        this.next = next;
+        this.up = up;
+        this.down = down;
     }
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public T getData() {
+        return data;
     }
-    public EmployeeNode getNext() {
+    public int getLevel() {
+        return level;
+    }
+    public SkipListNode<T> getPrev() {
+        return prev;
+    }
+    public SkipListNode<T> getNext() {
         return next;
     }
-    public void setNext(EmployeeNode next) {
+    public SkipListNode<T> getUp() {
+        return up;
+    }
+    public SkipListNode<T> getDown() {
+        return down;
+    }
+    public void setData(T data) {
+        this.data = data;
+    }
+    public void setLevel(int level) {
+        this.level = level;
+    }
+    public void setPrev(SkipListNode<T> prev) {
+        this.prev = prev;
+    }
+    public void setNext(SkipListNode<T> next) {
         this.next = next;
     }
+    public void setUp(SkipListNode<T> up) {
+        this.up = up;
+    }
+    public void setDown(SkipListNode<T> down) {
+        this.down = down;
+    }
+    @Override
     public String toString() {
-        return employee.toString();
+        return String.format("Node at level %d containing %s", level, data);
     }
 }

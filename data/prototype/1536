@@ -1,0 +1,36 @@
+class Node:
+  def __init__(self,data):
+    self.data = data 
+    self.nextNode = None 
+def PrintLinkedList (node):
+    while node is not None:
+        print(node.data,end=" ")
+        node = node.nextNode
+    print("")
+def Insert2End(currentNode,newNode):
+    while(currentNode.nextNode is not None):
+        currentNode = currentNode.nextNode
+    currentNode.nextNode = newNode
+def DeleteNode(headNode,data):
+    n = headNode
+    if (n.data == data):
+        return(n.nextNode)
+    while(n.nextNode is not None):
+        if (n.nextNode.data == data):
+            n.nextNode = n.nextNode.nextNode
+            return(headNode)    
+        else:
+            n = n.nextNode
+    print(data," Not found!")
+    return headNode
+inputs = [1,2,3,4,5]
+head = Node(inputs[0])
+for x in range(1,len(inputs)):
+    currentNode = head
+    Insert2End(currentNode,Node(inputs[x]))
+print("Linked List (insert to end):")
+PrintLinkedList(head)
+remove = 3
+head = DeleteNode(head, remove)
+print("Linked List (after deleting %d):" %(remove))
+PrintLinkedList(head)

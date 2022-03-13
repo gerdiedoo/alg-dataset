@@ -1,36 +1,21 @@
-package Sorting;
-public class Insertion {
-	public static <T extends Comparable<T>> void InsertionSort(T arr[])
-	{
-		int n = arr.length;
-        for (int i=1; i<n; ++i)
-        {
-            T key = arr[i];
-            int j = i-1;
-            while (j>=0 && arr[j].compareTo(key) > 0)
-            {
-                arr[j+1] = arr[j];
-                j = j-1;
-            }
-            arr[j+1] = key;
-        }
+package src.algorithms;
+import src.strategy.Order;
+public class InsertionSort<T> extends SortingAlgorithm<T> {
+	@Override
+	@SuppressWarnings("hiding")
+	public<T extends Comparable<T>> T[] sort(T[] elements, Order order) {
+		int numElements = elements.length;
+		for (int i=1; i<numElements; i++) {
+			T edgeElement = elements[i];
+			int j = i - 1;
+			while (j >= 0 && (
+				   order == Order.ASC  && edgeElement.compareTo(elements[j]) < 0   ||
+			       order == Order.DESC && edgeElement.compareTo(elements[j]) > 0)) {
+				elements[j + 1] = elements[j];
+				j -= 1;
+			}
+			elements[j + 1] = edgeElement;
+		}
+		return elements;
 	}
-	    public static <T extends Comparable<T>> void InsertionSortRecursive(T arr[])
-	    {
-	    	InsertionSortRecursiveHelper(arr, arr.length);
-	    }
-	    private static <T extends Comparable<T>> void InsertionSortRecursiveHelper(T arr[], int n)
-	    {
-	        if (n <= 1)
-	            return;
-	        InsertionSortRecursiveHelper( arr, n-1 );
-	        T last = arr[n-1];
-	        int j = n-2;
-	        while (j >= 0 && arr[j].compareTo(last) > 0)
-	        {
-	            arr[j+1] = arr[j];
-	            j--;
-	        }
-	        arr[j+1] = last;
-	    }
 }

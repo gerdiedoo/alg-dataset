@@ -1,55 +1,48 @@
-package Sorts;
-import static Sorts.SortUtils.print;
-class MergeSort implements SortAlgorithm {
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        T[] tmp = (T[]) new Comparable[unsorted.length];
-        doSort(unsorted, tmp, 0, unsorted.length - 1);
-        return unsorted;
-    }
-    private  static <T extends Comparable<T>> void doSort(T[] arr, T[] temp, int left, int right) {
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-            doSort(arr, temp, left, mid);
-            doSort(arr,  temp,mid + 1, right);
-            merge(arr, temp, left, mid, right);
-        }
-    }
-    private static <T extends Comparable<T>> void merge(T[] arr, T[] temp, int left, int mid, int right) {
-        System.arraycopy(arr, left, temp, left, right - left + 1);
-        int i= left;
-        int j = mid + 1;
-        int k = left;
-        while (i <= mid && j <= right) {
-            if (temp[i].compareTo(temp[j]) <= 0) {
-                arr[k] = temp[i];
-                i++;
-            }
-            else {
-                arr[k] = temp[j];
-                j++;
-            }
-            k++;
-        }
-        while (i <= mid) {
-            arr[k] = temp[i];
-            i++;
-            k++;
-        }
-	while (j <= right) {
-	    arr[k] = temp[j];
-	    j++;
-	    k++;
+package javaSorting;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+public class MergeSortArrayList {
+	private static List<Integer> merge(List<Integer> left, List<Integer> right) {
+		List<Integer> retList = new ArrayList<>();
+		int lsize = left.size();
+		int rsize = right.size();
+		int i = 0;
+		int j = 0;
+		while (i < lsize && j < rsize) {
+			if (left.get(i) < right.get(j)) {
+				retList.add(left.get(i));
+				i++;
+			} else {
+				retList.add(right.get(j));
+				j++;
+			}
+		}
+		if (i < lsize) {
+			retList.addAll(left.subList(i, left.size()));
+		} else {
+			retList.addAll(right.subList(j, right.size()));
+		}
+		return retList;
 	}
-    }
-    public static void main(String[] args) {
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(arr);
-        print(arr);
-        String[] stringArray = {"c", "a", "e", "b","d"};
-        mergeSort.sort(stringArray);
-        print(stringArray);
-    }
+	public static List<Integer> sort(List<Integer> data) {
+		int size = data.size();
+		if (size == 1)
+			return data;
+		int middle = size / 2;
+		List<Integer> l_sorted = sort(data.subList(0, middle));
+		List<Integer> r_sorted = sort(data.subList(middle, data.size()));
+		return merge(l_sorted, r_sorted);
+	}
+	public static void main(String[] args) {
+		List<Integer> data = new ArrayList<Integer>();
+		for (int i = 0; i < 1000000; i++) {
+			data.add(i);
+		}
+		Collections.shuffle(data);
+		long start = System.currentTimeMillis();
+		List<Integer> dataSorted = MergeSortArrayList.sort(data);
+		float elapsed = (System.currentTimeMillis() - start) / 1000;
+		System.out.println(elapsed);
+	}
 }

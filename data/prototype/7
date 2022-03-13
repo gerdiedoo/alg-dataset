@@ -1,8 +1,6 @@
-package com.ks.hashmap.basic;
-import com.ks.hashmap.HashFunction;
-public class BasicHashFunction implements HashFunction {
-    @Override
-    public int hash(Object object) {
-        return object.hashCode();
-    }
+package net.intelie.tinymap;
+public interface CacheAdapter<B, T> {
+    int contentHashCode(B builder);
+    T contentEquals(B builder, Object cached);
+    T build(B builder, ObjectCache cache);
 }

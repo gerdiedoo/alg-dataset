@@ -1,28 +1,113 @@
-package com.mehmetpekdemir.sort.quicksort;
-public final class QuickSort {
-	public static void sort(int[] array, int start, int end) {
-		if (end - start < 2) {
-			return;
-		}
-		final int pivotIndex = partition(array, start, end);
-		sort(array, start, pivotIndex);
-		sort(array, pivotIndex + 1, end);
-	}
-	private static int partition(int[] array, int start, int end) {
-		final int pivot = array[start];
-		int i = start;
-		int j = end;
-		while (i < j) {
-			while (i < j && array[--j] >= pivot);
-			if (i < j) {
-				array[i] = array[j];
-			}
-			while (i < j && array[++i] <= pivot);
-			if (i < j) {
-				array[j] = array[i];
-			}
-		}
-		array[j] = pivot;
-		return j;
-	}
+package eu.happycoders.sort.method.quicksort;
+import eu.happycoders.sort.method.*;
+import eu.happycoders.sort.utils.ArrayUtils;
+public class QuicksortVariant2 implements SortAlgorithm, PartitioningAlgorithm {
+  private final PivotStrategy pivotStrategy;
+  public QuicksortVariant2(PivotStrategy pivotStrategy) {
+    this.pivotStrategy = pivotStrategy;
+  }
+  @Override
+  public String getName() {
+    return this.getClass().getSimpleName() + "(pivot: " + pivotStrategy + ")";
+  }
+  @Override
+  public boolean isSuitableForSortedInput(int size) {
+    return (pivotStrategy != PivotStrategy.LEFT
+          && pivotStrategy != PivotStrategy.RIGHT) || size <= 2 << 12;
+  }
+  @Override
+  public void sort(int[] elements) {
+    quicksort(elements, 0, elements.length - 1);
+  }
+  private void quicksort(int[] elements, int left, int right) {
+    if (left >= right) return;
+    int pivotPos = partition(elements, left, right);
+    quicksort(elements, left, pivotPos - 1);
+    quicksort(elements, pivotPos + 1, right);
+  }
+  @Override
+  public int partition(int[] elements, int left, int right) {
+    int pivotPos =
+          PivotHelper.findPivotPos(elements, left, right, pivotStrategy);
+    int pivot = elements[pivotPos];
+    int i = left;
+    int j = pivotPos == right ? right - 1 : right;
+    while (i < j) {
+      while (elements[i] < pivot) {
+        i++;
+      }
+      while (j > left && elements[j] >= pivot) {
+        j--;
+      }
+      if (i < j) {
+        ArrayUtils.swap(elements, i, j);
+        if (i == pivotPos) pivotPos = j;
+        else if (j == pivotPos) pivotPos = i;
+        i++;
+        j--;
+      }
+    }
+    if (i == j && elements[i] < pivot) {
+      i++;
+    }
+    if (elements[i] != pivot) {
+      ArrayUtils.swap(elements, i, pivotPos);
+    }
+    return i;
+  }
+  @Override
+  public void sort(int[] elements, Counters counters) {
+    quicksort(elements, 0, elements.length - 1, counters);
+  }
+  private void quicksort(int[] elements, int left, int right,
+                         Counters counters) {
+    if (left >= right) return;
+    int pivotPos = partition(elements, left, right, counters);
+    quicksort(elements, left, pivotPos - 1, counters);
+    quicksort(elements, pivotPos + 1, right, counters);
+  }
+  public int partition(int[] elements, int left, int right, Counters counters) {
+    int pivotPos =
+          PivotHelper.findPivotPos(elements, left, right, pivotStrategy);
+    int pivot = elements[pivotPos];
+    int i = left;
+    int j = pivotPos == right ? right - 1 : right;
+    while (i < j) {
+      counters.incIterations();
+      while (true) {
+        counters.incComparisons();
+        counters.incReads();
+        if (!(elements[i] < pivot)) break;
+        i++;
+      }
+      while (true) {
+        counters.incComparisons();
+        counters.incReads();
+        if (!(j > left && elements[j] >= pivot)) break;
+        j--;
+      }
+      if (i < j) {
+        ArrayUtils.swap(elements, i, j);
+        counters.addReadsAndWrites(2);
+        if (i == pivotPos) pivotPos = j;
+        else if (j == pivotPos) pivotPos = i;
+        i++;
+        j--;
+      }
+    }
+    if (i == j) {
+      counters.incReads();
+      counters.incComparisons();
+      if (elements[i] < pivot) {
+        i++;
+      }
+    }
+    counters.incReads();
+    counters.incComparisons();
+    if (elements[i] != pivot) {
+      ArrayUtils.swap(elements, i, pivotPos);
+      counters.addReadsAndWrites(2);
+    }
+    return i;
+  }
 }

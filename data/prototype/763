@@ -1,43 +1,137 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class InsertionSort {
-    private int COMPARISONS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int array[]) {
-        COMPARISONS_COUNT = 0;
-        LOOP_COUNT = 0;
-        for (int index = 1; index < array.length; index++) {
-            LOOP_COUNT++;
-            ____cyan("\n--------\nindex: " + index);
-            insert(array, index);
+!function (SU, undefined) {
+  SU.version = 'v0.1.2';
+  SU.insertionSort = function(collection, compare) {
+    var compare = compare || _defaultCompare,
+        length  = collection.length,
+        tmp     = null,
+        i       = 0,
+        j       = 0;
+    for (i = 1; i < length; i++) {
+      for (j = i; j > 0; j--) {
+        if (compare(collection[j], collection[j - 1]) < 0) {
+          tmp = collection[j];
+          collection[j] = collection[j - 1];
+          collection[j - 1] = tmp;
+        } else {
+          break;
         }
+      }
     }
-    private void insert(int array[], int currentIndex) {
-        int value = array[currentIndex];
-        ____grey("value: " + value);
-        ____grey("currentIndex: " + currentIndex);
-        int reverseIndex = currentIndex;
-        ____grey("reverseIndex: " + reverseIndex);
-        for (int i = currentIndex - 1; i >= 0; i--) {
-            LOOP_COUNT++;
-            ____grey("\ni: " + i);
-            COMPARISONS_COUNT++;
-            if (array[i] >= value) {
-                ____blue("Move element " + array[i] + " to position " + (i + 1));
-                ____blue("new reverseIndex: " + i);
-                array[i + 1] = array[i];
-                reverseIndex = i;
-                System.out.print("[" + value + "]");
-                __red(" ==> ");
-                __dump(array);
-            } else {
-                ____grey("breaking");
-                break;
-            }
+    return collection;
+  };
+  SU.mergesort = function (collection, compare) {
+    var compare = compare || _defaultCompare;
+    SU._mergesort(collection, 0, collection.length - 1, compare);
+    return collection;
+  }
+  SU._mergesort = function(collection, left, right, compare) {
+      var compare = compare || _defaultCompare,
+          mid = null;
+      if (Math.floor(right - left) <= 0) { return; }
+      mid = Math.floor((left + right) / 2);
+      SU._mergesort(collection, left, mid, compare);
+      SU._mergesort(collection, mid + 1, right, compare);
+      SU._merge(collection, left, mid, right, compare);
+  };
+  SU._merge = function(collection, left, mid, right, compare) {
+    var compare      = compare || _defaultCompare,
+        sorted       = [],
+        leftPointer  = left,
+        leftStop     = mid,
+        rightPointer = mid + 1,
+        length       = right - left + 1,
+        i            = 0;
+    while (leftPointer <= leftStop || rightPointer <= right) {
+      if (leftPointer > leftStop) {         
+        sorted.push(collection[rightPointer]);
+        rightPointer++;
+      } else if (rightPointer > right) {   
+        sorted.push(collection[leftPointer]);
+        leftPointer++;
+      } else {                         
+        if (compare(collection[leftPointer], collection[rightPointer]) > 0) {
+          sorted.push(collection[rightPointer]);
+          rightPointer++;
+        } else {
+          sorted.push(collection[leftPointer]);
+          leftPointer++;
         }
-        ____grey("\nreverseIndex (after loop): " + reverseIndex + ", put value here");
-        array[reverseIndex] = value;
-        __red("==> ");
-        __dump(array);
+      }
     }
-}
+    for (i = 0; i < length; i++) { collection[left + i] = sorted[i]; }
+    return collection;
+  };
+  SU.quicksort = function (collection, compare) {
+    var compare = compare || _defaultCompare;
+    SU._quicksort(collection, 0, collection.length - 1, compare);
+    return collection;
+  }
+  SU._quicksort = function(collection, left, right, compare) {
+    var compare = compare || _defaultCompare,
+        pivot   = null;
+    if (left < right) {
+      pivot = SU._partition(collection, left, right, compare);
+      SU._quicksort(collection, left, pivot - 1, compare);
+      SU._quicksort(collection, pivot + 1, right, compare);
+    }
+  }
+  SU._partition = function(collection, left, right, compare) {
+    var compare = compare || _defaultCompare,
+        pivot   = collection[right],
+        pIndex  = left,
+        tmp     = null,
+        i       = 0;
+    for (i = left; i < right; i++) {
+      if (compare(collection[i], pivot) <= 0) {
+        tmp = collection[i];
+        collection[i] = collection[pIndex];
+        collection[pIndex] = tmp;
+        pIndex++;
+      }
+    }
+    collection[right] = collection[pIndex];
+    collection[pIndex] = pivot;
+    return pIndex;
+  };
+  SU.heapsort = function (collection, compare) {
+        var compare   = compare || _defaultCompare,
+            heapSize  = collection.length - 1,
+            leafLevel = Math.floor(collection.length / 2),
+            tmp       = null,
+            i;
+        for (i = leafLevel; i >= 0; i--) { SU._heapify(collection, i, heapSize); }
+        for (i = heapSize; i > 0; i--) {
+            tmp = collection[i];
+            collection[i] = collection[0];
+            collection[0] = tmp;
+            SU._heapify(collection, 0, i - 1);
+        }
+        return collection;
+    }
+  SU._heapify = function (collection, i, iLast, compare) {
+    var compare  = compare || _defaultCompare,
+        iLeft    = SU._left(i),
+        iRight   = SU._right(i),
+        iLargest = i,
+        tmp      = null;
+    if (iLeft <= iLast && compare(collection[iLeft], collection[i]) > 0) {
+      iLargest = iLeft;
+    }
+    if (iRight <= iLast && compare(collection[iRight], collection[iLargest]) > 0) {
+      iLargest = iRight;
+    }
+    if (iLargest != i) {     
+      tmp = collection[iLargest];
+      collection[iLargest] = collection[i];
+      collection[i] = tmp;
+      SU._heapify(collection, iLargest, iLast, compare);
+    }
+    return collection;
+  }
+  SU._parent = function (i) { return Math.floor((i - 1) / 2); }
+  SU._left   = function (i) { return Math.floor((2 * i) + 1); }
+  SU._right  = function (i) { return Math.floor((2 * i ) + 2); }
+  function _defaultCompare(a, b) {
+    return a - b;
+  }
+}(window.SortUtil = window.SortUtil || {})

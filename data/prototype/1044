@@ -1,19 +1,51 @@
-def partition(arr, low, high):
-    i = (low - 1)         
-    pivot = arr[high]     
-    for j in range(low, high):
-        if arr[j] < pivot:
-            i = i + 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
-def quick_sort(arr, low, high):
-    if low < high:
-        pi = partition(arr, low, high)
-        quick_sort(arr, low, pi - 1)
-        quick_sort(arr, pi + 1, high)
-if __name__ == '__main__':
-    arr = [10, 7, 8, 9, 1, 5]
-    n = len(arr)
-    quick_sort(arr, 0, n - 1)
-    print("Sorted array is:", arr)
+import java.util.Arrays;
+public class QuickSortExample
+{
+    public static void main(String[] args)
+    {
+        Integer[] array = new Integer[] { 12, 13, 24, 10, 3, 6, 90, 70 };
+        quickSort( array, 0, array.length - 1 );
+        System.out.println(Arrays.toString(array));
+    }
+    public static void quickSort(Integer[] arr, int low, int high)
+    {
+        if (arr == null || arr.length == 0){
+            return;
+        }
+        if (low >= high){
+            return;
+        }
+        int middle = low + (high - low) / 2;
+        int pivot = arr[middle];
+        int i = low, j = high;
+        while (i <= j)
+        {
+            while (arr[i] < pivot)
+            {
+                i++;
+            }
+            while (arr[j] > pivot)
+            {
+                j--;
+            }
+            if (i <= j)
+            {
+                swap (arr, i, j);
+                i++;
+                j--;
+            }
+        }
+        if (low < j){
+            quickSort(arr, low, j);
+        }
+        if (high > i){
+            quickSort(arr, i, high);
+        }
+    }
+    public static void swap (Integer array[], int x, int y)
+    {
+        int temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
+    }
+}

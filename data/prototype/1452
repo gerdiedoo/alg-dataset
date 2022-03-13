@@ -1,32 +1,38 @@
-package io.nayuki.sortalgodemo.algo;
-import io.nayuki.sortalgodemo.core.AbstractSortAlgorithm;
-import io.nayuki.sortalgodemo.core.SortAlgorithm;
-import io.nayuki.sortalgodemo.core.SortArray;
-public final class CycleSort extends AbstractSortAlgorithm {
-	public static final SortAlgorithm INSTANCE = new CycleSort();
-	public void sort(SortArray array) {
-		int length = array.length();
-		boolean[] done = new boolean[length];
-		for (int i = 0; i < length; i++) {
-			while (true) {
-				int target = 0;
-				for (int j = 0; j < length; j++) {
-					if (array.compare(j, i) < 0)
-						target++;
-					if (done[i])
-						array.setElement(i, SortArray.ElementState.DONE);
-					if (done[j])
-						array.setElement(j, SortArray.ElementState.DONE);
-				}
-				done[target] = true;
-				if (target == i)
-					break;
-				array.swap(i, target);
-				array.setElement(target, SortArray.ElementState.DONE);
-			}
-		}
-	}
-	private CycleSort() {
-		super("Cycle sort");
-	}
-}
+class Node:    
+  def __init__(self,data):    
+    self.data = data;    
+    self.next = None;    
+class CreateList:    
+  def __init__(self):    
+    self.head = Node(None);    
+    self.tail = Node(None);    
+    self.head.next = self.tail;    
+    self.tail.next = self.head;    
+  def add(self,data):    
+    newNode = Node(data);    
+    if self.head.data is None:    
+      self.head = newNode;    
+      self.tail = newNode;    
+      newNode.next = self.head;    
+    else:    
+      self.tail.next = newNode;    
+      self.tail = newNode;    
+      self.tail.next = self.head;    
+  def display(self):    
+    current = self.head;    
+    if self.head is None:    
+      print("List is empty");    
+      return;    
+    else:    
+        print("Nodes of the circular linked list: ");    
+        print(current.data),    
+        while(current.next != self.head):    
+            current = current.next;    
+            print(current.data),    
+class CircularLinkedList:    
+  cl = CreateList();    
+  cl.add(1);    
+  cl.add(2);    
+  cl.add(3);    
+  cl.add(4);    
+  cl.display();    

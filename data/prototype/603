@@ -1,18 +1,22 @@
-public class BubbleSort {
-    public static void main(String[] args) {
-        int[] input = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (input[i] < input[j]) {
-                    int temp = input[i];
-                    input[i] = input[j];
-                    input[j] = temp;
-                }
-            }
-        }
-        System.out.println("Bubble Sort : Sorted List");
-        for (int i = 0; i < 10; i++) {
-            System.out.println(input[i]);
-        }
-    }
-}
+import java.util.Arrays; 
+class GFG 
+{ 
+	public static void main(String[] args) 
+	{ 
+		final int[] arr = {37, 23, 0, 17, 12, 72, 31, 
+							46, 100, 88, 54 }; 
+		new GFG().sort(arr); 
+		for(int i=0; i<arr.length; i++) 
+			System.out.print(arr[i]+" "); 
+	} 
+	public void sort(int array[]) 
+	{ 
+		for (int i = 1; i < array.length; i++) 
+		{ 
+			int x = array[i]; 
+			int j = Math.abs(Arrays.binarySearch(array, 0, i, x) + 1); 
+			System.arraycopy(array, j, array, j+1, i-j); 
+			array[j] = x; 
+		} 
+	} 
+} 

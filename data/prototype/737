@@ -1,25 +1,32 @@
-import time
-def sort(bar, layout, num, colors):
-    data = list(bar.y)
-    count = 0
-    for i in range(1, num):
-        key = data[i]
-        j = i-1
-        count += 1
-        layout.xaxis.title.text = "Number of operations: " + str(count)
-        while j>=0 and key < data[j]:
-            data[j+1] = data[j]
-            colors[j+1] = 'blue'
-            colors[j] = 'yellow'
-            bar.marker.color = colors
-            bar.y = data
-            time.sleep(0.1)
-            colors[j] = 'blue'
-            bar.marker.color = colors
-            j -= 1
-            count += 1
-            layout.xaxis.title.text = "Number of operations: " + str(count)
-        data[j+1] = key
-        bar.y = data
-        colors[i] = 'blue'
-        bar.marker.color = colors
+class InsertionSort 
+{ 
+    void sort(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i = 1; i < n; ++i) 
+        { 
+            int key = arr[i]; 
+            int j = i - 1; 
+            while (j >= 0 && arr[j] > key) 
+            { 
+                arr[j + 1] = arr[j]; 
+                j = j - 1; 
+            } 
+            arr[j + 1] = key; 
+        } 
+    } 
+    static void printArray(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i = 0; i < n; ++i) 
+            System.out.print(arr[i] + " "); 
+        System.out.println(); 
+    } 
+    public static void main(String args[]) 
+    { 
+        int arr[] = { 12, 11, 13, 5, 6 }; 
+        InsertionSort ob = new InsertionSort(); 
+        ob.sort(arr); 
+        printArray(arr); 
+    } 
+}

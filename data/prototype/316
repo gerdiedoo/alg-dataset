@@ -1,171 +1,143 @@
-public class SinglyLinkedList<T extends Comparable<? super T>> implements
-        LinkedListInterface<T> {
-    private SLLNode<T> head;
-    private SLLNode<T> tail;
-    private int size;
-    @Override
-    public void addToFront(T data) {
-        if (data == null) {
-            throw new java.lang.IllegalArgumentException("Input data is null.");
-        }
-        head = new SLLNode<T>(data, head);
-        if (size == 0) {
-            tail = head;
-        }
-        ++size;
+package searching;
+import fundamentals.Queue;
+public class BinarySearchTree<Key extends Comparable<Key>, Value> {
+  private Node root;  
+  private class Node {
+    private Key key;  
+    private Value val;  
+    private Node left, right;  
+    private int N;  
+    public Node(Key key, Value val, int N)  { 
+      this.key = key; this.val = val; this.N = N; 
     }
-    @Override
-    public void addAtIndex(T data, int index) {
-        if (data == null) {
-            throw new java.lang.IllegalArgumentException("Input data is null.");
-        }
-        if (index < 0 || index > size) {
-            throw new java.lang.IndexOutOfBoundsException(
-                    "Input index is out of bounds.");
-        }
-        if (index == 0) {
-            addToFront(data);
-        } else if (index == size) {
-            addToBack(data);
-        } else {
-            SLLNode<T> current = head;
-            for (int i = 0; i < index - 1; ++i) {
-                current = current.getNext();
-            }
-            current.setNext(new SLLNode<T>(data, current.getNext()));
-            ++size;
-        }
+  }
+  public int size() { 
+    return size(root); 
+  }
+  private int size(Node x) {
+    if (x == null) return 0;
+    else return x.N;
+  }
+  public Value get(Key key) { 
+    return get(root, key); 
+  }
+  private Value get(Node x, Key key) { 
+    if (x == null) return null;
+    int cmp = key.compareTo(x.key);  
+    if (cmp < 0) return get(x.left, key);
+    else if (cmp > 0) return get(x.right, key);
+    else return x.val;
+  }
+  public void put(Key key, Value val) { 
+    root = put(root, key, val);
+  }
+  private Node put(Node x, Key key, Value val) {
+    if (x == null) return new Node(key, val, 1);
+    int cmp = key.compareTo(x.key);  
+    if (cmp < 0) x.left = put(x.left, key, val);
+    else if (cmp > 0) x.right = put(x.right, key, val);
+    else x.val = val;
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+  public boolean contains(Key key) {
+    return get(key) != null;
+  }
+  public void delete(Key key) { 
+    root = delete(root, key); 
+  }
+  private Node delete(Node x, Key key) {
+    if (x == null) return null;
+    int cmp = key.compareTo(x.key);
+    if (cmp < 0) x.left = delete(x.left, key);
+    else if (cmp > 0) x.right = delete(x.right, key);
+    else {
+      if (x.right == null) return x.left;
+      if (x.left == null) return x.right;
+      Node t = x;
+      x = min(t.right); 
+      x.right = deleteMin(t.right);
+      x.left = t.left;
     }
-    @Override
-    public void addToBack(T data) {
-        if (data == null) {
-            throw new java.lang.IllegalArgumentException("Input data is null.");
-        }
-        if (size == 0) {
-            addToFront(data);
-        } else {
-            tail.setNext(new SLLNode<T>(data));
-            tail = tail.getNext();
-            ++size;
-        }
-    }
-    @Override
-    public T removeFromFront() {
-        if (size == 0) {
-            return null;
-        } else {
-            T temp = head.getData();
-            head = head.getNext();
-            if (size == 1) {
-                tail = null;
-            }
-            --size;
-            return temp;
-        }
-    }
-    @Override
-    public T removeAtIndex(int index) {
-        if (index < 0 || index >= size) {
-            throw new java.lang.IndexOutOfBoundsException(
-                    "Input index is out of bounds.");
-        }
-        if (index == 0) {
-            return removeFromFront();
-        } else if (index == size - 1) {
-            return removeFromBack();
-        } else {
-            SLLNode<T> current = head;
-            T temp;
-            for (int i = 0; i < index - 1; ++i) {
-                current = current.getNext();
-            }
-            temp = current.getNext().getData();
-            current.setNext(current.getNext().getNext());
-            --size;
-            return temp;
-        }
-    }
-    @Override
-    public T removeFromBack() {
-        if (size == 0) {
-            return null;
-        } else if (size == 1) {
-            return removeFromFront();
-        } else {
-            T temp = tail.getData();
-            SLLNode<T> current = head;
-            for (int i = 1; i < size - 1; ++i) {
-                current = current.getNext();
-            }
-            current.setNext(null);
-            tail = current;
-            --size;
-            return temp;
-        }
-    }
-    @Override
-    public T get(int index) {
-        if (index < 0 || index >= size) {
-            throw new java.lang.IndexOutOfBoundsException(
-                    "Input index is out of bounds.");
-        }
-        if (index == 0) {
-            return head.getData();
-        } else if (index == size - 1) {
-            return tail.getData();
-        } else {
-            SLLNode<T> current = head;
-            for (int i = 0; i < index; ++i) {
-                current = current.getNext();
-            }
-            return current.getData();
-        }
-    }
-    @Override
-    public T findLargestElement() {
-        if (size == 0) {
-            return null;
-        }
-        T temp = head.getData();
-        SLLNode<T> current = head;
-        while (current != null) {
-            if (temp.compareTo(current.getData()) < 0) {
-                temp = current.getData();
-            }
-            current = current.getNext();
-        }
-        return temp;
-    }
-    @Override
-    public Object[] toArray() {
-        Object[] arrayToReturn = new Object[size];
-        SLLNode<T> current = head;
-        for (int i = 0; i < size; ++i) {
-            arrayToReturn[i] = current.getData();
-            current = current.getNext();
-        }
-        return arrayToReturn;
-    }
-    @Override
-    public int size() {
-        return size;
-    }
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-    @Override
-    public void clear() {
-        head = null;
-        tail = null;
-        size = 0;
-    }
-    @Override
-    public SLLNode<T> getHead() {
-        return head;
-    }
-    @Override
-    public SLLNode<T> getTail() {
-        return tail;
-    }
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+   public Key min() {
+     return min(root).key;
+   }
+   private Node min(Node root) {
+     Node minNode = root;
+     for (Node x = root; x != null; x = x.left)
+       minNode = x;
+     return minNode;
+   }
+  public void deleteMin() {
+    root = deleteMin(root);
+  }
+  private Node deleteMin(Node x) {
+    if (x.left == null) return x.right;
+    x.left = deleteMin(x.left);
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+  public Key max() {
+    return max(root).key;
+  }
+  private Node max(Node root) {
+    Node maxNode = root;
+    for (Node x = root; x != null; x = x.right)
+      maxNode = x;
+    return maxNode;
+  }
+  public void deleteMax() {
+    root = deleteMax(root);
+  }
+  private Node deleteMax(Node x) {
+    if (x.right == null) return x.left;
+    x.right = deleteMax(x.right);
+    x.N = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+  public Iterable<Key> keys() { 
+    return keys(min(), max()); 
+  }
+  public Iterable<Key> keys(Key lo, Key hi) {
+    Queue<Key> queue = new Queue<Key>();
+    keys(root, queue, lo, hi);
+    return queue;
+  }
+  private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+    if (x == null) return;
+    int cmplo = lo.compareTo(x.key);
+    int cmphi = hi.compareTo(x.key);
+    if (cmplo < 0) keys(x.left, queue, lo, hi);
+    if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
+    if (cmphi > 0) keys(x.right, queue, lo, hi);
+  }
+  public void print() {
+    print(root);
+  }
+  private void print(Node x) {
+    if (x == null) return;
+    print(x.left);
+    System.out.print(x.key);
+    print(x.right);
+  }
+  public static void main(String[] args) {
+    BinarySearchTree<String, Integer> bst = new BinarySearchTree<String, Integer>();
+    String [] keys = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E"};
+    for (int i = 0; i < keys.length; i++) 
+      bst.put(keys[i], i);
+    for (String x: bst.keys())
+      System.out.print(x);
+    System.out.println("\nMinimum key: " + bst.min());
+    bst.deleteMin();
+    System.out.println("Minimum key: " + bst.min());
+    System.out.println("Maximum key: " + bst.max());
+    bst.deleteMax();;
+    System.out.println("Maximum key: " + bst.max());
+    bst.delete("M");
+    for (String x: bst.keys())
+      System.out.print(x);
+  }
 }

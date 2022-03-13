@@ -1,33 +1,20 @@
-package Algorithm.Searching_Sorting;
-import java.util.*; 
-import java.lang.*; 
-import java.io.*; 
-class Binary_search 
-{ 
-    static int countRotations(int arr[], int low, 
-                                       int high) 
-    { 
-        if (high < low) 
-            return 0; 
-        if (high == low) 
-            return low; 
-        int mid = low + (high - low)/2;  
-        if (mid < high && arr[mid+1] < arr[mid]) 
-            return (mid + 1); 
-        if (mid > low && arr[mid] < arr[mid - 1]) 
-            return mid; 
-        if (arr[high] > arr[mid]) 
-            return countRotations(arr, low, mid - 1); 
-        return countRotations(arr, mid + 1, high); 
-    } 
-    public static void main (String[] args)  
-    { 
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt(); 
-        int arr[ ]= new int[n];
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
+package leetcode_problems.easy;
+public class SearchInsPos_35 {
+    public static int searchInsert1(int[] nums, int target) {
+        return binarySearch(0, nums.length - 1, nums, target);
+    }
+    private static int binarySearch(int left, int right, int a[], int target) {
+        int mid = (right + left) / 2;
+        if (left > right) return left;
+        else if (a[mid] == target) return mid;
+        else if (a[mid] > target) return binarySearch(0, mid - 1, a, target);
+        return binarySearch(mid + 1, right, a, target);
+    }
+    public static int searchInsert2(int[] nums, int target) {
+        int i = 0;
+        while (i < nums.length && nums[i] < target) {
+            i++;
         }
-        System.out.println(countRotations(arr, 0, n-1)); 
-    } 
+        return i;
+    }
 }

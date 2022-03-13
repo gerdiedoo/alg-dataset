@@ -1,36 +1,11 @@
-package sorters;
-import java.util.Comparator;
-import java.util.List;
-public class QuickSorter<E> extends AbstractSorter<E> {
-	private Comparator<E> comp;
-	public void sort(List<E> list, Comparator<E> comp) {
-		this.comp = comp;
-		quickSort(list, 0, list.size() - 1);
-	}
-	private void quickSort(List<E> list, int low, int high) {
-		if (low < high) {
-			int p = partition(list, low, high);
-			quickSort(list, low, p);
-			quickSort(list, p + 1, high);
-		}
-	}
-	private int partition(List<E> list, int low, int high) {
-		E pivot = list.get((high + low) / 2);
-		int i = low - 1;
-		int j = high + 1;
-		while (true) {
-			do {
-				i++;
-			} while (comp.compare(list.get(i), pivot) < 0);
-			do {
-				j--;
-			} while (comp.compare(list.get(j), pivot) > 0);
-			if (i >= j)
-				return j;
-			swap(list, i, j);
-		}
-	}
-	public String getName() {
-		return "Quick Sort";
-	}
-}
+def selection_sort (num_list):
+	for items in range(len(num_list)-1,0,-1):
+		max_pos = 0
+  for item in range(1,items+1):
+			if num_list[max_pos] < num_list[item]:
+				max_pos = item
+  temp = num_list[max_pos]
+  num_list[max_pos] = num_list[item]
+  num_list[item] = temp
+ return num_list
+print selection_sort([54,26,93,17,77,31,44,55,20])

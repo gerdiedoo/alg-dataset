@@ -1,29 +1,38 @@
-from __future__ import print_function
-def counting_sort(collection):
-    if collection == []:
-        return []
-    coll_len = len(collection)
-    coll_max = max(collection)
-    coll_min = min(collection)
-    counting_arr_length = coll_max + 1 - coll_min
-    counting_arr = [0] * counting_arr_length
-    for number in collection:
-        counting_arr[number - coll_min] += 1
-    for i in range(1, counting_arr_length):
-        counting_arr[i] = counting_arr[i] + counting_arr[i-1]
-    ordered = [0] * coll_len
-    for i in reversed(range(0, coll_len)):
-        ordered[counting_arr[collection[i] - coll_min]-1] = collection[i]
-        counting_arr[collection[i] - coll_min] -= 1
-    return ordered
-def counting_sort_string(string):
-    return ''.join([chr(i) for i in counting_sort([ord(c) for c in string])])
-if __name__ == '__main__':
-    assert "eghhiiinrsssttt" == counting_sort_string("thisisthestring")
-    try:
-        raw_input          
-    except NameError:
-        raw_input = input  
-    user_input = raw_input('Enter numbers separated by a comma:\n').strip()
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(counting_sort(unsorted))
+class Node:    
+  def __init__(self,data):    
+    self.data = data;    
+    self.next = None;    
+class CreateList:    
+  def __init__(self):    
+    self.head = Node(None);    
+    self.tail = Node(None);    
+    self.head.next = self.tail;    
+    self.tail.next = self.head;    
+  def add(self,data):    
+    newNode = Node(data);    
+    if self.head.data is None:    
+      self.head = newNode;    
+      self.tail = newNode;    
+      newNode.next = self.head;    
+    else:    
+      self.tail.next = newNode;    
+      self.tail = newNode;    
+      self.tail.next = self.head;    
+  def display(self):    
+    current = self.head;    
+    if self.head is None:    
+      print("List is empty");    
+      return;    
+    else:    
+        print("Nodes of the circular linked list: ");    
+        print(current.data),    
+        while(current.next != self.head):    
+            current = current.next;    
+            print(current.data),    
+class CircularLinkedList:    
+  cl = CreateList();    
+  cl.add(1);    
+  cl.add(2);    
+  cl.add(3);    
+  cl.add(4);    
+  cl.display();    

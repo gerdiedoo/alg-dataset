@@ -1,27 +1,82 @@
-def compAndSwap(a, i, j, dire):
-    if (dire == 1 and a[i] > a[j]) or (dire == 0 and a[i] < a[j]):
-        a[i], a[j] = a[j], a[i]
-def bitonicMerge(a, low, cnt, dire):
-    if cnt > 1:
-        k = int(cnt / 2)
-        for i in range(low, low + k):
-            compAndSwap(a, i, i + k, dire)
-        bitonicMerge(a, low, k, dire)
-        bitonicMerge(a, low + k, k, dire)
-def bitonicSort(a, low, cnt, dire):
-    if cnt > 1:
-        k = int(cnt / 2)
-        bitonicSort(a, low, k, 1)
-        bitonicSort(a, low + k, k, 0)
-        bitonicMerge(a, low, cnt, dire)
-def sort(a, N, up):
-    bitonicSort(a, 0, N, up)
-a = []
-n = int(input())
-for i in range(n):
-    a.append(int(input()))
-up = 1
-sort(a, n, up)
-print("\n\nSorted array is")
-for i in range(n):
-    print("%d" % a[i])
+package hashTable;
+import java.util.LinkedList;
+public class HashTable<T> {
+    private static int INIT_TABLE_SIZE = 20;
+    private LinkedList<Node<T>>[] bucket;
+    private int size;
+    @SuppressWarnings("unchecked")
+    public HashTable(){
+        this.bucket = new LinkedList[INIT_TABLE_SIZE];
+        this.size = 0;
+    }
+    public int hash(String key){
+        int hash = key.hashCode();
+        return  Math.abs(hash) % this.bucket.length;
+    }
+    public Node<T> add(String key, T value){
+        int index = hash(key);
+        Node<T> newNode = new Node<>(key,value);
+        if(this.bucket[index] == null){
+            this.bucket[index] = new LinkedList<>();
+        }
+        this.bucket[index].add(newNode);
+        this.size++;
+        return newNode;
+    }
+    @SuppressWarnings("unchecked")
+    public T get(String key){
+        int index = hash(key);
+        if(this.bucket[index] != null) {
+            for (Node node : this.bucket[index]) {
+                if (node.key.equals(key)) {
+                    return (T) node.value;
+                }
+            }
+        }
+        return null;
+    }
+    public boolean contains(String key){
+        int index = hash(key);
+        if(this.bucket[index] != null){
+            for( Node n : this.bucket[index]){
+                if(n.key.equals(key)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public int size(){
+        return this.size;
+    }
+    private static class Node<T> {
+        public String key;
+        public T value;
+        public Node next;
+        public Node(String key, T value){
+            this.key = key;
+            this.value = value;
+        }
+        public String toString() {
+            return this.key + ": " + this.value;
+        }
+    }
+    public static void main(String[] args) {
+        HashTable hashTable = new HashTable();
+        hashTable.add("Yoko", "Rabbit");
+        hashTable.add("Miko", "dog");
+        hashTable.add("Hamster", "Buttons");
+        hashTable.add("Hamster", "Rhino");
+        hashTable.add("Hamster", "Sam");
+        hashTable.add("Hamster", "Snowball");
+        hashTable.add("German Shepard", "Germy");
+        hashTable.add("Zebra", "Stripes");
+        System.out.println("Get: " + hashTable.get("Hello"));
+        for(LinkedList n :  hashTable.bucket){
+            System.out.print(n + ", ");
+            if(n != null){
+                System.out.println(n.size());
+            }
+        }
+    }
+}

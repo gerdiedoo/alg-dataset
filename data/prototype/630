@@ -1,24 +1,16 @@
-public class SortingAnArray {
-    public static void main(String[] args) {
-        int[] array = {6,4,2,5,0,1,3};
-        System.out.print("Current Array: ");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.print("\n");
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                if(array[i] > array[j]){
-                    int tempVar = array[i];
-                    array[i] = array[j];
-                    array[j] = tempVar;
-                }
-            }
-        }
-        System.out.print("Sorted Array: ");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.print("\n");
-    }
-}
+def InsertionSort(A,n):
+    for i in range(1,n):
+        value=A[i]
+        hole=i
+        while(hole>0 and A[hole-1]>value):
+            A[hole]=A[hole-1]
+            hole=hole-1
+        A[hole]=value
+if __name__=="__main__":
+    print("Enter the elements in the array")
+    A=list(map(int,input().split(" ")))
+    n=len(A)
+    InsertionSort(A,n)
+    print("Sorted Array: ",end="")
+    for i in range(0,n):
+        print(A[i],end=" ")

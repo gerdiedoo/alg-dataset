@@ -1,29 +1,13 @@
-function quickSort(arr, left, right){
-   var len = arr.length, 
-   pivot,
-   partitionIndex;
-  if(left < right){
-    pivot = right;
-    partitionIndex = partition(arr, pivot, left, right);
-   quickSort(arr, left, partitionIndex - 1);
-   quickSort(arr, partitionIndex + 1, right);
+const myArray = [2, 4, 1, 6, -7, 8, 5, 9, 3, 4];
+const quickSortV1 = arr => {
+  if (arr.length <= 1) {
+    return arr;
   }
-  return arr;
-}
-function partition(arr, pivot, left, right){
-   var pivotValue = arr[pivot],
-       partitionIndex = left;
-   for(var i = left; i < right; i++){
-    if(arr[i] < pivotValue){
-      swap(arr, i, partitionIndex);
-      partitionIndex++;
-    }
-  }
-  swap(arr, right, partitionIndex);
-  return partitionIndex;
-}
-function swap(arr, i, j){
-   var temp = arr[i];
-   arr[i] = arr[j];
-   arr[j] = temp;
-}
+  let pivot = arr.shift();
+  let left = arr.filter(el => el < pivot);
+  let right = arr.filter(el => el >= pivot);
+  let leftSorted = quickSortV1(left);
+  let rightSorted = quickSortV1(right);
+  return [...leftSorted, pivot, ...rightSorted];
+};
+console.log(quickSortV1(myArray));

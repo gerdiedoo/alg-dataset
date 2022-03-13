@@ -1,14 +1,19 @@
-package insertion_sort;
-public class InsertionSort {
-    public void sort(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int key = array[i];
-            int j = i;
-            while (j > 0 && array[j - 1] > key) {
-                array[j] = array[j - 1];
-                j--;
-            }
-            array[j] = key;
-        }
+export function insertionSort(array) {
+  let result = [];
+  array.forEach(item => {
+    result.push(item);
+    for (let i = 0; i < result.length; i++) {
+      const a = result[result.length - i];
+      const b = result[result.length - i - 1];
+      if (a < b) {
+        swap(result, result.length - i, result.length - i - 1)
+      }
     }
+  });
+  return result;
+}
+function swap(array, index1, index2) {
+  const val1 = array[index1];
+  array[index1] = array[index2];
+  array[index2] = val1;
 }

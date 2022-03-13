@@ -1,37 +1,25 @@
-package sortAlgorithms;
-import helperUtils.Utility;
-public class QuickSort {
-  public static void main(String[] args) {
-    int[] inputArr = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
-    Utility.printArray(inputArr, true, "Quick Sort");
-    quickSort(inputArr, 0, inputArr.length);
-    Utility.printArray(inputArr, false, null);
-  }
-  public static void quickSort(int[] arr, int start, int end) {
-    if (end - start < 2) {
-      return;
+package com.intrafoundation;
+public class QuickSort extends BaseSort {
+    public void sort(int[] arr) {
+        swaps = 0;
+        quickSort(arr, 0, arr.length - 1);
     }
-    int partitionIndex = partition(arr, start, end);
-    quickSort(arr, start, partitionIndex);
-    quickSort(arr, partitionIndex + 1, end);
-  }
-  public static int partition(int[] arr, int start, int end) {
-    int i = start;
-    int j = end;
-    int pivot = arr[start];
-    while (i < j) {
-      while (i < j && arr[--j] >= pivot)
-        ;
-      if (i < j) {
-        arr[i] = arr[j];
-      }
-      while (i < j && arr[++i] <= pivot)
-        ;
-      if (i < j) {
-        arr[j] = arr[i];
-      }
+    public void quickSort(int[] arr, final int begin, final int end) {
+        if (begin < end) {
+            final int partitionIndex = partition(arr, begin, end);
+            quickSort(arr, begin, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
+        }
     }
-    arr[j] = pivot;
-    return j;
-  }
+    private int partition(int[] arr, final int begin, final int end) {
+        final int pivot = arr[end];
+        int slidingIndex = (begin - 1);
+        for (int loopIndex = begin; loopIndex < end; loopIndex++) {
+            if (arr[loopIndex] <= pivot) {
+                swap(arr, ++slidingIndex, loopIndex);
+            }
+        }
+        swap(arr, ++slidingIndex, end);
+        return slidingIndex;
+    }
 }

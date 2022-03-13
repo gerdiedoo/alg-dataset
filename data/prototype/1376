@@ -1,27 +1,76 @@
-import java.io.*;
-import java.lang.*;
-import java.util.*;
-public class Main
-{
-	public static void main(String[] args) {
-	    Scanner scanner = new Scanner(System.in);
-	    System.out.println("Enter the size of Array\n");
-	    int n = scanner.nextInt();
-	    int[] arr = new int[n];
-		System.out.println("\nEnter Values in array");
-		for(int i=0;i<n;i++)
-		{
-		   arr[i] = scanner.nextInt();
-		}
-	    System.out.println("Enter the Value you want to Search");
-	    int value = scanner.nextInt();
-	    for(int j=0;j<n;j++)
-	    {
-	        if(arr[j]==value)
-	        {
-	            System.out.println("Your Value is in "+ (j+1) +"Position");
-	            break;
-	        }
-	    }
-	}
-}
+class HashMap:
+    def __init__(self, capacity):
+        self.length = 0
+        self.capacity = capacity
+        self.HashMap = [None] * self.capacity
+    def add(self, key, value):
+        threshhold = self.capacity * 0.75
+        if self.length >= threshhold:
+            self._increase_size()
+        hashkey = self._gethash(key)
+        if not self.HashMap[hashkey]:
+            value_to_store = [key, value]
+            self.HashMap[hashkey] = value_to_store
+            self.length += 1
+        elif self.HashMap[hashkey] and key not in self.HashMap[hashkey]:
+            self.HashMap[hashkey].extend([key, value])
+            self.length += 1
+        else:
+            self.HashMap[hashkey] = [key, value]
+    def get(self, key):
+        hashkey = self._gethash(key)
+        if type(self.HashMap[hashkey]) is list:
+            if len(self.HashMap[hashkey]) > 2:
+                idx = self._find_if_hashclash(key, hashkey, "v")
+                if idx is not None:
+                    return self.HashMap[hashkey][idx]
+            elif self.HashMap[hashkey][0] == key:
+                return self.HashMap[hashkey][1]
+    def remove(self, key):
+        thekey = self._gethash(key)
+        if self.HashMap[thekey] is not None:
+            if len(self.HashMap[thekey]) == 2:
+                self.HashMap[
+                    self._gethash(key)
+                ] = None  
+            else:
+                hashkey = self._gethash(key)
+                idx = self._find_if_hashclash(key, hashkey, "i")
+                self.HashMap[hashkey].pop(idx)
+                self.HashMap[hashkey].pop(idx)
+            self.length -= 1
+    def size(self):
+        return self.length
+    def _find_if_hashclash(self, key, location, key_or_value):
+        idx = (
+            self.HashMap[location].index(key) if key in self.HashMap[location] else None
+        )
+        if idx is not None:
+            if key_or_value == "v":
+                return idx + 1
+            else:
+                return idx
+    def _gethash(self, invalue):
+        return hash(invalue) % self.capacity
+    def _increase_size(self):
+        keys_vals_to_move = [item for item in self.HashMap if item]
+        self.length = 0
+        self.capacity = self.capacity * 2
+        self.HashMap = [None] * self.capacity
+        for item in keys_vals_to_move:
+            while len(item) > 0:
+                self.add(item[0], item[1])
+                item.pop(0)
+                item.pop(0)
+    def __str__(self):
+        return "scapacity of hash: {}, current size of hash: {}".format(
+            self.capacity, self.length
+        )
+    def __repr__(self):
+        return "capacity of hash: {}, current size of hash: {}".format(
+            self.capacity, self.length
+        )
+    def __getitem__(self, key):
+        return self.get(key)
+    def __setitem__(self, key, val):
+        return self.add(key, val)

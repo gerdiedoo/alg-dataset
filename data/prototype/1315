@@ -1,55 +1,89 @@
-public class sort {
-	public void exchange (int[] numbers) {
-		int temp;   
-		for (int i = 0; i < numbers.length - 1; i++)  {
-			for (int j = i + 1; j < numbers.length; j++) {
-				if(numbers[i] > numbers[j])          
-				{
-					temp = numbers[i];    
-					numbers[i] = numbers[j];
-					numbers[j] = temp; 
-				}           
-			}
-		}
-	}	
-	public void bubble(int[] numbers) {
-		int i, temp;
-		boolean flag = true;    
-		while (flag) {
-			flag = false;     
-			for(i = 0; i < numbers.length -1; i++)
-			{
-				if(numbers[i] > numbers[i + 1]) {
-					temp = numbers[i];                 
-					numbers[i] = numbers[i + 1];
-					numbers[i + 1] = temp;
-					flag = true;               
-				}
-			}
-		}
-	}
-	public int[] selection (int [] numbers) {
-		int first, temp;
-		for (int i = 0; i < numbers.length; i++) {
-			first = 0;    
-			for(int j = 1; j <= i; j ++) {
-				if(numbers[j] > numbers[first]) first = j;
-			}
-			temp = numbers[first];  
-			numbers[first] = numbers[i];
-			numbers[i] = temp;
-		}
-		return numbers;
-	}
-	public void insertion(int [] numbers) {
-		int j, i;
-		int key;
-		for (j = 1; j < numbers.length; j++) {
-				key = numbers[j];
-				for(i = j - 1; (i >= 0) && (numbers[i] < key); i--) {
-					numbers[i + 1] = numbers[i];
-			}
-			numbers[i + 1] = key;     
-		}
-	}
+package sorting;
+import java.util.NoSuchElementException;
+import edu.princeton.cs.algs4.StdOut;
+public class IndexMaxPQ<Key extends Comparable<Key>> {
+  private int N;  
+  private int[] pq;  
+  private int[] qp;  
+  private Key[] keys;  
+  public IndexMaxPQ(int maxN) {
+    keys = (Key[]) new Comparable[maxN + 1];
+    pq = new int[maxN + 1];
+    qp = new int[maxN + 1];
+    for (int i = 0; i <= maxN; i++) qp[i] = -1;
+  }
+  public boolean isEmpty() { return N == 0; }
+  public int size() {return N;}  
+  public void change(int k, Key key) {}  
+  public boolean contains(int k) { return qp[k] != -1; }
+  public void insert(int i, Key key) {
+    if (contains(i)) throw new IllegalArgumentException("index is already in the priority queue");
+    N++;
+    qp[i] = N;
+    pq[N] = i;
+    keys[i] = key;
+    swim(N);
+  }
+  public void delete(int i) {
+    if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
+    int index = qp[i];
+    exch(index, N--);
+    swim(index);
+    sink(index);
+    keys[i] = null;
+    qp[i] = -1;
+  } 
+  public Key max() { 
+    if (N == 0) throw new NoSuchElementException("Priority queue underflow");
+    return keys[pq[1]]; 
+  }
+  public int maxIndex() {
+    if (N == 0) throw new NoSuchElementException("Priority queue underflow");
+    return pq[1];
+  }
+  public int delMax() {
+    int indexOfMax = pq[1];
+    exch(1, N--);
+    sink(1);
+    keys[pq[N+1]] = null;
+    qp[pq[N+1]] = -1;
+    return indexOfMax;
+  }
+  private void swim(int k) {
+    while (k > 1 && less(k/2, k)) {
+      exch(k/2, k);
+      k = k/2;
+    }
+  }
+  private void sink(int k) {
+    while (2*k <= N)  {
+      int j = 2*k;
+      if (j < N && less(j, j+1)) j++;
+      if (!less(k, j)) break;
+      exch(k, j);
+      k = j;
+    }
+  }
+  private boolean less(int i, int j) { 
+    return keys[pq[i]].compareTo(keys[pq[j]]) < 0; 
+  }
+  private void exch(int i, int j) { 
+    int swap = pq[i];
+    pq[i] = pq[j];
+    pq[j] = swap;
+    qp[pq[i]] = i;
+    qp[pq[j]] = j;
+  }
+  public static void main(String[] args) {
+    String[] strings = { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+    IndexMaxPQ<String> pq = new IndexMaxPQ<String>(strings.length);
+    for (int i = 0; i < strings.length; i++) {
+        pq.insert(i, strings[i]);
+    }
+    while (!pq.isEmpty()) {
+        String key = pq.max();
+        int i = pq.delMax();
+        StdOut.println(i + " " + key);
+    }
+  }
 }

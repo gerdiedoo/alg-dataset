@@ -1,99 +1,30 @@
-package intcoll4;
-public class Intcoll4 {
-	private ListNode c;
-	private int howmany;
-	public Intcoll4() {
-		c = null;
-		howmany = 0;
-	}
-	public Intcoll4(int i) {
-		this();
-	}
-	private class ListNode {
-		private ListNode link;  
-		private int info;  
-		public ListNode() {
-			link = null;  
-			info = 0;  
-		}
-	}
-	public void copy(Intcoll4 obj) {
-		if (this != obj) {  
-			ListNode newlist;  
-			if (obj.howmany == 0) {  
-				newlist = null;  
-			} else {
-				ListNode cur = obj.c;  
-				newlist = new ListNode();  
-				newlist.info = cur.info;  
-				ListNode p = newlist;   
-				cur = cur.link;  
-				while (cur != null) {
-					p.link = new ListNode();  
-					p = p.link;  
-					p.info = cur.info;  
-					cur = cur.link;    
-				}
-			}
-			c = newlist;
-			howmany = obj.howmany;
-		}
-	}
-	public boolean belongs(int i) {
-		if (i < 0)
-			return false;
-		ListNode cur = c;  
-		while (cur != null && cur.info != i)
-			cur = cur.link;
-		if (cur == null)  
-			return false;
-		else  
-			return true;
-	}
-	public void insert(int i) {
-		if (!belongs(i)) {
-			ListNode next = new ListNode();
-			next.info = i;
-			next.link = this.c;  
-			c = next;
-			howmany++;
-		}
-	}
-	public void omit(int i) {
-		if (belongs(i)) {
-			ListNode cur = c;  
-			ListNode prev = null;  
-			while (cur != null && cur.info != i) {  
-				prev = cur;  
-				cur = cur.link;  
-			}
-			if (cur != null) { 
-				if (prev == null) {
-					c = cur.link; 
-				} else {
-					prev.link = cur.link;
-				}
-				this.howmany--;  
-			}
-		}
-	}
-	public int get_howmany() {
-		return this.howmany;
-	}
-	public void print() {
-		ListNode cur = c;
-		while (cur != null) {
-			System.out.println(cur.info);
-			cur = cur.link;
-		}
-	}
-	public boolean equals(Intcoll4 obj) {
-		boolean result = (this.howmany == obj.howmany);
-		ListNode cur = this.c;
-		while (cur != null && result) {
-			result = obj.belongs(cur.info);
-			cur = cur.link;
-		}
-		return result;
-	}
-}
+class Node(object):
+	def __init__(self, data, nextnode=None):
+		self.data = data
+  self.nextnode = nextnode
+class Stack(object):
+	def __init__(self):
+		self.top = None
+ def is_empty(self):
+  if self.top is None:
+			return True
+  return False
+ def push(self, data):
+  node = Node(data=data)
+  if self.top is None:
+			self.top = node
+  else:
+			temp = self.top
+   self.top = node
+   self.top.nextnode = temp
+ def pop(self):
+  if self.top is None:
+			raise ValueError("Stack is empty")
+  else:
+			print self.top.data, "is deleted"
+   self.top = self.top.nextnode
+ def peek(self):
+  if self.top is None:
+			raise ValueError("Stack is empty")
+  else:
+			return (self.top.data)

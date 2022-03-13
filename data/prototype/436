@@ -1,34 +1,15 @@
-package Searching;
-import java.util.Scanner;
-public class LastOccurrence {
-    private static int lastOccurrence(int[] array , int target) {
-        int n = array.length;
-        int low = 0;
-        int high = n-1;
-        while (low < high) {
-            int mid = (low + high + 1) / 2;
-            if(target < array[mid]) {
-                high =  mid -1 ;
-            }else {
-                low  = mid;
-            }
-        }
-        if(array[low] == target) {
-            return low;
-        }
-        else {
-            return -1;
-        }
+function stringPatternSearch(text, pattern) {
+  let count = 0;
+  for (let i = 0; i < text.length; i++) {
+    for (let j = 0; j < pattern.length; j++) {
+      const patternChar = pattern[j];
+      if (patternChar !== text[i + j]) {
+        break;
+      }
+      if (j === pattern.length - 1) {
+        count++;
+      }
     }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] array = new int[n];
-        for(int i = 0 ; i < n ; i++) {
-            array[i] = sc.nextInt();
-        }
-        int target = sc.nextInt();
-        int index = lastOccurrence(array,target);
-        System.out.println(index);
-    }
+  }
+  return count;
 }

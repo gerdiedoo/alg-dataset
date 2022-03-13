@@ -1,42 +1,45 @@
-from typing import List
-def merge(array: List[int], start: int, mid: int, end: int) -> None:
-    start2 = mid + 1
-    if array[mid] <= array[start2]:
-        return
-    while start <= mid and start2 <= end:
-        if array[start] <= array[start2]:
-            start += 1
-        else:
-            value = array[start2]
-            index = start2
-            while index != start:
-                array[index] = array[index - 1]
-                index -= 1
-            array[start] = value
-            start += 1
-            mid += 1
-            start2 += 1
-def mergeSort(array: List[int], *args: List[int]) -> None:
-    if len(args) == 2:
-        left, right = args
-    else:
-        left, right = 0, len(array) - 1
-    if right > left:
-        half = left + (right - left) // 2  
-        mergeSort(array, left, half)
-        mergeSort(array, half + 1, right)
-        merge(array, left, half, right)
-if __name__ == "__main__":
-    try:
-        from utils import randomSequence
-    except ModuleNotFoundError:
-        import os, sys  
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        parent_dir_path = os.path.abspath(os.path.join(dir_path, os.pardir))
-        sys.path.insert(0, parent_dir_path)
-        from utils import randomSequence
-    print("MERGE SORT")
-    shuffledArray = [7, 3, 6, 9, 4, 8, 1, 0, 5, 2]
-    print(shuffledArray, "\n")
-    mergeSort(shuffledArray)
-    print(shuffledArray)
+'use strict';
+const merge = (arr = [], start, middle, end) => {
+  let n1 = middle - start + 1;
+  let n2 = end - middle;
+  let Left  = [];
+  let Right = [];
+  for (let i = 0; i < n1; i++) {
+    Left[i] = arr[start + i];
+  }
+  for (let j = 0; j < n2; j++) {
+    Right[j] = arr[middle + 1 + j];
+  }
+  let i = 0;      
+  let j = 0;      
+  let k = start;  
+  while (i < n1 && j < n2) {
+    if (Left[i] <= Right[j]) {
+      arr[k] = Left[i];
+      i++;
+    } else {
+      arr[k] = Right[j];
+      j++;
+    }
+    k++;
+  }
+  while (i < n1) {
+    arr[k] = Left[i];
+    i++;
+    k++;
+  }
+  while (j < n2) {
+    arr[k] = Right[j];
+    j++;
+    k++;
+  }
+};
+const mergeSort = (arr = [], start, end) => {
+  if (start < end) {
+    let middle = Math.floor((start + end) / 2);
+    mergeSort(arr, start, middle);
+    mergeSort(arr, middle + 1, end);
+    merge(arr, start, middle, end);
+  }
+};
+module.exports = mergeSort;

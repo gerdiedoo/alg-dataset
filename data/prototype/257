@@ -1,54 +1,48 @@
-package Lists.Challenges.Challenge2;
-import java.util.List;
-public class IntegerLinkedList {
-    private IntegerNode head;
-    private int size;
-    public void addToFront(Integer value) {
-        IntegerNode node = new IntegerNode(value);
-        node.setNext(head);
-        head = node;
-        size++;
-    }
-    public IntegerNode removeFromFront() {
-        if (isEmpty()) {
-            return null;
-        }
-        IntegerNode removedNode = head;
-        head = head.getNext();
-        size--;
-        removedNode.setNext(null);
-        return removedNode;
-    }
-    public void insertSorted(Integer value) {
-        if (head == null || head.getValue() >= value){
-            addToFront(value);
-            return;
-        }
-        IntegerNode current =head.getNext();  
-        IntegerNode previous = head;  
-        while (current!=null && current.getValue()<value){
-            previous = current;
-            current = current.getNext();
-        }
-        IntegerNode newNode = new IntegerNode(value);
-        newNode.setNext(current);  
-        previous.setNext(newNode);  
-        size++;
-    }
-    public int getSize() {
-        return size;
-    }
-    public boolean isEmpty() {
-        return head == null;
-    }
-    public void printList() {
-        IntegerNode current = head;
-        System.out.print("HEAD -> ");
-        while (current != null) {
-            System.out.print(current);
-            System.out.print(" -> ");
-            current = current.getNext();
-        }
-        System.out.println("null");
-    }
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
+class Stack {
+  constructor() {
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+  peek() {
+    return this.top;
+  }
+  push(value) {
+    const newNode = new Node(value);
+    if (!this.bottom) {
+      this.bottom = newNode;
+    }
+    newNode.next = this.top;
+    this.top = newNode;
+    this.length++;
+  }
+  pop() {
+    if (!this.top) {
+      return null;
+    }
+    if (!this.top.next) {
+      this.bottom = null;
+    }
+    const removedNode = this.top;
+    this.top = this.top.next;
+    this.length--;
+    return removedNode;
+  }
+}
+const myStack = new Stack();
+console.log(myStack.peek());
+myStack.push(10);
+myStack.push(20);
+myStack.push(30);
+console.log(JSON.stringify(myStack));
+console.log(myStack.peek());
+console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(JSON.stringify(myStack));

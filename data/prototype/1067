@@ -1,65 +1,41 @@
-var array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
-function quicksortBasic(array) {
-  if(array.length < 2) {
-    return array;
+export default function QuickSort(items: Array<number>): Array<number> {
+  const itemsCopy = [...items];
+  QuickSortRecursive(itemsCopy, 0, itemsCopy.length - 1);
+  return itemsCopy;
+}
+function QuickSortRecursive(items: Array<number>, p: number, r: number) {
+  if (p < r) {
+    const q = RandomizedPartition(items, p, r);
+    QuickSortRecursive(items, p, q - 1);
+    QuickSortRecursive(items, q + 1, r);
   }
-  var pivot = array[0];
-  var lesser = [];
-  var greater = [];
-  for(var i = 1; i < array.length; i++) {
-    if(array[i] < pivot) {
-      lesser.push(array[i]);
-    } else {
-      greater.push(array[i]);
+}
+function RandomizedPartition(
+  items: Array<number>,
+  p: number,
+  r: number
+): number {
+  const i = getRandomInt(p, r);
+  Swap(items, i, r);
+  return Partition(items, p, r);
+}
+function Partition(items: Array<number>, p: number, r: number): number {
+  const x = items[r];
+  let i = p - 1;
+  for (let j = p; j < r; j++) {
+    if (items[j] <= x) {
+      i++;
+      Swap(items, i, j);
     }
   }
-  return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
+  Swap(items, i + 1, r);
+  return i + 1;
 }
-console.log(quicksortBasic(array.slice()));  
-function swap(array, i, j) {
-  var temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
+function getRandomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function quicksort(array, left, right) {
-  left = left || 0;
-  right = right || array.length - 1;
-  var pivot = partitionHoare(array, left, right);  
-  if(left < pivot - 1) {
-    quicksort(array, left, pivot - 1);
-  }
-  if(right > pivot) {
-    quicksort(array, pivot, right);
-  }
-  return array;
+function Swap(arr: Array<any>, x: any, y: any) {
+  const temp = arr[x];
+  arr[x] = arr[y];
+  arr[y] = temp;
 }
-function partitionLomuto(array, left, right) {
-  var pivot = right;
-  var i = left;
-  for(var j = left; j < right; j++) {
-    if(array[j] <= array[pivot]) {
-      swap(array, i, j);
-      i = i + 1;
-    }
-  }
-  swap(array, i, j);
-  return i;
-}
-function partitionHoare(array, left, right) {
-  var pivot = Math.floor((left + right) / 2 );
-  while(left <= right) {
-    while(array[left] < array[pivot]) {
-      left++;
-    }
-    while(array[right] > array[pivot]) {
-      right--;
-    }
-    if(left <= right) {
-      swap(array, left, right);
-      left++;
-      right--;
-    }
-  }
-  return left;
-}
-console.log(quicksort(array.slice()));  

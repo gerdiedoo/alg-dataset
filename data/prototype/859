@@ -1,55 +1,103 @@
-const array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
-function mergeSortTopDown(array) {
-  if(array.length < 2) {
-    return array;
+package eu.happycoders.sort.method.mergesort;
+import eu.happycoders.sort.method.Counters;
+import eu.happycoders.sort.method.SortAlgorithm;
+public class MergeSort implements SortAlgorithm {
+  private static final int MAX_INPUT_SIZE = 1 << 28;
+  @Override
+  public void sort(int[] elements) {
+    int length = elements.length;
+    int[] sorted = mergeSort(elements, 0, length - 1);
+    System.arraycopy(sorted, 0, elements, 0, length);
   }
-  const middle = Math.floor(array.length / 2);
-  const left = array.slice(0, middle);
-  const right = array.slice(middle);
-  return mergeTopDown(mergeSortTopDown(left), mergeSortTopDown(right));
-}
-function mergeTopDown(left, right) {
-  const array = [];
-  while(left.length && right.length) {
-    if(left[0] < right[0]) {
-      array.push(left.shift());
-    } else {
-      array.push(right.shift());
+  private int[] mergeSort(int[] elements, int left, int right) {
+    if (left == right) return new int[]{elements[left]};
+    int middle = left + (right - left) / 2;
+    int[] leftArray = mergeSort(elements, left, middle);
+    int[] rightArray = mergeSort(elements, middle + 1, right);
+    return merge(leftArray, rightArray);
+  }
+  int[] merge(int[] leftArray, int[] rightArray) {
+    int leftLen = leftArray.length;
+    int rightLen = rightArray.length;
+    int[] target = new int[leftLen + rightLen];
+    int targetPos = 0;
+    int leftPos = 0;
+    int rightPos = 0;
+    while (leftPos < leftLen && rightPos < rightLen) {
+      int leftValue = leftArray[leftPos];
+      int rightValue = rightArray[rightPos];
+      if (leftValue <= rightValue) {
+        target[targetPos++] = leftValue;
+        leftPos++;
+      } else {
+        target[targetPos++] = rightValue;
+        rightPos++;
+      }
     }
-  }
-  return array.concat(left.slice()).concat(right.slice());
-}
-console.log(mergeSortTopDown(array.slice()));  
-function mergeSortBottomUp(array) {
-  let step = 1;
-  while (step < array.length) {
-    let left = 0;
-    while (left + step < array.length) {
-      mergeBottomUp(array, left, step);
-      left += step * 2;
+    while (leftPos < leftLen) {
+      target[targetPos++] = leftArray[leftPos++];
     }
-    step *= 2;
-  }
-  return array;
-}
-function mergeBottomUp(array, left, step) {
-  const right = left + step;
-  const end = Math.min(left + step * 2 - 1, array.length - 1);
-  let leftMoving = left;
-  let rightMoving = right;
-  const temp = [];
-  for (let i = left; i <= end; i++) {
-    if ((array[leftMoving] <= array[rightMoving] || rightMoving > end) &&
-        leftMoving < right) {
-      temp[i] = array[leftMoving];
-      leftMoving++;
-    } else {
-      temp[i] = array[rightMoving];
-      rightMoving++;
+    while (rightPos < rightLen) {
+      target[targetPos++] = rightArray[rightPos++];
     }
+    return target;
   }
-  for (let j = left; j <= end; j++) {
-    array[j] = temp[j];
+  @Override
+  public void sort(int[] elements, Counters counters) {
+    int length = elements.length;
+    int[] sorted = mergeSort(elements, 0, length - 1, counters);
+    System.arraycopy(sorted, 0, elements, 0, length);
+    counters.addReadsAndWrites(length);
+  }
+  private int[] mergeSort(int[] elements, int left, int right,
+                          Counters counters) {
+    if (left == right) return new int[]{elements[left]};
+    int middle = left + (right - left) / 2;
+    int[] leftArray = mergeSort(elements, left, middle, counters);
+    int[] rightArray = mergeSort(elements, middle + 1, right, counters);
+    return merge(leftArray, rightArray, counters);
+  }
+  int[] merge(int[] leftArray, int[] rightArray, Counters counters) {
+    int leftLen = leftArray.length;
+    int rightLen = rightArray.length;
+    int[] target = new int[leftLen + rightLen];
+    int targetPos = 0;
+    int leftPos = 0;
+    int rightPos = 0;
+    while (isLessThan(leftPos, leftLen, counters)
+          && isLessThan(rightPos, rightLen, counters)) {
+      counters.incIterations();
+      int leftValue = leftArray[leftPos];
+      int rightValue = rightArray[rightPos];
+      counters.addReads(2);
+      counters.incComparisons();
+      counters.incWrites();
+      if (leftValue <= rightValue) {
+        target[targetPos++] = leftValue;
+        leftPos++;
+      } else {
+        target[targetPos++] = rightValue;
+        rightPos++;
+      }
+    }
+    while (isLessThan(leftPos, leftLen, counters)) {
+      counters.incIterations();
+      target[targetPos++] = leftArray[leftPos++];
+      counters.incReadsAndWrites();
+    }
+    while (isLessThan(rightPos, rightLen, counters)) {
+      counters.incIterations();
+      target[targetPos++] = rightArray[rightPos++];
+      counters.incReadsAndWrites();
+    }
+    return target;
+  }
+  private boolean isLessThan(int a, int b, Counters counters) {
+    counters.incComparisons();
+    return a < b;
+  }
+  @Override
+  public boolean isSuitableForInputSize(int size) {
+    return size <= MAX_INPUT_SIZE;
   }
 }
-console.log(mergeSortBottomUp(array.slice()));  

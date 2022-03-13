@@ -1,36 +1,15 @@
-package com.jamierf.persistenthashmap;
-import java.io.Serializable;
-import java.util.AbstractSet;
-import java.util.Collection;
-import java.util.Iterator;
-class KeySet<K extends Serializable, V extends Serializable> extends AbstractSet<K> {
-	private PersistentHashMap<K, V> map;
-	public KeySet(PersistentHashMap<K, V> map) {
-		this.map = map;
-	}
-	@Override
-	public boolean contains(Object o) {
-		return map.containsKey(o);
-	}
-	@Override
-	@SuppressWarnings("unchecked")
-	public boolean containsAll(Collection<?> c) {
-		Collection<K> ec = (Collection<K>) c;
-		for (K key : ec)
-			if (!contains(key))
-				return false;
-		return true;
-	}
-	@Override
-	public boolean isEmpty() {
-		return map.isEmpty();
-	}
-	@Override
-	public Iterator<K> iterator() {
-		return new KeyIterator<K, V>(map);
-	}
-	@Override
-	public int size() {
-		return map.size();
-	}
+package cuckoo;
+import java.util.concurrent.atomic.AtomicMarkableReference;
+public class Node<T> {
+    AtomicMarkableReference<Node<T>> next;
+    long version;
+    T object;
+    Node(T o) {
+        object = o;
+    }
+    public Node(Node<T> next, long version, T object) {
+        this.next = new AtomicMarkableReference<Node<T>>(next, false);
+        this.version = version;
+        this.object = object;
+    }
 }

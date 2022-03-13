@@ -1,25 +1,38 @@
-public class Student {
-	String nume;
-	int varsta;
-	public Student(String nume,int varsta)
-	{
-		this.nume=nume;
-		this.varsta=varsta;
+package com.mehmetpekdemir.list.singlylinkedlist;
+import com.mehmetpekdemir.shared.Employee;
+public class EmployeeLinkedList {
+	private EmployeeNode head = null;
+	private int size = 0;
+	public void addToFront(Employee employee) {
+		EmployeeNode node = new EmployeeNode(employee);
+		node.setNext(head);
+		head = node;
+		size++;
 	}
-	@Override
-	public int hashCode()
-	{
-		int h=17;
-		h=37*h+nume.hashCode();
-		h=37*h+varsta;
-		return h;
+	public EmployeeNode removeFromFront() {
+		if (isEmpty()) {
+			return null;
+		}
+		EmployeeNode node = head;
+		head = head.getNext();
+		size--;
+		node.setNext(null);
+		return node;
 	}
-	@Override
-	public boolean equals(Object o)
-	{
-		if(this.nume.equals(((Student)o).nume))
-			if(this.varsta==((Student)o).varsta)
-				return true;
-		return false;
+	public boolean isEmpty() {
+		return head == null;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void printList() {
+		EmployeeNode current = head;
+		System.out.print("HEAD -> ");
+		while (current != null) {
+			System.out.print(current);
+			System.out.print(" -> ");
+			current = current.getNext();
+		}
+		System.out.println("null");
 	}
 }

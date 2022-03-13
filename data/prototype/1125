@@ -1,47 +1,31 @@
-package sortingalgorithms;
-import cnode.CNode;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javafx.animation.FillTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.Transition;
-import javafx.scene.paint.Color;
-import javafx.util.Duration;
-public class QuickSort extends AbstractSort {
-  private static final Color PIVOT_COLOR = Color.DARKMAGENTA;
-  private ArrayList<Transition> transitions;
-  public QuickSort() {
-    this.transitions = new ArrayList<>();
-  }
-  private void quickSort(CNode[] arr, int lo, int hi) {
-    if (lo < hi) {
-      int q = partition(arr, lo, hi);
-      quickSort(arr, lo, q - 1);
-      quickSort(arr, q + 1, hi);
+package piratezpdx.sortathon;
+public class Selection extends ArrayBased {
+    Selection(){
+        super();
     }
-  }
-  private int partition(CNode[] arr, int lo, int hi) {
-    int i = lo;
-    transitions.add(colorCNode(arr, PIVOT_COLOR, hi)); 
-    for (int j = lo; j < hi; j++) {
-      transitions.add(colorCNode(arr, SELECT_COLOR, j));
-      if (arr[j].getValue() < arr[hi].getValue()) {
-        transitions.add(swap(arr, i, j));
-        transitions.add(colorCNode(arr, START_COLOR, i));
-        i++;
-      } else {
-        transitions.add(colorCNode(arr, START_COLOR, j));
-      }
-    }
-    transitions.add(swap(arr, i, hi));
-    transitions.add(colorCNode(arr, START_COLOR, i));
-    return i;
-  }
-  @Override
-  public ArrayList<Transition> startSort(CNode[] arr) {
-    quickSort(arr, 0, arr.length - 1);
-    transitions.add(colorCNode(Arrays.asList(arr), SORTED_COLOR));
-    return transitions;
-  }
+    public int sort() throws ArrayIndexOutOfBoundsException{
+        int count = 0;
+        int focus_element = 0;
+        int current_element = 0;
+        int comparison_number = 0;
+        int array_length = sortingArray.length;
+        if (array_length < 1) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        while (focus_element < array_length){
+            comparison_number = sortingArray[focus_element];
+            current_element = focus_element +1;
+            while (current_element < array_length){
+                if(comparison_number > sortingArray[current_element]){
+                    sortingArray[focus_element] = sortingArray[current_element];
+                    sortingArray[current_element] = comparison_number;
+                    comparison_number = sortingArray[focus_element];
+                }  
+                current_element++;
+                count++;
+            }  
+            focus_element++;
+        }  
+        return count;                    
+    }  
 }

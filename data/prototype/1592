@@ -1,0 +1,65 @@
+class EmptyLinkedList(Exception):
+	pass
+class SingleLinkedList:
+	class _Node:
+		__slots__ = '_element', '_next'               
+  def __init__(self, element=None, next=None):    
+			self._element = element                     
+   self._next = next                           
+ def __init__(self):
+		self._head = self._tail = None
+  self._size = 0
+ def __len__(self):
+		return self._size        
+ def isEmpty(self):
+		return self._size==0  
+ def addFirst(self, element):   
+		if self._head==None:
+			n=self._Node(element,None)
+   self._tail=n
+  else:
+			n=self._Node(element,self._head)
+  self._head=n
+  self._size+=1
+ def addLast(self, element):    
+		n=self._Node(element, None)
+  if self._tail!=None:
+			self._tail._next=n
+  else:
+			self._head=n
+  self._tail=n
+  self._size+=1
+ def removeFirst(self):  
+		if self.isEmpty():
+			raise EmptyLinkedList()
+  e=self._head._element
+  if self._head==self._tail: 
+			self._head=self._tail=None
+  else:
+			self._head=self._head._next
+  self._size-=1
+  return e
+ def removeLast(self):   
+		if self.isEmpty():
+			raise EmptyLinkedList()
+  e=self._tail._element
+  if self._head==self._tail:
+			self._head=self._tail=None
+  else:
+			temp=self._head
+   while temp._next!=self._tail:
+				temp=temp._next
+   self._tail=temp
+   self._tail._next=None
+  self._size-=1
+  return e
+ def makeEmpty(self):
+		self._head = self._tail = None
+  self._size = 0
+ def getContent(self):
+		l=[]
+  n=self._head
+  while n!= None:
+			l.append(n._element)
+   n=n._next
+  return l

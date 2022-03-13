@@ -1,0 +1,25 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+if __name__ == '__main__':
+    linkedlist = LinkedList()
+    newData = 0
+    while newData != "fin":
+        newData = input("Enter the number you want to add to the list, enter \"fin\" when you've finished:")
+        if newData != "fin":
+            linkedlist.push(newData)
+            print(newData + " is added")
+    currentNode = linkedlist.head
+    print("All nodes off the Linked List:")
+    while currentNode is not None:
+        data = currentNode.data
+        print(data)
+        currentNode = currentNode.next

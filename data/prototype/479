@@ -1,14 +1,21 @@
-def bubblesort(lst):
-    if len(lst) <= 1:
-        return lst
-    else:
-        sorted = False
-        while sorted != True:
-            sorted = True
-            for i in range(len(lst)-1):
-                if lst[i] > lst[i+1]:
-                    sorted = False
-                    lst[i], lst[i+1] = lst[i+1], lst[i]
-        return lst
-lst = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
-print(bubblesort(lst))
+function swap(A, u, v) {
+    var temp = A[u];
+    A[u] = A[v];
+    A[v] = temp;
+    return;
+}
+function Bubblesort(A) {
+    a_len = A.length;
+    for(var i = 0; i < a_len-1; i++) {
+        for(var j = 0; j < a_len-1-i; j++) {
+            if (A[j+1] < A[j]) {
+                swap(A, j, j+1);
+            }
+        } 
+    }
+    return A;
+}
+var X = [5,21,40,11,3,1,7,2,4,6,10,18,9,8];
+console.log(X);
+Bubblesort(X);
+console.log(X);

@@ -1,32 +1,24 @@
-package javaSorting;
+import java.util.*;
 public class BubbleSort {
-	public static void sort(int data[]) {
-		for (int i = 0; i < data.length - 1; i++) {
-			for (int j = 0; j < data.length - 1 - i; j++) {
-				if (data[j] > data[j + 1]) {
-					int temp = data[j];
-					data[j] = data[j + 1];
-					data[j + 1] = temp;
+	int[] bubble(int a[]) {
+		for (int i = 0; i < a.length - 1; i++) {
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[i] > a[j]) {
+					int t = a[j];
+					a[j] = a[i];
+					a[i] = t;
 				}
 			}
 		}
+		return a;
 	}
-	private static void printSortedArray(int data[]) {
-		for (int i = 0; i < data.length; i++) {
-			System.out.println(data[i]);
+	public static void main(String args[]) {
+		BubbleSort b = new BubbleSort();
+		int a[] = { 5, 1, 4, 2, 8 };
+		int ans[] = b.bubble(a);
+		System.out.println("The Final Sorted Array:");
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(ans[i] + "\t");
 		}
-	}
-	public static void main(String[] args) {
-		int SIZE = 1000;
-		int[] data = new int[SIZE];
-		for (int i = 0; i < SIZE; i++) {
-			data[i] = i;
-		}
-		Shuffle.shuffleData(data);
-		long start = System.currentTimeMillis();
-		sort(data);
-		float elapsed = (System.currentTimeMillis() - start) / 1000;
-		printSortedArray(data);
-		System.out.println(elapsed);
 	}
 }

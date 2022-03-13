@@ -1,13 +1,15 @@
-def insertionSort(list):
-    length = len(list)
-    for i in range(1, length):
-        currentElement = list[i]
-        currentPosition = i
-        while list[currentPosition - 1] > currentElement and currentPosition > 0:
-            list[currentPosition] = list[currentPosition - 1]
-            currentPosition -= 1
-        list[currentPosition] = currentElement
-    return list
-myList = [343,12,45,13,87,45,25,665,5,234,6,23,5]
-print(myList)
-print(insertionSort(myList))
+function insertionSort(arr) {
+  for (let j = 1; j < arr.length; j++) {
+    const key = arr[j];
+    let i = j - 1;
+    while (i >= 0 && arr[i] > key) {
+      arr[i + 1] = arr[i];
+      i = i - 1;
+    }
+    arr[i + 1] = key;
+  }
+  return arr;
+}
+module.exports = insertionSort;
+const ar = [3, 4, 5, 1, 6, 7, 8, 2, 0];
+insertionSort(ar);

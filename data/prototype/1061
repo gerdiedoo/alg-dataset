@@ -1,13 +1,35 @@
-const myArray = [2, 4, 1, 6, -7, 8, 5, 9, 3, 4];
-const quickSortV1 = arr => {
-  if (arr.length <= 1) {
-    return arr;
-  }
-  let pivot = arr.shift();
-  let left = arr.filter(el => el < pivot);
-  let right = arr.filter(el => el >= pivot);
-  let leftSorted = quickSortV1(left);
-  let rightSorted = quickSortV1(right);
-  return [...leftSorted, pivot, ...rightSorted];
-};
-console.log(quickSortV1(myArray));
+package Sorting;
+public class QuickSort {
+    public static void main(String[] args) {
+        int[] arr={20,35,-15,7,55,1,-22};
+        QS(arr,0,arr.length);
+        for(int j=0;j<arr.length;j++) {
+            System.out.print(arr[j] + " ");
+        }
+    }
+    public static void QS(int[] arr,int start,int end){
+        if (end - start <2){
+            return;
+        }
+        int pi = partition(arr,start,end);
+        QS(arr,start,pi);  
+        QS(arr,pi+1,end);  
+    }
+    public static int partition(int[] arr, int start, int end){
+        int i=start;
+        int j = end;
+        int pivot = arr[start];
+        while(i<j){
+            while (i<j && arr[--j]>=pivot);
+            if (i<j){
+                arr[i] = arr[j];
+            }
+            while (i<j && arr[++i]<= pivot);
+            if(i<j){
+                arr[j]= arr[i];
+            }
+        }
+        arr[j] = pivot;
+        return j;
+    }
+}

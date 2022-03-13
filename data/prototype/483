@@ -1,19 +1,13 @@
-from __future__ import print_function
-def bubble_sort(collection):
-    length = len(collection)
-    for i in range(length-1):
-        swapped = False
-        for j in range(length-1-i):
-            if collection[j] > collection[j+1]:
-                swapped = True
-                collection[j], collection[j+1] = collection[j+1], collection[j]
-        if not swapped: break  
-    return collection
-if __name__ == '__main__':
-    try:
-        raw_input          
-    except NameError:
-        raw_input = input  
-    user_input = raw_input('Enter numbers separated by a comma:').strip()
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(*bubble_sort(unsorted), sep=',')
+class BubbleSort:
+    def sort(A):
+        def swap(A, u, v):
+            temp = A[u]
+            A[u] = A[v]
+            A[v] = temp
+            return
+        a_len = len(A)
+        for i in range(0, a_len-1):
+            for j in range(0, a_len-1-i):
+                if (A[j+1] < A[j]):
+                    swap(A, j, j+1)
+        return A

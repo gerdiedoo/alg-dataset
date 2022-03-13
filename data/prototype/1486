@@ -1,9 +1,65 @@
-def pancakesort(arr):
-    cur = len(arr)
-    while cur > 1:
-        mi = arr.index(max(arr[0:cur]))
-        arr = arr[mi::-1] + arr[mi+1:len(arr)]
-        arr = arr[cur-1::-1] + arr[cur:len(arr)]
-        cur -= 1
-    return arr
-print(pancakesort([0,10,15,3,2,9,14,13]))
+class Node:
+    def __init__(self):
+        self.prev = None
+        self.next = None
+        self.data = None
+class DoublyLinkedList:
+    def __init__(self):
+        self.first_node = None
+        self.last_node = None
+    def init_node(self, val):
+        new_node = Node()
+        new_node.data = val
+        return new_node
+    def _init_first_node(self, new_node):
+        self.first_node = new_node
+        self.last_node = new_node
+    def insert(self, val):
+        new_node = self.init_node(val)
+        if self.first_node is None and self.last_node is None:
+            self._init_first_node(new_node)
+        else:
+            new_node.next = self.first_node
+            self.first_node.prev = new_node
+            if self.first_node.next is None:
+                self.last_node = self.first_node
+            self.first_node = new_node
+    def append(self, val):
+        new_node = self.init_node(val)
+        if self.first_node is None and self.last_node is None:
+            self._init_first_node(new_node)
+        else:
+            new_node.prev = self.last_node
+            self.last_node.next = new_node
+            if self.last_node.prev is None:
+                self.first_node = self.last_node
+            self.last_node = new_node
+    def pop(self):
+        if self.first_node is None:
+            raise IndexError(u"List is emtpy, cannot pop value")
+        else:
+            x = self.first_node
+            self.first_node = self.first_node.next
+            return x
+    def shift(self):
+        if self.first_node is None:
+            raise IndexError(u"List is emtpy, cannot shift value")
+        else:
+            x = self.last_node
+            self.last_node = self.last_node.prev
+            return x
+    def remove(self, val):
+        if self.first_node is None:
+            raise IndexError(u"List is emtpy, cannot remove value")
+        current = self.first_node
+        while current.data != val:
+            current = current.next
+            if current is None:
+                raise ValueError(u"Value not in list")
+        if current.prev is None:
+            self.first_node = self.first_node.next
+        elif current.next is None:
+            self.last_node = self.last_node.prev
+        else:
+            current.prev.next = current.next
+            current.next.prev = current.prev

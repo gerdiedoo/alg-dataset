@@ -1,18 +1,11 @@
-aij.bubbleSort = function(items) {
-    var sort = function(arr) {
-      var swapped,
-          endIndex = arr.length;
-      do {
-        swapped = false;
-        for (var i = 0; i < endIndex - 1; i++) {
-          if (arr[i+1] < arr[i]) {
-            aij.swap(arr, i, i + 1);
-            swapped = true;
-          }
-        };
-        endIndex--;
-      } while(swapped);
-      return arr;
-    };
-    return aij.isSortable(items) ? sort(items) : items;
+bubbleSort = function(array) {
+  var isSorted = true,
+      a = array.slice(0);
+  for (var i = 0, l = a.length - 1; i < l; i++) {
+    if (a[i] > a[i + 1]) {
+      a[i] = a[i + 1] + (a[i + 1] = a[i], 0);
+      isSorted = false;
+    }
+  }
+  return isSorted ? a : bubbleSort(a);
 };

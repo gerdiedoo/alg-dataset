@@ -1,0 +1,84 @@
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.number_of_created_nodes = 0
+        self.number_of_deleted_nodes = 0
+    def insert(self, val):
+        new_node = Node()
+        new_node.data = val
+        new_node.next_node = self.head
+        if self.head is None:
+            self.tail = new_node
+        self.head = new_node
+        self.number_of_created_nodes += 1
+    def pop(self):
+        value_to_return = self.head.data
+        self.head = self.head.next_node
+        if self.head is None:
+            self.tail = None
+        self.number_of_deleted_nodes += 1
+        return value_to_return
+    def size(self):
+        return (self.number_of_created_nodes - self.number_of_deleted_nodes)
+    def search(self, val):
+        if self.head is None:
+            return None
+        else:
+            return self.head.search_self_or_next_node_for_a_value(val)
+    def remove(self, node):
+        if self.head is None:
+            return None
+        else:
+            node_before_the_node_to_remove, node_to_remove =                self.head.search_self_or_next_node_for_identity_match(None, node)
+            if (node_to_remove != self.tail) and (node_to_remove != self.head):
+                node_after_the_node_to_remove = node_to_remove.next_node
+                node_before_the_node_to_remove.next_node =                    node_after_the_node_to_remove
+            if node_to_remove == self.tail:
+                if node_before_the_node_to_remove is not None:
+                    node_before_the_node_to_remove.next_node = None
+                self.tail = node_before_the_node_to_remove
+            if node_to_remove == self.head:
+                self.head = node_to_remove.next_node
+        self.number_of_deleted_nodes += 1
+    def __str__(self):
+        if self.head is None:
+            string_to_return = "()"
+        else:
+            node_to_check = self.head
+            incrementor_for_node_printing = 0
+            string_to_return = "("
+            while True:
+                if incrementor_for_node_printing != 0:
+                    string_to_return += ", "
+                if isinstance(node_to_check.data, str):
+                    string_to_return += "'" + str(node_to_check.data) + "'"
+                else:
+                    string_to_return += str(node_to_check.data)
+                incrementor_for_node_printing += 1
+                if node_to_check != self.tail:
+                    node_to_check = node_to_check.next_node
+                else:
+                    break
+            string_to_return += ")"
+        return string_to_return
+class Node:
+    def __init__(self):
+        self.data = None
+        self.next_node = None
+    def search_self_or_next_node_for_a_value(self, value):
+        if self.data == value:
+            return self
+        elif self.next_node is None:
+            return None
+        else:
+            return self.next_node.search_self_or_next_node_for_a_value(value)
+    def search_self_or_next_node_for_identity_match(self, previous_node,
+                                               supplied_node):
+        if self == supplied_node:
+            return previous_node, self
+        elif self.next_node is None:
+            return previous_node, None
+        else:
+            return self.next_node                       .search_self_or_next_node_for_identity_match(
+                           self, supplied_node)

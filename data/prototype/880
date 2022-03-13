@@ -1,46 +1,56 @@
-package Java;
-public class MergeSort extends Sort{
-	public static void main(String[] args){
-		int[] data = buildDataSet(5);
-		timeSort(new MergeSort(), data);
-	}
-	public MergeSort(){ super("Merge"); }
-	private int[] merge(int[] data, int low, int middle, int high){
-		int i = 0; 		 
-		int j = 0; 		 
-		int k = low; 	 
-		int lenA = middle - low + 1;
-		int lenB = high - middle;
-		int[] dataA = new int[lenA];
-		int[] dataB = new int[lenB];
-		for (int idx = 0; idx < lenA; idx++)
-			dataA[idx] = data[low + idx];
-		for (int idx = 0; idx < lenB; idx++)
-			dataB[idx] = data[middle + idx + 1];
-		while ( i < lenA && j < lenB )
-		{
-			if ( dataA[i] < dataB[j] )
-				data[k++] = dataA[i++];
-			else
-				data[k++] = dataB[j++];
-		}
-		while ( i < dataA.length )
-			data[k++] = dataA[i++];
-		while ( j < dataB.length )
-			data[k++] = dataB[j++];
-		return data;
-	}
-	private void mergeSort(int[] data, int low, int high){
-		if ( low < high )
-		{
-			int middle = (high - low) / 2 + low;
-			mergeSort(data, low, middle);
-			mergeSort(data, middle + 1, high);
-			merge(data, low, middle, high);
-		}
-	}
-	@Override
-	public void sort(int[] data){
-		mergeSort(data, 0, data.length - 1);
-	}
+import java.lang.Comparable;
+import java.util.List;
+import java.util.ArrayList;
+public class MergeSort<T extends Comparable<T>> implements SortingAlg<T> {
+    private List<T> buffer;
+    @Override
+    public void sort(List<T> elements) {
+        if (elements == null)
+            return;
+        this.buffer = new ArrayList<T>(elements.size());
+        sort(elements, 0, elements.size() - 1);
+        this.buffer = null;
+    }
+    private void sort(List<T> elements, int min, int max) {
+        if (min == max)
+            return;
+        int mid = (min + max) >> 1;
+        sort(elements, min, mid);
+        sort(elements, mid + 1, max);
+        merge(elements, min, mid, max);
+    }
+    private void merge(List<T> elements, int min, int mid, int max) {
+        if (lessThanOrEquals(elements.get(mid), elements.get(mid+1)))
+            return;
+        for (int k = min; k <= max; k++)
+            this.buffer.add(k, elements.get(k));
+        int left = min;
+        int right = mid + 1;
+        for (int k = min; k <= max; k++) {
+            if (left > mid)
+                elements.set(k, this.buffer.get(right++));
+            else if (right > max)
+                elements.set(k, this.buffer.get(left++));
+            else if (lessThan(this.buffer.get(left), this.buffer.get(right)))
+                elements.set(k, this.buffer.get(left++));
+            else
+                elements.set(k, this.buffer.get(right++));
+        }
+    }
+    private boolean lessThanOrEquals(T first, T second) {
+        return (first.compareTo(second) <= 0);
+    }
+    private boolean lessThan(T first, T second) {
+        return (first.compareTo(second) < 0);
+    }
+    public static void main(String[] args) {
+        SortingAlg<Integer> alg = new MergeSort<Integer>();
+        List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        alg.sort(elems);
+        for (int i = 0; i < elems.size() - 1; i++) {
+            if (elems.get(i).compareTo(elems.get(i+1)) > 0)
+                throw new java.lang.RuntimeException("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
 }

@@ -1,46 +1,23 @@
-import java.lang.Comparable;
-import java.util.List;
-public class QuickSortClassic<T extends Comparable<T>> implements SortingAlg<T> {
-    @Override
-    public void sort(List<T> elements) {
-        if (elements == null)
-            return;
-        sort(elements, 0, elements.size() - 1); 
-    }
-    private void sort(List<T> elements, int left, int right) {
-        if (left < right) {
-            int p = partition(elements, left, right);
-            sort(elements, left, p-1);
-            sort(elements, p+1, right);
-        }
-    }
-    private int partition(List<T> elements, int left, int right) {
-        T pivot = elements.get(right);
-        int i = left - 1;
-        for (int j = left; j < right; j++) {
-            if (isLessThan(elements.get(j), pivot)) {
-                T greater = elements.get(++i);
-                elements.set(i, elements.get(j));
-                elements.set(j, greater);
-            }
-        }
-        T temp = elements.get(i + 1);
-        elements.set(i + 1, pivot);
-        elements.set(right, temp);
-        return i + 1;
-    }
-    private boolean isLessThan(T first, T second) {
-        return (first.compareTo(second) < 0);
-    }
-    public static void main(String[] args) {
-        SortingAlg<Integer> alg = new ClassicQuickSort<Integer>();
-        List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
-        alg.sort(elems);
-        for (int i = 0; i < elems.size() - 1; i++) {
-            if (elems.get(i).compareTo(elems.get(i+1)) > 0) {
-                throw new java.lang.RuntimeException("Elems should be sorted.");
-            }
-        }
-        System.out.println("All tests passed.");
-    }
-}
+from strategy import Order, BadOrderError
+import sys
+__author__ = "Pablo Acereda"
+__copyright__ = "Copyright 2020"
+__credits__ = [ "Pablo Acereda" ]
+__license__ = "Apache License 2.0"
+__version__ = "1.0"
+__maintainer__ = "Pablo Acereda"
+__email__ = "p.aceredag@gmail.com"
+def sort(array:list, order:Order=Order.ASC) -> list:
+    if (order not in [Order.ASC, Order.DESC]):
+        raise BadOrderError("Not Valid Ordering Preference")
+    for i in range (len(array)):
+        idx = i
+        for j in range(i + 1, len(array)):
+            if   (order == Order.ASC):  
+                if (array[idx] > array[j]): 
+                    idx = j
+            elif (order == Order.DESC): 
+                if (array[idx] < array[j]):
+                    idx = j
+        array[i], array[idx] = array[idx], array[i]
+    return array

@@ -1,19 +1,25 @@
-public class BinarySearchRecursive {
-	public static int binarySearch(int[] array, int low, int high, int element) {
-		if (low > high) { return -1; } 
-		int mid = (high - low) / 2 + low;
-		if (element < array[mid]) {
-			return binarySearch(array, low, mid - 1, element);
-		} else if (element > array[mid]) {
-			return binarySearch(array, mid + 1, high, element);
-		} else { return mid; }
-	}
-	public static void main(String[] args) {
-		final int[] sortedArray = { -2, -1, 0, 1, 2 };
-		for (int i = -5; i <= 5; i++) {
-			int pos = binarySearch(sortedArray, 0, sortedArray.length - 1, i);
-			System.out.println(
-					"Searching for item " + i + ": " + (pos == -1 ? "Item not found" : ("Item found at position " + pos)));
-		}
-	}
+package Searching;
+import java.util.Scanner;
+public class LinearSearch {
+    private static int linearSearch(int[] array , int target) {
+        int n = array.length;
+        for(int i = 0 ; i < n ; i++) {
+            int item = array[i];
+            if(item == target) {
+                return i;
+            }
+        }
+        return  -1;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] array = new int[n];
+        for(int i = 0 ; i < n ; i++) {
+            array[i] = sc.nextInt();
+        }
+        int target = sc.nextInt();
+        int index = linearSearch(array,target);
+        System.out.println(index);
+    }
 }

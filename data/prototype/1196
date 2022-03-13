@@ -1,15 +1,39 @@
-import time
-import random
-def selection_sort(data):
-	for i in range(len(data) - 1):
-		for j in range(i+1, len(data)):
-			if data[j] < data[i]:
-				data[j],data[i] = data[i],data[j]
-if __name__ == '__main__':
-	lista = [_ for _ in range(1000)]
- random.shuffle(lista)
- start_time = time.time()
- selection_sort(lista)
- end_time = time.time()
- print("Time: ", end_time - start_time)
- print(lista)
+import java.util.*;
+public class selectionSort {
+    public static void main(String[] args)  {
+       Scanner x = new Scanner(System.in);
+       System.out.println("Please enter the length of Numbers:");
+       int t = x.nextInt();
+       int [] arr= new int [t];
+       System.out.println("Please enter the Numbers:");
+       for(int i=0; i<t ;i++){
+           arr[i] = x.nextInt();
+       }
+       ans(arr );
+       x.close();
+    }
+    public static void printArray(int ar[]){
+       for(int g : ar){
+           System.out.print(g+" ");
+       }
+    }
+    public static void ans(int ar[]){
+        for(int i=0 ; i<ar.length-1 ; i++){
+            int min= i;  
+            for(int j=i+1 ; j<ar.length ;j++){
+                 if(ar[j]<ar[min]){
+                     min=j;
+                 }
+             }
+             if(min!=i){
+                 int temp= ar[min];
+                 ar[min]=ar[i];
+                 ar[i]=temp;
+             }
+             System.out.println("\n After the iteration "+ i );     
+             printArray(ar);         
+        }
+        System.out.println("\nAfter  all the iteration -Sorted Array-"); 
+        printArray(ar);
+     }
+}

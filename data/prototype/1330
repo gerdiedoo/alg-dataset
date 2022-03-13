@@ -1,28 +1,59 @@
-function ArraySearch() { }
-ArraySearch.prototype = (function() {
-  function linear(arr, target) {
-    for(var i = 0; i < arr.length; i++) {
-      if(arr[i] === target) {
-        return true;
-      }
-    }
-    return false;
-  }
-  function binary(arr, target) {
-    if(arr.length === 1) {
-      return arr[0] === target;
-    }
-    var index = Math.floor((arr.length - 1) / 2);
-    if(arr[index] === target) {
-      return true;
-    } else if (arr[index] > target) {
-      return binary(arr.slice(0, index), target);
-    } else {
-      return binary(arr.slice(index + 1), target);
-    }
-  }
-  return {
-    linear: linear,
-    binary: binary
-  }
-}.call(this))
+class Pair:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next_node = None
+class BasicHashTable:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.storage = [None for i in range(capacity)]
+def hash(string):
+    tmp = 5381
+    byte_array = string.encode('utf-8')
+    for byte in byte_array:
+        tmp = ((tmp * 33) ^ byte) % 0x100000000
+    return tmp
+def hash_table_insert(hash_table, key, value):
+    hashed_key = hash(key)
+    index = hashed_key % hash_table.capacity
+    new_node = Pair(key, value)
+    existing_node = hash_table.storage[index]
+    if existing_node:
+        if existing_node.key == key:
+            print("You are overwriting an existing key's value.")
+            existing_node.value == value
+        existing_node = existing_node.next_node
+    else:
+        hash_table.storage[index] = new_node
+def hash_table_remove(hash_table, key):
+    hashed_key = hash(key)
+    index = hashed_key % hash_table.capacity
+    existing_node = hash_table.storage[index]
+    if existing_node:
+        last_node = None
+        while existing_node:
+            if existing_node.key == key:
+                if last_node:
+                    last_node.next_node = existing_node.next_node
+                else:
+                    hash_table.storage[index] = existing_node.next_node
+            last_node = existing_node
+            existing_node = existing_node.next_node
+    else:
+        print("Unable to remove item")
+        return None
+def hash_table_retrieve(hash_table, key):
+    hashed_key = hash(key)
+    index = hashed_key % hash_table.capacity
+    existing_node = hash_table.storage[index]
+    if existing_node:
+        return existing_node.value
+def Testing():
+    ht = BasicHashTable(16)
+    hash_table_insert(ht, "line", "Here today...\n")
+    hash_table_remove(ht, "line")
+    if hash_table_retrieve(ht, "line") is None:
+        print("...gone tomorrow (success!)")
+    else:
+        print("ERROR:  STILL HERE")
+Testing()

@@ -1,48 +1,26 @@
-__author__ = "streethacker"
-def simpleBubbleSort(theRef):
-    max = len(theRef) - 1
-    for i in range(max):
-        for j in range(max - i):
-            if theRef[j] > theRef[j + 1]:
-                exchange = theRef[j]
-                theRef[j] = theRef[j + 1]
-                theRef[j + 1] = exchange
-    return
-def advancedBubbleSort(theRef):
-    max = len(theRef) - 1
-    swapFlg = False
-    for i in range(max):
-        for j in range(max - i):
-            if theRef[j] > theRef[j + 1]:
-                swapFlg = True
-                exchange = theRef[j]
-                theRef[j] = theRef[j + 1]
-                theRef[j + 1] = exchange
-        if not swapFlg:
-            break
-    return
-def selectionSort(theRef):
-    max = len(theRef) - 1
-    for i in range(max - 1):
-        smallIdx = i
-        for j in range(i + 1, len(theRef)):
-            if theRef[j] < theRef[smallIdx]:
-                smallIdx = j
-        if smallIdx != i:
-            exchange = theRef[i]
-            theRef[i] = theRef[smallIdx]
-            theRef[smallIdx] = exchange
-    return
-def insertionSort(theRef):
-    for i in range(1, len(theRef)):
-        key = theRef[i]
-        insertIdx = i
-        while insertIdx > 0 and key < theRef[insertIdx - 1]:
-            theRef[insertIdx] = theRef[insertIdx - 1]
-            insertIdx -= 1
-        theRef[insertIdx] = key
-    return
-if __name__ == "__main__":
-    testcase = [2, 3, 1, 10, 6, 30, 27]
-    insertionSort(testcase)
-    print "Sorted list: %s" % testcase
+const myArray = [2, 4, 1, 6, -7, 8, 5, 9, 3, 4];
+const pancakeSort = (arr) => {
+    for (var i = arr.length - 1; i >= 1; i--) {
+        var max_idx = 0;
+        var max = arr[0];
+        for (var j = 1; j <= i; j++) {
+            if (arr[j] > max) {
+                max = arr[j];
+                max_idx = j;
+            }
+        }
+        if (max_idx == i)
+            continue;  
+        var new_slice;
+        if (max_idx > 0) {
+            new_slice = arr.slice(0, max_idx+1).reverse();
+            for ( j = 0; j <= max_idx; j++)
+                arr[j] = new_slice[j];
+        }
+        new_slice = arr.slice(0, i+1).reverse();
+        for ( j = 0; j <= i; j++)
+            arr[j] = new_slice[j];
+    }
+    return arr;
+}
+console.log(pancakeSort(myArray));

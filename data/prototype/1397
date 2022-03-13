@@ -1,20 +1,66 @@
-ellen = int(input("Enter number of elements: "))
-def linearSearch():
-    myel = [] 
-    for num in range(0,ellen): 
-        el = input(f"{(num) + 1}. Element: ")
-        try: 
-            myel.append(int(el))
-        except:  
-            raise Exception("Enter only numbers!")
-    print(f"This is your list: {myel}")
-    value = input("Search a value: ")
-    for pos,num in enumerate(myel):
-        print(num, myel)
-        print(pos)
-        if num == int(value): 
-            print(f"Value found! It's the {pos+1}. value in your list")
-            break
-        if pos+1 == len(myel): 
-            print("Value not found!")
-linearSearch()
+package cassandratest;
+public class HashMapSeparateChaining<Key, Value>
+{
+	private static final int INIT_BUCKETS_SIZE = 888;
+	private int capacity;
+	private int chains;  
+	private Node[] ht;
+	private static class Node
+	{
+		private Object key;
+		private Object val;
+		private Node next;
+		public Node(Object key, Object val, Node next)
+		{
+			this.key = key;
+			this.val = val;
+			this.next = next;
+		}
+	}
+	public HashMapSeparateChaining()
+	{
+		this(INIT_BUCKETS_SIZE);
+	}
+	public HashMapSeparateChaining(int chains)
+	{
+		this.chains = chains;
+		ht = new Node[chains];
+	}
+	private int hash(Key key)
+	{
+		int hash = 0;
+		for (int i = 0; i < key.toString().length(); i++)
+		{
+			hash = hash + (int) key.toString().charAt(i);
+		}
+		hash %= INIT_BUCKETS_SIZE;
+		return hash;		
+	}
+	@SuppressWarnings("unchecked")
+	public Value get(Key key)
+	{
+		int h = hash(key);
+		for (Node x = ht[h]; x != null; x = x.next)
+		{
+			if (key.equals(x.key)) 
+			{
+				return (Value) x.val;
+			}
+		}
+		return null;
+	}
+	public void put(Key key, Value val)
+	{
+		int h = hash(key);
+		for (Node x = ht[h]; x != null; x = x.next)
+		{
+			if (key.equals(x.key))
+			{
+				x.val = val;
+				return;
+			}
+		}
+		capacity++;
+		ht[h] = new Node(key, val, ht[h]);
+	}	
+}

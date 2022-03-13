@@ -1,21 +1,29 @@
-def quicksort(array, startIndex, endIndex):
-    if startIndex < endIndex:
-        middle = partition(array, startIndex, endIndex)
-        quicksort(array, startIndex, middle - 1)
-        quicksort(array, middle + 1, endIndex)
-    return array
-def partition(array, startIndex, endIndex):
-    pivot = startIndex + (endIndex - startIndex) // 2;
-    pivotIndex = startIndex
-    array[pivot], array[endIndex] = array[endIndex], array[pivot]
-    for i in range(startIndex, endIndex):
-        if array[i] < array[endIndex]:
-            array[pivotIndex], array[i] = array[i], array[pivotIndex]
-            pivotIndex += 1
-    array[endIndex], array[pivotIndex] = array[pivotIndex], array[endIndex]
-    return pivotIndex
-if __name__ == '__main__':
-    arr = [97, 200, 100, 101, 211, 107]
-    print("My array is:\n", [x for x in arr])
-    print("\nMy sorted array is: ")
-    print(quicksort(arr, 0, len(arr) - 1))
+import random
+def partition(a, low, high):
+    i = low - 1  
+    pivot = a[high]
+    for j in range(low, high):
+        if a[j] <= pivot:
+            i += 1  
+            a[i], a[j] = a[j], a[i]
+    a[i + 1], a[high] = a[high], a[i + 1]
+    return i + 1
+def quicksort_inplace(a, low=0, high=None):
+    if high is None:
+        high = len(a) - 1
+    if low < high:
+        pivot = partition(a, low, high)
+        quicksort_inplace(a, low, pivot - 1)
+        quicksort_inplace(a, pivot + 1, high)
+unordered_list = []
+for i in range(100):
+    unordered_list.append(i)
+random.shuffle(unordered_list)
+quicksort_inplace(unordered_list)
+print(unordered_list)
+success = True
+for index in range(len(unordered_list) - 1):
+    if unordered_list[index] > unordered_list[index + 1]:
+        success = False
+if success:
+    print("In-place Quicksort successful!")

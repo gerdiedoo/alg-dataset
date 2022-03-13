@@ -1,55 +1,52 @@
-package sorting;
-import java.util.Scanner;
-class mergeSort{
-    static int[] merge(int a[],int b[]){
-        int l_a=a.length;
-        int l_b=b.length;
-        int combined[] = new int[l_a+l_b];
-        int ptr_c=0;
-        int ptr_p=0,ptr_q=0;
-        while(ptr_p<l_a && ptr_q<l_b){
-            if(a[ptr_p]<b[ptr_q]){
-                combined[ptr_c]=a[ptr_p];
-                ptr_p++;
-                ptr_c++;
-            }
-            else{
-                combined[ptr_c]=b[ptr_q];
-                ptr_q++;
-                ptr_c++;
-            }
+public class MergeSort {
+    private static void merge(int[] a, int first, int mid, int last) {
+        int l = mid - first + 1;
+        int r = last - mid;
+        int[] left = new int[l];
+        int[] right = new int[r];
+        for (int i = 0; i < l; i++) {   
+            left[i] = a[first + i];
         }
-        if(ptr_p>=l_a){
-            for(int i = 0;i<(l_b-ptr_q);i++){
-                combined[ptr_c+i]=b[ptr_q+i];
-            }
+        for (int j = 0; j < r; j++) {   
+            right[j] = a[mid + j + 1];
         }
-        if(ptr_q>=l_b){
-            for (int i = 0;i<(l_a-ptr_p); i++) {
-                combined[ptr_c+i]=a[ptr_p+i];
+        int i = 0;
+        int j = 0;
+        int k = first;
+        while (i < l && j < r) {   
+            if (left[i] <= right[j]) {
+                a[k] = left[i];
+                i++;
+            } else {
+                a[k] = right[j];
+                j++;
             }
+            k++;
         }
-        return combined;
+        while (i < l) {   
+            a[k] = left[i];
+            i++;
+            k++;
+        }
+        while (j < r) {   
+            a[k] = right[j];
+            j++;
+            k++;
+        }
     }
-    static int[] mergeSort(int arr[]){
-        int mid=0;
-        if(arr.length>1){
-            mid=(0+arr.length)/2;
+    private static void mergeSort(int[] a, int first, int last) {
+        if (first < last) {
+            int mid = (first + last) / 2;   
+            mergeSort(a, first, mid);   
+            mergeSort(a, mid + 1, last);   
+            merge(a, first, mid, last);   
         }
-        else{
-            return arr;
+    }
+    public static void main(String[] args) {
+        int[] arr = new int[] {2, 4, 9, 6, 7, 8};
+        mergeSort(arr, 0, arr.length - 1);
+        for (int element : arr) {
+            System.out.println(element);
         }
-        int left[] = new int[mid];
-        for(int i =0;i<mid;i++){
-            left[i]=arr[i];
-        }
-        int right[]=new int[arr.length-mid];
-        for(int i =0;i<(arr.length-mid);i++){
-            right[i]=arr[i+mid];
-        }
-        left=mergeSort(left);
-        right=mergeSort(right);
-        int mergedArr[] = merge(left,right);
-        return mergedArr;
     }
 }

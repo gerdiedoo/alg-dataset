@@ -1,18 +1,37 @@
-aij.selectionSort = function(items) {
-    var sort = function(arr) {
-      var length = arr.length;
-      for (var i = 0; i < length; i++) {
-        var minIndex = i;
-        for (var j = i; j < length; j++) {
-          if (arr[j] < arr[minIndex]) {
-            minIndex = j;
-          }
-        };
-        var min = arr[minIndex];
-        arr.splice(minIndex, 1);
-        arr.splice(i, 0, min);
-      };
-      return arr;
-    };
-    return aij.isSortable(items) ? sort(items) : items;
-};
+package rosberglinhares.datastructuresandalgorithms.algorithms.sorting;
+public class SelectionSort {
+    public <T extends Comparable<T>> void iterativeSelectionSort(T[] items) {
+        for (int i = 0; i < items.length - 1; i++) {
+            int minimumIndex = i;
+            for (int j = i + 1; j < items.length; j++) {
+                if (items[j].compareTo(items[minimumIndex]) < 0) {
+                    minimumIndex = j;
+                }
+            }
+            if (minimumIndex != i) {
+                T temp = items[i];
+                items[i] = items[minimumIndex];
+                items[minimumIndex] = temp;
+            }
+        }
+    }
+    public <T extends Comparable<T>> void recursiveSelectionSort(T[] items) {
+        this.recursiveSelectionSort(items, 0);
+    }
+    private <T extends Comparable<T>> void recursiveSelectionSort(T[] items, int lowerIndex) {
+        if (lowerIndex < items.length - 1) {
+            int minimumIndex = lowerIndex;
+            for (int i = lowerIndex + 1; i < items.length; i++) {
+                if (items[i].compareTo(items[minimumIndex]) < 0) {
+                    minimumIndex = i;
+                }
+            }
+            if (minimumIndex != lowerIndex) {
+                T temp = items[lowerIndex];
+                items[lowerIndex] = items[minimumIndex];
+                items[minimumIndex] = temp;
+            }
+            recursiveSelectionSort(items, lowerIndex + 1);
+        }
+    }
+}

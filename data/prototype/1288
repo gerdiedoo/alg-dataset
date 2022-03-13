@@ -1,55 +1,35 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class SelectionSort {
-    private int COMPARISONS_COUNT;
-    private int SWAPS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int array[]) {
-        COMPARISONS_COUNT = 0;
-        SWAPS_COUNT = 0;
-        LOOP_COUNT = 0;
-        for (int index = 0; index < array.length; index++) {
-            LOOP_COUNT++;
-            ____cyan("\n--------\nindex: " + index);
-            int minIndex = findNextSmallestElement(index, array);
-            ____grey("found smallest element index: " + minIndex);
-            SWAPS_COUNT++;
-            ____blue("Swapping: " + index + " and " + minIndex);
-            int temp = array[minIndex];
-            array[minIndex] = array[index];
-            array[index] = temp;
-            __red("==> ");
-            __dump(array);
-        }
-    }
-    private int findNextSmallestElement(int startIndex, int array[]) {
-        int minIndex = startIndex;
-        int value = array[startIndex];
-        for (int i = startIndex; i < array.length; i++) {
-            LOOP_COUNT++;
-            COMPARISONS_COUNT++;
-            if (value > array[i]) {
-                minIndex = i;
-                value = array[minIndex];
-            }
-        }
-        return minIndex;
-    }
-    public static void main(String[] args) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        SelectionSort selectionSort = new SelectionSort();
-        selectionSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(selectionSort.COMPARISONS_COUNT);
-        __green("\n  Swaps: ");
-        System.out.print(selectionSort.SWAPS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(selectionSort.LOOP_COUNT);
-    }
+import java.util.Collections;
+import java.util.*;
+class bucketSort
+	public static void main(String [] args){
+		float [] arr = {1, 3, 5, 6, 6, 1, 3, 5};
+		int sizeofArr = arr.length;
+		float [] sortedArr = new float [sizeofArr];
+		sortedArr = bucketSort(arr, sizeofArr);
+	}
+	static float [] bucketSort(float [] arr, int sizeofArr){
+		int j=0;
+		arr = normaliseIt(arr, n);
+		Vector<Int>[] buckets = new Vector[10];
+		for (int i=0;i<10;i++) buckets[i] = new Vector<Int>();
+		for (int i=0;i<n;i++) buckets[(int) arr[i]*10].add(arr[i]);
+		for (int i=0;i<10;i++) Collections.sort(buckets[i]);
+		for (int i=0;i<n;i++) for (int k=0;k<buckets[i].size();k++)
+			arr[j++] = buckets[i].get(k);
+		return deNormaliseIt(arr);
+	}
+	static float [] denormaliseIt(float [] arr, int n){
+		float max = getMax(arr, n);
+		for (int i=0;i<n;i++) arr[i] *= max;
+		return arr;
+	}
+	static float [] normaliseIt(float [] arr, int n){
+		float max = getMax(arr, n);
+		for (int i=0;i<n;i++) arr[i] /= max;
+		return arr;
+	}
+	static float getMax(float [] arr, int n){
+		float max = 0;
+		for (int i=0;i<n;i++) if (max < arr[i]) max = arr[i];
+	}
 }

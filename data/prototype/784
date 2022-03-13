@@ -1,30 +1,32 @@
-import java.util.Arrays;
-import java.util.Scanner;
-public class InsertionSort {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Insertion Sort Algorithm");
-        System.out.println("Enter total number of elements:");
-        int lengthOfTheArray = input.nextInt();
-        int[] arrayOfIntegersToSort = new int[lengthOfTheArray];
-        System.out.printf("Enter %d integers:%n", lengthOfTheArray);
-        for (int i = 0; i < lengthOfTheArray; i++) {
-            arrayOfIntegersToSort[i] = input.nextInt();
-        }
-        int[] sortedArray = insertionSort(arrayOfIntegersToSort);
-        System.out.printf("Sorted array using Insertion Sort Algorithm: %s%n",
-                Arrays.toString(sortedArray));
-        input.close();
-    }
-    private static int[] insertionSort(int[] arrayToSort) {
-        for (int firstUnsortedIndex = 1; firstUnsortedIndex < arrayToSort.length; firstUnsortedIndex++) {
-            int newElement = arrayToSort[firstUnsortedIndex];
-            int i;
-            for (i = firstUnsortedIndex; i > 0 && arrayToSort[i - 1] > newElement; i--) {
-                arrayToSort[i] = arrayToSort[i - 1];
-            }
-            arrayToSort[i] = newElement;
-        }
-        return arrayToSort;
-    }
-}
+import time
+import random
+def merge(left, right):
+	ret_list = []
+ lsize = len(left)
+ rsize = len(right)
+ i = 0
+ j = 0
+ while i < lsize and j < rsize:
+		if left[i] < right[j]:
+			ret_list.append(left[i])
+   i += 1
+  else:
+			ret_list.append(right[j])
+   j += 1
+ ret_list.extend(left[i:]) if i < lsize else ret_list.extend(right[j:])
+ return ret_list
+def merge_sort(data):
+	size = len(data)
+ if size == 1:
+		return data
+ middle = size // 2
+ l_sorted = merge_sort(data[:middle])
+ r_sorted = merge_sort(data[middle:])
+ return merge(l_sorted, r_sorted)
+if __name__ == '__main__':
+	lista = [_ for _ in range(1000000)]
+ random.shuffle(lista)
+ start_time = time.time()
+ lista = merge_sort(lista)
+ end_time = time.time()
+ print("Time: ", end_time - start_time)

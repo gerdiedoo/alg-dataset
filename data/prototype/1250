@@ -1,19 +1,42 @@
-function selectionSort(A) {
-    var len = array_length(A);
-    for (var i = 0; i < len - 1; i = i + 1) {
-        var j_min = i;
-        for (var j = i + 1; j < len; j = j + 1) {
-            if (A[j] < A[j_min]) {
-                j_min = j;
-            } else {}
-        }
-        if (j_min !== i) {
-            swap(A, i, j_min);
-        } else {}
-    }
-}
-function swap(A, x, y) {
-    var temp = A[x];
-    A[x] = A[y];
-    A[y] = temp;
+package sorter;
+public class Sort {
+	public int[] bubble(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 1; j < array.length; j++) {
+				if (array[j - 1] > array[j]) {
+					int temp = array[j];
+					array[j] = array[j - 1];
+					array[j - 1] = temp;
+				}
+			}
+		}
+		return array;
+	}
+	public int[] selection(int[] array) {
+		for (int i = array.length - 1; i > 0; i--) {
+			int highest = array[0];
+			int index = 0;
+			for (int j = 0; j < i; j++) {
+				if (array[j] > highest) {
+					highest = array[j];
+					index = j;
+				}
+			}
+			int temp = array[i - 1] = highest;
+			array[index] = temp;
+		}
+		return array;
+	}
+	public static int[] insertion(int[] array) {
+		for (int i = 1; i < array.length; i++) {
+			int index = array[i];
+			int j = i;
+			while ((j > 0) && (array[j - 1] > index)) {
+				array[j] = array[j - 1];
+				j = j - 1;
+			}
+			array[j] = index;
+		}
+		return array;
+	}
 }

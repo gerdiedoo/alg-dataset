@@ -1,65 +1,31 @@
-package eu.happycoders.sort.method.quicksort;
-import eu.happycoders.sort.method.*;
-import eu.happycoders.sort.method.quicksort.DualPivotQuicksort.PivotStrategy;
-public class DualPivotQuicksortImproved implements SortAlgorithm {
-  private final int threshold;
-  private final PivotStrategy pivotStrategy;  
-  private final DualPivotQuicksort standardQuicksort;
-  private final InsertionSort insertionSort;
-  public DualPivotQuicksortImproved(int threshold,
-                                    PivotStrategy pivotStrategy) {
-    this.threshold = threshold;
-    this.pivotStrategy = pivotStrategy;
-    this.standardQuicksort = new DualPivotQuicksort(pivotStrategy);
-    this.insertionSort = new InsertionSort();
+function quickSort (arrData) {
+  'use strict'
+  function _swap (arrData, numSrc, numTgt) {
+    let swap = arrData[numSrc]
+    arrData[numSrc] = arrData[numTgt]
+    arrData[numTgt] = swap
   }
-  @Override
-  public String getName() {
-    return this.getClass().getSimpleName() + "(threshold: " + threshold +
-          ", pivot: " + pivotStrategy + ")";
-  }
-  @Override
-  public void sort(int[] elements) {
-    quicksort(elements, 0, elements.length - 1);
-  }
-  private void quicksort(int[] elements, int left, int right) {
-    if (left >= right) return;
-    if (right - left < threshold) {
-      insertionSort.sort(elements, left, right + 1);
-      return;
+  function _partition (arrData, numStart, numEnd) {
+    let pivot = arrData[numEnd]
+    let pIndex = numStart
+    for (let idx = numStart; idx < numEnd; idx++) {
+      if (arrData[idx] <= pivot) {
+        _swap(arrData, idx, pIndex++)
+      }
     }
-    int[] pivotPos = standardQuicksort.partition(elements, left, right);
-    int p0 = pivotPos[0];
-    int p1 = pivotPos[1];
-    quicksort(elements, left, p0 - 1);
-    quicksort(elements, p0 + 1, p1 - 1);
-    quicksort(elements, p1 + 1, right);
+    _swap(arrData, pIndex, numEnd)
+    return pIndex
   }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    quicksort(elements, 0, elements.length - 1, counters);
-  }
-  private void quicksort(int[] elements, int left, int right,
-                         Counters counters) {
-    if (left >= right) return;
-    if (right - left < threshold) {
-      insertionSort.sort(elements, left, right + 1, counters);
-      return;
+  function _quickSort (arrData, numStart, numEnd) {
+    if (numStart < numEnd) {
+      const pIndex = _partition(arrData, numStart, numEnd)
+      _quickSort(arrData, numStart, pIndex - 1)
+      _quickSort(arrData, pIndex + 1, numEnd)
+      console.log('Cycle:', arrData.join())
     }
-    int[] pivotPos = standardQuicksort.partition(elements, left, right,
-          counters);
-    int p0 = pivotPos[0];
-    int p1 = pivotPos[1];
-    quicksort(elements, left, p0 - 1, counters);
-    quicksort(elements, p0 + 1, p1 - 1, counters);
-    quicksort(elements, p1 + 1, right, counters);
   }
-  @Override
-  public boolean isSuitableForInputSize(int size) {
-    return standardQuicksort.isSuitableForInputSize(size);
-  }
-  @Override
-  public boolean isSuitableForSortedInput(int size) {
-    return standardQuicksort.isSuitableForSortedInput(size);
-  }
+  console.log('Initial:', arrData.join(), `[Count:${arrData.length}]`)
+  _quickSort(arrData, 0, arrData.length - 1)
+  console.log('Final:', arrData.join())
+  return arrData
 }

@@ -1,45 +1,118 @@
-package org.neeraj.algorithms.sorting.remaining;
-import java.util.Random;
-public class Bucket_Sort 
-{
-    static int[] sort(int[] sequence, int maxValue) 
-    {
-        int[] Bucket = new int[maxValue + 1];
-        int[] sorted_sequence = new int[sequence.length];
-        for (int i = 0; i < sequence.length; i++)
-            Bucket[sequence[i]]++;
-        int outPos = 0;
-        for (int i = 0; i < Bucket.length; i++)
-            for (int j = 0; j < Bucket[i]; j++)
-                sorted_sequence[outPos++] = i;
-        return sorted_sequence;
-    }
-    static void printSequence(int[] sorted_sequence) 
-    {
-        for (int i = 0; i < sorted_sequence.length; i++)
-            System.out.print(sorted_sequence[i] + " ");
-    }
-    static int maxValue(int[] sequence) 
-    {
-        int maxValue = 0;
-        for (int i = 0; i < sequence.length; i++)
-            if (sequence[i] > maxValue)
-                maxValue = sequence[i];
-        return maxValue;
-    }
-    public static void main(String args[]) 
-    {
-        System.out
-                .println("Sorting of randomly generated numbers using BUCKET SORT");
-        Random random = new Random();
-        int N = 20;
-        int[] sequence = new int[N];
-        for (int i = 0; i < N; i++)
-            sequence[i] = Math.abs(random.nextInt(100));
-        int maxValue = maxValue(sequence);
-        System.out.println("\nOriginal Sequence: ");
-        printSequence(sequence);
-        System.out.println("\nSorted Sequence: ");
-        printSequence(sort(sequence, maxValue));
-    }
-}
+from Entry import Entry
+from LinkedList import SingleEntryLinkedList
+DEFAULT_MAXIMUM_LOAD_FACTOR = 0.75
+DEFAULT_MAXIMUM_UNLOAD_FACTOR = 0.1
+MAXIMUM_CAPACITY = 1 << 30
+class MyHashMap(object):
+    DEFAULT_INITIAL_CAPACITY = 4
+    def __init__(self, capacity=DEFAULT_INITIAL_CAPACITY, load_factor=DEFAULT_MAXIMUM_LOAD_FACTOR):
+        if capacity > MAXIMUM_CAPACITY:
+            self.capacity = MAXIMUM_CAPACITY
+        else:
+            self.capacity = self.trim_power_of2(capacity)
+        self.thresholdLoadFactor = load_factor
+        self.thresholdUnloadFactor = DEFAULT_MAXIMUM_UNLOAD_FACTOR
+        self.size = 0
+        self.table = [SingleEntryLinkedList() for i in range(capacity)]
+    def trim_power_of2(self, initial_capacity):  
+        capacity = 1
+        while capacity < initial_capacity:
+            capacity <<= 1
+        return capacity
+    def hash_code(self, key):
+        hash = 0
+        for char in str(key):
+            hash += ord(char)
+        return hash % self.capacity
+    def clear(self):
+        self.size = 0
+        self.remove_entries()
+    def remove_entries(self):
+        for entry_list in self.table:
+            if entry_list.list_length != 0:
+                entry_list.head = None
+    def contains_key(self, key):
+        index = self.hash_code(key)
+        if self.table[index].list_length != 0:
+            return self.table[index].unordered_search_key(key)
+    def contains_value(self, value):
+        for entry_list in self.table:
+            if entry_list.list_length != 0:
+                if entry_list.unordered_search_value(value):
+                    return True
+        return False
+    def get(self, key):  
+        if key is not None:
+            index = int(self.hash_code(key))
+            if self.table is not None:
+                if self.table[index].list_length != 0:
+                    return self.table[index].unordered_search_get_entry_by_key(key)
+        return None
+    def put(self, key, value):  
+        index = int(self.hash_code(key))
+        if (self.get(key) is not None) & (self.table[index].list_length != 0):  
+            if self.table[index].unordered_search_key(key):
+                return self.table[index].override_list_item(Entry(key, value))
+        self.table[index].add_list_item(Entry(key, value))
+        self.size = + 1
+        if self.size + 1 >= self.capacity * self.thresholdLoadFactor:  
+            if self.capacity == MAXIMUM_CAPACITY:
+                RuntimeError("Exceeding maximum capacity")
+            self.resize()
+        return None
+    def entry_set(self):  
+        e_set = set()
+        for entry_list in self.table:
+            current_node = entry_list.head
+            while current_node is not None:
+                e_set.add(current_node.data)
+                current_node = current_node.next
+        return e_set
+    def resize(self):
+        do_resize = False
+        if self.size / self.capacity > self.thresholdLoadFactor:
+            self.capacity = self.capacity * 2
+            self.thresholdLoadFactor = self.capacity * 0.75
+            do_resize = True
+        if self.size / self.capacity < self.thresholdUnloadFactor:
+            self.capacity = self.capacity / 2
+            self.thresholdLoadFactor = self.capacity * 0.75
+            do_resize = True
+        if do_resize:
+            entry_set_old_table = self.entry_set()
+            self.table = [SingleEntryLinkedList() for i in range(int(self.capacity))]
+            for entry in entry_set_old_table:
+                self.put(entry.key, entry.val)
+    def is_empty(self):  
+        return self.size == 0
+    def key_set(self):  
+        k_set = set()
+        for entry in self.entry_set():
+            k_set.add(entry.key)
+        return k_set
+    def map_copy(self, map_to_copy):  
+        m_set = map_to_copy.entry_set()
+        for entry in m_set:
+            self.put(entry.key, entry.val)
+    def remove(self, key):  
+        index = self.hash_code(key)
+        last_entry = self.table[index].head
+        while last_entry.data.key != key:
+            last_entry = last_entry.next
+        old_value = last_entry.data.val
+        last_entry.data = None
+        self.size -= 1
+        if self.size + 1 <= self.capacity * self.thresholdUnloadFactor:
+            self.resize()
+        return old_value
+    def value_set(self):  
+        v_list = set()
+        for entry in self.entry_set():
+            v_list.add(entry.val)
+        return v_list
+    def print_map(self):
+        for entry_list in self.table:
+            entry_list.output_list()
+    def generator(self):
+        for index in range(-1, len(self.table) - 1, 1):
+            yield self.table[index]

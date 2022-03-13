@@ -1,22 +1,63 @@
-public class OddEvenSort {
-	public static void sort(int list[]) {
-		if (list.length > 3) {
-			boolean swapped = true;
-			while(swapped) {
-				swapped = false;
-				for (int i = 1; i < list.length-1; i+=1) {
-					if (list[i] > list[i+1]) {
-						Compare.swap(list, i, i+1);
-						swapped = true;
-					}
-				}
-				for(int i = 0; i < list.length-1; i+=1) {
-					if (list[i] > list[i+1]) {
-						Compare.swap(list, i, i+1);
-						swapped = true;
-					}
-				}
-			}
-		}
-	}
-}
+from linked_list import LinkedList
+class Node(object):
+    def __init__(self, data, next, prev):
+        self.data = data
+        self.next = next
+        self.prev = prev
+class DoublyLinkedList(object):
+    def __init__(self, iterable=None):
+        self.list = LinkedList()
+        self.head = None
+        self.tail = None
+        self._counter = 0
+        if isinstance(iterable, (tuple, list)):
+            for item in iterable:
+                self.append(item)
+    def __len__(self):
+        return self._counter
+    def push(self, val):
+        if len(self) == 0:
+            new_node = Node(val, None, None)
+            self.head = new_node
+            self.tail = new_node
+        if len(self) > 0:
+            new_node = Node(val, self.head, None)
+            self.head.prev = new_node
+            self.head = new_node
+        self._counter += 1
+    def append(self, val):
+        if len(self) == 0:
+            new_node = Node(val, None, None)
+            self.tail = new_node
+            self.head = new_node
+        if len(self) > 0:
+            new_node = Node(val, None, self.tail)
+            self.tail.next = new_node
+            self.tail = new_node
+        self._counter += 1
+    def pop(self):
+        try:
+            output = self.head.data
+            self.head = self.head.next
+            self._counter -= 1
+            return output
+        except AttributeError:
+            raise IndexError('Cannot pop empty list.')
+    def shift(self):
+        try:
+            output = self.tail.data
+            self.tail = self.tail.prev
+            self._counter -= 1
+            return output
+        except AttributeError:
+            raise IndexError('Cannot shift empty list.')
+    def remove(self, val):
+        curr_node = self.head
+        while curr_node:
+            if curr_node.data == val:
+                curr_node.prev.next = curr_node.next
+                curr_node.next.prev = curr_node.prev
+                self._counter -= 1
+                return
+            curr_node = curr_node.next
+        raise ValueError('Value not in list.')

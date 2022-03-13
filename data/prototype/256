@@ -1,52 +1,42 @@
-package intcoll5;
-import java.util.LinkedList;
-import java.util.ListIterator;
-public class Intcoll5 {
-	private LinkedList<Integer> c;
-	public Intcoll5() {
-		c = new LinkedList<>();
-	}
-	public Intcoll5(int i) {
-		this();
-	}
-	public void copy(Intcoll5 obj) {
-		if (this != obj) {  
-			LinkedList<Integer> newlist = new LinkedList<>();
-			ListIterator<Integer> iter = obj.c.listIterator();
-			while (iter.hasNext()) {
-				newlist.add(iter.next());
-			}
-			c = newlist;
-		}
-	}
-	public boolean belongs(int i) {
-		if (i < 0)
-			return false;
-		return this.c.contains(i);
-	}
-	public void insert(int i) {
-	      Integer I=new Integer(i);
-	      if ((i>0)&&(!c.contains(i)))  {  c.addFirst(I); 
-		}
-	}
-	public void omit(int i) {
-		this.c.remove(new Integer(i));
-	}
-	public int get_howmany() {
-		return this.c.size();
-	}
-	public void print() {
-		ListIterator<Integer> iter = this.c.listIterator();
-		while (iter.hasNext()) {
-			System.out.println(iter.next().intValue());
-		}
-	}
-	public boolean equals(Intcoll5 obj) {
-		boolean result = (this.get_howmany() == obj.get_howmany());
-		ListIterator<Integer> iter = obj.c.listIterator();
-		while (iter.hasNext() && result) {
-			result = this.belongs(iter.next());
-		}
-		return result;
-	}
+class Stack {
+  constructor() {
+    this.stackData = [];
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+  peek() {
+    return this.top;
+  }
+  push(value) {
+    this.stackData.push(value);
+    this.length++;
+    if (this.length === 1) {
+      this.bottom = this.stackData[0];
+    }
+    this.top = this.stackData[this.length - 1];
+  }
+  pop(value) {
+    if (!this.length) {
+      return null;
+    }
+    const deletedValue = this.stackData.pop();
+    this.length--;
+    if (!this.length) {
+      this.bottom = null;
+      this.top = null;
+    }
+    return deletedValue;
+  }
 }
+const myStack = new Stack();
+console.log(myStack.peek());
+myStack.push(10);
+myStack.push(20);
+myStack.push(30);
+console.log(JSON.stringify(myStack));
+console.log(myStack.peek());
+console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(JSON.stringify(myStack));

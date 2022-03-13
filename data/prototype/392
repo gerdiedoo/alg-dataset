@@ -1,10 +1,8 @@
-def binarySearch(inputArray,x):
-	if (inputArray[-1] > x):
-		mid = len(inputArray)//2 
-  if (inputArray[mid] == x): 
-			return True    
-  if (inputArray[mid] > x): 
-			return binarySearch(inputArray[:mid],x)
-  return binarySearch(inputArray[mid:],x)
- else:
-		return False
+def linear_search_with_sentinel(arr, key):
+    i = 0
+    arr.append(key)
+    while arr[i] != key:
+        i += 1
+    if i == len(arr) - 1:
+        return -1
+    return i

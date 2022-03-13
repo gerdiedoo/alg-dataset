@@ -1,92 +1,38 @@
-package eu.happycoders.sort.method.mergesort;
-import eu.happycoders.sort.method.*;
-public class MergeSort2 implements SortAlgorithm {
-  private static final int MAX_INPUT_SIZE = 1 << 28;
-  @Override
-  public void sort(int[] elements) {
-    mergeSort(elements, 0, elements.length - 1);
-  }
-  private void mergeSort(int[] elements, int left, int right) {
-    if (left == right) return;
-    int middle = left + (right - left) / 2;
-    mergeSort(elements, left, middle);
-    mergeSort(elements, middle + 1, right);
-    merge(elements, left, middle, right);
-  }
-  void merge(int[] elements, int leftStart, int leftEnd, int rightEnd) {
-    int leftPos = leftStart;
-    int rightPos = leftEnd + 1;
-    int length = rightEnd + 1 - leftPos;
-    int[] target = new int[length];
-    int targetPos = 0;
-    while (leftPos <= leftEnd && rightPos <= rightEnd) {
-      int leftValue = elements[leftPos];
-      int rightValue = elements[rightPos];
-      if (leftValue <= rightValue) {
-        target[targetPos++] = leftValue;
-        leftPos++;
-      } else {
-        target[targetPos++] = rightValue;
-        rightPos++;
-      }
+package Sorting;
+public class Quick_Sort {
+    void Quick_Sort(int[] givenArr,int low,int high){
+        if(low<high){
+            int pi = partition(givenArr,low,high);
+            Quick_Sort(givenArr,low,pi-1);
+            Quick_Sort(givenArr,pi+1,high);
+        }
     }
-    while (leftPos <= leftEnd) {
-      target[targetPos++] = elements[leftPos++];
+    private int partition(int[] givenArr, int low, int high) {
+        int pivot = givenArr[high];
+        int i=low-1;
+        for(int j=low;j<=high-1;j++){
+            if(pivot>givenArr[j]){
+                i++;
+                swap(givenArr,i,j);
+            }
+        }
+        swap(givenArr,i+1,high);
+        return i+1;
     }
-    while (rightPos <= rightEnd) {
-      target[targetPos++] = elements[rightPos++];
+    void swap(int[] arr, int a,int b){
+        int tmp = arr[a];
+        arr[a]=arr[b];
+        arr[b]=tmp;
     }
-    System.arraycopy(target, 0, elements, leftStart, length);
-  }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    mergeSort(elements, 0, elements.length - 1, counters);
-  }
-  private void mergeSort(int[] elements, int left, int right,
-                         Counters counters) {
-    if (left == right) return;
-    int middle = left + (right - left) / 2;
-    mergeSort(elements, left, middle, counters);
-    mergeSort(elements, middle + 1, right, counters);
-    merge(elements, left, middle, right, counters);
-  }
-  void merge(int[] elements, int leftStart, int leftEnd, int rightEnd,
-             Counters counters) {
-    int leftPos = leftStart;
-    int rightPos = leftEnd + 1;
-    int length = rightEnd + 1 - leftPos;
-    int[] target = new int[length];
-    int targetPos = 0;
-    while (leftPos <= leftEnd && rightPos <= rightEnd) {
-      counters.incIterations();
-      int leftValue = elements[leftPos];
-      int rightValue = elements[rightPos];
-      counters.addReads(2);
-      counters.incComparisons();
-      counters.incWrites();
-      if (leftValue <= rightValue) {
-        target[targetPos++] = leftValue;
-        leftPos++;
-      } else {
-        target[targetPos++] = rightValue;
-        rightPos++;
-      }
+    public static void main(String[] args) {
+        int[] given_arr = new int[]{10,2,8,1,4,6,5,7,9};
+        Quick_Sort quick_sort = new Quick_Sort();
+        quick_sort.Quick_Sort(given_arr,0,given_arr.length-1);
+        quick_sort.printArr(given_arr);
     }
-    while (leftPos <= leftEnd) {
-      counters.incIterations();
-      target[targetPos++] = elements[leftPos++];
-      counters.incReadsAndWrites();
+    private void printArr(int[] given_arr) {
+        for(int i=0;i<given_arr.length;i++){
+            System.out.print(given_arr[i]+" ");
+        }
     }
-    while (rightPos <= rightEnd) {
-      counters.incIterations();
-      target[targetPos++] = elements[rightPos++];
-      counters.incReadsAndWrites();
-    }
-    System.arraycopy(target, 0, elements, leftStart, length);
-    counters.addReadsAndWrites(length);
-  }
-  @Override
-  public boolean isSuitableForInputSize(int size) {
-    return size <= MAX_INPUT_SIZE;
-  }
 }

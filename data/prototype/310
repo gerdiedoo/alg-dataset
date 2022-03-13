@@ -1,82 +1,53 @@
-from __future__ import print_function
-class Node:  
-    def __init__(self, data):
-        self.data = data  
-        self.next = None  
-class Linked_List:
-    def __init__(self):
-        self.Head = None    
-    def insert_tail(self, data):
-        if(self.Head is None): self.insert_head(data)    
-        else:
-            temp = self.Head
-            while(temp.next != None):    
-                temp = temp.next
-            temp.next = Node(data)    
-    def insert_head(self, data):
-        newNod = Node(data)    
-        if self.Head != None:
-            newNod.next = self.Head     
-        self.Head = newNod    
-    def printList(self):  
-        tamp = self.Head
-        while tamp is not None:
-            print(tamp.data)
-            tamp = tamp.next
-    def delete_head(self):  
-        temp = self.Head
-        if self.Head != None:
-            self.Head = self.Head.next
-            temp.next = None
-        return temp
-    def delete_tail(self):  
-        tamp = self.Head
-        if self.Head != None:
-            if(self.Head.next is None):    
-                self.Head = None
-            else:
-                while tamp.next.next is not None:  
-                    tamp = tamp.next
-                tamp.next, tamp = None, tamp.next    
-        return tamp
-    def isEmpty(self):
-        return self.Head is None  
-    def reverse(self):
-        prev = None
-        current = self.Head
-        while current:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            current = next_node
-        self.Head = prev
-def main():
-    A = Linked_List()
-    print("Inserting 1st at Head")
-    a1=input()
-    A.insert_head(a1)
-    print("Inserting 2nd at Head")
-    a2=input()
-    A.insert_head(a2)
-    print("\nPrint List : ")
-    A.printList()
-    print("\nInserting 1st at Tail")
-    a3=input()    
-    A.insert_tail(a3)
-    print("Inserting 2nd at Tail")
-    a4=input()
-    A.insert_tail(a4)
-    print("\nPrint List : ")
-    A.printList()
-    print("\nDelete Head")
-    A.delete_head()
-    print("Delete Tail")
-    A.delete_tail()
-    print("\nPrint List : ")
-    A.printList()
-    print("\nReverse Linked List")
-    A.reverse()
-    print("\nPrint List : ")
-    A.printList()
-if __name__ == '__main__':
-	main()
+import java.util.Scanner;
+public class BinarySearchRecursive {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Binary Search Algorithm with recursion");
+        System.out.println("Enter total number of elements:");
+        int lengthOfTheArray = input.nextInt();
+        int[] arrayOfIntegersToSearchIn = new int[lengthOfTheArray];
+        System.out.printf("Enter %d integers:%n", lengthOfTheArray);
+        for (int i = 0; i < lengthOfTheArray; i++) {
+            arrayOfIntegersToSearchIn[i] = input.nextInt();
+        }
+        System.out.println("Enter number to be searched in an array:");
+        int key = input.nextInt();
+        int index = recursiveBinarySearch(arrayOfIntegersToSearchIn, key);
+        if (index == -1) {
+            System.out.printf("Sorry, %d doesn't exist in this array.%n", key);
+        } else {
+            System.out.printf("%d has an index of %d.%n", key, index);
+        }
+        input.close();
+    }
+    public static int recursiveBinarySearch(int[] input, int key) {
+        input = sortArray(input);
+        return binarySearch(input, 0, input.length - 1, key);
+    }
+    private static int[] sortArray(int[] array) {
+        int temp;
+        for (int j = 0; j < array.length - 1; j++) {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i + 1] < array[i]) {
+                    temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                }
+            }
+        }
+        return array;
+    }
+    private static int binarySearch(int[] array, int start, int end, int target){
+        int middle = (start + end) / 2;
+        if (end < start) {
+            return -1;
+        }
+        if (target == array[middle]) {
+            return middle;
+        } else if (target < array[middle]) {
+            return binarySearch(array, start, middle - 1, target);
+        } else {
+            return binarySearch(array, middle + 1, end, target);
+        }
+    }
+}

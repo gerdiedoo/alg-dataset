@@ -1,39 +1,33 @@
-package com.growingwiththeweb.sorting;
 public class MergeSort {
-    public static Integer[] sort(Integer[] array) {
-        if (array.length <= 1)
-            return array;
-        int middle = array.length / 2;
-        Integer[] left = new Integer[middle];
-        Integer[] right = new Integer[array.length - middle];
-        for (int i = 0; i < left.length; i++) {
-            left[i] = array[i];
-        }
-        for (int i = 0; i < right.length; i++) {
-            right[i] = array[i + left.length];
-        }
-        left = sort(left);
-        right = sort(right);
-        return merge(left, right);
+    public static void sort(int[] a) {
+        int[] helper = new int[a.length];
+        sort(a, 0, a.length - 1, helper);
     }
-    public static Integer[] merge(Integer[] left, Integer[] right) {
-        Integer[] result = new Integer[left.length + right.length];
-        int leftIndex = 0;
-        int rightIndex = 0;
-        int resultIndex = 0;
-        while (leftIndex < left.length || rightIndex < right.length) {
-            if (leftIndex < left.length && rightIndex < right.length) {
-                if (left[leftIndex] <= right[rightIndex]) {
-                    result[resultIndex++] = left[leftIndex++];
-                } else {
-                    result[resultIndex++] = right[rightIndex++];
-                }
-            } else if (leftIndex < left.length) {
-                result[resultIndex++] = left[leftIndex++];
-            } else if (rightIndex < right.length) {
-                result[resultIndex++] = right[rightIndex++];
+    public static void sort(int[] a, int low, int high, int[] helper) {
+        if (low >= high) {
+            return;
+        }
+        int middle = low + (high - low) / 2;
+        sort(a, low, middle, helper);
+        sort(a, middle + 1, high, helper);
+        merge(a, low, middle, high, helper);
+    }
+    public static void merge(int[] a, int low, int middle, int high, int[] helper) {
+        for (int i = low; i <= high; i++) {
+            helper[i] = a[i];
+        }
+        int i = low;
+        int j = middle + 1;
+        for (int k = low; k <= high; k++) {
+            if (i > middle) {
+                a[k] = helper[j++];
+            } else if (j > high) {
+                a[k] = helper[i++];
+            } else if (helper[i] <= helper[j]) {
+                a[k] = helper[i++];
+            } else {
+                a[k] = helper[j++];
             }
         }
-        return result;
     }
 }

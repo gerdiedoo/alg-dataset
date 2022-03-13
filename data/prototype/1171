@@ -1,118 +1,30 @@
-import random
 import time
-def checkDifferentTime(num1, num2):
-    if(num1>num2):
-        return ((num2/num1)*100)
-    else:
-        return ((num1/num2)*100)
-def printArray(arr, name):
-    if(name == 'Bubble'): print('Sort array from Bubble Sort Sorted array is:')
-    elif(name == 'Insertion'): print('Sort array from Insertion Sort Sorted array is:')
-    elif(name == 'Selection'): print('Sort array from Selection Sort Sorted array is:')
-    elif(name == 'Quick'): print('Sort array from Quick Sort Sorted array is:')
-    elif(name == 'Merge'): print('Sort array from Merge Sort Sorted array is:')
-    elif (name == 'Heap'):print('Sort array from Heap Sort Sorted array is:')
-    for i in range(len(arr)):
-        print(arr[i], end=' ')
-    print("")
-def CheckTime(nameFunc, startTime):
-    elapsedTime = time.time() - startTime
-    print('function [{}] finished in {:.3f} sec'.format(
-        nameFunc.__name__, float(elapsedTime))) 
-    return elapsedTime
-def heapify(arr, n, i):
-    largest = i  
-    l = 2 * i + 1  
-    r = 2 * i + 2  
+def sort(bar, layout, num, colors):
+    data = list(bar.y)
     count = 0
-    if l < n and arr[i] < arr[l]:
-        largest = l
-        count += 1
-    if r < n and arr[largest] < arr[r]:
-        largest = r
-        count += 1
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]  
-        count += 1
-        heapify(arr, n, largest)
-    return count
-def heapSort(arr):
-    n = len(arr)
-    count = 0
-    for i in range(n, -1, -1):
-        count += 1
-        count += heapify(arr, n, i)
-    for i in range(n - 1, 0, -1):
-        count += 1
-        arr[i], arr[0] = arr[0], arr[i]  
-        count += heapify(arr, i, 0)
-def mergeSort(arr):
-    if len(arr) > 1:
-        mid = len(arr) // 2  
-        L = arr[:mid]  
-        R = arr[mid:]  
-        mergeSort(L)  
-        mergeSort(R)  
-        i = j = k = 0
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
-            else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
-def partition(arr, low, high):
-    i = (low - 1)  
-    pivot = arr[high]  
-    for j in range(low, high):
-        if arr[j] <= pivot:
-            i = i + 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return (i + 1)
-def quickSortHelper(arr, low, high):
-    if low < high:
-        pi = partition(arr, low, high)
-        quickSortHelper(arr, low, pi - 1)
-        quickSortHelper(arr, pi + 1, high)
-def quickSort(arr):
-    quickSortHelper(arr, 0, len(arr)-1)
-def selectionSort(arr):
-    count = 0
-    for i in range(len(arr)):
-        count += 1
+    for i in range(num): 
         min_index = i
-        for j in range(i + 1, len(arr)):
+        for j in range(i+1, num): 
             count += 1
-            if arr[min_index] > arr[j]:
+            layout.xaxis.title.text = "Number of operations: " + str(count)
+            if data[min_index] > data[j]:
+                colors[j] = 'crimson'
+                colors[min_index] = 'lightslategray'
+                colors[i] = 'red'
+                bar.marker.color = colors
+                time.sleep(0.1)
                 min_index = j
-        arr[i], arr[min_index] = arr[min_index], arr[i]
-def insertionSort(arr):
-    count = 0  
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-        while j >= 0 and key < arr[j]:
-            count += 1 
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j + 1] = key
-        count += 1  
-def bubbleSort(arr):
-    n = len(arr)
-    count = 0   
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            count += 1 
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-        count += 1 
+            else: 
+                colors[j] = 'green'
+                bar.marker.color = colors
+                time.sleep(0.1)
+            colors[j] = 'lightslategray'
+            colors[min_index] = 'red'
+            bar.marker.color = colors
+        data[min_index], data[i] = data[i], data[min_index]
+        count += 1
+        layout.xaxis.title.text = "Number of operations: " + str(count)
+        colors[min_index] = 'lightslategray'
+        bar.y = data
+        colors[i] = 'blue'
+        bar.marker.color = colors

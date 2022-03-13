@@ -1,18 +1,32 @@
-package Lists.Challenges.Challenge2;
-public class Main {
+package Searching;
+import java.util.Arrays;
+public class BinarySearch {
     public static void main(String[] args) {
-        Integer one = 1;
-        Integer two = 2;
-        Integer three = 3;
-        Integer four = 4;
-        IntegerLinkedList list = new IntegerLinkedList();
-        list.insertSorted(three);
-        list.printList();
-        list.insertSorted(two);
-        list.printList();
-        list.insertSorted(one);
-        list.printList();
-        list.insertSorted(four);
-        list.printList();
+        int[] arr = {20,35,-15,7,55,1,-22};
+        Arrays.sort(arr);
+        System.out.println(BinarySearch(arr,-15));
+        System.out.println(BinarySearch(arr,22));
+        System.out.println(BinarySearch(arr,7));
+    }
+    public static int BinarySearch(int[] arr,int value){
+        int mid = (int) arr.length/2;
+        if (value == arr[mid]){
+            return mid;
+        }
+        else if (value>arr[mid]){
+            for (int i = mid+1; i < arr.length; i++) {
+                if (arr[i] == value){
+                    return i;
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < mid; i++) {
+                if (arr[i] == value){
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 }

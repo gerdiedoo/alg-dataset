@@ -1,55 +1,50 @@
-function median (arr, i, j, k) {
-	if (arr[i] > arr[j] && arr[i] > arr[k]) {
-		if (arr[k] > arr[j]) {
-			return k;
-		} else {
-			return j;
-		}
-	} else if (arr[j] > arr[i] && arr[j] > arr[k]) {
-		if (arr[k] > arr[i]) {
-			return k;
-		} else {
-			return i;
-		}
-	} else {
-		if (arr[i] > arr[j]) {
-			return i;
-		} else {
-			return j;
+import java.util.Arrays;
+import java.util.Random;
+public class QuickSort{
+	public void quickSort(int[] A) {
+		int low = 0;
+		int high = A.length - 1;
+		quickSort(A, low, high);
+	}
+	private void quickSort(int[] A, int low, int high) {
+		if (low < high) {
+			int pivotIdx = getPivot(low, high);
+			swap(A, low, pivotIdx);  
+			int partitionIdx = partition(A, low, high);
+			quickSort(A, low, partitionIdx - 1);  
+			quickSort(A, partitionIdx + 1, high);  
 		}
 	}
-}
-function partition (arr, start, end) {
-	let j = start - 1;
-	let tmp;
-	let pi = median(arr, start, end, parseInt((start + end) / 2));
-	tmp = arr[pi];
-	arr[pi] = arr[end];
-	arr[end] = tmp;
-	let pivot = arr[end];
-	for (let i = start; i < end; i++) {
-		if (arr[i] <= pivot) {
-			j++;
-			tmp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = tmp;
+	private int getPivot(int low, int high) {
+		Random random = new Random();
+		return random.nextInt(high - low + 1) + low;  
+	}
+	private void swap(int[] A, int idx1, int idx2) {
+		int tmp = A[idx1];
+		A[idx1] = A[idx2];
+		A[idx2] = tmp;
+	}
+	private int partition(int[] A, int low, int high) {
+		int i = low, j = high;
+		while (i != j) {
+			while (A[j] >= A[low] && i < j) {
+				j --;
+			}
+			while (A[i] <= A[low] && i < j) {
+				i ++;
+			}
+			if (i < j) {
+				swap(A, i, j);
+			}
 		}
+		swap(A, low, i);
+		return i;
 	}
-	tmp = arr[j + 1];
-	arr[j + 1] = arr[end];
-	arr[end] = tmp;
-	return j + 1;
-}
-function quickSort (arr, left = 0, right = arr.length - 1) {
-	if (left < right) {
-		let p = partition(arr, left, right);
-		quickSort(arr, left, p - 1);
-		quickSort(arr, p + 1, right);
+	public static void main(String[] args) {
+		QuickSort qs = new QuickSort();
+		int[] A = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println(Arrays.toString(A));
+		qs.quickSort(A);
+		System.out.println(Arrays.toString(A));
 	}
 }
-function main () {
-	let arr = [2, 1, 6, 44, 8, 9, 10];
-	quickSort(arr);
-	console.log('Sorted data is', arr);
-}
-main();

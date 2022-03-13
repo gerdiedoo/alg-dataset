@@ -1,31 +1,20 @@
-public class BinarySearch {
-    public static int binarySearch(int[] arr, int searchElement) {
-        int left = 0;
-        int right = arr.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;  
-            if (arr[mid] == searchElement) {  
-                return mid;
-            }
-            if (arr[mid] < searchElement) {  
-                left = mid + 1;
-            } else {  
-                right = mid - 1;
-            }
-        }
-        return -1;         
-    }
-    public static void main(String[] args) {
-        int[] arr = new int[] {1, 5, 35, 112, 258, 324};
-        int[] searchArr = new int[] {1, 35, 112, 324, 67};
-        int pos;
-        for (int i = 0; i < searchArr.length; i++) {
-            pos = binarySearch(arr, searchArr[i]);   
-            if (pos >= 0) {
-                System.out.println(searchArr[i] + "-> found at index : " + pos);
-            } else {
-                System.out.println(searchArr[i] + "-> not found");
-            }
-        }
-    }
-}
+from __future__ import print_function
+try:
+    raw_input          
+except NameError:
+    raw_input = input  
+def linear_search(sequence, target):
+    for index, item in enumerate(sequence):
+        if item == target:
+            return index
+    return None
+if __name__ == '__main__':
+    user_input = raw_input('Enter numbers separated by comma:\n').strip()
+    sequence = [int(item) for item in user_input.split(',')]
+    target_input = raw_input('Enter a single number to be found in the list:\n')
+    target = int(target_input)
+    result = linear_search(sequence, target)
+    if result is not None:
+        print('{} found at positions: {}'.format(target, result))
+    else:
+        print('Not found')

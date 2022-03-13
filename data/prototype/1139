@@ -1,18 +1,22 @@
-def partition(lista, esq, dir, pivot):
-    while(esq <= dir):
-        while(lista[esq] < pivot):
-            esq+=1
-        while(lista[dir] > pivot):
-            dir-=1
-        if(esq <= dir):
-            lista[esq], lista[dir] = lista[dir], lista[esq] 
-            esq+=1
-            dir-=1
-    return esq
-def quick_sort(lista, esq, dir):
-    if(esq >= dir):
-        return
-    pivot = lista[ (esq + dir) / 2]
-    index = partition(lista, esq, dir, pivot)
-    quick_sort(lista, esq, index-1)
-    quick_sort(lista, index, dir)
+import copy
+import sort_tools
+def selection_sort(data, low, high):
+    for i in range(low, high):
+        min = i
+        for j in range(i+1, high):
+            if data[j] < data[min]:
+                min = j
+        temp = data[i]
+        data[i] = data[min]
+        data[min] = temp
+@sort_tools.timeit('selection')            
+def sort(data):
+    selection_sort(data, 0, len(data))
+def main():
+    data = sort_tools.build_data_set(20)
+    unsorted = copy.deepcopy(data)
+    sort(unsorted)
+    print(data)
+    print(unsorted)
+if __name__ == "__main__":
+    main()

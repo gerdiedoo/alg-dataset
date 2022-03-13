@@ -1,170 +1,38 @@
-package com.namesny.binarysearchtree;
-public class AVLTree<T extends Comparable<? super T>> implements BinarySearchTree<T> {
-    protected AVLNode<T> root;
-    public AVLTree() {
-        root = null;
-    }
-    protected static class AVLNode<T extends Comparable<? super T>> {
-        protected T value;
-        protected int height;
-        protected AVLNode<T> left;
-        protected AVLNode<T> right;
-        public AVLNode(T value, AVLNode<T> left, AVLNode<T> right) {
-            this.value = value;
-            this.left = left;
-            this.right = right;
-        }
-        public AVLNode(T value) {
-            this(value, null, null);
-        }
-    }
+package Searches;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.Stream;
+import static java.lang.String.format;
+public final class IterativeBinarySearch implements SearchAlgorithm {
     @Override
-    public void insert(T value) throws DuplicateValueException {
-        if (value == null) {
-            throw new IllegalArgumentException("Value cannot be null");
-        }
-        this.root = insert(value, root);
-    }
-    @Override
-    public void delete(T value) {
-        if (value == null) {
-            throw new IllegalArgumentException("Value cannot be null");
-        }
-        this.root = delete(value, root);
-    }
-    @Override
-    public T find(T key) {
-        if (key == null) {
-            throw new IllegalArgumentException("Value cannot be null");
-        }
-        return find(key, root);
-    }
-    @Override
-    public void clear() {
-        root = null;
-    }
-    @Override
-    public boolean isEmpty() {
-        return root == null;
-    }
-    @Override
-    public T findMin() {
-        return findMin(root).value;
-    }
-    @Override
-    public T findMax() {
-        return findMax(root).value;
-    }
-    private AVLNode<T> findMin(AVLNode<T> node) {
-        while (node.left != null) {
-            node = node.left;
-        }
-        return node;
-    }
-    private AVLNode<T> findMax(AVLNode<T> node) {
-        while (node.right != null) {
-            node = node.right;
-        }
-        return node;
-    }
-    private AVLNode<T> insert(T value, AVLNode<T> node) throws DuplicateValueException {
-        if (node == null) {
-            node = new AVLNode<>(value);
-        } else if (value.compareTo(node.value) < 0) {
-            node.left = insert(value, node.left);
-        } else if (value.compareTo(node.value) > 0) {
-            node.right = insert(value, node.right);
-        } else {
-            throw new DuplicateValueException("Duplicate value: " + value);
-        }
-        node = rebalance(node);
-        return node;
-    }
-    private AVLNode<T> delete(T value, AVLNode<T> node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.value == value) {
-            if ((node.left == null) && (node.right == null)) {
-                node = null;
-            } else if (node.left == null) {
-                node = node.right;
-            } else if (node.right == null) {
-                node = node.left;
+    public <T extends Comparable<T>> int find(T[] array, T key) {
+        int l, r, k, cmp;
+        l = 0;
+        r = array.length - 1;
+        while (l <= r) {
+            k = (l + r) / 2;
+            cmp = key.compareTo(array[k]);
+            if (cmp == 0) {
+                return k;
+            } else if (cmp < 0) {
+                r = --k;
             } else {
-                AVLNode<T> successor = findMin(node.right);
-                node.value = successor.value;
-                node = delete(successor.value, node);
-            }
-        } else if (value.compareTo(node.value) < 0) {
-            node.left = delete(value, node.left);
-        } else {
-            node.right = delete(value, node.right);
-        }
-        node = rebalance(node);
-        return node;
-    }
-    private T find(T key, AVLNode<T> node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.value == key) {
-            return node.value;
-        } else if (key.compareTo(node.value) < 0) {
-            return find(key, node.left);
-        } else {
-            return find(key, node.right);
-        }
-    }
-    private void updateHeight(AVLNode<T> node) {
-        node.height = 1 + Math.max(getHeight(node.left), getHeight(node.right));
-    }
-    private int getHeight(AVLNode<T> node) {
-        return node == null ? -1 : node.height;
-    }
-    private AVLNode<T> rebalance(AVLNode<T> node) {
-        if (node == null) {
-            return null;
-        }
-        updateHeight(node);
-        int balance = getHeight(node.right) - getHeight(node.left);
-        if (balance == -2) {
-            if (getHeight(node.left.left) >= getHeight(node.left.right)) {
-                node = rotateRight(node);
-            } else {
-                node = rotateLeftRight(node);
-            }
-        } else if (balance == 2) {
-            if (getHeight(node.right.right) >= getHeight(node.right.left)) {
-                node = rotateLeft(node);
-            } else {
-                node = rotateRightLeft(node);
+                l = ++k;
             }
         }
-        return node;
+        return -1;
     }
-    private AVLNode<T> rotateLeft(AVLNode<T> node) {
-        AVLNode<T> newRoot = node.right;
-        node.right = newRoot.left;
-        newRoot.left = node;
-        updateHeight(node);
-        updateHeight(newRoot);
-        return newRoot;
-    }
-    private AVLNode<T> rotateRight(AVLNode<T> node) {
-        AVLNode<T> newRoot = node.left;
-        node.left = newRoot.right;
-        newRoot.right = node;
-        node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
-        newRoot.height = Math.max(getHeight(newRoot.left), getHeight(newRoot.right)) + 1;
-        return newRoot;
-    }
-    private AVLNode<T> rotateLeftRight(AVLNode<T> node) {
-        node.left = rotateLeft(node.left);
-        return rotateRight(node);
-    }
-    private AVLNode<T> rotateRightLeft(AVLNode<T> node) {
-        node.right = rotateRight(node.right);
-        return rotateLeft(node);
+    public static void main(String[] args) {
+        Random r = new Random();
+        int size = 100;
+        int maxElement = 100000;
+        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[]::new);
+        Integer shouldBeFound = integers[r.nextInt(size - 1)];
+        IterativeBinarySearch search = new IterativeBinarySearch();
+        int atIndex = search.find(integers, shouldBeFound);
+        System.out.println(String.format("Should be found: %d. Found %d at index %d. An array length %d"
+                , shouldBeFound, integers[atIndex], atIndex, size));
+        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
+        System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
     }
 }

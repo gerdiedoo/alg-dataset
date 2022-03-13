@@ -1,25 +1,138 @@
-package search;
-import java.util.Random;
-import java.util.stream.Stream;
-public class LinearSearch implements SearchAlgorithm {
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+public class HashMap<K, V> implements HashMapInterface<K, V> {
+    private MapEntry<K, V>[] table;
+    private int size;
+    public HashMap() {
+        clear();
+    }
     @Override
-    public <T extends Comparable<T>> int find(T[] array, T value) {
-        for (int i = 0; i < array.length ; i++) {
-            if (array[i].compareTo(value) == 0) {
-                return i;
+    public V add(K key, V value) {
+        if (key == null || value == null) {
+            throw new IllegalArgumentException("Argument cannot be null.");
+        }
+        if (this.getNextLoadFactor() > MAX_LOAD_FACTOR) {
+            resize();
+        }
+        int index = this.getAddIndex(key);
+        MapEntry<K, V> entry = this.table[index];
+        V result = null;
+        if (entry == null) {
+            this.table[index] = new MapEntry<K, V>(key, value);
+        } else if (entry.getKey().equals(key)) {
+            if (!entry.isRemoved()) {
+                result = entry.getValue();
+            }
+            entry.setValue(value);
+            entry.setRemoved(false);
+        } else {
+            entry.setKey(key);
+            entry.setValue(value);
+            entry.setRemoved(false);
+        }
+        if (result == null) {
+            size++;
+        }
+        return result;
+    }
+    @Override
+    public V remove(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Argument cannot be null.");
+        }
+        int index = this.getAddIndex(key);
+        MapEntry<K, V> entry = this.table[index];
+        if (entry != null && entry.getKey().equals(key) && !entry.isRemoved()) {
+            entry.setRemoved(true);
+            size--;
+            return entry.getValue();
+        }
+        return null;
+    }
+    @Override
+    public V get(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Argument cannot be null.");
+        }
+        int index = this.getAddIndex(key);
+        MapEntry<K, V> entry = this.table[index];
+        return (entry != null && !entry.isRemoved()
+                && entry.getKey().equals(key) ? entry.getValue() : null);
+    }
+    @Override
+    public boolean contains(K key) {
+        return get(key) != null;
+    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public void clear() {
+        this.table = (MapEntry<K, V>[]) new MapEntry[STARTING_SIZE];
+        this.size = 0;
+    }
+    @Override
+    public int size() {
+        return this.size;
+    }
+    @Override
+    public Set<K> keySet() {
+        HashSet<K> result = new HashSet<K>(size);
+        for (int i = 0; i < this.table.length; i++) {
+            MapEntry<K, V> entry = this.table[i];
+            if (entry != null && !entry.isRemoved()) {
+                result.add(entry.getKey());
             }
         }
-        return -1;
+        return result;
     }
-    public static void main(String[] args) {
-        Random r = new Random();
-        int size = 200;
-        int maxElement = 100;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).toArray(Integer[]::new);
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
-        LinearSearch search = new LinearSearch();
-        int atIndex = search.find(integers, shouldBeFound);
-        System.out.println(String.format("Should be found: %d. Found %d at index %d. An array length %d"
-                , shouldBeFound, integers[atIndex], atIndex, size));
+    @Override
+    public List<V> values() {
+        ArrayList<V> result = new ArrayList<V>(size);
+        for (int i = 0; i < this.table.length; i++) {
+            MapEntry<K, V> entry = this.table[i];
+            if (entry != null && !entry.isRemoved()) {
+                result.add(entry.getValue());
+            }
+        }
+        return result;
+    }
+    private double getNextLoadFactor() {
+        return (double) (size + 1) / (double) this.table.length;
+    }
+    @SuppressWarnings("unchecked")
+    private void resize() {
+        MapEntry<K, V>[] temp = this.table;
+        this.table = (MapEntry<K, V>[]) new MapEntry[temp.length * 2];
+        this.size = 0;
+        for (int i = 0; i < temp.length; i++) {
+            MapEntry<K, V> entry = temp[i];
+            if (entry != null && !entry.isRemoved()) {
+                this.add(entry.getKey(), entry.getValue());
+            }
+        }
+    }
+    private int getAddIndex(K key) {
+        int index = Math.abs(key.hashCode()) % this.table.length;
+        MapEntry<K, V> curEntry = this.table[index];
+        int firstRemoved = -1;
+        int curIndex = index;
+        boolean looped = false;
+        while (curEntry != null && !curEntry.getKey().equals(key)
+                && (!looped || curIndex != index)) {
+            if (firstRemoved == -1 && curEntry.isRemoved()) {
+                firstRemoved = index;
+            }
+            if (++curIndex >= this.table.length) {
+                curIndex = 0;
+                looped = true;
+            }
+            curEntry = this.table[curIndex];
+        }
+        if (curEntry != null && curEntry.getKey().equals(key)) {
+            return curIndex;
+        } else {
+            return (firstRemoved == -1 ? curIndex : firstRemoved);
+        }
     }
 }

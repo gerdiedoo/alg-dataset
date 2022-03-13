@@ -1,13 +1,10 @@
-package com.mehmetpekdemir.sort.insertionsort;
-public final class InsertionSort {
-	public static void sort(int[] array) {
-		for (int firstUnsortedIndex = 1; firstUnsortedIndex < array.length; firstUnsortedIndex++) {
-			int newElement = array[firstUnsortedIndex];
-			int i;
-			for (i = firstUnsortedIndex; i > 0 && array[i - 1] > newElement; i--) {
-				array[i] = array[i - 1];
-			}
-			array[i] = newElement;
-		}
-	}
-}
+def insertion_sort(lista, n):
+    p = 1
+    while(p<n):
+        temp = lista[p]
+        j=p
+        while(j>0 and temp < lista[j - 1]):
+            lista[j] = lista[j - 1] 
+            j-=1
+        lista[j] = temp
+        p+=1

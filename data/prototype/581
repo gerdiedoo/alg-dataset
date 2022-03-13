@@ -1,31 +1,21 @@
-package Sorting;
-import Comparing.BaseAreaCompare;
-import Comparing.VolumeCompare;
-import Objects.ThreeDGeoShape;
-public class BubbleSort {
-	public ThreeDGeoShape[] sort(String sortBy, ThreeDGeoShape[] shapeArray) {
-		ThreeDGeoShape temp;
-		int result = 0;
-		BaseAreaCompare ac = new BaseAreaCompare();
-		VolumeCompare vc = new VolumeCompare();
-		for (int i = 0; i < shapeArray.length; i++) {
-			for (int j = 1; j < shapeArray.length - i; j++) {
-				ThreeDGeoShape shape1 = shapeArray[j - 1];
-				ThreeDGeoShape shape2 = shapeArray[j];
-				if (sortBy.equalsIgnoreCase("h")) {
-					result = shape2.compareTo(shape1);
-				} else if (sortBy.equalsIgnoreCase("a")) {
-					result = ac.compare(shape2, shape1);
-				} else if (sortBy.equalsIgnoreCase("v")) {
-					result = vc.compare(shape2, shape1);
-				}
-				if (result == 1) {
-					temp = shapeArray[j - 1];
-					shapeArray[j - 1] = shapeArray[j];
-					shapeArray[j] = temp;
-				}
-			}
-		}
-		return shapeArray;
-	}
+package com.growingwiththeweb.sorting;
+public class BubbleSortOptimised {
+    public static void sort(Integer[] array) {
+        int unsortedBelow = array.length;
+        while (unsortedBelow != 0) {
+            int lastSwap = 0;
+            for (int i = 1; i < unsortedBelow; i++) {
+                if (array[i - 1] > array[i]) {
+                    swap(array, i, i - 1);
+                    lastSwap = i;
+                }
+            }
+            unsortedBelow = lastSwap;
+        }
+    }
+    private static void swap(Integer[] array, int a, int b) {
+        Integer temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
+    }
 }

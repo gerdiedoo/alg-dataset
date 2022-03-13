@@ -1,14 +1,25 @@
-def bubbleSort(arr):
-    n = len(arr)
-    for i in range(n-1):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j + 1] :
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-arr = [64, 34, 25, 12, 22, 11, 90]
-print ("Unsorted array is:")
-for i in range(len(arr)):
-    print ("% d" % arr[i]),
-bubbleSort(arr)
-print ("\nSorted array is:")
-for i in range(len(arr)):
-    print ("% d" % arr[i]),
+import time
+def sort(bar, layout, num, colors):
+    data = list(bar.y)
+    count = 0
+    for i in range(num):
+        for j in range(num-i-1):
+            if data[j] > data[j+1]:
+                colors[j] = 'crimson'
+                colors[j+1] = 'crimson'
+                time.sleep(0.1)
+                bar.marker.color = colors
+                data[j], data[j+1] = data[j+1], data[j]
+                bar.y = data
+            else:
+                colors[j] = 'green'
+                colors[j+1] = 'green'
+                time.sleep(0.1)
+                bar.marker.color = colors
+            colors[j] = 'lightslategray'
+            colors[j+1] = 'lightslategray'
+            bar.marker.color = colors
+            count = count + 1
+            layout.xaxis.title.text = "Number of operations: " + str(count)
+        colors[num-i-1] = 'blue'
+        bar.marker.color = colors

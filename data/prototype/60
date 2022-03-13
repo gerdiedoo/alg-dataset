@@ -1,112 +1,75 @@
-public class FixedSizedHashMap<ValueObject> {
-	public static final Object DEFAULT_NOT_FOUND = null;
-	public static final double DEFAULT_FILL_FRACTION = 0.4;  
-	protected final int arraySize;
-	protected final String[] keyArray;
-	protected final ValueObject[] valueArray;
-	protected Object notFoundValue = null;
-	protected final int hitOffset;
-	public FixedSizedHashMap(int count, double fill, Object defaultNotFound){
-		if(fill <= 0.0 || fill > 0.8){
-			throw new IllegalArgumentException("Fill fraction is out of allowed range");
-		}
-		int size = Math.max((int) (count/fill), 11);
-		size = size + (size + 1) % 2;
-		arraySize = size;
-		keyArray = new String[size];
-		valueArray = (ValueObject[]) new Object[size];
-		for(int i =0; i<size; i++){
-			valueArray[i] = null;
-		}
-		hitOffset = arraySize / 2;
-		notFoundValue = defaultNotFound;
-	}
-	public FixedSizedHashMap(int count, ValueObject miss){
-		this(count, DEFAULT_FILL_FRACTION, miss);
-	}
-	public FixedSizedHashMap(int count){
-		this(count,DEFAULT_FILL_FRACTION, DEFAULT_NOT_FOUND);
-	}
-	private final int slotStep(int slot){
-		return (slot + hitOffset) % arraySize;
-	}
-	private final int findFreeSlot(int slot){
-		while(keyArray[slot] != null)
-		{
-			slot = slotStep(slot);
-		}
-		return slot;
-	}
-	private int regularFind(String key){
-		int slot = regularSlot(key);
-		while(keyArray[slot]!=null)
-		{
-			if(keyArray[slot].equals(key)){
-				return slot;
-			}
-			else{
-				slot = slotStep(slot);
-			}
-		}
-		return -slot-1;
-	}
-	private final int regularSlot(String key){
-		return (key.hashCode() & Integer.MAX_VALUE) % arraySize;
-	}
-	public boolean set(String key, ValueObject value)
-	{
-		if(key == null || value == null){
-			return false;
-		}
-		else{
-			int offset  = regularFind(key);
-			if (offset >- 0){
-				valueArray[offset] = value;
-				return true;
-			}
-			else{  
-				offset = -offset - 1;
-				keyArray[offset] = key;
-				valueArray[offset] = value;
-				return true;
-			}
-		}
-	}
-	public final boolean containsKey(String key){
-		return regularFind(key) >= 0;
-	}
-	public final ValueObject get(String key){
-		int slot = regularFind(key);
-		if(slot>=0){
-			return valueArray[slot];
-		}
-		else{
-			return (ValueObject) notFoundValue;
-		}
-	}
-	public boolean delete(String key){
-		int slot = regularFind(key);
-		if(slot >= 0){
-			valueArray[slot] = (ValueObject) notFoundValue;
-			keyArray[slot] = null;
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	public float load(){
-		return keyArray.length / arraySize;
-	} 
-	public static void main(String args[]){  
-		FixedSizedHashMap<String> hm = new FixedSizedHashMap<>(5);
-		hm.set("a", "Armageddon");
-		hm.set("b", "bail");
-		hm.set("c", "Class");
-		hm.set("d", "Github");
-		hm.set("l", "Rules.");
-		System.out.println(hm.get("d") + hm.get("l"));
-		hm.delete("b");
-		System.out.println(hm.get("b"));
-	}
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+class Node<K,V>
+{
+    int hashcode;
+    K Key;
+    V Value;
+    Node next;
+    public Node(K key, V value) {
+        Key = key;
+        Value = value;
+        next=null;
+    }
+}
+public class HashMapImplementation<K,V> {
+    static int SIZE=16;
+    Node arr[]= new Node[SIZE];
+    public void put(K key, V value)
+    {
+        int hashcode= String.valueOf(key).hashCode()%SIZE;
+        Node newNode=new Node(key,value);
+        if(arr[hashcode]==null)
+        {
+            newNode.hashcode=hashcode;
+            arr[hashcode]=newNode;
+        }
+        else {
+            Node temp = arr[hashcode];
+            if(temp.Key.equals(newNode.Key))
+            {
+                temp.Value=value;
+                return;
+            }
+            while (temp.next != null) {
+                if(temp.Key.equals(newNode.Key))
+                {
+                    temp.Value=value;
+                    return;
+                }
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+    public void get(K key)
+    {
+        int hashcode= String.valueOf(key).hashCode()%SIZE;
+        if(arr[hashcode]==null)
+        {
+            System.out.println("Value doesnot exist");
+        }
+        else
+        {
+            Node temp=arr[hashcode];
+            while(temp!=null)
+            {
+                if(temp.Key.equals(key))
+                {
+                    System.out.println(temp.Value+"----------");
+                    return;
+                }
+                temp=temp.next;
+            }
+            System.out.println("This value doesnot exist");
+        }
+    }
+    public static void main(String[] args) {
+        HashMapImplementation<String,String> hm= new HashMapImplementation<String, String>();
+        hm.put("abac","1");
+        hm.put("abbc","2");
+        hm.put("abac","3");
+        hm.get("abac");
+        hm.get("wefh");
+    }
 }

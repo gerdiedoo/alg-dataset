@@ -1,115 +1,28 @@
-class SortComparison {
-    static double [] insertionSort (double a[]){
-         for (int i = 1; i < a.length; i++) {
-             for(int j = i ; j > 0 ; j--){
-                 if(a[j] < a[j-1]){
-                     swap(a, j, j-1);
-                 }
-             }
-         }
-         return a;
-    } 
-    static double [] quickSort (double a[]){
-		double[] arr = a;
-    	quickSort(arr, 0, arr.length-1);
-    	return arr;
-    } 
-    private static void quickSort(double[] array, int lowIndex, int highIndex) {
-    	int i = lowIndex;
-        int j = highIndex;
-        double pivot = array[lowIndex+(highIndex-lowIndex)/2];
-        while (i <= j) {
-            while (array[i] < pivot) {
-                i++;
-            }
-            while (array[j] > pivot) {
-                j--;
-            }
-            if (i <= j) {
-                swap(array, i, j); 
-                i++;
-                j--;
+package com.growingwiththeweb.sorting;
+public class OddEvenSort {
+    public static <T extends Comparable<T>> void sort(T[] array) {
+        boolean sorted = false;
+        while (!sorted) {
+            sorted = innerSort(array, 1);
+            sorted = innerSort(array, 0) && sorted;
+        }
+    }
+    private static <T extends Comparable<T>> boolean innerSort(T[] array, Integer i) {
+        boolean sorted = true;
+        for (; i < array.length - 1; i += 2)
+        {
+            if (array[i].compareTo(array[i + 1]) > 0)
+            {
+                swap(array, i, i + 1);
+                sorted = false;
             }
         }
-        if (lowIndex < j)
-            quickSort(array, lowIndex, j);
-        if (i < highIndex)
-            quickSort(array, i, highIndex);
+        return sorted;
     }
-    static double [] mergeSort (double a[]){
-		double[] arr = a;
-		int length = arr.length;
-		double[] temp = new double[arr.length];
-		return sort(arr, temp, 0, length-1);
-    } 
-    private static double[] sort(double[] arr, double[] temp, int lowIndex, int highIndex) {
-    	if(lowIndex < highIndex) {
-    		int middle = lowIndex + (highIndex - lowIndex)/2;
-    		sort(arr, temp, lowIndex, middle);
-    		sort(arr, temp, middle+1, highIndex);
-    		merge(arr, temp, lowIndex, middle, highIndex);
-    	}
-    	return arr;
+    private static <T extends Comparable<T>> void swap(
+            T[] array, int a, int b) {
+        T temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
     }
-    private static void merge(double[] arr, double[] temp, int lowIndex, int middle, int highIndex) {
-    	for(int k= lowIndex; k<=highIndex; k++) {
-    		temp[k] = arr[k];
-    	}
-    	int i = lowIndex, j = middle+1;
-    	for(int k=lowIndex; k<=highIndex; k++) {
-    		if(i>middle)
-    			arr[k] = temp[j++];
-    		else if(j>highIndex)
-    			arr[k] = temp[i++];
-    		else if(temp[j] < temp[i])
-    			arr[k] = temp[j++];
-    		else 
-    			arr[k] = temp[i++];
-    	}
-    }
-    static double [] shellSort (double a[]){
-		 int h=1;
-		 while(h < (a.length/3))
-			 h = 3*h + 1;
-		 while(h >= 1) {
-			 for(int i=h; i<a.length; i++) {
-				 for(int j=i; j>=h && ((a[j] < a[j-h])); j-=h) {
-						 swap(a, j, j-h);	 
-				 }
-			 }
-			 h = h/3;
-		 }
-    	return a;
-    } 
-    static double [] selectionSort (double a[]){
-    	for(int i=0; i<a.length-1; i++) {
-    		double smallest = a[i];
-    		int smallestIndex = i;
-    		for(int j=i+1; j<a.length; j++) {
-    			if(a[j] < smallest) {
-    				smallest = a[j];
-    				smallestIndex = j;
-    			}
-    		}
-    		swap(a, i, smallestIndex);
-    	}
-    	return a;
-    } 
-    static double [] bubbleSort (double a[]){
-    	int l = a.length-1;
-    	while(l>0) {
-	         for(int i=0; i<l; i++) {
-	        	 if(a[i+1] < a[i]) {
-	        		 swap(a, i, i+1);
-	        	 }
-	         }
-	         l--;
-    	}
-    	return a;
-    } 
-    private static void swap(double[] array, int i, int j) {
-   	 	double temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-   }
- } 
+}

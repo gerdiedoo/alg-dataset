@@ -1,0 +1,90 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+    def insert_after(self, prev_node, data):
+        new_node = Node(data)
+        new_node.next = prev_node.next
+        prev_node.next = new_node
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        last = self.head
+        while(last.next):
+            last = last.next
+        last.next = new_node
+    def insert_at_position(self, position, data):
+        new_node = Node(data)
+        temp = self.head
+        if self.head is None:
+            self.head = new_node
+        if position == 0:
+            new_node.next = self.head
+            self.head = new_node
+        for i in range(position-1):
+            temp = temp.next
+            if temp is None:
+                break
+        if temp is None:
+            return
+        if temp.next is None:
+            return
+        cur_node = temp.next
+        temp.next = new_node
+        new_node.next = cur_node
+    def delete_node_at_pos(self, position):
+        if self.head == None:
+            return None
+        temp = self.head
+        if position == 0:
+            self.head = temp.next
+            temp = None
+            return None
+        for i in range(position-1):
+            temp = temp.next
+            if temp is None:
+                break
+        if temp is None:
+            return
+        if temp.next is None:
+            return
+        next_node = temp.next.next
+        temp.next = None
+        temp.next = next_node
+    def reverse(self):
+        prev = None
+        current = self.head
+        while(current is not None):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+    def print_rev():
+        pass
+    def print_list(self):
+        temp = self.head
+        while(temp):
+            print(temp.data)
+            temp = temp.next
+ll = LinkedList()
+ll.head = Node(1)
+second = Node(2)
+third = Node(4)
+ll.head.next = second
+second.next = third
+ll.insert_at_beginning(0)
+ll.insert_after(second, 3)
+ll.insert_at_end(5)
+ll.insert_at_end(6)
+print('Original List:')
+ll.print_list()
+print('Modified List:')
+ll.insert_at_position(3, 10)
+ll.print_list()

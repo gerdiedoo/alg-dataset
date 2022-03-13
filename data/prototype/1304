@@ -1,45 +1,28 @@
-package sortingalgorithms;
-import cnode.CNode;
-import java.util.ArrayList;
+package Java;
 import java.util.Arrays;
-import javafx.animation.FillTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.Transition;
-import javafx.scene.paint.Color;
-public class SelectionSort extends AbstractSort {
-  private static final Color MININDX_COLOR = Color.ORANGE;
-  private static final Color NEW_MININDX_COLOR = Color.LIGHTGREEN;
-  private ParallelTransition colorCNode(CNode[] arr, int a, int b, Color colorA, Color colorB) {
-    ParallelTransition pt = new ParallelTransition();
-    pt.getChildren().addAll(colorCNode(arr, colorA, a), colorCNode(arr, colorB, b));
-    return pt;
-  }
-  @Override
-  public ArrayList<Transition> startSort(CNode[] arr) {
-    ArrayList<Transition> transitions = new ArrayList<>();
-    int minIndx;
-    for (int i = 0; i < arr.length - 1; i++) {
-      minIndx = i;
-      transitions.add(colorCNode(arr, NEW_MININDX_COLOR, minIndx));
-      for (int j = i + 1; j < arr.length; j++) {
-        transitions.add(colorCNode(arr, SELECT_COLOR, j));
-        if (arr[j].getValue() < arr[minIndx].getValue()) {
-          if (minIndx == i) {
-            transitions.add(colorCNode(arr, minIndx, j, MININDX_COLOR, NEW_MININDX_COLOR));
-          } else {
-            transitions.add(colorCNode(arr, minIndx, j, Color.CRIMSON, NEW_MININDX_COLOR));
-          }
-          minIndx = j;
-        } else {
-          transitions.add(colorCNode(arr, START_COLOR, j));
-        }
-      }
-      if (minIndx != i) {
-        transitions.add(swap(arr, i, minIndx));
-      }
-        transitions.add(colorCNode(arr, START_COLOR, i, minIndx));
+public class GnomeSort {
+    public static void main(String[] args){
+        int[] arr = {1,6,23,5,8,2,43,35};
+        System.out.println(Arrays.toString(arr));
+        gnomeSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
-    transitions.add(colorCNode(Arrays.asList(arr), SORTED_COLOR));
-    return transitions;
-  }
+    private static void gnomeSort(int[] arr){
+        int pos = 0;
+        int size = arr.length;
+        while(pos < size){
+            if(pos == 0 || arr[pos] >= arr[pos-1]){
+                pos ++;
+            }
+            else{
+                swap(arr, pos, pos - 1);
+                pos--;
+            }
+        }
+    }
+    private static void swap(int[] arr, int p1, int p2){
+        int temp = arr[p1];
+        arr[p1] = arr[p2];
+        arr[p2] = temp;
+    }
 }

@@ -1,0 +1,54 @@
+class Linked_List_Element:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
+    def find(self, key):
+        target = self
+        while target and target.key != key:
+            target = target.next
+        return target
+    def insert(self, element):
+        self.prev = element
+        element.next = self
+        return element
+    def update(self, value):
+        self.value = value
+        return self
+    def delete(self):
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
+        return self
+    def __repr__(self):
+        return "(k: " + str(self.key) + ", v: " + str(self.value) + ")"
+class Linked_List:
+    def __init__(self):
+        self.head = None
+    def find(self, key):
+        return self.head and self.head.find(key)
+    def insert(self, key, value):
+        element = Linked_List_Element(key, value)
+        if self.head:
+            self.head.insert(element)
+        self.head = element
+        return element
+    def delete(self, key):
+        target = self.find(key)
+        if target:
+            if target is self.head:
+                self.head = target.next
+            target.delete()
+        return target
+    def update(self, key, value):
+        target = self.find(key)
+        return target.update(value) if target else self.insert(key,value)
+    def __repr__(self):
+        rep = []
+        element = self.head
+        while element:
+            rep.append((element.key, element.value))
+            element = element.next
+        return str(rep)

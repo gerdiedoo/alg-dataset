@@ -1,18 +1,25 @@
-public class Main {
-    public static void main(String[] args) {
-        ChainHashMap chainHashMap = new ChainHashMap(10000);
-        ChainHashMap chainHashMap2 = new ChainHashMap(100);
-        for (int i = 0; i < 1000000; i += 2) {
-            String[] pares = { "a" + i, "" + (i + 1) };
-            chainHashMap.put(pares[0], pares[1]);
-        }
-        for (int i = 0; i < 1000000; i += 2) {
-            String[] pares = { "b" + i, "" + (i + 1) };
-            chainHashMap2.put(pares[0], pares[1]);
-        }
-        System.out.println(chainHashMap.getLoadFactor());
-        System.out.println(chainHashMap2.getLoadFactor());
-        System.out.println(chainHashMap.get("a999998"));
-        System.out.println(chainHashMap2.get("b999998"));
-    }
+public class Student {
+	String nume;
+	int varsta;
+	public Student(String nume,int varsta)
+	{
+		this.nume=nume;
+		this.varsta=varsta;
+	}
+	@Override
+	public int hashCode()
+	{
+		int h=17;
+		h=37*h+nume.hashCode();
+		h=37*h+varsta;
+		return h;
+	}
+	@Override
+	public boolean equals(Object o)
+	{
+		if(this.nume.equals(((Student)o).nume))
+			if(this.varsta==((Student)o).varsta)
+				return true;
+		return false;
+	}
 }

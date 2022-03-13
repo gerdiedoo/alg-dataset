@@ -1,32 +1,44 @@
-class Queue {
-    constructor() {
-        this.queue = [];
-    }
-    enqueue(value) {
-        this.queue.push(value); 
-    }
-    dequeue() {
-        return this.queue.shift();
-    }
-    peek() {
-        return this.queue[0]
-    }
-    length() {
-        return this.queue.length;
-    }
-    print() {
-        console.log(this.queue.join(' -> '))
-    }
+function binarySearchIterative (arr, item) {
+	let begin = 0;
+	let end = arr.length - 1;
+	while (begin <= end) {
+		let mid = Math.floor((begin + end) / 2);
+		if (arr[mid] === item) {
+			return mid;
+		} else if (arr[mid] > item) {
+			end = mid - 1;
+		} else {
+			begin = mid + 1;
+		}
+	}
+	return -1;
 }
-(function test() {
-    var queue = new Queue();
-    queue.enqueue('Node1')
-    queue.enqueue('Node2')
-    queue.enqueue('Node3')
-    queue.enqueue('Node4')
-    queue.print()
-    queue.dequeue()
-    queue.print()
-    console.log(queue.peek())
-    console.log(queue.length())
-})()
+function binarySearchRecursive (arr, item, begin, end) {
+	if (begin <= end) {
+		let mid = Math.floor((begin + end) / 2);
+		if (arr[mid] === item) {
+			return mid;
+		} else if (arr[mid] > item) {
+			return binarySearchRecursive(arr, item, begin, mid - 1);
+		} else {
+			return binarySearchRecursive(arr, item, mid + 1, end);
+		}
+	} else {
+		return -1;
+	}
+}
+function main () {
+	let arr = [2, 5, 6, 7, 8, 9, 10];
+	let item = 5;
+	if (binarySearchIterative(arr, item) === -1) {
+		console.log('Element is not found');
+	} else {
+		console.log('Element is found');
+	}
+	if (binarySearchRecursive(arr, item, 0, arr.length - 1) === -1) {
+		console.log('Element is not found');
+	} else {
+		console.log('Element is found');
+	}
+}
+main();

@@ -1,10 +1,15 @@
-from structures.src.util.sort_util import swap
-def sort(arr):
-    out = list(arr)
-    for i in range(0, len(out)):
-        min_index = i
-        for j in range(i, len(out)):
-            if(out[j] < out[min_index]):
-                min_index = j
-        swap(out, i, min_index)
-    return out
+package com.mehmetpekdemir.sort.selectionsort;
+import com.mehmetpekdemir.shared.Util;
+public final class SelectionSort {
+	public static void sort(int[] array) {
+		for (int lastUnsortedIndex = array.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
+			int largest = 0;
+			for (int i = 1; i <= lastUnsortedIndex; i++) {
+				if (array[i] > array[largest]) {
+					largest = i;
+				}
+			}
+			Util.swap(array, largest, lastUnsortedIndex);
+		}
+	}
+}

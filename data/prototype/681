@@ -1,14 +1,14 @@
-const array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
-function insertionSort(array) {
-  for(let i = 0; i < array.length; i++) {
-    let temp = array[i];
-    let j = i - 1;
-    while (j >= 0 && array[j] > temp) {
-      array[j + 1] = array[j];
-      j--;
+package insertion_sort;
+public class InsertionSort {
+    public void sort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int key = array[i];
+            int j = i;
+            while (j > 0 && array[j - 1] > key) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = key;
+        }
     }
-    array[j + 1] = temp;
-  }
-  return array;
 }
-console.log(insertionSort(array));  

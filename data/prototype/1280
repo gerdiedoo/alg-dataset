@@ -1,55 +1,23 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class SelectionSort {
-    private int COMPARISONS_COUNT;
-    private int SWAPS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int array[]) {
-        COMPARISONS_COUNT = 0;
-        SWAPS_COUNT = 0;
-        LOOP_COUNT = 0;
-        for (int index = 0; index < array.length; index++) {
-            LOOP_COUNT++;
-            ____cyan("\n--------\nindex: " + index);
-            int minIndex = findNextSmallestElement(index, array);
-            ____grey("found smallest element index: " + minIndex);
-            SWAPS_COUNT++;
-            ____blue("Swapping: " + index + " and " + minIndex);
-            int temp = array[minIndex];
-            array[minIndex] = array[index];
-            array[index] = temp;
-            __red("==> ");
-            __dump(array);
+let array = [5,2,1,8,9]
+shuffle = function(array) {
+    for(var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+    return array;
+};
+isSorted = function(array){
+    for(var i=1; i<array.length; i++) {
+        if (array[i-1] > array[i]) {
+            return false; 
         }
     }
-    private int findNextSmallestElement(int startIndex, int array[]) {
-        int minIndex = startIndex;
-        int value = array[startIndex];
-        for (int i = startIndex; i < array.length; i++) {
-            LOOP_COUNT++;
-            COMPARISONS_COUNT++;
-            if (value > array[i]) {
-                minIndex = i;
-                value = array[minIndex];
-            }
-        }
-        return minIndex;
-    }
-    public static void main(String[] args) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        SelectionSort selectionSort = new SelectionSort();
-        selectionSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(selectionSort.COMPARISONS_COUNT);
-        __green("\n  Swaps: ");
-        System.out.print(selectionSort.SWAPS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(selectionSort.LOOP_COUNT);
-    }
+    return true;
 }
+bogosort = function(array){
+    var sorted = false;
+    while(sorted == false){
+        array = shuffle(array);
+        sorted = isSorted(array);
+    }
+    return array;
+}
+console.log('before sort:', array)
+console.log('after sort:',bogosort(array))

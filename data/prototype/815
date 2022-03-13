@@ -1,46 +1,61 @@
-public class Merge {
-    public static void sort(int[] input) {
-        mergesort(input, 0, input.length - 1);
-    }
-    private static void mergesort(int[] list, int start, int end) {
-        if(start >= end)
-            return;
-        int mid = start + ((end - start) / 2);
-        mergesort(list, start, mid);
-        mergesort(list, mid + 1, end);
-        merge(list, start, mid, end);
-    }
-    @SuppressWarnings("ManualArrayCopy")
-    private static void merge(int[] list, int start, int mid, int end) {
-        int[] left = new int[mid - start + 1];
-        int[] right = new int[end - mid];
-        for (int i = 0; i < left.length; i++) {
-            left[i] = list[i + start];
-        }
-        for (int i = 0; i < right.length; i++) {
-            right[i] = list[i + mid + 1];
-        }
-        mid = 0;  
-        end = 0;  
-        while (mid < left.length && end < right.length) {
-            if (left[mid] > right[end]) {
-                list[start] = right[end];
-                end++;
-            } else {
-                list[start] = left[mid];
-                mid++;
-            }
-            start++;
-        }
-        while (mid < left.length) {
-            list[start] = left[mid];
-            start++;
-            mid++;
-        }
-        while (end < right.length) {
-            list[start] = right[end];
-            start++;
-            end++;
-        }
-    }
+package src.algorithms;
+import java.util.Arrays;
+import src.strategy.Order;
+public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
+	@Override
+	@SuppressWarnings("hiding")
+	public <T extends Comparable<T>> T[] sort(T[] elements, Order order) {
+		return this.mergesort(elements, order);
+	}
+	@SuppressWarnings("hiding")
+	private <T extends Comparable<T>> T[] mergesort(T[] elements, Order order) {
+		if (elements.length <= 1) {
+			return elements;
+		}
+		int middlePos = elements.length / 2;
+		T[] left  = Arrays.copyOfRange(elements, 0,         middlePos);
+		T[] right = Arrays.copyOfRange(elements, middlePos, elements.length);
+		left  = this.mergesort(left,  order);
+		right = this.mergesort(right, order);
+		return this.merge(elements, left, right, order);
+	}
+	@SuppressWarnings("hiding")
+	private <T extends Comparable<T>> T[] merge(T[] elements, T[] arr1, T[] arr2, Order order) {
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		int n = arr1.length + arr2.length;
+		T[] sortedArray = Arrays.copyOf(elements, n);
+		while (i < arr1.length && j < arr2.length) {
+			if        (order == Order.ASC) {   
+				if (arr1[i].compareTo(arr2[j]) <= 0) {
+					sortedArray[k] = arr1[i];
+					i++;
+				} else {
+					sortedArray[k] = arr2[j];
+					j++;
+				}
+			} else if (order == Order.DESC) {  
+				if (arr1[i].compareTo(arr2[j]) >= 0) {
+					sortedArray[k] = arr1[i];
+					i++;
+				} else {
+					sortedArray[k] = arr2[j];
+					j++;
+				}
+			}
+			k++;
+		}
+		while (i < arr1.length) {
+			sortedArray[k] = arr1[i];
+			i++;
+			k++;
+		}
+		while (j < arr2.length) {
+			sortedArray[k] = arr2[j];
+			j++;
+			k++;
+		}
+		return sortedArray;
+	}
 }

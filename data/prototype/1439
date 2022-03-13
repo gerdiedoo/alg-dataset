@@ -1,35 +1,60 @@
-package com.aokolnychyi.sorting;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-public class BucketSort {
-  public static void sort(Double[] array, int numberOfBuckets) {
-    final ArrayList<List<Double>> buckets = new ArrayList<>(numberOfBuckets);
-    for (int bucketIndex = 0; bucketIndex < numberOfBuckets; bucketIndex++) {
-      buckets.add(new ArrayList<>());
-    }
-    for (Double element : array) {
-      final int bucketIndex = getBucketIndex(element, numberOfBuckets);
-      buckets.get(bucketIndex).add(element);
-    }
-    buckets.forEach(Collections::sort);
-    int currentOutputIndex = 0;
-    for (int bucketIndex = 0; bucketIndex < numberOfBuckets; bucketIndex++) {
-      final List<Double> bucket = buckets.get(bucketIndex);
-      for (Double element : bucket) {
-        array[currentOutputIndex] = element;
-        currentOutputIndex++;
-      }
-    }
-  }
-  private static int getBucketIndex(Double element, int numberOfBuckets) {
-    return (int) (element * numberOfBuckets);
-  }
-  public static void main(String[] args) {
-    final Double[] doubles = new Double[]{0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434};
-    sort(doubles, 3);
-    sort(new Double[]{}, 3);
-    System.out.println(Arrays.toString(doubles));
-  }
-}
+class HashTable:
+    def __init__(self):
+        self.size = 8
+        self.map = [None]*self.size
+    def _get_hash(self,key):
+        hashed = 0
+        for char in str(key):
+            hashed = hashed + ord(char)
+        return hashed % self.size
+    def add(self,key,value):
+        hash_address = self._get_hash(key)
+        key_value = [key,value]
+        if self.map[hash_address] is None:
+            self.map[hash_address] = list([key_value])
+            return True
+        else:
+            for pairs in self.map[hash_address]:
+                if pairs[0] == key:
+                    pairs[1] = value
+                    return True
+            self.map[hash_address].append(key_value)
+            return True
+    def get(self,key):
+        hash_address = self._get_hash(key)
+        if self.map[hash_address] is not None:
+            for pairs in self.map[hash_address]:
+                if pairs[0] == key:
+                    return pairs[1]
+        return None
+    def getOne(self,key):
+        hash_address = self._get_hash(key)
+        for i in range(0,len(self.map[hash_address])):
+            if self.map[hash_address][i][0] == key:
+                return self.map[hash_address][i][1]
+        return None
+    def delete(self,key):
+        hash_address = self._get_hash(key)
+        if self.map[hash_address] is not None:
+            for i in range(0,len(self.map[hash_address])):
+                if self.map[hash_address][i][0] == key:
+                    self.map[hash_address].pop(i)
+                    return True
+    def keys(self):
+        ArrayKeys =[]
+        for i in range(0,len(self.map)):
+            if(self.map[i]):
+                ArrayKeys.append(self.map[i][0][0])
+        print(ArrayKeys)
+    def print(self):
+        for eachItem in self.map:
+            if eachItem is not None:
+                print(str(eachItem))
+myFirstHash = HashTable()
+myFirstHash.add("shahid","1234")
+myFirstHash.add("hsahid","abcdefgh")
+myFirstHash.add("abc","32143")
+myFirstHash.print()
+myFirstHash.keys()
+print(myFirstHash.map)
+print("With get",myFirstHash.get("shahid"))

@@ -1,35 +1,44 @@
-def mergeSort(arr): 
-    if len(arr) >1: 
-        mid = len(arr)//2 
-        L = arr[:mid] 
-        R = arr[mid:] 
-        mergeSort(L) 
-        mergeSort(R) 
-        i = j = k = 0
-        while i < len(L) and j < len(R): 
-            if L[i] < R[j]: 
-                arr[k] = L[i] 
-                i+=1
-            else: 
-                arr[k] = R[j] 
-                j+=1
-            k+=1
-        while i < len(L): 
-            arr[k] = L[i] 
-            i+=1
-            k+=1
-        while j < len(R): 
-            arr[k] = R[j] 
-            j+=1
-            k+=1
-def printList(arr): 
-    for i in range(len(arr)):         
-        print(arr[i],end=" ") 
-    print() 
-if __name__ == '__main__': 
-    arr = [1, 12, 11, 2, 13, 5, 6, 7]  
-    print ("Given array is", end="\n")  
-    printList(arr) 
-    mergeSort(arr) 
-    print("Sorted array is: ", end="\n") 
-    printList(arr)
+public class MergeSort {
+	public static void merge(int arr[], int l, int m, int r) {
+		int leftSize = m - l + 1;
+		int rightSize = r - m;
+		int leftArray[] = new int[leftSize];
+		int rightArray[] = new int[rightSize];
+		for (int i = 0; i < leftSize; ++i) {
+			leftArray[i] = arr[l + i];
+		}
+		for (int j = 0; j < rightSize; ++j) {
+			rightArray[j] = arr[m + 1 + j];
+		}
+		int firstIndex = 0, secondIndex = 0;
+		int k = l;
+		while (firstIndex < leftSize && secondIndex < rightSize) {
+			if (leftArray[firstIndex] <= rightArray[secondIndex]) {
+				arr[k] = leftArray[firstIndex];
+				firstIndex++;
+			} else {
+				arr[k] = rightArray[secondIndex];
+				secondIndex++;
+			}
+			k++;
+		}
+		while (firstIndex < leftSize) {
+			arr[k] = leftArray[firstIndex];
+			firstIndex++;
+			k++;
+		}
+		while (secondIndex < rightSize) {
+			arr[k] = rightArray[secondIndex];
+			secondIndex++;
+			k++;
+		}
+	}
+	public static void sort(int arr[], int l, int r) {
+		if (l < r) {
+			int m = (l + r) / 2;
+			sort(arr, l, m);
+			sort(arr, m + 1, r);
+			merge(arr, l, m, r);
+		}
+	}
+}

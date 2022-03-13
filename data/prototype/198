@@ -1,123 +1,111 @@
-package com.blogspot.mydailyjava.weaklockfree;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicLong;
-public class WeakConcurrentMap<K, V> extends AbstractWeakConcurrentMap<K, V, WeakConcurrentMap.LookupKey<K>> {
-    private static final ThreadLocal<LookupKey<?>> LOOKUP_KEY_CACHE = new ThreadLocal<LookupKey<?>>() {
-        @Override
-        protected LookupKey<?> initialValue() {
-            return new LookupKey<Object>();
+function LinkedList(value) {
+    this.next = null;
+    this.value = value !== undefined ? value : null;  
+}
+LinkedList.prototype = (function() {
+    function add(value, index) {
+        if(this.value === null) {
+            this.value = value;
+        } else if(index !== 0 && !index) {
+            if(this.next) {
+                this.next.add(value);
+            } else {
+                this.next = new LinkedList(value);
+            }
+        } else {
+            if(invalidIndex(index, this.length())) {
+                console.log('warning: invalid index ' + index + ' passed to LinkedListNode.add()');
+                console.log(length());
+                return;
+            }
+            if(index === 0) {
+                if(this.next != null) {
+                    var tmp = this.next;
+                    this.next = new LinkedList(value);
+                    this.next.next = tmp;
+                } else {
+                    this.next = new LinkedList(value);
+                }
+            } else {
+                this.next.add(value, index - 1);
+            }
         }
-    };
-    private static final AtomicLong ID = new AtomicLong();
-    private final Thread thread;
-    private final boolean reuseKeys;
-    public WeakConcurrentMap(boolean cleanerThread) {
-        this(cleanerThread, isPersistentClassLoader(LookupKey.class.getClassLoader()));
     }
-    private static boolean isPersistentClassLoader(ClassLoader classLoader) {
-        try {
-            return classLoader == null  
-                    || classLoader == ClassLoader.getSystemClassLoader()
-                    || classLoader == ClassLoader.getSystemClassLoader().getParent();  
-        } catch (Throwable ignored) {
+    function get(index) {
+        if(invalidIndex(index, this.length())) {
+            console.log('warning: invalid index ' + index + ' passed to LinkedListNode.get()');
+            return null;
+        } else if(index === 0) {
+            return this.value;
+        } else {
+            return this.next.get(index - 1);
+        }
+    }
+    function set(index, value) {
+        if(invalidIndex(index, this.length())) {
+            console.log('warning: invalid index ' + index + ' passed to LinkedListNode.set()');
+        } else if(index === 0) {
+            this.value = value;
+        } else {
+            this.next.set(index - 1, value);
+        }
+    }
+    function remove(index) {
+        if(invalidIndex(index, this.length())) {
+            console.log('warning: invalid index ' + index + ' passed to LinkedListNode.remove()');
+        } else if(index === 0) {
+            this.value = this.next.value;
+            this.next = this.next.next;
+        } else {
+            if(index === 1) {
+                this.next = this.next.next;
+            } else {
+                this.next.remove(index - 1);
+            }
+        }
+    }
+    function length() {
+        if(this.value === null) {
+            return 0;
+        } else if(this.next) {
+            return this.next.length() + 1;
+        } else {
+            return 1;
+        }
+    }
+    function contains(target, comparator) {
+        if(this.equals(target, comparator)) {
+            return true;
+        } else if (this.next) {
+            return this.next.contains(target, comparator);
+        } else {
             return false;
         }
     }
-    public WeakConcurrentMap(boolean cleanerThread, boolean reuseKeys) {
-        this(cleanerThread, reuseKeys, new ConcurrentHashMap<WeakKey<K>, V>());
-    }
-    public WeakConcurrentMap(boolean cleanerThread, boolean reuseKeys, ConcurrentMap<WeakKey<K>, V> target) {
-        super(target);
-        this.reuseKeys = reuseKeys;
-        if (cleanerThread) {
-            thread = new Thread(this);
-            thread.setName("weak-ref-cleaner-" + ID.getAndIncrement());
-            thread.setPriority(Thread.MIN_PRIORITY);
-            thread.setDaemon(true);
-            thread.start();
+    function indexOf(target, comparator) {
+        if(this.equals(target, comparator)) {
+            return 0;
+        } else if(this.next) {
+            var index = this.next.indexOf(target, comparator);
+            return index === -1 ? index : index + 1;  
         } else {
-            thread = null;
+            return -1;
         }
     }
-    @Override
-    @SuppressWarnings("unchecked")
-    protected LookupKey<K> getLookupKey(K key) {
-        LookupKey<K> lookupKey;
-        if (reuseKeys) {
-            lookupKey = (LookupKey<K>) LOOKUP_KEY_CACHE.get();
-        } else {
-            lookupKey = new LookupKey<K>();
-        }
-        return lookupKey.withValue(key);
+    function equals(value, comparator) {
+        return (comparator && comparator(this.value, value)) || (!comparator && this.value === value);
     }
-    @Override
-    protected void resetLookupKey(LookupKey<K> lookupKey) {
-        lookupKey.reset();
+    function invalidIndex(index, len) {
+        return typeof(index) !== 'number' || index < 0 || index >= len;
     }
-    public Thread getCleanerThread() {
-        return thread;
+    return {
+        add: add,
+        get: get,
+        set: set,
+        remove: remove,
+        length: length,
+        contains: contains,
+        indexOf: indexOf,
+        equals: equals
     }
-    static final class LookupKey<K> {
-        private K key;
-        private int hashCode;
-        LookupKey<K> withValue(K key) {
-            this.key = key;
-            hashCode = System.identityHashCode(key);
-            return this;
-        }
-        void reset() {
-            key = null;
-            hashCode = 0;
-        }
-        @Override
-        public boolean equals(Object other) {
-            if (other instanceof WeakConcurrentMap.LookupKey<?>) {
-                return ((LookupKey<?>) other).key == key;
-            } else {
-                return ((WeakKey<?>) other).get() == key;
-            }
-        }
-        @Override
-        public int hashCode() {
-            return hashCode;
-        }
-    }
-    public static class WithInlinedExpunction<K, V> extends WeakConcurrentMap<K, V> {
-        public WithInlinedExpunction() {
-            super(false);
-        }
-        @Override
-        public V get(K key) {
-            expungeStaleEntries();
-            return super.get(key);
-        }
-        @Override
-        public boolean containsKey(K key) {
-            expungeStaleEntries();
-            return super.containsKey(key);
-        }
-        @Override
-        public V put(K key, V value) {
-            expungeStaleEntries();
-            return super.put(key, value);
-        }
-        @Override
-        public V remove(K key) {
-            expungeStaleEntries();
-            return super.remove(key);
-        }
-        @Override
-        public Iterator<Map.Entry<K, V>> iterator() {
-            expungeStaleEntries();
-            return super.iterator();
-        }
-        @Override
-        public int approximateSize() {
-            expungeStaleEntries();
-            return super.approximateSize();
-        }
-    }
-}
+}.call(this))

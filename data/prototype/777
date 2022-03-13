@@ -1,21 +1,64 @@
-import java.util.Arrays;
-public class InsertionSort {
-    public static void main(String[] args) {
-        int[] arr = {5, 4, 3, 2, 1};
-        insertionSort(arr);
-        System.out.println(Arrays.toString(arr));
+package piratezpdx.sortathon;
+public class Merge extends ArrayBased {
+    protected int comparisons;
+    Merge(){
+        super();
+        comparisons = 0;
     }
-    static void insertionSort(int[] arr){
-        for(int i = 0; i < arr.length - 1; i++){
-            for(int j = i+1; j > 0; j--){
-                if(arr[j] < arr[j-1]){
-                    int temp = arr[j];
-                    arr[j] = arr[j-1];
-                    arr[j-1] = temp;
-                }else{
-                    break;
-                }
-            }
+    public int sort(){
+        comparisons = 0;
+        setSortingArray(split(getSortingArray()));
+        return comparisons;
+    }
+    public int[] split(int[] incoming)throws ArrayIndexOutOfBoundsException{
+        int leftlen = 0;
+        int rightlen = 0;
+        if (incoming.length == 1){
+            return incoming;
         }
+        if (incoming.length%2 == 0){
+            leftlen = rightlen = incoming.length/2;
+        }
+        else{
+            leftlen = incoming.length/2;
+            rightlen = leftlen + 1;
+        }
+        int [] left = new int[leftlen];
+        int [] right = new int[rightlen];
+        System.arraycopy(incoming, 0, left, 0, leftlen);
+        System.arraycopy(incoming, leftlen, right, 0, rightlen);
+        left = split(left);
+        right = split(right);
+        return mergeThese(left,right);
+    }
+    public int[] mergeThese(int[] a, int[] b) throws ArrayIndexOutOfBoundsException{
+        int num = 0;
+        int aIndex = 0;
+        int bIndex = 0;
+        int aLen = a.length;
+        int bLen = b.length;
+        int resultLen = aLen + bLen;
+        int [] result = new int [resultLen];
+        while (num < resultLen){
+            if (aIndex == aLen) {
+                System.arraycopy(b, bIndex, result, num, 1);
+                bIndex++;
+            }
+            else if (bIndex == bLen){
+                System.arraycopy(a, aIndex, result, num, 1);
+                aIndex++;
+            }
+            else if (a[aIndex] < b[bIndex]){
+                System.arraycopy(a, aIndex, result, num, 1);
+                aIndex++;
+            }
+            else{
+                System.arraycopy(b, bIndex, result, num, 1);
+                bIndex++;
+            }
+            num++;       
+            this.comparisons++;
+        }
+        return result;
     }
 }

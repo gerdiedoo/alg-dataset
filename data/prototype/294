@@ -1,31 +1,15 @@
-package linkedlist;
-public class Node<T> {
-        private T data;
-        Node<T> next;
-        public Node(T data)
-        {
-            this.data=data;
-            next=null;
-        }
-        public Node(T data,Node<T> next)
-        {
-            this.data=data;
-            this.next=next;
-        }
-        public void setData(T Data)
-        {
-            this.data=data;
-        }
-        public T getData()
-        {
-            return data;
-        }
-        public void setNext(Node <T> next)
-        {
-            this.next=next;
-        }
-        public Node<T> getNext()
-        {
-            return next;
-        }
+public class BinarySearch {
+	public static int search(int arr[], int left, int right, int val) {
+		if (right >= left) {
+			int mid = left + (right - left) / 2;
+			if (arr[mid] == val) {
+				return mid;
+			}
+			if (arr[mid] > val) {
+				return search(arr, left, mid - 1, val);
+			}
+			return search(arr, mid + 1, right, val);
+		}
+		return -1;
+	}
 }

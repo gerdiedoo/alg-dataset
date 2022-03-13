@@ -1,17 +1,14 @@
-package sorting;
-class insertionSort {
-    static void insertionsort(int a[]){
-        for(int i=1;i<a.length;i++){
-            for(int j=i;j>0;j--){
-                if(a[j]<a[j-1]){
-                    swap(a,j,j-1);
-                }
-            }
-        }
-    }
-    static void swap(int a[],int p,int q){
-                    int temp = a[p];
-                    a[p]=a[q];
-                    a[q]=temp;
-    }
-}
+def swap(array, i, j):
+    tmp = array[i]
+    array[i] = array[j]
+    array[j] = tmp
+def insertionsort(array):
+    for i in range(0, len(array)):
+        j = i
+        while j > 0 and array[j-1] > array[j]:
+            swap(array, j-1, j)
+            j -= 1
+if __name__ == "__main__":
+    array = [17, 9, 13, 8, 7, -5, 6, 11, 3, 4, 1, 2]
+    insertionsort(array)
+    print array

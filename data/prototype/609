@@ -1,41 +1,59 @@
-package eu.happycoders.sort.method.bubblesort;
-import eu.happycoders.sort.method.*;
-public class BubbleSortOpt1 implements SortAlgorithm {
-  @Override
-  public void sort(int[] elements) {
-    for (int max = elements.length - 1; max > 0; max--) {
-      boolean swapped = false;
-      for (int i = 0; i < max; i++) {
-        int left = elements[i];
-        int right = elements[i + 1];
-        if (left > right) {
-          elements[i + 1] = left;
-          elements[i] = right;
-          swapped = true;
-        }
-      }
-      if (!swapped) break;
+exports.heapSort = ({ list }, { compare, swap }) => {
+  const getParentIndex = (childIndex) => (
+    Math.floor((childIndex - 1) / 2)
+  );
+  const getLeftChildIndex = (parentIndex) => (
+    (parentIndex * 2) + 1
+  );
+  const getRightChildIndex = (parentIndex) => (
+    (parentIndex * 2) + 2
+  );
+  const shouldSwap = (i, j) => (
+    i >= 0 && j >= 0
+    && i < list.length
+    && j < list.length
+    && compare(list[j], list[i]) > 0
+  );
+  const heapifyUp = (i) => {
+    let childIndex = i;
+    let parentIndex = getParentIndex(childIndex);
+    while (shouldSwap(parentIndex, childIndex)) {
+      swap(parentIndex, childIndex);
+      childIndex = parentIndex;
+      parentIndex = getParentIndex(childIndex);
     }
-  }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    for (int max = elements.length - 1; max > 0; max--) {
-      counters.incIterations();
-      boolean swapped = false;
-      for (int i = 0; i < max; i++) {
-        counters.incIterations();
-        int left = elements[i];
-        int right = elements[i + 1];
-        counters.addReads(2);
-        counters.incComparisons();
-        if (left > right) {
-          elements[i + 1] = left;
-          elements[i] = right;
-          counters.addWrites(2);
-          swapped = true;
-        }
-      }
-      if (!swapped) break;
+  };
+  const heapify = () => {
+    for (let i = 0; i < list.length; i += 1) {
+      heapifyUp(i);
     }
+    return list;
+  };
+  const compareChildrenBefore = (i, leftIndex, rightIndex) => {
+    if (shouldSwap(leftIndex, rightIndex) && rightIndex < i) {
+      return rightIndex;
+    }
+    return leftIndex;
+  };
+  const heapifyDownUntil = (i) => {
+    let parentIndex = 0;
+    let leftIndex = 1;
+    let rightIndex = 2;
+    let childIndex;
+    while (leftIndex < i) {
+      childIndex = compareChildrenBefore(i, leftIndex, rightIndex);
+      if (shouldSwap(parentIndex, childIndex)) {
+        swap(parentIndex, childIndex);
+      }
+      parentIndex = childIndex;
+      leftIndex = getLeftChildIndex(parentIndex);
+      rightIndex = getRightChildIndex(parentIndex);
+    }
+  };
+  heapify();
+  for (let i = list.length - 1; i > 0; i -= 1) {
+    swap(0, i);
+    heapifyDownUntil(i);
   }
-}
+  return list;
+};

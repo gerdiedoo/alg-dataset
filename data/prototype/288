@@ -1,26 +1,14 @@
-package Lists.DoublyLinkedList;
-public class Main {
-    public static void main(String[] args) {
-        Employee janeJones = new Employee("Jane", "Jones", 123);
-        Employee johnDoe = new Employee("John", "Doe", 4567);
-        Employee marySmith = new Employee("Mary", "Smith", 22);
-        Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
-        EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
-        list.addToFront(janeJones);
-        list.addToFront(johnDoe);
-        list.addToFront(marySmith);
-        list.addToFront(mikeWilson);
-        list.printList();
-        System.out.println(list.getSize());
-        Employee billEnd = new Employee("Bill", "End", 78);
-        list.addToEnd(billEnd);
-        list.printList();
-        System.out.println(list.getSize());
-        list.removeFromFront();
-        list.printList();
-        System.out.println(list.getSize());
-        list.removeFromEnd();
-        list.printList();
-        System.out.println(list.getSize());
-    }
-}
+def binary(arr, item, l, u):
+    if(u>=l):
+        mid = u+l//2
+        if(arr[mid]==item):
+            return(mid+1)
+        elif(item<arr[mid]):
+            return binary(arr, item, l, mid-1)
+        else:
+            return binary(arr, item, mid+1, u)
+    else:
+        return("-1")
+arr = [1,2,4,5,6,7,8]
+it = 8
+print("Found at ", binary(arr, it, 0, len(arr)-1))

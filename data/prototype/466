@@ -1,15 +1,15 @@
-from timing import timed_func
+import time
 import random
-@timed_func 
-def bubble_sort(items):
-    for i in range(len(items)): 
-        already_sorted = True 
-        for j in range(len(items) - i - 1): 
-            if items[j] > items[j + 1]: 
-                items[j], items[j + 1] = items[j + 1], items[j]
-                already_sorted = False 
-        if already_sorted:
-            break
-    return items
-items = [random.randint(1000) for _ in range(1000)]
-print(bubble_sort(items))
+def bubble_sort(data):
+	for i in range(len(data) - 1):
+		for j in range(len(data) - 1 - i):
+			if data[j] > data[j+1]:
+				data[j],data[j+1] = data[j+1],data[j]
+if __name__ == '__main__':
+	lista = [_ for _ in range(1000)]
+ random.shuffle(lista)
+ start_time = time.time()
+ bubble_sort(lista)
+ end_time = time.time()
+ print("Time: ", end_time - start_time)
+ print(lista)

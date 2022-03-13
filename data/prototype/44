@@ -1,78 +1,62 @@
-package org.joyfulmonster.util.concurrent.internal;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.concurrent.locks.ReentrantLock;
-class DirectoryImpl extends AtomicReference<AtomicReferenceArray<Bucket>> implements Directory {
-    private final ReentrantLock lock;
-    private volatile int bucketCount;
-    private BucketFactory bucketFactory;
-    DirectoryImpl(AtomicReferenceArray<Bucket> buckets) {
-        super(buckets);
-        lock = new ReentrantLock(true);
-        bucketCount = buckets.length();
-    }
-    public void lock() {
-        lock.lock();
-    }
-    public void unlock() {
-        lock.unlock();
-    }
-    public int getBucketCount() {
-        return bucketCount;
-    }
-    public Bucket getBucket(int hashCode) {
-        AtomicReferenceArray<Bucket> dir = get();
-        int dirSize = dir.length();
-        int dirMask = dirSize - 1;
-        int bucketIndex = hashCode & dirMask;
-        Bucket bucket = dir.get(bucketIndex);
-        return bucket;
-    }
-    Directory bucketFactory(BucketFactory factory) {
-        bucketFactory = factory;
-        return this;
-    }
-    public BucketFactory getBucketFactory() {
-        return bucketFactory;
-    }
-    public int onSplit(Bucket oldBucket, Bucket[] newBuckets) {
-        lock();
-        try {
-            this.bucketCount++;  
-            AtomicReferenceArray<Bucket> bucketArray = get();
-            int bucketsNumber = bucketArray.length();
-            int dirMask = bucketsNumber - 1;
-            int globalDepth = Integer.bitCount(dirMask);
-            if (globalDepth < newBuckets[0].getLocalDepth()) {
-                int newDirSize = bucketsNumber * 2;
-                if (newDirSize > ConcurrentElasticHashMapImpl.MAX_BUCKET_COUNT) {
-                    throw new IllegalStateException("directory size limit exceeded");
-                }
-                AtomicReferenceArray<Bucket> newDirectory = new AtomicReferenceArray<Bucket>(newDirSize);
-                for (int i = 0; i < bucketsNumber; i++) {
-                    newDirectory.set(i, bucketArray.get(i));
-                    newDirectory.set(i + bucketsNumber, bucketArray.get(i));
-                }
-                bucketArray = newDirectory;
-                bucketsNumber = newDirSize;
-                set(newDirectory);
-            } else {
-            }
-            final int step = 1 << newBuckets[0].getLocalDepth();
-            for (int i = newBuckets[1].getBucketIdx(); i < bucketsNumber; i += step) {
-                bucketArray.set(i, newBuckets[1]);
-            }
-            for (int i = newBuckets[0].getBucketIdx(); i < bucketsNumber; i += step) {
-                bucketArray.set(i, newBuckets[0]);
-            }
-        } finally {
-            unlock();
-        }
-        return bucketCount;
-    }
-    @Override
-    public int onMerge(Bucket oldBucket) {
-        return 0;
-    }
+package com.deepak.data.structures.Hashing;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+public class HashCodeAndEquals {
+	public static void main(String[] args) {
+		Map<Employee, String> cache = loadEmployeeCache();
+		Employee lookUpKey = new Employee("101", "10111992");
+		String empName = cache.get(lookUpKey);
+		System.out.println(empName);
+		Set<Employee> employeeSet = new HashSet<>();
+		Employee e1 = new Employee("100", "10111990");
+		Employee e2 = new Employee("101", "10111992");
+		Employee e3 = new Employee("101", "10111992");
+		Employee e4 = new Employee("102", "10111991");
+		Employee e5 = new Employee("102", "10111991");
+		employeeSet.add(e1);
+		employeeSet.add(e2);
+		employeeSet.add(e3);
+		employeeSet.add(e4);
+		employeeSet.add(e5);
+		System.out.println(employeeSet);
+	}
+	static Map<Employee, String> loadEmployeeCache() {
+		Employee e1 = new Employee("100", "10111991");
+		Employee e2 = new Employee("101", "10111992");
+		Employee e3 = new Employee("102", "10111993");
+		Map<Employee, String> cacheMap = new HashMap<>();
+		cacheMap.put(e1, "Alice");
+		cacheMap.put(e2, "Bob");
+		cacheMap.put(e3, "Steve");
+		return cacheMap;
+	}
+}
+class Employee {
+	String empId;
+	String empDob;
+	public Employee(String id, String dob) {
+		empId = id;
+		empDob = dob;
+	}
+	@Override
+	public int hashCode() {
+		int result = empId != null ? empId.hashCode() : 0;
+		result = 31 * result + (empDob != null ? empDob.hashCode() : 0);
+		return result;
+	}
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Employee employee = (Employee) o;
+		if (empDob != null ? !empDob.equals(employee.empDob) : employee.empDob != null) return false;
+		if (empId != null ? !empId.equals(employee.empId) : employee.empId != null) return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empDob=" + empDob + "]";
+	}
 }

@@ -1,0 +1,51 @@
+import array, tempfile, heapq, random
+def gen_file(num):
+    ar = array.array('i')
+    f = open('large_int_file', 'w')
+    for i in xrange(num):
+        ar.append(random.randint(1, num))
+        if len(ar) >= 100: 
+            ar.tofile(f)
+            del ar[:]
+    f.close()
+def read_in_chunks(f, size):
+    while True:
+        data = f.read(size)
+        if not data:
+            break
+        yield data
+def tempfile_gen(t):
+    t.seek(0)
+    ints = array.array('i')
+    for data in read_in_chunks(t, 400):
+        ints.fromstring(data)
+    for each in ints:
+        yield each
+def merge_sortedfiles(iters):
+    output = open('output.txt', 'w')
+    ar = array.array('i')
+    for x in heapq.merge(*iters):
+        ar.append(x)
+        if len(ar) >= 50: 
+            ws = ','.join(map(str, ar))
+            output.write(ws)
+            output.write('\n')
+            del ar[:] 
+    if ar:
+        ws = ','.join(map(str, ar))
+        output.write(ws)
+def sort_large_int_file():
+    f = open('large_int_file', 'r')
+    ar = array.array('i')
+    iters = []
+    for data in read_in_chunks(f, 800):
+        ar.fromstring(data)
+        t = tempfile.TemporaryFile()
+        sorted_ar = array.array('i', sorted(ar))
+        sorted_ar.tofile(t)
+        iters.append( tempfile_gen(t) )
+        del ar[:]  
+    merge_sortedfiles(iters)
+    f.close()
+if __name__ == "__main__":
+    sort_large_int_file()

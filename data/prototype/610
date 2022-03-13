@@ -1,45 +1,27 @@
-package eu.happycoders.sort.method.bubblesort;
-import eu.happycoders.sort.method.*;
-public class BubbleSortOpt2 implements SortAlgorithm {
-  @Override
-  public void sort(int[] elements) {
-    int max = elements.length - 1;
-    for (; ; ) {
-      int lastSwapped = 0;
-      for (int i = 0; i < max; i++) {
-        int left = elements[i];
-        int right = elements[i + 1];
-        if (left > right) {
-          elements[i + 1] = left;
-          elements[i] = right;
-          lastSwapped = i;
-        }
-      }
-      if (lastSwapped == 0) break;
-      max = lastSwapped;
-    }
-  }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    int max = elements.length - 1;
-    for (; ; ) {
-      counters.incIterations();
-      int lastSwapped = 0;
-      for (int i = 0; i < max; i++) {
-        counters.incIterations();
-        int left = elements[i];
-        int right = elements[i + 1];
-        counters.addReads(2);
-        counters.incComparisons();
-        if (left > right) {
-          elements[i + 1] = left;
-          elements[i] = right;
-          counters.addWrites(2);
-          lastSwapped = i;
-        }
-      }
-      if (lastSwapped == 0) break;
-      max = lastSwapped;
-    }
-  }
-}
+import random
+from time import time
+def CreatList(n):
+    alist = []
+    for i in range(n, 0, -1):
+        alist.append(random.randint(0, n))
+    return alist
+def Inplace_InsertionSort(L):
+    for i in range(1, len(L)):
+        currentvalue = L[i]
+        while i > 0 and L[i - 1] > currentvalue:
+            L[i] = L[i - 1]
+            i -= 1
+        L[i] = currentvalue
+def performace(lenList):
+    seqOri = CreatList(lenList)
+    seq1 = list(seqOri)
+    begin = time()
+    Inplace_InsertionSort(seq1)
+    end = time()
+    diff = (end - begin) * 1000
+    print("Inplace_InsertionSort: " + str(diff))
+    print("seq1: " + str(seq1))
+    print("--------------------------------------------------------------------------------------------------------")
+if __name__ == '__main__':
+    performace(50)
+    performace(100)

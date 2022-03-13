@@ -1,16 +1,28 @@
-package sortAlgorithms;
-import helperUtils.Utility;
+package com.dev.namhoai.sort;
 public class BubbleSort {
-  public static void main(String args[]) {
-    int[] inputArr = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
-    Utility.printArray(inputArr, true, "Bubble Sort");
-    for (int sortedBoundary = inputArr.length - 1; sortedBoundary > 0; sortedBoundary--) {
-      for (int i = 0; i < sortedBoundary; i++) {
-        if (inputArr[i] > inputArr[i + 1]) {
-          Utility.swap(inputArr, i, i + 1);
+    public static <T extends Comparable> void sort(T[] a) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 1; j < a.length - i; j++) {
+                if (a[j - 1].compareTo(a[j]) > 0) {
+                    T temp = a[j - 1];  
+                    a[j - 1] = a[j];
+                    a[j] = temp;
+                }
+            }
         }
-      }
     }
-    Utility.printArray(inputArr, false, null);
-  }
+    public static void sortSimple(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            boolean sorted = true;  
+            for (int j = 1; j < a.length - i; j++) {
+                if (a[j] < a[j - 1]) {  
+                    int temp = a[j - 1];
+                    a[j - 1] = a[j];
+                    a[j] = temp;
+                    sorted = false;
+                }
+            }
+            if (sorted) break;
+        }
+    }
 }

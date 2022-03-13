@@ -1,46 +1,30 @@
-package sorting;
-public class QuickInsertionSort<T extends Comparable<T>> implements Sort<T> {
-    private PartialSort<T> simpleAlgorithm;
-    private int threshold;
-    public QuickInsertionSort(PartialSort<T> simpleAlgorithm, int threshold) {
-        this.threshold = threshold;
-        this.simpleAlgorithm = simpleAlgorithm;
-    }
-    @Override
-    public void sort(T[] items) {
-        sort(items, 0, items.length - 1);
-    }
-    public void sort(T[] items, int left, int right) {
-        int up = left;
-        int down = right - 1;
-        T t = items[right];
-        do {
-            while (items[up].compareTo(t) < 0) {
-                up++;
-            }
-            while (items[down].compareTo(t) >= 0 && down > up) {
-                down--;
-            }
-            if (up < down) {
-                SortUtils.swap(items, up, down);
-            }
-        } while (up < down);
-        SortUtils.swap(items, up, right);
-        if (left < up - 1) {
-            int size = up - left;
-            if (size < threshold) {
-                simpleAlgorithm.sortPartially(items, left, up - 1);
-            } else {
-                sort(items, left, up - 1);
-            }
-        }
-        if (right > up + 1) {
-            int size = right - up;
-            if (size < threshold) {
-                simpleAlgorithm.sortPartially(items, up + 1, right);
-            } else {
-                sort(items, up + 1, right);
-            }
-        }
-    }
-}
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left = arr[:mid]
+        right = arr[mid:]
+        merge_sort(left)
+        merge_sort(right)
+        i = j = k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+        while i < len(left):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            arr[k] = right[j]
+            j += 1
+            k += 1
+if __name__ == "__main__":
+    array = [9, 8, 3, 4, 6, 5]
+    expectation = sorted(array)
+    merge_sort(array)
+    print(array)
+    assert array == expectation

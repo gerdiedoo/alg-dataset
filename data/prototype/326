@@ -1,54 +1,6 @@
-__author__ = "streethacker"
-from linklistbag import Bag
-class _BagListNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-class sortedBag(Bag):
-    def __contains__(self, target):
-        curNode = self._head
-        while curNode is not None and curNode.data <= target:
-            if curNode.data == target:
-                return True
-            else:
-                curNode = curNode.next
-        return False
-    def add(self, data):
-        preNode = None
-        curNode = self._head
-        while curNode is not None and curNode.data < data:
-            preNode = curNode
-            curNode = curNode.next
-        newNode = _BagListNode(data)
-        if curNode is self._head:
-            newNode.next = self._head
-            self._head = newNode
-        else:
-            newNode.next = preNode.next
-            preNode.next = newNode
-        self._size += 1
-    def remove(self, data):
-        preNode = None
-        curNode = self._head
-        while curNode is not None and curNode.data <= data:
-            if curNode.data == data:
-                if curNode is self._head:
-                    self._head = curNode.next
-                else:
-                    preNode.next = curNode.next
-                self._size -= 1
-                return curNode.data
-            else:
-                preNode = curNode
-                curNode = curNode.next
-        raise AttributeError("The item must be in the bag.")
-if __name__ == "__main__":
-    bag = sortedBag()
-    bag.add(10)
-    bag.add(12)
-    bag.add(36)
-    bag.add(77)
-    bag.printBagElements()
-    bag.remove(10)
-    print
-    bag.printBagElements()
+package com.namesny.binarysearchtree;
+public class DuplicateValueException extends Exception{
+    public DuplicateValueException(String message) {
+        super(message);
+    }
+}

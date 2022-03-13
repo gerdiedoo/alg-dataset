@@ -1,36 +1,25 @@
-package Sorting;
-import java.util.ArrayList;
-import java.util.Scanner;
-public class InsertionSort {
-    public static void main(String[] args) {
-        ArrayList<Integer> elements = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()) {
-            elements.add(sc.nextInt());
-        }
-        sc.close();
-        int elements_array[] = new int[elements.size()];
-        for (int i = 0; i < elements.size(); i++) {
-            elements_array[i] = elements.get(i);
-        }
-        elements_array = doInsertionSort(elements_array);
-        for (int anElement : elements_array) {
-            System.out.println(anElement);
-        }
+const arrayRandom = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
+const arrayOrdered = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const arrayReversed = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+function insertionSort(array) {
+  let countOuter = 0;
+  let countInner = 0;
+  let countSwap = 0;
+  for(let i = 0; i < array.length; i++) {
+    countOuter++;
+    let temp = array[i];
+    let j = i - 1;
+    while (j >= 0 && array[j] > temp) {
+      countInner++;
+      countSwap++;
+      array[j + 1] = array[j];
+      j--;
     }
-    private static int[] doInsertionSort(int[] elementsArray) {
-        for (int i = 1; i < elementsArray.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (elementsArray[j] < elementsArray[j - 1]) {
-                    doSwap(elementsArray, j, j - 1);
-                }
-            }
-        }
-        return elementsArray;
-    }
-    private static void doSwap(int[] elements_array, int i, int j) {
-        int temp = elements_array[i];
-        elements_array[i] = elements_array[j];
-        elements_array[j] = temp;
-    }
+    array[j + 1] = temp;
+  }
+  console.log('outer:', countOuter, 'inner:', countInner, 'swap:', countSwap);
+  return array;
 }
+insertionSort(arrayRandom.slice());  
+insertionSort(arrayOrdered.slice());  
+insertionSort(arrayReversed.slice());  

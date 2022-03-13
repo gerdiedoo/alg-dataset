@@ -1,23 +1,30 @@
-def QuickSort(A,start,end):
-    if(start<end):
-        pindex=Partition(A,start,end)
-        QuickSort(A,start,pindex-1)
-        QuickSort(A,pindex+1,end)
-def Partition(A,start,end):
-    pivot=A[end]
-    pIndex=start
-    for i in range(start,end):
-        if(A[i]<=pivot):
-            A[i],A[pIndex]=A[pIndex],A[i]
-            pIndex+=1
-    A[pIndex],A[end]=A[end],A[pIndex]
-    return pIndex
-if __name__=="__main__":
-    A=[]
-    print("Enter the elements in the Array: ")
-    A=list(map(int,input().split(" ")))
-    end=len(A)-1
-    print("Sorted Array: ",end="")
-    QuickSort(A,0,end)
-    for i in range(0,len(A)):
-        print(A[i],end=" ")
+package sorting;
+public class QuickSort<T extends Comparable<T>> implements Sort<T> {
+    @Override
+    public void sort(T[] items) {
+        sort(items, 0, items.length - 1);
+    }
+    public void sort(T[] items, int left, int right) {
+        int up = left;
+        int down = right - 1;
+        T t = items[right];
+        do {
+            while (items[up].compareTo(t) < 0) {
+                up++;
+            }
+            while (items[down].compareTo(t) >= 0 && down > up) {
+                down--;
+            }
+            if (up < down) {
+                SortUtils.swap(items, up, down);
+            }
+        } while (up < down);
+        SortUtils.swap(items, up, right);
+        if (left < up - 1) {
+            sort(items, left, up - 1);
+        }
+        if (right > up + 1) {
+            sort(items, up + 1, right);
+        }
+    }
+}

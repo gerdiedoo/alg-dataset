@@ -1,37 +1,38 @@
-function cycleSort (arrData) {
-  'use strict'
-  const dataMax = arrData.length
-  let pos
-  let item
-  let temp
-  console.log('Initial:', arrData.join(), `[Count:${dataMax}]`)
-  for (let cycleStart = 0; cycleStart < dataMax - 1; cycleStart++) {
-    item = arrData[ cycleStart ]
-    pos = cycleStart
-    for (let i = cycleStart + 1; i < dataMax; i++) {
-      if (arrData[ i ] < item) pos++
-    }
-    if (pos === cycleStart) continue
-    while (item === arrData[ pos ]) pos++
-    if (item !== arrData[ pos ]) {
-      temp = arrData[ pos ]
-      arrData[ pos ] = item
-      item = temp
-    }
-    while (pos !== cycleStart) {
-      pos = cycleStart
-      for (let i = cycleStart + 1; i < dataMax; i++) {
-        if (arrData[ i ] < item) pos++
-      }
-      while (item === arrData[ pos ]) pos++
-      if (item !== arrData[ pos ]) {
-        temp = arrData[ pos ]
-        arrData[ pos ] = item
-        item = temp
-      }
-    }
-    console.log('Cycle:', arrData.join())
-  }
-  console.log('Final:', arrData.join())
-  return arrData
-}
+class Node:    
+  def __init__(self,data):    
+    self.data = data;    
+    self.next = None;    
+class CreateList:    
+  def __init__(self):    
+    self.head = Node(None);    
+    self.tail = Node(None);    
+    self.head.next = self.tail;    
+    self.tail.next = self.head;    
+  def add(self,data):    
+    newNode = Node(data);    
+    if self.head.data is None:    
+      self.head = newNode;    
+      self.tail = newNode;    
+      newNode.next = self.head;    
+    else:    
+      self.tail.next = newNode;    
+      self.tail = newNode;    
+      self.tail.next = self.head;    
+  def display(self):    
+    current = self.head;    
+    if self.head is None:    
+      print("List is empty");    
+      return;    
+    else:    
+        print("Nodes of the circular linked list: ");    
+        print(current.data),    
+        while(current.next != self.head):    
+            current = current.next;    
+            print(current.data),    
+class CircularLinkedList:    
+  cl = CreateList();    
+  cl.add(1);    
+  cl.add(2);    
+  cl.add(3);    
+  cl.add(4);    
+  cl.display();    

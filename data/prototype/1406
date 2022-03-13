@@ -1,28 +1,87 @@
-package Lecture14;
-public class searchMatrix3 {
-	public static void main(String[] args) {
-		int[][] arr = { { 10, 20, 30, 40 }, 
-						{ 11, 21, 31, 41 },
-						{ 12, 22, 32, 42 }, 
-						{ 13, 23, 33, 43 } };
-		System.out.println(staircase(arr, 22));  
-		System.out.println(staircase(arr, 10));  
-		System.out.println(staircase(arr, 42));  
-		System.out.println(staircase(arr, 23));  
-		System.out.println(staircase(arr, 13));  
-		System.out.println(staircase(arr, 2));  
-	}
-	public static boolean staircase(int[][] arr, int key) {
-		int row = 0, col = arr.length - 1;
-		while (row < arr.length && col >= 0) {
-			if (arr[row][col] == key) {
-				return true;
-			} else if (key > arr[row][col]) {
-				row++;
-			} else {
-				col--;
-			}
-		}
-		return false;
-	}
-}
+class node:
+    key = ""
+    value = 0
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+    def set(self, value):
+        self.value = value
+    def output(self):
+        print("'" + self.key + "' : '" + self.value + "'")
+class hashTable:
+    bucket = []
+    keys = set([])
+    size = 0
+    __loadSum = 0
+    __loadFactor = 0.0
+    def __init__(self, size):
+        self.keys = set([])
+        self.size = size
+        self.bucket = [None] * size
+        self.__loadCalc();
+    def __loadCalc(self):
+        if (self.size == 0):
+            self.__loadFactor = 0
+        else:
+            self.__loadFactor = self.__loadSum/self.size
+    def get(self, k):
+        k = str(k);
+        if (k in self.keys):
+            i = 0
+            hashed = (hash(k) + i) % self.size
+            while(self.bucket[hashed] != None):
+                if(self.bucket[hashed].key != k):
+                    hashed = (hash(k) + i) % self.size
+                    i += 1
+                else:
+                    return self.bucket[hashed].value
+            return None
+        else:
+            return None
+    def set(self, k, v):
+        k = str(k);
+        if (k in self.keys):
+            i = 0
+            hashed = (hash(k) + i) % self.size
+            while(self.bucket[hashed] != None):
+                if(self.bucket[hashed].key != k):
+                    hashed = (hash(k) + i) % self.size
+                    i += 1
+                else:
+                    self.bucket[hashed].value = v
+                    return True
+        elif (self.__loadFactor == 1.0):
+            return False
+        else:
+            newNode = node(k, v)
+            i = 0;
+            hashed = (hash(k) + i) % self.size;
+            while(self.bucket[hashed] != None):
+                hashed = (hash(k) + i) % self.size
+                i += 1
+            self.bucket[hashed] = newNode
+            self.keys.add(k)
+            self.__loadSum += 1
+            self.__loadCalc()
+            return True
+    def delete(self, k):
+        k = str(k);
+        if (k in self.keys):
+            i = 0
+            hashed = (hash(k) + i) % self.size
+            while(self.bucket[hashed] != None):
+                if(self.bucket[hashed].key != k):
+                    hashed = (hash(k) + i) % self.size
+                    i += 1
+                else:
+                    tmp = self.bucket[hashed].value
+                    self.bucket[hashed] = None
+                    self.keys.remove(k)
+                    self.__loadSum -= 1
+                    self.__loadCalc()
+                    return tmp;
+            return None
+        else:
+            return None
+    def load(self):
+        return self.__loadFactor

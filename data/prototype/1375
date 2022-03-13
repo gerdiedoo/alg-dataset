@@ -1,11 +1,14 @@
-package com.jwetherell.algorithms.search;
-public class LinearSearch {
-    public static final int find(int value, int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            int iValue = array[i];
-            if (value == iValue)
-                return i;
-        }
-        return Integer.MAX_VALUE;
+public class HashMap {
+    public static void main(String[] args) {
+        java.util.HashMap<Integer, String> hashMapOfString = new java.util.HashMap<Integer, String>();
+        hashMapOfString.put(1, "number one");
+        hashMapOfString.put(2, "number two");
+        hashMapOfString.put(3, "number three");
+        System.out.println(hashMapOfString);
+        hashMapOfString.put(3, "number threeeeee");
+        System.out.println(hashMapOfString);
+        hashMapOfString.remove(1);
+        System.out.println(hashMapOfString);
+        System.out.println("2 -> " + hashMapOfString.get(2));
     }
 }

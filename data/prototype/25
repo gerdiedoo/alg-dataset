@@ -1,109 +1,33 @@
-package vlsi.utils;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Iterator;
+package com.deepak.data.structures.Hashing;
 import java.util.Map;
-import java.util.Set;
-public class CompactHashMap<K, V> implements Map<K, V>, Serializable {
-    private static final long serialVersionUID = -7720507706954394566L;
-    CompactHashMapClass<K, V> klass = CompactHashMapClass.EMPTY;
-    Object v1, v2, v3;
-    public int size() {
-        return klass.size(this);
-    }
-    public boolean isEmpty() {
-        return size() == 0;
-    }
-    public boolean containsKey(Object key) {
-        return klass.containsKey(this, key);
-    }
-    public boolean containsValue(Object value) {
-        return values().contains(value);
-    }
-    public V get(Object key) {
-        return klass.get(this, (K) key);
-    }
-    public V put(K key, V value) {
-        return klass.put(this, key, value);
-    }
-    public V putOrRemove(K key, Object value) {
-        return klass.put(this, key, value);
-    }
-    public V remove(Object key) {
-        return klass.put(this, (K) key, CompactHashMapClass.REMOVED_OBJECT);
-    }
-    public void putAll(Map<? extends K, ? extends V> m) {
-        for (Entry<? extends K, ? extends V> entry : m.entrySet()) {
-            put(entry.getKey(), entry.getValue());
-        }
-    }
-    public void clear() {
-        klass = CompactHashMapClass.EMPTY;
-        v1 = v2 = v3 = null;
-    }
-    public Set<K> keySet() {
-        return klass.keySet(this);
-    }
-    public Collection<V> values() {
-        return klass.values(this);
-    }
-    public Set<Entry<K, V>> entrySet() {
-        return klass.entrySet(this);
-    }
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (!(o instanceof Map)) {
-            return false;
-        }
-        Map<?,?> m = (Map<?,?>) o;
-        if (m.size() != size())
-            return false;
-        for (Entry<K, V> e : entrySet()) {
-            K key = e.getKey();
-            V value = e.getValue();
-            if (value == null) {
-                if (m.get(key) != null || !m.containsKey(key)) {
-                    return false;
-                }
-            } else {
-                if (!value.equals(m.get(key))) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    @Override
-    public String toString() {
-        Iterator<Entry<K, V>> it = entrySet().iterator();
-        if (!it.hasNext())
-            return "{}";
-        StringBuilder sb = new StringBuilder();
-        sb.append('{');
-        while (it.hasNext()) {
-            Entry<K, V> e = it.next();
-            K key = e.getKey();
-            V value = e.getValue();
-            sb.append(key).append('=').append(value);
-            sb.append(',').append(' ');
-        }
-        sb.setLength(sb.length() - 2);
-        return sb.append('}').toString();
-    }
-    public int hashCode() {
-        int h = 0;
-        for (Entry<K, V> entry : entrySet()) {
-            h += entry.hashCode();
-        }
-        return h;
-    }
-    private void writeObject(java.io.ObjectOutputStream s) throws IOException {
-        klass.serialize(this, s);
-    }
-    private void readObject(java.io.ObjectInputStream s) throws IOException, ClassNotFoundException {
-        CompactHashMapClass.deserialize(this, s);
-    }
+import java.util.Objects;
+public class CustomHashTable<K, V> {
+	static class Entry<K, V> {
+		final int hash;
+		final K key;
+		V value;
+		Entry<K, V> next;
+		public Entry(int hash, K key, V value, Entry<K, V> next) {
+			this.hash = hash;
+			this.key = key;
+			this.value = value;
+			this.next = next;
+		}
+		public final int hashCode() {
+			return Objects.hashCode(key) ^ Objects.hashCode(value);
+		}
+		public final boolean equals(Object o) {
+			if (o == this) {
+				return true;
+			}
+			if (o instanceof Map.Entry) {
+				Map.Entry<?,?> e = (Map.Entry<?,?>)o;
+				if (Objects.equals(key, e.getKey()) &&
+						Objects.equals(value, e.getValue())) {
+					return true;
+				}
+			}
+			return false;
+		}
+	}
 }

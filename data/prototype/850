@@ -1,21 +1,44 @@
-def merge_sort(values):
-    if len(values) <= 1:
-        return values
-    middle_index = len(values) // 2
-    left_values = merge_sort(values[:middle_index])
-    right_values = merge_sort(values[middle_index:])
-    sorted_values = []
-    left_index = 0
-    right_index = 0
-    while left_index < len(left_values) and right_index < len(right_values):
-        if left_values[left_index] < right_values[right_index]:
-            sorted_values.append(left_values[left_index])
-            left_index += 1
-        else:
-            sorted_values.append(right_values[right_index])
-            right_index += 1
-    sorted_values += left_values[left_index:]
-    sorted_values += right_values[right_index:]
-    return sorted_values
-numbers = [3, 21, 7, 1, 9, 17, 14, 2, 5, 10, 6]
-print(merge_sort(numbers))
+package com.deepak.algorithms.Sorting;
+import java.util.Arrays;
+public class MergeSort {
+	public static void main(String[] args) {
+		int[] valuesToBeSorted = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] sortedValues = performMergeSort(valuesToBeSorted, 0, valuesToBeSorted.length - 1);
+		Arrays.stream(sortedValues).forEach(System.out::println);
+	}
+	public static int[] performMergeSort(int[] list, int low, int high) {
+		if (low < high) {
+			int middle = low + (high - low) / 2;
+			performMergeSort(list, low, middle);
+			performMergeSort(list, middle + 1, high);
+			merge(list, low, middle, high);
+		}
+		return list;
+	}
+	private static int[] merge(int[] list, int low, int middle, int high) {
+		int[] copy = new int[list.length];
+		for (int i = 0; i < list.length; i++ ) {
+			copy[i] = list[i];
+		}
+		int i = low;
+		int j = middle + 1;
+		int k = low;
+		while (i <= middle && j <= high) {
+			if (copy[i] <= copy[j]) {
+				list[k] = copy[i];
+				i++;
+			} else {
+				list[k] = copy[j];
+				j++;
+			}
+			k++;
+		}
+		while (i <= middle) {
+			list[k] = copy[i];
+			k++;
+			i++;
+		}
+		return list;
+	}
+}

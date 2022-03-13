@@ -1,47 +1,21 @@
-import sort_tools
-import copy
-def merge(data, low, middle, high):
-    data_a = []
-    data_b = []
-    len_a = middle - low + 1
-    len_b = high - middle
-    i = 0   
-    j = 0   
-    k = low 
-    for idx in range(middle - low + 1):
-        data_a.append(data[low + idx])
-    for idx in range(high - middle):
-        data_b.append(data[middle + idx + 1])
-    while i < len_a and j < len_b:
-        a = data[i]
-        b = data[j]
-        if a < b:
-            data[k] = a
-            i += 1
-        else:
-            data[k] = b
-            j += 1
-        k += 1
-    while i < len_a:
-        data[k] = data_a[i]
-        i += 1
-        k += 1
-    while j < len_b:
-        data[k] = data_b[j]
-        j += 1
-        k += 1
-def merge_sort(data, low, high):
-    if low < high:
-        middle = (high - low) // 2 + low
-        merge_sort(data, low, middle)
-        merge_sort(data, middle + 1, high)
-        merge(data, low, middle, high)
-@sort_tools.timeit('merge')
-def sort(data):
-    merge_sort(data, 0, len(data) - 1)
-def main():
-    data = sort_tools.build_data_set(5)
-    unsorted = copy.deepcopy(data)
-    sort(unsorted)
-if __name__ == "__main__":
-    main()
+function merge(list1, list2) {
+  var results = [];
+  while(list1.length && list2.length) {
+    if (list1[0] <= list2[0]) {
+      results.push(list1.shift());
+    } else {
+      results.push(list2.shift());
+    }
+  }
+  return results.concat(list1, list2);
+}
+function mergeSort(list) {
+  if (list.length < 2) return list;
+  var listHalf = Math.floor(list.length/2);
+  var subList1 = list.slice(0, listHalf);
+  var subList2 = list.slice(listHalf, list.length);
+  return merge(mergeSort(subList1), mergeSort(subList2));
+}
+var unsortedArray = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
+var sortedArray = mergeSort(unsortedArray);
+console.log('Before:', unsortedArray, 'After:', sortedArray);

@@ -1,35 +1,56 @@
-package com.ianramzy;
-public class QuickSorter implements Sorter {
-    private int list[];
-    private int num;
-    public void sort(int theNum, int theList[]) {
-        num = theNum;
-        list = theList;
-        quickSort(0, num - 1);
-    }
-    public void quickSort(int left, int right) {
-        int i, pivot, lastSmall;
-        swap(left, (int) (left + right) / 2);
-        lastSmall = left;
-        for (i = left + 1; i <= right; i++) {
-            if (list[i] < list[left]) {
-                lastSmall++;
-                swap(lastSmall, i);
-            }
-        }
-        swap(left, lastSmall);
-        pivot = lastSmall;
-        if (left < pivot - 1) {
-            quickSort(left, pivot - 1);
-        }
-        if (pivot + 1 < right) {
-            quickSort(pivot + 1, right);
-        }
-    }
-    private int temp;
-    public void swap(int a, int b) {
-        temp = list[a];
-        list[a] = list[b];
-        list[b] = temp;
-    }
-}
+def with_length():
+    flag = 1
+    while(flag):
+        print("Length of array")
+        try:
+            n = int(input())
+            flag=0
+        except:
+            flag=1
+    print("It only store first ",n," elements.")
+    print("\nEnter your elements.")
+    arr =[]
+    while len(arr)<n:
+        val = list(map(float,input().split()))
+        length = n - len(arr)
+        if len(val)>length:
+            arr = arr+val[:length]
+        else:
+            arr = arr+val
+    return arr
+def without_length():
+    print("Array only takes integer or float inputs. Enter '$' to stop")
+    arr = list(map(float,input().split()))
+    while(1):
+        val = input().split()
+        for x in val:
+            try:
+                x = float(x)
+            except:
+                return arr
+            arr.append(float(x))
+def list_input():
+    ch =""
+    while ch not in ['y','n','Y','N']:
+        print("Want to specify the length of arry y/n ",end=' ')
+        ch = input()
+    if ch=='Y' or ch=='y':
+        arr = with_length()
+        return arr
+    else:
+        arr= without_length()
+        return arr
+def selection_sort(alist):
+    for i in range(0, len(alist) - 1):         
+        smallest = i                           
+        for j in range(i + 1, len(alist)):     
+            if alist[j] < alist[smallest]:     
+                smallest = j                   
+        alist[i], alist[smallest] = alist[smallest], alist[i]     
+if __name__ == '__main__':
+    arr = list_input()   
+    print ('Given array is', end='\n')
+    print(*arr)
+    selection_sort(arr)
+    print('Sorted array is:', end='\n')
+    print(*arr)

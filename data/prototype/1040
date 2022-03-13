@@ -1,22 +1,41 @@
-quickSort = function(array) {
-  if (array.length < 2) {
-    return array;
-  }
-  var i, l, pivot,
-      a = array.slice(0),
-      less    = [],
-      equal   = [],
-      greater = [];
-  pivot = a[Math.floor(a.length / 2)];
-  for (i = 0, l = a.length; i < l; i++) {
-    if (a[i] < pivot) {
-      less.push(a[i]);
-    } else if (a[i] > pivot) {
-      greater.push(a[i]);
-    } else {
-      equal.push(a[i]);
+"use strict";
+Array.prototype.quicksort = function(compare) {
+    if ("function" != typeof compare) {
+        var desc = compare || false;
+        compare = function(a, b) {
+            return desc ? a < b : a > b;
+        }
     }
-  }
-  return quickSort(less)
-    .concat(equal, quickSort(greater));
+    var that = this;
+    function swap(i, j) {
+        var temp = that[i];
+        that[i] = that[j];
+        that[j] = temp;
+    }
+    function partition(left, right) {
+        var pivot = that[right + left >> 1], i = left, j = right;
+        while (i <= j) {
+            while (compare(pivot, that[i])) {
+                i++;
+            }
+            while (compare(that[j], pivot)) {
+                j--;
+            }
+            if (i <= j) {
+                swap(i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+    function sort(left, right) {
+        if (left < right) {
+            var pivot = partition(left, right);
+            sort(left, pivot - 1);
+            sort(pivot, right);
+        }
+    }
+    sort(0, this.length - 1);
+    return this;
 };

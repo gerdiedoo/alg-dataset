@@ -1,55 +1,105 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class SelectionSort {
-    private int COMPARISONS_COUNT;
-    private int SWAPS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int array[]) {
-        COMPARISONS_COUNT = 0;
-        SWAPS_COUNT = 0;
-        LOOP_COUNT = 0;
-        for (int index = 0; index < array.length; index++) {
-            LOOP_COUNT++;
-            ____cyan("\n--------\nindex: " + index);
-            int minIndex = findNextSmallestElement(index, array);
-            ____grey("found smallest element index: " + minIndex);
-            SWAPS_COUNT++;
-            ____blue("Swapping: " + index + " and " + minIndex);
-            int temp = array[minIndex];
-            array[minIndex] = array[index];
-            array[index] = temp;
-            __red("==> ");
-            __dump(array);
-        }
+package eu.happycoders.sort.method.heapsort;
+import eu.happycoders.sort.method.Counters;
+public class BottomUpHeapsort extends Heapsort {
+  @Override
+  void heapify(int[] heap, int length, int rootPos) {
+    int leafPos = findLeaf(heap, length, rootPos);
+    int nodePos = findTargetNodeBottomUp(heap, rootPos, leafPos);
+    if (rootPos == nodePos) return;
+    int nodeValue = heap[nodePos];
+    heap[nodePos] = heap[rootPos];
+    while (nodePos > rootPos) {
+      int parentPos = getParentPos(nodePos);
+      int parentValue = heap[parentPos];
+      heap[parentPos] = nodeValue;
+      nodePos = getParentPos(nodePos);
+      nodeValue = parentValue;
     }
-    private int findNextSmallestElement(int startIndex, int array[]) {
-        int minIndex = startIndex;
-        int value = array[startIndex];
-        for (int i = startIndex; i < array.length; i++) {
-            LOOP_COUNT++;
-            COMPARISONS_COUNT++;
-            if (value > array[i]) {
-                minIndex = i;
-                value = array[minIndex];
-            }
-        }
-        return minIndex;
+  }
+  int findLeaf(int[] heap, int length, int rootPos) {
+    int pos = rootPos;
+    int leftChildPos = pos * 2 + 1;
+    int rightChildPos = pos * 2 + 2;
+    while (rightChildPos < length) {
+      if (heap[rightChildPos] > heap[leftChildPos]) {
+        pos = rightChildPos;
+      } else {
+        pos = leftChildPos;
+      }
+      leftChildPos = pos * 2 + 1;
+      rightChildPos = pos * 2 + 2;
     }
-    public static void main(String[] args) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        SelectionSort selectionSort = new SelectionSort();
-        selectionSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(selectionSort.COMPARISONS_COUNT);
-        __green("\n  Swaps: ");
-        System.out.print(selectionSort.SWAPS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(selectionSort.LOOP_COUNT);
+    if (leftChildPos < length) {
+      pos = leftChildPos;
     }
+    return pos;
+  }
+  int findTargetNodeBottomUp(int[] heap, int rootPos, int leafPos) {
+    int parent = heap[rootPos];
+    while (leafPos != rootPos && heap[leafPos] < parent) {
+      leafPos = getParentPos(leafPos);
+    }
+    return leafPos;
+  }
+  int getParentPos(int pos) {
+    return (pos - 1) / 2;
+  }
+  @Override
+  void heapify(int[] heap, int length, int rootPos, Counters counters) {
+    int leafPos = findLeaf(heap, length, rootPos, counters);
+    int nodePos = findTargetNodeBottomUp(heap, rootPos, leafPos, counters);
+    if (rootPos == nodePos) return;
+    counters.incReads();
+    int nodeValue = heap[nodePos];
+    counters.incReadsAndWrites();
+    heap[nodePos] = heap[rootPos];
+    while (nodePos > rootPos) {
+      counters.incIterations();
+      int parentPos = getParentPos(nodePos);
+      counters.incReadsAndWrites();
+      int parentValue = heap[parentPos];
+      heap[parentPos] = nodeValue;
+      nodePos = parentPos;
+      nodeValue = parentValue;
+    }
+  }
+  private int findLeaf(int[] heap, int length, int rootPos, Counters counters) {
+    int pos = rootPos;
+    int leftChildPos = pos * 2 + 1;
+    int rightChildPos = pos * 2 + 2;
+    while (rightChildPos < length) {
+      counters.incIterations();
+      counters.addReads(2);
+      counters.incComparisons();
+      if (heap[rightChildPos] > heap[leftChildPos]) {
+        pos = rightChildPos;
+      } else {
+        pos = leftChildPos;
+      }
+      leftChildPos = pos * 2 + 1;
+      rightChildPos = pos * 2 + 2;
+    }
+    if (leftChildPos < length) {
+      pos = leftChildPos;
+    }
+    return pos;
+  }
+  private int findTargetNodeBottomUp(int[] heap, int rootPos, int leafPos,
+                                     Counters counters) {
+    counters.incReads();
+    int parentValue = heap[rootPos];
+    int nodePos = leafPos;
+    while (nodePos != rootPos && nodeSmallerThanParent(heap[nodePos],
+          parentValue, counters)) {
+      counters.incIterations();
+      nodePos = getParentPos(nodePos);
+    }
+    return nodePos;
+  }
+  private boolean nodeSmallerThanParent(int nodeValue, int parentValue,
+                                        Counters counters) {
+    counters.incReads();
+    counters.incComparisons();
+    return nodeValue < parentValue;
+  }
 }

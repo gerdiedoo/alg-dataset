@@ -1,64 +1,36 @@
-package src.algorithms;
-import src.strategy.Order;
-import src.strategy.Pivot;
-public class QuickSort<T> extends SortingAlgorithm<T> {
-	@Override
-	@SuppressWarnings("hiding")
-	public <T extends Comparable<T>> T[] sort(T[] elements, Order order) {
-		return this.sort(elements, order, Pivot.MEDIAN);
-	}
-	@SuppressWarnings("hiding")
-	public <T extends Comparable<T>> T[] sort(T[] elements, Order order, Pivot pivot) {
-		return this.quicksort(elements, order, pivot, 0, elements.length-1);
-	}
-	@SuppressWarnings("hiding")
-	private <T extends Comparable<T>> T[] quicksort(T[] elements, Order order, Pivot pivot, int lower, int upper) {
-		if (lower > upper || elements.length == 0 || elements == null) {
-			return elements;
-		}
-		int p;
-		if        (pivot == Pivot.FIRST) {   
-			p = lower;
-		} else if (pivot == Pivot.LAST) {    
-			p = upper;
-		} else if (pivot == Pivot.RANDOM) {  
-			p = (int) (Math.random() * (upper-lower+1) + lower);
-		} else {                             
-			p = this.medianOfThree(elements, lower, upper);
-		}
-		p = this.partition(elements, order, p, lower, upper);
-		quicksort(elements, order, pivot, lower, p - 1);
-		quicksort(elements, order, pivot, p + 1, upper);
-		return elements;
-	}
-	@SuppressWarnings("hiding")
-	private <T extends Comparable<T>> int partition(T[] elements, Order order, int pivot, int lowerPos, int upperPos) {
-		this.swap(elements, pivot, upperPos);
-		int idx = lowerPos;
-		for (int j=lowerPos; j<upperPos; j++) {
-			if ((order == Order.ASC  && elements[j].compareTo(elements[upperPos]) < 0)  || 
-				(order == Order.DESC && elements[j].compareTo(elements[upperPos]) > 0)) {
-				this.swap(elements, idx, j);
-				idx++;
-			}
-		}
-		this.swap(elements, idx, upperPos);
-		return idx;
-	}
-	@SuppressWarnings("hiding")
-	private <T extends Comparable<T>> int medianOfThree(T[] elements, int lowerPos, int upperPos) {
-		int middlePos = (lowerPos + upperPos) / 2;
-		T a = elements[lowerPos];
-		T b = elements[middlePos];
-		T c = elements[upperPos];
-		if ((a.compareTo(b) <= 0 && b.compareTo(c) <= 0)  || 
-			(c.compareTo(b) <= 0 && b.compareTo(a) <= 0)) {
-			return middlePos;
-		}
-		if ((a.compareTo(c) <= 0 || c.compareTo(b) <= 0)  && 
-			(b.compareTo(c) <= 0 || c.compareTo(a) <= 0)) {
-			return upperPos;
-		}
-		return lowerPos;
-	}
+package sort;
+import java.util.*;
+public class Quicksort {
+    static Random rnd = new Random();
+    public static void quickSort(int[] a, int low, int high) {
+        if (low >= high)
+            return;
+        int separator = a[low + rnd.nextInt(high - low + 1)];
+        int i = low;
+        int j = high;
+        while (i <= j) {
+            while (a[i] < separator) ++i;
+            while (a[j] > separator) --j;
+            if (i <= j) {
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+                ++i;
+                --j;
+            }
+        }
+        quickSort(a, low, j);
+        quickSort(a, i, high);
+    }
+    public static void main(String[] args) {
+        int n = 10_000_000;
+        int[] a1 = rnd.ints(n).toArray();
+        int[] a2 = a1.clone();
+        Arrays.sort(a2);
+        long time = System.currentTimeMillis();
+        quickSort(a1, 0, a1.length - 1);
+        System.out.println(System.currentTimeMillis() - time);
+        if (!Arrays.equals(a1, a2))
+            throw new RuntimeException();
+    }
 }

@@ -1,9 +1,23 @@
-public class InsertionSort {
-	public static void sort(int[] list) {
-		for (int i = 1; i < list.length; i++) {
-			for (int c = i; c > 0 && list[c] < list[c-1]; c--) {
-				Compare.swap(list, c, c-1);
-			}
-		}
-	}
-}
+import structures.src.util.sort_util as util
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    midpoint = int(len(arr) / 2)
+    return _merge(merge_sort(arr[:midpoint]), merge_sort(arr[midpoint:]))
+def _merge(a, b):
+    out = []
+    i, j = 0, 0
+    while i < len(a) and j < len(b):
+        if i == len(a): 
+            out.append(b[j])
+            j += 1
+        elif j == len(b): 
+            out.append(a[i])
+            i += 1
+        elif a[i] < b[j]: 
+            out.append(a[i])
+            i += 1
+        else: 
+            out.append(b[j])
+            j += 1
+    return out

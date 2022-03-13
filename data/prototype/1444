@@ -1,37 +1,26 @@
-const insertionSort = bucket => {
-    for(i=0; i < bucket.length; i++){
-        const up = bucket[i]
-        let j = i-1
-        while(j >= 0 && bucket[j] > up){
-            bucket[j+1] = bucket[j]
-            j--
-        }
-        bucket[j+1] = up
-    }
-    return bucket
-}
-const bucketSort = initialArray => {
-    const numBuckets = 10
-    let array = []
-    for(let i=0; i < numBuckets; i++){
-        array.push([])
-    }
-    for(elem of initialArray){
-        const bucketIndex = parseInt(numBuckets * elem)
-        array[bucketIndex].push(elem)
-    }
-    for(let i=0; i < numBuckets; i++){
-        array[i] = insertionSort(array[i])
-    }
-    let k = 0
-    for(i=0; i < numBuckets; i++){
-        for(elem of array[i]){
-            initialArray[k] = elem
-            k++
-        }
-    }
-    return initialArray
-}
-const initialArray = [0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434]
-const sortedArray = bucketSort(initialArray)
-console.log(sortedArray)
+from DS.Maps_Dictionaries.MapBase import MapBase
+class UnsortedTableMap(MapBase):
+    def __init__(self):
+        self._table = []
+    def __getitem__(self, k):
+        for item in self._table:
+            if k == item._key:
+                return item._value
+        raise KeyError('Key Error: ' + repr(k))
+    def __setitem__(self, k, v):
+        for item in self._table:
+            if k == item._key:
+                item._value = v
+                return
+        self._table.append(self._Item(k,v))
+    def __delitem__(self, k):
+        for j in range(len(self._table)):
+            if k == self._table[j]._key:
+                self._table.pop(j)
+                return
+        raise KeyError('Key Error: ' + repr(k))
+    def __len__(self):
+        return len(self._table)
+    def __iter__(self):
+        for item in self._table:
+            yield item._key

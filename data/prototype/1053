@@ -1,30 +1,21 @@
-def quicksort(lis, start, end):
-    assert 0 <= start <= end < len(lis)
-    if start == end:
-        return
-    pivot = lis[start]  
-    lis[start], lis[end] = lis[end], lis[start]  
-    left_index = start
-    iterator = start
-    while iterator < end:  
-        if lis[iterator] <= pivot:
-            lis[left_index], lis[iterator] = lis[iterator], lis[left_index]
-            left_index += 1
-        iterator += 1
-    lis[left_index], lis[end] = lis[end], lis[left_index]
-    if left_index > start:
-        quicksort(lis, start, left_index - 1)
-    if end > (left_index + 1):
-        quicksort(lis, left_index + 1, end)
-def main():
-    lis1 = [4, 1, 2, 3, 9]
-    lis2 = [1]
-    lis3 = [2, 2, 1, -1, 0, 4, 5, 2]
-    quicksort(lis1, 0, 4)
-    assert lis1 == [1, 2, 3, 4, 9]
-    quicksort(lis2, 0, 0)
-    assert lis2 == [1]
-    quicksort(lis3, 0, 7)
-    assert lis3 == [-1, 0, 1, 2, 2, 2, 4, 5]
-if __name__ == '__main__':
-    main()
+aij.quickSort = function(items) {
+    var partition = function(arr, left, right) {
+      if (right === left) {
+        return;
+      }
+      var pivotIndex = (Math.random() * (right - left) + left) << 0,
+          pivot = arr[pivotIndex];
+      aij.swap(arr, left, pivotIndex);
+      var partitionIndex = left + 1;
+      for (var i = left + 1; i < right; i++) {
+        if (arr[i] < pivot) {
+          aij.swap(arr, partitionIndex, i)
+          partitionIndex++;
+        }
+      };
+      aij.swap(arr, partitionIndex - 1, left);
+      partition(arr, left, partitionIndex - 1);
+      partition(arr, partitionIndex, right);
+    };
+    return aij.isSortable(items) && partition(items, 0, items.length) || items;
+};

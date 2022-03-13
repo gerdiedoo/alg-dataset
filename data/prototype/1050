@@ -1,41 +1,30 @@
-class QuickSort:
-  vec = [] 
-  len = -1
-  p = -1
-  def __init__(self, arr):
-        self.vec = arr
-        self.len = len(self.vec)
-  def get(self):
-      return self.vec  
-  def set(self,arr):
-      self.vec = arr
-  def sort(self):
-      self._qs(0,self.len-1)
-  def partition(self,li,ls):
-      i = li
-      j = ls
-      i1 = 0
-      j1 = -1
-      aux = 0
-      while i<j:
-            if self.vec[i] > self.vec[j]:
-               self._swap(i,j)  
-               aux = i1
-               i1 = -j1
-               j1 = -aux
-            i = i + i1
-            j = j + j1
-      self.p = i    
-  def _qs(self,li,ls):
-    if li<ls:
-      self.partition(li,ls)  
-      self._qs(li,self.p-1) 
-      self._qs(self.p+1,ls)  
-  def _swap(self,i,j):
-      temp = self.vec[i]
-      self.vec[i] = self.vec[j]
-      self.vec[j] = temp   
-arr=[9,8,7,6,5,4,3,2,1]
-ob = QuickSort(arr)
-ob.sort()
-print ob.get()       
+package io.lenur.sort;
+public class QuickSort implements Sortable {
+    @Override
+    public void sort(int[] data) {
+        sort(data, 0, data.length-1);
+    }
+    private void sort(int[] data, int low, int high) {
+        if (low < high) {
+            int pi = partition(data, low, high);
+            sort(data, low, pi - 1);
+            sort(data, pi + 1, high);
+        }
+    }
+    private int partition(int[] data, int low, int high) {
+        int pivot = data[high];
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (data[j] < pivot) {
+                i++;
+                int temp = data[i];
+                data[i] = data[j];
+                data[j] = temp;
+            }
+        }
+        int temp = data[i + 1];
+        data[i + 1] = data[high];
+        data[high] = temp;
+        return i + 1;
+    }
+}

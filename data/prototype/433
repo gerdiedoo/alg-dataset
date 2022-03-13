@@ -1,16 +1,28 @@
-import math 
-def jumpSearch( arr , x , n ): 
-    step = math.sqrt(n) 
-    prev = 0
-    while arr[int(min(step, n)-1)] < x: 
-        prev = step 
-        step += math.sqrt(n) 
-        if prev >= n: 
-            return -1
-    while arr[int(prev)] < x: 
-        prev += 1
-        if prev == min(step, n): 
-            return -1                
-    if arr[int(prev)] == x: 
-        return prev 
-    return -1
+package Lecture14;
+public class searchMatrix3 {
+	public static void main(String[] args) {
+		int[][] arr = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(staircase(arr, 22));  
+		System.out.println(staircase(arr, 10));  
+		System.out.println(staircase(arr, 42));  
+		System.out.println(staircase(arr, 23));  
+		System.out.println(staircase(arr, 13));  
+		System.out.println(staircase(arr, 2));  
+	}
+	public static boolean staircase(int[][] arr, int key) {
+		int row = 0, col = arr.length - 1;
+		while (row < arr.length && col >= 0) {
+			if (arr[row][col] == key) {
+				return true;
+			} else if (key > arr[row][col]) {
+				row++;
+			} else {
+				col--;
+			}
+		}
+		return false;
+	}
+}

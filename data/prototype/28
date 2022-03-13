@@ -1,79 +1,21 @@
-package vlsi.utils;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-public class CompactHashMapDefaultValues {
-    private static Map<Object, Map<Object, Map<Map, Map>>> defaultValues
-            = new HashMap<Object, Map<Object, Map<Map, Map>>>();
-    private static ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-    private static Lock readLock = readWriteLock.readLock();
-    private static Lock writeLock = readWriteLock.writeLock();
-    public static final String ALL_VALUES_MATCH = new String("All values match");
-    public static void clear() {
-        writeLock.lock();
-        try {
-            defaultValues.clear();
-        } finally {
-            writeLock.unlock();
+package org.joyfulmonster.util.concurrent.internal;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+class DirectoryFactory {
+    public static Directory create(int bucketCount, int bucketSize, float loadFactor, AtomicInteger totalEntryCount, AtomicInteger splitCount) {
+        int dirSize = bucketCount;
+        int dirMask = dirSize - 1;
+        int globalDepth = Integer.bitCount(dirMask);
+        AtomicReferenceArray<Bucket> bucketsArray = new AtomicReferenceArray<Bucket>(bucketCount);
+        for (int bucketIdex = 0; bucketIdex < bucketCount; bucketIdex++) {
+            bucketsArray.set(bucketIdex, new LinearProbingBucketImpl(globalDepth, bucketIdex, bucketSize, loadFactor, totalEntryCount, splitCount));
         }
-    }
-    public static boolean add(Object key) {
-        return add(key, ALL_VALUES_MATCH);
-    }
-    public static boolean add(Object key, Object value) {
-        writeLock.lock();
-        try {
-            Map<Object, Map<Map, Map>> m = defaultValues.get(key);
-            if (m == null)
-                defaultValues.put(key, m = new HashMap<Object, Map<Map, Map>>());
-            if (m.get(value) != null)
-                return false;  
-            m.put(value, new IdentityHashMap<Map, Map>());
-            return true;
-        } finally {
-            writeLock.unlock();
+        DirectoryImpl result = new DirectoryImpl(bucketsArray);
+        for (int i = 0; i < bucketCount; i++) {
+            ((LinearProbingBucketImpl)bucketsArray.get(i)).directory(result);
         }
-    }
-    public static <K, V> Map<K, V> getNewDefaultValues(Map<K, V> prevDefaultValues, K key, Object value) {
-        final Map<Object, Map<Map, Map>> m;
-        Map<Map, Map> identityOld2New;
-        readLock.lock();
-        try {
-            m = defaultValues.get(key);
-            if (m == null) return null;  
-            identityOld2New = m.get(value);
-            if (identityOld2New == null) {
-                if (value != CompactHashMapClass.REMOVED_OBJECT && m.get(ALL_VALUES_MATCH) == null)
-                    return null;  
-            } else {
-                Map newMap = identityOld2New.get(prevDefaultValues);
-                if (newMap != null) return newMap;
-            }
-        } finally {
-            readLock.unlock();
-        }
-        Map<K, V> newMap = new HashMap<K, V>((int) ((prevDefaultValues.size() + 1) / 0.75f));
-        newMap.putAll(prevDefaultValues);
-        if (value == CompactHashMapClass.REMOVED_OBJECT)
-            newMap.remove(key);
-        else
-            newMap.put(key, (V) value);
-        writeLock.lock();
-        try {
-            if (identityOld2New == null) {
-                identityOld2New = m.get(value);
-                if (identityOld2New == null)
-                    m.put(value, identityOld2New = new IdentityHashMap<Map, Map>());
-            }
-            final Map anotherNewMap = identityOld2New.get(prevDefaultValues);
-            if (anotherNewMap != null) return anotherNewMap;  
-            identityOld2New.put(prevDefaultValues, newMap);
-            return newMap;
-        } finally {
-            writeLock.unlock();
-        }
+        BucketFactory bucketFactory = new BucketFactory(result, bucketSize, loadFactor, totalEntryCount, splitCount);
+        result.bucketFactory(bucketFactory);
+        return result;
     }
 }

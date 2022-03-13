@@ -1,38 +1,49 @@
-package heapsort;
-public class HeapSortClass
-{
-    public HeapSortClass()
-    {
-        int[] a = {30, 3, 7, 15, 20, 100, 25, 80, 10, 90, 17, 40, 5};
-        int i; 
-        for (i=0; i<a.length; i++)  System.out.println(a[i]);
-        heapsort(a);
-        System.out.println("Sorted:");
-        for (i=0; i<a.length; i++) System.out.println(a[i]);
-    }
-    public static void main(String[] args)
-    {
-        HeapSortClass H=new HeapSortClass();
-    }
-    public void heapsort(int[] a)
-    {
-       int last=a.length; int i;
-       for (i=last/2; i>0; i--) maxshift(a, i, last);
-       for (i=1; i<a.length; i++)
-       {
-          int x=a[last-1]; a[last-1]=a[0]; a[0]=x;
-          last--; maxshift(a, 1, last);
-       }
-    }
-    public static void maxshift(int[] a, int i, int last)
-    {
-        int j=2*i; int x=a[i-1];
-        if ((j<last)&&(a[j]>a[j-1])) j++;
-        while((j<=last)&&(a[j-1]>x))
-        {
-            a[i-1]=a[j-1]; i=j; j=2*j;
-            if ((j<last)&&(a[j]>a[j-1])) j++;
+package eu.happycoders.sort.method;
+public class SelectionSort implements SortAlgorithm {
+  @Override
+  public void sort(int[] elements) {
+    int length = elements.length;
+    for (int i = 0; i < length - 1; i++) {
+      int minPos = i;
+      int min = elements[minPos];
+      for (int j = i + 1; j < length; j++) {
+        if (elements[j] < min) {
+          minPos = j;
+          min = elements[minPos];
         }
-        a[i-1]=x; 
+      }
+      if (minPos != i) {
+        elements[minPos] = elements[i];
+        elements[i] = min;
+      }
     }
+  }
+  @Override
+  public void sort(int[] elements, Counters counters) {
+    int length = elements.length;
+    for (int i = 0; i < length - 1; i++) {
+      counters.incIterations();
+      int minPos = i;
+      int min = elements[minPos];
+      counters.incReads();
+      counters.incLocalVariableAssignments();
+      for (int j = i + 1; j < length; j++) {
+        counters.incIterations();
+        int numAtJ = elements[j];
+        counters.incReads();
+        counters.incComparisons();
+        if (numAtJ < min) {
+          minPos = j;
+          min = numAtJ;
+          counters.incLocalVariableAssignments();
+        }
+      }
+      if (minPos != i) {
+        elements[minPos] = elements[i];
+        counters.incReads();
+        elements[i] = min;
+        counters.incWrites();
+      }
+    }
+  }
 }

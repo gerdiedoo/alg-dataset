@@ -1,0 +1,103 @@
+import collections
+class Node():
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+    def __repr__(self):
+        return '%s(%r)' % ('Node', self.value)
+class LinkedList(collections.MutableSequence):
+    def __init__(self, iterable=None):
+        self._len = 0
+        self._head = None
+        self._tail = None
+        if iterable is not None: 
+            self += iterable
+    def __repr__(self):
+        node = self._head
+        _list = []
+        while node:
+            _list.append( str(node) )
+            node = node.next
+        return '->'.join(_list)
+    def _getnode(self, index):
+        if self._head is None: 
+            return None
+        if index >= self._len: 
+            return None
+        node = self._head
+        i = 0
+        while i < index:
+            node = node.next
+            i += 1
+        return node
+    """
+      Protocol for MutableSequence
+      Provide index based operations
+    """
+    def __len__(self):
+        return self._len
+    def __getitem__(self, index):
+        return self._getnode(index)
+    def __setitem__(self, index, value):
+        node = self._getnode(index)
+        node.value = value
+    def __delitem__(self, index):
+        if index  == 0: 
+            self._head = self[0].next
+        else:
+            pre = self._getnode(index-1)
+            node = self._getnode(index)
+            pre.next = node.next
+            if node == self._tail:
+                self._tail = pre
+        self._len -= 1
+    def append(self, value):
+        newnode = Node(value)
+        if self._head is None:
+            self._head = newnode
+        else:
+            self._tail.next = newnode
+        self._tail = newnode
+        self._len += 1
+    def insert(self, index, value):
+        newnode = Node(value)
+        if index == 0: 
+            newnode.next = self._head
+            self._head = newnode
+            return
+        elif index == len(self): 
+            self._tail.next = newnode
+            self._tail = newnode
+        else:
+            node = self._getnode(index-1)
+            if node is None:
+                return
+            temp = node.next
+            node.next = newnode
+            newnode.next = temp
+        self._len += 1
+    def reverse_(self):
+        def recurse(self, prev, node):
+            if node is None:
+                return
+            recurse(self, node, node.next)
+            if node == self._tail:
+                self._head = node
+            node.next = prev
+            if prev is None:
+                self._tail = node
+        recurse(self, None, self._head)
+    def reverse(self):
+        prev, cur = None, self._head
+        self._tail = cur
+        while cur:
+            temp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = temp
+        self._head = prev
+if __name__ == '__main__':
+    import timeit
+    sp = 'from linkedlist import *; ll = LinkedList(range(1000000))'
+    print timeit.repeat("ll.insert(0, 9)", setup=sp, number=5)
+    print timeit.repeat("l.insert(0, 9)", setup='l = range(1000000)', number=5)

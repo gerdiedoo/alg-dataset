@@ -1,67 +1,20 @@
-package eu.happycoders.sort.method.mergesort;
-import eu.happycoders.sort.method.Counters;
-import eu.happycoders.sort.method.SortAlgorithm;
-public class NaturalMergeSort implements SortAlgorithm {
-  @Override
-  public void sort(int[] elements) {
-    int numElements = elements.length;
-    int[] tmp = new int[numElements];
-    int[] starts = new int[numElements + 1];
-    int runCount = 0;
-    starts[0] = 0;
-    for (int i = 1; i <= numElements; i++) {
-      if (i == numElements || elements[i] < elements[i - 1]) {
-        starts[++runCount] = i;
-      }
+package sort.quick;
+import sort.Sort;
+public class Quick3Way extends Sort {
+    public void sortMethod(Comparable[] a) {
+        sort(a, 0, a.length - 1);
     }
-    int[] from = elements;
-    int[] to = tmp;
-    while (runCount > 1) {
-      int newRunCount = 0;
-      for (int i = 0; i < runCount - 1; i += 2) {
-        merge(from, to, starts[i], starts[i + 1], starts[i + 2]);
-        starts[newRunCount++] = starts[i];
-      }
-      if (runCount % 2 == 1) {
-        int lastStart = starts[runCount - 1];
-        System.arraycopy(from, lastStart, to, lastStart,
-              numElements - lastStart);
-        starts[newRunCount++] = lastStart;
-      }
-      starts[newRunCount] = numElements;
-      runCount = newRunCount;
-      int[] help = from;
-      from = to;
-      to = help;
+    private void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) return;
+        int lt = lo, i = lo + 1, gt = hi;
+        Comparable v = a[lo];
+        while (i <= gt) {
+            int cmp = a[i].compareTo(v);
+            if (cmp < 0) exch(a, lt++, i++);
+            else if (cmp > 0) exch(a, i, gt--);
+            else i++;
+        }
+        sort(a, lo, lt - 1);
+        sort(a, gt + 1, hi);
     }
-    if (from != elements) {
-      System.arraycopy(from, 0, elements, 0, numElements);
-    }
-  }
-  private void merge(int[] source, int[] target, int startLeft,
-                     int startRight, int endRight) {
-    int leftPos = startLeft;
-    int rightPos = startRight;
-    int targetPos = startLeft;
-    while (leftPos < startRight && rightPos < endRight) {
-      int leftValue = source[leftPos];
-      int rightValue = source[rightPos];
-      if (leftValue <= rightValue) {
-        target[targetPos++] = leftValue;
-        leftPos++;
-      } else {
-        target[targetPos++] = rightValue;
-        rightPos++;
-      }
-    }
-    while (leftPos < startRight) {
-      target[targetPos++] = source[leftPos++];
-    }
-    while (rightPos < endRight) {
-      target[targetPos++] = source[rightPos++];
-    }
-  }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-  }
 }

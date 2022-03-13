@@ -1,13 +1,120 @@
-num_array = list() 
-num = raw_input("Enter how many elements you want: ")
-print "Enter numbers in array: "
-for i in range(int(num)):
-    n = raw_input("num: ")
-    num_array.append(int(n))
-element_to_find = raw_input("Element to find: ")    
-for i in num_array: 
-    if i == int(element_to_find):
-        print "Successful search!"
-        break
-else:
-    print "Element not found!"
+'use strict';
+var HashMap = {
+init: function( hashFn, equalsFn ){
+  var object_array = [],
+      count = 0;
+  var add_value, get_value, replace_value, add_node, check_key,
+      replace_node, return_value, return_true, return_false,
+      remove_node, remove_value, find_node;
+  replace_value = function( new_value, node ){
+    var old_value = node.value;
+    node.value = new_value;
+    return old_value;
+  };
+  return_value = function( ignored, node ){
+    return node.value;
+  };
+  return_true  = function(){ return true; };
+  return_false = function(){ return false; };
+  remove_node = function( ignored, node, previous_node, index ){
+    if( previous_node ){
+      previous_node.next = node.next;
+    }
+    else{
+      object_array[ index ] = node.next;
+    }
+    count -= 1;
+    return node.value;
+  };
+  var collision_count = 0;
+  add_node = function( key, value, index, previous_node ){
+    var node = { key: key, value: value, next: null };
+    if( previous_node ){
+      previous_node.next = node;
+      collision_count += 1;
+    }
+    else{
+      object_array[ index ] = node;
+    }
+    count += 1;
+    return null;
+  };
+  find_node = function( on_found,
+                        on_not_found,
+                        previous_node,
+                        value,
+                        index,
+                        node,
+                        key ){
+    var result = null;
+    if( !node ){
+      if( on_not_found ){
+        result = on_not_found( key , value, index, previous_node );
+      }
+    }
+    else if( equalsFn( node.key, key ) ){
+      if( on_found ){
+        result = on_found( value, node, previous_node, index );
+      }
+    }
+    else{
+      result = find_node( on_found,
+                          on_not_found,
+                          node,
+                          value,
+                          index,
+                          node.next,
+                          key );
+    }
+    return result;
+  };
+  add_value    = find_node.bind( null, replace_value, add_node,     null );
+  get_value    = find_node.bind( null, return_value,  null,         null, null );
+  check_key    = find_node.bind( null, return_true,   return_false, null, null );
+  remove_value = find_node.bind( null, remove_node,   null,         null, null );
+  return {
+    set: function( key, value ){
+      var index = hashFn( key ),
+          node = object_array[ index ];
+      return add_value( value, index, node, key );
+    },
+    get: function( key ){
+      var index = hashFn( key ),
+          node = object_array[ index ];
+      return get_value( index, node, key );
+    },
+    remove: function( key ){
+      var index = hashFn( key ),
+          node = object_array[ index ];
+      return remove_value( index, node, key );
+    },
+    count: function(){
+      return count;
+    },
+    _get_collision_count: function(){
+      return collision_count;
+    },
+    clear: function(){
+      object_array = [];
+      count = 0;
+    },
+    contains: function( key ){
+      var index = hashFn( key ),
+          node = object_array[ index ];
+      return check_key( index, node, key );
+    },
+    forEach: function( onEach ){
+      var handle_node = function( node ){
+        if( node ){
+          onEach( node.value );
+          handle_node( node.next );
+        }
+      };
+      object_array.forEach( handle_node );
+    },
+  };
+}
+};
+if( module ){
+  module.exports = HashMap.init;
+  }

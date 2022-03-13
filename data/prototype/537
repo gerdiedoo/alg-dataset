@@ -1,21 +1,21 @@
-function swap(A, u, v) {
-    var temp = A[u];
-    A[u] = A[v];
-    A[v] = temp;
-    return;
-}
-function Bubblesort(A) {
-    a_len = A.length;
-    for(var i = 0; i < a_len-1; i++) {
-        for(var j = 0; j < a_len-1-i; j++) {
-            if (A[j+1] < A[j]) {
-                swap(A, j, j+1);
-            }
-        } 
-    }
-    return A;
-}
-var X = [5,21,40,11,3,1,7,2,4,6,10,18,9,8];
-console.log(X);
-Bubblesort(X);
-console.log(X);
+import random
+def bubble_sort(alist):
+    swaps = 1
+    while swaps:
+        swaps = 0
+        for index in range(len(alist) - 1):
+            if alist[index] > alist[index + 1]:
+                alist[index], alist[index + 1] = alist[index + 1], alist[index]
+                swaps += 1
+unordered_list = []
+for i in range(100):
+    unordered_list.append(i)
+random.shuffle(unordered_list)
+bubble_sort(unordered_list)
+print(unordered_list)
+success = True
+for index in range(len(unordered_list) - 1):
+    if unordered_list[index] > unordered_list[index + 1]:
+        success = False
+if success:
+    print("Bubble Sort successful!")

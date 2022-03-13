@@ -1,42 +1,33 @@
-package com.sorting;
-import java.util.Comparator;
-public class Insertion {
-	private Insertion() {
-	}
-	public static void sort(Comparable[] array) {
-		if(array == null)
-			throw new NullPointerException();
-		int N = array.length;
-		for (int i = 0; i < N; i++) {
-			for (int j = i; j > 0 && less(array[j], array[j - 1]); j--) {
-				exch(array, j - 1, j);
-			}
-		}
-	}
-	public static void sort(Object[] array, Comparator com) {
-		if(array == null)
-			throw new NullPointerException();
-		int n = array.length;
-		for (int i = 0; i < n; i++) {
-			for (int j = i; j > 0 && less(array[j], array[j - 1], com); j--) {
-				exch(array, j, j - 1);
-			}
-		}
-	}
-	private static boolean less(Comparable v, Comparable w) {
-		return v.compareTo(w) < 0;
-	}
-	private static boolean less(Object v, Object w, Comparator c) {
-		return c.compare(v, w) < 0;
-	}
-	private static void exch(Object[] a, int i, int j) {
-		Object swap = a[i];
-		a[i] = a[j];
-		a[j] = swap;
-	}
-	public static void show(Object[] array) {
-		int len = array.length;
-		for (int i = 0; i < len; i++)
-			System.out.print(array[i] + ",");
-	}
-}
+require('../../../common/array-extensions');
+const { isEmpty, isFunction } = require('../../../common/utils');
+const insertionSort = function(list) {
+    if (isEmpty(list)) {
+        return list;
+    }
+    if (list.length < 2) {
+        return list;
+    }
+    const allItemsComparable = list.reduce(
+        (acc, item) => (acc &= isFunction(item.compareTo)),
+        true
+    );
+    let key = 0;
+    let i = 0;
+    for (let firstUnsortedIndex = 1; firstUnsortedIndex < list.length; firstUnsortedIndex++) {
+        key = list[firstUnsortedIndex];
+        i = firstUnsortedIndex - 1;
+        if (allItemsComparable) {
+            while (i >= 0 && key.compareTo(list[i]) < 0) {
+                list.swap(i, i + 1);
+                i--;
+            }
+        } else {
+            while (i >= 0 && key < list[i]) {
+                list.swap(i, i + 1);
+                i--;
+            }
+        }
+    }
+    return list;
+};
+module.exports = { insertionSort };

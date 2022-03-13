@@ -1,34 +1,42 @@
-const merge = (arrayA, arrayB) => {
-  let pointerA = 0,
-    pointerB = 0,
-    sortedArray = [];
-  while (pointerA < arrayA.length && pointerB < arrayB.length) {
-    if (arrayA[pointerA] < arrayB[pointerB]) {
-      sortedArray.push(arrayA[pointerA]);
-      pointerA++;
-    } else {
-      sortedArray.push(arrayB[pointerB]);
-      pointerB++;
-    }
-  }
-  if (pointerA < arrayA.length) {
-    sortedArray = sortedArray.concat(arrayA.slice(pointerA));
-  }
-  if (pointerB < arrayB.length) {
-    sortedArray = sortedArray.concat(arrayB.slice(pointerB));
-  }
-  return sortedArray;
-};
-const mergeSort = array => {
-  if (array.length <= 1) {
-    return array;
-  }
-  const left = array.slice(0, array.length / 2);
-  const right = array.slice(array.length / 2);
-  const leftSorted = mergeSort(left);
-  const rightSorted = mergeSort(right);
-  return merge(leftSorted, rightSorted);
-};
-const array = [22, 18, -4, 58, 7, 31, 42];
-const sortedArray = mergeSort(array);
-console.log(sortedArray);
+import time 
+def MergeSort(data, drawDataArray, sortSpeedTime):
+    MergeSort2(data,0, len(data)-1, drawDataArray, sortSpeedTime)
+def MergeSort2(data, left, right, drawDataArray, sortSpeedTime):
+    if left < right: 
+        middle = (left + right) // 2
+        MergeSort2(data, left, middle, drawDataArray, sortSpeedTime)
+        MergeSort2(data, middle+1, right, drawDataArray, sortSpeedTime)
+        Merge(data, left, middle, right, drawDataArray, sortSpeedTime)
+def Merge(data, left, middle, right, drawDataArray, sortSpeedTime):
+    drawDataArray(data, getColorArray(len(data), left, middle, right))
+    time.sleep(sortSpeedTime)
+    leftHalf = data[left:middle+1]
+    rightHalf = data[middle+1: right+1]
+    leftIndex, rightIndex = 0, 0
+    for dataIndex in range(left, right+1):
+        if leftIndex < len(leftHalf) and rightIndex < len(rightHalf):
+            if leftHalf[leftIndex] <= rightHalf[rightIndex]:
+                data[dataIndex] = leftHalf[leftIndex]
+                leftIndex += 1
+            else: 
+                data[dataIndex] = rightHalf[rightIndex]
+                rightIndex += 1
+        elif leftIndex < len(leftHalf):
+            data[dataIndex] = leftHalf[leftIndex]
+            leftIndex += 1
+        else: 
+            data[dataIndex] = rightHalf[rightIndex]
+            rightIndex += 1
+    drawDataArray(data, ["purple" if x >= left and x <= right else "red" for x in range(len(data))])
+    time.sleep(sortSpeedTime)
+def getColorArray(leght, left, middle, right):
+    colorArray = []
+    for i in range(leght):
+        if i >= left and i <= right:
+            if i >= left and i <= middle:
+                colorArray.append("orange") 
+            else: 
+                colorArray.append("green") 
+        else:
+            colorArray.append("red") 
+    return colorArray

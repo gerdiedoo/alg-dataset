@@ -1,52 +1,7 @@
-from strategy import Order, Pivot, BadOrderError, BadPivotError
-import random
-import sys
-__author__ = "Pablo Acereda"
-__copyright__ = "Copyright 2020"
-__credits__ = [ "Pablo Acereda" ]
-__license__ = "Apache License 2.0"
-__version__ = "1.0"
-__maintainer__ = "Pablo Acereda"
-__email__ = "p.aceredag@gmail.com"
-def sort(array:list, order:Order=Order.ASC, strategy:Pivot=Pivot.MEDIAN) -> list:
-    if (order not in [Order.ASC, Order.DESC]):
-        raise BadOrderError("Not Valid Ordering Preference")
-    if (strategy not in [Pivot.FIRST, Pivot.LAST, Pivot.RANDOM, Pivot.MEDIAN]):
-        raise BadPivotError("Not valid Pivot")
-    return quicksort(array, order, strategy, 0, len(array) - 1)
-def quicksort(array, order, strategy, lower, upper):
-    if lower > upper or not array: 
-        return array
-    pivot = None
-    if (strategy == Pivot.FIRST):       
-        pivot = lower
-    elif (strategy == Pivot.LAST):      
-        pivot = upper
-    elif (strategy == Pivot.RANDOM):    
-        pivot = random.randrange(lower, (upper+1))
-    elif (strategy == Pivot.MEDIAN):    
-        pivot = _median_of_three(array, lower, upper)
-    pivot = _partition(array, order, pivot, lower, upper)
-    quicksort(array, order, strategy, lower,     pivot - 1)
-    quicksort(array, order, strategy, pivot + 1, upper)
-    return array
-def _partition(array, order, pivot, lower, upper):
-    array[pivot], array[upper] = array[upper], array[pivot]
-    idx = lower
-    for j in range(lower, upper):
-        if (order == Order.ASC  and array[j] < array[upper] or 
-            order == Order.DESC and array[j] > array[upper]):  
-            array[idx], array[j] = array[j], array[idx]
-            idx += 1
-    array[idx], array[upper] = array[upper], array[idx]
-    return idx
-def _median_of_three(array, lower, upper):
-    mid =  (lower + upper) // 2
-    a = array[lower]
-    b = array[mid]
-    c = array[upper]
-    if a <= b <= c or c <= b <= a:
-        return mid
-    if a <= c <= b or b <= c <= a:
-        return upper
-    return lower
+def quicksort(l:list) -> list:
+    arr = l[::]
+    if len(arr) <= 1:
+        return arr
+    l = [x for x in arr[1:] if x <= arr[0]]
+    r = [x for x in arr[1:] if x > arr[0]]
+    return quicksort(l) + arr[0:1] + quicksort(r)

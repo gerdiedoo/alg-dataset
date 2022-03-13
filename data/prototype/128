@@ -1,38 +1,36 @@
-import java.util.Scanner;
-public class Main {
-	public static void main(String[] args) {
-		int choice, key;
-		HashMap h = new HashMap(7);
-		while (true) {
-			System.out.println("Enter your Choice :");
-			System.out.println("1. Add Key");
-			System.out.println("2. Delete Key");
-			System.out.println("3. Print Table");
-			System.out.println("4. Exit");
-			Scanner In = new Scanner(System.in);
-			choice = In.nextInt();
-			switch (choice) {
-				case 1: {
-					System.out.println("Enter the Key: ");
-					key = In.nextInt();
-					h.insertHash(key);
-					break;
-				}
-				case 2: {
-					System.out.println("Enter the Key delete:  ");
-					key = In.nextInt();
-					h.deleteHash(key);
-					break;
-				}
-				case 3: {
-					System.out.println("Print table");
-					h.displayHashtable();
-					break;
-				}
-				case 4: {
-					return;
-				}	
-			}
-		}
-	}
+package assignment6;
+import java.util.*;
+public class StringCollClient
+{
+   public static final String SENTINEL = "###";
+   public static void main(String[] args)
+   {
+      String input; Scanner keyboard=new Scanner(System.in);
+      StringColl P=new StringColl(), N=new StringColl(), L= new StringColl();
+      System.out.println("Enter a +String to be inserted or a -String to be removed or ### to quit:");
+      input=keyboard.nextLine();
+      while(!(input.equals(SENTINEL)))
+      {
+         if (input.charAt(0) == '+') {P.insert(input.substring(1)); L.insert(input.substring(1));}
+         else if(input.charAt(0) == '-') {N.insert(input.substring(1)); L.omit(input.substring(1));}
+         System.out.println("Enter next string to be inserted or removed or ### to quit:");
+         input=keyboard.nextLine();
+      }
+      System.out.println("\nThe inputs in collection P are:");
+      P.print();
+      System.out.println("\nThe inputs in collection N are:");
+      N.print();
+      System.out.println("\nThe inputs in collection L are:");
+      L.print();
+      if (P.equals(L)) System.out.println("\nP and L are equal.");
+      else System.out.println("\nP and L are NOT equal.");
+      StringColl A=new StringColl(); A.copy(L);
+      System.out.println("\nThe inputs in the copy of L are:\n");
+      A.print();
+      String x = "test";
+      if(P.belongs(x))
+         System.out.println("\n" + x + " is in collection P");
+      else
+         System.out.println("\n" + x + " is not in collection P");
+   }
 }

@@ -1,51 +1,28 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
+import java.util.*;
+public class Binary {
+	int binSearch(int arr[], int target) {
+		int low = 0;
+		int high = arr.length - 1;
+		while (low <= high) {
+			int mid = (low + high) / 2;   
+			if (arr[mid] == target)
+				return mid;
+			if (target > arr[mid])       
+				low = mid + 1;
+			else {
+				high = mid - 1;         
+			}
+		}
+		return -1;
+	}
+	public static void main(String arg[]) {
+		Binary b = new Binary();
+		int arr[] = { 2, 4, 5, 7, 23, 31, 34, 43, 45 };
+		int ans = b.binSearch(arr, 46);
+		if (ans == -1)
+			System.out.println("The element is not found");
+		else {
+			System.out.println("Element is found at postion = " + (ans + 1));
+		}
+	}
 }
-class Queue {
-  constructor() {
-    this.first = null;
-    this.last = null;
-    this.length = 0;
-  }
-  peek() {
-    return this.first;
-  }
-  enqueue(value) {
-    const newNode = new Node(value);
-    if (!this.length) {
-      this.first = newNode;
-      this.last = newNode;
-    } else {
-      this.last.next = newNode;
-      this.last = newNode;
-    }
-    this.length++;
-  }
-  dequeue() {
-    if (!this.length) {
-      return null;
-    }
-    if (this.first === this.last) {
-      this.last = null;
-    }
-    const removedNode = this.first;
-    this.first = this.first.next;
-    this.length--;
-    return removedNode;
-  }
-}
-const myQueue = new Queue();
-console.log(myQueue.peek());
-myQueue.enqueue('Michael');
-console.log(myQueue.peek());
-myQueue.enqueue('Dwight');
-myQueue.enqueue('Jim');
-console.log(JSON.stringify(myQueue));
-console.log(myQueue.dequeue());
-console.log(JSON.stringify(myQueue));
-console.log(myQueue.dequeue());
-console.log(myQueue.dequeue());
-console.log(JSON.stringify(myQueue));

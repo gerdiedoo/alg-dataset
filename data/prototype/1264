@@ -1,33 +1,52 @@
-package com.aokolnychyi.sorting;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-public class SelectionSort {
-  public static <T extends Comparable<? super T>> void sort(List<T> elements) {
-    for (int outerIndex = 0; outerIndex < elements.size(); outerIndex++) {
-      int currentMinElementIndex = outerIndex;
-      for (int innerIndex = outerIndex + 1; innerIndex < elements.size(); innerIndex++) {
-        T currentMinElement = elements.get(currentMinElementIndex);
-        T currentElement = elements.get(innerIndex);
-        if (currentElement.compareTo(currentMinElement) < 0) {
-          currentMinElementIndex = innerIndex;
-        }
-      }
-      if (currentMinElementIndex != outerIndex) {
-        Collections.swap(elements, currentMinElementIndex, outerIndex);
-      }
-    }
-  }
-  public static void main(String[] args) {
-    final List<Integer> list = new ArrayList<>();
-    list.add(4);
-    list.add(1);
-    list.add(5);
-    list.add(3);
-    list.add(9);
-    list.add(10);
-    list.add(1);
-    sort(list);
-    System.out.println(list);
-  }
+public class Sorting {
+	public static void SortStrings(String[] A)
+	{
+		boolean haveSwapped = true;
+		String temp;
+		while (haveSwapped == true)
+		{
+			haveSwapped = false;
+			for (int i = 0; i < A.length - 1; i++)
+			{
+				if (A[i+1].compareToIgnoreCase(A[i]) < 0)
+				{
+					haveSwapped = true;
+					temp = A[i];
+					A[i] = A[i+1];
+					A[i+1] = temp;
+				}
+			}
+		}
+	}
+	public static int[] SelectionSort(int[] A)
+	{
+		int temp = A[0];
+		int largest = A[0];
+		int [] sortedNumbers = new int[A.length];
+		for (int a = 0; a < A.length; a++)
+		{
+			for (int i = 0; i < A.length; i++)
+			{
+				if (temp > (A[i]))
+				{
+					temp = A[i];
+				}
+				if (largest < A[i])
+				{
+					largest = A[i];
+				}
+			}
+			sortedNumbers[a] = temp;
+			for (int i = 0; i < A.length; i++)
+			{
+				if (A[i] == temp)
+				{
+					A[i] = largest + 1;
+					break;
+				}
+			}
+			temp = largest;
+		}
+		return sortedNumbers;	
+	}
 }

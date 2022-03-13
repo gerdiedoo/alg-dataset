@@ -1,42 +1,74 @@
-public class MapEntry<K, V> {
-    private boolean removed;
-    private K key;
-    private V value;
-    public MapEntry(K k, V v) {
-        key = k;
-        value = v;
-    }
-    public boolean isRemoved() {
-        return removed;
-    }
-    public void setRemoved(boolean removed) {
-        this.removed = removed;
-    }
-    public K getKey() {
-        return key;
-    }
-    public void setKey(K key) {
-        this.key = key;
-    }
-    public V getValue() {
-        return value;
-    }
-    public void setValue(V value) {
-        this.value = value;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof MapEntry)) {
-            return false;
-        } else {
-            MapEntry<K, V> that = (MapEntry<K, V>) o;
-            return that.getKey().equals(key) && that.getValue().equals(value)
-                    && (that.isRemoved() == removed);
+package com.blogspot.mydailyjava.weaklockfree;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+public class WeakConcurrentSet<V> implements Runnable, Iterable<V> {
+    final WeakConcurrentMap<V, Boolean> target;
+    public WeakConcurrentSet(Cleaner cleaner) {
+        switch (cleaner) {
+            case INLINE:
+                target = new WeakConcurrentMap.WithInlinedExpunction<V, Boolean>();
+                break;
+            case THREAD:
+            case MANUAL:
+                target = new WeakConcurrentMap<V, Boolean>(cleaner == Cleaner.THREAD);
+                break;
+            default:
+                throw new AssertionError();
         }
     }
+    public boolean add(V value) {
+        return target.put(value, Boolean.TRUE) == null;  
+    }
+    public boolean contains(V value) {
+        return target.containsKey(value);
+    }
+    public boolean remove(V value) {
+        return target.remove(value) != null;  
+    }
+    public void clear() {
+        target.clear();
+    }
+    public int approximateSize() {
+        return target.approximateSize();
+    }
     @Override
-    public String toString() {
-        return String.format("%s%s: %s", removed ? "(Removed) " : "",
-                key.toString(), value.toString());
+    public void run() {
+        target.run();
+    }
+    public enum Cleaner {
+        THREAD, INLINE, MANUAL
+    }
+    public void expungeStaleEntries() {
+        target.expungeStaleEntries();
+    }
+    public Thread getCleanerThread() {
+        return target.getCleanerThread();
+    }
+    @Override
+    public Iterator<V> iterator() {
+        return new ReducingIterator<V>(target.iterator());
+    }
+    @Override
+    public String toString(){
+        return Collections.newSetFromMap(target.target).toString();
+    }
+    private static class ReducingIterator<V> implements Iterator<V> {
+        private final Iterator<Map.Entry<V, Boolean>> iterator;
+        private ReducingIterator(Iterator<Map.Entry<V, Boolean>> iterator) {
+            this.iterator = iterator;
+        }
+        @Override
+        public void remove() {
+            iterator.remove();
+        }
+        @Override
+        public V next() {
+            return iterator.next().getKey();
+        }
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
     }
 }

@@ -1,26 +1,37 @@
-package com.mehmetpekdemir.sort.mergesort;
-public final class MergeSort {
-	public static void sort(int[] array, int start, int end) {
-		if (end - start < 2) {
-			return;
-		}
-		final int mid = (start + end) / 2;
-		sort(array, start, mid);
-		sort(array, mid, end);
-		merge(array, start, mid, end);
-	}
-	private static void merge(int[] array, int start, int mid, int end) {
-		if (array[mid - 1] <= array[mid]) {
-			return;
-		}
-		int i = start;
-		int j = mid;
-		int tempIndex = 0;
-		int[] temp = new int[end - start];
-		while (i < mid && j < end) {
-			temp[tempIndex++] = array[i] <= array[j] ? array[i++] : array[j++];
-		}
-		System.arraycopy(array, i, array, start + tempIndex, mid - i);
-		System.arraycopy(temp, 0, array, start, tempIndex);
-	}
+export default function MergeSortRecursive(items: number[]): number[] {
+  return _divide(items);
+}
+const _items: Array<Array<number>> = [];
+function _divide(array: Array<number>): any {
+  switch (array.length) {
+    case 1:
+      _items.push(array);
+      return _items;
+    default: {
+      const middle = Math.floor(array.length / 2);
+      const first = array.splice(middle);
+      return _merge(_divide(first), _divide(array));
+    }
+  }
+}
+function _merge(first: Array<number>, second: Array<number>): Array<number> {
+  const merged = [];
+  const [target, source] =
+    first.length > second.length ? [first, second] : [second, first];
+  for (let i = 0; i < target.length && i < source.length; i++) {
+    if (target[i] < source[i]) {
+      merged.push(target[i]);
+      merged.push(source[i]);
+    } else {
+      merged.push(source[i]);
+      merged.push(target[i]);
+    }
+  }
+  if (merged.length < target.length + source.length) {
+    const diff = target.length - source.length;
+    for (let i = target.length - diff; i < target.length; i++) {
+      merged.push(target[i]);
+    }
+  }
+  return merged;
 }

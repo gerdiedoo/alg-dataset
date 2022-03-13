@@ -1,27 +1,15 @@
-from strategy import Order, BadOrderError
-import sys
-__author__ = "Pablo Acereda"
-__copyright__ = "Copyright 2020"
-__credits__ = [ "Pablo Acereda" ]
-__license__ = "Apache License 2.0"
-__version__ = "1.0"
-__maintainer__ = "Pablo Acereda"
-__email__ = "p.aceredag@gmail.com"
-def sort(array:list, order:Order=Order.ASC) -> list:
-    if (order not in [Order.ASC, Order.DESC]):
-        raise BadOrderError("Not Valid Ordering Preference")
-    num_elements:int = len(array)
-    for i in range(num_elements):
-        swapped:bool = False
-        for j in range(num_elements - i - 1):
-            if   (order == Order.ASC):  
-                if (array[j] > array[j + 1]):
-                    array[j], array[j + 1] = array[j + 1], array[j]
-                    swapped = True
-            elif (order == Order.DESC): 
-                if (array[j] < array[j + 1]):
-                    array[j], array[j + 1] = array[j + 1], array[j]
-                    swapped = True
-        if not swapped:
-            break
-    return array        
+def swap(array, i, j):
+    tmp = array[i]
+    array[i] = array[j]
+    array[j] = tmp
+def bubblesort(array):
+    n = len(array)-1
+    for i in range(0, len(array)):
+        for j in range(0, n):
+            if array[j] > array[j+1]:
+                swap(array, j+1, j)
+        n -= 1
+if __name__ == "__main__":
+    array = [17, 9, 13, 8, 7, -5, 6, 11, 3, 4, 1, 2]
+    bubblesort(array)
+    print array

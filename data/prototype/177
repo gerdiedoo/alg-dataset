@@ -1,154 +1,78 @@
-package assignment6;
-import java.util.*;
-public class StringColl {
-    private btNode c;  
-    private int howmany;  
-    public StringColl() {
-        c = null;  
-        howmany = 0;  
+package Lists.DoublyLinkedList;
+public class EmployeeDoublyLinkedList {
+    private EmployeeNode head;
+    private EmployeeNode tail;
+    private int size;
+    public void addToFront(Employee employee) {
+        EmployeeNode node = new EmployeeNode(employee);
+        if (head == null) {  
+            tail = node;
+        }
+        else {
+            head.setPrevious(node);  
+            node.setNext(head);  
+        }
+        head = node;  
+        size++;
     }
-    public StringColl(int i) {
-        c = null;
-        howmany = 0;
+    public void addToEnd(Employee employee) {
+        EmployeeNode node = new EmployeeNode(employee);
+        if (tail == null) {  
+            head = node;
+        }
+        else {
+            tail.setNext(node);  
+            node.setPrevious(tail);  
+        }
+        tail = node;  
+        size++;
     }
-    public void copy(StringColl obj) {
-        if (this != obj) {  
-            howmany = obj.howmany;  
-            c = copytree(obj.c);  
+    public EmployeeNode removeFromFront() {
+        if (isEmpty()) {
+            return null;
         }
+        EmployeeNode removedNode = head;  
+        if (head.getNext() == null) {  
+            tail = null;
+        }
+        else {
+            head.getNext().setPrevious(null);  
+        }
+        head = head.getNext();  
+        size--;
+        removedNode.setNext(null);  
+        return removedNode;  
     }
-    private static btNode copytree(btNode t) {
-        btNode root = null;  
-        if (t != null) {  
-            root = new btNode();  
-            root.info = t.info;  
-            root.left = copytree(t.left);  
-            root.right = copytree(t.right);  
+    public EmployeeNode removeFromEnd() {
+        if (isEmpty()) {
+            return null;
         }
-        return root;  
+        EmployeeNode removedNode = tail;  
+        if (tail.getPrevious() == null) {  
+            head = null;
+        }
+        else {
+            tail.getPrevious().setNext(null);  
+        }
+        tail = tail.getPrevious();  
+        size--;
+        removedNode.setPrevious(null);  
+        return removedNode;  
     }
-    public boolean belongs(String i) {
-        btNode p = c;  
-        while ((p != null) && !(p.info.equals(i))) {  
-            if (p.info.compareTo(i) > 0) {  
-                p = p.left;  
-            } else {
-                p = p.right;  
-            }
-        }
-        return (p != null);  
-    }    
-    public void insert(String i) {
-        btNode pred = null, p = c;  
-        while ((p != null) && !(p.info.equals(i))) {  
-            pred = p;  
-            if (p.info.compareTo(i) > 0) p = p.left;  
-            else p = p.right;  
-        }
-        if (p == null) {  
-            howmany++;  
-            p = new btNode(i, null, null);  
-            if (pred != null) {  
-                if (pred.info.compareTo(i) > 0) pred.left = p;  
-                else pred.right = p;  
-            } else c = p;  
-        }
+    public int getSize() {
+        return size;
     }
-    public void omit(String i) {
-        btNode p = c, pred = null;  
-        while ((p != null) && !(p.info.equals(i))) {  
-            pred = p;  
-            if (p.info.compareTo(i) > 0) p = p.left;  
-            else p = p.right;  
-        }
-        if (p != null) {  
-            if (pred == null) {  
-                if (p.left != null) {  
-                    btNode last = p;  
-                    pred = p.left;  
-                    p = p.left.right;  
-                    while (p != null) {  
-                        last = pred;  
-                        pred = p;  
-                        p = p.right;  
-                    } 
-                    c.info = pred.info;  
-                    if (last == c) c.left = pred.left;  
-                    else last.right = pred.left;  
-                } else {
-                    c = c.right;  
-                }
-            } else {
-                if (p.left != null) {  
-                    if(p.right != null) {  
-                        btNode d = p, last = p;  
-                        pred = d.left;  
-                        d = d.left.right;  
-                        while (d != null) {  
-                            last = pred;  
-                            pred = d;  
-                            d = d.right;  
-                        }
-                        p.info = pred.info;  
-                        if (last == p) last.left = pred.left;  
-                        else last.right = pred.left;  
-                    } else {
-                        if (pred.info.compareTo(p.info) > 0) pred.left = p.left;  
-                        else pred.right = p.left;  
-                    }
-                } else {
-                    if (pred.info.compareTo(p.info) > 0) pred.left = p.right;  
-                    else pred.right = p.right;  
-                }
-            }
-            howmany--;  
-        }
+    public boolean isEmpty() {
+        return head == null;
     }
-    public int get_howmany() {
-        return howmany;
-    }
-    public void print() {
-        printtree(c);
-    }
-    private static void printtree(btNode t) {
-        if (t != null) {
-            printtree(t.left);
-            System.out.println(t.info);
-            printtree(t.right);
+    public void printList() {
+        EmployeeNode current = head;
+        System.out.print("HEAD -> ");
+        while (current != null) {
+            System.out.print(current);
+            System.out.print(" <=> ");
+            current = current.getNext();
         }
-    }
-    public boolean equals(StringColl obj) {
-        int j = 0; boolean result = (howmany == obj.howmany);  
-        if (result) {  
-            String[] a = new String[howmany];  
-            String[] b = new String[howmany];  
-            toarray(c, a, 0);  
-            toarray(obj.c, b, 0);  
-            j = 0;  
-            while ((result) && (j < howmany)) {  
-                result = (a[j].equals(b[j])); j++;  
-            }
-        }
-        return result;  
-    }
-    private static int toarray(btNode t, String[] a, int i) {
-        int num_nodes = 0;  
-        if (t != null) {  
-            num_nodes = toarray(t.left, a, i);  
-            a[num_nodes + i] = t.info;  
-            num_nodes = num_nodes + 1 + toarray(t.right, a, num_nodes + i + 1);  
-        }
-        return num_nodes;  
-    }
-    private static class btNode {
-        private String info;
-        private btNode left;
-        private btNode right;
-        private btNode(String s, btNode lt, btNode rt) {
-            info = s; left = lt; right = rt;
-        }
-        private btNode() {
-            info = null; left = null; right = null;
-        }
+        System.out.println("null");
     }
 }

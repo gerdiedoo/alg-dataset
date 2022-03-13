@@ -1,53 +1,154 @@
-package Lists.DoublyLinkedList;
-public class Employee {
-    private String firstName;
-    private String lastName;
-    private int id;
-    public Employee(String firstName, String lastName, int id) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
+package LinkedList;
+public class SinglyLinkedList {
+    private static class ListNode {
+        private final int data;
+        private ListNode next;
+        public  ListNode(int data) {
+            this.data = data ;
+            this.next = null ;
+        }
     }
-    public String getFirstName() {
-        return firstName;
+    private  static ListNode head;
+    private void length() {
+        int counter = 0;
+        ListNode current = head;
+        while(current != null) {
+            counter++;
+            current = current.next;
+        }
+        System.out.println("\n"+"Length of list is :" + counter);
     }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    private void Search(int SearchKey) {
+        if(head == null) {
+            System.out.println("SearchKey not found!!");
+        }
+        ListNode current = head ;
+        int counter = -1;
+        while (current != null) {
+            counter ++ ;
+            if(current.data == SearchKey) {
+                System.out.println("SearchKey Found at " + counter + " node" );
+                return;
+            }
+            current = current.next ;
+        }
+        System.out.println("SearchKey not Found!!");
     }
-    public String getLastName() {
-        return lastName;
+    private void display(ListNode head) {
+        ListNode current = head ;
+        while(current != null ) {
+            System.out.print(current.data + "-->");
+            current = current.next;
+        }
+        System.out.print("null");
     }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    private void insertFirst(int value) {
+        ListNode newNode = new ListNode(value);
+        newNode.next = head ;
+        head = newNode ;
     }
-    public int getId() {
-        return id;
+    private void insertEnd(int value) {
+        ListNode newNode = new ListNode(value);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        ListNode current = head ;
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = newNode;
     }
-    public void setId(int id) {
-        this.id = id;
+    private void findMiddleNode() {
+        ListNode fastPtr = head ;
+        ListNode slowPtr = head ;
+        while (fastPtr != null && fastPtr.next != null) {
+            slowPtr = slowPtr.next ;
+            fastPtr = fastPtr.next.next;
+        }
+        assert slowPtr != null;
+        System.out.println(slowPtr.data);
     }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        if (id != employee.id) return false;
-        if (!firstName.equals(employee.firstName)) return false;
-        return lastName.equals(employee.lastName);
+    private ListNode insertInSortedList(int value) {
+        ListNode newNode = new ListNode(value);
+        if(head == null) {
+            return newNode;
+        }
+        ListNode current = head;
+        ListNode temp = null;
+        while (current != null && current.data < newNode.data) {
+            temp = current ;
+            current = current.next;
+        }
+        newNode.next = current;
+        assert temp != null;
+        temp.next = newNode ;
+        return head;
     }
-    @Override
-    public int hashCode() {
-        int result = firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + id;
-        return result;
+    private void getNthNodeFromEnd(int n) {
+        if(head == null) {
+            return ;
+        }
+        if(n <= 0) {
+            throw  new IllegalArgumentException("Invalid Value:"+n);
+        }
+        ListNode mainPtr = head;
+        ListNode refPtr = head ;
+        int count = 0;
+        while (count < n) {
+            if(refPtr == null) {
+                throw new IllegalArgumentException(n + " is greater than number of nodes in the list");
+            }
+            refPtr = refPtr.next;
+            count++;
+        }
+        while (refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+        System.out.println(mainPtr.data);
     }
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", id=" + id +
-                '}';
+    private ListNode reverseList() {
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next ;
+        while (current != null) {
+            next = current.next ;
+            current.next = previous ;
+            previous = current ;
+            current = next ;
+        }
+        return  previous;
+    }
+    private void deleteNode(int Key) {
+        ListNode current = head;
+        ListNode temp = null;
+        if(current != null && current.data == Key) {
+            head = current.next;
+            return;
+        }
+        while (current != null && current.data != Key) {
+            temp = current ;
+            current = current.next;
+        }
+        if(current == null) {
+            return;
+        }
+        temp.next = current.next;
+    }
+    private boolean detectLoop() {
+        ListNode fastPtr = head ;
+        ListNode slowPtr = head ;
+        while (fastPtr != null && fastPtr.next !=null) {
+            fastPtr = fastPtr.next.next ;
+            slowPtr = slowPtr.next;
+            if(slowPtr == fastPtr) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[]  args) {
+          SinglyLinkedList sll = new SinglyLinkedList();
     }
 }

@@ -1,33 +1,29 @@
-package io.nayuki.sortalgodemo.algo;
-import io.nayuki.sortalgodemo.core.AbstractSortAlgorithm;
-import io.nayuki.sortalgodemo.core.SortAlgorithm;
-import io.nayuki.sortalgodemo.core.SortArray;
-public final class InsertionSortBinarySearch extends AbstractSortAlgorithm {
-	public static final SortAlgorithm INSTANCE = new InsertionSortBinarySearch();
-	public void sort(SortArray array) {
-		int length = array.length();
-		array.setRange(0, length, SortArray.ElementState.INACTIVE);
-		for (int i = 0; i < length; i++) {
-			int index = binarySearch(array, i, 0, i);
-			for (int j = i; j - 1 >= index; j--)
-				array.swap(j, j - 1);
-		}
-		array.setRange(0, length, SortArray.ElementState.DONE);
-	}
-	private static int binarySearch(SortArray array, int index, int start, int end) {
-		while (start != end) {
-			int mid = (start + end) / 2;
-			int temp = array.compare(index, mid);
-			if (temp < 0)
-				end = mid;
-			else if (temp > 0)
-				start = mid + 1;
-			else
-				return mid;
-		}
-		return start;
-	}
-	private InsertionSortBinarySearch() {
-		super("Insertion sort (binary search)");
-	}
-}
+def merge(array, left, right):
+    mid = (left + right) // 2
+    l = array[left:mid + 1]
+    r = array[mid + 1:right + 1]
+    k = left
+    while l and r:
+        if l[0] < r[0]:
+            array[k] = l.pop(0)
+        else:
+            array[k] = r.pop(0)
+        k += 1
+    while l:
+        array[k] = l.pop(0)
+        k += 1
+    while r:
+        array[k] = r.pop(0)
+        k += 1
+def merge_sort(array, left, right):
+    if left < right:
+        mid = (left + right) // 2
+        merge_sort(array, left, mid)
+        merge_sort(array, mid + 1, right)
+        merge(array, left, right)
+def main():
+    a = [15, 19, 18, 26, 456, 87, 45, -1, 558897984]
+    merge_sort(a, 0, len(a) - 1)
+    print(a)
+if __name__ == '__main__':
+    main()

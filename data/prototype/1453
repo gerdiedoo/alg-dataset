@@ -1,37 +1,56 @@
-from __future__ import print_function
-def cycle_sort(array):
-    ans = 0
-    for cycleStart in range(0, len(array) - 1):
-        item = array[cycleStart]
-        pos = cycleStart
-        for i in range(cycleStart + 1, len(array)):
-            if array[i] < item:
-                pos += 1
-        if pos == cycleStart:
-            continue
-        while item == array[pos]:
-            pos += 1
-        array[pos], item = item, array[pos]
-        ans += 1
-        while pos != cycleStart:
-            pos = cycleStart
-            for i in range(cycleStart + 1, len(array)):
-                if array[i] < item:
-                    pos += 1
-            while item == array[pos]:
-                pos += 1
-            array[pos], item = item, array[pos]
-            ans += 1
-    return ans
-if __name__ == '__main__':
-    try:
-        raw_input          
-    except NameError:
-        raw_input = input  
-user_input = raw_input('Enter numbers separated by a comma:\n')
-unsorted = [int(item) for item in user_input.split(',')]
-n = len(unsorted)
-cycle_sort(unsorted)
-print("After sort : ")
-for i in range(0, n):
-    print(unsorted[i], end=' ')
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class CircularLinkedList:
+    def __init__(self):
+        self.head = None
+    def prepend(self, data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+            new_node.next = self.head
+        else:
+            new_node = Node(data)
+            new_node.next = self.head
+            cur = self.head
+            while cur.next is not self.head:
+                cur = cur.next
+            cur.next = new_node
+            self.head = new_node
+    def append(self, data):  
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+            self.head.next = self.head
+        else:
+            new_node = Node(data)
+            cur = self.head
+            while cur.next is not self.head:
+                cur = cur.next
+            cur.next = new_node
+            new_node.next = self.head
+    def __str__(self):  
+        if self.head is None:
+            return "List is Empty"
+        else:
+            st = ""
+            cur = self.head
+            while cur:
+                st += str(cur.data) + " "
+                cur = cur.next
+                if cur is self.head:
+                    break
+            return st
+if __name__ == "__main__":
+    cLL = CircularLinkedList()
+    cLL.prepend(100)
+    cLL.prepend(200)
+    cLL.append(10)
+    print(cLL)  
+    cLL.append(20)
+    cLL.append(30)
+    cLL.append(40)
+    print(cLL)  
+    cLL.prepend(200)
+    print(cLL)  

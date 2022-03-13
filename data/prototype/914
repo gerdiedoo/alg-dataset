@@ -1,26 +1,26 @@
-def mergeSort(list):
-    if len(list) > 1:
-        midPointer = len(list) // 2
-        left = list[:midPointer]
-        right = list[midPointer:]
-        mergeSort(left)
-        mergeSort(right)
+def merge_sort(obj):
+    if len(obj) > 1:
+        mid = len(obj)/2
+        left = obj[:mid]
+        right = obj[mid:]
+        merge_sort(left)
+        merge_sort(right)
         i = 0
         j = 0
         k = 0
-        while (i < len(left)) and (j < len(right)):
+        while i < len(left) and j < len(right):
             if left[i] < right[j]:
-                list[k] = left[i]
+                obj[k] = left[i]
                 i += 1
             else:
-                list[k] = right[j]
+                obj[k] = right[j]
                 j += 1
             k += 1
         while i < len(left):
-            list[k] = left[i]
+            obj[k] = left[i]
             i += 1
             k += 1
         while j < len(right):
-            list[k] = right[j]
+            obj[k] = right[j]
             j += 1
             k += 1

@@ -1,78 +1,103 @@
-package Lists.DoublyLinkedList;
-public class EmployeeDoublyLinkedList {
-    private EmployeeNode head;
-    private EmployeeNode tail;
-    private int size;
-    public void addToFront(Employee employee) {
-        EmployeeNode node = new EmployeeNode(employee);
-        if (head == null) {  
-            tail = node;
-        }
-        else {
-            head.setPrevious(node);  
-            node.setNext(head);  
-        }
-        head = node;  
-        size++;
-    }
-    public void addToEnd(Employee employee) {
-        EmployeeNode node = new EmployeeNode(employee);
-        if (tail == null) {  
-            head = node;
-        }
-        else {
-            tail.setNext(node);  
-            node.setPrevious(tail);  
-        }
-        tail = node;  
-        size++;
-    }
-    public EmployeeNode removeFromFront() {
-        if (isEmpty()) {
-            return null;
-        }
-        EmployeeNode removedNode = head;  
-        if (head.getNext() == null) {  
-            tail = null;
-        }
-        else {
-            head.getNext().setPrevious(null);  
-        }
-        head = head.getNext();  
-        size--;
-        removedNode.setNext(null);  
-        return removedNode;  
-    }
-    public EmployeeNode removeFromEnd() {
-        if (isEmpty()) {
-            return null;
-        }
-        EmployeeNode removedNode = tail;  
-        if (tail.getPrevious() == null) {  
-            head = null;
-        }
-        else {
-            tail.getPrevious().setNext(null);  
-        }
-        tail = tail.getPrevious();  
-        size--;
-        removedNode.setPrevious(null);  
-        return removedNode;  
-    }
-    public int getSize() {
-        return size;
-    }
-    public boolean isEmpty() {
-        return head == null;
-    }
-    public void printList() {
-        EmployeeNode current = head;
-        System.out.print("HEAD -> ");
-        while (current != null) {
-            System.out.print(current);
-            System.out.print(" <=> ");
-            current = current.getNext();
-        }
-        System.out.println("null");
-    }
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
+class SinglyLinkedList {
+  constructor(value) {
+    this.head = new Node(value);
+    this.tail = this.head;
+    this.length = 1;
+  }
+  printLinkedList() {
+    let currentNode = this.head;
+    const listElements = [];
+    while (currentNode) {
+      listElements.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    console.log(listElements);
+  }
+  append(value) {
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+  }
+  prepend(value) {
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+  }
+  _traverseToIndex(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter != index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  insert(index, value) {
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+    if (index >= this.length) {
+      this.append(value);
+      return;
+    }
+    const newNode = new Node(value);
+    const leader = this._traverseToIndex(index - 1);
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+  }
+  remove(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+    const leader = this._traverseToIndex(index - 1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
+  }
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while(second) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+  }
+}
+const myLinkedList = new SinglyLinkedList(10);
+myLinkedList.printLinkedList();
+myLinkedList.append(20);
+myLinkedList.append(30);
+myLinkedList.prepend(1);
+myLinkedList.printLinkedList();
+console.log(JSON.stringify(myLinkedList));
+myLinkedList.insert(2, 99);
+myLinkedList.insert(2, 69);
+myLinkedList.insert(0, 420);
+myLinkedList.insert(20, 666);
+myLinkedList.printLinkedList();
+myLinkedList.remove(0);
+myLinkedList.remove(2);
+myLinkedList.remove(5);
+myLinkedList.printLinkedList();
+myLinkedList.reverse();
+myLinkedList.printLinkedList();

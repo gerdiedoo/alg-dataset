@@ -1,18 +1,16 @@
-package sortAlgorithms;
-import helperUtils.Utility;
-public class SelectionSort {
-  public static void main(String argd[]) {
-    int[] inputArr = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
-    Utility.printArray(inputArr, true, "Selection Sort");
-    for (int sortedBoundary = inputArr.length - 1; sortedBoundary > 0; sortedBoundary--) {
-      int largestValIndex = 0;
-      for (int i = 1; i <= sortedBoundary; i++) {
-        if (inputArr[i] > inputArr[largestValIndex]) {
-          largestValIndex = i;
-        }
+const array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
+function selectionSort(array) {
+  for(let i = 0; i < array.length; i++) {
+    let min = i;
+    for(let j = i + 1; j < array.length; j++) {
+      if(array[j] < array[min]) {
+        min = j;
       }
-      Utility.swap(inputArr, largestValIndex, sortedBoundary);
     }
-    Utility.printArray(inputArr, false, null);
+    if(i !== min) {
+      [array[i], array[min]] = [array[min], array[i]];
+    }
   }
+  return array;
 }
+console.log(selectionSort(array));  

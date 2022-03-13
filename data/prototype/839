@@ -1,20 +1,18 @@
-def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
-    return merge(left, right, arr.copy())
-def merge(left, right, merged):
-    left_cursor, right_cursor = 0, 0
-    while left_cursor < len(left) and right_cursor < len(right):
-        if left[left_cursor] <= right[right_cursor]:
-            merged[left_cursor+right_cursor]=left[left_cursor]
-            left_cursor += 1
-        else:
-            merged[left_cursor + right_cursor] = right[right_cursor]
-            right_cursor += 1
-    for left_cursor in range(left_cursor, len(left)):
-        merged[left_cursor + right_cursor] = left[left_cursor]
-    for right_cursor in range(right_cursor, len(right)):
-        merged[left_cursor + right_cursor] = right[right_cursor]
-    return merged
+mergeSort = (function() {
+  function merge(left, right) {
+    var result = [];
+    for (var i = 0, j = 0; i < left.length && j < right.length;) {
+      if (left[i] < right[j])
+        result.push(left[i++]);
+      else
+        result.push(right[j++]);
+    }
+    return result.concat(left.slice(i)).concat(right.slice(j));
+  }
+  return function(array) {
+    if (array.length <= 1) return array;
+    var midpoint = array.length >> 1;
+    return merge(mergeSort(array.slice(0, midpoint)),
+                 mergeSort(array.slice(midpoint)));
+  };
+})();

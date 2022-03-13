@@ -1,17 +1,14 @@
-package com.jwetherell.algorithms.search;
-public class UpperBound {
-    private UpperBound() { }
-    public static int upperBound(int[] array, int length, int value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            final int mid = (low + high) / 2;
-            if (value >= array[mid]) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        return low;
-    }
-}
+def Bubble_Sort(A,n):
+    for k in range(1,n):
+        for i in range(0,n-1):
+            if(A[i]>A[i+1]):
+                A[i],A[i+1]=A[i+1],A[i]
+if __name__=="__main__":
+    print("Enter the elements in the array: ")
+    A=[]
+    A=list(map(int,input().split(" ")))
+    n=len(A)
+    Bubble_Sort(A,n)
+    print("Sorted Array: ",end="")
+    for i in range(0,n):
+        print(A[i],end=" ")

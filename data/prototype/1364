@@ -1,21 +1,147 @@
-function linearSearchIndexOf(arr, val) {
-  for (let i = 0; i < arr.length; i++) {
-    if (val === arr[i]) return i;
-  }
-  return -1;
-}
-function linearSearchIncludes(arr, val) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === val) {
-      return true;
+package com.company;
+public class HashMap<T> {
+    private int ARRAY_SIZE;
+    private NodeLinkedList<T>[] buckets;
+    int size;  
+    public HashMap(int size){
+        this.size = 0;
+        if (size > 0){
+            ARRAY_SIZE = size;
+            buckets = new NodeLinkedList[ARRAY_SIZE];
+        } else{
+            throw new IllegalArgumentException("Please set hash map size to be nonnegative" + size);
+        }
     }
-  }
-}
-function linearSearchFind(arr, func) {
-  for (let i = 0; i < arr.length; i++) {
-    if (func(arr[i]) === true) {
-      return arr[i];
+    public boolean set(String key, T value){
+        if (value == null || key == null){
+            return false;
+        }
+        int hash = hash(key);
+        if (this.load() == 1) {
+            System.out.println("You have exceeded the capacity of a hash map you declared. Use .delete() to remove elements");
+            return false;
+        }
+        if (buckets[hash] == null) {
+            buckets[hash] = new NodeLinkedList<>();
+            buckets[hash].set(key, value);
+        } else {
+            NodeLinkedList<T> NodeLinkedList = buckets[hash];
+            NodeLinkedList.set(key, value);
+        }
+        return true;
     }
-  }
-  return undefined;
+    public T get(String key){
+        if (key == null){
+            throw new IllegalArgumentException();
+        }
+        int hash = hash(key);
+        if (buckets[hash] != null){
+            return buckets[hash].get(key);
+        }
+        return null;
+    }
+    public T delete(String key) {
+        if (key == null){
+            throw new IllegalArgumentException();
+        }
+        int hash = hash(key);
+        if (buckets[hash] != null) {
+            return buckets[hash].delete(key);
+        }
+        return null;
+    }
+    public float load(){
+        return (float) (size * 1.0 / buckets.length);
+    }
+    private int hash(String key){
+        return Math.abs(key.hashCode() % ARRAY_SIZE);
+    }
+    private class NodeLinkedList<T> {
+        Node<T> head;
+        public Node<T> getHead() {
+            return head;
+        }
+        public void setHead(Node<T> head) {
+            this.head = head;
+        }
+        private boolean set(String key, T value){
+            Node<T> input = new Node(key, value);
+            if(head == null){
+                size++;
+                head = input;
+            }else{
+                Node<T> runner = head;
+                while(runner != null){
+                    if(runner.getKey().equals(key)){
+                        runner.setValue(value);
+                        return true;
+                    }
+                    runner = runner.getNext();
+                }
+                input.setNext(head);
+                head = input;
+                size++;
+            }
+            return true;
+        }
+        private T delete(String key){
+            int hash = hash(key);
+            Node<T> runner = head;
+            if(runner.getKey().equals(key)){
+                head = runner.getNext();
+                size --;
+                return runner.getValue();
+            }
+            while(runner.getNext() != null){
+                Node<T> next = runner.getNext();
+                if(next.getKey().equals(key)){
+                    runner.setNext(next.getNext());
+                    size--;
+                    return next.getValue();
+                }
+                runner = runner.getNext();
+            }
+            return null;
+        }
+        private T get(String key){
+            int hash = hash(key);
+            Node<T> runner = head;
+            while(runner != null){
+                if(runner.getKey().equals(key)){
+                    return runner.getValue();
+                }
+                runner = runner.getNext();
+            }
+            return null;
+        }
+    }
+    private class Node<T> {
+        private String key;
+        private T value;
+        private Node next;
+        public Node(){
+        }
+        public Node(String key, T value){
+            this.key = key;
+            this.value = value;
+        }
+        public String getKey() {
+            return key;
+        }
+        public void setKey(String key) {
+            this.key = key;
+        }
+        public T getValue() {
+            return value;
+        }
+        public void setValue(T value) {
+            this.value = value;
+        }
+        public Node getNext() {
+            return next;
+        }
+        public void setNext(Node next) {
+            this.next = next;
+        }
+    }
 }

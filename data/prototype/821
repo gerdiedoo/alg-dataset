@@ -1,52 +1,49 @@
-public class merge_sort 
-{
-    static void merge(int arr[], int l, int m, int r) {
-        int n1 = m-l+1;
-        int n2 = r-m;
-        int L[] = new int [n1];
-        int R[] = new int [n2];
-        for(int i=0; i<n1; i++)
-            L[i] = arr[l+i];
-        for(int j=0; j<n2; j++)
-            R[j] = arr[m+1+j];
-        int i = 0, j = 0;
-        int k = l;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
-            } else {
-                arr[k] = R[j];
-                j++;
-            }
-            k++;
-        }
-        while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
-        }
-        while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
-    }
-    static void MergeSort(int arr[], int l, int r) {
-        if (l < r) {
-            int m = (l+r)/2;
-            MergeSort(arr, l, m);
-            MergeSort(arr, m+1, r);
-            merge(arr, l, m, r);
-        }
-    }
-    static void printarray(int arr[]){
-        for(int i=0; i<arr.length; i++)
-            System.out.print(arr[i]+" ");
-    }
+import java.util.Scanner;
+public class MergeSort {
     public static void main(String args[]) {
-        int arr[] = {10, 54, 63, 6, 420};
-        MergeSort(arr, 0, arr.length-1);
-        printarray(arr);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of elements : ");
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        System.out.println("Enter " + n + " elements :");
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
+        mergeSort(arr, 0, n - 1);
+        System.out.println("\nThe sorted array : ;");
+        for (int i = 0; i < n; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+    static void mergeSort(int arr[], int lower, int upper) {
+        if (lower >= upper)
+            return;
+        int m = (lower + upper) / 2;
+        mergeSort(arr, lower, m);
+        mergeSort(arr, m + 1, upper);
+        merge(arr, lower, upper);
+    }
+    private static void merge(int arr[], int lower, int upper) {
+        int m = (lower + upper) / 2;
+        int a[] = new int[m - lower + 1];
+        int b[] = new int[upper - m];
+        int i, k = 0, k1 = 0, k2 = 0;
+        for (i = lower; i <= m; i++, k++)
+            a[k] = arr[i];
+        k = 0;
+        for (; i <= upper; i++, k++)
+            b[k] = arr[i];
+        for (i = lower; i <= upper && k1 < m - lower + 1 && k2 < upper - m; i++) {
+            if (a[k1] < b[k2]) {
+                arr[i] = a[k1];
+                k1++;
+            } else {
+                arr[i] = b[k2];
+                k2++;
+            }
+        }
+        for (; k1 < m - lower + 1; k1++)
+            arr[i++] = a[k1];
+        for (; k2 < upper - m; k2++)
+            arr[i++] = b[k2];
     }
 }

@@ -1,92 +1,105 @@
-package com.fullstory;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import static com.fullstory.CustomHashMapIterator.DEFAULT_INDEX;
-@SuppressWarnings({"WeakerAccess", "unused"})
-public class CustomHashMap<K, V> implements Iterable<KeyValuePojo<K, V>> {
-    private static int BUCKET_CAPACITY = 64;
-    private DoublyLinkedList<K, V>[] buckets;
-    private final Object editLock = new Object();
-    CustomHashMap(DoublyLinkedList<K, V>[] buckets, int capacity) {
-        this.buckets = buckets;
-        BUCKET_CAPACITY = capacity;
-    }
-    public CustomHashMap() {
-        init();
-    }
-    @SuppressWarnings("unchecked")
-    private void init() {
-        this.buckets = new DoublyLinkedList[BUCKET_CAPACITY];
-        for (int i = 0; i < BUCKET_CAPACITY; i++) {
-            this.buckets[i] = new DoublyLinkedList<>();
-        }
-    }
-    private int hash(K key) {
-        return Math.abs(key.hashCode()) % BUCKET_CAPACITY;
-    }
-    private DoublyLinkedList<K, V> fetchListHoldingKey(K key) {
-        int index = hash(key);
-        return this.buckets[index];
-    }
-    private Stream<DoublyLinkedList<K, V>> nonEmptyBucketsStream() {
-        return Arrays.stream(this.buckets).filter(bucket -> !bucket.isEmpty());
-    }
-    int getNextNonEmptyBucketFromIndex(int index) {
-        if (index >= BUCKET_CAPACITY)
-            return DEFAULT_INDEX;
-        int i = index;
-        while (i < BUCKET_CAPACITY && this.buckets[i].isEmpty())
-            i++;
-        return i == BUCKET_CAPACITY ? DEFAULT_INDEX : i;
-    }
-    DoublyLinkedList<K, V> getListInBucket(int index) {
-        return this.buckets[index];
-    }
-    public void put(K key, V value) {
-        synchronized (editLock) {
-            DoublyLinkedList<K, V> list = fetchListHoldingKey(key);
-            list.add(key, value);
-        }
-    }
-    public V get(K key) throws KeyNotFoundException {
-        return fetchListHoldingKey(key).fetchValueInNodeWithKey(key);
-    }
-    public V get(K key, V defaultValue) {
-        return fetchListHoldingKey(key).fetchValueInNodeWithKey(key, defaultValue);
-    }
-    public V getThreadSafe(K key, V defaultValue) {
-        synchronized (editLock) {
-            return fetchListHoldingKey(key).fetchValueInNodeWithKey(key, defaultValue);
-        }
-    }
-    public void remove(K key) throws KeyNotFoundException {
-        synchronized (editLock) {
-            DoublyLinkedList<K, V> listContainingNodeToRemove = this.fetchListHoldingKey(key);
-            if (!listContainingNodeToRemove.removeNodeWithKeyIfExists(key))
-                throw new KeyNotFoundException(key.toString());
-        }
-    }
-    public void clear() {
-        synchronized (editLock) {
-            init();
-            System.gc();
-        }
-    }
-    public Set<K> keys() {
-        return nonEmptyBucketsStream().flatMap(DoublyLinkedList::getAllKeys).collect(Collectors.toSet());
-    }
-    public List<V> values() {
-        return nonEmptyBucketsStream().flatMap(DoublyLinkedList::getAllValues).collect(Collectors.toList());
-    }
-    public List<KeyValuePojo<K, V>> keyValuePojo() {
-        return nonEmptyBucketsStream().flatMap(DoublyLinkedList::getAllPojo).collect(Collectors.toList());
-    }
-    public boolean isPresent(K key) {
-        return !fetchListHoldingKey(key).isEmpty();
-    }
-    @Override
-    public Iterator<KeyValuePojo<K, V>> iterator() {
-        return new CustomHashMapIterator<>(this, editLock);
-    }
-}
+from __future__ import print_function
+import math
+class HashTable(object):
+    DELETED = True
+    def __init__(self, capacity=1):
+        self.capacity = capacity
+        self.keys = [None] * self.capacity
+        self.values = [None] * self.capacity
+        self.length = 0
+    def add(self, key, value):
+        if self.length == self.capacity:
+            capacity = self.capacity * 2
+            self._change_capacity(capacity)
+        self._add(key, value)
+    def _add(self, key, value):
+        for i in range(self.capacity):
+            hash_value = hash_function(key, i, self.capacity)
+            element = self.keys[hash_value]
+            if element is None:
+                self.keys[hash_value] = key
+                self.values[hash_value] = value
+                self.length += 1
+                return self.values[hash_value]
+            elif element is self.DELETED:
+                pass
+            elif element == key:
+                self.values[hash_value] = value
+                return self.values[hash_value]
+        raise Exception('The hash table is full')
+    def _change_capacity(self, capacity):
+        newtable = HashTable(capacity)
+        for i, key in enumerate(self.keys):
+            if key is None or key is self.DELETED:
+                continue
+            newtable._add(key, self.values[i])
+        self.capacity = newtable.capacity
+        self.length = newtable.length
+        self.keys = newtable.keys
+        self.values = newtable.values
+    def get(self, key, default=None):
+        for i in range(self.capacity):
+            hash_value = hash_function(key, i, self.capacity)
+            element = self.keys[hash_value]
+            if element is None:
+                return default
+            elif element is self.DELETED:
+                pass
+            elif element == key:
+                return self.values[hash_value]
+        return default
+    def remove(self, key):
+        if self.length // self.capacity <= 1 / 4:
+            if self.length == 0:
+                capacity = 1
+            else:
+                capacity = 2 ** math.ceil(math.log(self.length, 2))
+            self._change_capacity(capacity)
+        return self._remove(key)
+    def _remove(self, key):
+        for i in range(self.capacity):
+            hash_value = hash_function(key, i, self.capacity)
+            element = self.keys[hash_value]
+            if element is None:
+                return None
+            elif element is self.DELETED:
+                pass
+            elif element == key:
+                self.keys[hash_value] = self.DELETED
+                self.length -= 1
+                return self.values[hash_value]
+        return None
+    def __len__(self):
+        return self.length
+    def __str__(self):
+        string = ''
+        for i, key in enumerate(self.keys):
+            if key is None:
+                continue
+            if key is self.DELETED:
+                continue
+            string += str(key) + ': ' + str(self.values[i]) + ', '
+        return '{' + string[:-2] + '}'
+def hash_function(key, item, size):
+    hash_value = hash_1(key, size)
+    if item == 0:
+        return hash_value
+    return (hash_value + item * hash_2(key, size - 1)) % size
+def hash_1(key, size):
+    return sum([i * 256 + ord(v_) for i, v_ in enumerate(str(key))]) % size
+def hash_2(key, size):
+    return sum([i * 256 + ord(v_) + i for i, v_ in enumerate(str(key))]) % size
+if __name__ in '__main__':
+    TABLE = HashTable()
+    for k in range(10):
+        print('add key', k, 'value', k * 10)
+        TABLE.add(k, k * 10)
+    print('\nhashtable:', TABLE, '\n')
+    print('keys', TABLE.keys)
+    print('values', TABLE.values, '\n')
+    for k in range(10):
+        print('remove key', k)
+        TABLE.remove(k)
+    print('\nhashtable:', TABLE, '\n')
+    print('keys', TABLE.keys)
+    print('values', TABLE.values, '\n')

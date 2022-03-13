@@ -1,29 +1,40 @@
-def quick_sort(num_list):
-   quick_sort_partition(num_list,0,len(num_list)-1)
-   return num_list 
-def quick_sort_partition(num_list,first,last):
-   if first<last:
-       split_point = partition(num_list,first,last)
-       quick_sort_partition(num_list,first,split_point-1)
-       quick_sort_partition(num_list,split_point+1,last)
-def partition(num_list,first,last):
-   pivot = num_list[first]
-   left_mart = first+1
-   right_mark = last
-   done = False
-   while not done:
-       while left_mart <= right_mark and num_list[left_mart] <= pivot:
-           left_mart = left_mart + 1
-       while num_list[right_mark] >= pivot and right_mark >= left_mart:
-           right_mark = right_mark -1
-       if right_mark < left_mart:
-           done = True
-       else:
-           temp = num_list[left_mart]
-           num_list[left_mart] = num_list[right_mark]
-           num_list[right_mark] = temp
-   temp = num_list[first]
-   num_list[first] = num_list[right_mark]
-   num_list[right_mark] = temp
-   return right_mark
-print quick_sort([54,26,93,17,77,31,44,55,20])
+package sortvisualiser.algorithms;
+import sortvisualiser.SortArray;
+public class QuickSort implements ISortAlgorithm {
+    private long stepDelay = 30;
+    private int findPivotPoint(SortArray array, int lowIndex, int highIndex) {
+        int pivotValue = array.getValue(highIndex);
+        int i = lowIndex - 1;
+        for (int j = lowIndex; j <= highIndex - 1; j++) {
+            if (array.getValue(j) <= pivotValue) {
+                i++;
+                array.swap(i, j, getDelay(), true);
+            }
+        }
+        array.swap(i + 1, highIndex, getDelay(), true);
+        return i + 1;
+    }
+    private void quickSort(SortArray array, int lowIndex, int highIndex) {
+        if (lowIndex < highIndex) {
+            int pivotPoint = findPivotPoint(array, lowIndex, highIndex);
+            quickSort(array, lowIndex, pivotPoint - 1);
+            quickSort(array, pivotPoint + 1, highIndex);
+        }
+    }
+    @Override
+    public void runSort(SortArray array) {
+        quickSort(array, 0, array.arraySize() - 1);
+    }
+    @Override
+    public String getName() {
+        return "Quick Sort";
+    }
+    @Override
+    public long getDelay() {
+        return stepDelay;
+    }
+    @Override
+    public void setDelay(long delay) {
+        this.stepDelay = delay;
+    }
+}

@@ -1,21 +1,38 @@
-def partition(arr, low, high):
-  pivot = arr[high]
-  lower = low - 1
-  for i in range(low, high):
-    if arr[i] < pivot:
-      arr[i], arr[lower] = arr[lower], arr[i]
-      lower += 1
-  arr[high], arr[lower + 1] = arr[lower + 1], arr[high]
-  return lower + 1
-def quicksort(arr, low, high):
-  if low < high:
-    pi = partition(arr, low, high)
-    quicksort(arr, low, pi - 1)
-    quicksort(arr, pi + 1, low)
-def main():
-  my_arr = [10, 2, 5, 8, 1]
-  quicksort(my_arr, 0, len(my_arr)-1)
-  print(my_arr)
-  print("Hello World!")
-if __name__ == "__main__":
-  main()
+package sorts;
+import util.SortUtil;
+import java.util.Random;
+public class QuickSort {
+    public static int[] sort(int[] arr) {
+        shuffle(arr);
+        quicksort(arr, 0, arr.length - 1);
+        return arr;
+    }
+    private static void quicksort(int[] arr, int lowerIndex, int higherIndex) {
+        int i = lowerIndex;
+        int j = higherIndex;
+        int pivot = arr[lowerIndex + (higherIndex - lowerIndex) / 2];
+        while (i <= j) {
+            while (arr[i] < pivot) {
+                i++;
+            }
+            while (arr[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                SortUtil.swap(arr, i, j);
+                i++;
+                j--;
+            }
+        }
+        if (lowerIndex < j)
+            quicksort(arr, lowerIndex, j);
+        if (i < higherIndex)
+            quicksort(arr, i, higherIndex);
+    }
+    private static void shuffle(int[] arr) {
+        Random rand = new Random();
+        for(int i = 0; i < arr.length; i++) {
+            SortUtil.swap(arr, i, rand.nextInt(arr.length));
+        }
+    }
+}

@@ -1,34 +1,26 @@
-def merge_sort(array):
-    if len(array)==1:
-        return
-    left_side = array[:len(array)//2]
-    right_side = array[len(array)//2:]
-    merge_sort(left_side)
-    merge_sort(right_side)
-    j = 0
-    k = 0
-    for i in range(len(array)):
-        if j >= len(left_side):
-            array[i] = right_side[k]
-            k+=1
-            continue
-        if k >= len(right_side):
-            array[i] = left_side[j]
-            j+=1
-            continue
-        if left_side[j] <= right_side[k]:
-            array[i] = left_side[j]
-            j+=1
-        else:
-            array[i] = right_side[k]
-            k+=1
-def main():
-    count = int(input())
-    array = []
-    for i in range(count):
-        array.append(int(input()))
-    merge_sort(array)
-    for i in array:
-        print(i, end=' ')
-if __name__ == "__main__":
-    main()
+def mergeSort(list):
+    if len(list) > 1:
+        midPointer = len(list) // 2
+        left = list[:midPointer]
+        right = list[midPointer:]
+        mergeSort(left)
+        mergeSort(right)
+        i = 0
+        j = 0
+        k = 0
+        while (i < len(left)) and (j < len(right)):
+            if left[i] < right[j]:
+                list[k] = left[i]
+                i += 1
+            else:
+                list[k] = right[j]
+                j += 1
+            k += 1
+        while i < len(left):
+            list[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            list[k] = right[j]
+            j += 1
+            k += 1

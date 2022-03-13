@@ -1,61 +1,78 @@
-package org.joyfulmonster.util.concurrent;
-import org.joyfulmonster.util.concurrent.internal.ConcurrentElasticHashMapImpl;
-import org.joyfulmonster.util.concurrent.internal.MetricsSupport;
-public class ConcurrentElasticHashMap<K, V> {
-    private static final String ILLEGAL_ARGUMENT_EXPECTION_MSG = "The key or value can not be null.";
-    private ConcurrentElasticHashMapImpl<K, V> service;
-    public ConcurrentElasticHashMap() {
-        service = new ConcurrentElasticHashMapImpl<K, V>();
+package org.joyfulmonster.util.concurrent.internal;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.concurrent.locks.ReentrantLock;
+class DirectoryImpl extends AtomicReference<AtomicReferenceArray<Bucket>> implements Directory {
+    private final ReentrantLock lock;
+    private volatile int bucketCount;
+    private BucketFactory bucketFactory;
+    DirectoryImpl(AtomicReferenceArray<Bucket> buckets) {
+        super(buckets);
+        lock = new ReentrantLock(true);
+        bucketCount = buckets.length();
     }
-    public ConcurrentElasticHashMap(int bucketSize, int initBucketCount, float loadFactor) {
-        service = new ConcurrentElasticHashMapImpl<K, V>(bucketSize, initBucketCount, loadFactor);
+    public void lock() {
+        lock.lock();
     }
-    public V put(K key, V value) {
-        if (key == null || value == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
+    public void unlock() {
+        lock.unlock();
+    }
+    public int getBucketCount() {
+        return bucketCount;
+    }
+    public Bucket getBucket(int hashCode) {
+        AtomicReferenceArray<Bucket> dir = get();
+        int dirSize = dir.length();
+        int dirMask = dirSize - 1;
+        int bucketIndex = hashCode & dirMask;
+        Bucket bucket = dir.get(bucketIndex);
+        return bucket;
+    }
+    Directory bucketFactory(BucketFactory factory) {
+        bucketFactory = factory;
+        return this;
+    }
+    public BucketFactory getBucketFactory() {
+        return bucketFactory;
+    }
+    public int onSplit(Bucket oldBucket, Bucket[] newBuckets) {
+        lock();
+        try {
+            this.bucketCount++;  
+            AtomicReferenceArray<Bucket> bucketArray = get();
+            int bucketsNumber = bucketArray.length();
+            int dirMask = bucketsNumber - 1;
+            int globalDepth = Integer.bitCount(dirMask);
+            if (globalDepth < newBuckets[0].getLocalDepth()) {
+                int newDirSize = bucketsNumber * 2;
+                if (newDirSize > ConcurrentElasticHashMapImpl.MAX_BUCKET_COUNT) {
+                    throw new IllegalStateException("directory size limit exceeded");
+                }
+                AtomicReferenceArray<Bucket> newDirectory = new AtomicReferenceArray<Bucket>(newDirSize);
+                for (int i = 0; i < bucketsNumber; i++) {
+                    newDirectory.set(i, bucketArray.get(i));
+                    newDirectory.set(i + bucketsNumber, bucketArray.get(i));
+                }
+                bucketArray = newDirectory;
+                bucketsNumber = newDirSize;
+                set(newDirectory);
+            } else {
+            }
+            final int step = 1 << newBuckets[0].getLocalDepth();
+            for (int i = newBuckets[1].getBucketIdx(); i < bucketsNumber; i += step) {
+                bucketArray.set(i, newBuckets[1]);
+            }
+            for (int i = newBuckets[0].getBucketIdx(); i < bucketsNumber; i += step) {
+                bucketArray.set(i, newBuckets[0]);
+            }
+        } finally {
+            unlock();
         }
-        return service.put(key, value);
+        return bucketCount;
     }
-    public V putIfAbsent(K key, V value) {
-        if (key == null || value == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
-        }
-        return service.putIfAbsent(key, value);
-    }
-    public V get(K key) {
-        if (key == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
-        }
-        return service.get(key);
-    }
-    public V remove(K key) {
-        if (key == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
-        }
-        return service.remove(key);
-    }
-    public boolean remove(K key, V val) {
-        if (key == null || val == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
-        }
-        return service.remove(key, val);
-    }
-    public V replace(K key, V value) {
-        if (key == null || value == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
-        }
-        return service.replace(key, value);
-    }
-    public boolean replace(K key, V oldValue, V value) {
-        if (key == null || value == null) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXPECTION_MSG);
-        }
-        return service.replace(key, oldValue, value);
-    }
-    public int size() {
-        return service.size();
-    }
-    MetricsSupport getMetrics() {
-        return service;
+    @Override
+    public int onMerge(Bucket oldBucket) {
+        return 0;
     }
 }

@@ -1,120 +1,58 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class MergeSort {
-    private int COMPARISONS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int[] array) {
-        COMPARISONS_COUNT = 0;
-        LOOP_COUNT = 0;
-        mergeSort(array, 0, array.length - 1);
-    }
-    private void mergeSort(int[] array, int left, int right) {
-        __grey("\nmergeSort, left: " + left + ", right: " + right + "  ==> ");
-        ____purple("" + (left < right));
-        COMPARISONS_COUNT++;
-        if (left < right) {
-            int center = (left + right) / 2;
-            ____grey("center: " + center);
-            mergeSort(array, left, center);
-            mergeSort(array, center + 1, right);
-            ____grey("Merging, center: " + center);
-            merge(array, left, center + 1, right);
-        }
-    }
-    private void merge(int[] array, int leftArrayBegin,
-                       int rightArrayBegin, int rightArrayEnd) {
-        int leftArrayEnd = rightArrayBegin - 1;
-        int numElements = rightArrayEnd - leftArrayBegin + 1;
-        int[] resultArray = new int[numElements];
-        int resultArrayBegin = 0;
-        ____grey("  leftArrayBegin: " + leftArrayBegin);
-        ____grey("  leftArrayEnd: " + leftArrayEnd);
-        ____grey("  rightArrayBegin: " + rightArrayBegin);
-        ____grey("  rightArrayEnd: " + rightArrayEnd);
-        while (leftArrayBegin <= leftArrayEnd && rightArrayBegin <= rightArrayEnd) {
-            COMPARISONS_COUNT++;
-            if (array[leftArrayBegin] <= array[rightArrayBegin]) {
-                resultArray[resultArrayBegin++] = array[leftArrayBegin++];
-                ____blue(" new leftArrayBegin: " + leftArrayBegin);
-            } else {
-                resultArray[resultArrayBegin++] = array[rightArrayBegin++];
-                ____blue(" new rightArrayBegin: " + rightArrayBegin);
-            }
-        }
-        while (leftArrayBegin <= leftArrayEnd) {
-            COMPARISONS_COUNT++;
-            resultArray[resultArrayBegin++] = array[leftArrayBegin++];
-            ____blue(" [post] new leftArrayBegin: " + leftArrayBegin);
-        }
-        while (rightArrayBegin <= rightArrayEnd) {
-            COMPARISONS_COUNT++;
-            resultArray[resultArrayBegin++] = array[rightArrayBegin++];
-            ____blue(" [post] new rightArrayBegin: " + rightArrayBegin);
-        }
-        for (int i = numElements - 1; i >= 0; i--, rightArrayEnd--) {
-            LOOP_COUNT++;
-            array[rightArrayEnd] = resultArray[i];
-        }
-        __red("==> ");
-        __dump(array);
-    }
-    public int[] sampleMerge(int[] leftArray, int[] rightArray) {
-        int leftArrayEnd = leftArray.length - 1;
-        int rightArrayEnd = rightArray.length - 1;
-        int leftArrayBegin = 0;
-        int rightArrayBegin = 0;
-        int numElements = leftArray.length + rightArray.length;
-        int[] resultArray = new int[numElements];
-        int resultArrayBegin = 0;
-        ____grey("  leftArrayBegin: " + leftArrayBegin);
-        ____grey("  leftArrayEnd: " + leftArrayEnd);
-        ____grey("  rightArrayBegin: " + rightArrayBegin);
-        ____grey("  rightArrayEnd: " + rightArrayEnd);
-        while (leftArrayBegin <= leftArrayEnd && rightArrayBegin <= rightArrayEnd) {
-            if (leftArray[leftArrayBegin] <= rightArray[rightArrayBegin]) {
-                resultArray[resultArrayBegin++] = leftArray[leftArrayBegin++];
-                ____blue(" new leftArrayBegin: " + leftArrayBegin);
-            } else {
-                resultArray[resultArrayBegin++] = rightArray[rightArrayBegin++];
-                ____blue(" new rightArrayBegin: " + rightArrayBegin);
-            }
-        }
-        while (leftArrayBegin <= leftArrayEnd) {
-            resultArray[resultArrayBegin++] = leftArray[leftArrayBegin++];
-            ____blue(" [post] new leftArrayBegin: " + leftArrayBegin);
-        }
-        while (rightArrayBegin <= rightArrayEnd) {
-            resultArray[resultArrayBegin++] = rightArray[rightArrayBegin++];
-            ____blue(" [post] new rightArrayBegin: " + rightArrayBegin);
-        }
-        return resultArray;
-    }
-    public static void main(String args[]) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(mergeSort.COMPARISONS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(mergeSort.LOOP_COUNT);
-        System.out.print("\n");
-        System.out.println("***********************\n");
-        System.out.println("Now demo a simple merge routine.");
-        int leftArray[] = {1, 3, 5, 7};
-        int rightArray[] = {2, 4, 6, 8, 10};
-        __yellow("\nLeft array: ");
-        __dump(leftArray);
-        __yellow("Right array: ");
-        __dump(rightArray);
-        System.out.println("\nMerging");
-        int[] mergedArray = mergeSort.sampleMerge(leftArray, rightArray);
-        __green("\nResult: ");
-        __dump(mergedArray);
-    }
+package mergesort;
+import java.util.*;
+public class Sort <T extends Comparable<T>> implements Comparator<T> {
+	public ArrayList<T> list;
+	Object[] temp;
+	public int compare(T a, T b) {
+		return a.compareTo(b);
+	}
+	public Sort(){
+		list = new ArrayList<T>();
+	}
+	@Override
+	public String toString(){
+		String listOut = "";
+		listOut += "-->";
+		for (int i = 0; i < list.size(); i++) {
+			listOut += list.get(i) + " ";
+		}
+		return listOut;
+	}
+	public void MainSort() {
+		int length = list.size();
+		temp = new Object[length];
+		MergeSort(0, length - 1);
+	}
+	private void MergeSort(int low, int high) {
+		if (low < high) {
+			int mid = low + ((high - low) / 2);
+			MergeSort(low, mid);
+			MergeSort(mid + 1, high);
+			MergeLists(low, mid, high);
+		}
+	}
+	@SuppressWarnings("unchecked")
+	private void MergeLists(int low, int mid, int high) {
+		for (int i = low; i <= high; i++) {
+			temp[i] = list.get(i);
+		}
+		int i = low;
+		int j = mid + 1;
+		int k = low;
+		while ((i <= mid) && (j <= high)) {
+			if (compare((T) temp[i], (T) temp[j]) > 0) {
+				list.set(k, (T) temp[i]);
+				i++;
+			} else {
+				list.set(k, (T) temp[j]);
+				j++;
+			}
+			k++;
+		}
+		while (i <= mid) {
+			list.set(k, (T) temp[i]);
+			k++;
+			i++;
+		}
+	}
 }

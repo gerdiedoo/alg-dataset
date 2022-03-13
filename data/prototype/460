@@ -1,43 +1,28 @@
-package Sorting;
-public class Bubble {
-	public static <T extends Comparable<T>> void BubbleSort(T arr[])
-    {
-		int n = arr.length;
-        int i, j; 
-        T temp;
-        boolean swapped;
-        for (i = 0; i < n - 1; i++) 
-        {
-            swapped = false;
-            for (j = 0; j < n - i - 1; j++) 
-            {
-                if (arr[j].compareTo(arr[j+1]) > 0) 
-                {
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-            if (swapped == false)
-                break;
-        }
-    }
-    public static <T extends Comparable<T>> void BubbleSortRecursive(T arr[])
-    {
-    	BubbleSortRecursiveHelper(arr, arr.length);
-    }
-    private static <T extends Comparable<T>> void BubbleSortRecursiveHelper(T arr[], int n)
-    {
-        if (n == 1)
-            return;
-        for (int i=0; i<n-1; i++)
-            if (arr[i].compareTo(arr[i+1]) > 0)
-            {
-                T temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
-            }
-        BubbleSortRecursiveHelper(arr ,n-1);
-    }
+package part2;
+public class Bubble_Sort{
+	public static Comparable[] Bubble_Sort(Comparable[]a) {
+		int last = a.length-1;
+		boolean sorted = false;
+		for(int i=0; i<last && !sorted; i++) {
+			sorted = true;
+			for(int j=last; j>i; j--) {
+				if( less(a[j],a[j-1])) {
+					swap(a,j,j-1);
+					sorted = false;
+				}
+			}
+		}
+		return a;
+	}
+	private static boolean less(Comparable a, Comparable b) {
+		if(a.compareTo(b) < 0) {
+			return true;
+		}
+		return false;
+	}
+	private static void swap(Comparable[] a, int j, int i) {
+		Comparable temp = a[j-1];
+		a[j-1] = a[j];
+		a[j]=temp;
+	}
 }

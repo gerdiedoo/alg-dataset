@@ -1,13 +1,14 @@
-from typing import List, TypeVar
-T = TypeVar("T")
-def selection_sort(arr: List[T]) -> None:
-    for i in range(len(arr)):
-        min_idx = i
-        for j in range(i + 1, len(arr)):
-            if arr[min_idx] > arr[j]:
-                min_idx = j
-        arr[i], arr[min_idx] = arr[min_idx], arr[i]
-if __name__ == "__main__":
-    a = [64, 25, 12, 22, 11]
-    selection_sort(a)
-    print("Sorted array", a)
+function selectionSort(items) {
+	var length = items.length;
+	var lowestValueIndex = null;
+	for (var a = 0; a < length; a++) {
+		lowestValueIndex = a; 
+		for (var b = a + 1; b < length; b++) {
+			if (items[b] < items[lowestValueIndex]) {
+				lowestValueIndex = b;
+			}
+		}
+		swap(items, a, lowestValueIndex);
+	}
+	return items;
+};

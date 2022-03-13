@@ -1,43 +1,51 @@
-package com.intrafoundation;
-public class MergeSort extends BaseSort {
-    public void sort(int[] arr) {
-        if (arr.length <= 1)
-            return;
-        swaps = 0;
-        mergeSort(arr, arr.length);
+package eu.happycoders.sort.method.quicksort;
+import eu.happycoders.sort.utils.ArrayUtils;
+import java.util.concurrent.ThreadLocalRandom;
+public class PivotHelper {
+  static void findPivotAndMoveRight(int[] elements, int left, int right,
+                                    PivotStrategy pivotStrategy) {
+    int pivotPos = findPivotPos(elements, left, right, pivotStrategy);
+    if (pivotPos != right)
+      ArrayUtils.swap(elements, pivotPos, right);
+  }
+  static int findPivotPos(int[] elements, int left, int right,
+                          PivotStrategy pivotStrategy) {
+    return switch (pivotStrategy) {
+      case RIGHT -> right;
+      case RANDOM -> ThreadLocalRandom.current().nextInt(left, right + 1);
+      case LEFT -> left;
+      case MIDDLE -> {
+        int rl = right - left;
+        yield rl < 2 ? right : left + rl / 2;
+      }
+      case MEDIAN3 -> getMedian3Pos(elements, left, right);
+      default -> throw new IllegalStateException("Unexpected value: " + pivotStrategy);
+    };
+  }
+  private static int getMedian3Pos(int[] elements, int left, int right) {
+    int rl = right - left;
+    if (rl < 2) {
+      return right;
     }
-    public void mergeSort(int[] arr, final int len) {
-        if (len < 2) {
-            return;
-        }
-        final int mid = len / 2;
-        final int lenmid = len - mid;
-        int[] l = new int[mid];
-        int[] r = new int[lenmid];
-        System.arraycopy(arr, 0, l, 0, mid);
-        if (lenmid >= 0)
-            System.arraycopy(arr, mid, r, 0, lenmid);
-        mergeSort(l, mid);
-        mergeSort(r, lenmid);
-        merge(arr, l, r, mid, lenmid);
-        swaps++;
+    int middle = left + rl / 2;
+    int first = left + (middle - left) / 2;
+    int last = right - (right - middle) / 2;
+    int l = elements[first];
+    int m = elements[middle];
+    int r = elements[last];
+    if (l < r) {
+      if (l >= m) {
+        return first;
+      } else if (r < m) {
+        return last;
+      }
+    } else {
+      if (l < m) {
+        return first;
+      } else if (r >= m) {
+        return last;
+      }
     }
-    public static void merge(
-            int[] a, int[] l, int[] r, final int left, final int right
-    ) {
-        int i = 0, j = 0, k = 0;
-        while (i < left && j < right) {
-            if (l[i] <= r[j]) {
-                a[k++] = l[i++];
-            } else {
-                a[k++] = r[j++];
-            }
-        }
-        while (i < left) {
-            a[k++] = l[i++];
-        }
-        while (j < right) {
-            a[k++] = r[j++];
-        }
-    }
+    return middle;
+  }
 }

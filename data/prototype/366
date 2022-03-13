@@ -1,32 +1,11 @@
-iterative = function (data, target){
-    var start = 0;
-    var end = data.length - 1;
-    while (start <= end){
-        var middle = Math.floor((start + end) / 2);
-        if (target < data[middle]){
-            end = middle - 1;
+import java.util.*;
+class Solution {
+    public int solve(int[] rooms, int target) {
+        for (int i = 0; i < rooms.length; i++) {
+            if (rooms[i] == target || rooms[i] > target) {
+                return rooms[i];
+            }
         }
-        else if (target > data[middle]){
-            start = middle + 1;
-        }
-        else {
-            return true;
-        }
-    }
-    return false;
-}
-recursive = function (data, target, start, end) {
-    if (start > end) {
-        return false;
-    }
-    else {
-        var middle = Math.floor((start + end) / 2);
-        if (target === data[middle]) {
-            return true;
-        } else if (target < data[middle]) {
-            return recursive(data, target, start, middle - 1);
-        } else {
-            return recursive(data, target, middle + 1, end);
-        }
+        return -1;
     }
 }

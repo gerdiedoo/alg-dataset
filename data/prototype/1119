@@ -1,50 +1,56 @@
-import java.util.Arrays;
-import java.util.Random;
-public class QuickSort{
-	public void quickSort(int[] A) {
-		int low = 0;
-		int high = A.length - 1;
-		quickSort(A, low, high);
-	}
-	private void quickSort(int[] A, int low, int high) {
-		if (low < high) {
-			int pivotIdx = getPivot(low, high);
-			swap(A, low, pivotIdx);  
-			int partitionIdx = partition(A, low, high);
-			quickSort(A, low, partitionIdx - 1);  
-			quickSort(A, partitionIdx + 1, high);  
-		}
-	}
-	private int getPivot(int low, int high) {
-		Random random = new Random();
-		return random.nextInt(high - low + 1) + low;  
-	}
-	private void swap(int[] A, int idx1, int idx2) {
-		int tmp = A[idx1];
-		A[idx1] = A[idx2];
-		A[idx2] = tmp;
-	}
-	private int partition(int[] A, int low, int high) {
-		int i = low, j = high;
-		while (i != j) {
-			while (A[j] >= A[low] && i < j) {
-				j --;
-			}
-			while (A[i] <= A[low] && i < j) {
-				i ++;
-			}
-			if (i < j) {
-				swap(A, i, j);
-			}
-		}
-		swap(A, low, i);
-		return i;
-	}
-	public static void main(String[] args) {
-		QuickSort qs = new QuickSort();
-		int[] A = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
-		System.out.println(Arrays.toString(A));
-		qs.quickSort(A);
-		System.out.println(Arrays.toString(A));
-	}
-}
+from typing import List
+def insertionSort(array: List[int], start: int, end: int) -> None:
+    for i in range(start + 1, end):  
+        comparator = array[i]  
+        section = i - 1
+        while (
+            section >= start and array[section] > comparator
+        ):  
+            array[section + 1] = array[
+                section
+            ]  
+            section -= 1
+        array[
+            section + 1
+        ] = comparator  
+def merge(array: List[int], start: int, mid: int, end: int) -> int:
+    start2 = mid + 1
+    if array[mid] <= array[start2]:
+        return
+    while start <= mid and start2 <= end:
+        if array[start] <= array[start2]:
+            start += 1
+        else:
+            value = array[start2]
+            index = start2
+            while index != start:
+                array[index] = array[index - 1]
+                index -= 1
+            array[start] = value
+            start += 1
+            mid += 1
+            start2 += 1
+def timSort(array: List[int], run: int = 32) -> None:
+    for i in range(0, len(array), run):
+        insertionSort(array, i, min(i + run, len(array)))
+    size = run
+    while size < len(array):
+        for left in range(0, len(array), 2 * size):
+            mid = left + size - 1
+            right = min((left + 2 * size - 1), (len(array) - 1))
+            merge(array, left, mid, right)
+        size *= 2
+if __name__ == "__main__":
+    try:
+        from utils import randomSequence
+    except ModuleNotFoundError:
+        import os, sys  
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        parent_dir_path = os.path.abspath(os.path.join(dir_path, os.pardir))
+        sys.path.insert(0, parent_dir_path)
+        from utils import randomSequence
+    print("TIM SORT")
+    shuffledArray = randomSequence(0, 1000)
+    print(shuffledArray, "\n")
+    timSort(shuffledArray)
+    print(shuffledArray)

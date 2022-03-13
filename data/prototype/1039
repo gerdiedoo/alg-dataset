@@ -1,53 +1,55 @@
-import java.util.Scanner;
-public class QuickSort {
-  static int partition (int arr[], int low, int high)
-    {
-        int pivot = arr[high];
-        int i = (low - 1);
-        for (int j = low; j <= high - 1; j++)
-        {
-            if (arr[j] < pivot)
-            {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-        int temp = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = temp;
-        return (i + 1);
-    }
-    static void quickSort(int arr[] , int beg , int end )
-    {
-        if(beg <end)
-        {
-            int pivotIndex = partition(arr,beg , end);
-            quickSort(arr , beg , pivotIndex-1);
-            quickSort(arr , pivotIndex+1 , end);
-        }
-    }
-    static void print(int arr[],int n)
-    {
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println();
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the number of elements: ");
-        int n = sc.nextInt();
-        int arr[] = new int [n];
-        System.out.print("Enter elements : ");
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-        System.out.print("Array before sort: ");
-        print(arr,n);
-        quickSort(arr,0,n-1);
-        System.out.print("Array after sort: ");
-        print(arr,n);
-    }
+function median (arr, i, j, k) {
+	if (arr[i] > arr[j] && arr[i] > arr[k]) {
+		if (arr[k] > arr[j]) {
+			return k;
+		} else {
+			return j;
+		}
+	} else if (arr[j] > arr[i] && arr[j] > arr[k]) {
+		if (arr[k] > arr[i]) {
+			return k;
+		} else {
+			return i;
+		}
+	} else {
+		if (arr[i] > arr[j]) {
+			return i;
+		} else {
+			return j;
+		}
+	}
 }
+function partition (arr, start, end) {
+	let j = start - 1;
+	let tmp;
+	let pi = median(arr, start, end, parseInt((start + end) / 2));
+	tmp = arr[pi];
+	arr[pi] = arr[end];
+	arr[end] = tmp;
+	let pivot = arr[end];
+	for (let i = start; i < end; i++) {
+		if (arr[i] <= pivot) {
+			j++;
+			tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
+		}
+	}
+	tmp = arr[j + 1];
+	arr[j + 1] = arr[end];
+	arr[end] = tmp;
+	return j + 1;
+}
+function quickSort (arr, left = 0, right = arr.length - 1) {
+	if (left < right) {
+		let p = partition(arr, left, right);
+		quickSort(arr, left, p - 1);
+		quickSort(arr, p + 1, right);
+	}
+}
+function main () {
+	let arr = [2, 1, 6, 44, 8, 9, 10];
+	quickSort(arr);
+	console.log('Sorted data is', arr);
+}
+main();

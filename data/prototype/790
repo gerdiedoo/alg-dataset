@@ -1,38 +1,25 @@
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
-public class Solution {
-    static void insertionSort2(int n, int[] arr) {
-         for(int i=1;i<n;i++){
-          int key=arr[i];
-          int j=i-1;
-          while( j>=0 && arr[j]>key){
-              arr[j+1]=arr[j];
-              j=j-1;
-          }
-          arr[j+1]=key;
-               for(int k=0;k<n;k++){
-          System.out.print(arr[k]+" ");
-      }
-      System.out.println();
-      }
-    }
-    private static final Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
-        int n = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-        int[] arr = new int[n];
-        String[] arrItems = scanner.nextLine().split(" ");
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-        for (int i = 0; i < n; i++) {
-            int arrItem = Integer.parseInt(arrItems[i]);
-            arr[i] = arrItem;
-        }
-        insertionSort2(n, arr);
-        scanner.close();
-    }
-}
+def merge(left, right):
+    if not len(left) or not len(right):
+        return left or right
+    result = []
+    i, j = 0, 0
+    while (len(result) < len(left) + len(right)):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i+= 1
+        else:
+            result.append(right[j])
+            j+= 1
+        if i == len(left) or j == len(right):
+            result.extend(left[i:] or right[j:])
+            break
+    return result
+def merge_sort(list):
+    if len(list) < 2:
+        return list
+    mid = len(list)//2
+    left = merge_sort(list[:mid])
+    right = merge_sort(list[mid:])
+    return merge(left, right)
+a = [3,4,5,1,2,8,3,7,6]
+print(merge_sort(a))

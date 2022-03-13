@@ -1,42 +1,9 @@
-class Stack {
-  constructor() {
-    this.stackData = [];
-    this.top = null;
-    this.bottom = null;
-    this.length = 0;
-  }
-  peek() {
-    return this.top;
-  }
-  push(value) {
-    this.stackData.push(value);
-    this.length++;
-    if (this.length === 1) {
-      this.bottom = this.stackData[0];
-    }
-    this.top = this.stackData[this.length - 1];
-  }
-  pop(value) {
-    if (!this.length) {
-      return null;
-    }
-    const deletedValue = this.stackData.pop();
-    this.length--;
-    if (!this.length) {
-      this.bottom = null;
-      this.top = null;
-    }
-    return deletedValue;
-  }
-}
-const myStack = new Stack();
-console.log(myStack.peek());
-myStack.push(10);
-myStack.push(20);
-myStack.push(30);
-console.log(JSON.stringify(myStack));
-console.log(myStack.peek());
-console.log(myStack.pop());
-console.log(myStack.pop());
-console.log(myStack.pop());
-console.log(JSON.stringify(myStack));
+from algorithm_collection.search import binary_search
+def exponential_search(arr, key):
+    n = len(arr)
+    if arr[0] == key:
+        return 0
+    i = 1
+    while i < n and arr[i] <= key:
+        i = i * 2
+    return binary_search(arr, key, i // 2, min(i, n-1))

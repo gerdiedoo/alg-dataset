@@ -1,0 +1,24 @@
+def quick_select(A, k):
+    pivot = random.choice(A)
+    A1 = [] 
+    A2 = [] 
+    for i in A:
+        if i < pivot:
+            A1.append(i)
+        elif i > pivot:
+            A2.append(i)
+        else:
+            pass  
+    if k <= len(A1):
+        return quick_select(A1, k)
+    elif k > len(A) - len(A2):
+        return quick_select(A2, k - (len(A) - len(A2)))
+    else:
+        return pivot
+input = [14, 4, 0, 9, 11, 19, 13]
+import random
+random.shuffle(input)
+print(input)
+k = 3
+a = quick_select(input,k)
+print("3rd Smallest value=",a)

@@ -1,39 +1,33 @@
-public class CircleLinkedList<E>{
-     private static class Node<E>{
-         Node<E> next;
-         E value;
-         private Node(E value, Node<E> next){
-              this.value = value;
-              this.next = next;
-         }
-     }
-     private int size; 
-     private Node<E> head; 
-     public CircleLinkedList(){ 
-         head = new Node<E>(null,head); 
-         size = 0;
-     }
-     public int getSize(){ return size;} 
-     public void append(E value){ 
-         if(value == null){
-         	throw new NullPointerException("Cannot add null element to the list"); 
-         }
-         head.next = new Node<E>(value,head); 
-         size++;}
-     public E remove(int pos){
-     	if(pos>size || pos< 0){
-     		throw new IndexOutOfBoundsException("position cannot be greater than size or negative"); 
-     	}
-     	Node<E> iterator = head.next; 
-     	Node<E> before = head;
-     	for(int i = 1; i<=pos; i++){
-            iterator = iterator.next;
-            before = before.next;   
-     	}
-     	E saved = iterator.value;
-     	before.next = iterator.next; 
-     	iterator.next = null; 
-     	iterator.value = null; 
-     	return saved;
-     	}
-     }
+public class LinkedListImplementation{
+	public static void main(String [] args){
+		LinkedList list = new LinkedList();  
+		try{
+			list.add(10);
+			list.popFront();
+			list.add(12);
+			list.display();
+			list.pushFront(22);
+			list.display();
+			list.add(14);
+			list.display();
+			list.add(16);
+			list.display();
+			System.out.println("Size : " + list.size());
+			System.out.println("Top elements is : " + list.topFront());
+			list.popFront();
+			list.display();
+			System.out.println("Size : " + list.size());
+			System.out.println("Last element is : " + list.topBack());
+			list.pushBack(24);
+			System.out.println("Last element is : " + list.topBack());
+			list.add(18);
+			System.out.println("Size : " + list.size());
+			list.pushFront(20);
+			System.out.println("Size : " + list.size());
+			list.display();
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+	}
+}

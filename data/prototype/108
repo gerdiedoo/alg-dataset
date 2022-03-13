@@ -1,29 +1,15 @@
-package com.cfelde.bohmap;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-public class JavaSerializer {
-    public static <T> Binary serialize(T o) {
-        if (o == null)
-            return null;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
-            oos.writeObject(o);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex.getMessage(), ex);
-        }
-        return new Binary(baos.toByteArray());
-    }
-    public static <T> T deserialize(Binary b) {
-        if (b == null)
-            return null;
-        ByteArrayInputStream bais = new ByteArrayInputStream(b.getValue());
-        try (ObjectInputStream ois = new ObjectInputStream(bais)) {
-            return (T) ois.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage(), ex);
-        }
-    }
+import java.util.List;
+public interface MyHashMap<K, V> {
+	public V get(K key);
+	public V put(K key, V value);
+	public V remove(K key);
+	public int size();
+	public List<? extends Bucket<K, V>> getBuckets();
+	public static interface Entry<K, V> {
+		public K getKey();
+		public V getValue();
+	}
+	public static interface Bucket<K, V> {
+		public List<? extends Entry<K, V>> getEntries();
+	}
 }

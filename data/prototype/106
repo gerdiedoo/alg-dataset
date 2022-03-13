@@ -1,176 +1,50 @@
-import java.io.*;
+package assignment6;
 import java.util.*;
-public class HashTester {
-	private static class Test {
-		String desc;
-		List<SubTest> subTests = new LinkedList<SubTest>();
-		float weight;
-		float score;
-		public Test(String desc, float weight) {
-			this.desc = desc;
-			this.weight = weight;
-		}
-		public void addSubTest(SubTest subTest) {
-			subTests.add(subTest);
-		}
-		public void run() {
-			int passed = 0;
-			System.out.printf("%s (%.1fp)%n", desc, weight);
-			for (SubTest subTest : subTests) {
-				System.out.println("\t" + subTest);
-				if (subTest.status)
-					passed++;
-			}
-			score = weight * passed / subTests.size();
-			System.out.printf("%n\tPassed: %d/%d -> %d%%%n\tScore: %.2f%n%n",
-					passed,
-					subTests.size(),
-					100 * passed / subTests.size(),
-					score);
-		}
-	}
-	private static class SubTest {
-		public String desc;
-		public boolean status;
-		public SubTest(String desc, boolean status) {
-			this.desc = desc;
-			this.status = status;
-		}
-		@Override
-		public String toString() {
-			final int ELLIPSIS = 60;
-			StringBuffer buf = new StringBuffer();
-			buf.append(desc);
-			for (int i = 0; i < ELLIPSIS - desc.length(); i++)
-				buf.append(".");
-			buf.append(status ? "OK" : "X");
-			return buf.toString();
-		}
-	}
-	private List<String> getRandomStrings(int count) {
-		Random r = new Random();
-		StringBuffer buf = new StringBuffer();
-		List<String> strings = new LinkedList<String>();
-		for (int s = 0; s < count; s++) {
-			buf.delete(0, buf.length());
-			int length = r.nextInt(10) + 1;  
-			for (int i = 0; i < length; i++) {
-				char c = (char)(r.nextInt(93) + 33);
-				buf.append(c);
-			}
-			strings.add(buf.toString());
-		}
-		return strings;
-	}
-	private int translate(int hashCode, int size) {
-		return Math.abs(hashCode) % size;
-	}
-	public void runBasicTests() {
-		List<Test> tests = new LinkedList<Test>();
-		Test test;
-		MyHashMap<String, Integer> map;
-		Integer x;
-		final int NUM_BUCKETS = 16;
-		test = new Test("Test 1 - Empty Hash", 1.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		test.addSubTest(new SubTest("get(\"abc\") == null", map.get("abc") == null));
-		test.addSubTest(new SubTest("remove(\"abc\") == null", map.remove("abc") == null));
-		test.addSubTest(new SubTest("size == 0", map.size() == 0));
-		test.addSubTest(new SubTest("numBuckets == " + NUM_BUCKETS, map.getBuckets().size() == NUM_BUCKETS));
-		tests.add(test);
-		test = new Test("Test 2 - Multiple put", 1.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		test.addSubTest(new SubTest("put(\"abc\", 5) == null", map.put("abc", 5) == null));
-		test.addSubTest(new SubTest("get(\"abc\") == 5", (x = map.get("abc")) != null && x == 5));
-		test.addSubTest(new SubTest("size == 1", map.size() == 1));
-		test.addSubTest(new SubTest("put(\"abc\", 7) == 5", (x = map.put("abc", 7)) != null && x == 5));
-		test.addSubTest(new SubTest("get(\"abc\") == 7", (x = map.get("abc")) != null && x == 7));
-		test.addSubTest(new SubTest("size == 1", map.size() == 1));
-		test.addSubTest(new SubTest("put(\"xyz\", 11) == null", map.put("xyz", 11) == null));
-		test.addSubTest(new SubTest("get(\"xyz\") == 11", (x = map.get("xyz")) != null && x == 11));
-		test.addSubTest(new SubTest("size == 2", map.size() == 2));
-		tests.add(test);
-		test = new Test("Test 3 - Multiple remove", 1.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		test.addSubTest(new SubTest("put(\"abc\", 5) == null", map.put("abc", 5) == null));
-		test.addSubTest(new SubTest("remove(\"abc\") == 5", (x = map.remove("abc")) != null && x == 5));
-		test.addSubTest(new SubTest("size == 0", map.size() == 0));
-		test.addSubTest(new SubTest("remove(\"abc\") == null", map.remove("abc") == null));
-		test.addSubTest(new SubTest("size == 0", map.size() == 0));
-		tests.add(test);
-		test = new Test("Test 4 - Correct dispersion", 2.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		List<String> randomStrings = getRandomStrings(1000);
-		for (String randomString : randomStrings)
-			map.put(randomString, 1);
-		List<? extends MyHashMap.Bucket<String, Integer>> buckets = map.getBuckets();
-		int crtBucket = 0;
-		boolean status = true;
-		for (MyHashMap.Bucket<String, Integer> bucket : buckets) {
-			List<? extends MyHashMap.Entry<String, Integer>> entries = bucket.getEntries();
-			for (MyHashMap.Entry<String, Integer> entry : entries) {
-				if (translate(entry.getKey().hashCode(), NUM_BUCKETS) != crtBucket) {
-					status = false;
-					break;
-				}
-			}
-			crtBucket++;
-		}
-		test.addSubTest(new SubTest("Verificare", status));
-		tests.add(test);
-		test = new Test("Test 5 - Hardcore check", 3.0f);
-		status = true;
-		BufferedReader in = null;
-		Scanner scanner;
-		String line;
-		List<String> keys = new LinkedList<String>();
-		List<String> fileBucket = new LinkedList<String>();
-		List<String> realBucket = new LinkedList<String>();
-		try {
-			in = new BufferedReader(new FileReader("test1.txt"));
-			scanner = new Scanner(in.readLine());
-			while (scanner.hasNext())
-				keys.add(scanner.next());
-			scanner = new Scanner(in.readLine());
-			int numBuckets = scanner.nextInt();
-			map = new MyHashMapImpl<String, Integer>(numBuckets);
-			for (String key : keys)
-				map.put(key, 1);
-			buckets = map.getBuckets();
-			crtBucket = 0;
-			while ((line = in.readLine()) != null) {
-				fileBucket.clear();
-				scanner = new Scanner(line);
-				while (scanner.hasNext())
-					fileBucket.add(scanner.next());
-				realBucket.clear();
-				for (MyHashMap.Entry<String, Integer> entry : buckets.get(crtBucket).getEntries())
-					realBucket.add(entry.getKey());
-				if (! (fileBucket.containsAll(realBucket) && realBucket.containsAll(fileBucket))) {
-					status = false;
-					break;
-				}
-				crtBucket++;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			status = false;
-		} finally {
-			try {
-				in.close();
-			} catch (Exception e) {}
-			test.addSubTest(new SubTest("Verificare", status));
-		}
-		tests.add(test);
-		float score = 0;
-		for (Test t : tests) {
-			t.run();
-			score += t.score;
-		}
-		System.out.printf("TOTAL: %.2f%n", score);
-	}
-	public static void main(String[] args) {
-		HashTester tester = new HashTester();
-		tester.runBasicTests();
-	}
+public class MultiStringCollClient
+{
+   public static final String SENTINEL = "###";
+   public static void main(String[] args)
+   {
+      String value; String firstCharacter; String reformatValue; Scanner keyboard=new Scanner(System.in);
+      MultiStringColl P=new MultiStringColl(), N=new MultiStringColl(), L= new MultiStringColl();
+      System.out.println("Enter a +string to be inserted, -string to remove it, or ### to quit:");
+      value=keyboard.nextLine();
+      firstCharacter = String.valueOf(value.charAt(0));
+      reformatValue  = value.substring(1,value.length());
+      while(!(value.equals(SENTINEL)))
+      {
+         if (firstCharacter.equals("+")) {
+             P.insert(reformatValue); 
+             L.insert(reformatValue);
+         }
+         else {N.insert(reformatValue); L.omit(reformatValue);}
+         System.out.println("Enter +string to insert another string, -string to remove another string, or ### to quit:");
+         value=keyboard.nextLine();
+         firstCharacter = String.valueOf(value.charAt(0));
+         reformatValue  = value.substring(1,value.length());
+      }
+      System.out.println("\nThe values in collection P are:");
+      P.print();
+      System.out.println("\nThe number of distinct strings in collection P is:");
+      System.out.println(P.get_howmany());
+      System.out.println("\nThe total number of strings in collection P is:");
+      System.out.println(P.get_total());
+      System.out.println("\nThe values in collection N are:");
+      N.print();
+      System.out.println("\nThe number of distinct strings in collection N is:");
+      System.out.println(N.get_howmany());
+      System.out.println("\nThe total number of strings in collection N is:");
+      System.out.println(N.get_total());
+      System.out.println("\nThe values in collection L are:");
+      L.print();
+      System.out.println("\nThe number of distinct strings in collection L is:");
+      System.out.println(L.get_howmany());
+      System.out.println("\nThe total number of strings in collection L is:");
+      System.out.println(L.get_total());
+      if (P.equals(N)) System.out.println("\nP and N are equal.");
+      else System.out.println("\nP and N are NOT equal.");
+      MultiStringColl A=new MultiStringColl(); A.copy(L);
+      System.out.println("\nThe values in the copy of L are:\n");
+      A.print();
+   }
 }

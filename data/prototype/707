@@ -1,16 +1,12 @@
-export default function InsertionSort(items: Array<number>): Array<number> {
-  const itemsCopy = [...items];
-  let value;  
-  let i;  
-  let j;  
-  for (i = 0; i < itemsCopy.length; i++) {
-    value = itemsCopy[i];
-    j = i - 1;
-    while (j >= 0 && itemsCopy[j] > value) {
-      itemsCopy[j + 1] = itemsCopy[j];
-      j--;
+exports.insertionSort = ({ list }, { shouldSwap, swap }) => {
+  for (let i = 1; i < list.length; i += 1) {
+    let insertionIndex = i;
+    for (let j = i - 1; j >= 0; j -= 1) {
+      if (shouldSwap(j, insertionIndex)) {
+        swap(j, insertionIndex);
+        insertionIndex = j;
+      }
     }
-    itemsCopy[j + 1] = value;
   }
-  return itemsCopy;
-}
+  return list;
+};

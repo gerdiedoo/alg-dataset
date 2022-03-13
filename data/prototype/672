@@ -1,13 +1,15 @@
-const insertionSort = arr => {
-  const len = arr.length;
-  for (let i = 0; i < len; i++) {
-    let el = arr[i];
-    let j;
-    for (j = i - 1; j >= 0 && arr[j] > el; j--) {
-      arr[j + 1] = arr[j];
-    }
-    arr[j + 1] = el;
-  }
-  return arr;
-};
-console.log(insertionSort([3, 0, 2, 5, -1, 4, 1]));
+package com.satishkumarprasad.algo.sortingalgos;
+public class InsertionSort implements SortingAlgorithm {
+	@Override
+	public void sort(int[] array) {
+		for (int i = 1; i < array.length; i++) {
+			int key = array[i];
+			int j = i - 1;
+			while (j >= 0 && array[j] > key) {
+				array[j + 1] = array[j];
+				j--;
+			}
+			array[j + 1] = key;
+		}
+	}
+}

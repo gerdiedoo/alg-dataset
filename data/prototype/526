@@ -1,11 +1,15 @@
-def bubbleSort(listofnumbers):
-    for allnumbers in range(len(listofnumbers)-1,0,-1):
-        for i in range(allnumbers):
-            if listofnumbers[i]>listofnumbers[i+1]:
-                a = listofnumbers[i]
-                listofnumbers[i] = listofnumbers[i+1]
-                listofnumbers[i+1] = a
-listofnumbers = [20,10,32,45,99,17,77,31,44,55,20]
-print(f"Original list: {listofnumbers}")
-bubbleSort(listofnumbers)
-print(f"Organized list: {listofnumbers}")
+function bubbleSort(array, low, high){
+    for (let i = low; i < high; i++)
+        for (let j = low; j < high-i-1; j++)
+        {
+            if ( array[j] > array[j+1] )
+            {
+                let temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+}
+function sort(array){
+    bubbleSort(array, 0, array.length);
+}

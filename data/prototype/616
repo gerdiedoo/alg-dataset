@@ -1,19 +1,9 @@
-package eu.happycoders.sort.method.bubblesort;
-public class BubbleSortParallelOddEven extends BubbleSortParallel {
-  @Override
-  boolean sortPartition(int[] elements, int startPos, int endPos,
-                        boolean even) {
-    boolean swapped = false;
-    if (even) startPos++;
-    for (int i = startPos; i < endPos && i < elements.length - 1; i += 2) {
-      int left = elements[i];
-      int right = elements[i + 1];
-      if (left > right) {
-        elements[i + 1] = left;
-        elements[i] = right;
-        swapped = true;
-      }
-    }
-    return swapped;
-  }
-}
+import structures.src.util.sort_util as util
+def sort(arr):
+    out = list(arr)
+    for i in range(1, len(out)):
+        j = i
+        while j > 0 and out[j - 1] > out[j]:
+            util.swap(out, j, j - 1)
+            j -= 1
+    return out

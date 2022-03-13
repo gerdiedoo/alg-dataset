@@ -1,30 +1,33 @@
-public class ThreeWayQuickSort<T extends Comparable<T>> {
-    public void sort(T[] array, int left, int right) {
-        if (left < right) this.partition(array, left, right);
-    }
-    private void partition(T[] array, int left, int right) {
-        if (left < right) {
-            int start = left;
-            int end = right;
-            int i = left;
-            T pivot = array[left];
-            while (i <= end) {
-                if (array[i].compareTo(pivot) < 0) {
-                    this.swap(array, start, i);
-                    start++;
-                    i++;
-                } else if (array[i].compareTo(pivot) > 0) {
-                    this.swap(array, i, end);
-                    end--;
-                } else i++;
-            }
-            sort(array, left, start - 1);
-            sort(array, end + 1, right);
+package com.aokolnychyi.sorting;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+public class SelectionSort {
+  public static <T extends Comparable<? super T>> void sort(List<T> elements) {
+    for (int outerIndex = 0; outerIndex < elements.size(); outerIndex++) {
+      int currentMinElementIndex = outerIndex;
+      for (int innerIndex = outerIndex + 1; innerIndex < elements.size(); innerIndex++) {
+        T currentMinElement = elements.get(currentMinElementIndex);
+        T currentElement = elements.get(innerIndex);
+        if (currentElement.compareTo(currentMinElement) < 0) {
+          currentMinElementIndex = innerIndex;
         }
+      }
+      if (currentMinElementIndex != outerIndex) {
+        Collections.swap(elements, currentMinElementIndex, outerIndex);
+      }
     }
-    private void swap(T[] array, int i, int j){
-        T temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+  }
+  public static void main(String[] args) {
+    final List<Integer> list = new ArrayList<>();
+    list.add(4);
+    list.add(1);
+    list.add(5);
+    list.add(3);
+    list.add(9);
+    list.add(10);
+    list.add(1);
+    sort(list);
+    System.out.println(list);
+  }
 }

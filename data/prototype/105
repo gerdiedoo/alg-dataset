@@ -1,176 +1,189 @@
-import java.io.*;
+package assignment6;
 import java.util.*;
-public class HashTester {
-	private static class Test {
-		String desc;
-		List<SubTest> subTests = new LinkedList<SubTest>();
-		float weight;
-		float score;
-		public Test(String desc, float weight) {
-			this.desc = desc;
-			this.weight = weight;
+public class MultiStringColl {
+    private btNode c;
+    private int howmany;
+    private int total;
+    public MultiStringColl() {
+        c = null;
+        howmany = 0;
+        total = 0;
+    }
+    public MultiStringColl(int i) {
+        c = null;
+        howmany = 0;
+        total = 0;
+    }
+    public void copy(MultiStringColl obj) {
+        if(!(this.equals(obj))){
+            howmany=obj.howmany;
+            total = obj.total;
+            c = copytree(obj.c);
+        }
+    }
+    public int belongs(String i) {
+        btNode p = c;
+        while((p!=null)&&(i.compareTo(p.info)!=0)){
+            if(i.compareTo(p.info)<0){
+                p = p.left;
+            }else{
+                p = p.right;
+            }
+        }
+        if(p!=null){
+            return p.count;
+        }else{
+            return 0;
+        }
+    }
+    public void insert(String i) {
+        btNode pred = null;
+        btNode p = c;
+        if(p!=null){
+            while((p!=null)&&(p.info.compareTo(i)!=0)){
+                pred = p;
+                if(i.compareTo(p.info)<0){
+                    p = p.left;
+                }else{
+                    p = p.right;
+                }
+            }
+        }
+        if(p!=null){
+            p.count++;
+            total++;
+        }
+        else if(p==null){
+            howmany++;
+            total++;
+            p = new btNode(i, null, null, 1);
+            if(pred!=null){
+                if(i.compareTo(pred.info)<0){
+                    pred.left=p;
+                } else{
+                    pred.right=p;
+                }
+            } else{
+                c = p;
+            }
+        }
+    }
+	public void omit(String i) {
+		if (c == null) return;  
+		btNode parent = null;  
+		btNode p = c;  
+		while (!p.info.equals(i)) { 		 
+			parent = p;
+			if (p.info.compareTo(i) > 0)
+				p = p.left;
+			else
+				p = p.right;
+		}  
+		if (p.count > 1) { 		 
+			p.count--;
+			total--;;
+			return;
 		}
-		public void addSubTest(SubTest subTest) {
-			subTests.add(subTest);
+		if(p.count == 1) {  
+			howmany--;
 		}
-		public void run() {
-			int passed = 0;
-			System.out.printf("%s (%.1fp)%n", desc, weight);
-			for (SubTest subTest : subTests) {
-				System.out.println("\t" + subTest);
-				if (subTest.status)
-					passed++;
-			}
-			score = weight * passed / subTests.size();
-			System.out.printf("%n\tPassed: %d/%d -> %d%%%n\tScore: %.2f%n%n",
-					passed,
-					subTests.size(),
-					100 * passed / subTests.size(),
-					score);
-		}
-	}
-	private static class SubTest {
-		public String desc;
-		public boolean status;
-		public SubTest(String desc, boolean status) {
-			this.desc = desc;
-			this.status = status;
-		}
-		@Override
-		public String toString() {
-			final int ELLIPSIS = 60;
-			StringBuffer buf = new StringBuffer();
-			buf.append(desc);
-			for (int i = 0; i < ELLIPSIS - desc.length(); i++)
-				buf.append(".");
-			buf.append(status ? "OK" : "X");
-			return buf.toString();
-		}
-	}
-	private List<String> getRandomStrings(int count) {
-		Random r = new Random();
-		StringBuffer buf = new StringBuffer();
-		List<String> strings = new LinkedList<String>();
-		for (int s = 0; s < count; s++) {
-			buf.delete(0, buf.length());
-			int length = r.nextInt(10) + 1;  
-			for (int i = 0; i < length; i++) {
-				char c = (char)(r.nextInt(93) + 33);
-				buf.append(c);
-			}
-			strings.add(buf.toString());
-		}
-		return strings;
-	}
-	private int translate(int hashCode, int size) {
-		return Math.abs(hashCode) % size;
-	}
-	public void runBasicTests() {
-		List<Test> tests = new LinkedList<Test>();
-		Test test;
-		MyHashMap<String, Integer> map;
-		Integer x;
-		final int NUM_BUCKETS = 16;
-		test = new Test("Test 1 - Empty Hash", 1.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		test.addSubTest(new SubTest("get(\"abc\") == null", map.get("abc") == null));
-		test.addSubTest(new SubTest("remove(\"abc\") == null", map.remove("abc") == null));
-		test.addSubTest(new SubTest("size == 0", map.size() == 0));
-		test.addSubTest(new SubTest("numBuckets == " + NUM_BUCKETS, map.getBuckets().size() == NUM_BUCKETS));
-		tests.add(test);
-		test = new Test("Test 2 - Multiple put", 1.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		test.addSubTest(new SubTest("put(\"abc\", 5) == null", map.put("abc", 5) == null));
-		test.addSubTest(new SubTest("get(\"abc\") == 5", (x = map.get("abc")) != null && x == 5));
-		test.addSubTest(new SubTest("size == 1", map.size() == 1));
-		test.addSubTest(new SubTest("put(\"abc\", 7) == 5", (x = map.put("abc", 7)) != null && x == 5));
-		test.addSubTest(new SubTest("get(\"abc\") == 7", (x = map.get("abc")) != null && x == 7));
-		test.addSubTest(new SubTest("size == 1", map.size() == 1));
-		test.addSubTest(new SubTest("put(\"xyz\", 11) == null", map.put("xyz", 11) == null));
-		test.addSubTest(new SubTest("get(\"xyz\") == 11", (x = map.get("xyz")) != null && x == 11));
-		test.addSubTest(new SubTest("size == 2", map.size() == 2));
-		tests.add(test);
-		test = new Test("Test 3 - Multiple remove", 1.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		test.addSubTest(new SubTest("put(\"abc\", 5) == null", map.put("abc", 5) == null));
-		test.addSubTest(new SubTest("remove(\"abc\") == 5", (x = map.remove("abc")) != null && x == 5));
-		test.addSubTest(new SubTest("size == 0", map.size() == 0));
-		test.addSubTest(new SubTest("remove(\"abc\") == null", map.remove("abc") == null));
-		test.addSubTest(new SubTest("size == 0", map.size() == 0));
-		tests.add(test);
-		test = new Test("Test 4 - Correct dispersion", 2.0f);
-		map = new MyHashMapImpl<String, Integer>(NUM_BUCKETS);
-		List<String> randomStrings = getRandomStrings(1000);
-		for (String randomString : randomStrings)
-			map.put(randomString, 1);
-		List<? extends MyHashMap.Bucket<String, Integer>> buckets = map.getBuckets();
-		int crtBucket = 0;
-		boolean status = true;
-		for (MyHashMap.Bucket<String, Integer> bucket : buckets) {
-			List<? extends MyHashMap.Entry<String, Integer>> entries = bucket.getEntries();
-			for (MyHashMap.Entry<String, Integer> entry : entries) {
-				if (translate(entry.getKey().hashCode(), NUM_BUCKETS) != crtBucket) {
-					status = false;
-					break;
+		btNode pbelow = p;  
+		if (p.right == null) {  
+			pbelow = p.left;  
+		} else if (p.left == null) {  
+			pbelow = p.right;  
+		} else {  
+			btNode pbelow2 = p.left;  
+			if (pbelow2.right == null) {
+				pbelow = pbelow2;
+				pbelow.right = p.right;
+			} else {
+				while (pbelow2.right.right != null) {
+					pbelow2 = pbelow2.right;
 				}
+				pbelow = pbelow2.right;
+				pbelow2.right = pbelow.left;
+				pbelow.right = p.right;
+				pbelow.left = p.left;
 			}
-			crtBucket++;
 		}
-		test.addSubTest(new SubTest("Verificare", status));
-		tests.add(test);
-		test = new Test("Test 5 - Hardcore check", 3.0f);
-		status = true;
-		BufferedReader in = null;
-		Scanner scanner;
-		String line;
-		List<String> keys = new LinkedList<String>();
-		List<String> fileBucket = new LinkedList<String>();
-		List<String> realBucket = new LinkedList<String>();
-		try {
-			in = new BufferedReader(new FileReader("test1.txt"));
-			scanner = new Scanner(in.readLine());
-			while (scanner.hasNext())
-				keys.add(scanner.next());
-			scanner = new Scanner(in.readLine());
-			int numBuckets = scanner.nextInt();
-			map = new MyHashMapImpl<String, Integer>(numBuckets);
-			for (String key : keys)
-				map.put(key, 1);
-			buckets = map.getBuckets();
-			crtBucket = 0;
-			while ((line = in.readLine()) != null) {
-				fileBucket.clear();
-				scanner = new Scanner(line);
-				while (scanner.hasNext())
-					fileBucket.add(scanner.next());
-				realBucket.clear();
-				for (MyHashMap.Entry<String, Integer> entry : buckets.get(crtBucket).getEntries())
-					realBucket.add(entry.getKey());
-				if (! (fileBucket.containsAll(realBucket) && realBucket.containsAll(fileBucket))) {
-					status = false;
-					break;
-				}
-				crtBucket++;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			status = false;
-		} finally {
-			try {
-				in.close();
-			} catch (Exception e) {}
-			test.addSubTest(new SubTest("Verificare", status));
+		if (parent == null) {
+			c = pbelow;  
+		} else if (parent.right == p) {
+			parent.right = pbelow;  
+		} else {
+			parent.left = pbelow;  
 		}
-		tests.add(test);
-		float score = 0;
-		for (Test t : tests) {
-			t.run();
-			score += t.score;
+		if(p.count > 1) {  
+			howmany--;
 		}
-		System.out.printf("TOTAL: %.2f%n", score);
+	total--;
 	}
-	public static void main(String[] args) {
-		HashTester tester = new HashTester();
-		tester.runBasicTests();
-	}
+    public int get_howmany() {
+        return howmany;
+    }
+    public int get_total(){
+        return total;
+    }
+    public void print() {
+        printtree(c);
+    }
+    public boolean equals(MultiStringColl obj) {
+        if(howmany!=obj.howmany){
+            return false;
+        }
+        else{
+            btNode[] thisArray = new btNode[howmany];
+            btNode[] objThisArray = new btNode[obj.howmany];
+            toarray(c, thisArray, 0);
+            toarray(obj.c, objThisArray, 0);
+            for(int i = 0; i<thisArray.length; i++){
+                if((thisArray[i].info.compareTo(objThisArray[i].info)!=0) || (thisArray[i].count!=objThisArray[i].count)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    private static class btNode{
+        private String info;
+        private btNode left;
+        private btNode right;
+        private int count;
+        public btNode(){
+            info = null;
+            left = null;
+            right = null;
+            count = 0;
+        }
+        public btNode(String i, btNode lt, btNode rt, int ct){
+            info = i;
+            left = lt;
+            right = rt;
+            count = ct; 
+        }
+    }
+    private static btNode copytree(btNode t){
+        btNode result = null;
+        if(t!=null){
+            result = new btNode(t.info, copytree(t.left), copytree(t.right), t.count);
+        }
+        return result;
+    }
+    private static void printtree(btNode t){
+        if(t!=null){
+            printtree(t.left);
+            System.out.println(t.info + "("+t.count+")");
+            printtree(t.right);
+        }
+    }
+    private static int toarray(btNode t, btNode[] a, int i){
+        int num_nodes = 0;
+        if(t!=null){
+            num_nodes = toarray(t.left, a, i);
+            a[num_nodes+i] = new btNode(t.info, null, null, t.count);
+            num_nodes = num_nodes + 1 + toarray(t.right, a, num_nodes+i+1);
+        }
+        return num_nodes;
+    }
 }

@@ -1,28 +1,65 @@
-function linear () {
-  let n = parseInt(prompt('Enter the size of an array'))
-  let t = 0
-  const a = new Array(n)
-  for (let i = 0; i < a.length; i++) {
-    a[i] = parseInt(prompt('Enter array elements'))
-  }
-  const k = parseInt(prompt('Enter the key element to search: '))
-  for (let i = 0; i < a.length; i++) {
-    if (k === a[i]) {
-      t = 1
-      break
-    }
-  }
-  if (t == 1) {
-    document.writeln('Element ' + a[i] + ' Found at Position:' + i)
-  } else {
-    document.writeln('Element Not Found')
-  }
-}
-const nums = [1, 2, 3, 8, 9, 12]
-const target = 2
-for (const num of nums) {
-  if (num === target) {
-    console.log('Successful Search!')
-    break
-  }
-}
+from linked_list import LinkedList
+class HashMap(object):
+    def __init__(self, num_buckets=None):
+        if num_buckets is None:
+            num_buckets = 8
+        self.store = []
+        while len(self.store) < num_buckets:
+            self.store.append(LinkedList())
+        self.count = 0
+    def include(self, key):
+        return self.bucket(key).include(key)
+    def __getitem__(self, key):
+        return self.bucket(key).get(key)
+    def __setitem__(self, key, val):
+        linked_list = self.bucket(key)
+        if self.include(key):
+            linked_list.update(key, val)
+        else:
+            if self.count == len(self.store):
+                self.resize()
+            linked_list.append(key, val)
+            self.count = self.count + 1
+    def set(self, key, val):
+        self[key] = val
+    def get(self, key, default=None):
+        if self[key]:
+            return self[key]
+        else:
+            return default
+    def delete(self, key):
+        linked_list = self.bucket(key)
+        if linked_list.include(key):
+            linked_list.remove(key)
+            self.count -= 1
+    def resize(self):
+        old_store = self.store
+        self.count = 0
+        self.store = []
+        while len(self.store) < len(old_store) * 2:
+            self.store.append(LinkedList())
+        for linked_list in old_store:
+            link = linked_list.first()
+            while link != linked_list.tail:
+                self[link.key] = link.val
+                link = link.next
+    def bucket(self, key):
+        return self.store[hash(key) % len(self.store)]
+    def __str__(self):
+        pairs = []
+        i = 0
+        while i < len(self.store):
+            linked_list = self.store[i]
+            if not linked_list.empty():
+                pairs.append(str(linked_list))
+            i = i + 1
+        return ", ".join(pairs)
+    def keys(self):
+        key_items = []
+        i = 0
+        while i < len(self.store):
+            linked_list = self.store[i]
+            links = linked_list.keys()
+            key_items = key_items + links
+            i += 1
+        return key_items

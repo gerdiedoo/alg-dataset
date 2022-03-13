@@ -1,23 +1,46 @@
-import java.util.Arrays;
-public class InsertionSort{
-	public void insertionSort(int[] A) {
-		int len = A.length;
-		for (int i = 1; i < len; i ++) {
-			for (int j = i; j > 0 && A[j] < A[j - 1]; j --) {
-				swap(A, j, j - 1);
-			}
-		}
-	}
-	private void swap(int[] A, int idx1, int idx2) {
-		int tmp = A[idx1];
-		A[idx1] = A[idx2];
-		A[idx2] = tmp;
-	}
-	public static void main(String[] args) {
-		InsertionSort is = new InsertionSort();
-		int[] A = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
-		System.out.println("unsorted: " + Arrays.toString(A));
-		is.insertionSort(A);
-		System.out.println("sorted: " + Arrays.toString(A));
-	}
-}
+from typing import List
+def merge(array1: List[int], array2: List[int]) -> List[int]:
+    array = []  
+    first = second = 0  
+    while first < len(array1) and second < len(array2):
+        if array1[first] > array2[second]:
+            array.append(array2[second])
+            second += 1
+        elif array1[first] < array2[second]:
+            array.append(array1[first])
+            first += 1
+        else:
+            array.append(array1[first])
+            first += 1
+            array.append(array2[second])
+            second += 1
+    while first < len(array1):
+        array.append(array1[first])
+        first += 1
+    while second < len(array2):
+        array.append(array2[second])
+        second += 1
+    return array
+def mergeSort(array: List[int]) -> List[int]:
+    if len(array) > 1:
+        half = len(array) // 2  
+        left = array[:half]
+        right = array[half:]
+        left = mergeSort(left)
+        right = mergeSort(right)
+        array = merge(left, right)
+    return array
+if __name__ == "__main__":
+    try:
+        from utils import randomSequence
+    except ModuleNotFoundError:
+        import os, sys  
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        parent_dir_path = os.path.abspath(os.path.join(dir_path, os.pardir))
+        sys.path.insert(0, parent_dir_path)
+        from utils import randomSequence
+    print("MERGE SORT")
+    shuffledArray = randomSequence(0, 1000)
+    print(shuffledArray, "\n")
+    sortedArray = mergeSort(shuffledArray)
+    print(sortedArray)

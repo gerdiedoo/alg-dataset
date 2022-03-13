@@ -1,0 +1,103 @@
+from linked_list.LinkedListExceptions import *
+from linked_list.SinglyLinkedListNode import *
+__author__ = "Rahul Tuli"
+__email__ = "rt3991@rit.edu"
+__status__ = "Under-Development"
+class LinkedList(object):
+    __slots__ = "head", "current", "size"
+    def __init__(self, values=[]):
+        self.head = self.current = None
+        self.size = 0
+        self.extend(values)
+    def __str__(self):
+        return "[" + ", ".join([str(node) for node in self]) + "]"
+    def __len__(self):
+        return self.size
+    def __iter__(self):
+        self.current = self.head
+        return self
+    def __next__(self):
+        if self.current is None:
+            raise StopIteration
+        next_node = self.current
+        self.current = self.current.next
+        return next_node
+    def __getitem__(self, item):
+        assert isinstance(item, int)
+        if item < 0:
+            item = self.size + item
+        if item < 0 or item >= self.size:
+            raise IndexError
+        for index, node in enumerate(self):
+            if index == item:
+                return node
+    def __setitem__(self, key, value):
+        self[key].val = value
+    def __eq__(self, other):
+        return self.head == other.head
+    def __add__(self, other):
+        assert isinstance(other, LinkedList), "Can't add non conforming types"
+        if self.head is None:
+            self.head = other.head
+        else:
+            for current in self:
+                continue
+            current.next = other.head
+    def get(self, index):
+        return self[index].val
+    def set(self, index, value):
+        self[index] = value
+    def extend(self, values):
+        for value in values:
+            self.append(value)
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+        else:
+            self[-1].next = Node(value)
+        self.size += 1
+    def pop(self, index=None):
+        if index is None:
+            index = -1
+        if len(self) == 0:
+            raise UnderFlow
+        return self._remove_at_index(index=index)
+    def _remove_at_index(self, index=False):
+        if index is not False:
+            if index == 0:
+                to_remove = self.head
+                self.head = self.head.next
+            else:
+                to_remove = self[index]
+                self[index - 1].next = self[index].next
+            self.size -= 1
+            return to_remove
+        raise ElementNotFoundError
+    def remove(self, value):
+        index = self.index_of(value)
+        return self._remove_at_index(index)
+    def index_of(self, value):
+        for i, node in enumerate(self):
+            if node.val == value:
+                return i
+        return False
+    def insert(self, index, value):
+        assert isinstance(index, int)
+        if index < 0:
+            index = self.size + index
+        if index > self.size or index < 0:
+            raise IndexError
+        new_node = Node(value)
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+        elif index == self.size:
+            print(index)
+            self[index - 1].next = new_node
+        else:
+            prev = self[index - 1]
+            new_node.next = prev.next
+            prev.next = new_node
+        self.size += 1
+    def get_list(self):
+        return [node.val for node in self]

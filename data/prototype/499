@@ -1,26 +1,61 @@
-const array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
-function bubbleSortBasic(array) {
-  for(let i = 0; i < array.length; i++) {
-    for(let j = 1; j < array.length; j++) {
-      if(array[j - 1] > array[j]) {
-        [array[j - 1], array[j]] = [array[j], array[j - 1]];
-      }
-    }
-  }
-  return array;
-}
-console.log(bubbleSortBasic(array.slice()));  
-function bubbleSort(array) {
-  let swapped;
-  do {
-    swapped = false;
-    for(let i = 0; i < array.length; i++) {
-      if(array[i] && array[i + 1] && array[i] > array[i + 1]) {
-        [array[i], array[i + 1]] = [array[i + 1], array[i]];
-        swapped = true;
-      }
-    }
-  } while(swapped);
-  return array;
-}
-console.log(bubbleSort(array.slice()));  
+import time
+numbers = []
+def bubble_sort():
+     for passesLeft in range(len(numbers)-1, 0, -1):
+         for index in range(passesLeft):
+             if numbers[index] > numbers[index + 1]:
+                numbers[index], numbers[index + 1] = numbers[index + 1], numbers[index]   
+def read_from_file(filepath):
+    del numbers[:] 
+    file = open(filepath, "r")
+    for i in file:
+        numbers.append(int(i))
+def print_first_ten_number():
+    print numbers[0:9]
+def print_last_ten_number():
+    print numbers[len(numbers)-10:len(numbers)]
+def append_result_to_file(str):
+    with open("results.txt", "a") as result:
+        result.write(str+"\n")
+        result.close()
+if __name__ == '__main__':
+    read_from_file("../1k.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("1k = " + str(end-start))
+    read_from_file("../10k.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("10k = " + str(end-start))
+    read_from_file("../100k.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("100k = " + str(end-start))
+    read_from_file("../1m.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("1m = " + str(end-start))
+    read_from_file("../2m.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("2m = " + str(end-start))     
+    read_from_file("../4m.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("4m = " + str(end-start))
+    read_from_file("../8m.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("8m = " + str(end-start))
+    read_from_file("../10m.lst")
+    start = time.clock()
+    bubble_sort()
+    end = time.clock()
+    append_result_to_file("10m = " + str(end-start))     

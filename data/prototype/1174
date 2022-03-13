@@ -1,34 +1,32 @@
-function selectionSortDescending(inputArray) {
-  for (let i = 0; i < inputArray.length - 1; i++) {
-    let maxIndex = i;
-    for (let j = i + 1; j < inputArray.length; j++) {
-      if (inputArray[maxIndex] < inputArray[j]) {
-        maxIndex = j; 
-      }
+require('../../../common/array-extensions');
+const { isEmpty, isFunction } = require('../../../common/utils');
+const selectionSort = function(list) {
+    if (isEmpty(list)) {
+        return list;
     }
-    if (maxIndex != i) {
-      const temp = inputArray[maxIndex];
-      inputArray[maxIndex] = inputArray[i];
-      inputArray[i] = temp;
+    if (list.length < 2) {
+        return list;
     }
-    console.log('In progress: ', inputArray);
-  }
-  return inputArray;
-}
-function selectionSort(items) {
-  const length = items.length;
-  for (let i = 0; i < length - 1; i++) {
-    let min = i;  
-    for (let j = i + 1; j < length; j++) {  
-      if (items[j] < items[min]) {  
-        min = j;  
-      }
+    const allItemsComparable = list.reduce(
+        (acc, item) => (acc &= isFunction(item.compareTo)),
+        true
+    );
+    let maxValueIndex = 0;
+    for (let lastUnsortedIndex = list.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
+        maxValueIndex = lastUnsortedIndex;
+        for (let i = 0; i <= lastUnsortedIndex; i++) {
+            if (allItemsComparable) {
+                if (list[i].compareTo(list[maxValueIndex]) > 0) {
+                    maxValueIndex = i;
+                }
+            } else {
+                if (list[i] > list[maxValueIndex]) {
+                    maxValueIndex = i;
+                }
+            }
+        }
+        list.swap(maxValueIndex, lastUnsortedIndex);
     }
-    if (min != i) {
-      const tmp = items[i];
-      items[i] = items[min];
-      items[min] = tmp;
-    }
-  }
-}
-module.exports = {selectionSort, selectionSortDescending};
+    return list;
+};
+module.exports = { selectionSort };

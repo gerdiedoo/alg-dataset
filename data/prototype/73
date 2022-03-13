@@ -1,51 +1,40 @@
-package org.joyfulmonster.util.concurrent.internal;
-import java.util.Map;
-class HashEntry<K,V> implements Map.Entry<K, V> {
-    private final K key;
-    private final V value;
-    private transient final int keyHashCode;
-    HashEntry(K key, V value, int keyHashCode) {
-        this.key = key;
-        this.value = value;
-        this.keyHashCode = keyHashCode;
+"use strict";
+let hashEngine = require("object-hash");
+const defaultOptions = {
+    algorithm: "sha1",
+    excludeValues: false,
+    encoding: "hex",
+    ignoreUnknown: true,
+    respectFunctionProperties: false,  
+    respectFunctionNames: false,  
+    respectType: false  
+};
+class KeyedObject {
+    constructor(anObject, options) {
+        this.anObject = anObject;
+        this.options = options || defaultOptions;
+        this.objHashString = hashEngine(this.anObject, this.options);
+        this.hashCode = this.hashCode.bind(this);
+        this.equals = this.equals.bind(this);
     }
-    private HashEntry(K key, V value) {
-        this(key, value, HashStrategy.getInstance().hash(key.hashCode()));
+    hashCode() {
+        return this.objHashString;
     }
-    private HashEntry(Map.Entry<? extends K, ? extends V> entry) {
-        this(entry.getKey(), entry.getValue());
-    }
-    @Override
-    public K getKey() {
-        return key;
-    }
-    @Override
-    public V getValue() {
-        return value;
-    }
-    @SuppressWarnings("rawtypes")
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Map.Entry) {
-            Map.Entry e = (Map.Entry) obj;
-            return getKey().equals(e.getKey()) && getValue().equals(e.getValue());
+    equals(anotherKey) {
+        if (anotherKey && (typeof anotherKey.hashCode === "function")) {
+            return this.hashCode() == anotherKey.hashCode();
         } else {
             return false;
         }
     }
-    @Override
-    public int hashCode() {
-        return key.hashCode() ^ value.hashCode();
-    }
-    int getKeyHashCode() {
-        return keyHashCode;
-    }
-    @Override
-    public V setValue(V value) {
-        throw new UnsupportedOperationException();
-    }
-    @Override
-    public String toString() {
-        return key + "=" + value;
+}
+function createKey(anObject) {
+    if ((typeof anObject.hashCode !== "function") || (typeof anObject.equals !== "function")) {
+        return new KeyedObject(anObject);
+    } else {
+        return anObject;
     }
 }
+module.exports = {
+    createKey: createKey
+};

@@ -1,15 +1,35 @@
-selectionSort = function(array) {
-  var a = array.slice(0);
-  var i, j, len, min;
-  for (j = 0, len = a.length; j < len - 1; j++) {
-    for (i = j + 1, min = j; i < len; i++) {
-      if (a[i] < a[min]) {
-        min = i;
-      }
+let array_length;
+const heap_root = (input, i) => {
+    var left = 2 * i + 1;
+    var right = 2 * i + 2;
+    var max = i;
+    if (left < array_length && input[left] > input[max]) {
+        max = left;
     }
-    if (min !== j) {
-      a[j] = a[min] + (a[min] = a[j], 0);
+    if (right < array_length && input[right] > input[max]) {
+        max = right;
     }
-  }
-  return a;
-};
+    if (max != i) {
+        swap(input, i, max);
+        heap_root(input, max);
+    }
+}
+const swap = (input, index_A, index_B) => {
+    var temp = input[index_A];
+    input[index_A] = input[index_B];
+    input[index_B] = temp;
+}
+const heapSort = (input) => {
+    array_length = input.length;
+    for (var i = Math.floor(array_length / 2); i >= 0; i -= 1) {
+        heap_root(input, i);
+    }
+    for (i = input.length - 1; i > 0; i--) {
+        swap(input, 0, i);
+        array_length--;
+        heap_root(input, 0);
+    }
+}
+let arr = [3, 0, 2, 5, -1, 4, 1];
+heapSort(arr);
+console.log(arr);

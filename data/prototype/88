@@ -1,32 +1,34 @@
-package DataStructures.HashMap.Hashing;
-class HashMap {
-    private int hsize;
-    private LinkedList[] buckets;
-    public HashMap(int hsize) {
-        buckets = new LinkedList[hsize];
-        for (int i = 0; i < hsize; i++) {
-            buckets[i] = new LinkedList();
+package Hashtables.Challenge2;
+import Hashtables.Employee;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        LinkedList<Employee> employees = new LinkedList<>();
+        employees.add(new Employee("Jane", "Jones", 123));
+        employees.add(new Employee("John", "Doe", 5678));
+        employees.add(new Employee("Mike", "Wilson", 45));
+        employees.add(new Employee("Mary", "Smith", 5555));
+        employees.add(new Employee("John", "Doe", 5678));
+        employees.add(new Employee("Bill", "End", 3948));
+        employees.add(new Employee("Jane", "Jones", 123));
+        Map<Integer, Employee> hashMap = new HashMap<Integer, Employee>();
+        ListIterator<Employee> iterator = employees.listIterator();
+        List<Employee> rm = new ArrayList<>();
+        while (iterator.hasNext()){
+            Employee employee = iterator.next();
+            if (hashMap.containsKey(employee.getId())){
+                rm.add(employee);
+            }
+            else {
+                hashMap.put(employee.getId(),employee);
+            }
         }
-        this.hsize = hsize;
-    }
-    public int hashing(int key) {
-        int hash = key % hsize;
-        if (hash < 0)
-            hash += hsize;
-        return hash;
-    }
-    public void insertHash(int key) {
-        int hash = hashing(key);
-        buckets[hash].insert(key);
-    }
-    public void deleteHash(int key) {
-        int hash = hashing(key);
-        buckets[hash].delete(key);
-    }
-    public void displayHashtable() {
-        for (int i = 0; i < hsize; i++) {
-            System.out.printf("Bucket %d :", i);
-            buckets[i].display();
+        for (Employee employee:rm){
+            employees.remove(employee);
         }
+        employees.forEach(e -> System.out.println(e));
+    }
+    public static int hash(int value) {
+        return Math.abs(value % 10);
     }
 }

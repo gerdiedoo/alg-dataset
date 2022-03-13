@@ -1,12 +1,26 @@
-insertionSort = function(array) {
-  var i, j,
-      a = array.slice(0);
-  for (i = 0, l = a.length; i < l; i++) {
-    j = i;
-    while (j > 0 && a[j - 1] > a[j]) {
-      a[j] = a[j - 1] + (a[j - 1] = a[j], 0);
-      j--;
+package dev.jeffreybender.sort;
+import java.util.Comparator;
+public final class InsertionSort {
+    private InsertionSort() {
     }
-  }
-  return a;
-};
+    public static <T> void sort(T[] array, Comparator<? super T> comparator) {
+        if (array.length <= 1) {
+            return;
+        }
+        if (comparator == null) {
+            comparator = SortUtils.getDefaultComparator();
+        }
+        for (int index = 1; index < array.length; index++) {
+            T objectAtIndex = array[index];
+            int compareToIndex = index - 1;
+            while (compareToIndex >= 0 && comparator.compare(array[compareToIndex], objectAtIndex) > 0) {
+                array[compareToIndex + 1] = array[compareToIndex];
+                compareToIndex--;
+            }
+            array[compareToIndex + 1] = objectAtIndex;
+        }
+    }
+    public static <T extends Comparable<? super T>> void sort(T[] array) {
+        sort(array, null);
+    }
+}

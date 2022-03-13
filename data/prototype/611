@@ -1,21 +1,14 @@
-package com.growingwiththeweb.sorting;
-public class BubbleSortOptimised {
-    public static void sort(Integer[] array) {
-        int unsortedBelow = array.length;
-        while (unsortedBelow != 0) {
-            int lastSwap = 0;
-            for (int i = 1; i < unsortedBelow; i++) {
-                if (array[i - 1] > array[i]) {
-                    swap(array, i, i - 1);
-                    lastSwap = i;
-                }
+public class Insertion {
+    public static void sort(int[] input) {
+        for (int i = 1; i < input.length; ++i) {
+            for (int j = i; j > 0 && input[j - 1] > input[j]; --j) {
+                swap(input, j, j - 1);
             }
-            unsortedBelow = lastSwap;
         }
     }
-    private static void swap(Integer[] array, int a, int b) {
-        Integer temp = array[a];
-        array[a] = array[b];
-        array[b] = temp;
+    private static void swap(int[] input, int a, int b) {
+        int cache = input[a];
+        input[a] = input[b];
+        input[b] = cache;
     }
 }

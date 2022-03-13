@@ -1,0 +1,80 @@
+def bubbleSort(a):
+    for i in range(len(a)-1):
+        for j in range(len(a)-i-1):
+            if a[j]>a[j+1]:
+                a[j],a[j+1]=a[j+1],a[j]
+    return a
+def selectionSort(a):
+    for i in range(0,len(a)-1):
+        min=i
+        for j in range(i+1,len(a)):
+            if a[j]<a[min]:
+                min =j
+        if min !=i:
+            a[i],a[min]=a[min],a[i]
+    return a
+def insertionSort(a):
+    for i in range(1,len(a)):
+        for j in range(i-1,-1,-1):
+            if(a[j]>a[j+1]):
+                a[j],a[j+1]=a[j+1],a[j]
+            else:
+                break
+    return a
+def insertionSort_shifting(a):
+    for i in range(1,len(a)):
+        temp=a[i]
+        for j in range(i-1,-1,-1):
+            if a[j]>temp:
+                a[j+1]=a[j]
+                j=j-1 
+            else:
+                break
+        a[j+1]=temp       
+    return a
+def mergesort(listValue):
+    if len(listValue)>1:
+        mid=len(listValue)//2
+        left=listValue[:mid]
+        right=listValue[mid:]
+        mergesort(left)
+        mergesort(right)
+        i=j=k=0
+        while i<len(left) and j<len(right):
+            if left[i]<right[j]:
+                listValue[k]=left[i]
+                i=i+1
+            else:
+                listValue[k]=right[j]
+                j=j+1
+            k=k+1
+        while (i<len(left)):
+            listValue[k]=left[i]
+            i=i+1
+            k=k+1
+        while(j<len(right)):
+            listValue[k]=right[j]
+            j=j+1
+            k=k+1
+    return listValue
+def partition(l):
+    length=len(l)
+    pivot=l[length-1]
+    left=[]
+    right=[]
+    for i in range(length-1):
+        el=l[i]
+        if(el<=pivot):
+            left+=[el]
+        else:
+            right+=[el]
+    return (left,pivot,right)
+def quick_sort(a):
+    if (len(a)<=1):
+        return a
+    else:
+        left,pivot,right=partition(a)
+        left_sort=quick_sort(left)
+        right_sort=quick_sort(right)
+        return left_sort+[pivot]+right_sort
+print quick_sort([23,1,-3,450,23,-1,220])

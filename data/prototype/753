@@ -1,87 +1,15 @@
-package com.zhokhov.interview.sorting;
-import static com.zhokhov.interview.util.Console.*;
-public class InsertionSort {
-    private int COMPARISONS_COUNT;
-    private int LOOP_COUNT;
-    public void sort(int array[]) {
-        COMPARISONS_COUNT = 0;
-        LOOP_COUNT = 0;
-        for (int index = 1; index < array.length; index++) {
-            LOOP_COUNT++;
-            ____cyan("\n--------\nindex: " + index);
-            insert(array, index);
-        }
-    }
-    private void insert(int array[], int currentIndex) {
-        int value = array[currentIndex];
-        ____grey("value: " + value);
-        ____grey("currentIndex: " + currentIndex);
-        int reverseIndex = currentIndex;
-        ____grey("reverseIndex: " + reverseIndex);
-        for (int i = currentIndex - 1; i >= 0; i--) {
-            LOOP_COUNT++;
-            ____grey("\ni: " + i);
-            COMPARISONS_COUNT++;
-            if (array[i] >= value) {
-                ____blue("Move element " + array[i] + " to position " + (i + 1));
-                ____blue("new reverseIndex: " + i);
-                array[i + 1] = array[i];
-                reverseIndex = i;
-                System.out.print("[" + value + "]");
-                __red(" ==> ");
-                __dump(array);
-            } else {
-                ____grey("breaking");
-                break;
-            }
-        }
-        ____grey("\nreverseIndex (after loop): " + reverseIndex + ", put value here");
-        array[reverseIndex] = value;
-        __red("==> ");
-        __dump(array);
-    }
-    private void sampleInsert(int array[], int value) {
-        ____grey("value: " + value);
-        int reverseIndex = array.length - 1;
-        ____grey("reverseIndex: " + reverseIndex);
-        for (int i = array.length - 2; i >= 0; i--) {
-            ____grey("\ni: " + i);
-            if (array[i] >= value) {
-                ____blue("Move element to: " + (i + 1));
-                ____blue("new reverseIndex: " + i);
-                array[i + 1] = array[i];
-                reverseIndex = i;
-            } else {
-                ____grey("breaking");
-                break;
-            }
-        }
-        ____grey("\nreverseIndex (after loop): " + reverseIndex + ", put value here");
-        array[reverseIndex] = value;
-    }
-    public static void main(String[] args) {
-        int array[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nSorting");
-        InsertionSort insertionSort = new InsertionSort();
-        insertionSort.sort(array);
-        __green("\nResult: ");
-        __dump(array);
-        ____grey("\nStatistics");
-        __green("  Comparisons: ");
-        System.out.print(insertionSort.COMPARISONS_COUNT);
-        __green("\n  Loops: ");
-        System.out.println(insertionSort.LOOP_COUNT);
-        System.out.print("\n");
-        System.out.println("***********************\n");
-        System.out.println("Insert item to sorted array.");
-        int sortedArray[] = {1, 2, 3, 4, 5, 6, Integer.MAX_VALUE};
-        __yellow("\nNew array: ");
-        __dump(array);
-        System.out.println("\nInserting");
-        insertionSort.sampleInsert(sortedArray, 4);
-        __green("\nResult: ");
-        __dump(sortedArray);
-    }
+package sorters;
+import java.util.Comparator;
+import java.util.List;
+public class InsertionSorter<E> extends AbstractSorter<E> {
+	public void sort(List<E> list, Comparator<E> comp) {
+		for (int i = 1; i < list.size(); i++) {
+			for (int k = i; k > 0 && comp.compare(list.get(k - 1), list.get(k)) > 0; k--) {
+				swap(list, k - 1, k);
+			}
+		}
+	}
+	public String getName() {
+		return "Insertion Sort";
+	}
 }

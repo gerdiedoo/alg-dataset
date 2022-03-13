@@ -1,25 +1,21 @@
-package com.intrafoundation;
-public class QuickSort extends BaseSort {
-    public void sort(int[] arr) {
-        swaps = 0;
-        quickSort(arr, 0, arr.length - 1);
+package io.github.marioluan.algorithms.sorting;
+import edu.princeton.cs.algs4.StdRandom;
+@SuppressWarnings("rawtypes")
+public final class QuickSelect extends Sortable {
+    public static Comparable select(Comparable[] a, int k) {
+        StdRandom.shuffle(a);
+        return select(a, k, 0, a.length - 1);
     }
-    public void quickSort(int[] arr, final int begin, final int end) {
-        if (begin < end) {
-            final int partitionIndex = partition(arr, begin, end);
-            quickSort(arr, begin, partitionIndex - 1);
-            quickSort(arr, partitionIndex + 1, end);
-        }
-    }
-    private int partition(int[] arr, final int begin, final int end) {
-        final int pivot = arr[end];
-        int slidingIndex = (begin - 1);
-        for (int loopIndex = begin; loopIndex < end; loopIndex++) {
-            if (arr[loopIndex] <= pivot) {
-                swap(arr, ++slidingIndex, loopIndex);
-            }
-        }
-        swap(arr, ++slidingIndex, end);
-        return slidingIndex;
+    private static Comparable select(Comparable[] a, int k, int lo, int hi) {
+        if (hi <= lo)
+            return a[k];
+        int j = QuickSort.partition(a, lo, hi);
+        if (j < k)
+            lo = j + 1;
+        else if (j > k)
+            hi = j - 1;
+        else
+            return a[k];
+        return select(a, k, lo, hi);
     }
 }

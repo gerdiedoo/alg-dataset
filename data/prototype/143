@@ -1,35 +1,98 @@
-import java.util.Objects;
-public class MapEntry<K, V> {
-    private K key;
-    private V value;
-    public MapEntry(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-    public K getKey() {
-        return key;
-    }
-    public void setKey(K key) {
-        this.key = key;
-    }
-    public V getValue() {
-        return value;
-    }
-    public void setValue(V value) {
-        this.value = value;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof MapEntry)) {
-            return false;
-        } else {
-            MapEntry<K, V> that = (MapEntry<K, V>) o;
-            return Objects.equals(key, that.key) 
-                && Objects.equals(value, that.value);
-        }
-    }
-    @Override
-    public String toString() {
-        return String.format("%s: %s", key.toString(), value.toString());
-    }
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+public class WeakConcurrentHashMap<K, V> extends ConcurrentHashMap<K, V> {
+	private static final long serialVersionUID = 1L;
+	private Map<K, Long> timeMap = new ConcurrentHashMap<K, Long>();
+	private WeakConcurrentHashMapListener<K, V> listener;
+	private long expiryInMillis;
+	private boolean mapAlive = true;
+	public WeakConcurrentHashMap() {
+		this.expiryInMillis = 10000;
+		initialize();
+	}
+	public WeakConcurrentHashMap(WeakConcurrentHashMapListener<K, V> listener) {
+		this.listener = listener;
+		this.expiryInMillis = 10000;
+		initialize();
+	}
+	public WeakConcurrentHashMap(long expiryInMillis) {
+		this.expiryInMillis = expiryInMillis;
+		initialize();
+	}
+	public WeakConcurrentHashMap(long expiryInMillis, WeakConcurrentHashMapListener<K, V> listener) {
+		this.expiryInMillis = expiryInMillis;
+		this.listener = listener;
+		initialize();
+	}
+	void initialize() {
+		new CleanerThread().start();
+	}
+	public void registerRemovalListener(WeakConcurrentHashMapListener<K, V> listener) {
+		this.listener = listener;
+	}
+	@Override
+	public V put(K key, V value) {
+		if (!mapAlive) {
+			throw new IllegalStateException("WeakConcurrent Hashmap is no more alive.. Try creating a new one.");	 
+		}
+		Date date = new Date();
+		timeMap.put(key, date.getTime());
+		V returnVal = super.put(key, value);
+		if (listener != null) {
+			listener.notifyOnAdd(key, value);
+		}
+		return returnVal;
+	}
+	@Override
+	public void putAll(Map<? extends K, ? extends V> m) {
+		if (!mapAlive) {
+			throw new IllegalStateException("WeakConcurrent Hashmap is no more alive.. Try creating a new one.");	 
+		}
+		for (K key : m.keySet()) {
+			put(key, m.get(key));
+		}
+	}
+	@Override
+	public V putIfAbsent(K key, V value) {
+		if (!mapAlive) {
+			throw new IllegalStateException("WeakConcurrent Hashmap is no more alive.. Try creating a new one.");	 
+		}
+		if (!containsKey(key)) {
+			return put(key, value);
+		} else {
+			return get(key);
+		}
+	}
+	public void quitMap() {
+		mapAlive = false;
+	}
+	public boolean isAlive() {
+		return mapAlive;
+	}
+	class CleanerThread extends Thread {
+		@Override
+		public void run() {
+			while (mapAlive) {
+				cleanMap();
+				try {
+					Thread.sleep(expiryInMillis / 2);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		private void cleanMap() {
+			long currentTime = new Date().getTime();
+			for (K key : timeMap.keySet()) {
+				if (currentTime > (timeMap.get(key) + expiryInMillis)) {
+					V value = remove(key);
+					timeMap.remove(key);
+					if (listener != null) {
+						listener.notifyOnRemoval(key, value);
+					}
+				}
+			}
+		}
+	}
 }

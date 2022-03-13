@@ -1,42 +1,36 @@
-package eu.happycoders.sort.method;
-public class InsertionSort implements SortAlgorithm {
-  @Override
-  public void sort(int[] elements) {
-    sort(elements, 0, elements.length);
-  }
-  public void sort(int[] elements, int fromIndex, int toIndex) {
-    for (int i = fromIndex + 1; i < toIndex; i++) {
-      int elementToSort = elements[i];
-      int j = i;
-      while (j > fromIndex && elementToSort < elements[j - 1]) {
-        elements[j] = elements[j - 1];
-        j--;
-      }
-      elements[j] = elementToSort;
+package Sorting;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class InsertionSort {
+    public static void main(String[] args) {
+        ArrayList<Integer> elements = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            elements.add(sc.nextInt());
+        }
+        sc.close();
+        int elements_array[] = new int[elements.size()];
+        for (int i = 0; i < elements.size(); i++) {
+            elements_array[i] = elements.get(i);
+        }
+        elements_array = doInsertionSort(elements_array);
+        for (int anElement : elements_array) {
+            System.out.println(anElement);
+        }
     }
-  }
-  @Override
-  public void sort(int[] elements, Counters counters) {
-    sort(elements, 0, elements.length, counters);
-  }
-  public void sort(int[] elements, int fromIndex, int toIndex,
-                   Counters counters) {
-    for (int i = fromIndex + 1; i < toIndex; i++) {
-      counters.incIterations();
-      int number = elements[i];
-      counters.incReads();
-      int j = i;
-      while (j > fromIndex) {
-        counters.incIterations();
-        counters.incComparisons();
-        if (!(number < elements[j - 1])) break;
-        elements[j] = elements[j - 1];
-        counters.incReads();
-        counters.incWrites();
-        j--;
-      }
-      elements[j] = number;
-      counters.incWrites();
+    private static int[] doInsertionSort(int[] elementsArray) {
+        for (int i = 1; i < elementsArray.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (elementsArray[j] < elementsArray[j - 1]) {
+                    doSwap(elementsArray, j, j - 1);
+                }
+            }
+        }
+        return elementsArray;
     }
-  }
+    private static void doSwap(int[] elements_array, int i, int j) {
+        int temp = elements_array[i];
+        elements_array[i] = elements_array[j];
+        elements_array[j] = temp;
+    }
 }

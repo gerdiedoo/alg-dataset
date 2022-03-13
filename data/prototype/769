@@ -1,24 +1,40 @@
-class insertionSort{
-	public static void main(String [] args){
-		int [] arr = {1, 3, 5, 6, 6, 1, 3, 5};
-		int sizeofArr = arr.length;
-		int [] sortedArr = new int [sizeofArr];
-		sortedArr = insertionSort(arr, sizeofArr);
-		print(sortedArr);
-	}
-	static int [] insertionSort(int [] arr, int sizeofArr){
-		int temp;
-		for (int i=1;i<sizeofArr;i++){
-			for (int k=i;k>0 && arr[k-1] >= arr[k];k--) {
-				temp = arr[k];
-				arr[k] = arr[k-1];
-				arr[k-1] = temp; 
-			}
-		}
-		return arr;
-	}
-	static void print (int [] arr){
-		for (int a : arr)
-		System.out.print(" "+a);
-	}
-}
+def merge(b , low , high , mid):
+	i = low
+ j = mid + 1
+ new_list = list()
+ while i <= mid and j <= high:
+		if b[i] < b[j]:
+			new_list.append(b[i])
+   i+=1
+  else:
+			new_list.append(b[j])
+   j+=1
+ while (i<=mid):
+		new_list.append(b[i])
+  i+=1
+ while (j<=high):
+		new_list.append(b[j])
+  j+=1
+ x = low
+ for i in new_list:
+		b[x] = i
+  x+=1
+ return b
+def iterative_merge_sort(a):
+	n = len(a)
+ p = 2
+ while (p<=n):
+		i = 0
+  while (i+p-1 < n):
+			l = i
+   h = i+p-1
+   mid = (l+h)//2
+   merge(a , l , h , mid)
+   i+=p
+  p*=2
+ if p//2 < n:
+		merge(a , 0 , (p//2)-1 , n-1)
+a = [8,3,7,4,5,2,6,5]
+print(a)
+iterative_merge_sort(a)
+print(a)

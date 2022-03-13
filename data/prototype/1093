@@ -1,40 +1,62 @@
-package sortvisualiser.algorithms;
-import sortvisualiser.SortArray;
-public class QuickSort implements ISortAlgorithm {
-    private long stepDelay = 30;
-    private int findPivotPoint(SortArray array, int lowIndex, int highIndex) {
-        int pivotValue = array.getValue(highIndex);
-        int i = lowIndex - 1;
-        for (int j = lowIndex; j <= highIndex - 1; j++) {
-            if (array.getValue(j) <= pivotValue) {
-                i++;
-                array.swap(i, j, getDelay(), true);
+import java.lang.Comparable;
+import java.util.List;
+public class QuickSortMedian<T extends Comparable<T>> implements SortingAlg<T> {
+    @Override
+    public void sort(List<T> elements) {
+        if (elements == null)
+            return;
+        sort(elements, 0, elements.size() - 1); 
+    }
+    private void sort(List<T> elements, int left, int right) {
+        if (left < right) {
+            int p = partition(elements, left, right);
+            sort(elements, left, p-1);
+            sort(elements, p+1, right);
+        }
+    }
+    private int partition(List<T> elements, int left, int right) {
+        int pivotIndex = getMedianIndex(elements, left, right);
+        T pivot = elements.get(pivotIndex);
+        T temp = elements.get(right);
+        elements.set(right, pivot);
+        elements.set(pivotIndex, temp);
+        int i = left - 1;
+        for (int j = left; j < right; j++) {
+            if (isLessThan(elements.get(j), pivot)) {
+                T greater = elements.get(++i);
+                elements.set(i, elements.get(j));
+                elements.set(j, greater);
             }
         }
-        array.swap(i + 1, highIndex, getDelay(), true);
+        temp = elements.get(i + 1);
+        elements.set(i + 1, pivot);
+        elements.set(right, temp);
         return i + 1;
     }
-    private void quickSort(SortArray array, int lowIndex, int highIndex) {
-        if (lowIndex < highIndex) {
-            int pivotPoint = findPivotPoint(array, lowIndex, highIndex);
-            quickSort(array, lowIndex, pivotPoint - 1);
-            quickSort(array, pivotPoint + 1, highIndex);
+    private boolean isLessThan(T first, T second) {
+        return (first.compareTo(second) < 0);
+    }
+    private int getMedianIndex(List<T> elements, int left, int right) {
+        T first = elements.get(left);
+        T middle = elements.get((left + right) >> 1);
+        T last = elements.get(right);
+        if ((isLessThan(middle, first) && isLessThan(first, last))
+                || (isLessThan(first, middle) && isLessThan(last, first)))
+            return left;
+        if ((isLessThan(last, first) && isLessThan(middle, last))
+                || (isLessThan(first, last) && isLessThan(last, middle)))
+            return right;
+        return (left + right) >> 1;
+    }
+    public static void main(String[] args) {
+        SortingAlg<Integer> alg = new MedianQuickSort<Integer>();
+        List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        alg.sort(elems);
+        for (int i = 0; i < elems.size() - 1; i++) {
+            if (elems.get(i).compareTo(elems.get(i+1)) > 0) {
+                throw new java.lang.RuntimeException("Elems should be sorted.");
+            }
         }
-    }
-    @Override
-    public void runSort(SortArray array) {
-        quickSort(array, 0, array.arraySize() - 1);
-    }
-    @Override
-    public String getName() {
-        return "Quick Sort";
-    }
-    @Override
-    public long getDelay() {
-        return stepDelay;
-    }
-    @Override
-    public void setDelay(long delay) {
-        this.stepDelay = delay;
+        System.out.println("All tests passed.");
     }
 }

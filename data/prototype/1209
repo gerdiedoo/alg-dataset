@@ -1,20 +1,31 @@
-function indexOfMin(list) {
-    var minIndex = 0;
-    for(var i = 0; i < list.length; i++) {
-        if (list[i] < list[minIndex]) {
-            minIndex = i;
+import java.util.List;
+import java.lang.Comparable;
+public class SelectionSort<T extends Comparable<T>> implements SortingAlg<T> {
+    @Override
+    public void sort(List<T> elements) {
+        if (elements == null) return;
+        for (int i = 0; i < elements.size() - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < elements.size(); j++) {
+                if (isLessThan(elements.get(j), elements.get(min)))
+                    min = j;
+            }
+            T temp = elements.get(i);
+            elements.set(i, elements.get(min));
+            elements.set(min, temp);
         }
     }
-    return minIndex;
-}
-function selectionSort(list) {
-    var sortedList = [];
-    while(list.length > 0) {
-        var indexToMove = indexOfMin(list);
-        sortedList.push(list.splice(indexToMove, 1)[0]);
+    private boolean isLessThan(T first, T second) {
+        return first.compareTo(second) < 0;
     }
-    return sortedList;
+    public static void main(String[] args) {
+        SortingAlg<Integer> alg = new SelectionSort<Integer>();
+        List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        alg.sort(elems);
+        for (int i = 0; i < elems.size() - 1; i++) {
+            if (elems.get(i).compareTo(elems.get(i+1)) > 0)
+                throw new java.lang.RuntimeException("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
 }
-const testValues = [29, 100, 1, 2, 57, 28, 88, 3, 50, 67, 37, 1, 32, 20];
-var sorted = selectionSort(testValues);
-console.log(sorted);

@@ -1,64 +1,29 @@
-package piratezpdx.sortathon;
-public class Merge extends ArrayBased {
-    protected int comparisons;
-    Merge(){
-        super();
-        comparisons = 0;
-    }
-    public int sort(){
-        comparisons = 0;
-        setSortingArray(split(getSortingArray()));
-        return comparisons;
-    }
-    public int[] split(int[] incoming)throws ArrayIndexOutOfBoundsException{
-        int leftlen = 0;
-        int rightlen = 0;
-        if (incoming.length == 1){
-            return incoming;
-        }
-        if (incoming.length%2 == 0){
-            leftlen = rightlen = incoming.length/2;
-        }
-        else{
-            leftlen = incoming.length/2;
-            rightlen = leftlen + 1;
-        }
-        int [] left = new int[leftlen];
-        int [] right = new int[rightlen];
-        System.arraycopy(incoming, 0, left, 0, leftlen);
-        System.arraycopy(incoming, leftlen, right, 0, rightlen);
-        left = split(left);
-        right = split(right);
-        return mergeThese(left,right);
-    }
-    public int[] mergeThese(int[] a, int[] b) throws ArrayIndexOutOfBoundsException{
-        int num = 0;
-        int aIndex = 0;
-        int bIndex = 0;
-        int aLen = a.length;
-        int bLen = b.length;
-        int resultLen = aLen + bLen;
-        int [] result = new int [resultLen];
-        while (num < resultLen){
-            if (aIndex == aLen) {
-                System.arraycopy(b, bIndex, result, num, 1);
-                bIndex++;
-            }
-            else if (bIndex == bLen){
-                System.arraycopy(a, aIndex, result, num, 1);
-                aIndex++;
-            }
-            else if (a[aIndex] < b[bIndex]){
-                System.arraycopy(a, aIndex, result, num, 1);
-                aIndex++;
-            }
-            else{
-                System.arraycopy(b, bIndex, result, num, 1);
-                bIndex++;
-            }
-            num++;       
-            this.comparisons++;
-        }
-        return result;
-    }
-}
+def _mergesort(array, start, end):
+    mid = (start + end)/2
+    if start < end:
+        _mergesort(array, start, mid)
+        _mergesort(array, mid+1, end)
+    elif start == end: return
+    L = start; R = mid+1
+    tmp_array = []
+    while ( L <= mid and R <= end):
+        if (array[L] < array[R]):
+            tmp_array.append(array[L])
+            L += 1
+        else:
+            tmp_array.append(array[R])
+            R += 1
+    if L <= mid:
+        tmp_array += array[L:]
+    else:
+        tmp_array += array[R:]
+    i = 0;
+    while (start <= end):
+        array[start] = tmp_array[i]
+        start += 1; i += 1;
+def mergesort(array):
+    _mergesort(array, 0, len(array)-1)
+if __name__ == "__main__":
+    array = [17, 9, 13, 8, 7, 7, -5, 6, 11, 3, 4, 1, 2]
+    mergesort(array);
+    print array

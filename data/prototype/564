@@ -1,31 +1,8 @@
-package dev.jeffreybender.sort;
-import java.util.Comparator;
-public final class BubbleSort {
-    private BubbleSort() {
-    }
-    public static <T> void sort(T[] array, Comparator<? super T> comparator) {
-        if (array.length <= 1) {
-            return;
-        }
-        if (comparator == null) {
-            comparator = SortUtils.getDefaultComparator();
-        }
-        boolean didSwap;
-        int endIndex = array.length;
-        do {
-            didSwap = false;
-            for (int i = 1; i < endIndex; i++) {
-                T o1 = array[i - 1];
-                T o2 = array[i];
-                if (comparator.compare(o1, o2) > 0) {
-                    SortUtils.swap(array, i - 1, i);
-                    didSwap = true;
-                }
-            }
-            endIndex--;
-        } while (didSwap);
-    }
-    public static <T extends Comparable<? super T>> void sort(T[] array) {
-        sort(array, null);
-    }
-}
+def bubblesort(numlist):       
+    for i in range(len(numlist)-1):
+        for j in range(0, len(numlist)-i-1):
+            if numlist[j]> numlist[j+1]:
+                temp = numlist[j]
+                numlist[j]= numlist[j+1]
+                numlist[j+1]= temp
+    return (numlist)

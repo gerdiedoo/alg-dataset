@@ -1,16 +1,25 @@
-package searches;
-import java.util.Arrays;
-public class BinarySearch {
-    public static boolean contains(int[] arr, int n) {
-        int testIndex = arr.length / 2;
-        if(arr[testIndex] == n) {
-            return true;
+import java.util.*;
+import static jdk.nashorn.internal.objects.NativeMath.random;
+public class JavaLinearSearch {
+    public static void main(String args[]){
+        Scanner in=new Scanner(System.in);
+        Random random = new Random();
+        System.out.println("Enter the limit of your array (from 1 to 1000): ");
+        int size = in.nextInt();
+        ArrayList list = new ArrayList(size);
+        System.out.println("Great! Now Java is selecting some random numbers for you...");
+        for(int i=0; i<=size; i++) {
+            list.add(i, random.nextInt(size+1));
         }
-        if (arr.length == 1) {
-            return false;
+        System.out.print("Please, enter the number to be searched, from 0 to 99: ");
+        int search = in.nextInt();
+        int index = -1;
+        index = list.indexOf(search);
+        if(index==-1){
+            System.out.print("Number Not Found:");
+            System.out.print(" "+list);
+        } else {
+            System.out.print("Number found at position " + index + "!");
         }
-        return n < arr[testIndex] ?
-                contains(Arrays.copyOfRange(arr, 0, arr.length / 2), n) :  
-                contains(Arrays.copyOfRange(arr, testIndex + 1, arr.length), n);  
     }
 }

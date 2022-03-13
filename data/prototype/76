@@ -1,31 +1,36 @@
-class HashMap {
-	private int hsize;
-	private LinkedList[] buckets;
-	public HashMap(int hsize) {
-		buckets = new LinkedList[hsize];
-		for (int i = 0; i < hsize ; i++ ) {
-			buckets[i] = new LinkedList();
-		}
-		this.hsize = hsize;
+package com.jamierf.persistenthashmap;
+import java.io.Serializable;
+import java.util.AbstractSet;
+import java.util.Collection;
+import java.util.Iterator;
+class KeySet<K extends Serializable, V extends Serializable> extends AbstractSet<K> {
+	private PersistentHashMap<K, V> map;
+	public KeySet(PersistentHashMap<K, V> map) {
+		this.map = map;
 	}
-	public int hashing(int key) {
-		int hash = key % hsize;
-		if(hash < 0)
-			hash += hsize;
-		return hash;
+	@Override
+	public boolean contains(Object o) {
+		return map.containsKey(o);
 	}
-	public void insertHash(int key) {
-		int hash = hashing(key);
-		buckets[hash].insert(key);
+	@Override
+	@SuppressWarnings("unchecked")
+	public boolean containsAll(Collection<?> c) {
+		Collection<K> ec = (Collection<K>) c;
+		for (K key : ec)
+			if (!contains(key))
+				return false;
+		return true;
 	}
-	public void deleteHash(int key) {
-		int hash = hashing(key);
-		buckets[hash].delete(key);
+	@Override
+	public boolean isEmpty() {
+		return map.isEmpty();
 	}
-	public void displayHashtable() {
-		for (int i = 0;i < hsize ; i++) {
-			System.out.printf("Bucket %d :",i);
-			buckets[i].display();
-		}
+	@Override
+	public Iterator<K> iterator() {
+		return new KeyIterator<K, V>(map);
+	}
+	@Override
+	public int size() {
+		return map.size();
 	}
 }

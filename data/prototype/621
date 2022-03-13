@@ -1,36 +1,26 @@
-import java.io.*; 
-class BubbleSort 
-{ 
-	static void bubbleSort(int arr[], int n) 
-	{ 
-		int i, j, temp; 
-		boolean swapped; 
-		for (i = 0; i < n - 1; i++) 
-		{ 
-			swapped = false; 
-			for (j = 0; j < n - i - 1; j++) 
-			{ 
-				if (arr[j] > arr[j + 1]) 
-				{ 
-					temp = arr[j]; 
-					arr[j] = arr[j + 1]; 
-					arr[j + 1] = temp; 
-					swapped = true; 
-				} 
-			} 
-			if (swapped == false) 
-				break; 
-		} 
-	} 
-	public static void main(String args[]) 
-	{ 
-		int arr[] = { 64, 34, 25, 12, 22, 11, 90 }; 
-		int n = arr.length; 
-		bubbleSort(arr, n); 
-		System.out.println("Sorted array: "); 
-		printArray(arr, n);int i; 
-		for (i = 0; i < size; i++) 
-			System.out.print(arr[i] + " "); 
-		System.out.println(); 
-	} 
-} 
+from timeit import default_timer as timer
+def insertion_sort(seq):
+    for i in range(1, len(seq)):
+        key = seq[i]
+        low, up = 0, i
+        while up > low:
+            middle = (low + up) // 2
+            if seq[middle] < key:
+                low = middle + 1              
+            else:
+                up = middle
+        seq[:] = seq[:low] + [key] + seq[low:i] + seq[i + 1:]
+if __name__ == '__main__':
+    time_taken = 0
+    x = int(input("Enter number of trials : "))
+    for n in range(1,x+1):
+        with open("data/random.txt","r") as fileobj:
+            list_to_sort = list(map(int, fileobj.readlines()))
+            start = timer()
+            insertion_sort(list_to_sort)
+            current = timer()-start
+            print(f"Running test {n} : {current:.2f} seconds")
+            time_taken += current
+    assert sorted(list_to_sort) == list_to_sort
+    time_taken /= x
+    print(f"Insertion sort: average time = {time_taken:.2f} seconds")

@@ -1,91 +1,59 @@
-import java.util.*;
-public class HashMap
-{
-   private int size;
-   private int initializedSize;
-   private int itemsInHashMap;
-   private LinkedList<Object[]>[] map;
-   public HashMap(){}
-   public HashMap(int size)
-   {
-      this.initializedSize = size;
-      this.size = size*4/3;  
-      itemsInHashMap = 0;
-      map = new LinkedList[this.size];
-   }
-   public float load()
-   {
-      return (float) itemsInHashMap / size;
-   }
-   public boolean set(String key, Object value)
-   {
-      int bucket = Math.abs(key.hashCode() % size);
-      if(map[bucket] == null)
-      {
-         if(itemsInHashMap >= initializedSize)  
-            return false; 
-         LinkedList valueList = new LinkedList();
-         Object[] valuePair = {key, value};
-         valueList.add(valuePair);
-         map[bucket] = valueList;
-      }
-      else
-      {
-         LinkedList valueList = map[bucket];       
-         Iterator iter = valueList.iterator();
-         Object[] newValuePair = {key, value};
-         while(iter.hasNext())
-         {
-            Object[] temp = (Object[]) iter.next();
-            if(temp[0] == key)  
-            {
-               iter.remove(); 
-               itemsInHashMap--;
-               break;
-            }  
-         }
-         if(itemsInHashMap >= initializedSize)  
-            return false; 
-         valueList.add(newValuePair);
-      }
-      itemsInHashMap++;
-      return true;   
-   }
-   public Object get(String key)
-   {
-      int bucket = Math.abs(key.hashCode() % size);
-      if (map[bucket] != null)
-      {
-         LinkedList valueList = map[bucket];
-         Iterator iter = valueList.iterator();
-         while(iter.hasNext())
-         {
-            Object[] temp = (Object[]) iter.next();
-            if(temp[0] == key)
-               return temp[1];  
-         }
-      }
-      return null;
-   }
-   public Object delete(String key)
-   {
-      int bucket = Math.abs(key.hashCode() % size);
-      if (map[bucket] != null)
-      {
-         LinkedList valueList = map[bucket];
-         Iterator iter = valueList.iterator();
-         while(iter.hasNext())
-         {
-            Object[] temp = (Object[]) iter.next();
-            if(temp[0] == key)
-            {
-               Object returnValue = temp[1];
-               iter.remove();
-               itemsInHashMap--;
-               return returnValue;
-            }
-         }
-      }
-      return null;
-   }
-}
+__author__ = "streethacker"
+class _MapEntry:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+class _MapIterator:
+    def __init__(self, theMap):
+        self._mapRef = theMap
+        self._curNdx = 0
+    def __iter__(self):
+        return self
+    def next(self):
+        if self._curNdx < len(self._mapRef):
+            item = self._mapRef[self._curNdx]
+            self._curNdx += 1
+            return item
+        else:
+            raise StopIteration
+class Map:
+    def __init__(self):
+        self._entryList = list()
+    def __len__(self):
+        return len(self._entryList)
+    def __contains__(self, key):
+        ndx = self._findPosition(key)
+        return ndx is not None
+    def __getitem__(self, key):
+        ndx = self._findPosition(key)
+        assert ndx is not None, "Invalid map key."
+        return self._entryList[ndx].value
+    def __setitem__(self, key, value):
+        ndx = self._findPosition(key)
+        if ndx is not None:
+            self._entryList[ndx].value = value
+            return False
+        else:
+            entry = _MapEntry(key, value)
+            self._entryList.append(entry)
+            return True
+    def remove(self, key):
+        ndx = self._findPosition(key)
+        assert ndx is not None, "Invalid map key."
+        self._entryList.pop(ndx)
+    def __iter__(self):
+        return _MapIterator(self._entryList)
+    def _findPosition(self, key):
+        for i in range(len(self)):
+            if self._entryList[i].key == key:
+                return i
+        else:
+            return None
+if __name__ == "__main__":
+    m = Map()
+    m["ID"] = 1001
+    m["NAME"] = "Jhon Smith"
+    m["AGE"] = 22
+    print m["ID"]
+    print m["NAME"]
+    print m["AGE"]

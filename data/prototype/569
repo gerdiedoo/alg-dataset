@@ -1,34 +1,18 @@
-package sortlab.algorithm;
-import sortlab.algorithm.util.Helper;
-import java.util.Comparator;
-public final class BubbleSort<T> implements SortAlgorithmInterface<T> {
-  public int passes = 0;  
-  public long swaps = 0;  
-  private final Comparator<T> comparator;
-  private Helper<T> helper;
-  public BubbleSort(Class<T> of, Comparator<T> comparator) {
-    this.comparator = comparator;
-    this.helper = new Helper<T>(of);
-  }
-  public T[] sort(T[] input) {
-    int size = input.length;
-    T[] sorted = helper.copyOf(input);
-    boolean swapped;
-    do {
-      swapped = false;
-      for(int n = 0; n < (size-1); n++) {
-        int comparison = comparator.compare(sorted[n], sorted[n+1]);
-        if(comparison > 0) {  
-          T temp_left = sorted[n];
-          T temp_right = sorted[n+1];
-          sorted[n] = temp_right;
-          sorted[n+1] = temp_left;
-          swapped = true;  
-          this.swaps += 1;
+public class BubbleSort {
+    public static void main(String[] args) {
+        int[] input = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (input[i] < input[j]) {
+                    int temp = input[i];
+                    input[i] = input[j];
+                    input[j] = temp;
+                }
+            }
         }
-      }
-      this.passes += 1;  
-    } while(swapped);
-    return sorted;
-  }
+        System.out.println("Bubble Sort : Sorted List");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(input[i]);
+        }
+    }
 }

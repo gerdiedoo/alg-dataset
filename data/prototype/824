@@ -1,31 +1,56 @@
-def mergeSort(alist):
-    print("Splitting ",alist)
-    if len(alist)>1:
-        mid = len(alist)//2
-        lefthalf = alist[:mid]
-        righthalf = alist[mid:]
-        mergeSort(lefthalf)
-        mergeSort(righthalf)
-        i=0
-        j=0
-        k=0
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] < righthalf[j]:
-                alist[k]=lefthalf[i]
-                i=i+1
-            else:
-                alist[k]=righthalf[j]
-                j=j+1
-            k=k+1
-        while i < len(lefthalf):
-            alist[k]=lefthalf[i]
-            i=i+1
-            k=k+1
-        while j < len(righthalf):
-            alist[k]=righthalf[j]
-            j=j+1
-            k=k+1
-    print("Merging ",alist)
-alist = [54,26,93,17,77,31,44,55,20]
-mergeSort(alist)
-print(alist)
+public class MergeSort
+{
+    public MergeSort(int[] data)
+    {
+        sort(data, 0, data.length);
+    }
+    public int[] sort(int[] A, int i, int j)
+    {
+        if ((j-i) > 1)
+        {
+            int mid = (int) Math.floor((j-i)/2.0);
+            int[] B = sort(A, 0, mid-1);
+            int[] C = sort(B, mid, j);
+            merge(B, C, A);
+        }
+        return A;
+    }
+    public void merge(int[] B, int[] C, int[] A)
+    {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while(i < B.length && j < C.length)
+        {
+            if(B[i] < C[j])
+            {
+                A[k] = B[i];
+                i++;
+            }
+            else 
+            {
+                A[k] = C[j];
+                j++;
+            }
+            k++;
+        }
+        if(i < B.length)
+        {
+            for(int p=i; p<B.length; p++)
+            {
+                A[k] = B[p];
+                k++;
+                p++;
+            }
+        }
+        else
+        {
+            for(int q=j; q<C.length; q++)
+            {
+                A[k] = C[q];
+                k++;
+                q++;
+            }
+        }
+    }
+}

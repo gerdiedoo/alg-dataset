@@ -1,13 +1,10 @@
-package maps.lrucache;
-import java.util.LinkedHashMap;
-import java.util.Map;
-public class LRUCache extends LinkedHashMap {
-    private int maxSize;
-    public LRUCache(int maxSize) {
-        super(maxSize, 0.75F, true);
-        this.maxSize = maxSize;
-    }
-    public boolean removeEldestEntry(Map.Entry map) {
-        return super.size() > maxSize;
+package Hashtables.LinearProbing;
+import Hashtables.Employee;
+public class StoredEmployee {
+    public String key;  
+    public Employee employee;
+    public StoredEmployee(String key, Employee employee) {
+        this.key = key;
+        this.employee = employee;
     }
 }

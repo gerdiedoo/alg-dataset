@@ -1,34 +1,80 @@
-package search;
-import java.util.Scanner;
-public class SaddlebackSearch {
-    private static int[] find(int arr[][], int row, int col, int key) {
-        int ans[] = {-1, -1};
-        if (row < 0 || col >= arr[row].length) {
-            return ans;
-        }
-        if (arr[row][col] == key) {
-            ans[0] = row;
-            ans[1] = col;
-            return ans;
-        }
-        else if (arr[row][col] > key) {
-            return find(arr, row - 1, col, key);
-        }
-        return find(arr, row, col + 1, key);
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int arr[][];
-        int i, j, rows = sc.nextInt(), col = sc.nextInt();
-        arr = new int[rows][col];
-        for (i = 0; i < rows; i++) {
-            for (j = 0; j < col; j++) {
-                arr[i][j] = sc.nextInt();
-            }
-        }
-        int ele = sc.nextInt();
-        int ans[] = find(arr, rows - 1, 0, ele);
-        System.out.println(ans[0] + " " + ans[1]);
-        sc.close();
-    }
-}
+import sys
+sys.path.insert(0, '../linked_list')
+from link_list import LinkList  
+import json  
+class HashTable():
+    _data = []
+    def __init__(self, hashtableSize=1024):
+        self._data = [None] * hashtableSize
+    def _makePayload(self, name, value) -> dict:
+        return({'name': name, 'value': value})
+    def _makeHash(self, name) -> int:
+        char_sum = sum([ord(char) for char in name])
+        prime_number = 599
+        hash = char_sum * prime_number
+        return hash
+    def _getHashIndex(self, hash: int) -> int:
+        return hash % len(self._data)
+    def _hashtable_compare_func(self, payload1, payload2) -> bool:
+        if isinstance(payload2, dict):
+            retVal = payload1.get('name') == payload2.get('name')
+        else:
+            retVal = payload1.get('name') == payload2
+        return retVal
+    def add(self, name, value):
+        hash = self._makeHash(name)
+        hashIdx = self._getHashIndex(hash)
+        elem = self._data[hashIdx]
+        payload = self._makePayload(name, value)
+        if elem is None:
+            elem = LinkList(self._hashtable_compare_func)
+            elem.insert(payload)
+            self._data[hashIdx] = elem
+        else:
+            if not elem.includes(payload):
+                elem.insert(payload)
+            else:
+                raise ValueError('Already added to hashtable')
+    def get(self, name):
+        hash = self._makeHash(name)
+        hashIdx = self._getHashIndex(hash)
+        elem = self._data[hashIdx]
+        if elem is None:
+            raise ValueError('Not found')
+        try:
+            payload_dict = elem.get(name)
+            return payload_dict.get('value')
+        except Exception:
+            raise ValueError('Not found')
+    def delete(self, name):
+        found = False
+        try:
+            found = self.contains(name)
+        except ValueError:
+            raise ValueError(f'Name:[{name}] does not exist.')
+        if found:
+            hash = self._makeHash(name)
+            hashIdx = self._getHashIndex(hash)
+            elem = self._data[hashIdx]
+            if elem is None:
+                raise ValueError(f'Name:[{name}] entry into HashTable is None.')
+            b = elem.remove(name)
+    def update(self, name, value):
+        if not self.contains(name):
+            raise ValueError(f'Name:[{name}] does not exist.')
+        self.delete(name)
+        self.add(name, value)
+    def contains(self, name) -> bool:
+        try:
+            _ = self.get(name)
+            return True
+        except ValueError:
+            return False
+    def export_keys(self) -> list:
+        retArr = []
+        def touch_node(value):
+            retArr.append(value)
+        for linklist in self._data:
+            if linklist:
+                linklist.traverse(touch_node)
+        return retArr

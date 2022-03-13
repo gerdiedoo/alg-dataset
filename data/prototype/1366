@@ -1,8 +1,76 @@
-function linearSearch(array, target) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === target) {
-      return i;
-    }
-  }
-  return -1;
-}
+import collections
+__all__ = ['Hashmap']
+MINSIZE = 8
+PERTURB_SHIFT = 5
+KeyValue = collections.namedtuple('KeyValue', ('key', 'value'))
+class Hashmap:
+    absent = object()
+    def __init__(self, minsize=MINSIZE, perturb_shift=PERTURB_SHIFT):
+        self._minsize = minsize
+        self._perturb_shift = perturb_shift
+        self._build(self._minsize)
+    def __getitem__(self, key):
+        _, kv_pair = self._lookup(key, self._backing)
+        if kv_pair:
+            return kv_pair.value
+        else:
+            return Hashmap.absent
+    def __setitem__(self, key, value):
+        i, kv_pair = self._lookup(key, self._backing)
+        self._backing[i] = KeyValue(key, value)
+        if kv_pair is None:
+            self._used += 1
+        size = len(self._backing)
+        utilization = self._used/size
+        if utilization > 0.67:
+            self._resize(self._incr_size(size))
+    def __contains__(self, key):
+        _, kv_pair = self._lookup(key, self._backing)
+        return kv_pair and not kv_pair.value is Hashmap.absent
+    def __iter__(self):
+        for kv_pair in self._backing:
+            if kv_pair and not kv_pair.value is Hashmap.absent:
+                yield kv_pair
+    def __len__(self):
+        return self._used - self._deleted
+    def __delitem__(self, key):
+        i, kv_pair = self._lookup(key, self._backing)
+        if kv_pair and not kv_pair.value is Hashmap.absent:
+            self._backing[i] = KeyValue(key, Hashmap.absent)
+            self._deleted += 1
+            size = len(self._backing)
+            utilization = (self._used - self._deleted)/size 
+            if utilization < 0.16:
+                self._resize(self._decr_size(size))
+        else:
+            raise KeyError('no such item!')
+    def _lookup(self, key, backing):
+        for i in self._indices(key, len(backing)):
+            value = backing[i]
+            if value is None or value.key == key:
+                return i, value
+        assert False, 'should not reach this!'
+    def _indices(self, key, size):
+        j = perturb = hash(key)
+        for _ in range(size):
+            j %= size
+            yield j
+            j = 5 * j + 1 + perturb
+            perturb >>= self._perturb_shift
+    def _resize(self, new_size):
+        if new_size != len(self._backing):
+            old_backing = self._backing[:]
+            self._build(new_size, old_backing)
+    def _build(self, size, init=None):
+        if not init:
+            init = []
+        self._backing = [None] * size
+        self._used = 0
+        self._deleted = 0
+        for kv_pair in init:
+            if kv_pair and not kv_pair.value is Hashmap.absent:
+                self[kv_pair.key] = kv_pair.value
+    def _incr_size(self, size):
+        return size * 2
+    def _decr_size(self, size):
+        return max(self._minsize, size // 2)

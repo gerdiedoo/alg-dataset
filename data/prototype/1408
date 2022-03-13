@@ -1,54 +1,57 @@
-package searching;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
-import fundamentals.Bag;
-public class SequentialSearchST<Key, Value> {
-  private Node first;
-  private int numItems;
-  private class Node {
-    private Key key;
-    private Value val;
-    private Node next;
-    public Node(Key key, Value val, Node next) {
-      this.key = key;
-      this.val = val;
-      this.next = next;
-    }
-  }
-  public Value get(Key key) {  
-    for (Node x = first; x != null; x = x.next)
-      if (key.equals(x.key))
-        return x.val;  
-    return null;  
-  }
-  public void put(Key key, Value val) {  
-    for (Node x = first; x != null; x = x.next)
-      if (key.equals(x.key))
-        { x.val = val; return; }  
-    first = new Node(key, val, first);  
-    numItems++;  
-  }
-  public boolean contains(Key key) {
-    if (key == null) throw new IllegalArgumentException("argument to contains() is null");
-    return get(key) != null;
-  }
-  public Iterable<Key> keys() {
-    Bag<Key> keys = new Bag<Key>();
-    for (Node x = first; x != null; x = x.next)
-      keys.add(x.key);
-    return keys;
-  }
-  public int size() {
-    return numItems;
-  }
-  public static void main(String[] args) {
-    SequentialSearchST<String, Integer> st = new SequentialSearchST<String, Integer>();
-    for (int i = 0; !StdIn.isEmpty(); i++) {
-      String key = StdIn.readString();
-      st.put(key, i);
-    }
-    StdOut.println("Number of items: " + st.size());
-    for (String s : st.keys())
-      StdOut.println(s + " " + st.get(s));
-  }
-}
+class Hashmap:
+    def __init__(self):
+        self.size = 6
+        self.map = [None] * self.size
+    def gethash(self, key):
+        hash = 0
+        for char in key:
+            hash += ord(char)
+        return hash % self.size
+    def add(self, key, value):
+        hash_key = self.gethash(key)
+        key_value_pairs = [key, value]
+        if self.map[hash_key] is None:
+            self.map[hash_key] = list([key_value_pairs])
+            return True
+        else:
+            for pair in self.map[hash_key]:
+                if pair[0] == key:
+                    pair[1] = value
+                    return True
+            self.map[hash_key].append(key_value_pairs)
+            return True
+    def get(self, key):
+        hash_key = self.gethash(key)
+        cell_data = self.map[hash_key]
+        if cell_data != None:
+            for pair in cell_data:
+                if pair[0] == key:
+                    return pair[1]
+        return False
+    def delete(self, key):
+        hash_key = self.gethash(key)
+        if self.map[hash_key] is None:
+            return False
+        else:
+            for i in range(len(self.map[hash_key])):
+                if self.map[hash_key][i][0] == key:
+                    self.map[hash_key].pop(i)
+                    return True
+        return False
+    def existing_key(self):
+        arr = []
+        for i in range(len(self.map)):
+            if self.map[i]:
+                for j in range(len(self.map[i])):
+                    arr.append(self.map[i][j][0])
+        return arr
+    def print(self):
+        print("--phone data--")
+        for item in self.map:
+            print(str(item))
+h = Hashmap()
+h.add('Bob', '5670383')
+h.add('Ming', 'jjjjj')
+h.add('Bob', '567038')
+h.print()
+print(h.existing_key())

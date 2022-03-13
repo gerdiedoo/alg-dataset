@@ -1,17 +1,38 @@
-import java.util.Set;
-import java.util.List;
-import java.util.LinkedList;
-public interface HashMapInterface<K, V> {
-    int INITIAL_CAPACITY = 13;
-    double MAX_LOAD_FACTOR = 0.67;
-    V put(K key, V value);
-    V remove(K key);
-    V get(K key);
-    boolean containsKey(K key);
-    void clear();
-    int size();
-    Set<K> keySet();
-    List<V> values();
-    void resizeBackingTable(int length);
-    LinkedList<MapEntry<K, V>>[] getTable();
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		int choice, key;
+		HashMap h = new HashMap(7);
+		while (true) {
+			System.out.println("Enter your Choice :");
+			System.out.println("1. Add Key");
+			System.out.println("2. Delete Key");
+			System.out.println("3. Print Table");
+			System.out.println("4. Exit");
+			Scanner In = new Scanner(System.in);
+			choice = In.nextInt();
+			switch (choice) {
+				case 1: {
+					System.out.println("Enter the Key: ");
+					key = In.nextInt();
+					h.insertHash(key);
+					break;
+				}
+				case 2: {
+					System.out.println("Enter the Key delete:  ");
+					key = In.nextInt();
+					h.deleteHash(key);
+					break;
+				}
+				case 3: {
+					System.out.println("Print table");
+					h.displayHashtable();
+					break;
+				}
+				case 4: {
+					return;
+				}	
+			}
+		}
+	}
 }

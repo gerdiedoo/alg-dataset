@@ -1,30 +1,58 @@
-import time
-def sort(bar, layout, num, colors):
-    data = list(bar.y)
-    count = 0
-    for i in range(num): 
-        min_index = i
-        for j in range(i+1, num): 
-            count += 1
-            layout.xaxis.title.text = "Number of operations: " + str(count)
-            if data[min_index] > data[j]:
-                colors[j] = 'crimson'
-                colors[min_index] = 'lightslategray'
-                colors[i] = 'red'
-                bar.marker.color = colors
-                time.sleep(0.1)
-                min_index = j
-            else: 
-                colors[j] = 'green'
-                bar.marker.color = colors
-                time.sleep(0.1)
-            colors[j] = 'lightslategray'
-            colors[min_index] = 'red'
-            bar.marker.color = colors
-        data[min_index], data[i] = data[i], data[min_index]
-        count += 1
-        layout.xaxis.title.text = "Number of operations: " + str(count)
-        colors[min_index] = 'lightslategray'
-        bar.y = data
-        colors[i] = 'blue'
-        bar.marker.color = colors
+public class BeadSort {
+    public static void main(String[] args) {
+        BeadSort now=new BeadSort();
+        int[] arr = new int[(int)(Math.random() * 11) + 5];
+        for(int i = 0;i < arr.length; i++)
+            arr[i] = (int)(Math.random() * 10);
+        System.out.print("Unsorted: ");
+        now.display1D(arr);
+        int[] sort = now.beadSort(arr);
+        System.out.print("Sorted: ");
+        now.display1D(sort);
+    }
+    int[] beadSort(int[] arr) {
+        int max = arr[0];
+        for(int i = 1; i < arr.length; i++)
+            if(arr[i] > max)
+                max = arr[i];
+        char[][] grid = new char[arr.length][max];
+        int[] levelcount = new int[max];
+        for(int i = 0; i < max; i++) {
+            levelcount[i] = 0;
+            for(int j = 0; j < arr.length; j++)
+                grid[j][i] = '_';
+        }
+        for(int i = 0; i < arr.length; i++) {
+            int num = arr[i];
+            for(int j = 0; num > 0; j++) {
+                grid[levelcount[j]++][j] = '*';
+                num--;
+            }
+        }
+        System.out.println();
+        display2D(grid);
+        int[] sorted = new int[arr.length];
+        for(int i = 0; i < arr.length; i++) {
+            int putt = 0;
+            for(int j = 0; j < max && grid[arr.length-1-i][j] == '*'; j++)
+                putt++;
+            sorted[i] = putt;
+        }
+        return sorted;
+    }
+    void display1D(int[] arr) {
+        for(int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+    void display1D(char[] arr) {
+        for(int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+    void display2D(char[][] arr) {
+        for(int i = 0; i < arr.length; i++)
+            display1D(arr[i]);
+        System.out.println();
+    }
+}

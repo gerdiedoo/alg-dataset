@@ -1,18 +1,35 @@
-def partition(arr,low,high): 
-    i = ( low-1 )         
-    pivot = arr[high]     
-    for j in range(low , high): 
-        if   arr[j] <= pivot: 
-            i = i+1 
-            arr[i],arr[j] = arr[j],arr[i] 
-    arr[i+1],arr[high] = arr[high],arr[i+1] 
-    return (i+1) 
-def quickSort(arr,low,high): 
-    if low < high: 
-        pi = partition(arr,low,high) 
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high) 
-if __name__ == "__main__":
-    arr = [5, 3, 2, 5, 9, 1]
-    quickSort(arr, 0, len(arr) - 1)
-    print(arr)
+package com.ianramzy;
+public class QuickSorter implements Sorter {
+    private int list[];
+    private int num;
+    public void sort(int theNum, int theList[]) {
+        num = theNum;
+        list = theList;
+        quickSort(0, num - 1);
+    }
+    public void quickSort(int left, int right) {
+        int i, pivot, lastSmall;
+        swap(left, (int) (left + right) / 2);
+        lastSmall = left;
+        for (i = left + 1; i <= right; i++) {
+            if (list[i] < list[left]) {
+                lastSmall++;
+                swap(lastSmall, i);
+            }
+        }
+        swap(left, lastSmall);
+        pivot = lastSmall;
+        if (left < pivot - 1) {
+            quickSort(left, pivot - 1);
+        }
+        if (pivot + 1 < right) {
+            quickSort(pivot + 1, right);
+        }
+    }
+    private int temp;
+    public void swap(int a, int b) {
+        temp = list[a];
+        list[a] = list[b];
+        list[b] = temp;
+    }
+}

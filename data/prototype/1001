@@ -1,39 +1,48 @@
-package piratezpdx.sortathon;
-import java.util.Random;
-public class Quick extends ArrayBased {
-    public Random pivotPoint;
-    Quick() {
-        super();
-        pivotPoint = new Random();
+package com.aokolnychyi.sorting;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+public class QuickSort {
+  public static <T extends Comparable<T>> void sort(List<T> list) {
+    sort(list, 0, list.size() - 1);
+  }
+  private static <T extends Comparable<T>> void sort(List<T> list, int startIndex, int endIndex) {
+    if (startIndex < endIndex) {
+      final int partitionIndex = partition(list, startIndex, endIndex);
+      sort(list, startIndex, partitionIndex - 1);
+      sort(list, partitionIndex + 1, endIndex);
     }
-    public int sort (){
-        return partitionRecurse(0, sortingArray.length);
-    }
-    public int partitionRecurse(int startIndex, int quantity){
-        if (quantity <= 1){
-            return 0;
+  }
+  private static <T extends Comparable<T>> int partition(List<T> list, int startIndex, int endIndex) {
+    final int randomPivotIndex = ThreadLocalRandom.current().nextInt(startIndex, endIndex + 1);
+    Collections.swap(list, randomPivotIndex, endIndex);
+    final T pivotal = list.get(endIndex);
+    int notGreaterBoundIndex = startIndex - 1;
+    for (int currentIndex = startIndex; currentIndex < endIndex; currentIndex++) {
+      final T currentElement = list.get(currentIndex);
+      if (currentElement.compareTo(pivotal) <= 0) {
+        notGreaterBoundIndex++;
+        if (notGreaterBoundIndex != currentIndex) {
+          Collections.swap(list, notGreaterBoundIndex, currentIndex);  
         }
-        int pivot = ((Math.abs(pivotPoint.nextInt()) % quantity) + startIndex);
-        int temp = 0;
-        int count = 0;
-        int i = startIndex+1;
-        temp = sortingArray[pivot];
-        sortingArray[pivot] = sortingArray[startIndex];
-        sortingArray[startIndex] = temp;
-        for (int j = startIndex; j < startIndex+quantity; j++ ){
-            if (sortingArray[j] < sortingArray[startIndex]){
-                temp = sortingArray[j];
-                sortingArray[j] = sortingArray[i];
-                sortingArray[i] = temp;
-                i++;
-            }
-            count++;
-        }
-        temp = sortingArray[startIndex];
-        sortingArray[startIndex] = sortingArray[i-1];
-        sortingArray[i-1] = temp;
-        count += (partitionRecurse(startIndex, i-startIndex-1));    
-        count += (partitionRecurse(i, quantity+startIndex-i) + 1);  
-        return count;                                               
+      }
     }
+    notGreaterBoundIndex++;  
+    Collections.swap(list, notGreaterBoundIndex, endIndex);
+    return notGreaterBoundIndex;
+  }
+  public static void main(String[] args) {
+    final List<Integer> list = new ArrayList<>();
+    list.add(4);
+    list.add(1);
+    list.add(5);
+    list.add(3);
+    list.add(9);
+    list.add(10);
+    list.add(1);
+    sort(list);
+    sort(new ArrayList<Integer>());
+    System.out.println(list);
+  }
 }

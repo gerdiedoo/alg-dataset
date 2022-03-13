@@ -1,20 +1,32 @@
-from __future__ import print_function
-def selection_sort(collection):
-    length = len(collection)
-    for i in range(length - 1):
-        least = i
-        for k in range(i + 1, length):
-            if collection[k] < collection[least]:
-                least = k
-        collection[least], collection[i] = (
-            collection[i], collection[least]
-        )
-    return collection
-if __name__ == '__main__':
-    try:
-        raw_input          
-    except NameError:
-        raw_input = input  
-    user_input = raw_input('Enter numbers separated by a comma:\n').strip()
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(selection_sort(unsorted))
+package Sorting;
+import Comparing.BaseAreaCompare;
+import Comparing.VolumeCompare;
+import Objects.ThreeDGeoShape;
+public class SelectionSort {
+	public ThreeDGeoShape[] sort(String sortBy, ThreeDGeoShape[] shapeArray) {
+		BaseAreaCompare ac = new BaseAreaCompare();
+		VolumeCompare vc = new VolumeCompare();
+		int result = 0 ;
+		for (int i = 0; i < shapeArray.length - 1; i++) {
+			int max = i;
+			for (int j = i + 1; j < shapeArray.length; j++) {
+				ThreeDGeoShape shape1 = shapeArray[max];
+				ThreeDGeoShape shape2 = shapeArray[j];
+				if (sortBy.equalsIgnoreCase("h")) {
+					result = shape2.compareTo(shape1);
+				} else if (sortBy.equalsIgnoreCase("a")) {
+					result = ac.compare(shape2, shape1);
+				} else if (sortBy.equalsIgnoreCase("v")) {
+					result = vc.compare(shape2, shape1);
+				}
+				if (result == 1) {
+					max = j;
+				}
+			}
+			ThreeDGeoShape temp = shapeArray[max];
+			shapeArray[max] = shapeArray[i];
+			shapeArray[i] = temp;
+		}
+		return shapeArray;
+	}
+}

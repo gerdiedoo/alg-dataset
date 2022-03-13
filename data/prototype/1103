@@ -1,42 +1,24 @@
-package dev.jeffreybender.sort;
-import java.util.Comparator;
-public final class QuickSort {
-    private QuickSort() {
-    }
-    public static <T> void sort(T[] array, Comparator<? super T> comparator) {
-        if (array.length <= 1) {
-            return;
-        }
-        if (comparator == null) {
-            comparator = SortUtils.getDefaultComparator();
-        }
-        quickSort(array, 0, array.length - 1, comparator);
-    }
-    public static <T extends Comparable<? super T>> void sort(T[] array) {
-        sort(array, null);
-    }
-    private static <T> void quickSort(T[] array, int low, int high, Comparator<T> comparator) {
-        if (low < high) {
-            int partitionIndex = partition(array, low, high, comparator);
-            quickSort(array, low, partitionIndex, comparator);
-            quickSort(array, partitionIndex + 1, high, comparator);
-        }
-    }
-    private static <T> int partition(T[] array, int low, int high, Comparator<T> comparator) {
-        T pivot = array[low + ((high - low) / 2)];
-        int left = low - 1;
-        int right = high + 1;
-        while (left < right) {
-            do {
-                left++;
-            } while (comparator.compare(array[left], pivot) < 0);
-            do {
-                right--;
-            } while (comparator.compare(array[right], pivot) > 0);
-            if (left < right) {
-                SortUtils.swap(array, left, right);
-            }
-        }
-        return right;
-    }
-}
+import random
+def partition(A, left_index, right_index):
+    pivot = A[left_index]
+    i = left_index + 1
+    for j in range(left_index + 1, right_index):
+        if A[j] < pivot:
+            A[j], A[i] = A[i], A[j]
+            i += 1
+    A[left_index], A[i - 1] = A[i - 1], A[left_index]
+    return i - 1
+def quick_sort_random(A, left, right):
+    if left < right:
+        pivot = random.randint(left, right - 1)
+        A[pivot], A[left] = A[left], A[pivot] 
+        pivot_index = partition(A, left, right)
+        quick_sort_random(A, left, pivot_index) 
+        quick_sort_random(A, pivot_index + 1, right) 
+def main():
+    user_input = input('Enter numbers separated by a comma:\n').strip()
+    arr = [int(item) for item in user_input.split(',')]
+    quick_sort_random(arr, 0, len(arr))
+    print(arr)
+if __name__ == "__main__":
+    main()

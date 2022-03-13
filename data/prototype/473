@@ -1,10 +1,15 @@
-def bubble_sort(arr):
-    for mark in range(len(arr)-1, 0, -1):
-        swapped = False
-        for i in range(mark):
-            if arr[i] > arr[i+1]:
-                arr[i], arr[i+1] = arr[i+1], arr[i]
-                swapped = True
-        if not swapped:
-            break
-    return arr
+export function bubblesort ( compare, a, i, j ) {
+	const s = j - 1;
+	let swapped ;
+	do {
+		swapped = false;
+		for ( let k = i ; k < s ; ++k ) {
+			if ( compare( a[k], a[k + 1] ) > 0 ) {
+				const t = a[k];
+				a[k] = a[k + 1];
+				a[k + 1] = t;
+				swapped = true;
+			}
+		}
+	} while ( swapped );
+}

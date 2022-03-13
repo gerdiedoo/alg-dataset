@@ -1,0 +1,94 @@
+function Node(data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+}
+function List() {
+    this.length = 0;
+    this.head = null;
+    this.tail = null;
+}
+List.prototype.add = function(data) {
+    var node = new Node(data);
+    if (this.head === null) {  
+        this.head = this.tail = node;
+        this.length++;
+        return node;
+    }
+    else{  
+        this.tail.next = node;
+        node.prev = this.tail;
+        this.tail = node;
+        this.length++;
+        return node;
+    }
+};
+List.prototype.searchNodeAt = function(index) {
+    var tmpNode = this.head;
+    var count = 0;
+    while(tmpNode != null){
+        if(count == index)
+            return tmpNode;
+        tmpNpde = tmpNode.next;
+        count++;
+    }
+    return null;   
+};
+List.prototype.searchNodewith = function(data) {
+    var tmpNode = this.head;
+    var iondex = 0;
+    while(tmpNode != null){
+        if(tmpNode.data == data)
+            return index;
+        tmpNpde = tmpNode.next;
+        index++;
+    }
+    return 0;   
+};
+List.prototype.removeByIndex = function(index) {
+    if(index == null)
+        return null;
+    if(!(index >= this.length)){
+        var tmp = this.head;
+        var count = 0;
+        if(index == 0){
+            tmp = this.head.next;
+            delete this.head;
+            this.head = tmp;
+            this.length--;
+            return true;
+        }
+        else{
+            var tmp2 = tmp.next;
+            while(tmp2 != null){
+                if(count == index - 1){
+                    tmp.next = tmp2.next;
+                    delete tmp2;
+                    this.length--;
+                    return true;
+                }
+                tmp = tmp.next;
+                tmp2 = tmp2.next;
+                count++;
+            }
+        }
+    }
+    return false;
+};
+List.prototype.removeByData = function(data) {
+    return this.removeByIndex(this.searchNodewith(data));
+};
+List.prototype.printForwards = function(){
+    var tmp = this.head;
+    while(tmp != null){
+        console.log(tmp.data);
+        tmp = tmp.next;
+    }
+};
+List.prototype.printBackwords = function(){
+    var tmp = this.tail;
+    while(tmp != null){
+        console.log(tmp.data);
+        tmp = tmp.prev;
+    }
+};

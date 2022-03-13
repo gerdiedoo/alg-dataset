@@ -1,52 +1,50 @@
-import java.util.Random;
-import java.util.Scanner;
-public class IntroSort {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter the number of elements : ");
-		int n = sc.nextInt();
-		int arr[] = new int[n];
-		System.out.println("Enter " + n + " elements :");
-		for (int i = 0; i < n; i++)
-			arr[i] = sc.nextInt();
-		introSort(arr, 0, n - 1, calcDepth(arr));
-		System.out.println("\nThe sorted array : ;");
-		for (int i = 0; i < n; i++)
-			System.out.print(arr[i] + " ");
-		System.out.println();
-	}
-	static void introSort(int arr[], int low, int high, int depth) {
-		int p = partition(arr, low, high);
-		if ((high - low) < 2) {
-			return;
-		} else if (p > depth) {
-			HeapSort.heapSort(arr);
-		} else {
-			introSort(arr, low, p, depth - 1);
-			introSort(arr, p + 1, high, depth - 1);
-		}
-	}
-	private static int partition(int arr[], int low, int high) {
-		int p = getPivot(arr, low, high), j = low;
-		for (int i = low; i <= high; i++) {
-			if (arr[i] < p) {
-				swap(arr, i, j);
-				j++;
-			}
-		}
-		swap(arr, high, j);
-		return j;
-	}
-	private static int getPivot(int arr[], int low, int high) {
-		Random rd = new Random();
-		return arr[rd.nextInt((high - low) + 1) + low];
-	}
-	private static void swap(int arr[], int x, int y) {
-		int aux = arr[x];
-		arr[x] = arr[y];
-		arr[y] = aux;
-	}
-	static int calcDepth(int arr[]) {
-		return ((int) Math.log(arr.length)) * 2;
-	}
-}
+class Node:
+    def __init__(self,value,previous=None,next=None):
+        self.value = value
+        self.next = next
+        self.previous = previous
+class DoublyLinkedList:
+    def __init__(self,value,next=None,previous=None):
+        self.head = Node(value=value)
+        self.tail = self.head
+        self.length = 1
+    def append(self,value):
+        self.CurrentNode = Node(value=value)
+        self.tail.next = self.CurrentNode
+        self.CurrentNode.previous = self.tail
+        self.tail = self.CurrentNode
+        self.length = self.length + 1
+    def prepend(self,value):
+        self.CurrentNode = Node(value=value)
+        self.CurrentNode.next = self.head
+        self.head.previous = self.CurrentNode
+        self.head = self.CurrentNode
+        self.length = self.length + 1
+    def insert(self,index,value):
+        self.CurrentNode = Node(value=value)
+        leader = self.traverseToIndex(index - 1)
+        headingPointer = leader.next
+        leader.next = self.CurrentNode
+        self.CurrentNode.previous = leader
+        self.CurrentNode.next = headingPointer
+        headingPointer.previous = self.CurrentNode
+    def traverseToIndex(self,index):
+        CurrentNode = self.head
+        counter =0
+        while(counter != index):
+            CurrentNode = CurrentNode.next
+            counter = counter + 1
+        return CurrentNode
+    def printList(self):
+        currentNode = self.head
+        while(currentNode != None):
+            print("Current node value",currentNode.value)
+            print("Current node next",currentNode.next)
+            print("previous",currentNode.previous)
+            currentNode = currentNode.next
+myLinkedList = DoublyLinkedList(10)
+myLinkedList.append(15)
+myLinkedList.append(20)
+myLinkedList.prepend(100)
+myLinkedList.insert(1,300)
+myLinkedList.printList()

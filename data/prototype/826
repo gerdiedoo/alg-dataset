@@ -1,30 +1,86 @@
-def merge_sort(arr):
-    if len(arr) > 1:
-        mid = len(arr) // 2
-        left = arr[:mid]
-        right = arr[mid:]
-        merge_sort(left)
-        merge_sort(right)
-        i = j = k = 0
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                arr[k] = left[i]
-                i += 1
+import random
+from time import time
+def createList(n):
+    alist = []
+    for i in range(n, 0, -1):
+        alist.append(random.randint(0, n))
+    return alist
+def mergeSort(alist):
+    if len(alist)>1:
+        mid = len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+        i=0
+        j=0
+        k=0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                alist[k]=lefthalf[i]
+                i=i+1
             else:
-                arr[k] = right[j]
-                j += 1
-            k += 1
-        while i < len(left):
-            arr[k] = left[i]
-            i += 1
-            k += 1
-        while j < len(right):
-            arr[k] = right[j]
-            j += 1
-            k += 1
-if __name__ == "__main__":
-    array = [9, 8, 3, 4, 6, 5]
-    expectation = sorted(array)
-    merge_sort(array)
-    print(array)
-    assert array == expectation
+                alist[k]=righthalf[j]
+                j=j+1
+            k=k+1
+        while i < len(lefthalf):
+            alist[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+        while j < len(righthalf):
+            alist[k]=righthalf[j]
+            j=j+1
+            k=k+1
+def merge_2(seq):
+    listOfLists = []
+    for i in range(len(seq)):
+        temp = [seq[i]]
+        listOfLists.append(temp)
+    while (len(listOfLists) != 1):
+        j = 0
+        while (j < len(listOfLists) - 1):
+            tempList = merge(listOfLists[j], listOfLists[j + 1])
+            listOfLists[j] = tempList
+            del listOfLists[j + 1]
+            j = j + 1
+def merge(a, b):
+    newList = []
+    a1, a2 = 0, 0
+    while ((a1 < len(a)) and (a2 < len(b))):
+        if (a[a1] > b[a2]):
+            newList.append(b[a2])
+            a2 = a2 + 1
+        elif (a[a1] < b[a2]):
+            newList.append(a[a1])
+            a1 = a1 + 1
+        elif (a[a1] == b[a2]):
+            newList.append(a[a1])
+            newList.append(b[a2])
+            a1, a2 = a1 + 1, a2 + 1
+    if (a1 < len(a)):
+        for f in range(a1, len(a)):
+            newList.append(a[f])
+    elif (a2 < len(b)):
+        for k in range(a2, len(b)):
+            newList.append(b[k])
+    return newList
+def performace(lenList):
+    seqOri = createList(lenList)
+    seq1 = list(seqOri)
+    seq2 = list(seqOri)
+    begin = time()
+    mergeSort(seq1)
+    end = time()
+    diff = (end - begin) * 1000
+    print("Recursive: " + str(diff))
+    print("seq1: " + str(seq1))
+    print("")
+    begin = time()
+    merge_2(seq2)
+    end = time()
+    diff = (end - begin) * 1000
+    print("interative: " + str(diff))
+    print("seq2: " + str(seq2))
+    print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+if __name__ == '__main__':
+    performace(10)

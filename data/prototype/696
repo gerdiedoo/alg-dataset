@@ -1,22 +1,21 @@
-import random
-def insertion_sort(alist):
-    for index in range(len(alist)):
-        currentvalue = alist[index]
-        position = index
-        while position > 0 and alist[position - 1] > currentvalue:
-            alist[position] = alist[position - 1]
-            position = position - 1
-        alist[position] = currentvalue
-rand_list = []
-for i in range(100):
-    rand_list.append(i)
-random.shuffle(rand_list)
-print(rand_list)
-insertion_sort(rand_list)
-print(rand_list)
-success = True
-for index in range(len(rand_list) - 1):
-    if rand_list[index] > rand_list[index + 1]:
-        success = False
-if success:
-    print("Insertion Sort successful!")
+import java.util.Arrays;
+public class InsertionSort {
+    private static void insertionSort(int[] inputArray) {
+        int n = inputArray.length;
+        for (int i = 1; i < n; i++) {
+            int key = inputArray[i];
+            int j = i - 1;
+            while (j >= 0 && inputArray[j] > key) {
+                inputArray[j + 1] = inputArray[j];
+                j = j - 1;
+            }
+            inputArray[j + 1] = key;
+        }
+    }
+    public static void main(String[] args) {
+        int[] arr = {80, 12, 11, -5, 1, 0, 23, 2, 3, 4, 9};
+        System.out.println(Arrays.toString(arr));
+        insertionSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+}

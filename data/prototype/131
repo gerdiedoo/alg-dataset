@@ -1,40 +1,22 @@
-package Thomas;
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.Random;
-public class Main {
-    public static void main(String[] args) {
-        Random random = new Random(System.currentTimeMillis());
-        int n = 64*64*64;
-        int testSize = n;
-        ArrayList<Vec3I> elelist = new ArrayList<>();
-        for(int i = 0; i < n; i++) {
-            Vec3I ele = new Vec3I(random.nextInt(56), random.nextInt(56), random.nextInt(56));  
-            if(!elelist.contains(ele)) {
-                elelist.add(ele);
-            }
-        }
-        PSHOffsetTable table;
-        table = new PSHOffsetTable(elelist);
-        for(int i = 0; i < 10; i++) {
-            Long timestart = System.currentTimeMillis();
-            Vec3I ele = new Vec3I(random.nextInt(56), random.nextInt(56), random.nextInt(56));  
-            if(!elelist.contains(ele)) {
-                elelist.add(ele);
-            }
-            table.updateOffsets(elelist);
-            System.out.println("Time to do an update of offsettable: " + (System.currentTimeMillis() - timestart));
-        }
-        ArrayList<Vec3I> hashCheck = new ArrayList<>();
-        for(int i = 0; i < elelist.size(); i++) {
-            Vec3I hash = table.hash(elelist.get(i));
-            if(!hashCheck.contains(hash)) {
-                hashCheck.add(hash);
-            }
-            else {
-                System.out.println("if this prints there is a hash collision which means there's a bug");
-            }
-        }
-        System.out.println("stress test fin");
-        }
+package net.intelie.tinymap;
+import net.intelie.tinymap.base.IndexedListBase;
+import java.io.Serializable;
+public class TinyList<T> extends IndexedListBase<T> implements Serializable, IndexedListBase.Immutable<T> {
+    private static final long serialVersionUID = 1L;
+    private final Object[] values;
+    public TinyList(Object[] values) {
+        this.values = values;
+    }
+    public static <T> TinyListBuilder<T> builder() {
+        return new TinyListBuilder<>();
+    }
+    @Override
+    public int size() {
+        return values.length;
+    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public T getEntryAt(int index) {
+        return (T) values[index];
+    }
 }
