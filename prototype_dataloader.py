@@ -5,27 +5,32 @@ import pytorch_lightning as pl
 import io, tokenize, re, os
 
 from torch.utils.data import Dataset, DataLoader
-from transformers import RobertaTokenizer, RobertaModel
 
-def get_datasets(df, tokenizer, split = 0.08, data_folder = "./data/prototype/"):
+def get_datasets(df, tokenizer, split = 0.08, data_folder = "./data/prototype/", labels='all'):
     x, y = df.shape
     test_size = int(x * 0.08)
     train_size = x - test_size    
     indices = torch.randperm(x)
+
+    if labels == 'all':
+        labels = ['quicksort', 'mergesort', 'selectionsort', 'insertionsort',
+            'bubblesort', 'linearsearch', 'binarysearch', 'linkedlist', 'hashmap']
     
     train_idx = indices[0:train_size]
     test_idx = indices[train_size:x]
     
-    train = CodesDataset(df, train_idx, data_folder=data_folder, transform=VectorizeData(tokenizer))
-    test = CodesDataset(df, test_idx, data_folder=data_folder, transform=VectorizeData(tokenizer))
+    train = CodesDataset(df, train_idx, data_folder=data_folder, transform=VectorizeData(tokenizer), labels=labels)
+    test = CodesDataset(df, test_idx, data_folder=data_folder, transform=VectorizeData(tokenizer), labels=labels)
     
     return train, test        
 
 class CodesDataset(Dataset):
-    def __init__(self, df, indices, data_folder = "./data/prototype/", transform=None):
+    def __init__(self, df, indices, data_folder = "./data/prototype/", transform=None, labels=''):
         super(CodesDataset).__init__()
         
         assert isinstance(df, pd.DataFrame)
+        
+        self.labels = labels
         
         self.df = df
         self.data_folder = data_folder
@@ -40,23 +45,18 @@ class CodesDataset(Dataset):
         return self.indices.shape[0]
     
     def to_labels(self, row):
-        # The input are of the form [1, 0, 1, 0, 0, 0, 1]
-        # Ordering: Qsort, Msort, Ssort, Isort, Bsort, Lsearch, Bsearch, Llist, Hmap
         assert isinstance(row, pd.core.series.Series)
         
-        qsort = int(row["quicksort"])        # 1
-        msort = int(row["mergesort"])        # 2
-        ssort = int(row["selectionsort"])    # 3
-        isort = int(row["insertionsort"])    # 4
-        bsort = int(row["bubblesort"])       # 5
-        lsearch = int(row["linearsearch"])  # 6 
-        bsearch = int(row["binarysearch"])  # 7
-        llist = int(row["linkedlist"])      # 8
-        hmap  = int(row["hashmap"])          # 9
+        temp_labels = ['quicksort', 'mergesort', 'selectionsort', 'insertionsort',
+            'bubblesort', 'linearsearch', 'binarysearch', 'linkedlist', 'hashmap']
         
-        lst = [qsort, msort, ssort, isort, bsort, lsearch, bsearch, llist, hmap]
-        
+        # Get all the included labels that we need and a tensor
+        lst = [int(row[label]) for label in temp_labels if label in self.labels]
+
         return torch.tensor(lst)
+    
+    def get_labels(self):
+        return self.labels
     
     def __getitem__(self, idx):
         idx = self.get_idx(idx)
