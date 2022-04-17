@@ -1,0 +1,107 @@
+import r.s.c;
+import r.eH.K;
+public class G<Z extends p<Z>, C extends p<C>> implements wB<Z, C> {
+    private K<MJ<Z, C>>[] k_;
+    private int d;
+    private static final int Sp = 400000;
+    private static final double ZN = 3.0;
+    public G() {
+        k_ = new K[Sp];
+    }
+    @F
+    public C M(N J) {
+        int h = J.hashCode() % k_.Ld;
+        if (h < 0)
+            h += k_.Ld;
+        if (k_[h] == null)
+            return null;  
+        for (MJ<Z, C> Q7 : k_[h]) {
+            if (Q7.zx().equals(J))
+                return Q7.a();
+        }
+        return null;
+    }
+    @F
+    public boolean y() {
+        return T()==0;
+    }
+    @F
+    public C Y(Z J, C m) {
+        int h = J.hashCode() % k_.Ld;
+        if (h < 0)
+            h += k_.Ld;
+        if (k_[h] == null) {
+            k_[h] = new K<>();
+        }
+        for (MJ<Z, C> Q7 : k_[h]) {
+            if (Q7.zx().equals(J)) {
+                C CH = Q7.a();
+                Q7.D(m);
+                return CH;
+            }
+        }
+        k_[h].H(new MJ<>(J, m));
+        d++;
+        if (d > (ZN * k_.Ld))
+            u();
+        return null;
+    }
+    private void u() {
+        K<MJ<Z, C>>[] U = k_;
+        k_ = new K[(Sp *2) +1];
+        d = 0;
+        for (int Q = 0; Q < U.Ld; Q++) {
+            if ((U[Q] != null)) {
+                k_[Q].R(U[Q]);
+            }
+        }
+    }
+    @F
+    public C G7(N J) {
+        int h = J.hashCode() % k_.Ld;
+        if(h<0){
+            h += k_.Ld;
+        }
+        if (k_[h] == null){
+            return null;
+        }
+        for (MJ<Z, C> Q7 : k_[h]) {
+            if (Q7.zx().equals(J)) {
+                C CH = Q7.a();
+                Q7.D(null);
+                return CH;
+            }
+        }
+        return null;
+    }
+    @F
+    public int T() {
+        return k_.Ld;
+    }
+    private static class MJ<Z extends p<Z>,C extends p<C>> implements p<MJ<Z,C>>  {
+        private final Z J;
+        private C m;
+        public boolean O;
+        public boolean i() {
+            return O;
+        }
+        public Z zx() {
+            return J;
+        }
+        public C a() {
+            return m;
+        }
+        public void D(C m) {
+            this.m = m;
+        }
+        public MJ(Z J , C m){
+            this.J = J;
+            this.m = m;
+            O = true;
+        }
+        @F
+        public int fI(MJ<Z, C> LC) {
+            return this.J.fI(LC.zx());
+        }
+    }
+}

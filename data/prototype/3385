@@ -1,0 +1,36 @@
+package h;
+import Gb.nk;
+import Gb.X;
+import EG.Fg;
+public class a {
+	public Fg[] b5(String I, Fg[] p) {
+		nk u_ = new nk();
+		X u = new X();
+		for(int V = 1; V < p.vh; V++){
+			int g = V - 1;
+			if (I.xs("h")) {
+				while(g >= 0 && p[g].x(p[g+1]) < 0) {
+					w(p, g, g+1);
+					g--;
+				}
+			} else if (I.xs("a")) {
+				while(g >= 0 && u_.B(p[g], p[g+1]) < 0) {
+					w(p, g, g+1);
+					g--;
+				}
+			} else if (I.xs("v")) {
+				while(g >= 0 && u.B(p[g], p[g+1]) < 0) {
+					w(p, g, g+1);
+					g--;
+				}
+			}
+		}
+		return p;
+	}
+	private static  void w( G[] v1, int V, int g )
+	{
+		G L = v1[V];
+		v1[V] = v1[g];
+		v1[g] = L;
+	}
+}

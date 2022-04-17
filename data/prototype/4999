@@ -1,0 +1,21 @@
+package d.v.l;
+public class W {
+    public static void Dl(KU[] q) {
+        for (int G = 0; G < q.BN - 1; G++) {
+            int r = G;
+            for (int j = G + 1; j < q.BN; j++) {
+                if (q[j] < q[r]) {
+                    r = j;
+                }
+            }
+            if (r != G) {
+                Y(q, G, r);
+            }
+        }
+    }
+    private static void Y(KU[] q, int s, int M) {
+        KU x = q[s];
+        q[s] = q[M];
+        q[M] = x;
+    }
+}

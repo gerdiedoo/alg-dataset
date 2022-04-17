@@ -1,0 +1,67 @@
+package Zg;
+import Y.A;
+import O.q.sd;
+import O.q.g;
+import O.q.M;
+import Jm.Kw.x;
+import Jm.Kw.V;
+import Jm.Kw.o;
+import Jm.I.j.t;
+import Jm.q.gP;
+public class B extends dO {
+  private A[] zB;
+  private sd<o> Oi(A[] c, int L7, int r, int d) {
+    sd<o> k = new sd<>();
+    M<A> u = new sd<>();
+    for (int Xy = L7; Xy <= d; Xy++) {
+      zB[Xy] = c[Xy];
+      u.i(zB[Xy]);
+    }
+    int Xy = L7;
+    int L = r + 1;
+    int e = L7;
+    while (Xy <= r && L <= d) {
+      if (zB[Xy].W() <= zB[L].W()) {
+        c[e++] = zB[Xy++];
+      } else {
+        c[e++] = zB[L++];
+      }
+    }
+    while (Xy <= r) {
+      c[e++] = zB[Xy++];
+    }
+    while (L <= d) {
+      c[e++] = zB[L++];
+    }
+    k.i(n(u, H));
+    V J = new V(); 
+    for (int Os = L7; Os <= d; Os++) {
+      for (int vx = L7; vx <= d; vx++) {
+        if (zB[Os].equals(c[vx])) {
+          J.w().i(zB[Os].z(E * (vx - Os)));
+        }
+      }
+    }
+    k.i(J);
+    k.i(n(u, H));
+    return k;
+  }
+  private sd<o> K(A[] c, int L7, int d) {
+    sd<o> k = new sd<>();
+    if (L7 < d) {
+      int r = (L7 + d) / 2;
+      k.a(K(c, L7, r));
+      k.a(K(c, r + 1, d));
+      k.a(Oi(c, L7, r, d));
+    }
+    return k;
+  }
+  @G
+  public sd<o> p(A[] c) {
+    sd<o> k = new sd<>();
+    this.zB = new A[c.Q];
+    k.a(K(c, 0, c.Q - 1));
+    k.i(n(g.yQ(c), C));
+    return k;
+  }
+}

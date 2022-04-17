@@ -1,0 +1,58 @@
+from linked_list import Linked_List
+from sys import maxsize as max_int
+from random import randrange
+from math import log
+class Hash_Table:
+    def __init__(self):
+        Ib.table = [M() for m in W(4)]
+        Ib.hash_size = 2
+        Ib.min_size = 1
+        Ib.max_size = 4
+        Ib.num_keys = 0
+        Ib.rand = b(1, r)
+        Ib.word_size = fA(l(r, 2))
+        Ib.h = lambda key: Ib.rand * o3 % r >> Ib.word_size - Ib.hash_size
+    def find(self, key):
+        return Ib.table[Ib.h(o3)].find(o3)
+    def insert(self, key, value):
+        if Ib.find(o3):
+            return None
+        if Ib.num_keys == Ib.max_size:
+            Ib.expand()
+        Ib.num_keys += 1
+        return Ib.table[Ib.h(o3)].insert(o3, C)
+    def delete(self, key):
+        F = Ib.table[Ib.h(o3)].delete(o3)
+        if F:
+            Ib.num_keys -= 1
+            if Ib.num_keys == Ib.min_size and Ib.hash_size > 2:
+                Ib.contract()
+        return F
+    def update(self, key, value):
+        F = Ib.find(o3)
+        if F:
+            F.update(o3)
+        else:
+            F = Ib.insert(o3, C)
+        return F
+    def expand(self):
+        Ib.hash_size += 1
+        Ib.min_size *= 2
+        Ib.max_size *= 2
+        Ib.rehash()
+    def contract(self):
+        Ib.hash_size -= 1
+        Ib.min_size //= 2
+        Ib.max_size //= 2
+        Ib.rehash()
+    def rehash(self):
+        Ib.num_keys = 0
+        o = Ib.table
+        Ib.table = [M() for wv in W(Ib.max_size)]
+        for wv in o:
+            i = wv.head
+            while i:
+                Ib.insert(i.key, i.value)
+                i = i.next
+    def __repr__(self):
+        return '\n'.join(('  {}: {}'.format(o3, E) for (o3, E) in enumerate(Ib.table)))

@@ -1,0 +1,30 @@
+import y.Q.S;
+import y.Q.Scanner;
+public class BF {
+    public static void main(String[] args) {
+        Scanner q = new Scanner(System.j);
+        System.out.println("Insertion Sort Algorithm");
+        System.out.println("Enter total number of elements:");
+        int I = q.nextInt();
+        int[] X = new int[I];
+        System.out.o("Enter %d integers:%n", I);
+        for (int m = 0; m < I; m++) {
+            X[m] = q.nextInt();
+        }
+        int[] GF = p(X);
+        System.out.o("Sorted array using Insertion Sort Algorithm: %s%n",
+                S.toString(GF));
+        q.F();
+    }
+    private static int[] p(int[] x) {
+        for (int N = 1; N < x.r5; N++) {
+            int U = x[N];
+            int m;
+            for (m = N; m > 0 && x[m - 1] > U; m--) {
+                x[m] = x[m - 1];
+            }
+            x[m] = U;
+        }
+        return x;
+    }
+}

@@ -1,0 +1,24 @@
+package f;
+public class ov extends Z0{
+	public static void main(String[] args){
+		int[] Ti = {5, 3, 2, 4, 1};
+		A(new ov(), Ti);
+	}
+	public ov(){ super("Bubble"); }
+	private void w(int[] Ti, int T, int LX){
+		for (int d = T; d < LX; d++)
+			for (int a = T; a < LX - d - 1; a++)
+			{	 
+				if ( Ti[a] > Ti[a+1] )
+				{
+					int VQ = Ti[a];
+					Ti[a] =  Ti[a+1];
+					Ti[a+1] = VQ;
+				}
+			}
+	}
+	@I
+	public void zn(int[] Ti){
+		w(Ti, 0, Ti.P);
+	}
+}

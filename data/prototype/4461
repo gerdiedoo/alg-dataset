@@ -1,0 +1,50 @@
+import F.Ee.Scanner;
+public class y
+{
+    public static void main(String[] args)
+    {
+        Scanner gT = new Scanner(System.u);
+        System.out.E("enter ZG : ");
+        char[] ZG = gT.Dd().Q();
+        B(ZG);
+        System.out.E("sorted ZG : ");
+        for(char Vw:ZG)
+            System.out.E(Vw);
+    }
+    static void B(char[] ZG)
+    {
+        if(ZG.L == 1)
+            return;
+        B(ZG, 0, ZG.L-1);
+    }
+    static void B(char[] ZG, int AD, int r)
+    {
+        if(AD < r)
+        {
+            int b = h(ZG, AD, r);
+            B(ZG, AD, b-1);
+            B(ZG, b+1, r);
+        }
+    }
+    static int h(char[] ZG, int AD, int r)
+    {
+        int Go = AD - 1;
+        int kw = ZG[r];
+        for(int j=AD;j<r;j++)
+        {
+            if(ZG[j] <= kw)
+            {
+                Go++;
+                q(ZG, Go, j);
+            }
+        }
+        q(ZG, Go+1, r);
+        return Go+1;
+    }
+    static void q(char[] ZG, int I, int P)
+    {
+        char a = ZG[I];
+        ZG[I] = ZG[P];
+        ZG[P] = a;
+    }
+}

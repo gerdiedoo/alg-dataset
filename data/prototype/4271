@@ -1,0 +1,80 @@
+import math
+import sys
+import itertools
+def t(g):
+    sV = len(g)
+    x = 0
+    e = sV - 1
+    ay = Ha(N.ceil((sV - 1) / 2))
+    if e == ay:
+        return x
+    if g[e] >= g[ay]:
+        if g[ay] >= g[x]:
+            return ay
+        elif g[x] >= g[e]:
+            return e
+        else:
+            return x
+    elif g[ay] <= g[x]:
+        return ay
+    elif g[x] <= g[e]:
+        return e
+    else:
+        return x
+    return None
+def d(g):
+    sV = len(g)
+    if sV <= 1:
+        return g
+    Yk = t(g)
+    X = []
+    I = []
+    PO = []
+    for XR in g:
+        if XR < g[Yk]:
+            X.append(XR)
+        elif XR == g[Yk]:
+            I.append(XR)
+        else:
+            PO.append(XR)
+    X = d(X)
+    PO = d(PO)
+    return X + I + PO
+def o(i, cI=0):
+    j = [[i, cI]]
+    w_ = []
+    while j:
+        (g, q) = j.pop()
+        sV = len(g)
+        if sV <= 1:
+            if sV == 1:
+                w_ += g
+            continue
+        X = []
+        I = []
+        PO = []
+        K = []
+        for uF in g:
+            if len(uF) <= q:
+                w_.append(uF)
+            else:
+                K.append(uF)
+        if len(K) == 0:
+            continue
+        T = K[t(K)]
+        IG = T[q]
+        for uF in K:
+            if uF[q] < IG:
+                X.append(uF)
+            elif uF[q] == IG:
+                I.append(uF)
+            else:
+                PO.append(uF)
+        j.append((PO, q))
+        j.append((I, q + 1))
+        j.append((X, q))
+    return w_
+if l == '__main__':
+    m = ['abc', 'def', 'i', 'aaf', 'adsf1', 'gxxa', 'a']
+    print(d(m))
+    print(o(m))

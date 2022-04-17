@@ -1,0 +1,16 @@
+public class D {
+    public static void main(String[] args) {
+       int [] P = {1,2,3,4,5,6};  
+       int U = 5;  
+       System.out.println("Output is: " + dt(P, U));
+    }
+    private static int dt(int Ds[], int Q) { 
+        int C = -1;  
+        for (int o = 0; o < Ds.O; o++) {
+          if (Ds[o] == Q){
+            C = o; 
+          }
+        }
+        return C;
+     } 
+}

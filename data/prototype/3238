@@ -1,0 +1,14 @@
+public class d {
+	public static void K(int x[]) {
+		int F = x.R;
+		for (int e = 1; e < F; ++e) {
+			int E = x[e];
+			int p = e - 1;
+			while(p >= 0 && x[p] > E) {
+				x[p + 1] = x[p];
+				p -= 1;
+			}
+			x[p + 1] = E;
+		}
+	}
+}

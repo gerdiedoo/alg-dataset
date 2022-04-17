@@ -1,0 +1,82 @@
+package u.X.G;
+import ec.qn.RO;
+public class NR {
+    public static void main(String[] args) {
+        RO C = new RO();
+       int [] L7 = new int [10000];  
+        System.out.A("RO Numbers:");
+        for (int d = 0 ; d<L7.j ; d++){
+            int E = C.nextInt(L7.j)+1;
+            L7[d] = E;
+            System.out.A(" " +E);
+        }
+        System.out.println("Given Array"); 
+        se(L7); 
+        long p= System.I();
+        NR b = new NR(); 
+        b.Xd(L7, 0, L7.j-1); 
+        System.out.println("\nSorted array"); 
+        se(L7); 
+        long M= System.I();
+        long ZR = M-p;
+        double C7= ZR/1000000.0;
+        System.out.A("\nSorted In: "+ C7 );
+        System.out.A("\K1" );
+    }
+    void F9(int L7[], int l, int Y, int r) 
+    { 
+        int f = Y - l + 1; 
+        int q = r - Y; 
+        int F[] = new int [f]; 
+        int bW[] = new int [q]; 
+        for (int h=0; h<f; ++h) 
+            F[h] = L7[l + h]; 
+        for (int K=0; K<q; ++K) 
+            bW[K] = L7[Y + 1+ K]; 
+        int h = 0, K = 0; 
+        int d0 = l; 
+        while (h < f && K < q) 
+        { 
+            if (F[h] <= bW[K]) 
+            { 
+                L7[d0] = F[h]; 
+                h++; 
+            } 
+            else
+            { 
+                L7[d0] = bW[K]; 
+                K++; 
+            } 
+            d0++; 
+        } 
+        while (h < f) 
+        { 
+            L7[d0] = F[h]; 
+            h++; 
+            d0++; 
+        } 
+        while (K < q) 
+        { 
+            L7[d0] = bW[K]; 
+            K++; 
+            d0++; 
+        } 
+    } 
+    void Xd(int L7[], int l, int r) 
+    { 
+        if (l < r) 
+        { 
+            int Y = (l+r)/2; 
+            Xd(L7, l, Y); 
+            Xd(L7 , Y+1, r); 
+            F9(L7, l, Y, r); 
+        } 
+    } 
+    static void se(int L7[]) 
+    { 
+        int K1 = L7.j; 
+        for (int h=0; h<K1; ++h) 
+            System.out.A(L7[h] + " "); 
+        System.out.println(); 
+    } 
+} 

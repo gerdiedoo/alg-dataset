@@ -1,0 +1,14 @@
+package k.H.C.U;
+import k.H.C.G.d;
+public class s {
+	public static GM[] PL(GM[] u) {
+		for (int B = 1; B < u.ef; B++) {
+			for (int p = B; p > 0; p--) {
+				if (u[p] < u[p - 1]) {
+					d.M(u, p, p - 1);
+				}
+			}
+		}
+		return u;
+	}
+}

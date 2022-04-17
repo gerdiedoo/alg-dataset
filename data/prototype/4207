@@ -1,0 +1,34 @@
+package I;
+public class zu {
+	public static y[] e(y[] T, int z, int W) {
+		if(z<W) {
+			int N = g(T, z, W);
+			e(T, z, N-1);
+			e(T, N+1, W);
+		}
+		return T;
+	}
+	private static int g(y[] T, int z, int W) {
+		y N = T[W];
+		int B = (z-1);
+		for(int ha=z; ha< W; ha++) {
+			if(o(T[ha],N)) { 
+				B++;
+				l(T, B, ha);
+			}
+		}
+		l(T,B+1,W);
+		return B+1;
+	}
+	private static boolean o(y T, y b) {
+		if(T.r(b) < 0 || T.r(b) == 0) {
+			return true;
+		}
+		return false;
+	}
+	private static void l(y[] T, int B, int ha) {
+		y D = T[B];
+		T[B] = T[ha];
+		T[ha] = D;
+	}
+}

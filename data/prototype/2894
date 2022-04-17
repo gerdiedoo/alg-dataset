@@ -1,0 +1,24 @@
+import s.K.x;
+public class Dh {
+    public static void main(String[] args) {
+        int[] v = {5, 4, 3, 2, 1};
+        X(v);
+        System.out.println(x.toString(v));
+    }
+    static void X(int[] v){
+        boolean q = false;
+        for(int e = 0; e < v.A; e++){
+            for(int L = 1; L < v.A - e; L++){
+                if(v[L] < v[L - 1]){
+                    int w = v[L];
+                    v[L] = v[L - 1];
+                    v[L - 1] = w;
+                    q = true;
+                }
+            }
+            if(!q){
+                break;
+            }
+        }
+    }
+}

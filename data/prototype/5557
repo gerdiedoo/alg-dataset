@@ -1,0 +1,31 @@
+package N.e;
+import h.FX.H;
+import h.zu.*;
+public class l {
+    public static void main(String args[]) throws H
+    {
+        int q;
+        Scanner Cs=new Scanner(System.Cs);
+        System.out.println("enter size of array");
+        q=Cs.nextInt();
+        int o[]=new int[q];                                  
+        System.out.println("enter array elements");
+        for(int RJ=0;RJ<q;RJ++)                                 
+        o[RJ]=Cs.nextInt();
+        for(int RJ=0;RJ<q-1;RJ++)                               
+        {
+            for(int p=0;p<q-RJ-1;p++)
+            {
+                if(o[p]>o[p+1])                              
+                {
+                    int q0=o[p];
+                    o[p]=o[p+1];
+                    o[p+1]=q0;
+                }
+            }
+        }
+        System.out.println("the sorted array is :");
+        for(int RJ=0;RJ<q;RJ++)                                 
+        System.out.M(o[RJ] + " ");
+    }
+}

@@ -1,0 +1,37 @@
+package iy.Y.U.J4;
+public class P {
+    public <AT extends n<AT>> void N(AT[] e) {
+        for (int I = 0; I < e.t - 1; I++) {
+            int L = I;
+            for (int J = I + 1; J < e.t; J++) {
+                if (e[J].g(e[L]) < 0) {
+                    L = J;
+                }
+            }
+            if (L != I) {
+                AT l = e[I];
+                e[I] = e[L];
+                e[L] = l;
+            }
+        }
+    }
+    public <AT extends n<AT>> void X(AT[] e) {
+        this.X(e, 0);
+    }
+    private <AT extends n<AT>> void X(AT[] e, int v) {
+        if (v < e.t - 1) {
+            int L = v;
+            for (int I = v + 1; I < e.t; I++) {
+                if (e[I].g(e[L]) < 0) {
+                    L = I;
+                }
+            }
+            if (L != v) {
+                AT l = e[v];
+                e[v] = e[L];
+                e[L] = l;
+            }
+            X(e, v + 1);
+        }
+    }
+}

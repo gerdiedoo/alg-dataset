@@ -1,0 +1,608 @@
+package fx;
+import h.r.EX;
+import h.r.P.Q;
+import n.S;
+import n.o;
+public class E {
+	final static int V = 1 << 13;
+	public static void b8(byte[] R) {
+		new L.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class L {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final byte[] R;
+			final int ki;
+			final int C;
+			d1(byte[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(byte[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(byte[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			byte Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(byte[] R, int Jz, int T) {
+			byte X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(char[] R) {
+		new g.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class g {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final char[] R;
+			final int ki;
+			final int C;
+			d1(char[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(char[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(char[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			char Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(char[] R, int Jz, int T) {
+			char X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(short[] R) {
+		new w5.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class w5 {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final short[] R;
+			final int ki;
+			final int C;
+			d1(short[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(short[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(short[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			short Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(short[] R, int Jz, int T) {
+			short X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(int[] R) {
+		new U.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class U {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final int[] R;
+			final int ki;
+			final int C;
+			d1(int[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(int[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(int[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			int Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(int[] R, int Jz, int T) {
+			int X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(long[] R) {
+		new j.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class j {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final long[] R;
+			final int ki;
+			final int C;
+			d1(long[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(long[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(long[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			long Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(long[] R, int Jz, int T) {
+			long X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(float[] R) {
+		new AA.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class AA {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final float[] R;
+			final int ki;
+			final int C;
+			d1(float[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(float[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(float[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			float Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(float[] R, int Jz, int T) {
+			float X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(double[] R) {
+		new F.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class F {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final double[] R;
+			final int ki;
+			final int C;
+			d1(double[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(double[] R, int ki, int C) {	
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		private static int Sq(double[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			double Y = R[vX];	
+			while(ki < C) {
+				while(R[C] > Y) --C;
+				while(R[ki] <= Y && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(double[] R, int Jz, int T) {
+			double X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static <O> void b8(O[] R, EX<? super O> z) {
+		if(z == null) {
+			b8(R);
+		}
+		else {
+			new Wn.d1<>(R, 0, R.CV - 1, z).p();
+		}
+	}
+	public static void b8(hc[] R) {
+		new f.d1(R, 0, R.CV - 1).p();
+	}
+	private static final class f {	
+		private static final class d1 extends Q {
+			private static final long i = 1L;
+			final hc[] R;
+			final int ki;
+			final int C;
+			d1(hc[] R, int ki, int C) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C);
+				if(C - ki < V) {
+					H(R, ki, Y - 1);
+					H(R, Y + 1, C);
+				}
+				else {
+					d1 vX = new d1(R, ki, Y - 1);
+					d1 I = new d1(R, Y + 1, C);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static void H(hc[] R, int ki, int C) {
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C);	
+			H(R, ki, Y - 1);
+			H(R, Y + 1, C);
+		}
+		@A({ "rawtypes", "unchecked" })
+		private static int Sq(hc[] R, int vX, int I) {
+			int ki = vX;
+			int C = I;
+			a Y = ((a) R[vX]);	
+			while(ki < C) {
+				while(Y.x(R[C]) < 0) --C;
+				while(Y.x(R[ki]) >= 0 && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static void e5(hc[] R, int Jz, int T) {
+			hc X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	private static final class Wn {
+		private static final class d1<O> extends Q {
+			private static final long i = 1L;
+			final O[] R;
+			final int ki;
+			final int C;
+			final EX<? super O> z;
+			d1(O[] R, int ki, int C, EX<? super O> z) {
+				this.R = R;
+				this.ki = ki;
+				this.C = C;
+				this.z = z;
+			}
+			public final void vy() {
+				if(ki >= C) {
+					return;
+				}
+				int Y = Sq(R, ki, C, z);	
+				if(C - ki < V) {
+					H(R, ki, Y - 1, z);
+					H(R, Y + 1, C, z);
+				}
+				else {
+					d1<O> vX = new d1<>(R, ki, Y - 1, z);
+					d1<O> I = new d1<>(R, Y + 1, C, z);
+					vX.K();
+					I.vy();
+					vX.s();
+				}
+			}
+		}
+		private static <O> void H(O[] R, int ki, int C, EX<? super O> z) {
+			if(ki >= C) {
+				return;
+			}
+			int Y = Sq(R, ki, C, z);	
+			H(R, ki, Y - 1, z);
+			H(R, Y + 1, C, z);
+		}
+		private static <O> int Sq(O[] R, int vX, int I, EX<? super O> z) {
+			int ki = vX;
+			int C = I;
+			O Y = R[vX];
+			while(ki < C) {
+				while(z.k(Y, R[C]) < 0) --C;
+				while(z.k(R[ki], Y) <= 0 && ki < C) ++ki;
+				e5(R, ki, C);
+			}
+			e5(R, vX, ki);
+			return ki;
+		}
+		private static <O> void e5(O[] R, int Jz, int T) {
+			O X = R[Jz];
+			R[Jz] = R[T];
+			R[T] = X;
+		}
+	}
+	public static void b8(byte[] R, boolean zL) {
+		if(zL) {
+			P4[] Wa = S.Fq(R);
+			b8(Wa, o.l());
+			S.m(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+	public static void b8(char[] R, boolean zL) {
+		if(zL) {
+			N[] Wa = S.J(R);
+			b8(Wa, o.l());
+			S.D(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+	public static void b8(short[] R, boolean zL) {
+		if(zL) {
+			K8[] Wa = S.Qn(R);
+			b8(Wa, o.l());
+			S.cc(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+	public static void b8(int[] R, boolean zL) {
+		if(zL) {
+			yi[] Wa = S.y(R);
+			b8(Wa, o.l());
+			S.b(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+	public static void b8(long[] R, boolean zL) {
+		if(zL) {
+			eS[] Wa = S.c(R);
+			b8(Wa, o.l());
+			S.Uc(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+	public static void b8(float[] R, boolean zL) {
+		if(zL) {
+			RW[] Wa = S.Ir(R);
+			b8(Wa, o.l());
+			S.w(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+	public static void b8(double[] R, boolean zL) {
+		if(zL) {
+			v[] Wa = S.WJ(R);
+			b8(Wa, o.l());
+			S.d(Wa, R);
+		}
+		else {
+			b8(R);
+		}
+	}
+}

@@ -1,0 +1,30 @@
+import Q.q.N7;
+import Q.iX.oo;
+public class x<b0 extends oo<b0>> implements n<b0> {
+    @i
+    public void a(N7<b0> T) {
+        if (T == null) return;
+        for (int g = 1; g < T.S(); g++) {
+            b0 s = T.u(g);
+            int O = g - 1;
+            while (O >= 0 && t(s, T.u(O))) {
+                T.V(O + 1, T.u(O));
+                O--;
+            }
+            T.V(O + 1, s);
+        }
+    }
+    private boolean t(b0 Qn, b0 zr) {
+        return (Qn.D(zr) < 0);
+    }
+    public static void main(String[] args) {
+        n<oC> Y = new x<oC>();
+        N7<oC> LF = Q.q.w.F(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        Y.a(LF);
+        for (int g = 0; g < LF.S() - 1; g++) {
+            if (LF.u(g).D(LF.u(g+1)) > 0)
+                throw new Q.iX.B("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
+}

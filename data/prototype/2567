@@ -1,0 +1,54 @@
+package S;
+import n.MK.z.i.t;
+import n.MK.z.i.X;
+import PR.W;
+public class tl<ha, jS> {
+  private Z K;
+  private int uk;
+  private class Z {
+    private ha l_;
+    private jS w;
+    private Z k;
+    public Z(ha l_, jS w, Z k) {
+      this.l_ = l_;
+      this.w = w;
+      this.k = k;
+    }
+  }
+  public jS v(ha l_) {  
+    for (Z Wx = K; Wx != null; Wx = Wx.k)
+      if (l_.equals(Wx.l_))
+        return Wx.w;  
+    return null;  
+  }
+  public void m(ha l_, jS w) {  
+    for (Z Wx = K; Wx != null; Wx = Wx.k)
+      if (l_.equals(Wx.l_))
+        { Wx.w = w; return; }  
+    K = new Z(l_, w, K);  
+    uk++;  
+  }
+  public boolean P(ha l_) {
+    if (l_ == null) throw new Fy("argument to P() is null");
+    return v(l_) != null;
+  }
+  public Fs<ha> fP() {
+    W<ha> fP = new W<ha>();
+    for (Z Wx = K; Wx != null; Wx = Wx.k)
+      fP.h(Wx.l_);
+    return fP;
+  }
+  public int L() {
+    return uk;
+  }
+  public static void main(String[] args) {
+    tl<String, cu> q = new tl<String, cu>();
+    for (int I = 0; !t.J(); I++) {
+      String l_ = t.g();
+      q.m(l_, I);
+    }
+    X.println("Number of items: " + q.L());
+    for (String o : q.fP())
+      X.println(o + " " + q.v(o));
+  }
+}

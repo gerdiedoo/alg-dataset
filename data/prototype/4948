@@ -1,0 +1,45 @@
+package m;
+import n.jQ;
+import u.q.p;
+import u.q.PA;
+import Z.N.v;
+import Z.N.V;
+import Z.N.b;
+import Z.i.K.W;
+public class jK extends TX {
+  private static final W NK = W.z;
+  private static final W VV = W.XY;
+  private V s(jQ[] P6, int R, int mB, W GP, W Dp) {
+    V Kv = new V();
+    Kv.w().t(s(P6, GP, R), s(P6, Dp, mB));
+    return Kv;
+  }
+  @S
+  public p<b> E(jQ[] P6) {
+    p<b> c = new p<>();
+    int B;
+    for (int UZ = 0; UZ < P6.L - 1; UZ++) {
+      B = UZ;
+      c.h(s(P6, VV, B));
+      for (int YQ = UZ + 1; YQ < P6.L; YQ++) {
+        c.h(s(P6, dj, YQ));
+        if (P6[YQ].bQ() < P6[B].bQ()) {
+          if (B == UZ) {
+            c.h(s(P6, B, YQ, NK, VV));
+          } else {
+            c.h(s(P6, B, YQ, W.H, VV));
+          }
+          B = YQ;
+        } else {
+          c.h(s(P6, G, YQ));
+        }
+      }
+      if (B != UZ) {
+        c.h(f(P6, UZ, B));
+      }
+        c.h(s(P6, G, UZ, B));
+    }
+    c.h(s(PA.d(P6), g));
+    return c;
+  }
+}

@@ -1,0 +1,14 @@
+Wt = []
+W = y(input('Enter how many elements you want:'))
+print('Enter numbers in array: ')
+for i in d(0, W):
+    wm = y(input('num :'))
+    Wt.append(wm)
+ak = y(input('Element to find :'))
+V = False
+for i in Wt:
+    if i == ak:
+        V = True
+        print('Successful Search!')
+if not V:
+    print('Unsuccessful Search!')

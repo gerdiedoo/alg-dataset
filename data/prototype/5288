@@ -1,0 +1,107 @@
+import T.V6.B;
+import T.m.r;
+public class V<uZ extends p2<uZ>, Hr extends p2<Hr>> implements nG<uZ, Hr> {
+    private r<x<uZ, Hr>>[] w;
+    private int YM;
+    private static final int b = 400000;
+    private static final double F_ = 3.0;
+    public V() {
+        w = new r[b];
+    }
+    @I
+    public Hr cf(e J) {
+        int C = J.hashCode() % w.u;
+        if (C < 0)
+            C += w.u;
+        if (w[C] == null)
+            return null;  
+        for (x<uZ, Hr> Nx : w[C]) {
+            if (Nx.Y().equals(J))
+                return Nx.W();
+        }
+        return null;
+    }
+    @I
+    public boolean y() {
+        return i()==0;
+    }
+    @I
+    public Hr KP(uZ J, Hr k) {
+        int C = J.hashCode() % w.u;
+        if (C < 0)
+            C += w.u;
+        if (w[C] == null) {
+            w[C] = new r<>();
+        }
+        for (x<uZ, Hr> Nx : w[C]) {
+            if (Nx.Y().equals(J)) {
+                Hr d = Nx.W();
+                Nx.v(k);
+                return d;
+            }
+        }
+        w[C].t(new x<>(J, k));
+        YM++;
+        if (YM > (F_ * w.u))
+            S();
+        return null;
+    }
+    private void S() {
+        r<x<uZ, Hr>>[] aA = w;
+        w = new r[(b *2) +1];
+        YM = 0;
+        for (int dN = 0; dN < aA.u; dN++) {
+            if ((aA[dN] != null)) {
+                w[dN].QR(aA[dN]);
+            }
+        }
+    }
+    @I
+    public Hr F(e J) {
+        int C = J.hashCode() % w.u;
+        if(C<0){
+            C += w.u;
+        }
+        if (w[C] == null){
+            return null;
+        }
+        for (x<uZ, Hr> Nx : w[C]) {
+            if (Nx.Y().equals(J)) {
+                Hr d = Nx.W();
+                Nx.v(null);
+                return d;
+            }
+        }
+        return null;
+    }
+    @I
+    public int i() {
+        return w.u;
+    }
+    private static class x<uZ extends p2<uZ>,Hr extends p2<Hr>> implements p2<x<uZ,Hr>>  {
+        private final uZ J;
+        private Hr k;
+        public boolean g;
+        public boolean A() {
+            return g;
+        }
+        public uZ Y() {
+            return J;
+        }
+        public Hr W() {
+            return k;
+        }
+        public void v(Hr k) {
+            this.k = k;
+        }
+        public x(uZ J , Hr k){
+            this.J = J;
+            this.k = k;
+            g = true;
+        }
+        @I
+        public int D(x<uZ, Hr> s) {
+            return this.J.D(s.Y());
+        }
+    }
+}

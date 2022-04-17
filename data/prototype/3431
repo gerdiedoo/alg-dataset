@@ -1,0 +1,21 @@
+package K.zK;
+import K.Rd;
+public final class E<w extends V<w>> implements n<w> {
+    @HM
+    public C HZ(Rd s, w[] tK) {
+        for (int T = 0; T < tK.RV; T++) {
+            w UC = tK[T];
+            int b;
+            s.r(s.En() + 1);
+            for (b = T - 1; b >= 0 && tK[b].H(UC) > 0; b--) {
+                s.r(s.En() + 1);
+                tK[b + 1] = tK[b];
+            }
+            if (b + 1 != T) {
+                s.y(s.vI() + 1);
+            }
+            tK[b + 1] = UC;
+        }
+        return C.P;
+    }
+}

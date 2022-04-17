@@ -1,0 +1,17 @@
+def i(b, gT, ws):
+    A = b[(gT + ws) // 2]
+    e = gT
+    jy = ws
+    while e <= jy:
+        while b[e] < A:
+            e += 1
+        while b[jy] > A:
+            jy -= 1
+        if e <= jy:
+            (b[e], b[jy]) = (b[jy], b[e])
+            e += 1
+            jy -= 1
+    if e < ws:
+        i(b, e, ws)
+    if jy > gT:
+        i(b, gT, jy)

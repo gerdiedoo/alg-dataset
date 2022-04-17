@@ -1,0 +1,24 @@
+def r(MS):
+    if len(MS) < 2:
+        return MS
+    return B(r(MS[:len(MS) // 2]), r(MS[len(MS) // 2:]))
+def B(A, a):
+    R = []
+    D = 0
+    f = 0
+    while D < len(A) and f < len(a):
+        if A[D] < a[f]:
+            R.append(A[D])
+            D += 1
+        else:
+            R.append(a[f])
+            f += 1
+    R += A[D:]
+    R += a[f:]
+    return R
+PT = [8, 3, 1, 7, 0, 10, 2]
+S = [21, 4, 1, 3, 9, 20, 25, 22, 17, 2, 8]
+PT = r(PT)
+S = r(S)
+print(PT)
+print(S)

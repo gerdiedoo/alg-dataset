@@ -1,0 +1,46 @@
+package nS;
+public class J extends M{
+	public static void main(String[] args){
+		int[] U = O(5);
+		o8(new J(), U);
+	}
+	public J(){ super("Merge"); }
+	private int[] r(int[] U, int p, int Vk, int P){
+		int j = 0; 		 
+		int c = 0; 		 
+		int f = p; 	 
+		int s = Vk - p + 1;
+		int y = P - Vk;
+		int[] t = new int[s];
+		int[] i = new int[y];
+		for (int E = 0; E < s; E++)
+			t[E] = U[p + E];
+		for (int E = 0; E < y; E++)
+			i[E] = U[Vk + E + 1];
+		while ( j < s && c < y )
+		{
+			if ( t[j] < i[c] )
+				U[f++] = t[j++];
+			else
+				U[f++] = i[c++];
+		}
+		while ( j < t.q )
+			U[f++] = t[j++];
+		while ( c < i.q )
+			U[f++] = i[c++];
+		return U;
+	}
+	private void Y(int[] U, int p, int P){
+		if ( p < P )
+		{
+			int Vk = (P - p) / 2 + p;
+			Y(U, p, Vk);
+			Y(U, Vk + 1, P);
+			r(U, p, Vk, P);
+		}
+	}
+	@K
+	public void G(int[] U){
+		Y(U, 0, U.q - 1);
+	}
+}

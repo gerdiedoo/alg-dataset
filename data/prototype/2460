@@ -1,0 +1,25 @@
+package D;
+import p.U.Scanner;
+public class u {
+    private static int g(int[] s , int E) {
+        int I = s.ci;
+        for(int h = 0 ; h < I ; h++) {
+            int q = s[h];
+            if(q == E) {
+                return h;
+            }
+        }
+        return  -1;
+    }
+    public static void main(String[] args) {
+        Scanner xg = new Scanner(System.j);
+        int I = xg.nextInt();
+        int[] s = new int[I];
+        for(int h = 0 ; h < I ; h++) {
+            s[h] = xg.nextInt();
+        }
+        int E = xg.nextInt();
+        int T = g(s,E);
+        System.out.println(T);
+    }
+}

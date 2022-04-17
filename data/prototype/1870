@@ -1,0 +1,103 @@
+package rD.q_;
+import I.X.V;
+import I.X.mq.Y;
+class j<h, w> {
+    private T<h, w> i;
+    private int A;
+    j() {
+        this(null, 0);
+    }
+    j(T<h, w> i, int A) {
+        this.i = i;
+        this.A = A;
+    }
+    private void Rk(T<h, w> X9) {
+        if (this.i != null) {
+            X9.N(this.i);
+            this.i.a(X9);
+        }
+        this.i = X9;
+        A++;
+    }
+    private T<h, w> D(h J) {
+        T<h, w> z = this.i;
+        while (z != null) {
+            if (z.J().equals(J))
+                return z;
+            z = z.N();
+        }
+        return null;
+    }
+    private void aM(T<h, w> d5) {
+        A--;
+        T<h, w> Gu = d5.a();
+        T<h, w> l = d5.N();
+        if (Gu == null) {
+            this.i = d5.N();
+        } else if (l == null) {
+            Gu.N(null);
+        } else {
+            d5.N(null);
+            d5.a(null);
+            Gu.N(l);
+            l.a(Gu);
+        }
+    }
+    private Y<T<h, w>> n() {
+        V<T<h, w>> K = new V<>();
+        T<h, w> z = this.i;
+        while (z != null) {
+            K.ss(z);
+            z = z.N();
+        }
+        return K.mq();
+    }
+    void ss(h J, w O) {
+        T<h, w> X9 = new T<>(J, O);
+        o(J);
+        Rk(X9);
+    }
+    w u5(h J, w s) {
+        T<h, w> d5 = D(J);
+        if (d5 == null)
+            return s;
+        return d5.O();
+    }
+    w u5(h J) throws RU {
+        T<h, w> d5 = D(J);
+        if (d5 == null)
+            throw new RU(J.toString());
+        return d5.O();
+    }
+    boolean o(h J) {
+        T<h, w> R = this.D(J);
+        if (R == null)
+            return false;
+        aM(R);
+        return true;
+    }
+    e<h, w> Mx(int g) {
+        if (g >= this.vm())
+            return null;
+        T<h, w> z = this.i;
+        for (int hL = 0; hL < g; hL++) {
+            z = z.N();
+        }
+        return z.Qv();
+    }
+    int vm() {
+        return A;
+    }
+    boolean FX() {
+        return this.vm() == 0;
+    }
+    Y<h> JS() {
+        return n().Bz(T::J);
+    }
+    Y<w> B() {
+        return n().Bz(T::O);
+    }
+    Y<e<h, w>> fk() {
+        return n().Bz(d5 -> new e<>(d5.J(), d5.O()));
+    }
+}

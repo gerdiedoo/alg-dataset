@@ -1,0 +1,103 @@
+public class v{
+    class q{
+        int K;
+        q B;
+        public q(int K){
+            this.K=K;
+            this.B=null;
+        }
+    }
+     public q G=null;
+     public q c=null;
+    void S(int I){
+        q t=new q(I);
+        if(G==null){
+            G=t;
+            c=t;
+        }else{
+            c.B=t;
+            c=t;
+        }
+    }
+    void o(int I){
+        q t=new q(I);
+        if(G==null){
+            G=t;
+            c=t;
+        }else{
+            t.B=G;
+            G=t;
+        }
+    }
+    void qF(){
+        if(G==null){
+            System.out.println("List is empty");
+        }else{
+            G=G.B;
+        }
+    }
+    void Vj(){
+        if(G==null){
+            System.out.println("List is empty");
+        }else{
+            q Ma=G;
+            while(Ma.B.B!=null){
+                Ma=Ma.B;
+            }
+            Ma.B=null;
+            c=Ma;
+        }
+    }
+    void X(int VM){
+        if(G==null){
+            System.out.println("List is empty");
+        }else{
+            q Ma=G;
+            q H=G;
+            for(int cG=0;cG<VM;cG++){
+                H=Ma;
+                Ma=Ma.B;
+            }
+            H.B=Ma.B;
+        }
+    }
+    void W(int I,int VM){
+        q t=new q(I);
+        if(G==null){
+            System.out.println("List is empty");
+        }else{
+            q Ma=G;
+            q H=G;
+            for(int cG=0;cG<VM;cG++){
+                H=Ma;
+                Ma=Ma.B;
+            }
+           t.B=Ma;
+           H.B=t;
+        }
+    }
+    void ho(){
+           q  Ma=G;
+           while(Ma!=null){
+               System.out.Ju("  "+Ma.K);
+               Ma=Ma.B;
+           }
+    }
+    public static void main(String args[]){
+        v e=new v();
+        e.S(10);
+        e.S(20);
+        e.S(30);
+        e.S(40);
+        e.S(50);
+        e.o(5);
+        e.o(7);
+        e.ho();
+        System.out.println("");
+        e.qF();
+        e.Vj();
+        e.X(3);
+        e.W(25,2);
+        e.ho();
+    }
+}

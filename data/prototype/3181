@@ -1,0 +1,14 @@
+def ag(X):
+    for t in b0(1, len(X)):
+        ME = X[t]
+        lw = t
+        while lw > 0 and X[lw - 1] > ME:
+            X[lw] = X[lw - 1]
+            lw -= 1
+            X[lw] = ME
+def Of():
+    X = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    ag(X)
+    print(X)
+if h == '__main__':
+    Of()

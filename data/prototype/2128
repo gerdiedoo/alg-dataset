@@ -1,0 +1,103 @@
+public class x{
+    class z{
+        int hG;
+        z B;
+        public z(int hG){
+            this.hG=hG;
+            this.B=null;
+        }
+    }
+     public z i=null;
+     public z c=null;
+    void O(int L){
+        z g=new z(L);
+        if(i==null){
+            i=g;
+            c=g;
+        }else{
+            c.B=g;
+            c=g;
+        }
+    }
+    void v2(int L){
+        z g=new z(L);
+        if(i==null){
+            i=g;
+            c=g;
+        }else{
+            g.B=i;
+            i=g;
+        }
+    }
+    void o(){
+        if(i==null){
+            System.out.println("List is empty");
+        }else{
+            i=i.B;
+        }
+    }
+    void Uj(){
+        if(i==null){
+            System.out.println("List is empty");
+        }else{
+            z R1=i;
+            while(R1.B.B!=null){
+                R1=R1.B;
+            }
+            R1.B=null;
+            c=R1;
+        }
+    }
+    void T(int Ep){
+        if(i==null){
+            System.out.println("List is empty");
+        }else{
+            z R1=i;
+            z A=i;
+            for(int ss=0;ss<Ep;ss++){
+                A=R1;
+                R1=R1.B;
+            }
+            A.B=R1.B;
+        }
+    }
+    void t(int L,int Ep){
+        z g=new z(L);
+        if(i==null){
+            System.out.println("List is empty");
+        }else{
+            z R1=i;
+            z A=i;
+            for(int ss=0;ss<Ep;ss++){
+                A=R1;
+                R1=R1.B;
+            }
+           g.B=R1;
+           A.B=g;
+        }
+    }
+    void N(){
+           z  R1=i;
+           while(R1!=null){
+               System.out.w("  "+R1.hG);
+               R1=R1.B;
+           }
+    }
+    public static void main(String args[]){
+        x X=new x();
+        X.O(10);
+        X.O(20);
+        X.O(30);
+        X.O(40);
+        X.O(50);
+        X.v2(5);
+        X.v2(7);
+        X.N();
+        System.out.println("");
+        X.o();
+        X.Uj();
+        X.T(3);
+        X.t(25,2);
+        X.N();
+    }
+}

@@ -1,0 +1,32 @@
+package D;
+import Ls.Yq.nu;
+public class tu {
+    public static void main(String[] args) {
+        int[] K = {20,35,-15,7,55,1,-22};
+        nu.f(K);
+        System.out.println(tu(K,-15));
+        System.out.println(tu(K,22));
+        System.out.println(tu(K,7));
+    }
+    public static int tu(int[] K,int T4){
+        int d = (int) K.g/2;
+        if (T4 == K[d]){
+            return d;
+        }
+        else if (T4>K[d]){
+            for (int R = d+1; R < K.g; R++) {
+                if (K[R] == T4){
+                    return R;
+                }
+            }
+        }
+        else {
+            for (int R = 0; R < d; R++) {
+                if (K[R] == T4){
+                    return R;
+                }
+            }
+        }
+        return -1;
+    }
+}

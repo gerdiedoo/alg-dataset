@@ -1,0 +1,16 @@
+package V;
+import p.R8.Zl;
+public class B {
+    public static boolean P(int[] v, int UA) {
+        int H = v.pC / 2;
+        if(v[H] == UA) {
+            return true;
+        }
+        if (v.pC == 1) {
+            return false;
+        }
+        return UA < v[H] ?
+                P(Zl.s(v, 0, v.pC / 2), UA) :  
+                P(Zl.s(v, H + 1, v.pC), UA);  
+    }
+}

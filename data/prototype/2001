@@ -1,0 +1,120 @@
+package b.A;
+import X.np.l;
+public class i<v> implements D<v>{
+    d WC, gq;
+    int L;
+    public i(){
+        WC = null;
+        gq = null;
+        L = 0;
+    }
+    public int r(){
+        return L;
+    }
+    public boolean J(){
+        return L == 0;
+    }
+    public void tc(v n5){
+        d C = new d(n5);
+        if(J()){
+            WC = C;
+            gq = C;
+        }
+        else{
+            gq.n = C;
+            gq = C;
+        }
+        C.n = WC;
+        L++;
+    }
+    public void tc(v n5, int aS)throws R{
+        if(aS < 0 || aS > L - 1){
+            throw new R();
+        }
+        d C = new d(n5);
+        if(aS == L - 1){
+            tc(n5);
+        }
+        else if(aS == 0){
+            C.n = WC.n;
+            WC = C;
+            L++;
+        }
+        else {
+            d KR = WC;
+            while (aS != 1) {
+                aS--;
+                KR = KR.n;
+            }
+            C.n = KR.n;
+            KR.n = C;
+            L++;
+        }
+    }
+    public v TQ(int aS) throws R{
+        if(aS < 0 || aS > L - 1){
+            throw new R();
+        }
+        if(aS == 0){
+            return WC.n5;
+        }
+        else if(aS == L - 1){
+            return gq.n5;
+        }
+        else{
+            d KR = WC;
+            while (aS != 0) {
+                aS--;
+                KR = KR.n;
+            }
+            return KR.n5;
+        }
+    }
+    public void T(int aS) throws R{
+        if(aS < 0 || aS > L - 1){
+            throw new R();
+        }
+        if(aS == 0){
+            WC = WC.n;
+            gq.n = WC;
+        }
+        else{
+            d KR = WC;
+            int c = aS;
+            while(c != 1){
+                c--;
+                KR = KR.n;
+            }
+            KR.n = KR.n.n;
+            if(aS == L - 1){
+                gq = KR;
+            }
+            L--;
+        }
+    }
+    public l<v> G(){
+        return new p();
+    }
+    class p implements l<v> {
+        private d t = WC;
+        public boolean xY(){
+            return true;
+        }
+        public void T(){
+            throw new y();
+        }
+        public v n(){
+            v n5 = t.n5;
+            t = t.n;
+            return n5;
+        }
+    }
+    class d{
+        v n5;
+        d n;
+        d(v n5){
+            this.n5 = n5;
+            n = null;
+        }
+    }
+}

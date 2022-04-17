@@ -1,0 +1,29 @@
+package YZ.xH;
+import YZ.w;
+public class R implements M {
+    private long Xu = 1;
+    @Yc
+    public void ZG(w f) {
+        for (int MM = 0; MM < f.Cl(); MM++) {
+            int y = f.D(MM);
+            int Z = MM - 1;
+            while (Z >= 0 && f.D(Z) > y) {
+                f.E(Z + 1, f.D(Z), 5, true);
+                Z--;
+            }
+            f.E(Z + 1, y, tw(), true);
+        }
+    }
+    @Yc
+    public String JS() {
+        return "Insertion Sort";
+    }
+    @Yc
+    public long tw() {
+        return Xu;
+    }
+    @Yc
+    public void c(long I) {
+        this.Xu = I;
+    }
+}

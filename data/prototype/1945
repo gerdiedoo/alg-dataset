@@ -1,0 +1,99 @@
+import N.j4.I;
+import N.j4.cW;
+public class fd<Z,C> implements l<Z, C> {
+	private int M;
+	private cW<l.hA<Z, C>> y;
+	private int K=0;
+	fd(int M)
+	{
+		y=new I<l.hA<Z, C>>();
+		l.hA<Z,C> S;
+		for(int T=0;T<M;T++)
+			{
+				S=new L();
+				y.Xx(S);
+			}
+		this.M=M;
+	}
+	@vJ
+	public C k(Z b) {
+		int T=BD(b.hashCode(),M);
+		l.hA<Z,C> S=y.k(T);
+		for(l.E<Z, C> i:S.W())
+		{
+			if(i.f().equals(b))
+				return i.z6();
+		}
+		return null;
+	}
+	@vJ
+	public C s(Z b, C VS) {
+		int T=BD(b.hashCode(),M);
+		l.hA<Z,C> S=y.k(T);
+		for(l.E<Z, C> i:S.W())
+		{
+			if(i.f().equals(b))
+				{
+					C RD=((P)i).tm;
+					((L)S).Y.r(i);
+					((P)i).tm=VS;
+					((L)S).Y.Xx(i);
+					return RD;
+				}
+		}
+		l.E<Z, C> z=new P();
+		((P)z).B=b;
+		((P)z).tm=VS;
+		((L)S).Y.Xx(z);
+		K++;
+		return null;
+	}
+	@vJ
+	public C r(Z b) {
+		int T=BD(b.hashCode(),M);
+		l.hA<Z,C> S=y.k(T);
+		for(l.E<Z, C> i:S.W())
+		{
+			if(i.f()==b)
+			{
+				C RD=((P)i).tm;
+				((L)S).Y.r(i);
+				K--;
+				return RD;
+			}
+		}
+		return null;
+	}
+	@vJ
+	public int K() {
+		return K;
+	}
+	@vJ
+	public cW<? extends l.hA<Z, C>> mc() {
+		return y;
+	}
+	public int BD(int hashCode, int K) {
+		return g.vi(hashCode) % K;
+	}
+	public class P implements l.E<Z, C>
+	{
+		Z B;
+		C tm;
+		@vJ
+		public Z f() {
+			return B;
+		}
+		@vJ
+		public C z6() {
+			return tm;
+		}
+	}
+	public class L implements l.hA<Z, C>
+	{
+		private cW<l.E<Z, C>> Y=new I<l.E<Z, C>>();
+		@vJ
+		public cW<? extends l.E<Z, C>> W() {
+			return Y;
+		}
+	}
+}

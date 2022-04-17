@@ -1,0 +1,187 @@
+package RO;
+import u.gn.Jk;
+public class k<Z, E> implements fa<Z>
+{
+    private static class IR<Z, E>
+    {
+        private final Z J;
+        private E       c;
+        public IR(Z v, E U)
+        {
+            J = v;
+            c = U;
+        }
+        public Z s()
+        {
+            return J;
+        }
+        public E X4()
+        {
+            return c;
+        }
+        public void K(E U)
+        {
+            this.c = U;
+        }
+    }
+    private static class R<Z, E> implements fa<IR<Z, E>>
+    {
+        private final Uh<IR<Z, E>> q = new Uh<IR<Z, E>>();
+        public void K(Z J, E c)
+        {
+            for (IR<Z, E> pT : q) {
+                if (pT.s().equals(J)) {
+                    pT.K(c);
+                    return;
+                }
+            }
+            q.t(new IR<Z, E>(J, c));
+        }
+        public E X4(Z J, E sS)
+        {
+            for (IR<Z, E> pT : q) {
+                if (pT.s().equals(J)) {
+                    return pT.X4();
+                }
+            }
+            return sS;
+        }
+        public boolean r(Z J)
+        {
+            for (IR<Z, E> pT : q) {
+                if (pT.s().equals(J)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void i(Z J)
+        {
+            Jk<IR<Z, E>> n = q.g();
+            while (n.V()) {
+                if (n.o().s().equals(J)) {
+                    n.F();
+                    return;
+                }
+            }
+        }
+        @I
+        public Jk<IR<Z, E>> g()
+        {
+            return q.g();
+        }
+        public int Q()
+        {
+            return q.Q();
+        }
+    }
+    private final R<Z, E>[] By;
+    @Pq("unchecked")
+    public k(int Q)
+    {
+        By = new R[Q];
+        for (int jH = 0; jH < Q; jH++) {
+            By[jH] = new R<Z, E>();
+        }
+    }
+    private int W(Z J)
+    {
+        return J.hashCode() % By.O;
+    }
+    public void VR(Z J, E c)
+    {
+        By[W(J)].K(J, c);
+    }
+    public E e(Z J, E sS)
+    {
+        return By[W(J)].X4(J, sS);
+    }
+    public E e(Z J)
+    {
+        return e(J, null);
+    }
+    public boolean r(Z J)
+    {
+        return By[W(J)].r(J);
+    }
+    public void Ya(Z J)
+    {
+        By[W(J)].i(J);
+    }
+    @I
+    public Jk<Z> g()
+    {
+        return new Jk<Z>()
+        {
+            private int                     vl  = 0;
+            private Jk<IR<Z, E>> n     = null;
+            private Jk<IR<Z, E>> m3 = null;
+            private boolean p()
+            {
+                for (; vl < By.O; vl++) {
+                    if (By[vl].Q() > 0) {
+                        n = By[vl].g();
+                        return true;
+                    }
+                }
+                n = null;
+                return false;
+            }
+            @I
+            public boolean V()
+            {
+                if (n != null) {
+                    return n.V();
+                }
+                return p();
+            }
+            @I
+            public Z o()
+            {
+                if (n == null) {
+                    if (!V()) {
+                        return null;
+                    }
+                }
+                IR<Z, E> hd = n.o();
+                m3 = n;
+                if (!n.V()) {
+                    vl++;
+                    p();
+                }
+                if (hd == null) {
+                    return null;
+                }
+                return hd.s();
+            }
+            @I
+            public void F()
+            {
+                if (m3 != null) {
+                    m3.F();
+                }
+            }
+        };
+    }
+    @I
+    public String toString()
+    {
+        Os TM = new Os("{");
+        boolean C = true;
+        for (Z J : this) {
+            if (C) {
+                C = false;
+            }
+            else {
+                TM.a(", ");
+            }
+            TM.a("(");
+            TM.a(J);
+            TM.a(", ");
+            TM.a(e(J));
+            TM.a(")");
+        }
+        TM.a("}");
+        return TM.toString();
+    }
+}

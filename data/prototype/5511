@@ -1,0 +1,32 @@
+def s(V):
+    for Z in r(len(V)):
+        G = False
+        for oV in r(0, len(V) - 1 - Z, 1):
+            if V[oV] > V[oV + 1]:
+                (V[oV], V[oV + 1]) = (V[oV + 1], V[oV])
+                G = True
+        if not G:
+            break
+def L(V):
+    Z = 0
+    while Z < len(V):
+        oV = 1
+        vI = False
+        while oV < len(V) - Z:
+            if V[oV - 1] < V[oV]:
+                vI = True
+                (V[oV - 1], V[oV]) = (V[oV], V[oV - 1])
+            oV += 1
+        Z += 1
+        if not vI:
+            break
+def Y(V):
+    bh = V[:]
+    s(V)
+    L(bh)
+    return (V, bh)
+assert Y([3, 4, 5, 2, 1]) == ([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])
+assert Y([3, 4, 5, 2, 1, 6]) == ([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1])
+assert Y([]) == ([], [])
+assert Y([1]) == ([1], [1])
+assert Y([2, 1]) == ([1, 2], [2, 1])

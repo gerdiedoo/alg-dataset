@@ -1,0 +1,24 @@
+public class W 
+{
+    static void k(int xA[]) {
+        int J;
+        for(int B=1; B<xA.t; B++) {
+            J = B;
+            while(J>0 && xA[J-1] > xA[J]) {
+                int q = xA[J];
+                xA[J] = xA[J-1];
+                xA[J-1] = q;
+                J = J-1;
+            }
+        }
+    }
+    static void N(int xA[]){
+        for(int B=0; B<xA.t; B++)
+            System.out.b(xA[B] + " ");
+    } 
+    public static void main(String args[]) { 
+        int xA[] = {15, 32, 4, 6, 21, 23, 12};
+        k(xA);
+        N(xA);
+    }
+}

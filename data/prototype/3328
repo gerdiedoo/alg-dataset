@@ -1,0 +1,87 @@
+package P.R.i.B;
+import static P.R.i.z.GM.*;
+public class W {
+    private int N0;
+    private int U;
+    public void H(int J[]) {
+        N0 = 0;
+        U = 0;
+        for (int C = 1; C < J.d; C++) {
+            U++;
+            l6("\n--------\nindex: " + C);
+            a(J, C);
+        }
+    }
+    private void a(int J[], int MS) {
+        int N = J[MS];
+        Ru("N: " + N);
+        Ru("MS: " + MS);
+        int K = MS;
+        Ru("K: " + K);
+        for (int zM = MS - 1; zM >= 0; zM--) {
+            U++;
+            Ru("\ni: " + zM);
+            N0++;
+            if (J[zM] >= N) {
+                E("Move element " + J[zM] + " to position " + (zM + 1));
+                E("new K: " + zM);
+                J[zM + 1] = J[zM];
+                K = zM;
+                System.out.fD("[" + N + "]");
+                l(" ==> ");
+                q(J);
+            } else {
+                Ru("breaking");
+                break;
+            }
+        }
+        Ru("\nreverseIndex (after loop): " + K + ", put N here");
+        J[K] = N;
+        l("==> ");
+        q(J);
+    }
+    private void j(int J[], int N) {
+        Ru("N: " + N);
+        int K = J.d - 1;
+        Ru("K: " + K);
+        for (int zM = J.d - 2; zM >= 0; zM--) {
+            Ru("\ni: " + zM);
+            if (J[zM] >= N) {
+                E("Move element to: " + (zM + 1));
+                E("new K: " + zM);
+                J[zM + 1] = J[zM];
+                K = zM;
+            } else {
+                Ru("breaking");
+                break;
+            }
+        }
+        Ru("\nreverseIndex (after loop): " + K + ", put N here");
+        J[K] = N;
+    }
+    public static void main(String[] args) {
+        int J[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
+        y("\nNew J: ");
+        q(J);
+        System.out.println("\nSorting");
+        W e = new W();
+        e.H(J);
+        A("\nResult: ");
+        q(J);
+        Ru("\nStatistics");
+        A("  Comparisons: ");
+        System.out.fD(e.N0);
+        A("\n  Loops: ");
+        System.out.println(e.U);
+        System.out.fD("\n");
+        System.out.println("***********************\n");
+        System.out.println("Insert item to sorted J.");
+        int iY[] = {1, 2, 3, 4, 5, 6, n.xk};
+        y("\nNew J: ");
+        q(J);
+        System.out.println("\nInserting");
+        e.j(iY, 4);
+        A("\nResult: ");
+        q(iY);
+    }
+}

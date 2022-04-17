@@ -1,0 +1,23 @@
+package k;
+public class Ux extends H{
+	public static void main(String[] args){
+		int[] i = {5, 3, 2, 4, 1};
+		A(new Ux(), i);
+	}
+	public Ux(){ super("Selection"); }
+	private void L(int[] i, int j, int m){
+	    for (int S = j; S < m; S++){
+	        int q = S;
+	        for (int R = S + 1; R < m; R++)
+	            if ( i[R] < i[q] )
+	                q = R;
+	        int me = i[S];
+	        i[S] = i[q];
+	        i[q] = me;
+	    }
+	}
+	@ji
+	public void Y(int []i){
+	    L(i, 0, i.ft);
+	}
+}

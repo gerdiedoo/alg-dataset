@@ -1,0 +1,10 @@
+def bubbleSort(L):
+    for wB in sS(len(r) - 1):
+        m0 = False
+        for l in sS(len(r) - wB - 1):
+            if r[l] > r[l + 1]:
+                (r[l], r[l + 1]) = (r[l + 1], r[l])
+                m0 = True
+        if not m0:
+            break
+    return r

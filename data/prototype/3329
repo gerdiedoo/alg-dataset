@@ -1,0 +1,87 @@
+package P.p.r.B;
+import static P.p.r.k.t.*;
+public class E {
+    private int pS;
+    private int n;
+    public void g(int Pc[]) {
+        pS = 0;
+        n = 0;
+        for (int sG = 1; sG < Pc.N; sG++) {
+            n++;
+            aN("\n--------\nindex: " + sG);
+            V(Pc, sG);
+        }
+    }
+    private void V(int Pc[], int G) {
+        int q = Pc[G];
+        a("q: " + q);
+        a("G: " + G);
+        int UK = G;
+        a("UK: " + UK);
+        for (int rM = G - 1; rM >= 0; rM--) {
+            n++;
+            a("\ni: " + rM);
+            pS++;
+            if (Pc[rM] >= q) {
+                Q("Move element " + Pc[rM] + " to position " + (rM + 1));
+                Q("new UK: " + rM);
+                Pc[rM + 1] = Pc[rM];
+                UK = rM;
+                System.out.fj("[" + q + "]");
+                U(" ==> ");
+                rx(Pc);
+            } else {
+                a("breaking");
+                break;
+            }
+        }
+        a("\nreverseIndex (after loop): " + UK + ", put q here");
+        Pc[UK] = q;
+        U("==> ");
+        rx(Pc);
+    }
+    private void d(int Pc[], int q) {
+        a("q: " + q);
+        int UK = Pc.N - 1;
+        a("UK: " + UK);
+        for (int rM = Pc.N - 2; rM >= 0; rM--) {
+            a("\ni: " + rM);
+            if (Pc[rM] >= q) {
+                Q("Move element to: " + (rM + 1));
+                Q("new UK: " + rM);
+                Pc[rM + 1] = Pc[rM];
+                UK = rM;
+            } else {
+                a("breaking");
+                break;
+            }
+        }
+        a("\nreverseIndex (after loop): " + UK + ", put q here");
+        Pc[UK] = q;
+    }
+    public static void main(String[] args) {
+        int Pc[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
+        xh("\nNew Pc: ");
+        rx(Pc);
+        System.out.println("\nSorting");
+        E z = new E();
+        z.g(Pc);
+        L("\nResult: ");
+        rx(Pc);
+        a("\nStatistics");
+        L("  Comparisons: ");
+        System.out.fj(z.pS);
+        L("\n  Loops: ");
+        System.out.println(z.n);
+        System.out.fj("\n");
+        System.out.println("***********************\n");
+        System.out.println("Insert item to sorted Pc.");
+        int x[] = {1, 2, 3, 4, 5, 6, s.Y};
+        xh("\nNew Pc: ");
+        rx(Pc);
+        System.out.println("\nInserting");
+        z.d(x, 4);
+        L("\nResult: ");
+        rx(x);
+    }
+}

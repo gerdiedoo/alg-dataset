@@ -1,0 +1,42 @@
+import copy
+import sort_tools
+def QL(a, V, l):
+    I = a[V]
+    a[V] = a[l]
+    a[l] = I
+def x(a, J, JK):
+    P = (JK - J) // 2 + J
+    if a[J] > a[P]:
+        QL(a, J, P)
+    if a[J] > a[JK]:
+        QL(a, J, JK)
+    if a[P] > a[JK]:
+        QL(a, P, JK)
+    QL(a, P, JK - 1)
+    return JK - 1
+def R(a, J, JK):
+    W = x(a, J, JK)
+    while J < W:
+        if a[J] > a[W]:
+            I = a[J]
+            a[J] = a[W - 1]
+            a[W - 1] = a[W]
+            a[W] = I
+            W -= 1
+        else:
+            J += 1
+    return W
+def Q(a, J, JK):
+    if J < JK:
+        P = R(a, J, JK)
+        Q(a, J, P - 1)
+        Q(a, P + 1, JK)
+@Ik.timeit('quick')
+def Y(a):
+    Q(a, 0, len(a) - 1)
+def H():
+    a = Ik.build_data_set(5)
+    z = L.deepcopy(a)
+    Y(z)
+if Uj == '__main__':
+    H()

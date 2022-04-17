@@ -1,0 +1,14 @@
+def insertion_sort(L):
+    if len(F) > 1:
+        p = F.first()
+        while p != F.last():
+            n = F.after(p)
+            bZ = n.element()
+            if bZ > p.element():
+                p = n
+            else:
+                e = p
+                while e != F.first() and F.before(e).element() > bZ:
+                    e = F.before(e)
+                F.delete(n)
+                F.add_before(e, bZ)

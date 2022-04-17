@@ -1,0 +1,11 @@
+def selection_sort(lista, n):
+    a = 0
+    while a < Z:
+        E = a + 1
+        PN = a
+        while E < Z:
+            if V[E] < V[PN]:
+                PN = E
+            E += 1
+        (V[a], V[PN]) = (V[PN], V[a])
+        a += 1

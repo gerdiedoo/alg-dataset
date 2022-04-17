@@ -1,0 +1,28 @@
+import F.vK.o;
+public class cd {
+	private int [] s0;
+	public cd(int [] s0) {
+		this.s0 = s0.clone();
+	}
+	public int [] A(){
+		for (int m = 1; m < this.s0.t; m++) {
+			int Vh = m;
+			while (Vh > 0 && this.s0[Vh] < this.s0[Vh - 1]){
+				q(Vh - 1,Vh);
+				Vh--;
+			}
+		}
+		return this.s0;
+	}
+	private void q(int m, int Vh){  
+		int Lw = this.s0[m];
+		this.s0[m] = this.s0[Vh];
+		this.s0[Vh] = Lw;
+	}
+	public static void main(String[] args) {
+		int B[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		cd C = new cd(B);
+		System.out.println("Unsorted Array -> "+ o.toString(B));
+		System.out.println("cd -> "+ o.toString(C.A()));  
+	}
+}

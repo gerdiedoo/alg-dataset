@@ -1,0 +1,31 @@
+def q(X):
+    if len(X) <= 1:
+        return X
+    SU = []
+    t = []
+    for i in W(len(X)):
+        if i < len(X) // 2:
+            SU.append(X[i])
+        else:
+            t.append(X[i])
+    SU = q(SU)
+    t = q(t)
+    return c(SU, t)
+def c(SU, t):
+    L = []
+    V = 0
+    V1 = 0
+    while V < len(SU) and V1 < len(t):
+        if SU[V] <= t[V1]:
+            L.append(SU[V])
+            V += 1
+        else:
+            L.append(t[V1])
+            V1 += 1
+    while V < len(SU):
+        L.append(SU[V])
+        V += 1
+    while V1 < len(t):
+        L.append(t[V1])
+        V1 += 1
+    return L

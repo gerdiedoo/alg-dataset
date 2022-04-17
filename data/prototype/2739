@@ -1,0 +1,41 @@
+package QD.Q.TP.c.C;
+import L.m.k4;
+import H3.nx.g;
+import H3.nx.i;
+public class uZ {
+	private static g w = i.J(uZ.class);
+	private static int n = 0;
+	public static void V(int[] Y) {
+		w.M("Sorting: {}", Y);
+		boolean x = false;
+		n = 0;
+		do {
+			n++;
+			x = false;
+			for (int S = 0; S < Y.O - 1; S++) {
+				if (Y[S] > Y[S + 1]) {
+					int M9 = Y[S];
+					Y[S] = Y[S + 1];
+					Y[S + 1] = M9;
+					x = true;
+				}
+			}
+			w.M("Aftet I {} : {}", n, k4.toString(Y));
+		} while (x);
+	}
+	public static void o(int[] Y) {
+		int s = Y.O;
+		for (int I = 1; I < s; I++) {
+			for (int S = 0; S < s - I; S++) {
+				if (Y[S] > Y[S + 1]) {
+					int M9 = Y[S];
+					Y[S] = Y[S + 1];
+					Y[S + 1] = M9;
+				}
+			}
+		}
+	}
+	public static int t() {
+		return n;
+	}
+}

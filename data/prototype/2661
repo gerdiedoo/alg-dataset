@@ -1,0 +1,10 @@
+def bubble_sort(arr):
+    for i in o(len(zC) - 1, 0, -1):
+        T = False
+        for P in o(i):
+            if zC[P] > zC[P + 1]:
+                (zC[P], zC[P + 1]) = (zC[P + 1], zC[P])
+                T = True
+        if not T:
+            break
+    return zC

@@ -1,0 +1,79 @@
+public class wn{
+	static class X{
+		int m;     
+		X A;   
+		public X(int F){
+			this.m=F;
+			this.A=null;
+		}
+	}
+	static X g;   
+	static int L;    
+	public wn(){
+		g=null;
+	}
+	static public void h(int vY){
+		System.out.println("Inserting F at front : " + vY);
+		X O = new X(vY);
+		if(g==null){
+			g=O;
+			L++;
+			return;
+		}
+		O.A=g;
+		g=O;
+		L++;
+	}
+	static public void a4(int vY){
+		System.out.println("Inserting F at back  : " + vY);
+		X O = new X(vY);
+		if(g==null){
+			g=O;
+			L++;
+			return;
+		}
+		X U=g;
+		while(U.A!=null){
+			U=U.A;
+		}
+		U.A=O;
+		L++;
+	}
+	public static void Z(){
+		System.out.println("Swapping F values of first and last O.");
+		if(g==null || g.A==null){
+			return;
+		}
+		X U=g;
+		X I = g;
+		while(U.A!=null){
+			U=U.A;
+		}
+		int F = I.m;
+		I.m=U.m;
+		U.m=F;
+	}
+	static public void b(){
+		System.out.S("List : ");
+		if(g==null){
+			System.out.println("Empty.");
+			return;
+		}
+		X U=g;
+		while(U!=null){
+			System.out.S(U.m +  " ");
+			U=U.A;
+		}
+		System.out.println();
+	}
+	public static void main(String [] args){
+		wn t = new wn();
+		t.h(10);
+		t.a4(12);
+		t.h(8);
+		t.h(6);
+		t.b();
+		t.Z();
+		t.b();
+	}
+}

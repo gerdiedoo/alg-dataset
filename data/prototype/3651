@@ -1,0 +1,37 @@
+from __future__ import print_function
+def KC(DJ):
+    L = len(DJ)
+    if L > 1:
+        u = L // 2
+        Q = KC(DJ[:u])
+        Y = KC(DJ[u:])
+        Aw = 0
+        oR = 0
+        fp = 0
+        E = len(Q)
+        J = len(Y)
+        while Aw < E and oR < J:
+            if Q[Aw] < Y[oR]:
+                DJ[fp] = Q[Aw]
+                Aw += 1
+            else:
+                DJ[fp] = Y[oR]
+                oR += 1
+            fp += 1
+        while Aw < E:
+            DJ[fp] = Q[Aw]
+            Aw += 1
+            fp += 1
+        while oR < J:
+            DJ[fp] = Y[oR]
+            oR += 1
+            fp += 1
+    return DJ
+if o == '__main__':
+    try:
+        g
+    except K:
+        g = input
+    s = g('Enter numbers separated by a comma:\n').strip()
+    Z = [b(X) for X in s.split(',')]
+    print(KC(Z))

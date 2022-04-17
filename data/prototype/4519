@@ -1,0 +1,18 @@
+def E(D, w, dir, M):
+    while w <= dir:
+        while D[w] < M:
+            w += 1
+        while D[dir] > M:
+            dir -= 1
+        if w <= dir:
+            (D[w], D[dir]) = (D[dir], D[w])
+            w += 1
+            dir -= 1
+    return w
+def X(D, w, dir):
+    if w >= dir:
+        return
+    M = D[(w + dir) / 2]
+    O = E(D, w, dir, M)
+    X(D, w, O - 1)
+    X(D, O, dir)

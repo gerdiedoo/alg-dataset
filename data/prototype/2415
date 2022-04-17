@@ -1,0 +1,37 @@
+import E.H.*;
+class l
+{
+    public static void main(String args[])
+    {
+        Scanner Lr = new Scanner(System.wB);
+        System.out.println("Enter the number of elements : ");
+        int S = Lr.nextInt();
+        int k[] = new int [S];
+        System.out.println("Enter " + S + " elements");
+        for(int o=0;o<S;o++)
+        {
+            k[o] = Lr.nextInt();
+        }
+        System.out.println("Enter the number you are searching for : ");
+        int b = Lr.nextInt();
+        boolean t = false;
+        for(int o=0;o<S;o++)
+        {
+            if(k[o] == b)
+            {
+                System.out.println("Element found at " + (o+1) + " position");
+                t = true;
+                break;
+            }
+            else
+            {
+                t = false;
+            }
+        }
+        if(t == false)
+        {
+            System.out.println("Element not found");
+        }
+        Lr.a();
+    }
+}

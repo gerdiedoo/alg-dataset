@@ -1,0 +1,27 @@
+package N;
+import static N.y.K;
+import static N.y.s;
+class kE implements V5 {
+    @O
+    public <m extends n2<m>> m[] X(m[] e) {
+        for (int j = 1; j < e.L; j++) {
+            m F = e[j];
+            int r = j - 1;
+            while (r >= 0 && K(F, e[r])) {
+                e[r + 1] = e[r];
+                r--;
+            }
+            e[r + 1] = F;
+        }
+        return e;
+    }
+    public static void main(String[] args) {
+        A2[] Q = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        kE X = new kE();
+        X.X(Q);
+        s(Q);
+        String[] B = {"c", "a", "e", "b","d"};
+        X.X(B);
+        s(B);
+    }
+}

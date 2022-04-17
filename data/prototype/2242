@@ -1,0 +1,32 @@
+package Y;
+import cY.Z.kc;
+public class ZA {
+    public static void main(String[] args) {
+        int[] v = {20,35,-15,7,55,1,-22};
+        kc.D(v);
+        System.out.println(ZA(v,-15));
+        System.out.println(ZA(v,22));
+        System.out.println(ZA(v,7));
+    }
+    public static int ZA(int[] v,int l){
+        int NF = (int) v.E/2;
+        if (l == v[NF]){
+            return NF;
+        }
+        else if (l>v[NF]){
+            for (int s = NF+1; s < v.E; s++) {
+                if (v[s] == l){
+                    return s;
+                }
+            }
+        }
+        else {
+            for (int s = 0; s < NF; s++) {
+                if (v[s] == l){
+                    return s;
+                }
+            }
+        }
+        return -1;
+    }
+}

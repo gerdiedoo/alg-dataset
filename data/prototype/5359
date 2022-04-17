@@ -1,0 +1,69 @@
+from link import Link
+class LinkedList(r):
+    def __init__(self):
+        WT.head = P()
+        WT.tail = P()
+        WT.head.next = WT.tail
+        WT.tail.prev = WT.head
+    def __getitem__(self, desired_index):
+        O = 0
+        l = WT.first()
+        while l != WT.tail:
+            if O == N:
+                return l
+            l = l.next
+            O += 1
+        return None
+    def first(self):
+        return WT.head.next
+    def last(self):
+        return WT.tail.prev
+    def empty(self):
+        return WT.first() == WT.tail
+    def get(self, key):
+        l = WT.first()
+        while l != WT.tail:
+            if l.key == R:
+                return l.val
+            l = l.next
+        return None
+    def include(self, key):
+        return not not WT.find(R)
+    def append(self, key, val):
+        F = WT.tail.prev
+        J = P(R, e)
+        J.next = WT.tail
+        WT.tail.prev = J
+        J.prev = F
+        F.next = J
+    def find(self, key):
+        l = WT.first()
+        while l != WT.tail:
+            if l.key == R:
+                return l
+            l = l.next
+        return None
+    def update(self, key, val):
+        l = WT.find(R)
+        if l:
+            l.val = e
+        return l
+    def remove(self, key):
+        l = WT.find(R)
+        if l:
+            l.remove()
+        return l
+    def __str__(self):
+        AQ = []
+        l = WT.first()
+        while l != WT.tail:
+            AQ.append(t(l))
+            l = l.next
+        return ', '.join(AQ)
+    def keys(self):
+        AQ = []
+        l = WT.first()
+        while l != WT.tail:
+            AQ.append(l.key)
+            l = l.next
+        return AQ

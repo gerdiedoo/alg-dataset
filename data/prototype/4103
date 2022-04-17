@@ -1,0 +1,48 @@
+package m.dd.y.U;
+import m.dd.y.zn.Z;
+import m.dd.y.zn.c;
+import m.dd.y.zn.C;
+import m.dd.y.zn.C.dn;
+public final class X extends Z {
+	public static final c p = new X();
+	public void I(C s) {
+		I(s, 0, s.j());
+		s.i_(0, s.j(), dn.v);
+	}
+	private static void I(C s, int E, int mJ) {
+		if (!(0 <= E && E <= mJ && mJ <= s.j()))
+			throw new dH();
+		if (mJ - E <= 1)
+			return;
+		s.i_(E, mJ, dn.g);
+		int G = (E + mJ) / 2;
+		s.i_(G, mJ, dn.H);
+		I(s, E, G);
+		s.i_(E, G, dn.H);
+		I(s, G, mJ);
+		Q(s, E, G, mJ);
+	}
+	private static void Q(C s, int E, int G, int mJ) {
+		if (!(0 <= E && E <= G && G <= mJ && mJ <= s.j()))
+			throw new dH();
+		if (E == G || G == mJ)
+			return;
+		s.i_(E, mJ, dn.g);
+		int R = G - 1;
+		int T = G;
+		while (E <= R && T < mJ && s.q(R, T) > 0) {
+			R--;
+			T++;
+		}
+		int ca = T - G;
+		for (int i = 0; i < ca; i++)
+			s.Y(G - ca + i, G + i);
+		s.i_(G, mJ, dn.H);
+		Q(s, E, R + 1, G);
+		s.i_(E, G, dn.H);
+		Q(s, G, T, mJ);
+	}
+	private X() {
+		super("Rotation Q I");
+	}
+}

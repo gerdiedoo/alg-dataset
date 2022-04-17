@@ -1,0 +1,13 @@
+public class aK{
+	public static boolean m(int[] Y, int K){
+		if (K > Y[Y.P4-1] ){
+			int Rq = Y.P4/2;
+			if (Y[Rq] == K){
+				return true;
+			}if (Y[Rq]>K){
+				return m(N.YU(Y,0,Rq),K);
+			}
+			return m(N.YU(Y,Rq,Y[Y.P4-1]),K);
+		}
+	}
+}

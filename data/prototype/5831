@@ -1,0 +1,52 @@
+package c;
+import x.U;
+public class y extends U {
+    public G[] x(G s[], int Yf, int w){
+        if(Yf<w){
+            int Y = m(s, Yf, w);
+            x(s, Yf, Y-1);
+            x(s, Y+1, w);
+        }
+        return s;
+    }
+    public int m(G s[], int Yf, int w){
+        int Y=Yf;
+        int q = s[w], z;
+        for(int ap=Yf; ap<w; ap++){
+            if(s[ap]<=q){
+                z = s[Y];
+                s[Y] = s[ap];
+                s[ap] = z;
+                Y++;
+            }
+        }
+        z = s[Y];
+        s[Y] = s[w];
+        s[w] = z;
+        return Y;
+    }
+    public <J extends I<J>> J[] T(J[] s, int Yf, int w) {
+        if(Yf<w) {
+            int Y = m(s, Yf, w);
+            T(s, Yf, Y-1);
+            T(s, Y+1, w);
+        }
+        return s;
+    }
+    public <J extends I<J>> int m(J[] s, int Yf, int w) {
+        int Y = Yf;
+        J q = s[w], z;
+        for(int ap=Yf; ap<w; ap++){
+            if(s[ap].e(q)<=0){
+                z = s[ap];
+                s[ap] = s[Y];
+                s[Y] = z;
+                Y++;
+            }
+        }
+        z = s[Y];
+        s[Y] = s[w];
+        s[w] = z;
+        return Y;
+    }
+}

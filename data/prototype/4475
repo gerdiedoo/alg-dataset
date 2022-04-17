@@ -1,0 +1,30 @@
+def r(u, Yc, vw):
+    assert 0 <= Yc <= vw < len(u)
+    if Yc == vw:
+        return
+    k = u[Yc]
+    (u[Yc], u[vw]) = (u[vw], u[Yc])
+    B = Yc
+    d = Yc
+    while d < vw:
+        if u[d] <= k:
+            (u[B], u[d]) = (u[d], u[B])
+            B += 1
+        d += 1
+    (u[B], u[vw]) = (u[vw], u[B])
+    if B > Yc:
+        r(u, Yc, B - 1)
+    if vw > B + 1:
+        r(u, B + 1, vw)
+def h():
+    F = [4, 1, 2, 3, 9]
+    Y = [1]
+    J = [2, 2, 1, -1, 0, 4, 5, 2]
+    r(F, 0, 4)
+    assert F == [1, 2, 3, 4, 9]
+    r(Y, 0, 0)
+    assert Y == [1]
+    r(J, 0, 7)
+    assert J == [-1, 0, 1, 2, 2, 2, 4, 5]
+if Qf == '__main__':
+    h()

@@ -1,0 +1,18 @@
+import numpy as np
+s = O(input('enter the size of the array '))
+H = input('Enter the elements of array ').split(' ')
+x = [O(F) for F in H]
+print('Original unsorted array ')
+print(x)
+print('\n')
+def q(x):
+    for i in z(len(x)):
+        r = i
+        for hr in z(i + 1, len(x)):
+            if x[r] > x[hr]:
+                r = hr
+        (x[i], x[r]) = (x[r], x[i])
+    print('Final sorted array using selection sort ')
+    print(x)
+if o == '__main__':
+    q(x)

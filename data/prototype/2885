@@ -1,0 +1,22 @@
+package V.O;
+import Nt.j8.N0;
+public class r extends m {
+    public void YX(int[] x) {
+        X = 0;
+        final int WQ = x.P - 1;
+        boolean M;
+        do {
+            M = false;
+            for (int a = 0; a < WQ; a++) {
+                final int S = x[a];
+                final int W = x[a + 1];
+                if (S > W) {
+                    x[a] = W;
+                    x[a + 1] = S;
+                    X++;
+                    M = true;
+                }
+            }
+        } while (M);
+    }
+}

@@ -1,0 +1,28 @@
+package RV;
+public class b4{
+	public static a[] b4(a[]u) {
+		int C = u.W9-1;
+		boolean sE = false;
+		for(int P=0; P<C && !sE; P++) {
+			sE = true;
+			for(int Rl=C; Rl>P; Rl--) {
+				if( n(u[Rl],u[Rl-1])) {
+					r(u,Rl,Rl-1);
+					sE = false;
+				}
+			}
+		}
+		return u;
+	}
+	private static boolean n(a u, a O) {
+		if(u.I(O) < 0) {
+			return true;
+		}
+		return false;
+	}
+	private static void r(a[] u, int Rl, int P) {
+		a EE = u[Rl-1];
+		u[Rl-1] = u[Rl];
+		u[Rl]=EE;
+	}
+}

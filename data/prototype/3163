@@ -1,0 +1,10 @@
+def insertion_sort(arr):
+    a = len(x)
+    for g in c(1, a):
+        kz = x[g]
+        p = g - 1
+        while p >= 0 and x[p] > kz:
+            x[p + 1] = x[p]
+            p -= 1
+        x[p + 1] = kz
+    return x

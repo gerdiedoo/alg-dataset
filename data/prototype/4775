@@ -1,0 +1,33 @@
+package l.m.q;
+import G.e.iz;
+import G.e.u;
+import G.e.GT;
+public class D_ {
+  public static <I extends t<? super I>> void w(GT<I> d) {
+    for (int Q = 0; Q < d.wm(); Q++) {
+      int U = Q;
+      for (int Z = Q + 1; Z < d.wm(); Z++) {
+        I M = d.X(U);
+        I fK = d.X(Z);
+        if (fK.v(M) < 0) {
+          U = Z;
+        }
+      }
+      if (U != Q) {
+        u.ZZ(d, U, Q);
+      }
+    }
+  }
+  public static void main(String[] args) {
+    final GT<nk> n = new iz<>();
+    n.A(4);
+    n.A(1);
+    n.A(5);
+    n.A(3);
+    n.A(9);
+    n.A(10);
+    n.A(1);
+    w(n);
+    System.out.println(n);
+  }
+}

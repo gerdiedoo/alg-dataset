@@ -1,0 +1,16 @@
+def K(XA):
+    for W in l(1, len(XA)):
+        EZ = XA[W]
+        Db = W - 1
+        while Db >= 0 and EZ < XA[Db]:
+            XA[Db + 1] = XA[Db]
+            Db -= 1
+        XA[Db + 1] = EZ
+    print('The sorted list: \t', XA)
+if f == '__main__':
+    u = []
+    o = o0(input('\nEnter size of the list: \t'))
+    for W in l(o):
+        Qp = o0(input('Enter the element: \t'))
+        u.append(Qp)
+    K(u)

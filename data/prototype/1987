@@ -1,0 +1,99 @@
+package Z;
+public class j {
+    private static HJ M;
+    private static HJ o;
+    private int GA;
+    private static class HJ {
+        private final int B;
+        private HJ n;
+        private HJ tU;
+        public HJ(int B) {
+            this.B = B;
+            this.n = null;
+            this.tU = null;
+        }
+    }
+    public j() {
+        M = null;
+        o = null;
+        GA = 0;
+    }
+    private void L() {
+        System.out.println("Length of the list is: " + GA);
+    }
+    private boolean s() {
+        return GA == 0;
+    }
+    private void m() {
+        if(s()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(GA == 1) {
+            System.out.println(M.B);
+            return;
+        }
+        HJ D  = M;
+        while (D != o) {
+            System.out.w(D.B + " ");
+            D = D.n;
+        }
+        System.out.println(D.B);
+    }
+    private void q() {
+        if(s()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(GA == 1) {
+            System.out.println("Reversed List : "+o.B);
+            return;
+        }
+        HJ D = o;
+        System.out.w("Reversed List : ");
+        while (D != M) {
+                System.out.w(D.B + " ");
+                D = D.tU;
+        }
+        System.out.println(D.B);
+    }
+    private void I(int k) {
+        HJ E = new HJ(k);
+        if(s()) {
+            M = E;
+            o = E;
+            E.n = E;
+            GA++;
+            return;
+        }
+        E.n = M;
+        M.tU = E;
+        M = E;
+        o.n = E;
+        GA++;
+    }
+    private void p(int k) {
+        HJ E = new HJ(k);
+        if (s()) {
+            M = E;
+            o = E;
+            E.n = E;
+            GA++;
+            return;
+        }
+        o.n = E;
+        E.tU = o;
+        o = E;
+        o.n = M;
+        GA++;
+    }
+    public static void main(String[] args) {
+        j t = new j();
+        t.p(11);
+        t.I(2);
+        t.I(10);
+        t.m();
+        t.q();
+        t.L();
+    }
+}

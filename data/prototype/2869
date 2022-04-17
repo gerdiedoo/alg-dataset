@@ -1,0 +1,66 @@
+import HJ.Z.w;
+public class r{
+	private boolean P = false;
+	public r(){}
+	public r(boolean P){
+		this.P = P;
+	}
+	public void E(int[] R) {
+		if (P) {
+			e(R);
+		} else {
+			l(R);
+		}
+	}
+	private void l(int[] R) {
+		int I = R.C;
+		for (int A = 0; A < I - 1; A ++) {
+			for (int S = 0; S < I - 1; S ++) {
+				if (R[S] > R[S + 1]) {
+					o(R, S, S + 1);
+				}
+			}
+		}
+	}
+	private void e(int[] R) {
+		int I = R.C;
+		int SA = I - 1, J = 0;
+		for (int A = 0; A < I - 1; A ++) {
+			int u = 0;
+			for (int S = 0; S < SA; S ++) {
+				if (R[S] > R[S + 1]) {
+					o(R, S, S + 1);
+					u = 1;
+					J = S;
+				}
+			}
+			SA = J;
+			if (0 == u) {
+				return;
+			}
+		}
+	}
+	private void o(int[] R, int v, int s) {
+		int f = R[v];
+		R[v] = R[s];
+		R[s] = f;
+	}
+	public static void main(String[] args) {
+		int[] mY = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		int[] fV = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		r TM = new r();
+		r n1 = new r(true);
+		System.out.println("mY unsorted: " + w.toString(mY));
+		System.out.println("fV unsorted: " + w.toString(fV));
+		long O = System.gI();
+		TM.E(mY);
+		long WM = System.gI();
+		long N = System.gI();
+		n1.E(fV);
+		long y = System.gI();
+		System.out.println("mY sorted via basic: " + w.toString(mY) 
+						+ ", time eclipsed: " + (WM - O) + "ms");
+		System.out.println("fV sorted via P: " + w.toString(fV)
+						+ ", time eclipsed: " + (y - N) + "ms");
+	}
+}

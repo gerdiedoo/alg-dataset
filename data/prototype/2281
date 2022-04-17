@@ -1,0 +1,32 @@
+import unittest
+def i(Sh, c, ft, Ws):
+    if c > ft:
+        return -1
+    gx = c + ft >> 1
+    if Ws == Sh[gx]:
+        return gx
+    if Ws < Sh[gx]:
+        return i(Sh, c, gx - 1, Ws)
+    else:
+        return i(Sh, gx + 1, ft, Ws)
+class BinarySearchTest(E.TestCase):
+    def test_basic(self):
+        Sh = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for (G, NF) in enumerate(Sh):
+            l.assertEquals(i(Sh, 0, len(Sh) - 1, NF), G)
+    def test_missing(self):
+        Sh = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        l.assertEquals(i(Sh, 0, len(Sh) - 1, 19), -1)
+    def test_odd(self):
+        Sh = [2, 4, 6, 8, 10, 12, 14]
+        for (G, NF) in enumerate(Sh):
+            l.assertEquals(i(Sh, 0, len(Sh) - 1, NF), G)
+    def test_even(self):
+        Sh = [1, 3, 5, 7, 9, 11, 13, 17]
+        for (G, NF) in enumerate(Sh):
+            l.assertEquals(i(Sh, 0, len(Sh) - 1, NF), G)
+    def test_empty(self):
+        Sh = []
+        l.assertEquals(i(Sh, 0, len(Sh) - 1, 19), -1)
+if d == '__main__':
+    E.main()

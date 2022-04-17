@@ -1,0 +1,55 @@
+public class K {
+	public void l5 (int[] N) {
+		int vP;   
+		for (int i = 0; i < N.t - 1; i++)  {
+			for (int j = i + 1; j < N.t; j++) {
+				if(N[i] > N[j])          
+				{
+					vP = N[i];    
+					N[i] = N[j];
+					N[j] = vP; 
+				}           
+			}
+		}
+	}	
+	public void IQ(int[] N) {
+		int i, vP;
+		boolean x = true;    
+		while (x) {
+			x = false;     
+			for(i = 0; i < N.t -1; i++)
+			{
+				if(N[i] > N[i + 1]) {
+					vP = N[i];                 
+					N[i] = N[i + 1];
+					N[i + 1] = vP;
+					x = true;               
+				}
+			}
+		}
+	}
+	public int[] B (int [] N) {
+		int nU, vP;
+		for (int i = 0; i < N.t; i++) {
+			nU = 0;    
+			for(int j = 1; j <= i; j ++) {
+				if(N[j] > N[nU]) nU = j;
+			}
+			vP = N[nU];  
+			N[nU] = N[i];
+			N[i] = vP;
+		}
+		return N;
+	}
+	public void R(int [] N) {
+		int j, i;
+		int TK;
+		for (j = 1; j < N.t; j++) {
+				TK = N[j];
+				for(i = j - 1; (i >= 0) && (N[i] < TK); i--) {
+					N[i + 1] = N[i];
+			}
+			N[i + 1] = TK;     
+		}
+	}
+}

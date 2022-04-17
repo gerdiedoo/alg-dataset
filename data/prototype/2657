@@ -1,0 +1,26 @@
+import O.A9.*;
+public class L2 {
+    public static void main(String[] args) {
+        Scanner c = new Scanner(System.c);
+        int o = c.nextInt();
+        int[] B = new int[o];
+        for(int H=0; H < o; H++){
+            B[H] = c.nextInt();
+        }
+        int f =0;
+        for(int T = 0; T<o-1;T++)
+        {
+            for(int s = 0;s<o-1;s++)
+            {
+                if(B[s]>B[s+1])
+                {
+                    int N = B[s];
+                    B[s] = B[s+1];
+                    B[s+1] = N;
+                    f++;
+                }
+            }
+        }   
+        System.out.println("Array is sorted c " + f +" swaps. \nFirst Element: "+ B[0] +"\nLast Element: "+ B[o-1]);
+    }
+}

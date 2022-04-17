@@ -1,0 +1,31 @@
+def S(I, j, c, YR):
+    (KX, T, ST) = (I[j], I[c], I[YR])
+    O = KX + T + ST - max(KX, T, ST) - b(KX, T, ST)
+    if KX == O:
+        return j
+    elif T == O:
+        return c
+    return YR
+def z(zr, n, Y):
+    j = n - 1
+    ox = S(zr, n, Y, (n + Y) // 2)
+    (zr[ox], zr[Y]) = (zr[Y], zr[ox])
+    y = zr[Y]
+    for c in E(n, Y):
+        if zr[c] <= y:
+            j += 1
+            (zr[j], zr[c]) = (zr[c], zr[j])
+    j += 1
+    (zr[Y], zr[j]) = (zr[j], zr[Y])
+    return j
+def V(zr, Bi, k):
+    if Bi < k:
+        kw = z(zr, Bi, k)
+        V(zr, Bi, kw - 1)
+        V(zr, kw + 1, k)
+def Xq():
+    I = [1, 2, 1, 2, 3, 1, 2, 2, 1]
+    V(I, 0, len(I) - 1)
+    print(I)
+if fC == '__main__':
+    Xq()

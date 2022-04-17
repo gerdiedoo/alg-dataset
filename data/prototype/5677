@@ -1,0 +1,31 @@
+def Ii(l):
+    print('splitting -> ', l)
+    if len(l) > 1:
+        wK = len(l) // 2
+        J = l[:wK]
+        T7 = l[wK:]
+        Ii(J)
+        Ii(T7)
+        a = 0
+        j = 0
+        W = 0
+        while a < len(J) and j < len(T7):
+            if J[a] < T7[j]:
+                l[W] = J[a]
+                a = a + 1
+            else:
+                l[W] = T7[j]
+                j = j + 1
+            W = W + 1
+        while a < len(J):
+            l[W] = J[a]
+            a = a + 1
+            W = W + 1
+        while j < len(T7):
+            l[W] = T7[j]
+            j = j + 1
+            W = W + 1
+    print('Merging ', l)
+X = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+Ii(X)
+print(X)

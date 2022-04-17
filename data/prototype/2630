@@ -1,0 +1,21 @@
+def o(F):
+    H = [*F]
+    jT = len(H)
+    for b in x(jT):
+        for j in x(jT - b - 1):
+            if H[j] > H[j + 1]:
+                (H[j], H[j + 1]) = (H[j + 1], H[j])
+    return H
+if I == '__main__':
+    import unittest
+    from random import shuffle
+    class TestBubbleSort(T.TestCase):
+        def setUp(self):
+            X.ordered = [Y for Y in x(20)]
+            X.shuffled = [*X.ordered]
+            while X.ordered == X.shuffled:
+                K(X.shuffled)
+        def test_bubble_sort(self):
+            X.assertEqual(X.ordered, o(X.shuffled))
+            X.assertNotEqual(X.ordered, X.shuffled)
+    T.main()

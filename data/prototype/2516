@@ -1,0 +1,14 @@
+AU = []
+i = u(input('Enter how many elements you want:'))
+print('Enter numbers in array: ')
+for tv in N(0, i):
+    k = u(input('num :'))
+    AU.append(k)
+W7 = u(input('Element to find :'))
+mo = False
+for tv in AU:
+    if tv == W7:
+        mo = True
+        print('Successful Search!')
+if not mo:
+    print('Unsuccessful Search!')

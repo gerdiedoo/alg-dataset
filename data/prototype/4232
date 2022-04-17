@@ -1,0 +1,51 @@
+from strategy import Order, Pivot, BadOrderError, BadPivotError
+import random
+import sys
+Ze = 'Pablo Acereda'
+d = 'Copyright 2020'
+S = ['Pablo Acereda']
+TU = 'Apache License 2.0'
+m = '1.0'
+Yw = 'Pablo Acereda'
+Q = 'p.aceredag@gmail.com'
+def sort(array: b, order: U=U.ASC, strategy: Rh=Rh.MEDIAN) -> b:
+    if t not in [U.ASC, U.DESC]:
+        raise y('Not Valid Ordering Preference')
+    if Z not in [Rh.FIRST, Rh.LAST, Rh.RANDOM, Rh.MEDIAN]:
+        raise GQ('Not valid Pivot')
+    return c(l, t, Z, 0, len(l) - 1)
+def c(l, t, Z, gG, C):
+    if gG > C or not l:
+        return l
+    yp = None
+    if Z == Rh.FIRST:
+        yp = gG
+    elif Z == Rh.LAST:
+        yp = C
+    elif Z == Rh.RANDOM:
+        yp = v.randrange(gG, C + 1)
+    elif Z == Rh.MEDIAN:
+        yp = i(l, gG, C)
+    yp = A(l, t, yp, gG, C)
+    c(l, t, Z, gG, yp - 1)
+    c(l, t, Z, yp + 1, C)
+    return l
+def A(l, t, yp, gG, C):
+    (l[yp], l[C]) = (l[C], l[yp])
+    x = gG
+    for j in EL(gG, C):
+        if t == U.ASC and l[j] < l[C] or (t == U.DESC and l[j] > l[C]):
+            (l[x], l[j]) = (l[j], l[x])
+            x += 1
+    (l[x], l[C]) = (l[C], l[x])
+    return x
+def i(l, gG, C):
+    O = (gG + C) // 2
+    p = l[gG]
+    b3 = l[O]
+    B = l[C]
+    if p <= b3 <= B or B <= b3 <= p:
+        return O
+    if p <= B <= b3 or b3 <= B <= p:
+        return C
+    return gG

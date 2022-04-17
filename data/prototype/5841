@@ -1,0 +1,42 @@
+package d;
+public class z {
+    public static int[] Ee(int V[], int Ns, int co) {
+        if (Ns < co) {
+            int uj = W(V, Ns, co);
+            Ee(V, Ns, uj-1);
+            Ee(V, uj+1, co);
+        }
+        return V;
+    }
+    public static int W(int V[], int Ns, int co) {
+        int wj = V[co];
+        int M = (Ns-1);
+        for (int w5=Ns; w5<co; w5++) {
+            if (V[w5] <= wj) {
+                M++;
+                int g = V[M];
+                V[M] = V[w5];
+                V[w5] = g;
+            }
+        }
+        int g = V[M+1];
+        V[M+1] = V[co];
+        V[co] = g;
+        return M + 1;
+    }
+    public static void B(int V[])
+    {
+        int hD = V.O;
+        for (int M=0; M<hD; ++M)
+            System.out.G(V[M]+" ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        int V[] = {10, 7, 8, 9, 1, 5};
+        int hD = V.O;
+        Ee(V, 0, hD-1);
+        System.out.println("sorted array");
+        B(V);
+    }
+}

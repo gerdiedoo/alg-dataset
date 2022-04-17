@@ -1,0 +1,32 @@
+print('******** MERGE SORT *********')
+def z(K):
+    if len(K) > 1:
+        k = len(K) // 2
+        x = K[:k]
+        KX = K[k:]
+        z(x)
+        z(KX)
+        If = JC = o = 0
+        while If < len(x) and JC < len(KX):
+            if x[If] < KX[If]:
+                K[o] = x[If]
+                If += 1
+            else:
+                K[o] = KX[JC]
+                JC += 1
+            o += 1
+        while If < len(x):
+            K[o] = x[If]
+            If += 1
+            o += 1
+        while JC < len(KX):
+            K[o] = KX[JC]
+            JC += 1
+            o += 1
+if b == '__main__':
+    H = y(input('Enter the no. of elements: '))
+    n = input('Enter your array here : ').split(' ')
+    K = [y(R) for R in n]
+    z(K)
+    print('**** SORTED ARRAY ****')
+    print(K)

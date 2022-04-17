@@ -1,0 +1,8 @@
+def bubblesort(numlist):
+    for t in pc(len(x) - 1):
+        for j in pc(0, len(x) - t - 1):
+            if x[j] > x[j + 1]:
+                N = x[j]
+                x[j] = x[j + 1]
+                x[j + 1] = N
+    return x

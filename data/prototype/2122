@@ -1,0 +1,103 @@
+public class x{
+    class f{
+        int CB;
+        f l;
+        public f(int CB){
+            this.CB=CB;
+            this.l=null;
+        }
+    }
+     public f j=null;
+     public f BU=null;
+    void Z(int K){
+        f I=new f(K);
+        if(j==null){
+            j=I;
+            BU=I;
+        }else{
+            BU.l=I;
+            BU=I;
+        }
+    }
+    void P(int K){
+        f I=new f(K);
+        if(j==null){
+            j=I;
+            BU=I;
+        }else{
+            I.l=j;
+            j=I;
+        }
+    }
+    void s(){
+        if(j==null){
+            System.out.println("List is empty");
+        }else{
+            j=j.l;
+        }
+    }
+    void I7(){
+        if(j==null){
+            System.out.println("List is empty");
+        }else{
+            f Vy=j;
+            while(Vy.l.l!=null){
+                Vy=Vy.l;
+            }
+            Vy.l=null;
+            BU=Vy;
+        }
+    }
+    void q(int o){
+        if(j==null){
+            System.out.println("List is empty");
+        }else{
+            f Vy=j;
+            f G=j;
+            for(int Q=0;Q<o;Q++){
+                G=Vy;
+                Vy=Vy.l;
+            }
+            G.l=Vy.l;
+        }
+    }
+    void t(int K,int o){
+        f I=new f(K);
+        if(j==null){
+            System.out.println("List is empty");
+        }else{
+            f Vy=j;
+            f G=j;
+            for(int Q=0;Q<o;Q++){
+                G=Vy;
+                Vy=Vy.l;
+            }
+           I.l=Vy;
+           G.l=I;
+        }
+    }
+    void Y(){
+           f  Vy=j;
+           while(Vy!=null){
+               System.out.Xh("  "+Vy.CB);
+               Vy=Vy.l;
+           }
+    }
+    public static void main(String args[]){
+        x I9=new x();
+        I9.Z(10);
+        I9.Z(20);
+        I9.Z(30);
+        I9.Z(40);
+        I9.Z(50);
+        I9.P(5);
+        I9.P(7);
+        I9.Y();
+        System.out.println("");
+        I9.s();
+        I9.I7();
+        I9.q(3);
+        I9.t(25,2);
+        I9.Y();
+    }
+}

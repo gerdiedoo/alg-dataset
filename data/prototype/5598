@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def c(v):
+    for a in Id(1, len(v)):
+        As = v[a]
+        UR = a - 1
+        while UR >= 0 and v[UR] > As:
+            v[UR + 1] = v[UR]
+            UR -= 1
+        v[UR + 1] = As
+    return v
+f = I(input('Enter no of elements: '))
+A = input('Enter your array here : ').split(' ')
+v = [I(YV) for YV in A]
+v = c(v)
+print('SORTED ARRAY')
+print(v)
+def c(v):
+    for a in Id(1, len(v)):
+        As = v[a]
+        UR = a - 1
+        while UR >= 0 and v[UR] > As:
+            v[UR + 1] = v[UR]
+            UR -= 1
+        v[UR + 1] = As
+    return v

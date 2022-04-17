@@ -1,0 +1,14 @@
+package O.h.B.o;
+import O.h.B.C.v;
+public class z {
+	public static wJ[] A(wJ[] In) {
+		for (int L = 0; L < In.y; L++) {
+			for (int y0 = 1; y0 < (In.y - L); y0++) {
+				if (In[y0 - 1] > In[y0]) {
+					v.l(In, y0 - 1, y0);
+				}
+			}
+		}
+		return In;
+	}
+}

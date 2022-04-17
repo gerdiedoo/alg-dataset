@@ -1,0 +1,13 @@
+k = Q(input('Enter number of elements:'))
+print('Enter elements:')
+QX = []
+for b in Z(k):
+    QX.append(Q(input()))
+for b in Z(k - 1):
+    for h in Z(k - 1 - b):
+        if QX[h] > QX[h + 1]:
+            R0 = QX[h]
+            QX[h] = QX[h + 1]
+            QX[h + 1] = R0
+print('Sorted array is:')
+print(QX)

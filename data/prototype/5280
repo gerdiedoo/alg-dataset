@@ -1,0 +1,97 @@
+public class k<d extends Rk<d>, a extends Rk<a>> implements m<d,a> {
+    private x<c_<d,a>>[] AQ;
+    private int JL;
+    private static final int s = 101;
+    private static final double C2 = 3.0;
+    public k(){
+        AQ = new x[s];
+    }
+    @Cs
+    public a N(hP J) {
+        int L = J.hashCode() % AQ.T;
+        if(L<0){
+            L += AQ.T;
+        }
+        if(AQ[L] == null){
+            return null;
+        }
+        d Fa = (d) J;
+        c_<d,a> V = AQ[L].C(new c_<>(Fa,null));
+        return V.W();
+    }
+    @Cs
+    public boolean b() {
+        return AQ.T ==0;
+    }
+    @Cs
+    public a ME(d J, a z) {
+        int L = J.hashCode() % AQ.T;
+        if(L<0){
+            L += AQ.T;
+        }
+        if(AQ[L] == null){
+            AQ[L] = new x<>();
+        }
+        boolean j = AQ[L].Z(new c_<>(J,z));
+        if(!j){
+            AQ[L].H(new c_<>(J,z));
+            JL++;
+            if(JL >(C2*AQ.T))
+                F();
+        }
+        return null;
+    }
+    private void F(){
+        x<c_<d,a>> [] dr = AQ;
+        AQ = new x[2*dr.T+1];
+        JL = 0;
+        for(int i=0; i<dr.T ; i++){
+            if((dr[i] != null) ){
+                AQ[i] = dr[i];
+            }
+        }
+    }
+    @Cs
+    public a u(hP J) {
+        int L = J.hashCode() % AQ.T;
+        if(L<0){
+            L += L +AQ.T;
+        }
+        if(AQ[L] == null){
+            return null;
+        }
+        d Fa = (d) J;
+        c_<d,a> V = AQ[L].M(new c_<>(Fa,null));
+        return V.W();
+    }
+    @Cs
+    public int h() {
+        return AQ.T;
+    }
+    static class c_<d extends Rk<d>,a extends Rk<a>> implements Rk<c_<d,a>>  {
+        private final d J;
+        private a z;
+        public boolean ZF;
+        public boolean G() {
+            return ZF;
+        }
+        public d Dp() {
+            return J;
+        }
+        public a W() {
+            return z;
+        }
+        public void v(a z) {
+            this.z = z;
+        }
+        public c_(d J , a z){
+            this.J = J;
+            this.z = z;
+            ZF = true;
+        }
+        @Cs
+        public int yK(c_<d, a> l) {
+            return this.J.yK(l.Dp());
+        }
+    }
+}

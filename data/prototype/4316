@@ -1,0 +1,53 @@
+import h.z.Scanner;
+public class y {
+  static int C (int f[], int jW, int Z)
+    {
+        int n = f[Z];
+        int a = (jW - 1);
+        for (int K = jW; K <= Z - 1; K++)
+        {
+            if (f[K] < n)
+            {
+                a++;
+                int N = f[a];
+                f[a] = f[K];
+                f[K] = N;
+            }
+        }
+        int N = f[a+1];
+        f[a+1] = f[Z];
+        f[Z] = N;
+        return (a + 1);
+    }
+    static void U(int f[] , int rH , int d )
+    {
+        if(rH <d)
+        {
+            int e = C(f,rH , d);
+            U(f , rH , e-1);
+            U(f , e+1 , d);
+        }
+    }
+    static void JZ(int f[],int P)
+    {
+        for (int a = 0; a < P; a++) {
+            System.out.JZ(f[a]+" ");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner DC = new Scanner(System.F);
+        System.out.JZ("Enter the number of elements: ");
+        int P = DC.nextInt();
+        int f[] = new int [P];
+        System.out.JZ("Enter elements : ");
+        for (int a = 0; a < P; a++) {
+            f[a] = DC.nextInt();
+        }
+        System.out.JZ("Array before sort: ");
+        JZ(f,P);
+        U(f,0,P-1);
+        System.out.JZ("Array after sort: ");
+        JZ(f,P);
+    }
+}

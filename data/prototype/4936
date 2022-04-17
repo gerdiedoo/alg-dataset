@@ -1,0 +1,26 @@
+package D.p;
+public class R extends oU {
+    public void ns(int[] Z) {
+        if(Z.RL <= 1) return;
+        N = 0;
+        final int t7 = Z.RL - 1;
+        int b = 0;
+        do {
+            int Qb = Z[b];
+            int n = b;
+            for (int C = b; C <= t7; C++) {
+                if (Z[C] < Qb) {
+                    n = C;
+                    Qb = Z[C];
+                }
+            }
+            final int H = Z[b];
+            final int k = Z[n];
+            if (H > k) {
+                Z[b] = k;
+                Z[n] = H;
+                N++;
+            }
+        } while (++b < t7);
+    }
+}

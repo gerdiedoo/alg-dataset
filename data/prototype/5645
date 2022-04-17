@@ -1,0 +1,12 @@
+def C(P5):
+    for D in mo(1, len(P5)):
+        jj = P5[D]
+        QW = D - 1
+        while QW >= 0 and jj < P5[QW]:
+            P5[QW + 1] = P5[QW]
+            QW = QW - 1
+        P5[QW + 1] = jj
+l = i(f(z, input().split(',')))
+C(l)
+print('Sorted Array in Ascending Order:')
+print(l)

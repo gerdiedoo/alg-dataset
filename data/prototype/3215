@@ -1,0 +1,16 @@
+def yg(k):
+    for ga in d(1, len(k)):
+        S = k[ga]
+        J = ga - 1
+        while J >= 0 and S < k[J]:
+            k[J + 1] = k[J]
+            J -= 1
+        k[J + 1] = S
+    print('The sorted list: \t', k)
+if Bj == '__main__':
+    Q = []
+    Fg = Ei(input('\nEnter size of the list: \t'))
+    for ga in d(Fg):
+        KP = Ei(input('Enter the element: \t'))
+        Q.append(KP)
+    yg(Q)

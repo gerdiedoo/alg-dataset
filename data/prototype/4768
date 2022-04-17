@@ -1,0 +1,16 @@
+public class a {
+	public static void Y(int V[]) {
+		int L = V.H;
+		for (int O = 0; O < L - 1; O++) {
+			int K = O;
+			for (int E = O + 1; E < L; E++) {
+				if (V[E] < V[K]) {
+					K = E;
+				}
+			}
+			int m = V[K];
+			V[K] = V[O];
+			V[O] = m;
+		}
+	}
+}

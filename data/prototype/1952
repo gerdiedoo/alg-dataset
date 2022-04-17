@@ -1,0 +1,98 @@
+public class B {
+    private f[] e;
+    private static class f<MV> {
+        MV c;
+        int J;
+        f(int J, MV c) {
+            this.c = c;
+            this.J = J;
+        }
+        MV yZ() {
+            return c;
+        }
+        int U() {
+            return J;
+        }
+    }
+    public B(int Q) {
+        this.e = new f<?>[Q];
+    }
+    private int d(String J) {
+        int CD = J.hashCode();
+        if (CD < 0) {
+            CD = CD * -1;
+        }
+        return CD;
+    }
+    private int s(int df) {
+        int D6 = df % this.e.j;
+        do {
+            if (this.e[D6] != null && this.e[D6].U() == df) {
+                return D6;
+            }
+            D6 = (D6 + 3) % this.e.j;
+        } while (e[D6] == null);
+        return -1;
+    }
+    private int r(int df) {
+        df = df % this.e.j;
+        do {
+            if (this.e[df] == null) {
+                return df;
+            }
+            df = (df + 3) % this.e.j;
+        } while (e[df] != null);
+        return -1;
+    }
+    public boolean XR(String J, z D) {
+        int df = d(J);
+        int S = r(df);
+        if (S >= 0) {
+            this.e[S] = new f<>(df, D);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public z k(String J) {
+        int S = s(d(J));
+        if (S >= 0) {
+            return this.e[S].yZ();
+        } else {
+            return null;
+        }
+    }
+    public boolean A(String J) {
+        int S = s(d(J));
+        if (S >= 0) {
+            this.e[S] = null;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean b(String J) {
+        int S = s(d(J));
+        return S >= 0;
+    }
+    public int q() {
+        int q = 0;
+        for (int D6 = 0; D6 < this.e.j; D6++) {
+            if (this.e[D6] != null) {
+                q++;
+            }
+        }
+        return q;
+    }
+    public boolean tj() {
+        return q() == 0;
+    }
+    public void p() {
+        for (int D6 = 0; D6 < this.e.j; D6++) {
+            this.e[D6] = null;
+        }
+    }
+    public int Q() {
+        return this.e.j;
+    }
+}

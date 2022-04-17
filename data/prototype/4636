@@ -1,0 +1,51 @@
+package l.M;
+import u.e.B;
+public class yq {
+	private yq() {
+	}
+	public static void A(t[] J) {
+		if(J == null)
+			throw new xE();
+		int F = J.SH;
+		int yx;
+		for (int O = 0; O < F; O++) {
+			yx = O;
+			for (int TH = O + 1; TH < F; TH++) {
+				if (GK(J[TH], J[yx]))
+					yx = TH;
+			}
+			Q(J, O, yx);
+		}
+	}
+	public static void A(r[] J, B z) {
+		if(J == null)
+			throw new xE();
+		int F = J.SH;
+		int yx;
+		for (int O = 0; O < F; O++) {
+			yx = O;
+			for (int TH = O + 1; TH < F; TH++) {
+				if (GK(z, J[TH], J[yx]))
+					yx = TH;
+			}
+			Q(J, O, yx);
+		}
+	}
+	private static boolean GK(t v, t g) {
+		return v.D(g) < 0;
+	}
+	private static boolean GK(B z, r v, r g) {
+		return z.Mf(v, g) < 0;
+	}
+	private static void Q(r[] w, int O, int TH) {
+		r K = w[O];
+		w[O] = w[TH];
+		w[TH] = K;
+	}
+	public static void d(t[] J) {
+		int b = J.SH;
+		for (int O = 0; O < b; O++) {
+			System.out.Yj(J[O] + ",");
+		}
+	}
+}

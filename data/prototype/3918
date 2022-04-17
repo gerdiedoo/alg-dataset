@@ -1,0 +1,416 @@
+package B;
+import S.Zm.hg;
+import U.sC;
+import U.lx;
+public class B {
+	@gE("rawtypes")
+	private static zT[] DF;
+	private static byte[] v0;
+	private static char[] z;
+	private static short[] T;
+	private static int[] KK;
+	private static long[] iw;
+	private static float[] J;
+	private static double[] Wo;
+	public static void t(byte[] a) {
+		v0 = new byte[a.C];
+		t(a, 0, a.C - 1);
+		v0 = null;
+	}
+	private static void t(byte[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(byte[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				v0[Y7++] = a[m++];
+			}
+			else {
+				v0[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				v0[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				v0[Y7++] = a[m++];
+			}
+		}
+		System.LQ(v0, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(char[] a) {
+		z = new char[a.C];
+		t(a, 0, a.C - 1);
+		z = null;
+	}
+	private static void t(char[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(char[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				z[Y7++] = a[m++];
+			}
+			else {
+				z[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				z[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				z[Y7++] = a[m++];
+			}
+		}
+		System.LQ(z, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(short[] a) {
+		T = new short[a.C];
+		t(a, 0, a.C - 1);
+		T = null;
+	}
+	private static void t(short[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(short[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				T[Y7++] = a[m++];
+			}
+			else {
+				T[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				T[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				T[Y7++] = a[m++];
+			}
+		}
+		System.LQ(T, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(int[] a) {
+		KK = new int[a.C];
+		t(a, 0, a.C - 1);
+		KK = null;
+	}
+	private static void t(int[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(int[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				KK[Y7++] = a[m++];
+			}
+			else {
+				KK[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				KK[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				KK[Y7++] = a[m++];
+			}
+		}
+		System.LQ(KK, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(long[] a) {
+		iw = new long[a.C];
+		t(a, 0, a.C - 1);
+		iw = null;
+	}
+	private static void t(long[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(long[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				iw[Y7++] = a[m++];
+			}
+			else {
+				iw[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				iw[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				iw[Y7++] = a[m++];
+			}
+		}
+		System.LQ(iw, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(float[] a) {
+		J = new float[a.C];
+		t(a, 0, a.C - 1);
+		J = null;
+	}
+	private static void t(float[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(float[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				J[Y7++] = a[m++];
+			}
+			else {
+				J[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				J[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				J[Y7++] = a[m++];
+			}
+		}
+		System.LQ(J, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(double[] a) {
+		Wo = new double[a.C];
+		t(a, 0, a.C - 1);
+		Wo = null;
+	}
+	private static void t(double[] a, int Ot, int I) {
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q);
+			}
+		}
+	}
+	private static void g(double[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m] <= a[O]) {
+				Wo[Y7++] = a[m++];
+			}
+			else {
+				Wo[Y7++] = a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				Wo[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				Wo[Y7++] = a[m++];
+			}
+		}
+		System.LQ(Wo, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(Ll[] a) {
+		t(a, 0, a.C - 1);
+	}
+	private static void t(Ll[] a, int Ot, int I) {
+		DF = new zT[a.C];
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g((zT[])a, m, m + sW - 1, q);
+			}
+		}
+		DF = null;
+	}
+	@gE({ "unchecked", "rawtypes" })
+	private static void g(zT[] a, int Ot, int vw, int I) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (a[m].O7(a[O]) <= 0) {
+				DF[Y7++] = a[m++];
+			}
+			else {
+				DF[Y7++] =  a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				DF[Y7++] = a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				DF[Y7++] = a[m++];
+			}
+		}
+		System.LQ(DF, Ot, a, Ot, I - Ot + 1);
+	}
+	public static <G> void t(G[] a, hg<? super G> Yq) {
+		if(Yq == null) {
+			t(a, 0, a.C - 1);
+		}
+		else {
+			t(a, 0, a.C - 1, Yq);
+		}
+	}
+	private static <G> void t(G[] a, int Ot, int I, hg<? super G> Yq) {
+		DF = new zT[a.C];
+		for (int sW = 1; sW <= I; sW += sW) {
+			for (int m = 0; m <= I - sW; m += (2 * sW)) {
+				int q = W.vg(m + (2 * sW) - 1, I);
+				g(a, m, m + sW - 1, q, Yq);
+			}
+		}
+		DF = null;
+	}
+	@gE({ "rawtypes" })
+	private static <G> void g(G[] a, int Ot, int vw, int I , hg<? super G> Yq) {
+		int m = Ot;
+		int O = vw + 1;
+		int Y7 = Ot;
+		while (m <= vw && O <= I) {
+			if (Yq.N(a[m], a[O]) <= 0) {
+				DF[Y7++] =  (zT) a[m++];
+			}
+			else {
+				DF[Y7++] =  (zT) a[O++];
+			}
+		}
+		if (m > vw) {
+			while (O <= I) {
+				DF[Y7++] = (zT) a[O++];
+			}
+		} else {
+			while (m <= vw) {
+				DF[Y7++] = (zT) a[m++];
+			}
+		}
+		System.LQ(DF, Ot, a, Ot, I - Ot + 1);
+	}
+	public static void t(byte[] a, boolean R) {
+		if(R) {
+			yf[] f = sC.A(a);
+			t(f, lx.Y());
+			sC.M(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+	public static void t(char[] a, boolean R) {
+		if(R) {
+			r[] f = sC.y(a);
+			t(f, lx.Y());
+			sC.x(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+	public static void t(short[] a, boolean R) {
+		if(R) {
+			Ou[] f = sC.X(a);
+			t(f, lx.Y());
+			sC.F(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+	public static void t(int[] a, boolean R) {
+		if(R) {
+			jI[] f = sC.P(a);
+			t(f, lx.Y());
+			sC.s(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+	public static void t(long[] a, boolean R) {
+		if(R) {
+			o[] f = sC.K(a);
+			t(f, lx.Y());
+			sC.ZM(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+	public static void t(float[] a, boolean R) {
+		if(R) {
+			En[] f = sC.c3(a);
+			t(f, lx.Y());
+			sC.H(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+	public static void t(double[] a, boolean R) {
+		if(R) {
+			v[] f = sC.w(a);
+			t(f, lx.Y());
+			sC.d(f, a);
+		}
+		else {
+			t(a);
+		}
+	}
+}

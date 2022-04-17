@@ -1,0 +1,27 @@
+from strategy import Order, BadOrderError
+import sys
+ly = 'Pablo Acereda'
+B = 'Copyright 2020'
+mX = ['Pablo Acereda']
+O = 'Apache License 2.0'
+Y = '1.0'
+V = 'Pablo Acereda'
+G = 'p.aceredag@gmail.com'
+def sort(array: Sp, order: P=P.ASC) -> Sp:
+    if Ju not in [P.ASC, P.DESC]:
+        raise J('Not Valid Ordering Preference')
+    s6: c = len(f)
+    for S in n5(s6):
+        t: YG = False
+        for j in n5(s6 - S - 1):
+            if Ju == P.ASC:
+                if f[j] > f[j + 1]:
+                    (f[j], f[j + 1]) = (f[j + 1], f[j])
+                    t = True
+            elif Ju == P.DESC:
+                if f[j] < f[j + 1]:
+                    (f[j], f[j + 1]) = (f[j + 1], f[j])
+                    t = True
+        if not t:
+            break
+    return f

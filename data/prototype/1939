@@ -1,0 +1,51 @@
+class K {
+	private Bx TY;
+	private int a;
+	public K() {
+		TY = null;
+		a = 0;
+	}
+	public void hJ(int S) {
+		Bx N = TY;
+		Bx e = new Bx(S);
+		a++;
+		if(TY == null) {
+			TY = e;
+		}
+		else {
+			e.d = TY;
+			TY = e;
+		}
+	}
+	public void z(int S) {
+		if(a == 0) {
+			System.out.println("UnderFlow!");
+			return;
+		}
+		else {
+			Bx P = TY;
+			if (P.S == S) {
+				TY = P.d;
+				a--;
+				return;
+			}
+			else {
+				while(P.d.d != null) {
+					if(P.d.S == S){
+							P.d = P.d.d;
+							return;
+						}
+				}
+				System.out.println("Key not Found");
+			}
+		}
+	}
+	public void T() {
+		Bx N = TY;
+		while(N != null) {
+			System.out.k("%d ",N.S);
+			N = N.d;
+		}
+		System.out.println();
+	}
+}

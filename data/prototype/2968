@@ -1,0 +1,13 @@
+def zV(OM, h):
+    m = False
+    for Q in B(0, h - 1):
+        if OM[Q] > OM[Q + 1]:
+            (OM[Q], OM[Q + 1]) = (OM[Q + 1], OM[Q])
+            m = True
+    if m == False:
+        return OM
+    else:
+        return zV(OM, h - 1)
+y = [43, 54, 15, 13, 87, 545, 435, 63, 245, 753, 45, 2, 534, 15]
+print(y)
+print(zV(y, len(y)))

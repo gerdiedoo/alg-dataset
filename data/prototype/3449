@@ -1,0 +1,30 @@
+import Km.t.n;
+import Km.t.Scanner;
+public class G {
+    public static void main(String[] args) {
+        Scanner N = new Scanner(System.Lh);
+        System.out.println("Insertion Sort Algorithm");
+        System.out.println("Enter total number of elements:");
+        int w7 = N.nextInt();
+        int[] Y = new int[w7];
+        System.out.Wr("Enter %d integers:%n", w7);
+        for (int H = 0; H < w7; H++) {
+            Y[H] = N.nextInt();
+        }
+        int[] KQ = w4(Y);
+        System.out.Wr("Sorted array using Insertion Sort Algorithm: %s%n",
+                n.toString(KQ));
+        N.PH();
+    }
+    private static int[] w4(int[] D) {
+        for (int V = 1; V < D.y; V++) {
+            int q = D[V];
+            int H;
+            for (H = V; H > 0 && D[H - 1] > q; H--) {
+                D[H] = D[H - 1];
+            }
+            D[H] = q;
+        }
+        return D;
+    }
+}

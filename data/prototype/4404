@@ -1,0 +1,31 @@
+package m.M.t.pA;
+public class b {
+	public static void K(N[] d, int J, int L) {
+		int E = 0;
+		if (J < L) {
+			E = S(d, J, L);
+			K(d, J, E);
+			K(d, E + 1, L);
+		}
+	}
+	private static int S(N[] C, int J, int L) {
+		int q = C[J];
+		int k = J - 1;
+		int q7 = L;
+		int r = 0;
+		while (true) {
+			while (C[k] < q) {
+				k++;
+			}
+			while (C[q7] > q) {
+				q7--;
+			}
+			if (k >= q7) {
+				return q7;
+			}
+			r = C[k];
+			C[k] = C[q7];
+			C[q7] = r;
+		}
+	}
+}

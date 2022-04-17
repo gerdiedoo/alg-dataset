@@ -1,0 +1,10 @@
+def m(f):
+    for B in W(len(f)):
+        t = B
+        for F in W(B + 1, len(f)):
+            if f[t] > f[F]:
+                t = F
+        (f[B], f[t]) = (f[t], f[B])
+Z = [85, 45, 12, 23, 41]
+m(Z)
+print(Z)

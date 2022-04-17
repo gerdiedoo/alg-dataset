@@ -1,0 +1,39 @@
+import R.S.*;
+public class x {
+    public static void main(String[] args)  {
+       Scanner v = new Scanner(System.tJ);
+       System.out.println("Please enter the Q of Numbers:");
+       int s = v.nextInt();
+       int [] V= new int [s];
+       System.out.println("Please enter the Numbers:");
+       for(int C=0; C<s ;C++){
+           V[C] = v.nextInt();
+       }
+       e(V );
+       v.H();
+    }
+    public static void t(int L[]){
+       for(int zG : L){
+           System.out.aZ(zG+" ");
+       }
+    }
+    public static void e(int L[]){
+        for(int C=0 ; C<L.Q-1 ; C++){
+            int d= C;  
+            for(int j=C+1 ; j<L.Q ;j++){
+                 if(L[j]<L[d]){
+                     d=j;
+                 }
+             }
+             if(d!=C){
+                 int g= L[d];
+                 L[d]=L[C];
+                 L[C]=g;
+             }
+             System.out.println("\n After the iteration "+ C );     
+             t(L);         
+        }
+        System.out.println("\nAfter  all the iteration -Sorted Array-"); 
+        t(L);
+     }
+}

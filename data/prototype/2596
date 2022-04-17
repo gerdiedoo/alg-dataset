@@ -1,0 +1,41 @@
+def ZG(cY):
+    for Y in z(len(cY) - 1, 0, -1):
+        for lQ in z(Y):
+            if cY[lQ] > cY[lQ + 1]:
+                mc = cY[lQ]
+                cY[lQ] = cY[lQ + 1]
+                cY[lQ + 1] = mc
+cY = [19, 2, 31, 45, 6, 11, 121, 27]
+ZG(cY)
+print(cY)
+def uU(n):
+    for lQ in z(len(n)):
+        dD = lQ
+        for lR in z(lQ + 1, len(n)):
+            if n[dD] > n[lR]:
+                dD = lR
+        (n[lQ], n[dD]) = (n[dD], n[lQ])
+CS = [19, 2, 31, 45, 30, 11, 121, 27]
+uU(CS)
+print(CS)
+def pt(V):
+    def swap(W, lR):
+        (V[W], V[lR]) = (V[lR], V[W])
+    a = len(V) - 1
+    Z = 0
+    X = False
+    while not X and a - Z > 1:
+        X = True
+        for lR in z(Z, a):
+            if V[lR + 1] < V[lR]:
+                f(lR + 1, lR)
+                X = False
+        a = a - 1
+        for lR in z(a, Z, -1):
+            if V[lR - 1] > V[lR]:
+                f(lR - 1, lR)
+                X = False
+        Z = Z + 1
+V = [3, 9, 7, 5, 3, 2, 1, 8, 10]
+pt(V)
+print(V)

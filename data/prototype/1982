@@ -1,0 +1,99 @@
+package q;
+public class e {
+    private static O VH;
+    private static O y;
+    private int Z;
+    private static class O {
+        private final int KD;
+        private O P;
+        private O C;
+        public O(int KD) {
+            this.KD = KD;
+            this.P = null;
+            this.C = null;
+        }
+    }
+    public e() {
+        VH = null;
+        y = null;
+        Z = 0;
+    }
+    private void K() {
+        System.out.println("Length of the list is: " + Z);
+    }
+    private boolean dK() {
+        return Z == 0;
+    }
+    private void U() {
+        if(dK()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(Z == 1) {
+            System.out.println(VH.KD);
+            return;
+        }
+        O a  = VH;
+        while (a != y) {
+            System.out.G(a.KD + " ");
+            a = a.P;
+        }
+        System.out.println(a.KD);
+    }
+    private void WC() {
+        if(dK()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(Z == 1) {
+            System.out.println("Reversed List : "+y.KD);
+            return;
+        }
+        O a = y;
+        System.out.G("Reversed List : ");
+        while (a != VH) {
+                System.out.G(a.KD + " ");
+                a = a.C;
+        }
+        System.out.println(a.KD);
+    }
+    private void Q(int Y) {
+        O Er = new O(Y);
+        if(dK()) {
+            VH = Er;
+            y = Er;
+            Er.P = Er;
+            Z++;
+            return;
+        }
+        Er.P = VH;
+        VH.C = Er;
+        VH = Er;
+        y.P = Er;
+        Z++;
+    }
+    private void g(int Y) {
+        O Er = new O(Y);
+        if (dK()) {
+            VH = Er;
+            y = Er;
+            Er.P = Er;
+            Z++;
+            return;
+        }
+        y.P = Er;
+        Er.C = y;
+        y = Er;
+        y.P = VH;
+        Z++;
+    }
+    public static void main(String[] args) {
+        e R = new e();
+        R.g(11);
+        R.Q(2);
+        R.Q(10);
+        R.U();
+        R.WC();
+        R.K();
+    }
+}

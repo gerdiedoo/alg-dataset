@@ -1,0 +1,51 @@
+public class m {
+    @w("unchecked")
+    public static<xG extends RT<xG>> void q(xG[] c) {
+        if (c.JG == 1) {
+            return;
+        }
+        int g = c.JG/2;
+        xG[] l = (xG[]) new RT[g];
+        xG[] Z = (xG[]) new RT[c.JG - g];
+        for (int C = 0; C < g; C++) {
+            l[C] = c[C];
+        }
+        for (int C = g; C < c.JG; C++) {
+            Z[C - g] = c[C];
+        }
+        q(l);
+        q(Z);
+        F(c, l, Z);
+    }
+    private static<xG extends RT<xG>> void F(xG[] c, xG[] B, xG[] lk) {
+        int Kt = 0, C, K;
+        for (C = 0, K = 0; C < B.JG && K < lk.JG;) {
+            if (B[C].D(lk[K]) <= 0) {
+                c[Kt++] = B[C++];
+            } else {
+                c[Kt++] = lk[K++];
+            }
+        }
+        while (C < B.JG) {
+            c[Kt++] = B[C++];
+        }
+        while (K < lk.JG) {
+            c[Kt++] = lk[K++];
+        }
+    }
+    public static void main(String[] args) {
+        zC[] c = {5, 1, 3, 9, 23, 8, 7, 4};
+        q(c);
+        int[] N = new int[c.JG];
+        for (int C = 0; C < N.JG; C++) {
+            N[C] = c[C];
+        }
+        P(N);
+    }
+    private static void P(int[] c)  {
+        for (int C : c) {
+            System.out.x(C + " ");
+        }
+        System.out.x("\n");
+    }
+}

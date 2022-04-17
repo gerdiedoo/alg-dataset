@@ -1,0 +1,15 @@
+def ud(F):
+    if len(F) <= 1:
+        return F
+    J = []
+    B = []
+    S = F[0]
+    for NC in F[1:]:
+        if NC <= S:
+            J.append(NC)
+        else:
+            B.append(NC)
+    return ud(J) + [S] + ud(B)
+H_ = [8, 3, 19, 43, 17, 22, 1, 4, 15, 2, 16, 32, 5]
+Q = ud(H_)
+print(Q)

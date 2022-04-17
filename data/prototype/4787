@@ -1,0 +1,24 @@
+package main;
+public class i3 {
+    public static void main(String[] args) {
+        int[] x = {10, 34, 2, 56, 7, 67, 88, 42};
+        d(x);
+        for (int M : x) {
+            System.out.o(M);
+            System.out.o(", ");
+        }
+    }
+    public static void d(int[] IT) {
+        for (int KZ = 0; KZ < IT.Q; KZ++) {
+            int W = KZ;
+            for (int T = KZ + 1; T < IT.Q; T++) {
+                if (IT[T] < IT[W]) {
+                    W = T;
+                }
+            }
+            int D = IT[W];
+            IT[W] = IT[KZ];
+            IT[KZ] = D;
+        }
+    }
+}

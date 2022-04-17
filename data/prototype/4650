@@ -1,0 +1,11 @@
+def z(M):
+    if len(M) <= 1:
+        return M
+    else:
+        for Gn in v(len(M) - 1):
+            for SR in v(Gn, len(M)):
+                if M[SR] < M[Gn]:
+                    (M[SR], M[Gn]) = (M[Gn], M[SR])
+        return M
+M = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(z(M))

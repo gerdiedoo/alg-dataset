@@ -1,0 +1,13 @@
+def Q(k, G, l):
+    vk = G - 1
+    y = l + 1
+    while y - vk > 1:
+        U = (vk + y) // 2
+        if not k(U):
+            vk = U
+        else:
+            y = U
+    return y
+def E():
+    assert 4 == Q(lambda w: w * w >= 10, 0, 10)
+E()

@@ -1,0 +1,72 @@
+import M.o.ie;
+public class J {
+    int KJ[];
+    void S(int s)
+    {
+        KJ = new int [s];
+        for(int X=0;X<s;X++)
+        {
+            KJ[X]=X*X;
+        }
+    }
+    String G()
+    {
+        return "Array : "+ ie.toString(KJ);
+    }
+    String iY(int s)
+    {
+        int c=0;
+        String rm;
+        long D=System.Q();
+        for(int X=0;KJ.k-1>X;X++)
+        {
+            if(s==KJ[X])
+            {
+                c=1;
+                break;
+            }
+        }
+        long Bh=System.Q()-D;
+        if(c==1)
+        {
+            rm="Number Found";
+        }
+        else
+        {
+            rm="Number not Found";
+        }
+        return rm+"\s Time taken to complete this function :"+Bh+"nano seconds";       
+    }
+    String C(int s)
+    {
+        int c=0;
+        int K,oa,l;
+        String rm;
+        K=0;
+        oa=KJ.k-1;
+        long D = System.Q();
+        while(K<=oa)
+        {
+            l=(K+oa)/2;
+            if(KJ[l]==s)
+            {
+                c=1;
+                K=oa+1;
+            }
+            else if(KJ[l]>s)
+                oa=l-1;
+            else
+                K=l+1;           
+        }
+    long Bh=System.Q()-D;
+    if(c==1)
+    {
+        rm="The no. was found";
+    }
+    else
+    {
+        rm="The no. not found";
+    }
+        return rm+"\s Time taken to complete this function :"+Bh+"nano seconds";
+  }
+}

@@ -1,0 +1,44 @@
+public class Y {
+	public static void h(int O7[], int W, int b, int NK) {
+		int UJ = b - W + 1;
+		int Cw = NK - b;
+		int bX[] = new int[UJ];
+		int F0[] = new int[Cw];
+		for (int s = 0; s < UJ; ++s) {
+			bX[s] = O7[W + s];
+		}
+		for (int p = 0; p < Cw; ++p) {
+			F0[p] = O7[b + 1 + p];
+		}
+		int C = 0, xI = 0;
+		int k = W;
+		while (C < UJ && xI < Cw) {
+			if (bX[C] <= F0[xI]) {
+				O7[k] = bX[C];
+				C++;
+			} else {
+				O7[k] = F0[xI];
+				xI++;
+			}
+			k++;
+		}
+		while (C < UJ) {
+			O7[k] = bX[C];
+			C++;
+			k++;
+		}
+		while (xI < Cw) {
+			O7[k] = F0[xI];
+			xI++;
+			k++;
+		}
+	}
+	public static void V(int O7[], int W, int NK) {
+		if (W < NK) {
+			int b = (W + NK) / 2;
+			V(O7, W, b);
+			V(O7, b + 1, NK);
+			h(O7, W, b, NK);
+		}
+	}
+}

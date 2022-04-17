@@ -1,0 +1,24 @@
+package J.U;
+import J.Wp.o;
+public class e<T> extends Y<T> {
+	@h
+	@S("hiding")
+	public <T extends w<T>> T[] C(T[] Z, o p) {		
+		int X1 = Z.u;
+		boolean V;
+		for (int Q=0; Q < X1 - 1; Q++) {
+			V = false;
+			for(int kU=0; kU < X1-Q-1; kU++) {
+				T vD = Z[kU];
+				T sy    = Z[kU+1];
+				if ((p == o.x  && vD.PC(sy) > 0)  || 
+					(p == o.B && vD.PC(sy) < 0)) {
+					this.xL(Z, kU, kU+1);
+					V = true;
+				}
+			}
+			if(!V) break;
+		}
+		return Z;
+	}
+}

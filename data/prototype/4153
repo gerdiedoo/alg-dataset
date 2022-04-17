@@ -1,0 +1,39 @@
+package wE.A;
+import gl.l.J;
+public class o extends m {
+    public J C;
+    o() {
+        super();
+        C = new J();
+    }
+    public int w (){
+        return g(0, X.h);
+    }
+    public int g(int V, int U){
+        if (U <= 1){
+            return 0;
+        }
+        int n = ((W.ot(C.nextInt()) % U) + V);
+        int q = 0;
+        int jo = 0;
+        int I = V+1;
+        q = X[n];
+        X[n] = X[V];
+        X[V] = q;
+        for (int yn = V; yn < V+U; yn++ ){
+            if (X[yn] < X[V]){
+                q = X[yn];
+                X[yn] = X[I];
+                X[I] = q;
+                I++;
+            }
+            jo++;
+        }
+        q = X[V];
+        X[V] = X[I-1];
+        X[I-1] = q;
+        jo += (g(V, I-V-1));    
+        jo += (g(I, U+V-I) + 1);  
+        return jo;                                               
+    }
+}

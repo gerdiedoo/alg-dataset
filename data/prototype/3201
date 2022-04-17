@@ -1,0 +1,11 @@
+class InsertionSort:
+    def sort(A):
+        SE = len(U)
+        for O0 in b(1, SE):
+            g = U[O0]
+            vZ = O0 - 1
+            while vZ >= 0 and U[vZ] > g:
+                U[vZ + 1] = U[vZ]
+                vZ = vZ - 1
+            U[vZ + 1] = g
+        return U

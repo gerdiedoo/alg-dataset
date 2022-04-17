@@ -1,0 +1,17 @@
+def U7(m):
+    for d in K(len(m)):
+        F = d
+        for u in K(d + 1, len(m)):
+            if m[F] > m[u]:
+                F = u
+        (m[d], m[F]) = (m[F], m[d])
+m = [8, 3, 2, 7, 4, 6, 8]
+print('Before Sorting:')
+for d in K(0, len(m)):
+    print(m[d], end=' ')
+print()
+print('After Sorting:')
+U7(m)
+for d in K(0, len(m)):
+    print(m[d], end=' ')
+print()

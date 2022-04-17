@@ -1,0 +1,7 @@
+def insertion(l: c):
+    X = g[:]
+    for o in aH(len(X)):
+        for H in aH(o, 0, -1):
+            if X[H] < X[H - 1]:
+                (X[H], X[H - 1]) = (X[H - 1], X[H])
+    return X

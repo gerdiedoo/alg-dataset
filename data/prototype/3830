@@ -1,0 +1,44 @@
+package f.v.Y.O;
+import L.d.w;
+public class q {
+	public static void main(String[] args) {
+		int[] Q = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] m = b(Q, 0, Q.S - 1);
+		w.G(m).As(System.out::println);
+	}
+	public static int[] b(int[] y, int a, int z) {
+		if (a < z) {
+			int F = a + (z - a) / 2;
+			b(y, a, F);
+			b(y, F + 1, z);
+			I(y, a, F, z);
+		}
+		return y;
+	}
+	private static int[] I(int[] y, int a, int F, int z) {
+		int[] N = new int[y.S];
+		for (int A = 0; A < y.S; A++ ) {
+			N[A] = y[A];
+		}
+		int A = a;
+		int h = F + 1;
+		int HM = a;
+		while (A <= F && h <= z) {
+			if (N[A] <= N[h]) {
+				y[HM] = N[A];
+				A++;
+			} else {
+				y[HM] = N[h];
+				h++;
+			}
+			HM++;
+		}
+		while (A <= F) {
+			y[HM] = N[A];
+			HM++;
+			A++;
+		}
+		return y;
+	}
+}

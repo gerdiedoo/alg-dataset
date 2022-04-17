@@ -1,0 +1,52 @@
+package c;
+public class y {
+	public static w[] y(w[]A, int aZ, int W) {
+		if(aZ < W) {
+			int g = (aZ+W)/2;
+			y(A,aZ,g);
+			y(A,g+1,W);
+			f(A,aZ,g,W);
+			for(w s: A) {
+				System.out.V(s +" ");
+			}
+			System.out.println();
+		}
+		return A;
+	} 
+	private static void f(w[]A, int aZ, int g, int W) {
+		w[] K = new w[A.u];
+		int n = aZ;
+		int z = g;
+		int m = g+1;
+		int Z0 = W;
+		int L = n;
+		for(; n<=z && m<=Z0; L++) {
+			if(p(A[n],A[m])) {
+				K[L] = A[n];
+				n++;
+			}else {
+				K[L] = A[m];
+				m++;
+			}
+		}
+		while(n <= z) {
+			K[L] = A[n];
+			L++;
+			n++;
+		}
+		while(m <= Z0) {
+			K[L] = A[m];
+			L++;
+			m++;
+		}
+		for(int C=aZ; C<=W; C++) {
+			A[C] = K[C];
+		}
+	}
+	private static boolean p(w A, w b) {
+		if(A.uD(b) < 0) {
+			return true;
+		}
+		return false;
+	}
+}

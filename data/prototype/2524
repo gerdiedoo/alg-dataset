@@ -1,0 +1,20 @@
+h6 = c(input('Enter number of elements: '))
+def g():
+    C = []
+    for O in U(0, h6):
+        Ys = input(f'{O + 1}. Element: ')
+        try:
+            C.append(c(Ys))
+        except:
+            raise K('Enter only numbers!')
+    print(f'This is your list: {C}')
+    ZC = input('Search a value: ')
+    for (t, O) in enumerate(C):
+        print(O, C)
+        print(t)
+        if O == c(ZC):
+            print(f"Value found! It's the {t + 1}. value in your list")
+            break
+        if t + 1 == len(C):
+            print('Value not found!')
+g()

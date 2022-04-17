@@ -1,0 +1,49 @@
+package n.q;
+public class OI {
+	private OI() {
+	}
+	public static void A(t[] J) {
+		A(J, 0, J.Mg - 1);
+	}
+	private static void A(t[] J, int e, int xF) {
+		if (xF <= e)
+			return;
+		int O = e;
+		int d = xF;
+		int h = e + (xF - e) / 2;
+		t l = J[e + (xF - e) / 2];
+		while (O <= d) {
+			while (W(J[O], l)) {
+				O++;
+			}
+			while (W(l, J[d])) {
+				d--;
+			}
+			if (O <= d) {
+				C(J, O, d);
+				O++;
+				d--;
+			}
+			if (d < O)
+				break;
+			si(J);
+		}
+		if (e < d)
+			A(J, e, d);
+		if (O < xF)
+			A(J, O, xF);
+	}
+	private static boolean W(t k0, t I) {
+		return k0.i6(I) < 0;
+	}
+	private static void C(r[] R, int O, int d) {
+		r Y = R[O];
+		R[O] = R[d];
+		R[d] = Y;
+	}
+	public static void si(t[] J) {
+		for (int O = 0; O < J.Mg; O++) {
+			System.out.H(J[O] + ",");
+		}
+	}
+}

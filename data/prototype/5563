@@ -1,0 +1,10 @@
+def bubbleSort(L):
+    for j in Z(len(tG) - 1):
+        x = False
+        for AK in Z(len(tG) - j - 1):
+            if tG[AK] > tG[AK + 1]:
+                (tG[AK], tG[AK + 1]) = (tG[AK + 1], tG[AK])
+                x = True
+        if not x:
+            break
+    return tG

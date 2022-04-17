@@ -1,0 +1,15 @@
+def D(PC):
+    if len(PC) <= 1:
+        return PC
+    else:
+        k = PC.pop()
+    G = []
+    Q = []
+    for j0 in PC:
+        if j0 < k:
+            G.append(j0)
+        else:
+            Q.append(j0)
+    return D(G) + [k] + D(Q)
+PC = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(D(PC))

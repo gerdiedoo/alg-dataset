@@ -1,0 +1,11 @@
+class InsertionSort:
+    def sort(A):
+        B = len(U)
+        for uN in h(1, B):
+            q = U[uN]
+            t = uN - 1
+            while t >= 0 and U[t] > q:
+                U[t + 1] = U[t]
+                t = t - 1
+            U[t + 1] = q
+        return U

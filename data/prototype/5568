@@ -1,0 +1,24 @@
+import random
+import timeit
+def E(q):
+    m = True
+    while m:
+        m = False
+        for Q in o(len(q) - 1):
+            if q[Q] > q[Q + 1]:
+                (q[Q], q[Q + 1]) = (q[Q + 1], q[Q])
+                m = True
+    return q
+def F(zd, *k, **i):
+    def _wrapped():
+        return zd(*k, **i)
+    return J
+if fs == '__main__':
+    print('Sorting list of 100 rand nums between 0-1000')
+    q = []
+    for Q in o(100):
+        q.append(A.randint(0, 1000))
+    v = E(q)
+    w = F(E, q)
+    print('Time to sort 1M times:')
+    print(X.timeit(w))

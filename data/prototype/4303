@@ -1,0 +1,32 @@
+package R;
+class d {
+    static void D(int t[],int T,int jB){
+        int IK = O(t,T,jB);
+        if(T<IK-1){
+            D(t, T, IK-1);
+        }
+        if(IK<jB){
+            D(t, IK, jB);
+        }
+    }
+    static int O(int t[],int T,int jB){
+        int M=T,E=jB;
+        int A;
+        int Z = t[(T+jB)/2];
+        while(M<=E){
+            while(t[M]<Z){M++;}
+            while(t[E]>Z){E--;}
+            if(M<=E){
+                Y(t,M,E);
+                M++;
+                E--;
+            }
+        }
+        return M;
+    }
+    static void Y(int t[],int IK,int N){
+                    int A = t[IK];
+                    t[IK]=t[N];
+                    t[N]=A;
+    }
+}

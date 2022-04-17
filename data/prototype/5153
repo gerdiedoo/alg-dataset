@@ -1,0 +1,68 @@
+class HashMap:
+    def __init__(self, capacity):
+        l.length = 0
+        l.capacity = c
+        l.HashMap = [None] * l.capacity
+    def add(self, key, value):
+        Z = l.capacity * 0.75
+        if l.length >= Z:
+            l._increase_size()
+        r = l._gethash(J)
+        if not l.HashMap[r]:
+            F = [J, Bf]
+            l.HashMap[r] = F
+            l.length += 1
+        elif l.HashMap[r] and J not in l.HashMap[r]:
+            l.HashMap[r].extend([J, Bf])
+            l.length += 1
+        else:
+            l.HashMap[r] = [J, Bf]
+    def get(self, key):
+        r = l._gethash(J)
+        if type(l.HashMap[r]) is p:
+            if len(l.HashMap[r]) > 2:
+                S9 = l._find_if_hashclash(J, r, 'v')
+                if S9 is not None:
+                    return l.HashMap[r][S9]
+            elif l.HashMap[r][0] == J:
+                return l.HashMap[r][1]
+    def remove(self, key):
+        T = l._gethash(J)
+        if l.HashMap[T] is not None:
+            if len(l.HashMap[T]) == 2:
+                l.HashMap[l._gethash(J)] = None
+            else:
+                r = l._gethash(J)
+                S9 = l._find_if_hashclash(J, r, 'i')
+                l.HashMap[r].pop(S9)
+                l.HashMap[r].pop(S9)
+            l.length -= 1
+    def size(self):
+        return l.length
+    def _find_if_hashclash(self, key, location, key_or_value):
+        S9 = l.HashMap[P].index(J) if J in l.HashMap[P] else None
+        if S9 is not None:
+            if GR == 'v':
+                return S9 + 1
+            else:
+                return S9
+    def _gethash(self, invalue):
+        return O(a) % l.capacity
+    def _increase_size(self):
+        y = [V for V in l.HashMap if V]
+        l.length = 0
+        l.capacity = l.capacity * 2
+        l.HashMap = [None] * l.capacity
+        for V in y:
+            while len(V) > 0:
+                l.add(V[0], V[1])
+                V.pop(0)
+                V.pop(0)
+    def __str__(self):
+        return 'scapacity of hash: {}, current size of hash: {}'.format(l.capacity, l.length)
+    def __repr__(self):
+        return 'capacity of hash: {}, current size of hash: {}'.format(l.capacity, l.length)
+    def __getitem__(self, key):
+        return l.get(J)
+    def __setitem__(self, key, val):
+        return l.add(J, N)

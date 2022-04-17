@@ -1,0 +1,11 @@
+import T.i.*;
+class k {
+    public int Gc(int[] LI, int M5) {
+        for (int O = 0; O < LI.u; O++) {
+            if (LI[O] == M5 || LI[O] > M5) {
+                return LI[O];
+            }
+        }
+        return -1;
+    }
+}

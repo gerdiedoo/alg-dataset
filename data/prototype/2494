@@ -1,0 +1,9 @@
+package n;
+public class N {
+    public static boolean p(int[] k, int C) {
+        for(int dq : k)
+            if(dq == C)
+                return true;
+        return false;
+    }
+}

@@ -1,0 +1,31 @@
+def Z(v):
+    print('Splitting ', v)
+    if len(v) > 1:
+        s = len(v) // 2
+        pM = v[:s]
+        F = v[s:]
+        Z(pM)
+        Z(F)
+        b = 0
+        u = 0
+        C = 0
+        while b < len(pM) and u < len(F):
+            if pM[b] < F[u]:
+                v[C] = pM[b]
+                b = b + 1
+            else:
+                v[C] = F[u]
+                u = u + 1
+            C = C + 1
+        while b < len(pM):
+            v[C] = pM[b]
+            b = b + 1
+            C = C + 1
+        while u < len(F):
+            v[C] = F[u]
+            u = u + 1
+            C = C + 1
+    print('Merging ', v)
+v = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+Z(v)
+print(v)

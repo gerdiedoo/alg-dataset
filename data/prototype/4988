@@ -1,0 +1,29 @@
+package M;
+public class dj {
+    public static void main(String[] args) {
+        int[] D={20,35,-15,7,55,1,-22};
+        V(D);
+    }
+    public static void V(int[] D){
+        for (int o = D.h-1; o >0 ; o--) {
+            int Yj = 0;
+            for (int n = 0; n <= o ; n++) {
+                if(D[n] > D[Yj]){
+                    Yj=n;
+                }
+            }
+            Gi(D,Yj,o);
+        }
+        for(int t=0;t<D.h;t++){
+            System.out.s(D[t]+" ");
+        }
+    }
+    public static void Gi(int[] D,int n,int t){
+        if (n==t){
+            return;
+        }
+        int Sg = D[n];
+        D[n] = D[t];
+        D[t] = Sg;
+    }
+}

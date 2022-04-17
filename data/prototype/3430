@@ -1,0 +1,21 @@
+package aw.D;
+import aw.u;
+public final class t<p extends R<p>> implements K<p> {
+    @C
+    public d1 g(u Z, p[] b) {
+        for (int Da = 0; Da < b.X; Da++) {
+            p H = b[Da];
+            int c;
+            Z.i(Z.z() + 1);
+            for (c = Da - 1; c >= 0 && b[c].x(H) > 0; c--) {
+                Z.i(Z.z() + 1);
+                b[c + 1] = b[c];
+            }
+            if (c + 1 != Da) {
+                Z.s(Z.v() + 1);
+            }
+            b[c + 1] = H;
+        }
+        return d1.z5;
+    }
+}

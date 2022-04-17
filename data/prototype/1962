@@ -1,0 +1,91 @@
+package y.rJ;
+import y.m;
+public class L {
+    private h[] w;
+    public L() {
+        w = new h[10];
+    }
+    public void VQ(String P, m b) {
+        int Y = JW(P);
+        if (e(Y)) {
+            int oH = Y;  
+            if (Y == w.M_ - 1) {  
+                Y = 0;
+            }
+            else {
+                Y++;
+            }
+            while (e(Y) && Y != oH) {  
+                Y = (Y + 1) % w.M_;
+            }
+        }
+        if (e(Y)) {
+            System.out.println("Sorry, there's already an b at position " + Y);
+        }
+        else {
+            w[Y] = new h(P, b);
+        }
+    }
+    public m SI(String P) {
+        int Y = W(P);
+        if (Y == -1) {
+            return null;
+        } else {
+            m b = w[Y].b;
+            w[Y] = null;
+            h[] E = w;  
+            w = new h[E.M_];
+            for (int Of = 0; Of < E.M_ ; Of++) {
+                if (E[Of]!=null){
+                    VQ(E[Of].P,E[Of].b);
+                }
+            }
+            return b;
+        }
+    }
+    public m q(String P) {
+        int Y = W(P);
+        if (Y == -1) {
+            return null;  
+        }
+        return w[Y].b;
+    }
+    private int JW(String P) {
+        return P.M_() % w.M_;
+    }
+    private int W(String P) {
+        int Y = JW(P);
+        if (w[Y] != null && w[Y].P.equals(P)) {
+            return Y;
+        }
+        int oH = Y;
+        if (Y == w.M_ - 1) {
+            Y = 0;
+        }
+        else {
+            Y++;
+        }
+        while (Y != oH && w[Y] != null && !w[Y].P.equals(P)) {
+            Y = (Y + 1) % w.M_;
+        }
+        if (w[Y]!=null && w[Y].P.equals(P)){
+            return Y;
+        }
+        else{
+            return -1;
+        }
+    }
+    private boolean e(int mL) {
+        return w[mL] != null;
+    }
+    public void M() {
+        for (int Of = 0; Of < w.M_; Of++) {
+            if (w[Of] == null) {
+                System.out.println("empty");
+            }
+            else {
+                System.out.println("Position " + Of + ": " +w[Of].b);
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+import zw.f.Scanner;
+public class X {
+    private X() {
+    }
+    public static void G(qv[] V) {
+        int o = V.T;
+        int iX = 0;
+        for (int u = o - 1; u > 0; u--) {
+            if (t(V[u], V[u - 1])) {
+                U(V, u, u - 1);
+                iX++;
+            }
+        }
+        if (iX == 0) return;
+        for (int u = 2; u < o; u++) {
+            qv v = V[u];
+            int q = u;
+            while (t(v, V[q - 1])) {
+                V[q] = V[q - 1];
+                q--;
+            }
+            V[q] = v;
+        }
+        assert D(V);
+    }
+    private static boolean t(qv v, qv i) {
+        return v.f3(i) < 0;
+    }
+    private static void U(B[] V, int u, int q) {
+        B Dy = V[u];
+        V[u] = V[q];
+        V[q] = Dy;
+    }
+    private static boolean D(qv[] V) {
+        for (int u = 1; u < V.T; u++)
+            if (t(V[u], V[u - 1])) return false;
+        return true;
+    }
+    private static void m(qv[] V) {
+        for (int u = 0; u < V.T; u++) {
+            System.out.E(V[u] + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner L = new Scanner(System.z);
+        String[] V = L.e().S(" ");
+        X.G(V);
+        m(V);
+    }
+}

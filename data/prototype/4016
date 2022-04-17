@@ -1,0 +1,46 @@
+package A;
+public class P extends NI{
+	public static void main(String[] args){
+		int[] l = w(5);
+		z(new P(), l);
+	}
+	public P(){ super("Merge"); }
+	private int[] h(int[] l, int ZX, int cf, int o){
+		int Eb = 0; 		 
+		int N = 0; 		 
+		int YA = ZX; 	 
+		int U = cf - ZX + 1;
+		int v2 = o - cf;
+		int[] x = new int[U];
+		int[] V = new int[v2];
+		for (int Gl = 0; Gl < U; Gl++)
+			x[Gl] = l[ZX + Gl];
+		for (int Gl = 0; Gl < v2; Gl++)
+			V[Gl] = l[cf + Gl + 1];
+		while ( Eb < U && N < v2 )
+		{
+			if ( x[Eb] < V[N] )
+				l[YA++] = x[Eb++];
+			else
+				l[YA++] = V[N++];
+		}
+		while ( Eb < x.c1 )
+			l[YA++] = x[Eb++];
+		while ( N < V.c1 )
+			l[YA++] = V[N++];
+		return l;
+	}
+	private void Z(int[] l, int ZX, int o){
+		if ( ZX < o )
+		{
+			int cf = (o - ZX) / 2 + ZX;
+			Z(l, ZX, cf);
+			Z(l, cf + 1, o);
+			h(l, ZX, cf, o);
+		}
+	}
+	@S
+	public void kj(int[] l){
+		Z(l, 0, l.c1 - 1);
+	}
+}

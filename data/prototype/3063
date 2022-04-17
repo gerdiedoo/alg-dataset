@@ -1,0 +1,26 @@
+def z(v, mc, r, x):
+    if r == x:
+        if v[r] > mc:
+            return r
+        return r + 1
+    if r > x:
+        return r
+    i = (r + x) // 2
+    if v[i] < mc:
+        return z(v, mc, i + 1, x)
+    elif v[i] > mc:
+        return z(v, mc, r, i - 1)
+    else:
+        return i
+def t(v):
+    for c in d(1, len(v)):
+        mc = v[c]
+        u = z(v, mc, 0, c - 1)
+        v = v[:u] + [mc] + v[u:c] + v[c + 1:]
+    return v
+if W == '__main__':
+    v = [37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54]
+    print(f'List: {v}')
+    print('Sorting...')
+    U = t(v)
+    print(f'List: {U}')

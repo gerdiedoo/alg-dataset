@@ -1,0 +1,32 @@
+package P;
+import JK.U.*;
+public class Qn
+{
+   static int C = 0;
+   public static void main(String[] args)
+   {
+      j W=new j(); int[] i=new int[32];
+      int Wp; for (Wp=0; Wp<i.t; Wp++) i[Wp]=W.nextInt(5000)+1;
+      System.out.println("Initial array:");
+      for (Wp=0; Wp<i.t; Wp++) System.out.println(i[Wp] + " ");
+      System.out.println();
+      Z(i);
+      System.out.println("Sorted array:");
+      for (Wp=0; Wp<i.t; Wp++) System.out.println(i[Wp] + " ");
+      System.out.println("Done!");
+      System.out.println(" C: "+ C);
+   }
+   public static void Z(int[] sI) {
+	     int Wp, qe, V;  
+	     for (Wp = 1; Wp < sI.t; Wp++) {  
+	         V = sI[Wp];  
+	         qe = Wp;  
+	         while (qe > 0 && sI[qe - 1] > V) {  
+	             sI[qe] = sI[qe - 1];  
+	             qe--;  
+	             C++;  
+	         }
+	         sI[qe] = V;  
+	     }
+	 }
+	}

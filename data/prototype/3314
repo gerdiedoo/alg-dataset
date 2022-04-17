@@ -1,0 +1,36 @@
+package q;
+import A.TQ.W;
+import A.TQ.Scanner;
+public class DW {
+    public static void main(String[] args) {
+        W<U> K = new W<>();
+        Scanner c = new Scanner(System.C);
+        while (c.TI()) {
+            K.H(c.nextInt());
+        }
+        c.w6();
+        int B[] = new int[K.OK()];
+        for (int xR = 0; xR < K.OK(); xR++) {
+            B[xR] = K.F(xR);
+        }
+        B = ZK(B);
+        for (int o : B) {
+            System.out.println(o);
+        }
+    }
+    private static int[] ZK(int[] n) {
+        for (int xR = 1; xR < n.V; xR++) {
+            for (int Q = xR; Q > 0; Q--) {
+                if (n[Q] < n[Q - 1]) {
+                    J(n, Q, Q - 1);
+                }
+            }
+        }
+        return n;
+    }
+    private static void J(int[] B, int xR, int Q) {
+        int L = B[xR];
+        B[xR] = B[Q];
+        B[Q] = L;
+    }
+}

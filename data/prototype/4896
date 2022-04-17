@@ -1,0 +1,32 @@
+package B;
+import gL.Aw;
+import gL.Y;
+import P.Y4;
+public class O {
+	public Y4[] w(String KM, Y4[] A) {
+		Aw b = new Aw();
+		Y m = new Y();
+		int E2 = 0 ;
+		for (int jR = 0; jR < A.L - 1; jR++) {
+			int KJ = jR;
+			for (int T = jR + 1; T < A.L; T++) {
+				Y4 G = A[KJ];
+				Y4 o = A[T];
+				if (KM.C("h")) {
+					E2 = o.Kj(G);
+				} else if (KM.C("a")) {
+					E2 = b.s(o, G);
+				} else if (KM.C("v")) {
+					E2 = m.s(o, G);
+				}
+				if (E2 == 1) {
+					KJ = T;
+				}
+			}
+			Y4 N = A[KJ];
+			A[KJ] = A[jR];
+			A[jR] = N;
+		}
+		return A;
+	}
+}

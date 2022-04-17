@@ -1,0 +1,35 @@
+package P.g.R7;
+import X.k.e;
+import X.k.x;
+public class n {
+    public static <IE extends mP<IE>> x<IE> A(x<IE> Hc) {
+        x<IE> G = new e<IE>();
+        x<IE> R = new e<IE>();
+        x<IE> uh = new e<IE>();
+        while (Hc.L() > 0) {
+            while (Hc.L() > 0) {
+                I(Hc, G, R);
+                I(Hc, G, uh);
+            }
+            while (R.L() > 0 || uh.L() > 0) {
+                I(R, uh, G);
+                I(R, uh, Hc);
+            }
+        }
+        return G;
+    }
+    public static <IE extends mP<IE>> void I(x<IE> H, x<IE> Q, x<IE> G) {
+        IE pF = null;
+        IE f = null;
+        while ((H.L() > 0 && (pF == null || pF.k5(H.EG()) <= 0)) ||
+               (Q.L() > 0 && (f == null || f.k5(Q.EG()) <= 0))) {
+            if (Q.L() == 0 || (H.L() > 0 && H.EG().k5(Q.EG()) <= 0)) {
+                pF = H.Ow();
+                G.lI(pF);
+            } else {
+                f = Q.Ow();
+                G.lI(f);
+            }
+        }
+    }
+}

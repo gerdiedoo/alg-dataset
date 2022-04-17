@@ -1,0 +1,11 @@
+import LU.c.*;
+class C {
+    public int eo(int[] Cj, int a) {
+        for (int F = 0; F < Cj.y; F++) {
+            if (Cj[F] == a || Cj[F] > a) {
+                return Cj[F];
+            }
+        }
+        return -1;
+    }
+}

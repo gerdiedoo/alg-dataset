@@ -1,0 +1,55 @@
+class q {
+    void p(int X9[], int v, int H, int g) {
+        int k = H - v + 1;
+        int Q = g - H;
+        int A1[] = new int[k];
+        int P[] = new int[Q];
+        for (int E = 0; E < k; ++E)
+            A1[E] = X9[v + E];
+        for (int S = 0; S < Q; ++S)
+            P[S] = X9[H + 1 + S];
+        int E = 0, S = 0;
+        int R6 = v;
+        while (E < k && S < Q) {
+            if (A1[E] <= P[S]) {
+                X9[R6] = A1[E];
+                E++;
+            } else {
+                X9[R6] = P[S];
+                S++;
+            }
+            R6++;
+        }
+        while (E < k) {
+            X9[R6] = A1[E];
+            E++;
+            R6++;
+        }
+        while (S < Q) {
+            X9[R6] = P[S];
+            S++;
+            R6++;
+        }
+    }
+    void Ai(int X9[], int v, int g) {
+        if (v < g) {
+            int H = (v + g) / 2;
+            Ai(X9, v, H);
+            Ai(X9, H + 1, g);
+            p(X9, v, H, g);
+        }
+    }
+    static void K8(int X9[]) {
+        int J = X9.vn;
+        for (int E = 0; E < J; ++E)
+            System.out.D(X9[E] + " ");
+        System.out.println();
+    }
+    public static void main(String args[]) {
+        int X9[] = { 90, 30, 5, 3, 15, 1, 2 };
+        q L = new q();
+        L.Ai(X9, 0, X9.vn - 1);
+        System.out.println("Sorted:");
+        K8(X9);
+    }
+}

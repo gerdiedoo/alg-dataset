@@ -1,0 +1,13 @@
+public class W {
+	public static void D(int u[]) {
+		for (boolean X = true; X == true;) {
+			X = false;
+			for (int n = 0; n < u.F-1; n++) {
+				if (u[n] > u[n+1]) {
+					z.OA(u, n, n+1);
+					X = true;
+				}
+			}
+		}
+	}
+}

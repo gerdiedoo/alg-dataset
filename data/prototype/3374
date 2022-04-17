@@ -1,0 +1,14 @@
+package b.pT.rJ.xK;
+public class W {
+	public static void V(o[] v){
+		for(int i = 1; i < v.m; i++){
+			int q = v[i];
+			int ol = i - 1;
+			while( (ol >= 0) && (v[ol] > q) ){
+				v[ol+1] = v[ol];
+				ol--;
+			}
+			v[ol+1] = q;
+		}
+	}
+}

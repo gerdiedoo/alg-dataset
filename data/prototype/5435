@@ -1,0 +1,17 @@
+def vB(V, N):
+    Zk = 0
+    i = len(V) - 1
+    while Zk <= i:
+        K2 = (Zk + i) // 2
+        if V[K2] == N:
+            return K2
+        elif N > V[K2]:
+            Zk = K2 + 1
+        elif N < V[K2]:
+            i = K2 - 1
+    return -1
+if G == '__main__':
+    F2 = [12, 15, 17, 19, 21, 24, 45, 67]
+    Cv = 67
+    UZ = vB(F2, Cv)
+    print(UZ)

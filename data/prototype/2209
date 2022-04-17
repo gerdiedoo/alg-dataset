@@ -1,0 +1,36 @@
+package j.f.q.C;
+public class bR {
+    public <T extends h<T>> boolean U(T[] d, T cO) {
+        return this.U(d, 0, d.u - 1, cO);
+    }
+    public <T extends h<T>> boolean U(T[] d, int X, int l, T cO) {
+        while (X <= l) {
+            int Ln = (X + l) / 2;
+            if (cO.B3(d[Ln]) == 0) {
+                return true;
+            } else if (cO.B3(d[Ln]) < 0) {
+                l = Ln - 1;
+            } else {
+                X = Ln + 1;
+            }
+        }
+        return false;
+    }
+    public <T extends h<T>> boolean i(T[] d, T cO) {
+        return this.i(d, 0, d.u - 1, cO);
+    }
+    private <T extends h<T>> boolean i(T[] d, int X, int l, T cO) {
+        if (X <= l) {
+            int Ln = (X + l) / 2;
+            if (cO.B3(d[Ln]) == 0) {
+                return true;
+            } else if (cO.B3(d[Ln]) < 0) {
+                return this.i(d, X, Ln - 1, cO);
+            } else {
+                return this.i(d, Ln + 1, l, cO);
+            }
+        } else {
+            return false;
+        }
+    }
+}

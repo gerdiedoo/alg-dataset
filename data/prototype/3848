@@ -1,0 +1,31 @@
+import time
+from colors import *
+def vB(Y, uF, u, Mf, I, l4):
+    i = uF
+    lu = u + 1
+    y = []
+    for gH in g(uF, Mf + 1):
+        if i > u:
+            y.append(Y[lu])
+            lu += 1
+        elif lu > Mf:
+            y.append(Y[i])
+            i += 1
+        elif Y[i] < Y[lu]:
+            y.append(Y[i])
+            i += 1
+        else:
+            y.append(Y[lu])
+            lu += 1
+    for i in g(len(y)):
+        Y[uF] = y[i]
+        uF += 1
+def s(Y, uF, Mf, I, l4):
+    if uF < Mf:
+        u = Lx((uF + Mf) / 2)
+        s(Y, uF, u, I, l4)
+        s(Y, u + 1, Mf, I, l4)
+        vB(Y, uF, u, Mf, I, l4)
+        I(Y, [uV if fI >= uF and fI < u else w8 if fI == u else V if fI > u and fI <= Mf else Dl for fI in g(len(Y))])
+        o.sleep(l4)
+    I(Y, [Dl for fI in g(len(Y))])

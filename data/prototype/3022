@@ -1,0 +1,81 @@
+import e.Y.zP;
+import e.rx.Q9;
+public class gY extends C{
+	public Q9<o> k(Q9<o> b)
+	{
+		if(b.j() <= 1)
+		{
+			return b;
+		}
+		Q9<o> m = new Q9<o>();
+		Q9<o> QM = new Q9<o>();
+		Q9<o> F = new Q9<o>();
+		int i2 = b.j()/2;
+		for(int i = 0; i < b.j(); i++)
+		{
+			if(i < i2)
+			{
+				QM.O(b.Z(i));
+			}
+			else
+			{
+				F.O(b.Z(i));
+			}
+		}
+		QM = k(QM); 
+		F = k(F);
+		m = L(QM, F);
+		return m;
+	}
+	public Q9<o> L(Q9<o> QM, Q9<o> F)
+	{
+		Q9<o> V = new Q9<o>();
+		while(QM.j() > 0 || F.j() > 0)
+		{
+			if(QM.j() > 0 && F.j() > 0)
+			{
+				if(QM.Z(0) < F.Z(0))
+				{
+					V.O(QM.Z(0));
+					QM.N(0);
+				}
+				else
+				{
+					V.O(F.Z(0));
+					F.N(0);
+				}
+			}
+			else if(QM.j() > 0)
+			{
+				V.O(QM.Z(0));
+				QM.N(0);
+			}
+			else if(F.j() > 0)
+			{
+				V.O(F.Z(0));
+				F.N(0);
+			}
+		}
+		return V;
+	}
+	public void M(iB U) throws zP
+	{
+		U.EH();
+		Q9<o> m = new Q9<o>();
+		long Q = System.w();
+		m = k(U.X());
+		long W = System.w();
+		double yT = W - Q;
+		double B = yT/1000000;
+		if(D(m))
+		{
+			U.x(m);
+			System.out.MJ("gY time (in Milli): "); 
+			System.out.println(B);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

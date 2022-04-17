@@ -1,0 +1,108 @@
+class U implements X {
+  private final q[] c;
+  private final y cn;
+  public U(y K3) {
+    c = new q[K3.O()];
+    cn = K3;
+  }
+  @S
+  public boolean NC(m_ s, m_ Dl) {
+    if (s == null || Dl == null) return false;
+    int A = cn.jJ(s);
+    if (c[A] == null) {
+      c[A] = new q(s, Dl);
+      return true;
+    }
+    q.t wq = c[A].N(s);
+    if (wq == null) {
+      c[A].i(s, Dl);
+      return true;
+    }
+    wq.r(Dl);
+    return true;
+  }
+  @S
+  public m_ j(m_ s) {
+    if (s == null) return null;
+    int A = cn.jJ(s);
+    if (c[A] == null) return null;
+    if (c[A].N(s) == null) return null;
+    return c[A].N(s).IG();
+  }
+  @S
+  public boolean u(m_ s) {
+    if (s == null) return false;
+    int A = cn.jJ(s);
+    if (c[A] == null) return false;
+    return c[A].u(s);
+  }
+  @S
+  public void w() {
+    hR out = new hR();
+    for (int A = 0; A < c.h; A++) {
+      if (c[A] != null) {
+        out.ln(c[A].w(A));
+      }
+    }
+    System.out.W(out);
+  }
+  private static class q {
+    private t d;
+    private q(m_ n, m_ G) {
+      this.d = new t(null, n, G);
+    }
+    private void i(m_ s, m_ Dl) {
+      d = new t(d, s, Dl);
+    }
+    private boolean u(m_ s) {
+      if (d == null) return false;
+      if (d.s.equals(s)) {
+        d = d.Y;
+        return true;
+      }
+      t RA = d;
+      while (RA.Y != null && !RA.Y.s.equals(s)) {
+        RA = RA.Y;
+      }
+      if (RA.Y == null) return false;
+      RA.Y = RA.Y.Y;
+      return true;
+    }
+    private t N(m_ s) {
+      if (d == null) return null;
+      return d.N(s);
+    }
+    private String w(int Da) {
+      if (d == null) return "";
+      return d.w(Da);
+    }
+    private static class t {
+      private t Y;
+      private final m_ s;
+      private m_ Dl;
+      private t(t Y, m_ s, m_ Dl) {
+        this.Y = Y;
+        this.s = s;
+        this.Dl = Dl;
+      }
+      private void r(m_ Dl) {
+        this.Dl = Dl;
+      }
+      private m_ IG() {
+        return Dl;
+      }
+      private t N(m_ s) {
+        if (this.s.equals(s)) {
+          return this;
+        }
+        if (Y == null) return null;
+        return Y.N(s);
+      }
+      private String w(int Da) {
+        String out = String.H("%d %s %s\n", Da, s, Dl);
+        if (Y == null) return out;
+        return out += Y.w(Da);
+      }
+    }
+  }
+}

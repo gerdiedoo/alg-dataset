@@ -1,0 +1,12 @@
+def a(x, r):
+    if len(x) == 1:
+        return x[0] == r
+    elif not x:
+        return False
+    Ew = kr(len(x) / 2)
+    if x[Ew] == r:
+        return True
+    elif x[Ew] < r:
+        return a(x[Ew + 1:], r)
+    else:
+        return a(x[:Ew], r)

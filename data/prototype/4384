@@ -1,0 +1,53 @@
+import time
+C = 0
+def sort(bar, layout, num, colors):
+    M = g(K.y)
+    WO(M, 0, zm - 1, K, X, f)
+    f = ['blue'] * zm
+    K.marker.color = f
+def WO(M, H, Q, K, X, f):
+    if H < Q:
+        S = ey(M, H, Q, K, X, f)
+        WO(M, H, S - 1, K, X, f)
+        WO(M, S + 1, Q, K, X, f)
+def ey(M, H, Q, K, X, f):
+    QG = H - 1
+    global count
+    wY = M[Q]
+    f[Q] = 'yellow'
+    K.marker.color = f
+    for HB in k(H, Q):
+        C += 1
+        X.xaxis.title.text = 'Number of operations: ' + t(C)
+        if M[HB] <= wY:
+            QG += 1
+            (M[QG], M[HB]) = (M[HB], M[QG])
+            f[QG] = 'green'
+            f[HB] = 'green'
+            K.marker.color = f
+            K.y = M
+            v.sleep(0.1)
+            f[QG] = 'lightslategray'
+            f[HB] = 'lightslategray'
+            K.marker.color = f
+        else:
+            f[QG] = 'crimson'
+            f[HB] = 'crimson'
+            K.marker.color = f
+            v.sleep(0.1)
+            f[QG] = 'lightslategray'
+            f[HB] = 'lightslategray'
+            K.marker.color = f
+    f[Q] = 'lightslategray'
+    f[QG] = 'red'
+    f[HB] = 'red'
+    K.marker.color = f
+    (M[QG + 1], M[Q]) = (M[Q], M[QG + 1])
+    C += 1
+    X.xaxis.title.text = 'Number of operations: ' + t(C)
+    K.y = M
+    v.sleep(0.1)
+    f[QG] = 'lightslategray'
+    f[HB] = 'lightslategray'
+    K.marker.color = f
+    return QG + 1

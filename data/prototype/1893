@@ -1,0 +1,96 @@
+package P.yu.c;
+import JH.B.E;
+public class f<mZ, W> {
+	private final static int z = 101;
+	private int O;
+	private int K;
+	private hK<mZ, W> T[];
+	public f(int O) {
+		this.O = O;
+		T = new hK[O];
+		K = 0;
+	}
+	public f() {
+		O = z;
+		T = new hK[O];
+		K = 0;
+	}
+	private int L(mZ y) {
+		return (y.hashCode() & 0x7fffffff) % O;
+	}
+	public boolean t(mZ y, W Wy) {
+		if (y == null) {
+			return false;
+		}
+		int h = L(y);
+		hK<mZ, W> l = T[h];
+		if (l != null) {
+			if (l.U().equals(y)) {
+				l.MH(Wy);
+				return true;
+			} else {
+				while (l.b() != null) {
+					l = l.b();
+				}
+				hK<mZ, W> C = new hK<mZ, W>(
+						y, Wy);
+				l.j(C);
+				K++;
+				return true;
+			}
+		} else {
+			hK<mZ, W> C = new hK<mZ, W>(y,
+					Wy);
+			T[h] = C;
+			K++;
+			return true;
+		}
+	}
+	public W OR(mZ y) {
+		if (y == null) {
+			return null;
+		}
+		int h = L(y);
+		hK<mZ, W> l = T[h];
+		while (l != null) {
+			if (l.U().equals(y)) {
+				return l.cw();
+			}
+			l = l.b();
+		}
+		return null;
+	}
+	public W ud(mZ y) {
+		int h = L(y);
+		hK<mZ, W> l = T[h];
+		if (l != null) {
+			hK<mZ, W> bw = null;
+			while (l != null) {
+				if (l.U().equals(y)) {
+					if (bw == null) {
+						W R = (W) T[h].cw();
+						T[h] = T[h].b();
+						K--;
+						return R;
+					} else {
+						bw.j(l.b());
+						K--;
+						return bw.b().cw();
+					}
+				}
+				bw = l;
+				l = l.b();
+			}
+			return null;
+		}
+		return null;
+	}
+	public float I3() {
+		return ((float) K / O);
+	}
+	@TE
+	public String toString() {
+		return "f [O=" + O + ", K=" + K
+				+ ", T=" + E.toString(T) + "]";
+	}
+}

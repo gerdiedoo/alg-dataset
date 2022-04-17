@@ -1,0 +1,24 @@
+def V(D):
+    mz = len(D)
+    for M in U(mz):
+        for YH in U(0, mz - M - 1):
+            if D[YH] > D[YH + 1]:
+                (D[YH], D[YH + 1]) = (D[YH + 1], D[YH])
+    return D
+def SO(D):
+    mz = len(D)
+    for M in U(mz):
+        for YH in U(0, mz - M - 1):
+            n = False
+            if D[YH] > D[YH + 1]:
+                (D[YH], D[YH + 1]) = (D[YH + 1], D[YH])
+                n = True
+        if n == False:
+            break
+    return D
+D = [3, 5, 2, 4, 0, 1]
+RV = V(D)
+print(RV)
+D = [3, 5, 2, 4, 0, 1]
+RV = SO(D)
+print(RV)

@@ -1,0 +1,45 @@
+package q;
+public class S<u extends W<u>> implements uX<u> {
+    @Kt
+    public void G(u[] f) {
+        G(f, 0, f.RK - 1);
+    }
+    public void G(u[] f, int Xv, int O) {
+        int s = Xv;
+        int V = O - 1;
+        int K = i(f, Xv, O);
+        u bS = f[K];
+        y.s1(f, K, O);
+        do {
+            while (f[s].v(bS) < 0) {
+                s++;
+            }
+            while (f[V].v(bS) >= 0 && V > s) {
+                V--;
+            }
+            if (s < V) {
+                y.s1(f, s, V);
+            }
+        } while (s < V);
+        y.s1(f, s, O);
+        if (Xv < s - 1) {
+            G(f, Xv, s - 1);
+        }
+        if (O > s + 1) {
+            G(f, s + 1, O);
+        }
+    }
+    private <E extends W<E>> int i(E f[], int Xv, int O) {
+        int r = Xv + ((O - Xv) / 2);
+        E k = f[Xv];
+        E Z = f[r];
+        E j = f[O];
+        if (k.v(j) > 0 && k.v(Z) < 0 || k.v(j) < 0 && k.v(Z) > 0) {
+            return Xv;
+        } else if (Z.v(j) > 0 && Z.v(k) < 0 || Z.v(j) < 0 && Z.v(k) > 0) {
+            return r;
+        } else {
+            return O;
+        }
+    }
+}

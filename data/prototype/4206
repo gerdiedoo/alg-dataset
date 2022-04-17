@@ -1,0 +1,42 @@
+import copy
+import sort_tools
+def g(o, VM, Lb):
+    fX = o[VM]
+    o[VM] = o[Lb]
+    o[Lb] = fX
+def f(o, j, H):
+    I = (H - j) // 2 + j
+    if o[j] > o[I]:
+        g(o, j, I)
+    if o[j] > o[H]:
+        g(o, j, H)
+    if o[I] > o[H]:
+        g(o, I, H)
+    g(o, I, H - 1)
+    return H - 1
+def h(o, j, H):
+    z = f(o, j, H)
+    while j < z:
+        if o[j] > o[z]:
+            fX = o[j]
+            o[j] = o[z - 1]
+            o[z - 1] = o[z]
+            o[z] = fX
+            z -= 1
+        else:
+            j += 1
+    return z
+def B(o, j, H):
+    if j < H:
+        I = h(o, j, H)
+        B(o, j, I - 1)
+        B(o, I + 1, H)
+@R.timeit('quick')
+def Y(o):
+    B(o, 0, len(o) - 1)
+def P():
+    o = R.build_data_set(5)
+    d = fq.deepcopy(o)
+    Y(d)
+if l == '__main__':
+    P()

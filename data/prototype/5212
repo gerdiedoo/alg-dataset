@@ -1,0 +1,111 @@
+import K.f.C;
+import K.f.H;
+import K.f.ze;
+import K.f.J;
+import K.tX.j;
+public class k extends PU implements t {
+	private s[] O;
+	private int z, d;
+	public k() {
+		this.z = j6;
+		this.d = 1<<z;
+		this.O = new s[d];
+	}
+	@J7
+	public void V(String e) {
+		e = e.N();  
+		this.V(e, 1);
+	}
+	private void V(String e, int a) {  
+		int jk = xQ(e)%d;
+		if(O[jk] == null) {  
+			O[jk] = new s();
+		}
+		if(O[jk].n()) {  
+			if(this.z - O[jk].tq() == 0) {  
+				X();
+				V(e, a);
+			}else if(this.z - O[jk].tq() > 0) {  
+				int b = jk % (1<<O[jk].tq());  
+				int m = this.z - O[jk].tq();  
+				O[jk].x();  
+				s FS = new s(O[jk].tq());  
+				for (int Uk = b; Uk < d; Uk+=(d>>m)) {  
+					if(Uk%(1<<O[jk].tq()) != jk%(1<<O[jk].tq())) {  
+						O[Uk] = FS;
+					}
+				}
+				O[jk].P(FS, jk);  
+				V(e, a);  
+			}else {
+				System.out.println("Error #1\nLocal z is higher than global z!");
+			}
+		}else {
+			O[jk].V(e, a);
+		}
+	}
+	@J7
+	public boolean Rw(String e) {
+		e = e.N();  
+		int jk = xQ(e)%d;
+		s i = O[jk];
+		if(O[jk] == null) {  
+			System.out.println(e + " bulunamad.");
+			return false;  
+		}
+		J6 zn = i.W(e);
+		if(zn == null) {  
+			System.out.println(e + " bulunamad.");
+			return false; 
+		}
+		i.p(zn);
+		System.out.println("Global Depth: " + z);
+		System.out.println();
+		return true;
+	}
+	@J7
+	public void S(String Du)  {
+		C lQ = null;
+		ze y = null;
+		try {
+			y = new ze(Du);
+			lQ = new C(y);
+			String Z;
+			while ((Z = lQ.r()) != null) {
+				Z = Z.F();
+				String Uc[] = Z.I(" ");
+				for(String e:Uc) {
+					e = e.F();
+					if(e.equals("")) continue;
+					V(e);
+				}
+			}
+		} catch (H M) {  
+			M.fG();
+		} catch (J M) {  
+			M.fG();
+		}
+	}
+	private void X() {  
+		int d = 1<<z;
+		this.z++;
+		this.O = j.O_(O, d*2);  
+		for (int Uk = 0; Uk < d; Uk++) {  
+			O[d+Uk] = O[Uk];
+		}
+		this.d = 1<<z;
+	}
+	public int tq() {
+		return z;
+	}
+	public void p() {
+		System.out.println("----------Extendible Hashing----------");
+		System.out.println("Global Depth: " + z);
+		for (int Uk = 0; Uk < d; Uk++) {
+			if(O[Uk] != null) {
+				System.out.println("");
+				O[Uk].p();
+			}
+		}
+	}
+}

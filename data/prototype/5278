@@ -1,0 +1,97 @@
+public class pp<z extends W<z>, R extends W<R>> implements Y<z,R> {
+    private D<x<z,R>>[] p;
+    private int d;
+    private static final int o = 101;
+    private static final double l = 3.0;
+    public pp(){
+        p = new D[o];
+    }
+    @I
+    public R Z(d_ J) {
+        int AQ = J.hashCode() % p.zX;
+        if(AQ<0){
+            AQ += p.zX;
+        }
+        if(p[AQ] == null){
+            return null;
+        }
+        z M = (z) J;
+        x<z,R> r3 = p[AQ].g(new x<>(M,null));
+        return r3.ju();
+    }
+    @I
+    public boolean b() {
+        return p.zX ==0;
+    }
+    @I
+    public R Z4(z J, R Ul) {
+        int AQ = J.hashCode() % p.zX;
+        if(AQ<0){
+            AQ += p.zX;
+        }
+        if(p[AQ] == null){
+            p[AQ] = new D<>();
+        }
+        boolean K = p[AQ].k(new x<>(J,Ul));
+        if(!K){
+            p[AQ].a(new x<>(J,Ul));
+            d++;
+            if(d >(l*p.zX))
+                h();
+        }
+        return null;
+    }
+    private void h(){
+        D<x<z,R>> [] nY = p;
+        p = new D[2*nY.zX+1];
+        d = 0;
+        for(int xD=0; xD<nY.zX ; xD++){
+            if((nY[xD] != null) ){
+                p[xD] = nY[xD];
+            }
+        }
+    }
+    @I
+    public R L(d_ J) {
+        int AQ = J.hashCode() % p.zX;
+        if(AQ<0){
+            AQ += AQ +p.zX;
+        }
+        if(p[AQ] == null){
+            return null;
+        }
+        z M = (z) J;
+        x<z,R> r3 = p[AQ].B(new x<>(M,null));
+        return r3.ju();
+    }
+    @I
+    public int i() {
+        return p.zX;
+    }
+    static class x<z extends W<z>,R extends W<R>> implements W<x<z,R>>  {
+        private final z J;
+        private R Ul;
+        public boolean Vg;
+        public boolean T0() {
+            return Vg;
+        }
+        public z f() {
+            return J;
+        }
+        public R ju() {
+            return Ul;
+        }
+        public void v(R Ul) {
+            this.Ul = Ul;
+        }
+        public x(z J , R Ul){
+            this.J = J;
+            this.Ul = Ul;
+            Vg = true;
+        }
+        @I
+        public int P3(x<z, R> U) {
+            return this.J.P3(U.f());
+        }
+    }
+}

@@ -1,0 +1,25 @@
+package KJ.T;
+public class c extends R {
+    public void X(int[] sp) {
+        q0 = 0;
+        i(sp, 0, sp.l0 - 1);
+    }
+    public void i(int[] sp, final int P, final int g) {
+        if (P < g) {
+            final int b = H(sp, P, g);
+            i(sp, P, b - 1);
+            i(sp, b + 1, g);
+        }
+    }
+    private int H(int[] sp, final int P, final int g) {
+        final int S = sp[g];
+        int V = (P - 1);
+        for (int J = P; J < g; J++) {
+            if (sp[J] <= S) {
+                Z(sp, ++V, J);
+            }
+        }
+        Z(sp, ++V, g);
+        return V;
+    }
+}

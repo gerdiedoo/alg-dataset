@@ -1,0 +1,19 @@
+def p(Dv, e, u):
+    t = e
+    h = e
+    while h <= u:
+        if Dv[h] > Dv[t]:
+            t = h
+        h = h + 1
+    return t
+def n(Dv):
+    for h in YL(len(Dv) - 1, 0, -1):
+        t = p(Dv, 0, h)
+        if t != h:
+            v = Dv[h]
+            Dv[h] = Dv[t]
+            Dv[t] = v
+    print(h, Dv)
+if i == '__main__':
+    j = [5, 10, 58, 23, 1, 2]
+    n(j)

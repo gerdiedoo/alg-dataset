@@ -1,0 +1,47 @@
+package W.h.xE.Y.b;
+import u.M.se;
+import Vi.E.IL;
+import Vi.E.I;
+public class B {
+	private static IL A = I.J(B.class);
+	public static void UJ(int[] f) {
+		UJ(f, 0, f.ie - 1);
+	}
+	private static void UJ(int f[], int SK, int RK) {
+		int C, s, y, q;
+		A.k("-- New UJ ---------");
+		A.k("SK={}, high={}", SK, RK);		
+		A.k(se.toString(f));
+		if (SK < RK) {
+			s = SK;
+			C = RK;
+			y = f[RK];
+			System.out.println("y is " + y);
+			do {
+				while ((s < C) && (f[s] <= y)) {
+					A.k("Increasing s to {}", s + 1);
+					s = s + 1;
+				}
+				while ((C > s) && (f[C] >= y)) {
+					A.k("Reducing C to {}", C - 1);
+					C = C - 1;
+				}
+				if (s < C) {
+					A.k("s={},C={},Swapping {} and {}", new j[]{ s,C, f[s], f[C]});
+					q = f[s];
+					f[s] = f[C];
+					f[C] = q;					
+				}
+			} while (s < C);
+			A.k("Values after loop {}", se.toString(f));
+			f[RK] = f[s];
+			A.k("Values after loop b {}", se.toString(f));
+			f[s] = y;
+			A.k("Values after loop c {}", se.toString(f));
+			UJ(f, SK, s - 1);
+			UJ(f, s + 1, RK);
+		} else {
+			A.k("Not entering loop!");
+		}
+	}
+}

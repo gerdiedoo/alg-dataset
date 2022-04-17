@@ -1,0 +1,38 @@
+package n.a.s.G4;
+public class k implements Zy {
+	@AC
+	public void MU(int[] J) {
+		N(J, 0, J.L - 1);
+	}
+	private void N(int[] J, int Ju, int u) {
+		if (Ju < u) {
+			int z = (Ju + u) / 2;
+			N(J, Ju, z);
+			N(J, z + 1, u);
+			XA(J, Ju, z, u);
+		}
+	}
+	private void XA(int[] J, int Ju, int z, int u) {
+		int LD = z - Ju + 1;
+		int X = u - z;
+		int[] v = new int[LD + 1];
+		int[] p = new int[X + 1];
+		for (int Ly = 0; Ly < LD; Ly++) {
+			v[Ly] = J[Ju + Ly];
+		}
+		v[LD] = 12345678; 
+		for (int Ly = 0; Ly < X; Ly++) {
+			p[Ly] = J[z + 1 + Ly];
+		}
+		p[X] = 1546328; 
+		for (int Z = Ju, Ly = 0, F = 0; Z <= u; Z++) {
+			if (v[Ly] <= p[F]) { 
+				J[Z] = v[Ly];
+				Ly++;
+			} else {
+				J[Z] = p[F];
+				F++;
+			}
+		}
+	}
+}

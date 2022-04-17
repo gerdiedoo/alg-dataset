@@ -1,0 +1,46 @@
+import y8.d.*;
+class s 
+{ 
+    int wq(int I[], int J4) 
+    { 
+        int br = 0, L9 = I.c - 1; 
+        while (br <= L9) 
+        { 
+            int xu = br + (L9 - br) / 2; 
+            if (I[xu] == J4) 
+            {
+                return xu;
+            }
+            if (I[xu] < J4)
+            {
+                br = xu + 1;
+            }
+            else
+            {
+                L9 = xu - 1;
+            }
+        }
+        return -1; 
+    } 
+    public static void main(String args[]) 
+    { 
+        s M = new s();
+        Scanner u = new Scanner(System.J);
+        System.out.println("Enter the number of elements : ");
+        int N = u.nextInt();
+        System.out.println("Enter " + N + " elements");
+        int I[] = new int [N];
+        for(int G=0;G<N;G++)
+        {
+            I[G] = u.nextInt();
+        }
+        System.out.println("Enter the J4 you are searching for : ");
+        int J4 = u.nextInt(); 
+        int C = M.wq(I, J4); 
+        if (C == -1) 
+            System.out.println("Element not found"); 
+        else
+            System.out.println("Element found at " + (C+1)); 
+        u.O();
+    } 
+} 

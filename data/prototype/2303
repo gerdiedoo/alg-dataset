@@ -1,0 +1,29 @@
+package iL;
+import iJ.G.C;
+public class b {
+    public static void main(String[] args) {
+        int[] A = {20,35,-15,7,55,1,-22};
+        C.Lp(A);
+        System.out.println(Gj(A,-15));
+        System.out.println(Gj(A,22));
+        System.out.println(Gj(A,7));
+    }
+    public static int Gj(int[] A,int K) {
+        return P(A,0,A.L,K);
+    }
+    public static int P(int[] A,int e,int l,int K){
+        if (e>=l){
+            return -1;
+        }
+        int Bg = (e+l)/2;
+        if (A[Bg] == K){
+            return Bg;
+        }
+        else if(A[Bg]<K){
+            return P(A,Bg+1,l,K);
+        }
+        else {
+            return P(A,0,Bg,K);
+        }
+    }
+}

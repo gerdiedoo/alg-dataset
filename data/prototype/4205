@@ -1,0 +1,42 @@
+import copy
+import sort_tools
+def gj(G, A, K):
+    Z = G[A]
+    G[A] = G[K]
+    G[K] = Z
+def r(G, QJ, VF):
+    U = (VF - QJ) // 2 + QJ
+    if G[QJ] > G[U]:
+        gj(G, QJ, U)
+    if G[QJ] > G[VF]:
+        gj(G, QJ, VF)
+    if G[U] > G[VF]:
+        gj(G, U, VF)
+    gj(G, U, VF - 1)
+    return VF - 1
+def E(G, QJ, VF):
+    I = r(G, QJ, VF)
+    while QJ < I:
+        if G[QJ] > G[I]:
+            Z = G[QJ]
+            G[QJ] = G[I - 1]
+            G[I - 1] = G[I]
+            G[I] = Z
+            I -= 1
+        else:
+            QJ += 1
+    return I
+def l7(G, QJ, VF):
+    if QJ < VF:
+        U = E(G, QJ, VF)
+        l7(G, QJ, U - 1)
+        l7(G, U + 1, VF)
+@T.timeit('quick')
+def V(G):
+    l7(G, 0, len(G) - 1)
+def c():
+    G = T.build_data_set(5)
+    z = S.deepcopy(G)
+    V(z)
+if s == '__main__':
+    c()

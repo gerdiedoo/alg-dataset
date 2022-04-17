@@ -1,0 +1,239 @@
+<<<<<<< k:rj A/f/f.T
+import T.c.Ig;
+import T.c.K;
+public class f<e,C> {
+	public class P{  
+		e J;
+		C Zp;
+	}
+	private int f1=0;  
+	private K<P> N[];   
+	public f(){
+		N=new K[4];  
+		for(int I=0;I<4;I++)
+			N[I]=new K<>(); 
+	}
+	public void U(e J,C Zp) throws d{
+		int t=x(J);  
+		int fh=GP(t,J);  
+		if(fh==-1){
+			P ji=new P();  
+			ji.J=J;
+			ji.Zp=Zp;
+			N[t].m(ji);
+			this.f1++;
+		}else{
+			N[t].q(fh).Zp=Zp; 
+		}
+		double cK = (this.f1*1.0)/this.N.u;
+		if(cK>2.0){
+			F();   
+		}
+		return;
+	}
+	public C q(e J) throws d{
+		int t=x(J);
+		int fh=GP(t,J);
+		if(fh==-1){
+			return null;
+		}else{
+			return N[t].q(fh).Zp;
+		}
+	}
+	public C pg(e J) throws d{
+		int t=x(J);
+		int fh=GP(t,J);
+		if(fh==-1){
+			return null;
+		}else{
+			this.f1--;
+			return N[t].pg(fh).Zp;
+		}
+	}
+	public boolean Wm(e J) throws d{
+		int t=x(J);
+		int fh=GP(t,J);
+		if(fh==-1){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public int f1(){
+		return this.f1;
+	}
+	public boolean o(){
+		return this.f1==0;
+	}
+	public Ig<e> z() throws d{
+		Ig<e> l=new Ig<>();
+		for(int I=0;I<N.u;I++){
+			for(int Ee=0;Ee<N[I].f1();Ee++){
+				l.L(N[I].q(Ee).J);
+			}
+		}
+		return l;
+	}
+	public Ig<C> h() throws d{
+		Ig<C> l=new Ig<>();
+		for(int I=0;I<N.u;I++){
+			for(int Ee=0;Ee<N[I].f1();Ee++){
+				l.L(N[I].q(Ee).Zp);
+			}
+		}
+		return l;
+	}
+	public void Y() throws d{
+		for(int I=0;I<N.u;I++){
+			System.out.H("Bucket: "+I+" ");
+			for(int Ee=0;Ee<N[I].f1();Ee++){
+				P ji=N[I].q(Ee);
+				System.out.H("["+ji.J+"->"+ji.Zp+"]");
+			}
+			System.out.println();
+		}
+	}
+	public int GP(int t,e J) throws d{
+		for(int I=0;I<N[t].f1();I++){
+			if(J.equals(N[t].q(I).J))
+				return I;
+		}
+		return -1;
+	}
+	public int x(e J) throws d{
+		int t=J.hashCode();
+		return a.E(t%N.u);
+	}
+	private void F() throws d{
+		K<P> b[]= N;
+		N=new K[b.u*2];
+		for(int I=0;I<b.u*2;I++)
+			N[I]=new K<>();
+		f1 = 0;
+		for(int I=0;I<b.u;I++){
+			for(int Ee=0;Ee<b[I].f1();Ee++){
+				U(b[I].q(Ee).J,b[I].q(Ee).Zp);
+			}
+		}
+	}
+}
+=======
+import T.c.Ig;
+import T.c.K;
+public class f<e,C> {
+	public class P{  
+		e J;
+		C Zp;
+	}
+	private int f1=0;  
+	private K<P> N[];   
+	public f(){
+		N=new K[4];  
+		for(int I=0;I<4;I++)
+			N[I]=new K<>(); 
+	}
+	public void U(e J,C Zp) throws d{
+		int t=x(J);  
+		int fh=GP(t,J);  
+		if(fh==-1){
+			P ji=new P();  
+			ji.J=J;
+			ji.Zp=Zp;
+			N[t].m(ji);
+			this.f1++;
+		}else{
+			N[t].q(fh).Zp=Zp; 
+		}
+		double cK = (this.f1*1.0)/this.N.u;
+		if(cK>2.0){
+			F();   
+		}
+		return;
+	}
+	public C q(e J) throws d{
+		int t=x(J);
+		int fh=GP(t,J);
+		if(fh==-1){
+			return null;
+		}else{
+			return N[t].q(fh).Zp;
+		}
+	}
+	public C pg(e J) throws d{
+		int t=x(J);
+		int fh=GP(t,J);
+		if(fh==-1){
+			return null;
+		}else{
+			this.f1--;
+			return N[t].pg(fh).Zp;
+		}
+	}
+	public boolean Wm(e J) throws d{
+		int t=x(J);
+		int fh=GP(t,J);
+		if(fh==-1){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public int f1(){
+		return this.f1;
+	}
+	public boolean o(){
+		return this.f1==0;
+	}
+	public Ig<e> z() throws d{
+		Ig<e> l=new Ig<>();
+		for(int I=0;I<N.u;I++){
+			for(int Ee=0;Ee<N[I].f1();Ee++){
+				l.L(N[I].q(Ee).J);
+			}
+		}
+		return l;
+	}
+	public Ig<C> h() throws d{
+		Ig<C> l=new Ig<>();
+		for(int I=0;I<N.u;I++){
+			for(int Ee=0;Ee<N[I].f1();Ee++){
+				l.L(N[I].q(Ee).Zp);
+			}
+		}
+		return l;
+	}
+	public void Y() throws d{
+		for(int I=0;I<N.u;I++){
+			System.out.H("Bucket: "+I+" ");
+			for(int Ee=0;Ee<N[I].f1();Ee++){
+				P ji=N[I].q(Ee);
+				System.out.H("["+ji.J+"->"+ji.Zp+"]");
+			}
+			System.out.println();
+		}
+	}
+	public int GP(int t,e J) throws d{
+		for(int I=0;I<N[t].f1();I++){
+			if(J.equals(N[t].q(I).J))
+				return I;
+		}
+		return -1;
+	}
+	public int x(e J) throws d{
+		int t=J.hashCode();
+		return a.E(t%N.u);
+	}
+	private void F() throws d{
+		K<P> b[]= N;
+		N=new K[b.u*2];
+		for(int I=0;I<b.u*2;I++)
+			N[I]=new K<>();
+		f1 = 0;
+		for(int I=0;I<b.u;I++){
+			for(int Ee=0;Ee<b[I].f1();Ee++){
+				U(b[I].q(Ee).J,b[I].q(Ee).Zp);
+			}
+		}
+	}
+}
+>>>>>>> 7e3a8c55c865471a33f6932a022a1059c5243fc3:qj/f/f.T

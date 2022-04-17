@@ -1,0 +1,85 @@
+public class Z implements c {
+  private final X e4;
+  private final D[] l;
+  public Z(X e4) {
+    this.e4 = e4;
+    this.l = new D[e4.Wn()];
+  }
+  private Tb Io(q qy){
+    int FN = e4.Kp(qy);
+    int ip = -1;
+    for(int z = 0; z < e4.Wn(); z++){
+      if(l[FN] == null) return new Tb(ip == -1?FN:ip, Tb.R);
+      if(l[FN].w() && ip == -1) ip = FN;
+      if(!l[FN].w() && l[FN].n().equals(qy)) return new Tb(FN, Tb.Y);
+      FN = e4.s();
+    }
+    if(ip != -1) return new Tb(ip, Tb.R);
+    return new Tb(-1, Tb.Q);
+  }
+  @j
+  public boolean t8(q qy, q V1) {
+    if(qy == null || V1 == null) return false;
+    Tb O = Io(qy);
+    if(O.a == Tb.Q) return false;
+    l[O.L] = new D(false, qy, V1);
+    return true;
+  }
+  @j
+  public q B(q qy) {
+    if(qy == null) return null;
+    Tb O = Io(qy);
+    if(O.a == Tb.Y){
+      D I = l[O.L];
+      return I.H();
+    }
+    return null;
+  }
+  @j
+  public boolean e(q qy) {
+    if(qy == null) return false;
+    Tb O = Io(qy);
+    if(O.a == Tb.R || O.a == Tb.Q) return false;
+    l[O.L] = new D(true, null, null);
+    return true;
+  }
+  @j
+  public void i() {
+    for (int h = 0; h < l.d; h++) {
+      if (l[h] != null && !l[h].w()) {
+        D I = l[h];
+        System.out.println(String.p("%d %s %s", h, I.n(), I.H()));
+      }
+    }
+  }
+  private static class Tb {
+    static final int R = -1;
+    static final int Y = 1;
+    static final int Q = 0;
+    final int L;
+    final int a;
+    private Tb(int L, int a) {
+      this.L = L;
+      this.a = a;
+    }
+  }
+  private static class D {
+    private final boolean w;
+    private final q qy;
+    private final q V1;
+    private D(boolean w, q qy, q V1) {
+      this.w = w;
+      this.qy = qy;
+      this.V1 = V1;
+    }
+    private boolean w() {
+      return w;
+    }
+    private q H() {
+      return V1;
+    }
+    private q n() {
+      return qy;
+    }
+  }
+}

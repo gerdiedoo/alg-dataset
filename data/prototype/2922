@@ -1,0 +1,24 @@
+package P.M.S.k;
+public class t<Nd extends m<Nd>> {
+    private t() { }
+    public static <Nd extends m<Nd>> Nd[] Y(Nd[] e) {
+        boolean L = true;
+        int T = e.T;
+        while (L) {
+            L = false;
+            for (int SA = 1; SA < T; SA++) {
+                if (e[SA].W(e[SA - 1]) < 0) {
+                    F(SA, SA - 1, e);
+                    L = true;
+                }
+            }
+            T--;
+        }
+        return e;
+    }
+    private static <Nd extends m<Nd>> void F(int A, int x, Nd[] e) {
+        Nd Tx = e[A];
+        e[A] = e[x];
+        e[x] = Tx;
+    }
+}

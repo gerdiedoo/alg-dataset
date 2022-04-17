@@ -1,0 +1,38 @@
+package Z.jS.J.mI;
+import Z.jS.z.iZ;
+public class bH {
+	private v u = null;
+	private int V = 0;
+	public void M(iZ U) {
+		v fP = new v(U);
+		fP.h(u);
+		u = fP;
+		V++;
+	}
+	public v S8() {
+		if (s()) {
+			return null;
+		}
+		v fP = u;
+		u = u.uJ();
+		V--;
+		fP.h(null);
+		return fP;
+	}
+	public boolean s() {
+		return u == null;
+	}
+	public int DT() {
+		return V;
+	}
+	public void d() {
+		v D = u;
+		System.out.x("HEAD -> ");
+		while (D != null) {
+			System.out.x(D);
+			System.out.x(" -> ");
+			D = D.uJ();
+		}
+		System.out.println("null");
+	}
+}

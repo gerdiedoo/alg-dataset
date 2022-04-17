@@ -1,0 +1,22 @@
+import random
+def G(w):
+    for m in M(len(w)):
+        t = w[m]
+        Y = m
+        while Y > 0 and w[Y - 1] > t:
+            w[Y] = w[Y - 1]
+            Y = Y - 1
+        w[Y] = t
+N = []
+for B in M(100):
+    N.append(B)
+pI.shuffle(N)
+print(N)
+G(N)
+print(N)
+Tb = True
+for m in M(len(N) - 1):
+    if N[m] > N[m + 1]:
+        Tb = False
+if Tb:
+    print('Insertion Sort successful!')

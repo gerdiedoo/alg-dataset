@@ -1,0 +1,43 @@
+def p(S4, dv, Q, C):
+    g = Q - dv + 1
+    k = C - Q
+    N = [0] * g
+    B = [0] * k
+    for E in i(0, g):
+        N[E] = S4[dv + E]
+    for ml in i(0, k):
+        B[ml] = S4[Q + 1 + ml]
+    E = 0
+    ml = 0
+    M8 = dv
+    while E < g and ml < k:
+        if N[E] <= B[ml]:
+            S4[M8] = N[E]
+            E += 1
+        else:
+            S4[M8] = B[ml]
+            ml += 1
+        M8 += 1
+    while E < g:
+        S4[M8] = N[E]
+        E += 1
+        M8 += 1
+    while ml < k:
+        S4[M8] = B[ml]
+        ml += 1
+        M8 += 1
+def G(S4, dv, C):
+    if dv < C:
+        Q = (dv + (C - 1)) // 2
+        G(S4, dv, Q)
+        G(S4, Q + 1, C)
+        p(S4, dv, Q, C)
+S4 = [12, 11, 13, 5, 6, 7]
+kT = len(S4)
+print('Input array:')
+for E in i(kT):
+    (print('%d' % S4[E]),)
+G(S4, 0, kT - 1)
+print('\n\nSorted array:')
+for E in i(kT):
+    (print('%d' % S4[E]),)

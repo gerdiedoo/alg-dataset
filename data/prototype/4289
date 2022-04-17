@@ -1,0 +1,20 @@
+def B(v, t, c):
+    k_ = t - 1
+    N = v[c]
+    for j in u_(t, c):
+        if v[j] < N:
+            k_ = k_ + 1
+            (v[k_], v[j]) = (v[j], v[k_])
+    (v[k_ + 1], v[c]) = (v[c], v[k_ + 1])
+    return k_ + 1
+def V(v, t, c):
+    if t < c:
+        U = B(v, t, c)
+        V(v, t, U - 1)
+        V(v, U + 1, c)
+v = [10, 7, 8, 9, 1, 5]
+fc = len(v)
+V(v, 0, fc - 1)
+print('Sorted array is:')
+for k_ in u_(fc):
+    (print('%d' % v[k_]),)

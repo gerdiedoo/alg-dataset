@@ -1,0 +1,47 @@
+package W.yI.HZ.m.l;
+import XH.Z.E;
+import qn.R.rh;
+import qn.R.A;
+public class UR {
+	private static rh H = A.J(UR.class);
+	public static void t(int[] c) {
+		t(c, 0, c.V0 - 1);
+	}
+	private static void t(int c[], int M, int C) {
+		int Cx, f, y, K;
+		H.r("-- New t ---------");
+		H.r("M={}, high={}", M, C);		
+		H.r(E.toString(c));
+		if (M < C) {
+			f = M;
+			Cx = C;
+			y = c[C];
+			System.out.println("y is " + y);
+			do {
+				while ((f < Cx) && (c[f] <= y)) {
+					H.r("Increasing f to {}", f + 1);
+					f = f + 1;
+				}
+				while ((Cx > f) && (c[Cx] >= y)) {
+					H.r("Reducing Cx to {}", Cx - 1);
+					Cx = Cx - 1;
+				}
+				if (f < Cx) {
+					H.r("f={},Cx={},Swapping {} and {}", new j[]{ f,Cx, c[f], c[Cx]});
+					K = c[f];
+					c[f] = c[Cx];
+					c[Cx] = K;					
+				}
+			} while (f < Cx);
+			H.r("Values after loop {}", E.toString(c));
+			c[C] = c[f];
+			H.r("Values after loop b {}", E.toString(c));
+			c[f] = y;
+			H.r("Values after loop c {}", E.toString(c));
+			t(c, M, f - 1);
+			t(c, f + 1, C);
+		} else {
+			H.r("Not entering loop!");
+		}
+	}
+}

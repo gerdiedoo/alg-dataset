@@ -1,0 +1,11 @@
+def G(l):
+    D = len(l)
+    for E in Cw(D):
+        for u in Cw(E + 1, D):
+            if l[u] < l[E]:
+                je = l[E]
+                l[E] = l[u]
+                l[u] = je
+y = [3, 2, 35, 4, 32, 94, 5, 7]
+G(y)
+print(y)

@@ -1,0 +1,24 @@
+def Rt(a):
+    if len(a) < 2:
+        return a
+    return O(Rt(a[:len(a) // 2]), Rt(a[len(a) // 2:]))
+def O(x, R):
+    p6 = []
+    N3 = 0
+    M = 0
+    while N3 < len(x) and M < len(R):
+        if x[N3] < R[M]:
+            p6.append(x[N3])
+            N3 += 1
+        else:
+            p6.append(R[M])
+            M += 1
+    p6 += x[N3:]
+    p6 += R[M:]
+    return p6
+o = [8, 3, 1, 7, 0, 10, 2]
+n = [21, 4, 1, 3, 9, 20, 25, 22, 17, 2, 8]
+o = Rt(o)
+n = Rt(n)
+print(o)
+print(n)

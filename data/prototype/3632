@@ -1,0 +1,21 @@
+def Q(Us):
+    if len(Us) <= 1:
+        return Us
+    else:
+        V = len(Us) // 2
+        D = Us[V:]
+        XL = Us[:V]
+        Q(D)
+        Q(XL)
+        vl = E = BJ = 0
+        while vl < len(D) and E < len(XL):
+            if D[vl] < XL[E]:
+                Us[BJ] = D[vl]
+                vl += 1
+            else:
+                Us[BJ] = XL[E]
+                E += 1
+            BJ += 1
+        return Us
+Us = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(Us)

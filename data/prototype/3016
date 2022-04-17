@@ -1,0 +1,59 @@
+import G.l.c;
+import G.l.t;
+import G.l.y;
+class I
+{
+    void Z(int n[])
+    {
+        int M;
+        boolean g;
+        for (int yj = 0; yj < n.w - 1; ++yj)
+        {
+            g = false;
+            for (int pb = 0; pb < n.w - yj - 1; ++pb)
+            {
+                if (n[pb] > n[pb + 1])
+                {
+                    M = n[pb];
+                    n[pb] = n[pb + 1];
+                    n[pb + 1] = M;
+                    g = true;
+                }
+            }
+            if (!g)
+            {
+                break;
+            }
+        }
+    }
+    void B(int n[])
+    {
+        for(int yj : n)
+        {
+            System.out.uD(yj + "  ");
+        }
+    }
+}
+class H
+{
+    public static void main(String[] args)throws y
+    {
+        I r = new I();
+        t p = new t(new c(System.O));
+        System.out.println("\b\t---BUBBLE SORT---");
+        System.out.uD("Enter the size of array = ");
+        int b = o.Ya(p.Q());
+        int[] n = new int[b];
+        System.out.println("Enter elements -");
+        for(int yj = 0; yj < b ; ++yj)
+        {
+            System.out.uD((yj + 1) +" : ");
+            n[yj] = o.Ya(p.Q());
+        }
+        System.out.println("Elements O the array : ");
+        r.B(n);
+        r.Z(n);
+        System.out.println("\nElements O ascending order : ");
+        r.B(n);
+    }
+}

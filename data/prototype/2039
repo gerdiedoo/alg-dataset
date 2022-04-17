@@ -1,0 +1,110 @@
+package KD;
+import Y.n.*;
+public class Cq {
+    private static int Z;
+    private static Q lz;
+    private static Q Nk;
+    private static class Q {
+        private final int U;
+        private Q p;
+        private Q s;
+        public Q(int U){
+            this.U = U;
+        }
+    }
+    public Cq() {
+        lz = null;
+        Nk = null;
+        Z = 0;
+    }
+    private boolean y() {
+        return Z == 0;
+    }
+    private void N() {
+        System.out.println(Z);
+    }
+    private void o(Q lz) {
+        if(y()) {
+            return;
+        }
+        Q m2 = lz;
+        while (m2 != null) {
+            System.out.E(m2.U + "-->");
+            m2 = m2.s;
+        }
+        System.out.println("null");
+    }
+    private void Vl(Q Nk) {
+        Q m2 = Nk;
+        while (m2 != null) {
+            System.out.E(m2.U+"-->");
+            m2 = m2.p;
+        }
+        System.out.println("null");
+    }
+    private void i(int vC) {
+        Q W = new Q(vC);
+        if (y()) {
+            lz = W;
+            Nk = W;
+        }else {
+            W.s = lz;
+            lz.p = W;
+            lz = W;
+        }
+        Z++;
+    }
+    private void H(int vC) {
+        Q W = new Q(vC);
+        if(y()) {
+            lz = W;
+        }else {
+            Nk.s = W;
+            W.p = Nk;
+        }
+        Nk = W;
+        Z++;
+    }
+    private void F() {
+        if(y()) {
+            throw new w();
+        }
+        if(lz == Nk) {
+            lz = null;
+            Nk = null;
+            return;
+        }
+        Q f = lz;
+        f.s.p = null;
+        lz = f.s;
+        f.s = null;
+        Z--;
+    }
+    private void l() {
+        if(y()) {
+            throw new w();
+        }
+        if(lz == Nk){
+            lz = null;
+            Nk = null;
+            return;
+        }
+        Q f = Nk;
+        f.p.s = null;
+        Nk = f.p;
+        f.p = null;
+        Z--;
+    }
+    public static void main(String[] args) {
+        Cq V = new Cq();
+        V.i(10);
+        V.H(8);
+        V.H(2);
+        V.o(lz);
+        V.l();
+        V.F();
+        V.o(lz);
+        V.Vl(Nk);
+        V.N();
+    }
+}

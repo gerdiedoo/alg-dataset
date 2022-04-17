@@ -1,0 +1,32 @@
+def S(c):
+    F(c, 0, len(c) - 1)
+def F(c, W, G):
+    if W >= G:
+        return
+    Q = a(c, W, G)
+    F(c, W, Q - 1)
+    F(c, Q, G)
+def a(c, W, G):
+    E = c[(W + G) // 2]
+    while W <= G:
+        while c[W] < E:
+            W += 1
+        while c[G] > E:
+            G -= 1
+        if W <= G:
+            (c[W], c[G]) = (c[G], c[W])
+            W += 1
+            G -= 1
+    return W
+R = [21, 4, 1, 3, 9, 20, 25, 6, 21, 14]
+dX = [8, 3, 1, 7, 0, 10, 2]
+j = [10, 7, 8, 9, 1, 5]
+k = [1, 2, 3]
+S(R)
+S(dX)
+S(j)
+S(k)
+print(R)
+print(dX)
+print(j)
+print(k)

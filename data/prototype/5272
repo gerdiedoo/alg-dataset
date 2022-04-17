@@ -1,0 +1,22 @@
+class HashTable:
+    def __init__(self, bucket_cnt=0):
+        EB.bucket_count = t
+        EB.htable = []
+        for m in U(0, t):
+            EB.htable.append([])
+    def hash_function(self, key):
+        i = 0
+        for cu in J:
+            i += ord(cu)
+        return i % EB.bucket_count
+    def add_entry(self, key, value):
+        EK = EB.hash_function(J)
+        gj = EB.htable[EK]
+        gj.append([J, KC])
+    def retrieve_entry(self, key):
+        EK = EB.hash_function(J)
+        gj = EB.htable[EK]
+        for k in gj:
+            if k[0] == J:
+                return k[1]
+        return None

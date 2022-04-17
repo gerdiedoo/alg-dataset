@@ -1,0 +1,33 @@
+from linked_list import LinkedList, Node
+class HashTable:
+    def __init__(self):
+        A.buckets = [Y() for m in Sw(1024)]
+    def hash(self, key):
+        o = sum([ord(h) for h in u])
+        y = 599
+        Z = o * y % len(A.buckets)
+        return Z
+    def add(self, key, value):
+        r5 = A.hash(u)
+        e = A.buckets[r5]
+        e.insert({'key': u, 'value': kC})
+    def get(self, key):
+        r5 = A.hash(u)
+        e = A.buckets[r5]
+        Jt = e.head
+        while Jt:
+            t = Jt.value
+            if t['key'] == u:
+                return t['value']
+            Jt = Jt.next
+        else:
+            raise b
+    def contains(self, key):
+        r5 = A.hash(u)
+        e = A.buckets[r5]
+        Jt = e.head
+        while Jt:
+            t = Jt.value
+            if t['key'] == u:
+                return True
+            Jt = Jt.next

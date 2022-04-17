@@ -1,0 +1,24 @@
+import R.S.L;
+public class C {
+    public static void main(String[] args) {
+        int[] x = {5, 4, 3, 2, 1};
+        zt(x);
+        System.out.println(L.toString(x));
+    }
+    static void zt(int[] x){
+        boolean h = false;
+        for(int c = 0; c < x.t; c++){
+            for(int PU = 1; PU < x.t - c; PU++){
+                if(x[PU] < x[PU - 1]){
+                    int s = x[PU];
+                    x[PU] = x[PU - 1];
+                    x[PU - 1] = s;
+                    h = true;
+                }
+            }
+            if(!h){
+                break;
+            }
+        }
+    }
+}

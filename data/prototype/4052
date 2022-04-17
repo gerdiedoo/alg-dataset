@@ -1,0 +1,85 @@
+import c.E.dK.B;
+import c.Ad.V;
+public class h2<fb extends J<fb> & a<fb>>
+{
+    public static <fb extends J<fb> & a<fb>> void A(V<fb> u)
+    {
+        l(u, 0, u.z()-1);
+    }
+    private static <fb extends J<fb> & a<fb>> void l(V<fb> Qk, int x, int Y)
+    {
+        if (x < Y)
+        {
+            int mE = (x + Y) / 2;
+            l(Qk, x, mE);
+            l(Qk, mE+1, Y);
+            K(Qk, x, mE, Y);
+        }
+    }
+    private static <fb extends J<fb> & a<fb>> void K(V<fb> Qk, int x, int mE, int Y)
+    {
+        V<fb> G = new V<fb>(Qk.CV(x, mE+1));
+        V<fb> o = new V<fb>(Qk.CV(mE+1, Y+1));
+        G.e(G.f(0).p());
+        o.e(o.f(0).p());
+        int Q = 0;
+        int Tt = 0;
+        for (int U = x; U <= Y; U++)
+        {
+            if (G.f(Q).v(o.f(Tt)) <= 0)
+            {
+                Qk.ct(U, G.f(Q));
+                Q++;
+            }
+            else
+            {
+                Qk.ct(U, o.f(Tt));
+                Tt++;
+            }
+        }
+    }
+    public static <fb extends J<fb> & a<fb>> void A(fb[] l_)
+    {
+        W(l_, 0, l_.X-1);
+    }
+    private static <fb extends J<fb> & a<fb>> void W(fb[] Qk, int x, int Y)
+    {
+        if (x < Y)
+        {
+            int mE = (x + Y) / 2;
+            W(Qk, x, mE);
+            W(Qk, mE+1, Y);
+            qN(Qk, x, mE, Y);
+        }
+    }
+    private static <fb extends J<fb> & a<fb>> void qN(fb[] Qk, int x, int mE, int Y)
+    {
+        fb[] G = (fb[]) B.s(Qk[0].n(),mE-x +2);
+        fb[] o = (fb[]) B.s(Qk[0].n(),Y - mE +1);
+        L(Qk, G, x);
+        L(Qk, o, mE+1);
+        int Q = 0;
+        int Tt = 0;
+        for (int U = x; U <= Y; U++)
+        {
+            if (G[Q].v(o[Tt]) <= 0)
+            {
+                Qk[U] = G[Q];
+                Q++;
+            }
+            else
+            {
+                Qk[U] = o[Tt];
+                Tt++;
+            }
+        }
+    }
+    private static <fb extends J<fb> & a<fb>> void L(fb[] KK, fb[] F, int x)
+    {
+        for (int Q = x; Q < x+F.X-1; Q++)
+        {
+            F[Q - x] = KK[Q];
+        }
+        F[F.X-1] = KK[0].p();
+    }
+}

@@ -1,0 +1,43 @@
+from random import randint
+def w(N, xw):
+    sm = 0
+    u = len(N) - 1
+    while sm <= u:
+        K = (u + sm) // 2
+        if N[K] == xw:
+            return K
+        elif N[K] > xw:
+            u = K - 1
+        else:
+            sm = K + 1
+    return None
+def p(N, xw, sm=0, u=None):
+    u = len(N) - 1 if u is None else u
+    if u >= sm:
+        K = (u + sm) // 2
+        if N[K] == xw:
+            return K
+        elif N[K] > xw:
+            return p(N, xw, sm, K - 1)
+        else:
+            return p(N, xw, K + 1, u)
+    else:
+        return None
+def o():
+    tM = 100
+    F = 100
+    N = [1, 9, 11, 13, 5, 7, 8, 5, 17, 1156, 114]
+    N.sort()
+    xw = 13
+    Q = p(N, xw)
+    if Q is None:
+        print('Recursive Binary Search : Element not present in array')
+    else:
+        print('Recursive Binary Search : Element is present at index', Q)
+    Q = w(N, xw)
+    if Q is None:
+        print('Iterative Binary Search : Element not present in array')
+    else:
+        print('Iterative Binary Search : Element is present at index', Q)
+if Ib == '__main__':
+    o()

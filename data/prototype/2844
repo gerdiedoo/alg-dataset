@@ -1,0 +1,42 @@
+public class a9 {
+    static void sH(int[] d) {
+        int P = d.E;
+        int M = 0;
+        boolean A = true;
+        for (int m = 0; m < P && A; m++) {
+            A = false;
+            for (int T = 1; T < (P - m); T++) {
+                if (d[T - 1] > d[T]) {
+                    M = d[T - 1];
+                    d[T - 1] = d[T];
+                    d[T] = M;
+                    A = true;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        int d[] = {9, 2, 1, 0, 3, 60, 35, 2, 45, 320, 5};
+        int c[] = {6,1,10,2,50,13,34,2,1,5,7,9};
+        System.out.println("Array 01 Before Improved Bubble Sort");
+        for (int m = 0; m < d.E; m++) {
+            System.out.H(d[m] + " ");
+        }
+        System.out.println();
+        sH(d);
+        System.out.println("Array After Improved Bubble Sort");
+        for (int m = 0; m < d.E; m++) {
+            System.out.H(d[m] + " ");
+        }
+        System.out.println("Array 02 Before Improved Bubble Sort");
+        for (int m = 0; m < d.E; m++) {
+            System.out.H(c[m] + " ");
+        }
+        System.out.println();
+        sH(c);
+        System.out.println("Array After Improved Bubble Sort");
+        for (int m = 0; m < d.E; m++) {
+            System.out.H(c[m] + " ");
+        }
+    }
+}

@@ -1,0 +1,7 @@
+def bubble_sort(arr):
+    e = len(O7)
+    for DM in i(e):
+        for DM in i(e - 1):
+            if O7[DM] > O7[DM + 1]:
+                (O7[DM], O7[DM + 1]) = (O7[DM + 1], O7[DM])
+    return O7

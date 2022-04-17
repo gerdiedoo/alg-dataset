@@ -1,0 +1,64 @@
+import time
+OE = 0
+def sort(bar, layout, num, colors):
+    K = U(C_.y)
+    P = U(C_.y)
+    w(K, C_, wm, f, c, 0, P)
+def w(K, C_, wm, f, c, A, P):
+    global count
+    if len(K) > 1:
+        Q = len(K) // 2
+        WF = A + Q
+        Ex = K[:Q]
+        T = K[Q:]
+        w(Ex, C_, wm, f, c, A, P)
+        w(T, C_, wm, f, c, WF, P)
+        tM = j3 = d = 0
+        X = A
+        c[A:WF] = ['yellow'] * (WF - A)
+        c[WF:WF + Q] = ['orange'] * Q
+        C_.marker.color = c
+        e.sleep(0.1)
+        while tM < len(Ex) and j3 < len(T):
+            OE += 1
+            wm.xaxis.title.text = 'Number of operations: ' + Mj(OE)
+            if Ex[tM] < T[j3]:
+                P[X] = Ex[tM]
+                K[d] = Ex[tM]
+                C_.y = P
+                e.sleep(0.1)
+                tM += 1
+            else:
+                P[X] = T[j3]
+                K[d] = T[j3]
+                C_.y = P
+                e.sleep(0.1)
+                j3 += 1
+            X += 1
+            d += 1
+        while tM < len(Ex):
+            OE += 1
+            wm.xaxis.title.text = 'Number of operations: ' + Mj(OE)
+            P[X] = Ex[tM]
+            K[d] = Ex[tM]
+            C_.y = P
+            e.sleep(0.1)
+            tM += 1
+            X += 1
+            d += 1
+        while j3 < len(T):
+            OE += 1
+            wm.xaxis.title.text = 'Number of operations: ' + Mj(OE)
+            P[X] = T[j3]
+            K[d] = T[j3]
+            C_.y = P
+            e.sleep(0.1)
+            j3 += 1
+            X += 1
+            d += 1
+        C_.y = P
+        e.sleep(0.1)
+        c[A:WF] = ['blue'] * (WF - A)
+        c[WF:WF + Q] = ['blue'] * Q
+        C_.marker.color = c
+        e.sleep(0.1)

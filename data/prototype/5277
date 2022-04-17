@@ -1,0 +1,97 @@
+public class c<M extends R<M>, V extends R<V>> implements Z9<M,V> {
+    private D<W<M,V>>[] A;
+    private int d;
+    private static final int l_ = 101;
+    private static final double WR = 3.0;
+    public c(){
+        A = new D[l_];
+    }
+    @Q
+    public V k(yg Fn) {
+        int O = Fn.hashCode() % A.jT;
+        if(O<0){
+            O += A.jT;
+        }
+        if(A[O] == null){
+            return null;
+        }
+        M i1 = (M) Fn;
+        W<M,V> w = A[O].C(new W<>(i1,null));
+        return w.H();
+    }
+    @Q
+    public boolean J() {
+        return A.jT ==0;
+    }
+    @Q
+    public V U(M Fn, V l4) {
+        int O = Fn.hashCode() % A.jT;
+        if(O<0){
+            O += A.jT;
+        }
+        if(A[O] == null){
+            A[O] = new D<>();
+        }
+        boolean X = A[O].B(new W<>(Fn,l4));
+        if(!X){
+            A[O].E(new W<>(Fn,l4));
+            d++;
+            if(d >(WR*A.jT))
+                T();
+        }
+        return null;
+    }
+    private void T(){
+        D<W<M,V>> [] FX = A;
+        A = new D[2*FX.jT+1];
+        d = 0;
+        for(int S=0; S<FX.jT ; S++){
+            if((FX[S] != null) ){
+                A[S] = FX[S];
+            }
+        }
+    }
+    @Q
+    public V j(yg Fn) {
+        int O = Fn.hashCode() % A.jT;
+        if(O<0){
+            O += O +A.jT;
+        }
+        if(A[O] == null){
+            return null;
+        }
+        M i1 = (M) Fn;
+        W<M,V> w = A[O].m(new W<>(i1,null));
+        return w.H();
+    }
+    @Q
+    public int h() {
+        return A.jT;
+    }
+    static class W<M extends R<M>,V extends R<V>> implements R<W<M,V>>  {
+        private final M Fn;
+        private V l4;
+        public boolean dQ;
+        public boolean pV() {
+            return dQ;
+        }
+        public M l() {
+            return Fn;
+        }
+        public V H() {
+            return l4;
+        }
+        public void ph(V l4) {
+            this.l4 = l4;
+        }
+        public W(M Fn , V l4){
+            this.Fn = Fn;
+            this.l4 = l4;
+            dQ = true;
+        }
+        @Q
+        public int x(W<M, V> QV) {
+            return this.Fn.x(QV.l());
+        }
+    }
+}

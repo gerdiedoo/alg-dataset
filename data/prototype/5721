@@ -1,0 +1,31 @@
+def w(X):
+    if len(X) <= 1:
+        return X
+    m = len(X) // 2
+    jF = X[:m]
+    u = X[m:]
+    jF = w(jF)
+    u = w(u)
+    return Y(jF, u)
+def Y(y, a):
+    v = []
+    cG = len(y)
+    b = len(a)
+    L = mo = 0
+    while L < cG and mo < b:
+        if y[L] <= a[mo]:
+            v.append(y[L])
+            L += 1
+        else:
+            v.append(a[mo])
+            mo += 1
+    while L < cG:
+        v.append(y[L])
+        L += 1
+    while mo < b:
+        v.append(a[mo])
+        mo += 1
+    return v
+if P == '__main__':
+    X = [10, 3, 15, 7, 8, 23, 98, 29]
+    print(w(X))

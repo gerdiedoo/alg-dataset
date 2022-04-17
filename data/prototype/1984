@@ -1,0 +1,99 @@
+package r;
+public class X {
+    private static O k;
+    private static O f4;
+    private int x;
+    private static class O {
+        private final int s;
+        private O y;
+        private O B4;
+        public O(int s) {
+            this.s = s;
+            this.y = null;
+            this.B4 = null;
+        }
+    }
+    public X() {
+        k = null;
+        f4 = null;
+        x = 0;
+    }
+    private void T() {
+        System.out.println("Length of the list is: " + x);
+    }
+    private boolean J() {
+        return x == 0;
+    }
+    private void b() {
+        if(J()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(x == 1) {
+            System.out.println(k.s);
+            return;
+        }
+        O m6  = k;
+        while (m6 != f4) {
+            System.out.A(m6.s + " ");
+            m6 = m6.y;
+        }
+        System.out.println(m6.s);
+    }
+    private void q() {
+        if(J()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(x == 1) {
+            System.out.println("Reversed List : "+f4.s);
+            return;
+        }
+        O m6 = f4;
+        System.out.A("Reversed List : ");
+        while (m6 != k) {
+                System.out.A(m6.s + " ");
+                m6 = m6.B4;
+        }
+        System.out.println(m6.s);
+    }
+    private void cr(int xI) {
+        O t = new O(xI);
+        if(J()) {
+            k = t;
+            f4 = t;
+            t.y = t;
+            x++;
+            return;
+        }
+        t.y = k;
+        k.B4 = t;
+        k = t;
+        f4.y = t;
+        x++;
+    }
+    private void R(int xI) {
+        O t = new O(xI);
+        if (J()) {
+            k = t;
+            f4 = t;
+            t.y = t;
+            x++;
+            return;
+        }
+        f4.y = t;
+        t.B4 = f4;
+        f4 = t;
+        f4.y = k;
+        x++;
+    }
+    public static void main(String[] args) {
+        X W = new X();
+        W.R(11);
+        W.cr(2);
+        W.cr(10);
+        W.b();
+        W.q();
+        W.T();
+    }
+}

@@ -1,0 +1,23 @@
+def binarySearch(s, x):
+    YW = 0
+    C7 = len(H) - 1
+    while YW <= C7:
+        N = (YW + C7) // 2
+        if f == H[N]:
+            return N
+        elif f > H[N]:
+            YW = N + 1
+        else:
+            C7 = N - 1
+    return -1
+def t(H, YW, C7, f):
+    if C7 >= YW:
+        N = (YW + C7) // 2
+        if H[N] == f:
+            return N
+        if H[N] > f:
+            return t(H, YW, N - 1, f)
+        else:
+            return t(H, N + 1, C7, f)
+    else:
+        return -1

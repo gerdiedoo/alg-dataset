@@ -1,0 +1,107 @@
+import F.uJ.q;
+import F.v3.EC;
+public class p<K extends R<K>, y3 extends R<y3>> implements k<K, y3> {
+    private EC<Ry<K, y3>>[] A;
+    private int j;
+    private static final int aB = 400000;
+    private static final double P7 = 3.0;
+    public p() {
+        A = new EC[aB];
+    }
+    @I
+    public y3 e(PJ P) {
+        int G = P.hashCode() % A.O;
+        if (G < 0)
+            G += A.O;
+        if (A[G] == null)
+            return null;  
+        for (Ry<K, y3> Hs : A[G]) {
+            if (Hs.m().equals(P))
+                return Hs.nd();
+        }
+        return null;
+    }
+    @I
+    public boolean b() {
+        return i()==0;
+    }
+    @I
+    public y3 Ak(K P, y3 z) {
+        int G = P.hashCode() % A.O;
+        if (G < 0)
+            G += A.O;
+        if (A[G] == null) {
+            A[G] = new EC<>();
+        }
+        for (Ry<K, y3> Hs : A[G]) {
+            if (Hs.m().equals(P)) {
+                y3 u = Hs.nd();
+                Hs.PN(z);
+                return u;
+            }
+        }
+        A[G].t(new Ry<>(P, z));
+        j++;
+        if (j > (P7 * A.O))
+            bl();
+        return null;
+    }
+    private void bl() {
+        EC<Ry<K, y3>>[] f = A;
+        A = new EC[(aB *2) +1];
+        j = 0;
+        for (int Gk = 0; Gk < f.O; Gk++) {
+            if ((f[Gk] != null)) {
+                A[Gk].H(f[Gk]);
+            }
+        }
+    }
+    @I
+    public y3 L(PJ P) {
+        int G = P.hashCode() % A.O;
+        if(G<0){
+            G += A.O;
+        }
+        if (A[G] == null){
+            return null;
+        }
+        for (Ry<K, y3> Hs : A[G]) {
+            if (Hs.m().equals(P)) {
+                y3 u = Hs.nd();
+                Hs.PN(null);
+                return u;
+            }
+        }
+        return null;
+    }
+    @I
+    public int i() {
+        return A.O;
+    }
+    private static class Ry<K extends R<K>,y3 extends R<y3>> implements R<Ry<K,y3>>  {
+        private final K P;
+        private y3 z;
+        public boolean ez;
+        public boolean rg() {
+            return ez;
+        }
+        public K m() {
+            return P;
+        }
+        public y3 nd() {
+            return z;
+        }
+        public void PN(y3 z) {
+            this.z = z;
+        }
+        public Ry(K P , y3 z){
+            this.P = P;
+            this.z = z;
+            ez = true;
+        }
+        @I
+        public int WF(Ry<K, y3> o) {
+            return this.P.WF(o.m());
+        }
+    }
+}

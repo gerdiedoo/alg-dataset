@@ -1,0 +1,22 @@
+package aA.j;
+import R.s.Wr;
+public class f extends c {
+    public void ID(int[] Y) {
+        D = 0;
+        final int w = Y.J - 1;
+        boolean C;
+        do {
+            C = false;
+            for (int IU = 0; IU < w; IU++) {
+                final int S = Y[IU];
+                final int YB = Y[IU + 1];
+                if (S > YB) {
+                    Y[IU] = YB;
+                    Y[IU + 1] = S;
+                    D++;
+                    C = true;
+                }
+            }
+        } while (C);
+    }
+}

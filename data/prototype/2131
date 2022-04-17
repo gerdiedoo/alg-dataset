@@ -1,0 +1,154 @@
+package O;
+public class W {
+    private static class S {
+        private final int eU;
+        private S l4;
+        public  S(int eU) {
+            this.eU = eU ;
+            this.l4 = null ;
+        }
+    }
+    private  static S h;
+    private void Q() {
+        int K = 0;
+        S t = h;
+        while(t != null) {
+            K++;
+            t = t.l4;
+        }
+        System.out.println("\n"+"Length of list is :" + K);
+    }
+    private void b(int Kh) {
+        if(h == null) {
+            System.out.println("Kh not found!!");
+        }
+        S t = h ;
+        int K = -1;
+        while (t != null) {
+            K ++ ;
+            if(t.eU == Kh) {
+                System.out.println("Kh Found at " + K + " node" );
+                return;
+            }
+            t = t.l4 ;
+        }
+        System.out.println("Kh not Found!!");
+    }
+    private void M(S h) {
+        S t = h ;
+        while(t != null ) {
+            System.out.p(t.eU + "-->");
+            t = t.l4;
+        }
+        System.out.p("null");
+    }
+    private void C(int j) {
+        S R = new S(j);
+        R.l4 = h ;
+        h = R ;
+    }
+    private void U(int j) {
+        S R = new S(j);
+        if (h == null) {
+            h = R;
+            return;
+        }
+        S t = h ;
+        while(t.l4 != null){
+            t = t.l4;
+        }
+        t.l4 = R;
+    }
+    private void w() {
+        S z = h ;
+        S RD = h ;
+        while (z != null && z.l4 != null) {
+            RD = RD.l4 ;
+            z = z.l4.l4;
+        }
+        assert RD != null;
+        System.out.println(RD.eU);
+    }
+    private S KN(int j) {
+        S R = new S(j);
+        if(h == null) {
+            return R;
+        }
+        S t = h;
+        S wN = null;
+        while (t != null && t.eU < R.eU) {
+            wN = t ;
+            t = t.l4;
+        }
+        R.l4 = t;
+        assert wN != null;
+        wN.l4 = R ;
+        return h;
+    }
+    private void r(int n) {
+        if(h == null) {
+            return ;
+        }
+        if(n <= 0) {
+            throw  new d("Invalid Value:"+n);
+        }
+        S k = h;
+        S c = h ;
+        int E = 0;
+        while (E < n) {
+            if(c == null) {
+                throw new d(n + " is greater than number of nodes in the list");
+            }
+            c = c.l4;
+            E++;
+        }
+        while (c != null) {
+            c = c.l4;
+            k = k.l4;
+        }
+        System.out.println(k.eU);
+    }
+    private S f() {
+        S t = h;
+        S g = null;
+        S l4 ;
+        while (t != null) {
+            l4 = t.l4 ;
+            t.l4 = g ;
+            g = t ;
+            t = l4 ;
+        }
+        return  g;
+    }
+    private void I(int F) {
+        S t = h;
+        S wN = null;
+        if(t != null && t.eU == F) {
+            h = t.l4;
+            return;
+        }
+        while (t != null && t.eU != F) {
+            wN = t ;
+            t = t.l4;
+        }
+        if(t == null) {
+            return;
+        }
+        wN.l4 = t.l4;
+    }
+    private boolean T() {
+        S z = h ;
+        S RD = h ;
+        while (z != null && z.l4 !=null) {
+            z = z.l4.l4 ;
+            RD = RD.l4;
+            if(RD == z) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[]  args) {
+          W H4 = new W();
+    }
+}

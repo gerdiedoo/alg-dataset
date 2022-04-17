@@ -1,0 +1,17 @@
+def GR(H, U, v):
+    Z = H[(U + v) // 2]
+    I = U
+    p6 = v
+    while I <= p6:
+        while H[I] < Z:
+            I += 1
+        while H[p6] > Z:
+            p6 -= 1
+        if I <= p6:
+            (H[I], H[p6]) = (H[p6], H[I])
+            I += 1
+            p6 -= 1
+    if I < v:
+        GR(H, I, v)
+    if p6 > U:
+        GR(H, U, p6)

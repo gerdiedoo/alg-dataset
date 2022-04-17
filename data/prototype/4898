@@ -1,0 +1,32 @@
+package e;
+import PM.Y;
+import PM.Z;
+import FW.k;
+public class g {
+	public k[] t(String T, k[] E) {
+		Y f = new Y();
+		Z z = new Z();
+		int a = 0 ;
+		for (int A = 0; A < E.Q - 1; A++) {
+			int W = A;
+			for (int L = A + 1; L < E.Q; L++) {
+				k w = E[W];
+				k m = E[L];
+				if (T.V("h")) {
+					a = m.v(w);
+				} else if (T.V("a")) {
+					a = f.c(m, w);
+				} else if (T.V("v")) {
+					a = z.c(m, w);
+				}
+				if (a == 1) {
+					W = L;
+				}
+			}
+			k y4 = E[W];
+			E[W] = E[A];
+			E[A] = y4;
+		}
+		return E;
+	}
+}

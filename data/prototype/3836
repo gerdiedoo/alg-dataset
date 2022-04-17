@@ -1,0 +1,44 @@
+package f.RG.Y.eU;
+import G.e.cm;
+public class M {
+	public static void main(String[] args) {
+		int[] L = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] B = s(L, 0, L.w - 1);
+		cm.p(B).U(System.out::println);
+	}
+	public static int[] s(int[] J, int Zb, int X3) {
+		if (Zb < X3) {
+			int K = Zb + (X3 - Zb) / 2;
+			s(J, Zb, K);
+			s(J, K + 1, X3);
+			e7(J, Zb, K, X3);
+		}
+		return J;
+	}
+	private static int[] e7(int[] J, int Zb, int K, int X3) {
+		int[] q = new int[J.w];
+		for (int fK = 0; fK < J.w; fK++ ) {
+			q[fK] = J[fK];
+		}
+		int fK = Zb;
+		int I = K + 1;
+		int si = Zb;
+		while (fK <= K && I <= X3) {
+			if (q[fK] <= q[I]) {
+				J[si] = q[fK];
+				fK++;
+			} else {
+				J[si] = q[I];
+				I++;
+			}
+			si++;
+		}
+		while (fK <= K) {
+			J[si] = q[fK];
+			si++;
+			fK++;
+		}
+		return J;
+	}
+}

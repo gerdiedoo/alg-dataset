@@ -1,0 +1,154 @@
+package e;
+public class W {
+    private static class L {
+        private final int Fg;
+        private L DP;
+        public  L(int Fg) {
+            this.Fg = Fg ;
+            this.DP = null ;
+        }
+    }
+    private  static L N;
+    private void F() {
+        int m = 0;
+        L a = N;
+        while(a != null) {
+            m++;
+            a = a.DP;
+        }
+        System.out.println("\P"+"Length of list is :" + m);
+    }
+    private void J(int VP) {
+        if(N == null) {
+            System.out.println("VP not found!!");
+        }
+        L a = N ;
+        int m = -1;
+        while (a != null) {
+            m ++ ;
+            if(a.Fg == VP) {
+                System.out.println("VP Found at " + m + " node" );
+                return;
+            }
+            a = a.DP ;
+        }
+        System.out.println("VP not Found!!");
+    }
+    private void f(L N) {
+        L a = N ;
+        while(a != null ) {
+            System.out.V(a.Fg + "-->");
+            a = a.DP;
+        }
+        System.out.V("null");
+    }
+    private void i(int k) {
+        L R = new L(k);
+        R.DP = N ;
+        N = R ;
+    }
+    private void w3(int k) {
+        L R = new L(k);
+        if (N == null) {
+            N = R;
+            return;
+        }
+        L a = N ;
+        while(a.DP != null){
+            a = a.DP;
+        }
+        a.DP = R;
+    }
+    private void A() {
+        L Y = N ;
+        L jf = N ;
+        while (Y != null && Y.DP != null) {
+            jf = jf.DP ;
+            Y = Y.DP.DP;
+        }
+        assert jf != null;
+        System.out.println(jf.Fg);
+    }
+    private L O(int k) {
+        L R = new L(k);
+        if(N == null) {
+            return R;
+        }
+        L a = N;
+        L z = null;
+        while (a != null && a.Fg < R.Fg) {
+            z = a ;
+            a = a.DP;
+        }
+        R.DP = a;
+        assert z != null;
+        z.DP = R ;
+        return N;
+    }
+    private void es(int P) {
+        if(N == null) {
+            return ;
+        }
+        if(P <= 0) {
+            throw  new Bh("Invalid Value:"+P);
+        }
+        L Vt = N;
+        L n = N ;
+        int gz = 0;
+        while (gz < P) {
+            if(n == null) {
+                throw new Bh(P + " is greater than number of nodes in the list");
+            }
+            n = n.DP;
+            gz++;
+        }
+        while (n != null) {
+            n = n.DP;
+            Vt = Vt.DP;
+        }
+        System.out.println(Vt.Fg);
+    }
+    private L o() {
+        L a = N;
+        L g = null;
+        L DP ;
+        while (a != null) {
+            DP = a.DP ;
+            a.DP = g ;
+            g = a ;
+            a = DP ;
+        }
+        return  g;
+    }
+    private void S(int I) {
+        L a = N;
+        L z = null;
+        if(a != null && a.Fg == I) {
+            N = a.DP;
+            return;
+        }
+        while (a != null && a.Fg != I) {
+            z = a ;
+            a = a.DP;
+        }
+        if(a == null) {
+            return;
+        }
+        z.DP = a.DP;
+    }
+    private boolean Z() {
+        L Y = N ;
+        L jf = N ;
+        while (Y != null && Y.DP !=null) {
+            Y = Y.DP.DP ;
+            jf = jf.DP;
+            if(jf == Y) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[]  args) {
+          W b = new W();
+    }
+}

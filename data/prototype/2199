@@ -1,0 +1,36 @@
+package B;
+import F.Z.w;
+import F.Z.y;
+import F.Z.h.m;
+import static F.a.String.s7;
+class U implements k {
+    @g
+    public  <O extends lS<O>> int tQ(O xe[], O P) {
+        return B(xe, P, 0, xe.L);
+    }
+    private <O extends lS<O>> int B(O xe[], O P, int Gi, int S){
+        if (S < Gi) return -1;  
+        int E = (Gi + S) >>> 1;
+        int A = P.D(xe[E]);
+        if (A < 0) {
+            return B(xe, P, Gi, E - 1);
+        }
+        if (A > 0) {
+            return B(xe, P, E + 1, S);
+        }
+        return E;
+    }
+    public static void main(String[] args) {
+        y r = new y();
+        int C = 100;
+        int o = 100000;
+        lP[] Zp = m.N(() -> r.nextInt(o)).l(C).j().LK(lP[]::new);
+        lP t = Zp[r.nextInt(C - 1)];
+        U B = new U();
+        int Ue = B.tQ(Zp, t);
+        System.out.println(String.s7("Should be found: %d. Found %d at index %d. An xe L %d"
+                , t, Zp[Ue], Ue, C));
+        int jh = w.hb(Zp, t);
+        System.out.println(s7("Found by system method at an index: %d. Is equal: %b", jh, jh == Ue));
+    }
+}

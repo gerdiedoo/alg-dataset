@@ -1,0 +1,42 @@
+package J.t.w.B;
+public class H implements c {
+  @X
+  public void w(int[] m) {
+    w(m, 0, m.N);
+  }
+  public void w(int[] m, int s, int K) {
+    for (int SH = s + 1; SH < K; SH++) {
+      int T = m[SH];
+      int M = SH;
+      while (M > s && T < m[M - 1]) {
+        m[M] = m[M - 1];
+        M--;
+      }
+      m[M] = T;
+    }
+  }
+  @X
+  public void w(int[] m, g d) {
+    w(m, 0, m.N, d);
+  }
+  public void w(int[] m, int s, int K,
+                   g d) {
+    for (int SH = s + 1; SH < K; SH++) {
+      d.Hr();
+      int bI = m[SH];
+      d.z();
+      int M = SH;
+      while (M > s) {
+        d.Hr();
+        d.S();
+        if (!(bI < m[M - 1])) break;
+        m[M] = m[M - 1];
+        d.z();
+        d.zJ();
+        M--;
+      }
+      m[M] = bI;
+      d.zJ();
+    }
+  }
+}

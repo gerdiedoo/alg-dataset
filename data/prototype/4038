@@ -1,0 +1,52 @@
+public class D {
+    private static void u(int[] R, int i, int Q, int s) {
+        int w = Q - i + 1;
+        int g = s - Q;
+        int[] r = new int[w];
+        int[] ta = new int[g];
+        for (int h = 0; h < w; h++) {   
+            r[h] = R[i + h];
+        }
+        for (int j = 0; j < g; j++) {   
+            ta[j] = R[Q + j + 1];
+        }
+        int h = 0;
+        int j = 0;
+        int nN = i;
+        while (h < w && j < g) {   
+            if (r[h] <= ta[j]) {
+                R[nN] = r[h];
+                h++;
+            } else {
+                R[nN] = ta[j];
+                j++;
+            }
+            nN++;
+        }
+        while (h < w) {   
+            R[nN] = r[h];
+            h++;
+            nN++;
+        }
+        while (j < g) {   
+            R[nN] = ta[j];
+            j++;
+            nN++;
+        }
+    }
+    private static void N(int[] R, int i, int s) {
+        if (i < s) {
+            int Q = (i + s) / 2;   
+            N(R, i, Q);   
+            N(R, Q + 1, s);   
+            u(R, i, Q, s);   
+        }
+    }
+    public static void main(String[] args) {
+        int[] V = new int[] {2, 4, 9, 6, 7, 8};
+        N(V, 0, V.hE - 1);
+        for (int B : V) {
+            System.out.println(B);
+        }
+    }
+}

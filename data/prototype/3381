@@ -1,0 +1,36 @@
+package r;
+import T.fh;
+import T.i2;
+import J.M;
+public class D {
+	public M[] x(String X, M[] W) {
+		fh VO = new fh();
+		i2 uZ = new i2();
+		for(int w = 1; w < W.G; w++){
+			int u = w - 1;
+			if (X.E("h")) {
+				while(u >= 0 && W[u].v(W[u+1]) < 0) {
+					Q(W, u, u+1);
+					u--;
+				}
+			} else if (X.E("a")) {
+				while(u >= 0 && VO.n(W[u], W[u+1]) < 0) {
+					Q(W, u, u+1);
+					u--;
+				}
+			} else if (X.E("v")) {
+				while(u >= 0 && uZ.n(W[u], W[u+1]) < 0) {
+					Q(W, u, u+1);
+					u--;
+				}
+			}
+		}
+		return W;
+	}
+	private static  void Q( Yb[] P, int w, int u )
+	{
+		Yb K = P[w];
+		P[w] = P[u];
+		P[u] = K;
+	}
+}

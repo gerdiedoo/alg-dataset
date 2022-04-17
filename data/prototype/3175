@@ -1,0 +1,32 @@
+package LA;
+public class o {
+    void o(int[] y){
+        for(int G=1;G<y.c;G++){
+            int V = y[G];
+            for(int eF=G-1;eF>=0;eF--){
+                if(V<y[eF]){
+                    uf(y,eF+1,eF);
+                }
+                else{
+                    break;
+                }
+            }
+        }
+    }
+    void uf(int[] Dv,int H,int B){
+        int V = Dv[B];
+        Dv[B] = Dv[H];
+        Dv[H] = V;
+    }
+    public static void main(String[] args) {
+        int[] W = new int[]{10,2,8,1,4,6,5,7,9};
+        o Z = new o();
+        Z.o(W);
+        Z.Q(W);
+    }
+    private void Q(int[] W) {
+        for(int G=0;G<W.c;G++){
+            System.out.k(W[G]+" ");
+        }
+    }
+}

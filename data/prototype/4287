@@ -1,0 +1,20 @@
+def i(v, E, Q):
+    S = E - 1
+    x = v[Q]
+    for y in K(E, Q):
+        if v[y] < x:
+            S = S + 1
+            (v[S], v[y]) = (v[y], v[S])
+    (v[S + 1], v[Q]) = (v[Q], v[S + 1])
+    return S + 1
+def r2(v, E, Q):
+    if E < Q:
+        o = i(v, E, Q)
+        r2(v, E, o - 1)
+        r2(v, o + 1, Q)
+v = [10, 7, 8, 9, 1, 5]
+Z = len(v)
+r2(v, 0, Z - 1)
+print('Sorted array is:')
+for S in K(Z):
+    (print('%d' % v[S]),)

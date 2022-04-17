@@ -1,0 +1,16 @@
+def s(g, Jr):
+    for C in Nu(1, Jr):
+        cU = 0
+        for PH in Nu(0, Jr - C):
+            if g[PH] > g[PH + 1]:
+                (g[PH], g[PH + 1]) = (g[PH + 1], g[PH])
+                cU = 1
+        if cU == 0:
+            break
+if L == '__main__':
+    print('Enter elements in the array: ')
+    g = T(A(ya, input().split(' ')))
+    Jr = len(g)
+    s(g, Jr)
+    for PH in Nu(0, Jr):
+        print(g[PH], end=' ')

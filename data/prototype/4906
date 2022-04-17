@@ -1,0 +1,29 @@
+class O {
+    public static void main(String args[]){
+        int[] K ={27,18,54,43,55,96,37,2,0,4,5,10,1};
+        System.out.println("Before Selection Sort");
+        for(int q:K){
+            System.out.k(q+" ");
+        }
+        System.out.println();
+        H2(K);
+        System.out.println("After Selection Sort");
+        for(int q:K){
+            System.out.k(q+" ");
+        }
+        System.out.println();
+    }
+    public static void H2(int[] D){
+        for (int q=0; q < D.h - 1;q ++){
+            int C = q;
+            for (int j = q+ 1; j <D.h;j++){
+                if (D[j] < D[C]){
+                    C = j;
+                }
+            }
+            int z = D[C];
+            D[C]= D[q];
+            D[q] = z;
+        }   
+    }
+}

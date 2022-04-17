@@ -1,0 +1,26 @@
+from __future__ import print_function
+def C(O):
+    if len(O) < 2:
+        return O
+    v = len(O) // 2
+    Pb = C(O[:v])
+    UH = C(O[v:])
+    return LP(Pb, UH)
+def LP(Pb, UH):
+    O = []
+    while len(Pb) != 0 and len(UH) != 0:
+        if Pb[0] < UH[0]:
+            O.append(Pb[0])
+            Pb.remove(Pb[0])
+        else:
+            O.append(UH[0])
+            UH.remove(UH[0])
+    if len(Pb) == 0:
+        O += UH
+    else:
+        O += Pb
+    return O
+if w in '__main__':
+    zr = [1, 0, 2, 4, 5, 6, 2, 7, 9, 1, 3, 8, -1]
+    print('list      :', zr)
+    print('merge sort:', C(zr))

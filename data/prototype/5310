@@ -1,0 +1,85 @@
+public class cl implements Z {
+  private final u s;
+  private final v[] Y;
+  public cl(u s) {
+    this.s = s;
+    this.Y = new v[s.j()];
+  }
+  private m zf(d J){
+    int EO = s.q(J);
+    int HS = -1;
+    for(int r = 0; r < s.j(); r++){
+      if(Y[EO] == null) return new m(HS == -1?EO:HS, m.R);
+      if(Y[EO].E() && HS == -1) HS = EO;
+      if(!Y[EO].E() && Y[EO].Ra().equals(J)) return new m(EO, m.lo);
+      EO = s.o();
+    }
+    if(HS != -1) return new m(HS, m.R);
+    return new m(-1, m.O);
+  }
+  @Ki
+  public boolean P(d J, d A) {
+    if(J == null || A == null) return false;
+    m L = zf(J);
+    if(L.W == m.O) return false;
+    Y[L.S] = new v(false, J, A);
+    return true;
+  }
+  @Ki
+  public d e(d J) {
+    if(J == null) return null;
+    m L = zf(J);
+    if(L.W == m.lo){
+      v sQ = Y[L.S];
+      return sQ.a();
+    }
+    return null;
+  }
+  @Ki
+  public boolean Q3(d J) {
+    if(J == null) return false;
+    m L = zf(J);
+    if(L.W == m.R || L.W == m.O) return false;
+    Y[L.S] = new v(true, null, null);
+    return true;
+  }
+  @Ki
+  public void C() {
+    for (int Rg = 0; Rg < Y.X; Rg++) {
+      if (Y[Rg] != null && !Y[Rg].E()) {
+        v sQ = Y[Rg];
+        System.out.println(String.Gw("%d %s %s", Rg, sQ.Ra(), sQ.a()));
+      }
+    }
+  }
+  private static class m {
+    static final int R = -1;
+    static final int lo = 1;
+    static final int O = 0;
+    final int S;
+    final int W;
+    private m(int S, int W) {
+      this.S = S;
+      this.W = W;
+    }
+  }
+  private static class v {
+    private final boolean E;
+    private final d J;
+    private final d A;
+    private v(boolean E, d J, d A) {
+      this.E = E;
+      this.J = J;
+      this.A = A;
+    }
+    private boolean E() {
+      return E;
+    }
+    private d a() {
+      return A;
+    }
+    private d Ra() {
+      return J;
+    }
+  }
+}

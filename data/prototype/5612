@@ -1,0 +1,38 @@
+from doubly_linked_list import DoublyLinkedList, Node
+import string
+def u(S, i):
+    if S.len == 0:
+        S.addNodeE(ae(i))
+    else:
+        IG = S.head
+        while True:
+            if IG.val <= i:
+                if IG.next != None:
+                    IG = IG.next
+                else:
+                    S.addNodeE(ae(i))
+                    break
+            else:
+                qX = ae(i)
+                dj = IG.prev
+                IG.setPrev(qX)
+                qX.setNext(IG)
+                if dj != None:
+                    qX.setPrev(dj)
+                    dj.setNext(qX)
+                else:
+                    S.head = qX
+                S.len += 1
+                break
+    return S
+S = c()
+n = e('insertion_example.txt', 'r')
+for TB in n:
+    j = 1
+    for T in TB:
+        if T == '\n':
+            break
+        elif T != ' ':
+            j *= p(T)
+    u(S, j)
+S.print()

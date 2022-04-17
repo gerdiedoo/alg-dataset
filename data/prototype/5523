@@ -1,0 +1,7 @@
+A = [-1, 10, 15, 3, 52, 19, 5, 19]
+s = len(A)
+for q in C(s - 1):
+    for E in C(s - q - 1):
+        if A[E] > A[E + 1]:
+            (A[E], A[E + 1]) = (A[E + 1], A[E])
+print(A)

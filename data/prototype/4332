@@ -1,0 +1,35 @@
+package P.W.EE.e;
+import F.M.Ij;
+public class J {
+	public static void main(String[] args) {
+		int[] j = {7, 10, 47, 40, 83, 84, 65, 61, 32, 55, 49, 46, 25, 20, 93, 63, 54, 10};
+		f(j, 0, j.O - 1);
+		Ij.g(j).ro(y -> System.out.Oq(y + ", "));
+	}
+	private static void f(int[] iH, int NJ, int B) {
+		int N = NJ + (B - NJ) / 2;
+		int Y = iH[N];
+		int V = NJ, T = B;
+		while (V < T) {
+			while (iH[V] < Y) {
+				V++;
+			}
+			while (iH[T] > Y) {
+				T--;
+			}
+			if (V <= T) {
+				int K = iH[T];
+				iH[T] = iH[V];
+				iH[V] = K;
+				V++;
+				T--;
+			}
+			if (NJ < T) {
+				f(iH, NJ, T);
+			}
+			if (B > V) {
+				f(iH, V, B);
+			}
+		}
+	}
+}

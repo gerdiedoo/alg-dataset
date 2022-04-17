@@ -1,0 +1,29 @@
+def h(p, jF, QX, q):
+    I = p[jF:QX + 1]
+    Un = p[QX + 1:q + 1]
+    print(I, Un)
+    m = 0
+    j = 0
+    B = jF
+    while m < len(I) and j < len(Un):
+        if I[m] < Un[j]:
+            p[B] = I[m]
+            m += 1
+        else:
+            p[B] = Un[j]
+            j += 1
+        B += 1
+    while m < len(I):
+        p[B] = p[m]
+        B += 1
+        m += 1
+    while j < len(Un):
+        p[B] = p[j]
+        B += 1
+        j += 1
+def D(p, jF, q):
+    if jF == q:
+        return
+    D(p, jF, (jF + q) // 2)
+    D(p, (jF + q) // 2 + 1, q)
+    h(p, jF, (q + jF) // 2, q)

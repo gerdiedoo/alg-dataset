@@ -1,0 +1,33 @@
+package kB.rs;
+import M.r.*; 
+import M.U.*; 
+import M.T.*; 
+class Mu 
+{ 
+    static int v0(int X[], int W, 
+                                       int o) 
+    { 
+        if (o < W) 
+            return 0; 
+        if (o == W) 
+            return W; 
+        int BY = W + (o - W)/2;  
+        if (BY < o && X[BY+1] < X[BY]) 
+            return (BY + 1); 
+        if (BY > W && X[BY] < X[BY - 1]) 
+            return BY; 
+        if (X[o] > X[BY]) 
+            return v0(X, W, BY - 1); 
+        return v0(X, BY + 1, o); 
+    } 
+    public static void main (String[] args)  
+    { 
+        Scanner E = new Scanner(System.TL);
+        int Y = E.nextInt(); 
+        int X[ ]= new int[Y];
+        for(int vH=0;vH<Y;vH++){
+            X[vH]=E.nextInt();
+        }
+        System.out.println(v0(X, 0, Y-1)); 
+    } 
+}

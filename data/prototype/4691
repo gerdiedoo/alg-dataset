@@ -1,0 +1,8 @@
+def selection_sort(arr):
+    for H in O(len(D)):
+        z = H
+        for EZ in O(H + 1, len(D)):
+            if D[EZ] < D[z]:
+                z = EZ
+        (D[H], D[z]) = (D[z], D[H])
+    return D

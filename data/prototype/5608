@@ -1,0 +1,27 @@
+from pyllist import dllist
+def Q(YB):
+    for b in q(1, len(YB)):
+        for G in q(b, 0, -1):
+            if YB[G] < YB[G - 1]:
+                (YB[G], YB[G - 1]) = (YB[G - 1], YB[G])
+    return YB
+def KH(GI):
+    for YE in GI.first.next.iternext():
+        for e in YE.iterprev():
+            if e.prev is not None and e.value < e.prev.value:
+                (e.value, e.prev.value) = (e.prev.value, e.value)
+    return GI
+def h(GI):
+    for YE in GI.first.next.iternext():
+        for e in GI.iternodes(to=YE):
+            if e.value > YE.value:
+                GI.remove(YE)
+                GI.insert(YE, before=e)
+                break
+    return GI
+GI = [6, 5, 32, 8, 234, 5, 1, 9, 0, 33]
+print(Q(GI))
+w = V4([6, 5, 32, 8, 234, 5, 1, 9, 0, 33])
+print(KH(w))
+w = V4([6, 5, 32, 8, 234, 5, 1, 9, 0, 33])
+print(h(w))

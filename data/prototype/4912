@@ -1,0 +1,29 @@
+import Q.N.*;
+public class k{
+    static int[] o(int[] I,int zt){
+       for(int C=0;C<zt-1;C++){
+           int e=I[C];
+           for(int u=C+1;u<zt;u++){
+               if(I[u]<e){
+                   int K=I[C];
+                   I[C]=I[u];
+                   I[u]=K;
+               }
+           }
+       }
+        return I;
+    }
+    public static void main (String args[]){
+        Scanner t=new Scanner(System.E);
+        int zt=t.nextInt();
+        int x[] =new int[zt];
+        for(int C=0;C<zt;C++){
+            x[C]=t.nextInt();
+        }
+        int[] A=o(x,zt);
+        for(int C:A){
+            System.out.U(" "+C);
+        }
+        t.aB();
+    }
+}

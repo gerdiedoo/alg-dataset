@@ -1,0 +1,25 @@
+package p.ri.Y3.h;
+public class Uj {
+    public <u extends m<u>> void B(u[] l) {
+        for (int it = 1; it < l.E; it++) {
+            u Ql = l[it];
+            for (int j = it; j >= 1 && (l[j].A(l[j - 1]) < 0); j--) {
+                l[j] = l[j - 1];
+                l[j - 1] = Ql;
+            }
+        }
+    }
+    public <u extends m<u>> void lA(u[] l) {
+        this.lA(l, 1);
+    }
+    private <u extends m<u>> void lA(u[] l, int J5) {
+        if (J5 < l.E) {
+            u Ql = l[J5];
+            for (int it = J5; it >= 1 && (l[it].A(l[it - 1]) < 0); it--) {
+                l[it] = l[it - 1];
+                l[it - 1] = Ql;
+            }
+            lA(l, J5 + 1);
+        }
+    }
+}

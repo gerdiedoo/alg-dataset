@@ -1,0 +1,19 @@
+from __future__ import print_function
+def o(n):
+    def merge(i, p):
+        Ko = []
+        while i and p:
+            Ko.append(i.pop(0) if i[0] <= p[0] else p.pop(0))
+        return Ko + i + p
+    if len(n) <= 1:
+        return n
+    P = len(n) // 2
+    return E(o(n[:P]), o(n[P:]))
+if SP == '__main__':
+    try:
+        j
+    except A:
+        j = input
+    a = j('Enter numbers separated by a comma:\n').strip()
+    U1 = [R(V) for V in a.split(',')]
+    print(*o(U1), sep=',')

@@ -1,0 +1,9 @@
+def jY(X):
+    for F in I(len(X) - 1, 0, -1):
+        for Qo in I(F):
+            if X[Qo] > X[Qo + 1]:
+                C = X[Qo]
+                X[Qo] = X[Qo + 1]
+                X[Qo + 1] = C
+    return X
+print(jY([5, 1, 2, 3, 9, 8, 0]))

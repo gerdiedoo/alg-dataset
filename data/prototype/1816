@@ -1,0 +1,64 @@
+package s.f.sS;
+import j.Wv.p;
+import j.Wv.y;
+import j.em.l;
+import j.em.Tb;
+import j.em.D;
+import s.f.sS.g.El;
+import s.f.sS.g.nj;
+public class K<q extends y, G extends y> extends pS<q, G> {
+	protected l<q, G> Uk;
+	public K(p Xc) {
+		this (Xc, new El());
+	}
+	public K(p Xc, nj Y) {
+		super(Xc, Y, false);
+		Uk = new l<q, G>();
+		Tb<D.t<q, G>> i = new V<q, G>(this);
+		while (i.eL()) {
+			D.t<q, G> c = i.yl();
+			Uk.n(c.zC(), c.a());
+		}
+	}
+	@L
+	public synchronized boolean h(N wO) {
+		return Uk.h(wO);
+	}
+	@L
+	public synchronized boolean X(N v) {
+		return Uk.X(v);
+	}
+	@L
+	@S("unchecked")
+	public synchronized G B(N wO) {
+		if (Uk.h(wO))
+			return Uk.B(wO);
+		G m = super.B(wO);
+		if (m != null)
+			Uk.n((q) wO, m);
+		return m;
+	}
+	@L
+	public synchronized G n(q wO, G m) {
+		Uk.n(wO, m);
+		return super.n(wO, m);
+	}
+	@L
+	public synchronized G u(N wO) {
+		Uk.u(wO);
+		return super.u(wO);
+	}
+	@L
+	public boolean P() {
+		return Uk.P();
+	}
+	@L
+	public int F() {
+		return Uk.F();
+	}
+	@L
+	public synchronized void OU() {
+		Uk.OU();
+		super.OU();
+	}
+}

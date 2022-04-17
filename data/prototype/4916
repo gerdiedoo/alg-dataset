@@ -1,0 +1,29 @@
+import B7.n.*;
+public class O{
+    static int[] a(int[] Gj,int q){
+       for(int I=0;I<q-1;I++){
+           int Z=Gj[I];
+           for(int p=I+1;p<q;p++){
+               if(Gj[p]<Z){
+                   int f=Gj[I];
+                   Gj[I]=Gj[p];
+                   Gj[p]=f;
+               }
+           }
+       }
+        return Gj;
+    }
+    public static void main (String args[]){
+        Scanner u=new Scanner(System.J);
+        int q=u.nextInt();
+        int jm[] =new int[q];
+        for(int I=0;I<q;I++){
+            jm[I]=u.nextInt();
+        }
+        int[] rI=a(jm,q);
+        for(int I:rI){
+            System.out.o(" "+I);
+        }
+        u.t();
+    }
+}

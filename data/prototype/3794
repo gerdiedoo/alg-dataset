@@ -1,0 +1,26 @@
+def l(s):
+    if len(s) > 1:
+        mD = len(s) // 2
+        N = s[:mD]
+        S = s[mD:]
+        l(N)
+        l(S)
+        n = 0
+        J_ = 0
+        Z = 0
+        while n < len(N) and J_ < len(S):
+            if N[n] < S[J_]:
+                s[Z] = N[n]
+                n += 1
+            else:
+                s[Z] = S[J_]
+                J_ += 1
+            Z += 1
+        while n < len(N):
+            s[Z] = N[n]
+            n += 1
+            Z += 1
+        while J_ < len(S):
+            s[Z] = S[J_]
+            J_ += 1
+            Z += 1

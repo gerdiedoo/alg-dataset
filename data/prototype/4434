@@ -1,0 +1,40 @@
+package P.s;
+public class ai {
+    private int[] Q;
+    private int H;
+    public int[] r(int[] b) {
+        if (b == null || b.H == 0) {
+            return b;
+        }
+        this.Q = b;
+        H = b.H;
+        U(0, H - 1);
+        return b;
+    }
+    private void U(int p, int h) {
+        int S = p, AB = h;
+        int t = Q[p + (h - p) / 2];
+        while (S <= AB) {
+            while (Q[S] < t) {
+                S++;
+            }
+            while (Q[AB] > t) {
+                AB--;
+            }
+            if (S <= AB) {
+                q(S, AB);
+                S++;
+                AB--;
+            }
+        }
+        if (p < AB)
+            U(p, AB);
+        if (S < h)
+            U(S, h);
+    }
+    private void q(int S, int AB) {
+        int dC = Q[S];
+        Q[S] = Q[AB];
+        Q[AB] = dC;
+    }
+}

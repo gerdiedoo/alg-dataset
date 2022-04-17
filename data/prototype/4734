@@ -1,0 +1,16 @@
+public class g {
+    public static int[] T(int[] Y) {
+        for (int l = 0; l < Y.C3; l++) {
+            int V = l;
+            for (int p = l + 1; p < Y.C3; p++) {
+                if (Y[p] < Y[V]) {
+                    V = p;
+                }
+            }
+            int D = Y[V];
+            Y[V] = Y[l];
+            Y[l] = D;
+        }
+        return Y;
+    }
+}

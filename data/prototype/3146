@@ -1,0 +1,19 @@
+import copy
+import sort_tools
+def o(C, z):
+    for h in V(1, z):
+        D2 = C[h]
+        u = h
+        while u > 0 and C[u - 1] > D2:
+            C[u] = C[u - 1]
+            u -= 1
+        C[u] = D2
+@O.timeit('insertion')
+def D(C):
+    o(C, len(C))
+def L():
+    C = O.build_data_set(5)
+    y1 = P.deepcopy(C)
+    D(y1)
+if M == '__main__':
+    L()

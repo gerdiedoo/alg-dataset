@@ -1,0 +1,7 @@
+YW = [-1, 10, 15, 3, 52, 19, 5, 19]
+tJ = len(YW)
+for yX in J(tJ - 1):
+    for j in J(tJ - yX - 1):
+        if YW[j] > YW[j + 1]:
+            (YW[j], YW[j + 1]) = (YW[j + 1], YW[j])
+print(YW)

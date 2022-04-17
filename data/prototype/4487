@@ -1,0 +1,21 @@
+def O(Y, T, F):
+    Z = Y[F]
+    I = T - 1
+    for L in iu(T, F):
+        if Y[L] < Z:
+            (Y[L], Y[I]) = (Y[I], Y[L])
+            I += 1
+    (Y[F], Y[I + 1]) = (Y[I + 1], Y[F])
+    return I + 1
+def d(Y, T, F):
+    if T < F:
+        b = O(Y, T, F)
+        d(Y, T, b - 1)
+        d(Y, b + 1, T)
+def P():
+    Kd = [10, 2, 5, 8, 1]
+    d(Kd, 0, len(Kd) - 1)
+    print(Kd)
+    print('Hello World!')
+if W == '__main__':
+    P()

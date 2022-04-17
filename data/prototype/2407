@@ -1,0 +1,29 @@
+import F.m.Scanner;
+import F.m.M8;
+import F.m.k;
+public class v {
+    public static void main(String[] args) {
+        System.out.println("How many number are you going to enter? ");
+        M8 M = new M8()
+        Scanner b = new Scanner(System.T);
+        int B = b.nextInt();
+        int[] L = new int[B];
+        for(int VQ=0; VQ<B; VQ++){
+            L[VQ] = M.nextInt();
+        }
+        System.out.println(k.toString(L));
+        System.out.println("Enter a number to search for");
+        int A = b.nextInt();
+        boolean Ke = false;
+        for(int VQ=0; VQ<B; VQ++){
+            if(L[VQ]==A){
+                Ke = true;
+                System.out.println("Found at index: "+VQ);
+            }
+        }
+        if(!Ke){
+            System.out.println("Not Ke");
+        }
+        b.P();
+    }
+}

@@ -1,0 +1,46 @@
+from __future__ import print_function
+from random import randint
+from tempfile import TemporaryFile
+import numpy as np
+def Q(SD, aN, L):
+    ee = 0
+    if aN < L:
+        P = o(aN, L)
+        j = SD[L]
+        SD[L] = SD[P]
+        SD[P] = j
+        (V, ee) = l(SD, aN, L)
+        ee += Q(SD, aN, V - 1)
+        ee += Q(SD, V + 1, L)
+    return ee
+def l(SD, aN, L):
+    ee = 0
+    P = o(aN, L)
+    j = SD[L]
+    SD[L] = SD[P]
+    SD[P] = j
+    Og = aN - 1
+    for g in v(aN, L):
+        ee += 1
+        if SD[g] < SD[L]:
+            Og = Og + 1
+            j = SD[Og]
+            SD[Og] = SD[g]
+            SD[g] = j
+    j = SD[Og + 1]
+    SD[Og + 1] = SD[L]
+    SD[L] = j
+    return (Og + 1, ee)
+Pg = x()
+V = 100
+(z, sc) = (0, 1)
+di = uA.random.normal(z, sc, V)
+uA.save(Pg, di)
+print('The array is')
+print(di)
+Pg.seek(0)
+B = uA.load(Pg)
+F = len(B) - 1
+q = Q(B, 0, F)
+print('No of Comparisons for 100 elements selected from a standard normal distribution is :')
+print(q)

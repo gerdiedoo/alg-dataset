@@ -1,0 +1,40 @@
+package hj.e;
+public class x3 {
+    private int[] r;
+    private int B;
+    public int[] Ie(int[] lv) {
+        if (lv == null || lv.B == 0) {
+            return lv;
+        }
+        this.r = lv;
+        B = lv.B;
+        J3(0, B - 1);
+        return lv;
+    }
+    private void J3(int P, int bX) {
+        int Z = P, b = bX;
+        int Y2 = r[P + (bX - P) / 2];
+        while (Z <= b) {
+            while (r[Z] < Y2) {
+                Z++;
+            }
+            while (r[b] > Y2) {
+                b--;
+            }
+            if (Z <= b) {
+                x(Z, b);
+                Z++;
+                b--;
+            }
+        }
+        if (P < b)
+            J3(P, b);
+        if (Z < bX)
+            J3(Z, bX);
+    }
+    private void x(int Z, int b) {
+        int f = r[Z];
+        r[Z] = r[b];
+        r[b] = f;
+    }
+}

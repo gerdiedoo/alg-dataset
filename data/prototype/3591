@@ -1,0 +1,86 @@
+package P.vO;
+import X.p1.l;
+public class br {
+	private br() {
+	}
+	public static void E(a[] J) {
+		if(J == null)
+			throw new kz();
+		a[] h = new a[J.tJ];
+		E(J, h, 0, J.tJ - 1);
+	}
+	public static void E(d[] J, l P) {
+		if(J == null)
+			throw new kz();
+		a[] h = new a[J.tJ];
+		E(J, h, P, 0, J.tJ - 1);
+	}
+	private static void E(a[] t, a[] h, int B, int T) {
+		if (T <= B)
+			return;
+		int bz = B + (T - B) / 2;
+		E(t, h, B, bz);
+		E(t, h, bz + 1, T);
+		u(t, h, B, bz, T);
+	}
+	private static void E(d[] t, d[] h, l P, int B,
+			int T) {
+		if (T <= B)
+			return;
+		int bz = B + (T - B) / 2;
+		E(t, h, P, B, bz);
+		E(t, h, P, bz + 1, T);
+		u(t, h, P, B, bz, T);
+	}
+	private static void u(a[] t, a[] h, int B,
+			int bz, int T) {
+		for (int z = B; z <= T; z++) {
+			h[z] = t[z];
+		}
+		int i = B, K = bz + 1;
+		for (int z = B; z <= T; z++) {
+			if (i > bz)
+				t[z] = h[K++];
+			else if (K > T)
+				t[z] = h[i++];
+			else if (W(h[K], h[i]))
+				t[z] = h[K++];
+			else
+				t[z] = h[i++];
+		}
+	}
+	private static void u(d[] t, d[] h, l P, int B,
+			int bz, int T) {
+		for (int z = B; z <= T; z++) {
+			h[z] = t[z];
+		}
+		int i = B, K = bz + 1;
+		for (int z = B; z <= T; z++) {
+			if (i > bz)
+				t[z] = h[K++];
+			else if (K > T)
+				t[z] = h[i++];
+			else if (W(P, h[K], h[i]))
+				t[z] = h[K++];
+			else
+				t[z] = h[i++];
+		}
+	}
+	private static boolean W(a r9, a x0) {
+		return r9.ia(x0) < 0;
+	}
+	private static boolean W(l M, d r9, d x0) {
+		return M.Y(r9, x0) < 0;
+	}
+	private static void p(d[] t, int i, int K) {
+		d n = t[i];
+		t[i] = t[K];
+		t[K] = n;
+	}
+	public static void N(a[] J) {
+		int qy = J.tJ;
+		for (int i = 0; i < qy; i++) {
+			System.out.cC(J[i] + ",");
+		}
+	}
+}

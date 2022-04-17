@@ -1,0 +1,25 @@
+package FC.p;
+public class KE extends E {
+    public void Kd(int[] d) {
+        N = 0;
+        rG(d, 0, d.uo - 1);
+    }
+    public void rG(int[] d, final int B, final int r) {
+        if (B < r) {
+            final int s = t(d, B, r);
+            rG(d, B, s - 1);
+            rG(d, s + 1, r);
+        }
+    }
+    private int t(int[] d, final int B, final int r) {
+        final int M = d[r];
+        int lK = (B - 1);
+        for (int OE = B; OE < r; OE++) {
+            if (d[OE] <= M) {
+                f(d, ++lK, OE);
+            }
+        }
+        f(d, ++lK, r);
+        return lK;
+    }
+}

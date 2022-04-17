@@ -1,0 +1,26 @@
+package gJ.vI.W.j.G3;
+import gJ.vI.W.j.YF;
+public class d extends c {
+  private final r x;
+  public d(r x) {
+    this.x = x;
+  }
+  @E
+  public String mp() {
+    return this.so().y() + "(pivot: " + x + ")";
+  }
+  @E
+  public boolean K(int v0) {
+    return (x != r.DP
+          && x != r.I) || v0 <= 2 << 12;
+  }
+  @E
+  public int aW(int[] F, int Je, int CL) {
+    i.J(F, Je, CL, x);
+    return super.aW(F, Je, CL);
+  }
+  public int aW(int[] F, int Je, int CL, YF g) {
+    i.J(F, Je, CL, x);
+    return super.aW(F, Je, CL, g);
+  }
+}

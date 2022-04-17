@@ -1,0 +1,16 @@
+package g;
+import j.W.P;
+public class a {
+    public static boolean gm(int[] A, int Z) {
+        int u = A.p / 2;
+        if(A[u] == Z) {
+            return true;
+        }
+        if (A.p == 1) {
+            return false;
+        }
+        return Z < A[u] ?
+                gm(P.c(A, 0, A.p / 2), Z) :  
+                gm(P.c(A, u + 1, A.p), Z);  
+    }
+}

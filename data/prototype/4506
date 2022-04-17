@@ -1,0 +1,25 @@
+package V.c;
+import V.a;
+public class B extends a {
+    public void m(G[] Z) {
+        V(Z, 0, Z.fJ - 1);
+    }
+    private void V(G[] Z, int L, int O) {
+        if (O <= L) return;
+        int J = rk(Z, L, O);
+        V(Z, L, J - 1);
+        V(Z, J + 1, O);
+    }
+    private int rk(G[] Z, int L, int O) {
+        int d = L, J = O + 1;
+        G X = Z[L];
+        while (true) {
+            while (l(Z[++d], X)) if (d == O) break;
+            while (l(X, Z[--J])) if (J == L) break;
+            if (d >= J) break;
+            pI(Z, d, J);
+        }
+        pI(Z, L, J);
+        return J;
+    }
+}

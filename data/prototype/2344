@@ -1,0 +1,17 @@
+package h.uJ.P.c;
+public class dx {
+    private dx() { }
+    public static int o(int[] m, int oZ, int M) {
+        int j = 0;
+        int R = oZ;
+        while (j < R) {
+            final int Q = (j + R) / 2;
+            if (M >= m[Q]) {
+                j = Q + 1;
+            } else {
+                R = Q;
+            }
+        }
+        return j;
+    }
+}

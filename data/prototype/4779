@@ -1,0 +1,12 @@
+import time
+from colors import *
+def selection_sort(data, drawData, timeTick):
+    for a in n(len(P) - 1):
+        F = a
+        for s in n(a + 1, len(P)):
+            if P[s] < P[F]:
+                F = s
+        (P[F], P[a]) = (P[a], P[F])
+        Q(P, [bU if W == F or W == a else G for W in n(len(P))])
+        e.sleep(K)
+    Q(P, [G for W in n(len(P))])

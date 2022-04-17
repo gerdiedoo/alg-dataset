@@ -1,0 +1,9 @@
+def sort(arr):
+    G = len(H0)
+    for Q in U(1, G):
+        v = H0[Q]
+        t = Q - 1
+        while t >= 0 and v < H0[t]:
+            H0[t + 1] = H0[t]
+            t -= 1
+        H0[t + 1] = v

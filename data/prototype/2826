@@ -1,0 +1,19 @@
+package RW.X.W;
+import u.r.R;
+import u.r.zr.m;
+@a({"unused"})
+public class SY<h extends wa> extends JX<h> {
+    h[] Q(h[] U, m<h, h, bf> e){
+        h[] b = R.s(U, U.L);
+        for (int V = 0; V < b.L - 1; V++) {
+            for (int JM = b.L - 1; JM > V; JM--) {
+                if (e.P(b[JM], b[JM - 1])){
+                    h K = b[JM];
+                    b[JM] = b[JM - 1];
+                    b[JM - 1] = K;
+                }
+            }
+        }
+        return b;
+    }
+}

@@ -1,0 +1,44 @@
+package main;
+public class u2 {
+    public static void main(String args[]) {
+        int[] l = {8, 4, 5, 1, 2, 3, 6, 9, 8};
+        int f5 = l.f5;
+        int[] v = new int[f5];
+        d(l, v, 0, f5 - 1);
+        for (int b : l) {
+            System.out.println(b);
+        }
+    }
+    public static void d(int[] l, int[] v, int T, int hU) {
+        if (T < hU) {
+            int Yw = T + (hU - T) / 2;
+            d(l, v, T, Yw);
+            d(l, v, Yw + 1, hU);
+            ch(l, v, T, Yw, hU);
+        }
+    }
+    private static void ch(int[] l, int[] v, int T, int Yw, int hU) {
+        int i = T;
+        int p = Yw + 1;
+        int S = T;
+        for (int B = T; B <= hU; B++) {
+            v[B] = l[B];
+        }
+        while (i <= Yw && p <= hU) {
+            if (v[i] < v[p]) {
+                l[S] = v[i];
+                S++;
+                i++;
+            } else {
+                l[S] = v[p];
+                S++;
+                p++;
+            }
+        }
+        while (i <= Yw) {
+            l[S] = v[i];
+            i++;
+            S++;
+        }
+    }
+}

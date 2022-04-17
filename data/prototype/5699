@@ -1,0 +1,40 @@
+def P(K9, Xx, PN, c):
+    SR = PN - Xx + 1
+    Xq = c - PN
+    f = []
+    Nd = []
+    for n in Lc(0, SR):
+        f.append(K9[Xx + n])
+    for F in Lc(0, Xq):
+        Nd.append(K9[PN + 1 + F])
+    n = 0
+    F = 0
+    z = Xx
+    while n < SR and F < Xq:
+        if f[n] <= Nd[F]:
+            K9[z] = f[n]
+            n += 1
+        else:
+            K9[z] = Nd[F]
+            F += 1
+        z += 1
+    while n < SR:
+        K9[z] = f[n]
+        n += 1
+        z += 1
+    while F < Xq:
+        K9[z] = Nd[F]
+        F += 1
+        z += 1
+def OF(K9, Xx, c):
+    if Xx < c:
+        PN = (Xx + c) // 2
+        OF(K9, Xx, PN)
+        OF(K9, PN + 1, c)
+        P(K9, Xx, PN, c)
+def W():
+    K9 = [M(D) for D in input().split()]
+    OF(K9, 0, len(K9) - 1)
+    print(K9)
+if uM == '__main__':
+    W()

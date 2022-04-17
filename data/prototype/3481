@@ -1,0 +1,13 @@
+package gY.A.Q;
+public class lM {
+    public static <m extends G<m>> void UC(m[] D) {
+        for (int q = 1; q < D.b; q++) {
+            m X = D[q];
+            int v = q;
+            while (v > 0 && D[v - 1].e(X) > 0) {
+                D[v] = D[--v];
+            }
+            D[v] = X;
+        }
+    }
+}

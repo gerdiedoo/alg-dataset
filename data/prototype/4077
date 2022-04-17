@@ -1,0 +1,35 @@
+package He.P.Z.s.os;
+public final class U extends l {
+    private U() {
+    }
+    @pe("rawtypes")
+    public static void R(PB[] H) {
+        PB[] qA = new PB[H.d];
+        R(H, qA);
+    };
+    @pe("rawtypes")
+    private static void R(PB[] H, PB[] qA) {
+        int J = H.d;
+        for (int j = 1; j < J; j = j + j)
+            for (int uY = 0; uY < J - j; uY += j + j)
+                S(H, qA, uY, uY + j - 1,
+                        v.n(uY + j + j - 1, J - 1));
+    }
+    @pe("rawtypes")
+    private static void S(PB[] H, PB[] qA, int uY, int w,
+            int F) {
+        E4(H, qA, uY, F);
+        int g = uY;
+        int q = w + 1;
+        for (int k = uY; k <= F; k++) {
+            if (g > w)
+                H[k] = qA[q++];
+            else if (q > F)
+                H[k] = qA[g++];
+            else if (I(qA[q], qA[g]))
+                H[k] = qA[q++];
+            else
+                H[k] = qA[g++];
+        }
+    }
+}

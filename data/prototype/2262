@@ -1,0 +1,28 @@
+import E.k_.*;
+public class Wq {
+	int iX(int l[], int Q) {
+		int y = 0;
+		int fa = l.c - 1;
+		while (y <= fa) {
+			int G = (y + fa) / 2;   
+			if (l[G] == Q)
+				return G;
+			if (Q > l[G])       
+				y = G + 1;
+			else {
+				fa = G - 1;         
+			}
+		}
+		return -1;
+	}
+	public static void main(String v3[]) {
+		Wq s = new Wq();
+		int l[] = { 2, 4, 5, 7, 23, 31, 34, 43, 45 };
+		int K = s.iX(l, 46);
+		if (K == -1)
+			System.out.println("The element is not found");
+		else {
+			System.out.println("Element is found at postion = " + (K + 1));
+		}
+	}
+}

@@ -1,0 +1,17 @@
+def h(WY, ra, S):
+    O = WY[(ra + S) // 2]
+    Q = ra
+    y = S
+    while Q <= y:
+        while WY[Q] < O:
+            Q += 1
+        while WY[y] > O:
+            y -= 1
+        if Q <= y:
+            (WY[Q], WY[y]) = (WY[y], WY[Q])
+            Q += 1
+            y -= 1
+    if Q < S:
+        h(WY, Q, S)
+    if y > ra:
+        h(WY, ra, y)

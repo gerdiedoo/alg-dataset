@@ -1,0 +1,76 @@
+package E5.u.o.cs;
+class rq<h extends bU<h>> {
+    class c<r> {
+        r Z;
+        c<r> v, D2;
+        c(r N) {
+            Z = N;
+        }
+    }
+    c<h> K;  
+    void i(h ht) {
+        c<h> vv = new c<>(ht);
+        vv.D2 = K;
+        vv.v = null;
+        if (K != null)
+            K.v = vv;
+        K = vv;
+    }
+    void b(c cZ, h ht) {
+        if (cZ == null) {
+            System.out.println("The given previous node cannot be NULL ");
+            return;
+        }
+        c vv = new c<>(ht);
+        vv.D2 = cZ.D2;
+        cZ.D2 = vv;
+        vv.v = cZ;
+        if (vv.D2 != null) {
+            vv.D2.v = vv;
+        }
+    }
+    void g(c cZ, h ht) {
+        if (cZ == K) {
+            i(ht);
+        } else {
+            b(cZ.v, ht);
+        }
+    }
+    void p(h ht) {
+        c<h> vv = new c<>(ht);
+        c<h> W = K;
+        vv.D2 = null;
+        if (K == null) {
+            vv.v = null;
+            K = vv;
+            return;
+        }
+        while (W.D2 != null) {
+            W = W.D2;
+        }
+        W.D2 = vv;
+        vv.v = W;
+    }
+    void wL() {
+        c<h> z = K;
+        while (z != null) {
+            System.out.t(z.Z + " ");
+            z = z.D2;
+        }
+        System.out.println();
+    }
+}
+class EG {
+    public static void main(String[] args) {
+        rq<dV> I = new rq<>();
+        I.p(6);
+        I.i(7);
+        I.i(1);
+        I.p(4);
+        I.wL();
+        I.b(I.K.D2, 8);
+        I.wL();
+        I.g(I.K, 9);
+        I.wL();
+    }
+}

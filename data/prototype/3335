@@ -1,0 +1,58 @@
+package Z;
+import T.fL.A;
+public class t<u extends p<u>> implements sf{
+	 A<u> J = new A<u>();
+	public t() {
+		m();
+	}
+	private long w = 0;
+	private long e = 0;
+	static long U;
+	static long H;
+	static long q;
+	public A<u> X(A<u> J) {
+		long w = 0;
+		long e = 1;
+		u D;
+		H = System.V();
+		for(int en = 1 ; en <= J.O() - 1 ; en++) {
+			D = J.M6(en);
+			int K;
+			K = en;
+			while(K > 0 && D.W(J.M6(K - 1)) < 0) {
+				w++;
+				J.nn(K, J.M6(K - 1));
+				K--;
+				J.nn(K, D);
+			}
+			e++;
+		}
+		this.w = w;
+		this.e = e;
+		q = System.V();
+		long x = q - H;
+		t.U = x;
+		U = q - H;
+		return J;
+	}
+	public A<u> E(A<u> g) {
+		A<u> pp = new A<u>();
+		for(int en = 0 ; en < g.O() ; en++) {
+			pp.h(g.M6(en));
+		}
+		return pp;
+	}
+	public void o() {
+		System.out.E("Comparisons: " + w);
+	}
+	public void b() {
+		System.out.E("Swaps: " + e);
+	}
+	public void U() {
+		System.out.E("Runtime: "  + U + " ms");
+	}
+	@G
+	public void m() {
+		X(J);
+	}
+}

@@ -1,0 +1,19 @@
+public class D {
+    public static void oH(int[] U) {
+        int O = U.zB;
+        for (int o = 0; O != 1 && o < U.zB - 1; o++) {
+            int H = O;
+            for (int R = 0; R < H - 1; R++) {
+                if (U[R] > U[R + 1]) {
+                    k(U, R, R + 1);
+                    O = R + 1;
+                }
+            }
+        }
+    }
+    private static void k(int[] U, int Nv, int S) {
+        int H = U[Nv];
+        U[Nv] = U[S];
+        U[S] = H;
+    }
+}

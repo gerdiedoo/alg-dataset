@@ -1,0 +1,46 @@
+from __future__ import print_function
+from random import randint
+from tempfile import TemporaryFile
+import numpy as np
+def i(A, H, h):
+    E = 0
+    if H < h:
+        y = F_(H, h)
+        F = A[h]
+        A[h] = A[y]
+        A[y] = F
+        (CP, E) = Jr(A, H, h)
+        E += i(A, H, CP - 1)
+        E += i(A, CP + 1, h)
+    return E
+def Jr(A, H, h):
+    E = 0
+    y = F_(H, h)
+    F = A[h]
+    A[h] = A[y]
+    A[y] = F
+    YE = H - 1
+    for tb in D(H, h):
+        E += 1
+        if A[tb] < A[h]:
+            YE = YE + 1
+            F = A[YE]
+            A[YE] = A[tb]
+            A[tb] = F
+    F = A[YE + 1]
+    A[YE + 1] = A[h]
+    A[h] = F
+    return (YE + 1, E)
+J = a()
+CP = 100
+(u, B) = (0, 1)
+rp = b.random.normal(u, B, CP)
+b.save(J, rp)
+print('The array is')
+print(rp)
+J.seek(0)
+N = b.load(J)
+L = len(N) - 1
+r = i(N, 0, L)
+print('No of Comparisons for 100 elements selected from a standard normal distribution is :')
+print(r)

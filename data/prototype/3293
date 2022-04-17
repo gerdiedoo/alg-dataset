@@ -1,0 +1,35 @@
+package s;
+import y.h.b.v.t;
+import y.h.b.v.e;
+public class E {
+  public static void Q(A[] C) {  
+    int mT = C.K;
+    for (int T = 1; T < mT; T++) {  
+      for (int Z = T; Z > 0 && yw(C[Z], C[Z-1]); Z--)
+        F(C, Z, Z-1);
+    }
+  }
+  private static boolean yw(A E8, A O) { 
+    return E8.a(O) < 0;  
+  }
+  private static void F(A[] C, int T, int Z) { 
+    A w = C[T]; 
+    C[T] = C[Z]; 
+    C[Z] = w; 
+  }
+  private static void xe(A[] C) {  
+    for (int T = 0; T < C.K; T++)
+      e.U("%s\n", C[T]);
+  }
+  public static boolean N(A[] C) {  
+    for (int T = 1; T < C.K; T++)
+      if (yw(C[T], C[T-1])) return false;
+    return true;
+  }
+  public static void main(String[] args) {  
+    String[] C = t.D();
+    Q(C);
+    assert N(C);
+    xe(C);
+  }
+}

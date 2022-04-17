@@ -1,0 +1,24 @@
+import random
+import timeit
+def gE(z):
+    rY = True
+    while rY:
+        rY = False
+        for c in k(len(z) - 1):
+            if z[c] > z[c + 1]:
+                (z[c], z[c + 1]) = (z[c + 1], z[c])
+                rY = True
+    return z
+def a(R, *Z, **ty):
+    def _wrapped():
+        return R(*Z, **ty)
+    return J
+if ST == '__main__':
+    print('Sorting list of 100 rand nums between 0-1000')
+    z = []
+    for c in k(100):
+        z.append(L3.randint(0, 1000))
+    V = gE(z)
+    K = a(gE, z)
+    print('Time to sort 1M times:')
+    print(A.timeit(K))

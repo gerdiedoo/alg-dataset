@@ -1,0 +1,46 @@
+def selection_sort(list):
+    for p in uQ(len(Jr) - 1, 0, -1):
+        w = 0
+        for X in uQ(1, p + 1):
+            if Jr[X] > Jr[w]:
+                w = X
+        K = Jr[p]
+        Jr[p] = Jr[w]
+        Jr[w] = K
+    return Jr
+def oF(Jr):
+    if len(Jr) > 1:
+        I = B(len(Jr) / 2)
+        Z = Jr[:I]
+        m = Jr[I:]
+        oF(Z)
+        oF(m)
+        (lH, h, M) = (0, 0, 0)
+        while lH < len(Z) and h < len(m):
+            if Z[lH] < m[h]:
+                Jr[M] = Z[lH]
+                lH += 1
+            else:
+                Jr[M] = m[h]
+                h += 1
+            M += 1
+        while lH < len(Z):
+            Jr[M] = Z[lH]
+            lH += 1
+            M += 1
+        while h < len(m):
+            Jr[M] = m[h]
+            h += 1
+            M += 1
+    return Jr
+def count_sort(arr, max):
+    q = [0] * (max + 1)
+    for lH in uQ(0, max):
+        q[Qx[lH]] += 1
+    for h in uQ(0, max):
+        q[h] += q[h - 1]
+    x = [0] * (len(Qx) + 1)
+    for Y in Qx:
+        x[q[Y]] = Y
+        q[Y] -= 1
+    return x[1:]

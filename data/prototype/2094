@@ -1,0 +1,67 @@
+package es;
+class jt
+{
+    static D rA;
+    static int p=1;
+    static class D
+    {
+        int B;
+        D Vg;
+        D G;
+        D(int FH)
+        {
+            G = null;
+            B = FH;
+            Vg = null;
+        }
+    }
+    public void g(int B)
+    {
+        D D = new D(B);
+        D.Vg = rA;
+        rA = D;
+        p++;
+    }
+    public void E(D G, int B)
+    {
+        D D = new D(B);
+        D.Vg = G.Vg;
+        G.Vg = D;
+        p++;
+    }
+    public void t()
+    {
+        D D = rA;
+        while(D!=null)
+        {
+            System.out.println(D.B);
+            D = D.Vg;
+        }
+    }
+    public static void main(String args[])
+    {
+        jt wQ = new jt();
+        wQ.rA = null;
+        wQ.g(5);
+        wQ.g(9);
+        wQ.g(13);
+        wQ.g(25);
+        wQ.g(100);
+        wQ.g(200);
+        wQ.g(300);
+        D k;
+        k = rA;
+        for(int Q=1;Q<2;Q++)
+        {
+            k = k.Vg;
+        }
+        wQ.E(k,500);
+        k = rA;
+        for(int Q=1;Q<p-1;Q++)
+        {
+            k = k.Vg;
+        }
+        wQ.E(k, 1);
+        wQ.t();
+    }
+}

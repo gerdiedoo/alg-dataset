@@ -1,0 +1,171 @@
+public class x<h extends E<? super h>> implements
+        R4<h> {
+    private P<h> T;
+    private P<h> s;
+    private int O;
+    @i
+    public void l(h M) {
+        if (M == null) {
+            throw new Q.sm.k("Input M is null.");
+        }
+        T = new P<h>(M, T);
+        if (O == 0) {
+            s = T;
+        }
+        ++O;
+    }
+    @i
+    public void j(h M, int S) {
+        if (M == null) {
+            throw new Q.sm.k("Input M is null.");
+        }
+        if (S < 0 || S > O) {
+            throw new Q.sm.R(
+                    "Input S is out of bounds.");
+        }
+        if (S == 0) {
+            l(M);
+        } else if (S == O) {
+            g(M);
+        } else {
+            P<h> t = T;
+            for (int k_ = 0; k_ < S - 1; ++k_) {
+                t = t.b();
+            }
+            t.yN(new P<h>(M, t.b()));
+            ++O;
+        }
+    }
+    @i
+    public void g(h M) {
+        if (M == null) {
+            throw new Q.sm.k("Input M is null.");
+        }
+        if (O == 0) {
+            l(M);
+        } else {
+            s.yN(new P<h>(M));
+            s = s.b();
+            ++O;
+        }
+    }
+    @i
+    public h N() {
+        if (O == 0) {
+            return null;
+        } else {
+            h r = T.vZ();
+            T = T.b();
+            if (O == 1) {
+                s = null;
+            }
+            --O;
+            return r;
+        }
+    }
+    @i
+    public h J(int S) {
+        if (S < 0 || S >= O) {
+            throw new Q.sm.R(
+                    "Input S is out of bounds.");
+        }
+        if (S == 0) {
+            return N();
+        } else if (S == O - 1) {
+            return G();
+        } else {
+            P<h> t = T;
+            h r;
+            for (int k_ = 0; k_ < S - 1; ++k_) {
+                t = t.b();
+            }
+            r = t.b().vZ();
+            t.yN(t.b().b());
+            --O;
+            return r;
+        }
+    }
+    @i
+    public h G() {
+        if (O == 0) {
+            return null;
+        } else if (O == 1) {
+            return N();
+        } else {
+            h r = s.vZ();
+            P<h> t = T;
+            for (int k_ = 1; k_ < O - 1; ++k_) {
+                t = t.b();
+            }
+            t.yN(null);
+            s = t;
+            --O;
+            return r;
+        }
+    }
+    @i
+    public h CM(int S) {
+        if (S < 0 || S >= O) {
+            throw new Q.sm.R(
+                    "Input S is out of bounds.");
+        }
+        if (S == 0) {
+            return T.vZ();
+        } else if (S == O - 1) {
+            return s.vZ();
+        } else {
+            P<h> t = T;
+            for (int k_ = 0; k_ < S; ++k_) {
+                t = t.b();
+            }
+            return t.vZ();
+        }
+    }
+    @i
+    public h C() {
+        if (O == 0) {
+            return null;
+        }
+        h r = T.vZ();
+        P<h> t = T;
+        while (t != null) {
+            if (r.a(t.vZ()) < 0) {
+                r = t.vZ();
+            }
+            t = t.b();
+        }
+        return r;
+    }
+    @i
+    public X[] B_() {
+        X[] F = new X[O];
+        P<h> t = T;
+        for (int k_ = 0; k_ < O; ++k_) {
+            F[k_] = t.vZ();
+            t = t.b();
+        }
+        return F;
+    }
+    @i
+    public int O() {
+        return O;
+    }
+    @i
+    public boolean ml() {
+        return O == 0;
+    }
+    @i
+    public void Ju() {
+        T = null;
+        s = null;
+        O = 0;
+    }
+    @i
+    public P<h> z() {
+        return T;
+    }
+    @i
+    public P<h> I() {
+        return s;
+    }
+}

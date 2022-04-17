@@ -1,0 +1,113 @@
+package b.o.It;
+import N.zg.Yg;
+import N.zg.ew;
+import N.zg.c;
+public class SU {
+  public static <r extends QK<r>> void I(c<r> J) {
+    I(J, 0, J.T() - 1);
+  }
+  private static <r extends QK<r>> void I(c<r> J, int w, int v) {
+    if (w < v) {
+      final int Uk = (w + v) / 2;
+      I(J, w, Uk);
+      I(J, Uk + 1, v);
+      xq(J, w, Uk, v);
+    }
+  }
+  private static <r extends QK<r>> void xq(
+      c<r> J,
+      int w,
+      int f,
+      int v) {
+    final c<r> L = new Yg<>(J.Q(w, f + 1));
+    final c<r> V = new Yg<>(J.Q(f + 1, v + 1));
+    int y = 0;
+    int Y = 0;
+    int zk = w;
+    while (y < L.T() && Y < V.T()) {
+      final r u = L.o_(y);
+      final r R = V.o_(Y);
+      if (u.D(R) <= 0) {
+        J.G(zk++, u);
+        y++;
+      } else {
+        J.G(zk++, R);
+        Y++;
+      }
+    }
+    while (y < L.T()) {
+      final r u = L.o_(y);
+      J.G(zk++, u);
+      y++;
+    }
+    while (Y < V.T()) {
+      final r R = V.o_(Y);
+      J.G(zk++, R);
+      Y++;
+    }
+  }
+  public static <r extends QK<r>> ew<r> I(ew<r> J) {
+    if (J.T() <= 1) {
+      return J;
+    }
+    final int p = J.T();
+    final int Uk = (p - 1) / 2;
+    final ew<r> L = new ew<>(J.Q(0, Uk + 1));
+    final ew<r> V = new ew<>(J.Q(Uk + 1, p));
+    final ew<r> P = I(L);
+    final ew<r> G6 = I(V);
+    return S(P, G6);
+  }
+  private static <r extends QK<? super r>> ew<r> S(
+    ew<r> GK,
+    ew<r> QE) {
+    final ew<r> C = new ew<>();
+    r Z = GK.U();
+    r i = QE.U();
+    while (Z != null && i != null) {
+      if (Z.D(i) <= 0) {
+        C.F(Z);
+        GK.h();
+        Z = GK.U();
+      } else {
+        C.F(i);
+        QE.h();
+        i = QE.U();
+      }
+    }
+    while (Z != null) {
+      C.F(Z);
+      GK.h();
+      Z = GK.U();
+    }
+    while (i != null) {
+      C.F(i);
+      QE.h();
+      i = QE.U();
+    }
+    return C;
+  }
+  public static void main(String[] args) {
+    final c<s> J = new Yg<>();
+    J.F(4);
+    J.F(1);
+    J.F(5);
+    J.F(3);
+    J.F(9);
+    J.F(10);
+    J.F(1);
+    I(J);
+    I(new Yg<s>());
+    System.out.println(J);
+    final ew<s> gi = new ew<>();
+    gi.F(4);
+    gi.F(1);
+    gi.F(5);
+    gi.F(3);
+    gi.F(9);
+    gi.F(10);
+    gi.F(1);
+    I(new ew<s>());
+    System.out.println(I(gi));
+  }
+}

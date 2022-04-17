@@ -1,0 +1,46 @@
+package Cj.G.l.d;
+import Cj.G.l.v.nX;
+import Cj.G.l.v.cK;
+import Cj.G.l.v.C;
+public final class p extends nX {
+	public static final cK V = new p();
+	public void I(C Z) {
+		I(Z, 0, Z.F());
+	}
+	private static void I(C Z, int t, int j) {
+		if (t == j)
+			return;
+		Z.lf(t, j, C.w.Hg);
+		int E6 = t;
+		int Gy = j - 1;
+		int z = E6;   
+		while (E6 != Gy) {
+			while (Z.cc(Gy, z) >= 0 && E6 != Gy) {
+				Z.H(Gy, C.w.Wo);
+				Gy--;
+			}
+			if (E6 != Gy) {
+				Z.K(E6, Gy);
+				z = Gy;
+				Z.H(E6, C.w.Wo);
+				E6++;
+			}
+			while (Z.cc(E6, z) <= 0 && E6 != Gy) {
+				Z.H(E6, C.w.Wo);
+				E6++;
+			}
+			if (E6 != Gy) {
+				Z.K(Gy, E6);
+				z = E6;
+				Z.H(Gy, C.w.Wo);
+				Gy--;
+			}
+		}
+		Z.H(z, C.w.u);
+		I(Z, t, z);
+		I(Z, z + 1, j);
+	}
+	private p() {
+		super("Quick I (double-ended)");
+	}
+}

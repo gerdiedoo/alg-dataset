@@ -1,0 +1,37 @@
+package lr.r.L.nS;
+public class Q {
+    public <u extends i<u>> void I(u[] M) {
+        for (int h = 0; h < M.ge - 1; h++) {
+            int cA = h;
+            for (int j = h + 1; j < M.ge; j++) {
+                if (M[j].O(M[cA]) < 0) {
+                    cA = j;
+                }
+            }
+            if (cA != h) {
+                u C = M[h];
+                M[h] = M[cA];
+                M[cA] = C;
+            }
+        }
+    }
+    public <u extends i<u>> void x(u[] M) {
+        this.x(M, 0);
+    }
+    private <u extends i<u>> void x(u[] M, int l) {
+        if (l < M.ge - 1) {
+            int cA = l;
+            for (int h = l + 1; h < M.ge; h++) {
+                if (M[h].O(M[cA]) < 0) {
+                    cA = h;
+                }
+            }
+            if (cA != l) {
+                u C = M[l];
+                M[l] = M[cA];
+                M[cA] = C;
+            }
+            x(M, l + 1);
+        }
+    }
+}

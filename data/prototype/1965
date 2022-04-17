@@ -1,0 +1,29 @@
+package te.mE;
+import te.q;
+public class a {
+    private q[] i;
+    public a() {
+        i = new q[10];
+    }
+    public void A(String B, q U) {
+        int C = Q(B);  
+        if (i[C] != null) {  
+            System.out.println("Sorry, there's already an U at position " + C);
+        }
+        else {  
+            i[C] = U;
+        }
+    }
+    public q w(String B) {
+        int C = Q(B);  
+        return i[C];  
+    }
+    private int Q(String B) {
+        return B.Y7() % i.Y7;
+    }
+    public void I() {
+        for (int G = 0; G < i.Y7; G++) {
+            System.out.println(i[G]);
+        }
+    }
+}

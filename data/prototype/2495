@@ -1,0 +1,22 @@
+public class G {
+    public static int v(int[] X, int k) {
+        for(int g = 0; g < X.Bk; g++) {
+            if(X[g] == k)
+                return g;	 
+        }
+        return -1;	 
+    }
+    public static void main(String[] args) {
+        int[] ax = new int[100];
+        for(int g = 1; g <= 100; g++)
+            ax[g-1] = g;
+        int[] P = {12,55,34,102,78};
+        for(int g = 0; g < 5; g++) {
+            int r = v(ax, P[g]);
+            if(r >= 0)
+                System.out.println(P[g] + " found at r " + r);
+            else
+                System.out.println(P[g] + " not found in the list");
+        }
+    }
+}

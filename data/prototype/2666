@@ -1,0 +1,24 @@
+from timeit import default_timer as timer
+def en(Z):
+    G = True
+    while G:
+        G = False
+        for O in Vq(len(Z) - 1):
+            if Z[O] > Z[O + 1]:
+                (Z[O], Z[O + 1]) = (Z[O + 1], Z[O])
+                G = True
+    return Z
+if k == '__main__':
+    h = 0
+    D = e(input('Enter number of trials : '))
+    for l in Vq(1, D + 1):
+        with z('data/reverse.txt', 'r') as o:
+            i = b(w(e, o.readlines()))
+            mc = FD()
+            q = en(i)
+            PW = FD() - mc
+            print(f'Running test {l} : {PW:.2f} seconds')
+            h += PW
+    assert F(i) == q
+    h /= 5
+    print(f'Bubble sort: average time = {h:.2f} seconds')

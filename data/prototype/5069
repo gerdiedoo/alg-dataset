@@ -1,0 +1,118 @@
+package U9;
+import S8.Y.Pl;
+import S8.Y.Ut;
+public class C {
+    public static <vY extends Mn> void d(Ut<vY> y) {
+        if (y.P()) {
+            return;
+        }
+        for (int L = 1; L < y.T(); L++) {
+            int r = L;
+            vY jK = y.k(L);
+            while (r > 0 && jK.c0(y.k(r - 1)) < 0) {
+                y.I(r, y.k(r - 1));
+                r--;
+            }
+            y.I(r, jK);
+        }
+    }
+    public static <vY extends Mn> void G(Ut<vY> y) {
+        if (y.P()) {
+            return;
+        }
+        int T = y.T();
+        for (int L = 1; L < T; L++) {
+            for (int r = (T - 1); r >= L; r--) {
+                if (y.k(r - 1).c0(y.k(r)) > 0) {
+                    vY jK = y.k(r);
+                    y.I(r, y.k(r - 1));
+                    y.I(r - 1, jK);
+                }
+            }
+        }
+    }
+    public static <vY extends Mn> void eV(Ut<vY> y) {
+        int E =0;
+        int z = y.T()-1;
+        eV(y, E, z);
+    }
+    private static <vY extends Mn> void eV(Ut<vY> y, int E, int z) {
+        vY s = y.k((E + z) / 2);
+        int L = E;
+        int r = z;
+        while (L < r) {
+            while (y.k(L).c0(s) < 0) {
+                L++;
+            }
+            while (y.k(r).c0(s) > 0) {
+                r--;
+            }
+            if (L <= r) {
+                vY jK = y.k(L);
+                y.I(L, y.k(r));
+                y.I(r, jK);
+                L++;
+                r--;
+            }
+        }
+        if (r > E) {
+            eV(y, E, r);
+        }
+        if (L < z) {
+            eV(y, L, z);
+        }
+    }
+    public static <vY extends Mn> void B(Ut<vY> y) {
+        int T = y.T();
+        if (T >= 2) {
+            int ZT = T / 2;
+            Ut<vY> b = new Pl<>();
+            Ut<vY> XU = new Pl<>();
+            for (int L = 0; L < ZT; L++) {
+                vY k = y.k(L);
+                b.u(k);
+            }
+            for (int L = ZT; L < T; L++) {
+                vY k = y.k(L);
+                XU.u(k);
+            }
+            B(b);
+            B(XU);
+            O(y, b, XU);
+        }
+    }
+    private static <vY extends Mn> void O(Ut<vY> y, Ut<vY> b, Ut<vY> XU) {
+        y.D();
+        while (!XU.P() && !b.P()) {
+            if (XU.k(0).c0(b.k(0)) > 0) {
+                y.u(b.k(0));
+                b.fV(0);
+            } else {
+                vY k = XU.k(0);
+                y.u(k);
+                XU.fV(0);
+            }
+        }
+        while (!b.P()) {
+            y.u(b.k(0));
+            b.fV(0);
+        }
+        while (!XU.P()) {
+            y.u(XU.k(0));
+            XU.fV(0);
+        }
+    }
+    public static void main(String[] args) {
+        Pl<String> QB = new Pl<>();
+        QB.u("Zla");
+        QB.u("Ala");
+        QB.u("Gla");
+        QB.u("Jla");
+        QB.u("Bla");
+        QB.u("Jla");
+        QB.u("Bla");
+        QB.u("Lla");
+        System.out.println(QB);
+        System.out.println(QB);
+    }
+}

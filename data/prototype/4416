@@ -1,0 +1,51 @@
+import O.r.C;
+public class N
+{
+    public static void main(String[] args)
+    {
+        k[] s = new k[] { 12, 13, 24, 10, 3, 6, 90, 70 };
+        c( s, 0, s.Q - 1 );
+        System.out.println(C.toString(s));
+    }
+    public static void c(k[] Z, int H, int z)
+    {
+        if (Z == null || Z.Q == 0){
+            return;
+        }
+        if (H >= z){
+            return;
+        }
+        int y5 = H + (z - H) / 2;
+        int BW = Z[y5];
+        int i = H, T = z;
+        while (i <= T)
+        {
+            while (Z[i] < BW)
+            {
+                i++;
+            }
+            while (Z[T] > BW)
+            {
+                T--;
+            }
+            if (i <= T)
+            {
+                q (Z, i, T);
+                i++;
+                T--;
+            }
+        }
+        if (H < T){
+            c(Z, H, T);
+        }
+        if (z > i){
+            c(Z, i, z);
+        }
+    }
+    public static void q (k s[], int Z7, int P)
+    {
+        int X = s[Z7];
+        s[Z7] = s[P];
+        s[P] = X;
+    }
+}

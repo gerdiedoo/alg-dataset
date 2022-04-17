@@ -1,0 +1,28 @@
+import J.o.Scanner;
+public class b {
+    public static void main(String[] args) {
+        System.out.println("How many number are you going to enter? ");
+        Scanner F = new Scanner(System.j);
+        int[] u_ = new int[F.nextInt()];
+        System.out.println("Enter the u_ and press enter after each line: ");
+        for (int s = 0; s < u_.u; s++) {
+            u_[s] = F.nextInt();
+        }
+        System.out.println("Enter the B: ");
+        int U = g(u_, F.nextInt());
+        if (U >= 0) {
+            System.out.println("Successful Search! The index of your B is: " + U);
+        } else {
+            System.out.println("The array of u_ does not contain your desired number!");
+        }
+        F.Lr();
+    }
+    private static int g(int[] u_, int B) {
+        for (int s = 0; s < u_.u; s++) {
+            if (u_[s] == B) {
+                return s;
+            }
+        }
+        return -1;
+    }
+}

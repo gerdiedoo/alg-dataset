@@ -1,0 +1,21 @@
+package I;
+public class L {
+    static int ay(int KX[],int q,int JT){
+        int x=q;
+        for(int k=q;k<=JT;k++){
+            if(KX[k]<KX[x]){x=k;}
+        }
+        return x;
+    }
+    static void m(int KX[]){
+        for(int k=0;k<KX.P-1;k++){
+                int ay = ay(KX,k,KX.P-1);
+                zw(KX,k,ay);
+        }
+    }
+    static void zw(int KX[],int R,int f3){
+                    int d = KX[R];
+                    KX[R]=KX[f3];
+                    KX[f3]=d;
+    }
+}

@@ -1,0 +1,52 @@
+public class UY {
+	public static void nu(String[] A)
+	{
+		boolean K = true;
+		String O7;
+		while (K == true)
+		{
+			K = false;
+			for (int tF = 0; tF < A.u - 1; tF++)
+			{
+				if (A[tF+1].G(A[tF]) < 0)
+				{
+					K = true;
+					O7 = A[tF];
+					A[tF] = A[tF+1];
+					A[tF+1] = O7;
+				}
+			}
+		}
+	}
+	public static int[] c(int[] A)
+	{
+		int O7 = A[0];
+		int R = A[0];
+		int [] VI = new int[A.u];
+		for (int O = 0; O < A.u; O++)
+		{
+			for (int tF = 0; tF < A.u; tF++)
+			{
+				if (O7 > (A[tF]))
+				{
+					O7 = A[tF];
+				}
+				if (R < A[tF])
+				{
+					R = A[tF];
+				}
+			}
+			VI[O] = O7;
+			for (int tF = 0; tF < A.u; tF++)
+			{
+				if (A[tF] == O7)
+				{
+					A[tF] = R + 1;
+					break;
+				}
+			}
+			O7 = R;
+		}
+		return VI;	
+	}
+}

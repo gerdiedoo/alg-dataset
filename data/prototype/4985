@@ -1,0 +1,29 @@
+package f;
+public class an {
+    public static void main(String[] args) {
+        int[] D={20,35,-15,7,55,1,-22};
+        Wq(D);
+    }
+    public static void Wq(int[] D){
+        for (int U = D.H-1; U >0 ; U--) {
+            int h = 0;
+            for (int K = 0; K <= U ; K++) {
+                if(D[K] > D[h]){
+                    h=K;
+                }
+            }
+            V(D,h,U);
+        }
+        for(int Hi=0;Hi<D.H;Hi++){
+            System.out.c(D[Hi]+" ");
+        }
+    }
+    public static void V(int[] D,int K,int Hi){
+        if (K==Hi){
+            return;
+        }
+        int w = D[K];
+        D[K] = D[Hi];
+        D[Hi] = w;
+    }
+}

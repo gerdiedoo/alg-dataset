@@ -1,0 +1,54 @@
+package C;
+import YB.w.Z.I.V;
+import YB.w.Z.I.Mh;
+import O.nx;
+public class t<A, a> {
+  private k d;
+  private int R;
+  private class k {
+    private A vj;
+    private a aD;
+    private k c;
+    public k(A vj, a aD, k c) {
+      this.vj = vj;
+      this.aD = aD;
+      this.c = c;
+    }
+  }
+  public a u(A vj) {  
+    for (k H = d; H != null; H = H.c)
+      if (vj.equals(H.vj))
+        return H.aD;  
+    return null;  
+  }
+  public void I9(A vj, a aD) {  
+    for (k H = d; H != null; H = H.c)
+      if (vj.equals(H.vj))
+        { H.aD = aD; return; }  
+    d = new k(vj, aD, d);  
+    R++;  
+  }
+  public boolean b(A vj) {
+    if (vj == null) throw new r("argument to b() is null");
+    return u(vj) != null;
+  }
+  public D<A> g() {
+    nx<A> g = new nx<A>();
+    for (k H = d; H != null; H = H.c)
+      g.L(H.vj);
+    return g;
+  }
+  public int Q() {
+    return R;
+  }
+  public static void main(String[] args) {
+    t<String, Y> m = new t<String, Y>();
+    for (int G = 0; !V.P(); G++) {
+      String vj = V.FP();
+      m.I9(vj, G);
+    }
+    Mh.println("Number of items: " + m.Q());
+    for (String f : m.g())
+      Mh.println(f + " " + m.u(f));
+  }
+}

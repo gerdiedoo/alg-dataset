@@ -1,0 +1,15 @@
+package tL;
+public class n {
+    public static int[] tL(int[] Dq){
+        for(int i = 1; i < Dq.c; i++){
+            int J = i - 1;
+            int d = Dq[i];
+            while( J >= 0 && d < Dq[J]){
+                Dq[J + 1] = Dq[J];
+                J = J - 1;
+            }
+            Dq[J + 1] = d;
+        }
+        return Dq;
+    }
+}

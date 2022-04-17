@@ -1,0 +1,20 @@
+package X.O;
+import X.j;
+public class Mv extends j {
+    public void P(b[] L) {
+        X(L, 0, L.J - 1);
+    }
+    private void X(b[] L, int ul, int Sl) {
+        if (Sl <= ul) return;
+        int K = ul, c = ul + 1, G = Sl;
+        b Y = L[ul];
+        while (c <= G) {
+            int s = L[c].ep(Y);
+            if (s < 0) l(L, K++, c++);
+            else if (s > 0) l(L, c, G--);
+            else c++;
+        }
+        X(L, ul, K - 1);
+        X(L, G + 1, Sl);
+    }
+}

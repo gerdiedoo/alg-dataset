@@ -1,0 +1,37 @@
+package j;
+import k.oE.w;
+import k.oE.P;
+import k.oE.U;
+public class B<R> extends bt<R> {
+	public void C(U<R> l_, P<R> T) {
+		int y = l_.R6();
+		if (y <= 1)
+			return;
+		int h = y / 2;
+		U<R> H = new w<>(l_.u(0, h));
+		U<R> K = new w<>(l_.u(h, y));
+		C(H, T);
+		C(K, T);
+		X(H, K, l_, T);
+	}
+	private void X(U<R> H, U<R> K, U<R> l_, P<R> T) {
+		int z = 0;
+		int rL = 0;
+		int a = 0;
+		R A6;
+		while (z < H.R6() && rL < K.R6()) {
+			A6 = T.s(H.qt(z), K.qt(rL)) <= 0 
+					? H.qt(z++) : K.qt(rL++);
+			l_.G(a++, A6);
+		}
+		while (z < H.R6()) {
+			l_.G(a++, H.qt(z++));
+		}
+		while (rL < K.R6()) {
+			l_.G(a++, K.qt(rL++));
+		}
+	}
+	public String Q() {
+		return "Merge Sort";
+	}
+}

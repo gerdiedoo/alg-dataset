@@ -1,0 +1,29 @@
+def I(K):
+    if len(K) > 1:
+        Q = len(K) // 2
+        q = K[:Q]
+        R = K[Q:]
+        I(q)
+        I(R)
+        b = 0
+        u = 0
+        Od = 0
+        while b < len(q) and u < len(R):
+            if q[b] < R[u]:
+                K[Od] = q[b]
+                b = b + 1
+            else:
+                K[Od] = R[u]
+                u = u + 1
+            Od = Od + 1
+        while b < len(q):
+            K[Od] = q[b]
+            b = b + 1
+            Od = Od + 1
+        while u < len(R):
+            K[Od] = R[u]
+            u = u + 1
+            Od = Od + 1
+K = [11, 2, 5, 4, 7, 6, 8, 1, 23]
+I(K)
+print(K)

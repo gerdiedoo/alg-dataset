@@ -1,0 +1,37 @@
+from __future__ import print_function
+def OW(NI):
+    eg = len(NI)
+    if eg > 1:
+        y = eg // 2
+        s = OW(NI[:y])
+        v = OW(NI[y:])
+        Po = 0
+        p = 0
+        f = 0
+        F = len(s)
+        T = len(v)
+        while Po < F and p < T:
+            if s[Po] < v[p]:
+                NI[f] = s[Po]
+                Po += 1
+            else:
+                NI[f] = v[p]
+                p += 1
+            f += 1
+        while Po < F:
+            NI[f] = s[Po]
+            Po += 1
+            f += 1
+        while p < T:
+            NI[f] = v[p]
+            p += 1
+            f += 1
+    return NI
+if I == '__main__':
+    try:
+        h
+    except Si:
+        h = input
+    M = h('Enter numbers separated by a comma:\n').strip()
+    g = [B(LQ) for LQ in M.split(',')]
+    print(OW(g))

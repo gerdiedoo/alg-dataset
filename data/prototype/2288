@@ -1,0 +1,29 @@
+class m {
+    public int Wh(int[] e, int P) {
+        int W = -1;
+        int u = 0;
+        int Jc = e.E - 1;
+        while(u <= Jc) {
+            int QK = u + (Jc - u)/2;
+            if( e[QK] == P ){
+                W = QK;
+            } else if( e[QK] < P ) {
+                u = QK + 1;
+            } else {
+                Jc = QK - 1;
+            }
+        }
+        return W;
+    }
+    public static void main(String args[]) 
+    {  
+        m Ma = new m();
+        int e[] = { 2, 3, 4, 10, 40 }; 
+        int P = 3; 
+        int W = Ma.Wh(e, P);
+        if (W == -1) 
+            System.out.println("Element not present"); 
+        else
+            System.out.println("Element found at W " + W); 
+    } 
+}

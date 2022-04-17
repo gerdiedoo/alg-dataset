@@ -1,0 +1,13 @@
+package L.nF.Ma.U;
+public final class c {
+	public static void Ma(int[] R) {
+		for (int Zb = 1; Zb < R.T; Zb++) {
+			int OQ = R[Zb];
+			int ux;
+			for (ux = Zb; ux > 0 && R[ux - 1] > OQ; ux--) {
+				R[ux] = R[ux - 1];
+			}
+			R[ux] = OQ;
+		}
+	}
+}

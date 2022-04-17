@@ -1,0 +1,30 @@
+package XY.N.A;
+public class a implements D {
+    @b
+    public void A(int[] h_) {
+        A(h_, 0, h_.u-1);
+    }
+    private void A(int[] h_, int p, int y) {
+        if (p < y) {
+            int M = P(h_, p, y);
+            A(h_, p, M - 1);
+            A(h_, M + 1, y);
+        }
+    }
+    private int P(int[] h_, int p, int y) {
+        int e = h_[y];
+        int vu = (p - 1);
+        for (int T = p; T < y; T++) {
+            if (h_[T] < e) {
+                vu++;
+                int l = h_[vu];
+                h_[vu] = h_[T];
+                h_[T] = l;
+            }
+        }
+        int l = h_[vu + 1];
+        h_[vu + 1] = h_[y];
+        h_[y] = l;
+        return vu + 1;
+    }
+}

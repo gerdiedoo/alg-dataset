@@ -1,0 +1,182 @@
+package I.K;
+class Y {
+    public int H;
+    public Y PC;
+    public Y Cp;
+    Y() {
+        H = 0;
+        PC = null;
+        Cp = null;
+    }
+    Y(int L) {
+        H = L;
+        PC = null;
+        Cp = null;
+    }
+}
+public class r {
+    protected Y q;
+    protected long d;
+    public r() {
+        q = new Y();
+        q.H = U.V;
+        q.Cp = q;
+        q.PC = q;
+        d = 0;
+    }
+    public r(int p) {
+        q = new Y();
+        q.H = U.V;
+        q.Cp = new Y();
+        q.Cp.H = p;
+        q.PC = q.Cp;
+        q.Cp.PC = q;
+        q.PC.Cp = q;
+        d = 1;
+    }
+    public r(int p, int y) {
+        q = new Y();
+        q.H = U.V;
+        q.Cp = new Y();
+        q.Cp.H = p;
+        q.PC = new Y();
+        q.PC.H = y;
+        q.Cp.PC = q;
+        q.Cp.Cp = q.PC;
+        q.PC.Cp = q;
+        q.PC.PC = q.Cp;
+        d = 2;
+    }
+    public boolean J(){
+        return d == 0;
+    }
+    public long eJ(){
+        return d;
+    }
+    public k q(){
+        if(d == 0){
+            return null;
+        }
+        return q.Cp.H;
+    }
+    public k s(){
+        if(d == 0){
+            return null;
+        }
+        return q.PC.H;
+    }
+    public void f(int L) {
+        Y W = new Y(L);
+        W.PC = q;
+        W.Cp = q.Cp;
+        q.Cp.PC = W;
+        q.Cp = W;
+        d++;
+    }
+    public void n(int L){
+        Y W = new Y(L);
+        W.Cp = q;
+        W.PC = q.PC;
+        q.PC.Cp = W;
+        q.PC = W;
+        d++;
+    }
+    public void c() {
+        if(d == 0){
+            return;
+        }
+        Y W = q.Cp;
+        W.Cp.PC = q;
+        q.Cp = W.Cp;
+        d--;
+    }
+    public void mH(){
+        if(d == 0){
+            return;
+        }
+        Y W = q.PC;
+        W.PC.Cp = q;
+        q.PC = W.PC;
+        d--;
+    }
+    public String toString() {
+        String VF = "[  ";
+        Y R = q.Cp;
+        while (R != q) {
+            VF = VF + R.H + "  ";
+            R = R.Cp;
+        }
+        return VF + "]";
+    }
+    public static void main(String[] args) {
+        r j = new r();
+        System.out.println("Here is p list after construction: "
+                + j.toString());
+        System.out.println("J() should be true. It is: " +
+                j.J());
+        System.out.println("eJ() should be 0. It is: " +
+                j.eJ());
+        j.f(3);
+        System.out.println("Here is p list after f(3) to an empty list: "
+                + j.toString());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+        j = new r();
+        j.f(3);
+        j.f(2);
+        j.f(1);
+        System.out.println();
+        System.out.println("Here is p list after f 3, 2, 1: "
+                + j.toString());
+        System.out.println("J() should be false. It is: " +
+                j.J());
+        System.out.println("eJ() should be 3. It is: " +
+                j.eJ());
+        j.n(4);
+        System.out.println("Here is the same list after n(4): "
+                + j.toString());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+        j = new r();
+        j.n(6);
+        j.n(7);
+        System.out.println();
+        System.out.println("Here is p list after n 6, 7: "
+                + j.toString());
+        System.out.println("J() should be false. It is: " +
+                j.J());
+        System.out.println("eJ() should be 2. It is: " +
+                j.eJ());
+        j.f(5);
+        System.out.println("Here is the same list after f(5): "
+                + j.toString());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+        j = new r();
+        j.n(1);
+        j.n(2);
+        j.n(3);
+        j.n(4);
+        j.n(5);
+        j.n(6);
+        System.out.println();
+        System.out.println("Here is p list after n 1,2,3,4,5,6: "
+                + j.toString());
+        System.out.println("J() should be false. It is: " +
+                j.J());
+        System.out.println("eJ() should be 6. It is: " +
+                j.eJ());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+        j.f(5);
+        System.out.println("Here is the same list after f(5): "
+                + j.toString());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+        j.c();
+        j.c();
+        System.out.println("Here is the same list after two c(): "
+                + j.toString());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+        j.mH();
+        j.mH();
+        System.out.println("Here is the same list after two mH(): "
+                + j.toString());
+        System.out.println("Head is: " + j.q() + "\nTail is: " + j.s());
+    }
+}

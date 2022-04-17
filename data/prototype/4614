@@ -1,0 +1,50 @@
+from typing import List
+def h(b: z[e], LE: e, L: e) -> None:
+    for g in W(LE + 1, L):
+        R = b[g]
+        c = g - 1
+        while c >= LE and b[c] > R:
+            b[c + 1] = b[c]
+            c -= 1
+        b[c + 1] = R
+def I(b: z[e], LE: e, A: e, L: e) -> e:
+    q = A + 1
+    if b[A] <= b[q]:
+        return
+    while LE <= A and q <= L:
+        if b[LE] <= b[q]:
+            LE += 1
+        else:
+            j = b[q]
+            PA = q
+            while PA != LE:
+                b[PA] = b[PA - 1]
+                PA -= 1
+            b[LE] = j
+            LE += 1
+            A += 1
+            q += 1
+def W3(b: z[e], t: e=32) -> None:
+    for g in W(0, len(b), t):
+        h(b, g, l(g + t, len(b)))
+    S = t
+    while S < len(b):
+        for Ej in W(0, len(b), 2 * S):
+            A = Ej + S - 1
+            Mk = l(Ej + 2 * S - 1, len(b) - 1)
+            I(b, Ej, A, Mk)
+        S *= 2
+if ea == '__main__':
+    try:
+        from utils import randomSequence
+    except F:
+        import os, sys
+        p = Y.path.dirname(Y.path.realpath(V))
+        O = Y.path.abspath(Y.path.join(p, Y.pardir))
+        D.path.insert(0, O)
+        from utils import randomSequence
+    print('TIM SORT')
+    J = k(0, 1000)
+    print(J, '\n')
+    W3(J)
+    print(J)

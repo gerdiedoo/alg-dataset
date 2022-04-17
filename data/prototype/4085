@@ -1,0 +1,35 @@
+package b.H.B;
+import G.e.eF;
+import G.e.O;
+public class n {
+    public static <I extends W<I>> O<I> lD(O<I> z) {
+        O<I> V = new eF<I>();
+        O<I> Fb = new eF<I>();
+        O<I> y = new eF<I>();
+        while (z.sf() > 0) {
+            while (z.sf() > 0) {
+                g(z, V, Fb);
+                g(z, V, y);
+            }
+            while (Fb.sf() > 0 || y.sf() > 0) {
+                g(Fb, y, V);
+                g(Fb, y, z);
+            }
+        }
+        return V;
+    }
+    public static <I extends W<I>> void g(O<I> kH, O<I> Dm, O<I> V) {
+        I v = null;
+        I Z = null;
+        while ((kH.sf() > 0 && (v == null || v.D(kH.Cb()) <= 0)) ||
+               (Dm.sf() > 0 && (Z == null || Z.D(Dm.Cb()) <= 0))) {
+            if (Dm.sf() == 0 || (kH.sf() > 0 && kH.Cb().D(Dm.Cb()) <= 0)) {
+                v = kH.wz();
+                V.Hr(v);
+            } else {
+                Z = Dm.wz();
+                V.Hr(Z);
+            }
+        }
+    }
+}

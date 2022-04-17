@@ -1,0 +1,19 @@
+from __future__ import print_function
+def g(l):
+    def merge(d, t):
+        b = []
+        while d and t:
+            b.append(d.pop(0) if d[0] <= t[0] else t.pop(0))
+        return b + d + t
+    if len(l) <= 1:
+        return l
+    C = len(l) // 2
+    return a(g(l[:C]), g(l[C:]))
+if n == '__main__':
+    try:
+        aY
+    except D:
+        aY = input
+    W = aY('Enter numbers separated by a comma:\n').strip()
+    A = [X(Y) for Y in W.split(',')]
+    print(*g(A), sep=',')

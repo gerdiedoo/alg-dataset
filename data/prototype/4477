@@ -1,0 +1,30 @@
+def NT(q4, A_, Z):
+    assert 0 <= A_ <= Z < len(q4)
+    if A_ == Z:
+        return
+    o = q4[A_]
+    (q4[A_], q4[Z]) = (q4[Z], q4[A_])
+    i = A_
+    W = A_
+    while W < Z:
+        if q4[W] <= o:
+            (q4[i], q4[W]) = (q4[W], q4[i])
+            i += 1
+        W += 1
+    (q4[i], q4[Z]) = (q4[Z], q4[i])
+    if i > A_:
+        NT(q4, A_, i - 1)
+    if Z > i + 1:
+        NT(q4, i + 1, Z)
+def h():
+    l0 = [4, 1, 2, 3, 9]
+    x = [1]
+    CU = [2, 2, 1, -1, 0, 4, 5, 2]
+    NT(l0, 0, 4)
+    assert l0 == [1, 2, 3, 4, 9]
+    NT(x, 0, 0)
+    assert x == [1]
+    NT(CU, 0, 7)
+    assert CU == [-1, 0, 1, 2, 2, 2, 4, 5]
+if m == '__main__':
+    h()

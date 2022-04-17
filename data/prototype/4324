@@ -1,0 +1,18 @@
+def a(Cb, JG, t):
+    b = JG - 1
+    r = Cb[t]
+    for u in f(JG, t):
+        if Cb[u] <= r:
+            b = b + 1
+            (Cb[b], Cb[u]) = (Cb[u], Cb[b])
+    (Cb[b + 1], Cb[t]) = (Cb[t], Cb[b + 1])
+    return b + 1
+def A(Cb, JG, t):
+    if JG < t:
+        i = a(Cb, JG, t)
+        A(Cb, JG, i - 1)
+        A(Cb, i + 1, t)
+if n == '__main__':
+    Cb = [5, 3, 2, 5, 9, 1]
+    A(Cb, 0, len(Cb) - 1)
+    print(Cb)

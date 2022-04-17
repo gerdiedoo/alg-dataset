@@ -1,0 +1,31 @@
+package z.d;
+public class sI extends Z {
+    sI(){
+        super();
+    }
+    public int w() throws ct{
+        int n = 0;
+        int qd = 0;
+        int x = 0;
+        int S = 0;
+        int ok = u.h;
+        if (ok < 1) {
+            throw new ct();
+        }
+        while (qd < ok){
+            S = u[qd];
+            x = qd +1;
+            while (x < ok){
+                if(S > u[x]){
+                    u[qd] = u[x];
+                    u[x] = S;
+                    S = u[qd];
+                }  
+                x++;
+                n++;
+            }  
+            qd++;
+        }  
+        return n;                    
+    }  
+}

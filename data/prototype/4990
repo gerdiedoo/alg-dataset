@@ -1,0 +1,29 @@
+package o_;
+public class b {
+    public static void main(String[] args) {
+        int[] X={20,35,-15,7,55,1,-22};
+        l(X);
+    }
+    public static void l(int[] X){
+        for (int W = X.Ax-1; W >0 ; W--) {
+            int R = 0;
+            for (int n = 0; n <= W ; n++) {
+                if(X[n] > X[R]){
+                    R=n;
+                }
+            }
+            r(X,R,W);
+        }
+        for(int fy=0;fy<X.Ax;fy++){
+            System.out.vK(X[fy]+" ");
+        }
+    }
+    public static void r(int[] X,int n,int fy){
+        if (n==fy){
+            return;
+        }
+        int T6 = X[n];
+        X[n] = X[fy];
+        X[fy] = T6;
+    }
+}

@@ -1,0 +1,36 @@
+package J.x.I.s;
+public class b {
+    public <F extends P<F>> boolean G(F[] qc, F M) {
+        return this.G(qc, 0, qc.O - 1, M);
+    }
+    public <F extends P<F>> boolean G(F[] qc, int Y, int d, F M) {
+        while (Y <= d) {
+            int YX = (Y + d) / 2;
+            if (M.Pt(qc[YX]) == 0) {
+                return true;
+            } else if (M.Pt(qc[YX]) < 0) {
+                d = YX - 1;
+            } else {
+                Y = YX + 1;
+            }
+        }
+        return false;
+    }
+    public <F extends P<F>> boolean a(F[] qc, F M) {
+        return this.a(qc, 0, qc.O - 1, M);
+    }
+    private <F extends P<F>> boolean a(F[] qc, int Y, int d, F M) {
+        if (Y <= d) {
+            int YX = (Y + d) / 2;
+            if (M.Pt(qc[YX]) == 0) {
+                return true;
+            } else if (M.Pt(qc[YX]) < 0) {
+                return this.a(qc, Y, YX - 1, M);
+            } else {
+                return this.a(qc, YX + 1, d, M);
+            }
+        } else {
+            return false;
+        }
+    }
+}

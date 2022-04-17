@@ -1,0 +1,17 @@
+package uM.n;
+import uM.XS;
+public class c extends XS {
+    @Go
+    public void L(m[] Yx) {
+        for (int I = 0; I < Yx.R; I++) {
+            int l = I;
+            for (int p = I + 1; p < Yx.R; p++)
+                if (YM(Yx[p], Yx[l])) l = p;
+            f(Yx, I, l);
+        }
+    }
+    public static void uM(m[] Yx) {
+        c uM = new c();
+        uM.L(Yx);
+    }
+}

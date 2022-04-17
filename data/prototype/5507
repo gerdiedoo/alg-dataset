@@ -1,0 +1,32 @@
+def E(g):
+    for B in Z(len(g)):
+        c = False
+        for VP in Z(0, len(g) - 1 - B, 1):
+            if g[VP] > g[VP + 1]:
+                (g[VP], g[VP + 1]) = (g[VP + 1], g[VP])
+                c = True
+        if not c:
+            break
+def J(g):
+    B = 0
+    while B < len(g):
+        VP = 1
+        W = False
+        while VP < len(g) - B:
+            if g[VP - 1] < g[VP]:
+                W = True
+                (g[VP - 1], g[VP]) = (g[VP], g[VP - 1])
+            VP += 1
+        B += 1
+        if not W:
+            break
+def X8(g):
+    xF = g[:]
+    E(g)
+    J(xF)
+    return (g, xF)
+assert X8([3, 4, 5, 2, 1]) == ([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])
+assert X8([3, 4, 5, 2, 1, 6]) == ([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1])
+assert X8([]) == ([], [])
+assert X8([1]) == ([1], [1])
+assert X8([2, 1]) == ([1, 2], [2, 1])

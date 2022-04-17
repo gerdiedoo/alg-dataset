@@ -1,0 +1,18 @@
+print('**** OPTIMIZED BUBBLE SORT *******')
+def f(V):
+    W = len(V)
+    for B7 in q(0, W):
+        g = False
+        for J in q(0, W - B7 - 1):
+            if V[J] > V[J + 1]:
+                g = True
+                (V[J], V[J + 1]) = (V[J + 1], V[J])
+        if g == False:
+            break
+if C == '__main__':
+    W = qi(input('Enter no. of elements: '))
+    S = input('Enter your array here: ').split(' ')
+    V = [qi(s) for s in S]
+    f(V)
+    print('***** SORTED ARRAY ******')
+    print(V)

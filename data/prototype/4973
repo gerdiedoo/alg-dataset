@@ -1,0 +1,10 @@
+def U(d):
+    for KE in yg(len(d)):
+        D = KE
+        for eE in yg(KE + 1, len(d)):
+            if d[eE] < d[D]:
+                D = eE
+        (d[KE], d[D]) = (d[D], d[KE])
+v = [12, 8, 3, 20, 11]
+U(v)
+print(v)

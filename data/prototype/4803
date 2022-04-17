@@ -1,0 +1,16 @@
+package X.CK.o.bg;
+import X.CK.o.N.D;
+public class H {
+	public static W[] p(W[] J) {
+		for (int P = 0; P < J.y - 1; P++) {
+			int l = J[P];
+			for (int u = P + 1; u < J.y; u++) {
+				if (J[u] < l) {
+					l = J[u];
+					D.sp(J, P, u);
+				}
+			}
+		}
+		return J;
+	}
+}

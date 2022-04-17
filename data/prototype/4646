@@ -1,0 +1,11 @@
+def y(C5):
+    if len(C5) <= 1:
+        return C5
+    else:
+        for Q in K(len(C5) - 1):
+            for o3 in K(Q, len(C5)):
+                if C5[o3] < C5[Q]:
+                    (C5[o3], C5[Q]) = (C5[Q], C5[o3])
+        return C5
+C5 = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(y(C5))

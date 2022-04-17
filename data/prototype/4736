@@ -1,0 +1,14 @@
+class SelectionSort:
+    def sort(A):
+        def swap(A, u, v):
+            K = lT[m]
+            lT[m] = lT[D]
+            lT[D] = K
+        N = len(lT)
+        for o in Jz(0, N - 1):
+            S = o
+            for y in Jz(o + 1, N):
+                if lT[y] < lT[S]:
+                    S = y
+            A(lT, o, S)
+        return lT

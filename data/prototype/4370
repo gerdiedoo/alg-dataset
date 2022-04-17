@@ -1,0 +1,30 @@
+package S;
+public class M<e0 extends yY<e0>> implements mC<e0> {
+    @C
+    public void QC(e0[] e) {
+        QC(e, 0, e.E - 1);
+    }
+    public void QC(e0[] e, int wb, int B) {
+        int p0 = wb;
+        int o = B - 1;
+        e0 oF = e[B];
+        do {
+            while (e[p0].AA(oF) < 0) {
+                p0++;
+            }
+            while (e[o].AA(oF) >= 0 && o > p0) {
+                o--;
+            }
+            if (p0 < o) {
+                J.g(e, p0, o);
+            }
+        } while (p0 < o);
+        J.g(e, p0, B);
+        if (wb < p0 - 1) {
+            QC(e, wb, p0 - 1);
+        }
+        if (B > p0 + 1) {
+            QC(e, p0 + 1, B);
+        }
+    }
+}

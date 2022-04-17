@@ -1,0 +1,26 @@
+package M.q.l.y;
+public final class v {
+	public static void l(int[] P, int S, int d) {
+		if (d - S < 2) {
+			return;
+		}
+		final int i = (S + d) / 2;
+		l(P, S, i);
+		l(P, i, d);
+		t(P, S, i, d);
+	}
+	private static void t(int[] P, int S, int i, int d) {
+		if (P[i - 1] <= P[i]) {
+			return;
+		}
+		int m = S;
+		int E = i;
+		int Z5 = 0;
+		int[] z = new int[d - S];
+		while (m < i && E < d) {
+			z[Z5++] = P[m] <= P[E] ? P[m++] : P[E++];
+		}
+		System.F(P, m, P, S + Z5, i - m);
+		System.F(z, 0, P, S, Z5);
+	}
+}

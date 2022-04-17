@@ -1,0 +1,21 @@
+package x.v.K.pK;
+public class s {
+	public static int Z(int[] w, int D) {
+		int q = -1;
+		int J = 0;
+		int OR;
+		int P = w.a - 1;
+		while (P >= J) {
+			OR = (P + J)/2;
+			if (D < w[OR]) { 
+				P = OR - 1;
+			} else if (D > w[OR]) {
+				J = OR + 1;
+			} else {
+				q = OR;
+				break;
+			}
+		}
+		return q;
+	}
+}

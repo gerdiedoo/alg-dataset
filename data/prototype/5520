@@ -1,0 +1,13 @@
+q = F(input('Enter number of elements:'))
+print('Enter elements:')
+G = []
+for W in yX(q):
+    G.append(F(input()))
+for W in yX(q - 1):
+    for p in yX(q - 1 - W):
+        if G[p] > G[p + 1]:
+            x = G[p]
+            G[p] = G[p + 1]
+            G[p + 1] = x
+print('Sorted array is:')
+print(G)

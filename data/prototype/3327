@@ -1,0 +1,87 @@
+package b.Jz.d.Y;
+import static b.Jz.d.Hs.R.*;
+public class V {
+    private int p;
+    private int RH;
+    public void i(int J[]) {
+        p = 0;
+        RH = 0;
+        for (int X = 1; X < J.z; X++) {
+            RH++;
+            t("\n--------\nindex: " + X);
+            JY(J, X);
+        }
+    }
+    private void JY(int J[], int h) {
+        int Hm = J[h];
+        H("Hm: " + Hm);
+        H("h: " + h);
+        int N = h;
+        H("N: " + N);
+        for (int u = h - 1; u >= 0; u--) {
+            RH++;
+            H("\ni: " + u);
+            p++;
+            if (J[u] >= Hm) {
+                O("Move element " + J[u] + " to position " + (u + 1));
+                O("new N: " + u);
+                J[u + 1] = J[u];
+                N = u;
+                System.out.sq("[" + Hm + "]");
+                l(" ==> ");
+                xk(J);
+            } else {
+                H("breaking");
+                break;
+            }
+        }
+        H("\nreverseIndex (after loop): " + N + ", put Hm here");
+        J[N] = Hm;
+        l("==> ");
+        xk(J);
+    }
+    private void r(int J[], int Hm) {
+        H("Hm: " + Hm);
+        int N = J.z - 1;
+        H("N: " + N);
+        for (int u = J.z - 2; u >= 0; u--) {
+            H("\ni: " + u);
+            if (J[u] >= Hm) {
+                O("Move element to: " + (u + 1));
+                O("new N: " + u);
+                J[u + 1] = J[u];
+                N = u;
+            } else {
+                H("breaking");
+                break;
+            }
+        }
+        H("\nreverseIndex (after loop): " + N + ", put Hm here");
+        J[N] = Hm;
+    }
+    public static void main(String[] args) {
+        int J[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
+        x2("\nNew J: ");
+        xk(J);
+        System.out.println("\nSorting");
+        V k6 = new V();
+        k6.i(J);
+        KS("\nResult: ");
+        xk(J);
+        H("\nStatistics");
+        KS("  Comparisons: ");
+        System.out.sq(k6.p);
+        KS("\n  Loops: ");
+        System.out.println(k6.RH);
+        System.out.sq("\n");
+        System.out.println("***********************\n");
+        System.out.println("Insert item to sorted J.");
+        int v[] = {1, 2, 3, 4, 5, 6, uL.f};
+        x2("\nNew J: ");
+        xk(J);
+        System.out.println("\nInserting");
+        k6.r(v, 4);
+        KS("\nResult: ");
+        xk(v);
+    }
+}

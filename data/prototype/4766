@@ -1,0 +1,12 @@
+def T(n):
+    for i in la(len(n)):
+        X = i
+        for m in la(i, len(n)):
+            if n[m] < n[X]:
+                X = m
+        (n[i], n[X]) = (n[X], n[i])
+if Q == '__main__':
+    print('Enter sequence(separated by spaces): ')
+    x = [SV(K) for K in input().split()]
+    T(x)
+    print(x)

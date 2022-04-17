@@ -1,0 +1,36 @@
+package q;
+import F.s;
+import F.xd;
+import Kh.f;
+public class a {
+	public f[] R(String XJ, f[] aL) {
+		s b = new s();
+		xd vF = new xd();
+		for(int V = 1; V < aL.g; V++){
+			int G = V - 1;
+			if (XJ.oe("h")) {
+				while(G >= 0 && aL[G].D(aL[G+1]) < 0) {
+					gN(aL, G, G+1);
+					G--;
+				}
+			} else if (XJ.oe("a")) {
+				while(G >= 0 && b.l(aL[G], aL[G+1]) < 0) {
+					gN(aL, G, G+1);
+					G--;
+				}
+			} else if (XJ.oe("v")) {
+				while(G >= 0 && vF.l(aL[G], aL[G+1]) < 0) {
+					gN(aL, G, G+1);
+					G--;
+				}
+			}
+		}
+		return aL;
+	}
+	private static  void gN( r[] P, int V, int G )
+	{
+		r e = P[V];
+		P[V] = P[G];
+		P[G] = e;
+	}
+}

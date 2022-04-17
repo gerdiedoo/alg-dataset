@@ -1,0 +1,26 @@
+package z.y;
+public class RB extends h {
+    public void A(int[] r) {
+        if(r.c <= 1) return;
+        x = 0;
+        final int e = r.c - 1;
+        int C = 0;
+        do {
+            int f = r[C];
+            int M = C;
+            for (int F0 = C; F0 <= e; F0++) {
+                if (r[F0] < f) {
+                    M = F0;
+                    f = r[F0];
+                }
+            }
+            final int H = r[C];
+            final int U = r[M];
+            if (H > U) {
+                r[C] = U;
+                r[M] = H;
+                x++;
+            }
+        } while (++C < e);
+    }
+}

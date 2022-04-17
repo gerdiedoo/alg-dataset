@@ -1,0 +1,40 @@
+package f.v.Rf.b;
+public class K<CS> {
+    private static int o = -1;
+    private CS[] T;
+    private int E;
+    @W("unchecked")
+    public K(int I3) {
+        this.T = (CS[])new I[I3];
+        this.E = 0;
+    }
+    public int E() {
+        return this.E;
+    }
+    public void yT(CS Z) {
+        this.T[this.E++] = Z;
+    }
+    public CS Q(int a) {
+        return this.T[a];
+    }
+    public int B(CS Z) {
+        for (int Uq = 0; Uq < this.E; Uq++) {
+            if (this.T[Uq].equals(Z)) {
+                return Uq;
+            }
+        }
+        return o;
+    }
+    public boolean x(CS Z) {
+        int Uq = this.B(Z);
+        if (Uq > o) {
+            for (; Uq < this.E - 1; Uq++) {
+                this.T[Uq] = this.T[Uq + 1]; 
+            }
+            this.E--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

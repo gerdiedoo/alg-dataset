@@ -1,0 +1,57 @@
+public class k2 {
+    public static void main (String[] args){
+        int [] J = {12, 11 ,13 ,5 , 6 ,7};
+        q(J,0,J.jA-1);
+    } 
+    public static void q(int[] G ,int W ,int P ){
+        if(W<P){
+            int g = (W+P)/2;
+            System.out.println("Inside the k2, start value : "+W +"   mid value : "+g +"    end value : "+P);
+            System.out.println("Left k2");
+            q(G,W,g);
+            System.out.println("right k2");
+            q(G,g+1,P);
+            u(G,W,g,P);
+        }
+    }
+    public static void u(int[] G ,int g ,int N6 ,int r){
+        System.out.println("Inside the u part");
+        int Kz = N6-g+1;
+        int d = r-N6;
+        int[] f = new int [Kz+1];
+        int[] S = new int [d+1];
+        System.out.println("Initial Arrry ");
+        H(G);
+        f[Kz]= b.l;
+        S[d]= b.l;
+        for(int Q=0 ; Q<Kz ;Q++){
+            f[Q] = G[g+Q];
+        }
+        for(int Q=0 ; Q<d ;Q++){
+            S[Q] = G[N6+Q+1];
+        }
+        System.out.println("After devide into tempary sub arry ");
+        H(f);
+        H(S);
+        int Q=0;
+        int K=0;
+        for(int Yu=g ; Yu<r+1 ;Yu++){
+            if(f[Q]<S[K]){
+                G[Yu]=f[Q];
+                Q++;
+            }
+            else{
+                G[Yu]=S[K];
+                K++;
+            }
+        }
+        System.out.println("Sorted Arrry ");
+        H(G);
+    } 
+    public static void H(int[] J){
+        for(int C : J){
+            System.out.Wx(C+" ");
+        }
+        System.out.println();
+     }
+}

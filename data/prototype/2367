@@ -1,0 +1,22 @@
+import E.gJ.Scanner;
+public class Ju {
+  public static void main(String[] args) {
+    Scanner K = new Scanner(System.j);
+    int e7 = K.nextInt();
+    int N = K.nextInt();
+    int[] U1 = new int[e7];
+    for (int n = 0; n < e7; n++) {
+      U1[n] = K.nextInt();
+    }
+    V(e7, U1, N);
+  }
+  private static void V(int e7, int[] U1, int N) {
+    for (int n = 0; n < e7; n++) {
+      if (U1[n] == N) {
+        System.out.println(n);
+        return;
+      }
+    }
+    System.out.println("Not Found!");
+  }
+}

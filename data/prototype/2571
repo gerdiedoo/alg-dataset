@@ -1,0 +1,40 @@
+package B.v.bR.l;
+public class z<g> {
+    private static int Y = -1;
+    private g[] F;
+    private int w;
+    @GE("unchecked")
+    public z(int SU) {
+        this.F = (g[])new I[SU];
+        this.w = 0;
+    }
+    public int w() {
+        return this.w;
+    }
+    public void x(g q) {
+        this.F[this.w++] = q;
+    }
+    public g Q(int p) {
+        return this.F[p];
+    }
+    public int M(g q) {
+        for (int t = 0; t < this.w; t++) {
+            if (this.F[t].equals(q)) {
+                return t;
+            }
+        }
+        return Y;
+    }
+    public boolean Tr(g q) {
+        int t = this.M(q);
+        if (t > Y) {
+            for (; t < this.w - 1; t++) {
+                this.F[t] = this.F[t + 1]; 
+            }
+            this.w--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

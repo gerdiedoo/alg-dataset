@@ -1,0 +1,24 @@
+import E.ew.I;
+public class WQ {
+    public static void main(String[] args) {
+        int[] v = {5, 4, 3, 2, 1};
+        ou(v);
+        System.out.println(I.toString(v));
+    }
+    static void ou(int[] v){
+        boolean L = false;
+        for(int i0 = 0; i0 < v.gE; i0++){
+            for(int y0 = 1; y0 < v.gE - i0; y0++){
+                if(v[y0] < v[y0 - 1]){
+                    int e = v[y0];
+                    v[y0] = v[y0 - 1];
+                    v[y0 - 1] = e;
+                    L = true;
+                }
+            }
+            if(!L){
+                break;
+            }
+        }
+    }
+}

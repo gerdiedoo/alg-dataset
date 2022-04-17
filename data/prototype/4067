@@ -1,0 +1,37 @@
+package L;
+import d.c.w;
+import d.c.qh;
+import d.c.Y;
+public class r<p> extends QM<p> {
+	public void DF(Y<p> J, qh<p> ZF) {
+		int o = J.F();
+		if (o <= 1)
+			return;
+		int S = o / 2;
+		Y<p> kX = new w<>(J.i(0, S));
+		Y<p> Jc = new w<>(J.i(S, o));
+		DF(kX, ZF);
+		DF(Jc, ZF);
+		Q(kX, Jc, J, ZF);
+	}
+	private void Q(Y<p> kX, Y<p> Jc, Y<p> J, qh<p> ZF) {
+		int vq = 0;
+		int q = 0;
+		int E = 0;
+		p W;
+		while (vq < kX.F() && q < Jc.F()) {
+			W = ZF.l(kX.k(vq), Jc.k(q)) <= 0 
+					? kX.k(vq++) : Jc.k(q++);
+			J.G(E++, W);
+		}
+		while (vq < kX.F()) {
+			J.G(E++, kX.k(vq++));
+		}
+		while (q < Jc.F()) {
+			J.G(E++, Jc.k(q++));
+		}
+	}
+	public String C() {
+		return "Merge Sort";
+	}
+}

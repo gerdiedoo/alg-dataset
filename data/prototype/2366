@@ -1,0 +1,45 @@
+import X.Z.*;
+public class Xq {
+    public static void main(String[] args) {
+        int m[] = {1,2,3,8,9,12};
+        int P = 2;
+        String i = e(m, P) ? "Successful Search" : "Unsuccessful Search";
+        System.out.println(i);
+    }
+    private static boolean e(int[] kS, int P) {
+        for(int G = 0; G < kS.u; G++) {
+            if(kS[G] == P){
+                return true;
+            }
+        }
+        return false;
+    }
+}    
+    public static void main(String t[]){
+        int[] c= {23,45,21,55,234,1,34,90};
+        int n = 34;
+        System.out.println("Element "+n+" found at index: "+e(c, n));
+    }
+} 
+import X.Z.*;
+public class Xq {
+	public static void main(String[] args) {
+		Scanner I = new Scanner(System.O4);
+		q<rc> D = new mQ<>();
+		System.out.println("How many number are you going to enter? ");
+		int f = I.nextInt();
+		System.out.println("Enter the kS of D: ");
+		for (int G = 0; G < f; G++) {
+			int U = I.nextInt();
+			D.F(U);
+		}
+		System.out.println("Enter the M: ");
+		int M = I.nextInt();
+		if (D.indexOf(M) >= 0) {
+			System.out.println("Successful Search!");
+		} else {
+			System.out.println("Unsuccessful Search!");
+		}
+		I.a();
+	}
+}

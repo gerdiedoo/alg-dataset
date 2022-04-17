@@ -1,0 +1,23 @@
+import td.h.KJ;
+public class B{
+	public void u(int[] Y) {
+		int a = Y.F;
+		for (int Q = 1; Q < a; Q ++) {
+			for (int J = Q; J > 0 && Y[J] < Y[J - 1]; J --) {
+				Gk(Y, J, J - 1);
+			}
+		}
+	}
+	private void Gk(int[] Y, int v, int O) {
+		int D = Y[v];
+		Y[v] = Y[O];
+		Y[O] = D;
+	}
+	public static void main(String[] args) {
+		B i = new B();
+		int[] Y = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + KJ.toString(Y));
+		i.u(Y);
+		System.out.println("sorted: " + KJ.toString(Y));
+	}
+}

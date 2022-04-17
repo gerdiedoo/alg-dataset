@@ -1,0 +1,142 @@
+import j.VD.*;
+public class B<k,t>{
+	static final int H = 1 << 2;
+	F<k,t>[] C;
+	int O;
+	int pG;
+	public B() {
+		pG = H;
+	}
+	public B(int V) {
+		this.pG = V;
+	}
+	class F<k, t> {
+		final int lW;
+		final k af;
+		t Me;
+		F<k,t> gD;
+		F(int lW, k af, t Me, F<k,t> gD) {
+			this.lW = lW;
+			this.af = af;
+			this.Me = Me;
+			this.gD = gD;
+		}
+		public k I6() {
+			return af;
+		}
+		public t v() {
+			return Me;
+		}
+		public final String toString() { return af + "=" + Me; }
+		public final int hashCode() {
+			return J.hashCode(af) ^ J.hashCode(Me);
+		}
+	}
+	static final int lW(Z af) {
+		return (af == null) ? 0 : af.hashCode();
+	}
+	public int O() {
+		return O;
+	}
+	public boolean o() {
+		return O == 0;
+	}
+	@Pp("unchecked")
+	public t Et(k af, t Me) {
+		F<k, t> mR;  int lW = lW(af);
+		if (C == null || C.T == 0) {
+			C = (F<k, t>[]) new F[pG];
+		}
+		int Q = C.T;
+		int h = (Q - 1) & lW;
+		if (C[h] == null) {
+			C[h] = new F<k,t>(lW, af, Me, null);
+		} else {
+			F<k, t> m;
+			mR = C[h];
+			if (mR.lW == lW && 
+					mR.af == af || (af != null && mR.af.equals(af))){
+				m = mR;
+			} else {
+				for (int D = 0; ; D++) {
+					System.out.println("LinkedList: Not " + mR.af);
+					m = mR.gD;
+					if (mR.gD == null) {
+						mR.gD = new F(lW, af, Me, null);
+						break;
+					}
+					if (m.lW == lW &&
+							(m.af == af || (af != null && m.af.equals(af)))) {
+						break;
+					}
+					mR = m;
+				}
+			}
+			if (m != null) {
+				t Sy = m.Me;
+				m.Me = Me;
+				return Sy;
+			}
+		}
+		O++;
+		return null;
+	}
+	public t M(Z af) {
+		int lW = lW(af);
+		int Q = C.T;
+		if (C != null && C.T > 0 && C[lW & (Q - 1)] != null) {
+			F<k, t> Sg = C[lW & (Q - 1)];
+			if (Sg.lW == lW && 
+					Sg.af == af || (af != null && Sg.af.equals(af))) {
+				return Sg.Me;
+			}
+			F<k, t> m = Sg.gD;
+			if (Sg.gD != null) {
+				do {
+					if (m.lW == lW &&
+							m.af == af || (m.af != null && m.af.equals(af))) {
+						return m.Me;
+					} 
+				}while ((m = m.gD) != null);
+			}
+		}
+		return null;
+	}
+	public boolean L(Z af) {
+		return M(af) != null;
+	}
+	public t u(Z af) {
+		int lW = lW(af);
+		int Q = C.T;
+		int h = lW & (Q - 1);
+		if (C != null && C.T > 0 && C[h] != null) {
+			F<k, t> X = C[h];
+			F<k, t> m = null; F<k, t> x = null;
+			if (X.lW == lW && 
+					X.af == af || (af != null && X.af.equals(af))) {
+				x = X;
+			}
+			m = X.gD;
+			if (X.gD != null) {
+				do {
+					if (m.lW == lW && 
+							m.af == af || (af != null && m.af.equals(af))) {
+						x = m;
+						break;
+					}
+					X = m;
+				} while ((m = m.gD) != null);
+			}
+			if (x != null) {
+				if (x == X) {
+					C[h] = x.gD;
+				} else {
+					X.gD = x.gD;
+				}
+				O--;
+				return x.Me;
+			}
+		}
+		return null;
+	}
+}

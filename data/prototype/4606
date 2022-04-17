@@ -1,0 +1,220 @@
+import timeit
+from random import *
+from copy import copy
+import numpy as np
+import matplotlib.pyplot as plt
+def VJ(p2):
+    for A in x(len(p2)):
+        for c in x(len(p2) - 1, A, -1):
+            if p2[c] < p2[c - 1]:
+                M1(p2, c, c - 1)
+    return p2
+def Mo(YN):
+    for A in x(0, len(YN) - 1):
+        Ub = A
+        for GA in x(A + 1, len(YN) - 1):
+            if YN[GA] < YN[Ub]:
+                Ub = GA
+        d = YN[A]
+        YN[A] = YN[Ub]
+        YN[Ub] = d
+    return YN
+def C(P):
+    for A in x(1, len(P)):
+        J = P[A]
+        c = A
+        while c > 0 and J < P[c - 1]:
+            P[c] = P[c - 1]
+            c -= 1
+        P[c] = J
+def i(YN):
+    if len(YN) == 1:
+        return YN
+    z = []
+    u = []
+    for A in x(0, len(YN)):
+        if A < len(YN) / 2:
+            z.append(YN[A])
+        else:
+            u.append(YN[A])
+    z = i(z)
+    u = i(u)
+    return r0(z, u)
+def W(a):
+    if len(a) <= 1:
+        return a
+    else:
+        r = b(a)
+        return W([U for U in a if U < r]) + [r] * a.count(r) + W([U for U in a if U > r])
+def r0(R, S):
+    Z = []
+    Q = 0
+    Up = 0
+    while Q != len(R) and Up != len(S):
+        if R[Q] > S[Up]:
+            Z.append(S[Up])
+            Up += 1
+        else:
+            Z.append(R[Q])
+            Q += 1
+    while Q != len(R):
+        Z.append(R[Q])
+        Q += 1
+    while Up != len(S):
+        Z.append(S[Up])
+        Up += 1
+    return Z
+def q(P):
+    K = len(P) - 1
+    y = K / 2
+    for A in x(e(y), -1, -1):
+        n(P, A, K)
+    for A in x(K, 0, -1):
+        if P[0] > P[A]:
+            M1(P, 0, A)
+            n(P, 0, A - 1)
+    return P
+def n(P, M, P3):
+    G = 2 * M + 1
+    while G <= P3:
+        if G < P3 and P[G] < P[G + 1]:
+            G += 1
+        if P[G] > P[M]:
+            M1(P, G, M)
+            M = G
+            G = 2 * M + 1
+        else:
+            return
+def M1(p2, tC, o):
+    J = p2[tC]
+    p2[tC] = p2[o]
+    p2[o] = J
+def N(YN):
+    Uy = []
+    YP = []
+    for A in x(0, len(YN) - 1):
+        Uy.append(0)
+        YP.append(0)
+    for A in x(0, len(YN) - 2):
+        for GA in x(A + 1, len(YN) - 1):
+            if YN[A] < YN[GA]:
+                Uy[GA] += 1
+            else:
+                Uy[A] += 1
+    for A in x(0, len(YN) - 1):
+        fh[Uy[A]] = YN[A]
+    return fh
+O = []
+fh = []
+ue = []
+Jf = []
+p = 10000
+for h in x(0, p):
+    O.append(s(0, 100))
+    fh.append(h)
+    ue.append(p - h)
+    Jf.append(s(0, 10) * 1000)
+def E6(D, *X, **I):
+    def wrapped():
+        return D(*X, **I)
+    return k
+def v(YN):
+    return W(YN)
+def jG(Pl, F, UB, r0, H, hV, Uy, YN, K):
+    Q7 = YN[:K]
+    EJ = E6(VJ, f(Q7))
+    Pl.append(V.timeit(EJ, number=1))
+    w = E6(Mo, f(Q7))
+    UB.append(V.timeit(w, number=1))
+    E8 = E6(C, f(Q7))
+    F.append(V.timeit(E8, number=1))
+    g = E6(i, f(Q7))
+    r0.append(V.timeit(g, number=1))
+    Va = E6(v, f(Q7))
+    H.append(V.timeit(Va, number=1))
+    T = E6(q, f(Q7))
+    hV.append(V.timeit(T, number=1))
+    S_ = E6(N, f(Q7))
+    Uy.append(V.timeit(S_, number=1))
+def Wh(Pl, F, UB, r0, H, hV, Uy):
+    Pl[:] = []
+    F[:] = []
+    UB[:] = []
+    r0[:] = []
+    H[:] = []
+    hV[:] = []
+    Uy[:] = []
+def qp():
+    pB = []
+    t = []
+    XI = []
+    Z7 = []
+    qd = []
+    Z1 = []
+    Uu = []
+    yr = []
+    jG(pB, t, XI, Z7, qd, Z1, Uu, O, 10)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, fh, 10)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, ue, 10)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, Jf, 10)
+    yr.append([f(pB), f(t), f(XI), f(Z7), f(qd), f(Z1), f(Uu)])
+    Wh(pB, t, XI, Z7, qd, Z1, Uu)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, fh, 20)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, O, 20)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, ue, 20)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, Jf, 20)
+    yr.append([f(pB), f(t), f(XI), f(Z7), f(qd), f(Z1), f(Uu)])
+    Wh(pB, t, XI, Z7, qd, Z1, Uu)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, fh, 100)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, O, 100)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, ue, 100)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, Jf, 100)
+    yr.append([f(pB), f(t), f(XI), f(Z7), f(qd), f(Z1), f(Uu)])
+    Wh(pB, t, XI, Z7, qd, Z1, Uu)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, fh, 1000)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, O, 1000)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, ue, 1000)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, Jf, 1000)
+    yr.append([f(pB), f(t), f(XI), f(Z7), f(qd), f(Z1), f(Uu)])
+    Wh(pB, t, XI, Z7, qd, Z1, Uu)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, fh, 10000)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, O, 10000)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, ue, 10000)
+    jG(pB, t, XI, Z7, qd, Z1, Uu, Jf, 10000)
+    yr.append([f(pB), f(t), f(XI), f(Z7), f(qd), f(Z1), f(Uu)])
+    Wh(pB, t, XI, Z7, qd, Z1, Uu)
+def plotlogn(timeList):
+    L = 4
+    (m, ll) = j.subplots()
+    XX = cF.arange(L)
+    qs = 0.25
+    dq = j.bar(XX + qs * 3, Y[3], qs, color='orange', label='Merge')
+    l = j.bar(XX + qs * 4, Y[4], qs, color='red', label='Quick')
+    Sc = j.bar(XX + qs * 5, Y[5], qs, color='purple', label='Heap')
+    j.xlabel('Sorting Algorithm')
+    j.ylabel('Sorting Time')
+    j.title('Comparison of Log(n) Sorting Algorithms')
+    j.xticks(XX + qs * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    j.legend()
+    j.tight_layout()
+    j.show()
+def populateChart(timeList):
+    L = 4
+    (m, ll) = j.subplots()
+    XX = cF.arange(L)
+    qs = 0.125
+    o2 = j.bar(XX, Y[0], qs, color='g', label='Bubble')
+    mQ = j.bar(XX + qs, Y[1], qs, color='b', label='Selection')
+    E = j.bar(XX + qs * 2, Y[2], qs, color='y', label='Insertion')
+    dq = j.bar(XX + qs * 3, Y[3], qs, color='orange', label='Merge')
+    l = j.bar(XX + qs * 4, Y[4], qs, color='red', label='Quick')
+    Sc = j.bar(XX + qs * 5, Y[5], qs, color='purple', label='Heap')
+    JL = j.bar(XX + qs * 6, Y[6], qs, color='black', label='Count')
+    j.xlabel('Sorting Algorithm')
+    j.ylabel('Sorting Time')
+    j.title('Comparison of Sorting Algorithms')
+    j.xticks(XX + qs * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    j.legend()
+    j.tight_layout()
+    j.show()
+qp()

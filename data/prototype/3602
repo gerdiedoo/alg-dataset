@@ -1,0 +1,15 @@
+def merge_in_place(a, b):
+    try:
+        S7 = Mg.index(None) - 1
+    except x:
+        return Mg
+    TV = len(q) - 1
+    Z3 = len(Mg) - 1
+    while TV >= 0:
+        if S7 >= 0 and Mg[S7] > q[TV]:
+            Mg[Z3] = Mg[S7]
+            S7 -= 1
+        else:
+            Mg[Z3] = q[TV]
+            TV -= 1
+        Z3 -= 1

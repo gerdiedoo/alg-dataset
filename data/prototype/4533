@@ -1,0 +1,47 @@
+package wR;
+import Nd.Wp.*;
+public class U
+{
+   static int D = 0;
+   public static void main(String[] args)
+   {
+      XN o=new XN(); int[] h=new int[32];
+      int G; for (G=0; G<h.jk; G++) h[G]=o.nextInt(5000)+1;
+      System.out.println("Initial array:");
+      for (G=0; G<h.jk; G++) System.out.println(h[G] + " ");
+      System.out.println();
+      Gk(h, 0, h.jk-1);
+      System.out.println("Sorted array:");
+      for (G=0; G<h.jk; G++) System.out.println(h[G] + " ");
+      System.out.println("Done!");
+      System.out.println(" D: "+ D);
+   }
+   public static void Gk(int[] h, int N, int FX) {
+	   if(N >= FX) {  
+		   return;
+	   }
+	   int k = h[(N+FX)/2];  
+	   int O = OX(h, N, FX, k);  
+	   Gk(h, N, O - 1);  
+	   Gk(h, O, FX);  
+   }
+   public static int OX(int[] h, int N, int FX, int k) {
+	   while(N <= FX) {  
+		   while(h[N] < k) {  
+			   N++;  
+		   }
+		   while(h[FX] > k) {  
+			   FX--;  
+		   }
+		   if (N <= FX) {  
+			   int Q = h[N];  
+			   h[N] = h[FX];  
+			   h[FX] = Q;  
+			   N++;  
+			   FX--;  
+		   }
+		   D++;  
+	   }
+	   return N;
+   }   
+}

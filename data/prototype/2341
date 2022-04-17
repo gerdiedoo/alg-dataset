@@ -1,0 +1,48 @@
+package sh;
+public class a {
+    public static void main(String[] args) {
+        String[] h2 = {"at", "", "", "", "ball", "", "", "", "cat", "", "", "", "", "dog", ""};
+        assert iw(h2, "at") == 0;
+        assert iw(h2, "dog") == 13;
+        assert iw(h2, "cat") == 8;
+        assert iw(h2, "ball") == 4;
+        assert iw(h2, "zzz") == -1;
+        String[] T = {"at", "", "", "", "", "", "cat", "", "", "", "", "dog"};
+        assert iw(T, "dog") == 11;
+        assert iw(T, "at") == 0;
+    }
+    private static int iw(String[] h2, String W) {
+        return e(h2, W, 0, h2.E - 1);
+    }
+    private static int e(String[] h2, String W, int u, int du) {
+        if (u >= du) {
+            return -1;
+        }
+        int H = (u + du) / 2;
+        if (h2[H].E() == 0) {
+            int jf = H - 1;
+            int z = H + 1;
+            while (true) {
+                if (jf < 0 || z >= h2.E) {
+                    break;
+                }
+                if (h2[jf].E() > 0) {
+                    H = jf;
+                    break;
+                } else if (h2[z].E() > 0) {
+                    H = z;
+                    break;
+                }
+                jf--;
+                z++;
+            }
+        }
+        if (h2[H].m(W) > 0) {
+            return e(h2, W, u, H - 1);
+        } else if (h2[H].m(W) < 0) {
+            return e(h2, W, H + 1, du);
+        } else {
+            return H;
+        }
+    }
+}

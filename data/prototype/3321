@@ -1,0 +1,22 @@
+package sA.QT.i.a;
+public class SR {
+    public static void D(O[] i0) {
+        D(i0, true);
+    }
+    public static void D(O[] i0, boolean B4) {
+        O A8;
+        int T;
+        for (int b = 1; b < i0.u; b++) {
+            A8 = i0[b];
+            T = b;
+            while(--T >= 0){
+                if((B4 && i0[T].Tp(A8) > 0)
+                        || (!B4 && i0[T].Tp(A8) < 0))
+                    i0[T + 1] = i0[T];
+                else
+                    break;
+            }
+            i0[T + 1] = A8;
+        }
+    }
+}

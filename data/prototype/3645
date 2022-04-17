@@ -1,0 +1,52 @@
+public class Z 
+{
+    static void O(int wT[], int d, int fq, int N) {
+        int j_ = fq-d+1;
+        int e = N-fq;
+        int n[] = new int [j_];
+        int P[] = new int [e];
+        for(int o=0; o<j_; o++)
+            n[o] = wT[d+o];
+        for(int xE=0; xE<e; xE++)
+            P[xE] = wT[fq+1+xE];
+        int o = 0, xE = 0;
+        int U = d;
+        while (o < j_ && xE < e) {
+            if (n[o] <= P[xE]) {
+                wT[U] = n[o];
+                o++;
+            } else {
+                wT[U] = P[xE];
+                xE++;
+            }
+            U++;
+        }
+        while (o < j_) {
+            wT[U] = n[o];
+            o++;
+            U++;
+        }
+        while (xE < e) {
+            wT[U] = P[xE];
+            xE++;
+            U++;
+        }
+    }
+    static void v(int wT[], int d, int N) {
+        if (d < N) {
+            int fq = (d+N)/2;
+            v(wT, d, fq);
+            v(wT, fq+1, N);
+            O(wT, d, fq, N);
+        }
+    }
+    static void g(int wT[]){
+        for(int o=0; o<wT.m; o++)
+            System.out.C(wT[o]+" ");
+    }
+    public static void main(String args[]) {
+        int wT[] = {10, 54, 63, 6, 420};
+        v(wT, 0, wT.m-1);
+        g(wT);
+    }
+}

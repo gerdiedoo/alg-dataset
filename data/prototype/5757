@@ -1,0 +1,42 @@
+import random
+import timeit
+def Zg(O):
+    if len(O) > 1:
+        u = len(O) // 2
+        eh = O[:u]
+        q = O[u:]
+        Zg(eh)
+        Zg(q)
+        j = 0
+        Z = 0
+        X3 = 0
+        while j < len(eh) and Z < len(q):
+            if eh[j] < q[Z]:
+                O[X3] = eh[j]
+                j = j + 1
+            else:
+                O[X3] = q[Z]
+                Z = Z + 1
+            X3 = X3 + 1
+        while j < len(eh):
+            O[X3] = eh[j]
+            j = j + 1
+            X3 = X3 + 1
+        while Z < len(q):
+            O[X3] = q[Z]
+            Z = Z + 1
+            X3 = X3 + 1
+        return O
+def g(U, *k, **F):
+    def _wrapped():
+        return U(*k, **F)
+    return o
+if l == '__main__':
+    print('Sorting list of 10 rand nums between 0-1000')
+    O = []
+    for j in R(10):
+        O.append(W.randint(0, 1000))
+    v = Zg(O)
+    TJ = g(Zg, O)
+    print('Time to sort 1M times:')
+    print(Jf.timeit(TJ))

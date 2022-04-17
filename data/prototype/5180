@@ -1,0 +1,45 @@
+class HashMap:
+    def __init__(self, size=1024):
+        X9.size = u
+        X9.map = [None] * u
+    def add(self, key, value):
+        X9._check_size()
+        l = X9.map[Q(rH) % X9.size]
+        if l is not None and (rH, Z) not in l:
+            X9.map[Q(rH) % X9.size].append((rH, Z))
+        elif l is not None and (rH, Z) in l:
+            return X9
+        else:
+            X9.map[Q(rH) % X9.size] = [(rH, Z)]
+        return X9
+    def get(self, key):
+        X9._check_size()
+        l = X9.map[Q(rH) % X9.size]
+        if l is None:
+            raise G('Invalid key!')
+        else:
+            for (Ub, f) in l:
+                if Ub == rH:
+                    return f
+        raise G('Invalid key!')
+    def _check_size(self):
+        if None in X9.map:
+            return
+        else:
+            x = X9.size * 2
+            S = [None] * x
+            for a in X9.map:
+                for (Ub, f) in a:
+                    ch = S[Q(Ub) % x]
+                    if ch is not None and f not in ch:
+                        S[Q(Ub) % x].append((Ub, f))
+                    elif ch is not None and f in ch:
+                        continue
+                    else:
+                        S[Q(Ub) % x] = [(Ub, f)]
+            X9.map = S
+            X9.size = x
+    def __getitem__(self, key):
+        return X9.get(rH)
+    def __setitem__(self, key, value):
+        return X9.add(rH, Z)

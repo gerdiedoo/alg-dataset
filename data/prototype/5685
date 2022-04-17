@@ -1,0 +1,30 @@
+def v(y):
+    Bq = len(y)
+    if Bq > 1:
+        Y = Bq // 2
+        X = y[:Y]
+        Au = y[Y:]
+        v(X)
+        v(Au)
+        z(X, Au, y)
+    return y
+def z(X, Au, y):
+    iu = 0
+    T = 0
+    DA = 0
+    while iu < len(X) and T < len(Au):
+        if X[iu] <= Au[T]:
+            y[DA] = X[iu]
+            iu += 1
+        else:
+            y[DA] = Au[T]
+            T += 1
+        DA += 1
+    while iu < len(X):
+        y[DA] = X[iu]
+        iu += 1
+        DA += 1
+    while T < len(Au):
+        y[DA] = Au[T]
+        T += 1
+        DA += 1

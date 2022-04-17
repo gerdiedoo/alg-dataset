@@ -1,0 +1,44 @@
+package m.sT.i1.my;
+import G.T.E;
+public class e {
+	public static void main(String[] args) {
+		int[] Q = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] k = V6(Q, 0, Q.I - 1);
+		E.g(k).U(System.out::println);
+	}
+	public static int[] V6(int[] tx, int W, int Sa) {
+		if (W < Sa) {
+			int h = W + (Sa - W) / 2;
+			V6(tx, W, h);
+			V6(tx, h + 1, Sa);
+			V(tx, W, h, Sa);
+		}
+		return tx;
+	}
+	private static int[] V(int[] tx, int W, int h, int Sa) {
+		int[] j = new int[tx.I];
+		for (int rF = 0; rF < tx.I; rF++ ) {
+			j[rF] = tx[rF];
+		}
+		int rF = W;
+		int L = h + 1;
+		int Ug = W;
+		while (rF <= h && L <= Sa) {
+			if (j[rF] <= j[L]) {
+				tx[Ug] = j[rF];
+				rF++;
+			} else {
+				tx[Ug] = j[L];
+				L++;
+			}
+			Ug++;
+		}
+		while (rF <= h) {
+			tx[Ug] = j[rF];
+			Ug++;
+			rF++;
+		}
+		return tx;
+	}
+}

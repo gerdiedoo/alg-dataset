@@ -1,0 +1,18 @@
+public class tl {
+    public static void main(String[] args) {
+        int[] V = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        for (int Q = 0; Q < 10; Q++) {
+            for (int hM = 0; hM < 10; hM++) {
+                if (V[Q] < V[hM]) {
+                    int n = V[Q];
+                    V[Q] = V[hM];
+                    V[hM] = n;
+                }
+            }
+        }
+        System.out.println("Bubble Sort : Sorted List");
+        for (int Q = 0; Q < 10; Q++) {
+            System.out.println(V[Q]);
+        }
+    }
+}

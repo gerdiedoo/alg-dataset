@@ -1,0 +1,152 @@
+package U.v.H8.R.h;
+public class e<t> {
+	private B<t> O;
+	private B<t> s;
+	private int sh = 0;
+	public void j(t X) {
+		B<t> yd = new B<t>(X);
+		if (null == O) { 
+			yd.c = null;
+			yd.k3 = null;
+			O = yd;
+			s = yd;
+			sh++;
+		} else {
+			yd.c = O;
+			yd.k3 = null;
+			O.k3 = yd;
+			O = yd;
+			sh++;
+		}
+	}
+	public void A(t X) {
+		B<t> yd = new B<t>(X);
+		if (null == s) { 
+			yd.c = null;
+			yd.k3 = null;
+			O = yd;
+			s = yd;
+			sh++;
+		} else {
+			s.c = yd;
+			yd.c = null;
+			yd.k3 = s;
+			s = yd;
+			sh++;
+		}
+	}
+	public void f(t X, int m) {
+		if (m < 0 || m > sh) {
+			throw new k("Position is Invalid");
+		} 
+		if (m == 0) { 
+			j(X);
+		} else if (m == sh -1) { 
+			A(X);
+		} else { 
+			B<t> q = O;
+			for (int Fr = 0; Fr < m; Fr++) {
+				q = q.c;
+			}
+			B<t> H = q.k3;
+			B<t> yd = new B<t>(X);
+			yd.c = q;
+			yd.k3 = H;
+			H.c = yd;
+			q.k3 = yd;
+			sh++;
+		}
+	}
+	public void P() {
+		B<t> pO = O;
+		while (pO != null) {
+			System.out.println(pO.D);
+			pO = pO.c;
+		}
+	}
+	public void W() {
+		B<t> pO = s;
+		while (pO != null) {
+			System.out.println(pO.D);
+			pO = pO.k3;
+		}
+	}
+	public int sh() {
+		return sh;
+	}
+	public boolean y() {
+		return sh == 0;
+	}
+	public B<t> d(int YJ) {
+		if (YJ < 0 || YJ >= sh) {
+			throw new x("Invalid YJ passed while searching for a X");
+		} 
+		B<t> pO = O;
+		for (int Fr = 0; Fr < YJ; Fr++) { 
+			pO = pO.c;
+		}
+		return pO;
+	}
+	public B<t> WI(t X) { 
+		B<t> pO = O;
+		while (null != pO.c && pO.D != X) {
+			pO = pO.c;
+		}
+		if (pO.D == X) {
+			return pO;
+		}
+		return null;
+	}
+	public void b() {
+		if (null == O) { 
+			return;
+		}
+		B<t> pO = O;
+		O = pO.c;
+		O.k3 = null;
+		sh--;
+	}
+	public void u() {
+		if (null == s) { 
+			return;
+		}
+		B<t> pO = s;
+		s = pO.k3;
+		s.c = null;
+		sh--;
+	}
+	public void Y(int m) {
+		if (m < 0 || m >= sh) {
+			throw new k("Position is Invalid");
+		} 
+		B<t> S = O;
+		for (int Fr = 0; Fr < m; Fr++) {
+			S = S.c;
+		}
+		B<t> H = S.k3;
+		B<t> Q = S.c;
+		H.c = Q;
+		Q.k3 = H;
+		sh--;
+	}
+	public F[] l() {
+		F[] a = new F[sh];
+		int Fr = 0;
+		for (B<t> g4 = O; g4 != null; g4 = g4.c) {
+			a[Fr++] = g4.D;
+		}
+		return a;
+	}
+	public class B<L> {
+		L D;
+		B<L> c;
+		B<L> k3;
+		public B(L D) {
+			this.D = D;
+		}
+		@G
+		public String toString() {
+			return String.Gw(D);
+		}
+	}
+}

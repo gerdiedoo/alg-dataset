@@ -1,0 +1,20 @@
+package J.o;
+import J.B.y;
+public class K<e> extends c<e> {
+	@X
+	@h("hiding")
+	public <e extends jU<e>> e[] cd(e[] k, y x) {
+		int q = k.r;
+		for (int j=0; j<q-1; j++) {
+			int S = j;
+			for (int z=j+1; z<q; z++) {
+				if ((x == y.v  && k[S].D(k[z]) > 0)  ||
+					(x == y.Bk && k[S].D(k[z]) < 0)) {
+					S = z;
+				}
+			}
+			Y(k, j, S);
+		}
+		return k;
+	}
+}

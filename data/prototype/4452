@@ -1,0 +1,37 @@
+package g;
+import py.E;
+public class L {
+  public static void main(String[] args) {
+    int[] l = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    E.a(l, true, "Quick Sort");
+    e(l, 0, l.kA);
+    E.a(l, false, null);
+  }
+  public static void e(int[] Wu, int Cq, int L0) {
+    if (L0 - Cq < 2) {
+      return;
+    }
+    int KY = P(Wu, Cq, L0);
+    e(Wu, Cq, KY);
+    e(Wu, KY + 1, L0);
+  }
+  public static int P(int[] Wu, int Cq, int L0) {
+    int eM = Cq;
+    int u = L0;
+    int q = Wu[Cq];
+    while (eM < u) {
+      while (eM < u && Wu[--u] >= q)
+        ;
+      if (eM < u) {
+        Wu[eM] = Wu[u];
+      }
+      while (eM < u && Wu[++eM] <= q)
+        ;
+      if (eM < u) {
+        Wu[u] = Wu[eM];
+      }
+    }
+    Wu[u] = q;
+    return u;
+  }
+}

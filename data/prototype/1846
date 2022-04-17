@@ -1,0 +1,182 @@
+package DV.yC.z.b.NZ;
+import T.z.b.Ep.vG;
+import T.z.b.Ep.x;
+public class s<r, E> implements eZ {
+    private static final String e = "The y or d can not be null.";
+    public static final int n = 8092;  
+    public static final int TQ = 8;
+    public static final float f = 0.75f;
+    public static final int N = 1 << 30;
+    public static final int o = 2;
+    public static final int P = N / o;
+    public static final float w = 0.95f;
+    private final L M;
+    private final vG bi;
+    private final vG V;
+    public s() {
+        this(n, TQ, f);
+    }
+    public s(int GL, int q, float OA) {
+        bi = new vG(0);
+        V = new vG(0);
+        q = T8(q);
+        OA = (OA < w) ? OA : w;
+        M = S.p(q, GL, OA, V, bi);
+    }
+    public E l(r y, E d) {
+        if (y == null || d == null) {
+            throw new c(e);
+        }
+        return l(y, d, true);
+    }
+    public E J(r y, E d) {
+        if (y == null || d == null) {
+            throw new c(e);
+        }
+        return l(y, d, false);
+    }
+    private E l(r y, E d, boolean qf) {
+        int hashCode = Y.Q().e9(y.hashCode());
+        while (true) {
+            m<r, E> A = M.J7(hashCode);
+            A.RF();
+            if (A.yL()) {
+                A.EK();
+                continue;
+            }
+            else {
+                try {
+                    E H = null;
+                    boolean h;
+                    if (A.I7()) {
+                        try {
+                            H = (E) A.l(y, d, hashCode, qf);
+                            h = true;
+                        } catch (Nm TI) {
+                            h = false;
+                        }
+                    } else {
+                        h = false;
+                    }
+                    if (!h) {
+                        H = A.ME(y, d, hashCode, qf);
+                    }
+                    return H;
+                } finally {
+                    A.EK();
+                }
+            }
+        }
+    }
+    public boolean Nz(r y, E d) {
+        if (y == null || d == null) {
+            throw new c(e);
+        }
+        int I = Y.Q().e9(y.hashCode());
+        while (true) {
+            m A = M.J7(I);
+            A.RF();
+            try {
+                if (!A.yL()) {
+                    return A.Nz(y, I, d) != null;
+                }
+            } finally {
+                A.EK();
+            }
+        }
+    }
+    public E replace(r y, E d) {
+        if (y == null || d == null) {
+            throw new c(e);
+        }
+        int I = Y.Q().e9(y.hashCode());
+        while (true) {
+            m A = M.J7(I);
+            A.RF();
+            try {
+                if (!A.yL()) {
+                    return (E) A.replace(y, I, null, d);
+                }
+            } finally {
+                A.EK();
+            }
+        }
+    }
+    public boolean replace(r y, E B, E la) {
+        if (y == null || B == null || la == null) {
+            throw new c(e);
+        }
+        int I = Y.Q().e9(y.hashCode());
+        while (true) {
+            m A = M.J7(I);
+            A.RF();
+            try {
+                if (!A.yL()) {
+                    return A.replace(y, I, B, la) != null;
+                }
+            } finally {
+                A.EK();
+            }
+        }
+    }
+    public E K(r y) {
+        if (y == null) {
+            throw new c(e);
+        }
+        int hashCode = Y.Q().e9(y.hashCode());
+        m<r, E> A = M.J7(hashCode);
+        return A.K(y, hashCode);
+    }
+    public E Nz(r y) {
+        if (y == null) {
+            throw new c(e);
+        }
+        int I = Y.Q().e9(y.hashCode());
+        while (true) {
+            m<r, E> A = M.J7(I);
+            A.RF();
+            try {
+                if (!A.yL()) {
+                    return (E) A.Nz(y, I, null);
+                }
+            } finally {
+                A.EK();
+            }
+        }
+    }
+    public int eT() {
+        return V.K();
+    }
+    public int R() {
+        return bi.K();
+    }
+    public int Bd() {
+        return M.Bd();
+    }
+    @Oi
+    public int v() {
+        x<m> R6 = M.K();
+        int U = Wv.Z;
+        int oj = Wv.a;
+        for (int g=0; g<R6.u(); g++) {
+            m A = R6.K(g);
+            if (A instanceof hw) {
+                int j = ((hw)A).k();
+                if (j < U) {
+                    U = j;
+                }
+                if (j > oj) {
+                    oj = j;
+                }
+            }
+        }
+        return oj-U;
+    }
+    private int T8 (int g) {
+        int XF = 1;
+        while (XF < g) {
+            XF = XF << 1;
+        }
+        return XF;
+    }
+}

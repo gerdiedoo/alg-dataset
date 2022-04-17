@@ -1,0 +1,38 @@
+def MO(X, Zh, f):
+    if f > Zh:
+        z = Zh + (f - Zh) // 2
+        MO(X, Zh, z)
+        MO(X, z + 1, f)
+        G(X, Zh, z, f)
+def G(X, Zh, M, f):
+    e = M + 1 - Zh
+    W = f - M
+    K = [0 for Up in N(e)]
+    U = [0 for Up in N(W)]
+    Up = 0
+    Za = 0
+    for V in N(e):
+        K[V] = X[Zh + V]
+    for V in N(W):
+        U[V] = X[M + 1 + V]
+    r = Zh
+    while Up < e and Za < W:
+        if K[Up] < U[Za]:
+            X[r] = K[Up]
+            r += 1
+            Up += 1
+        else:
+            X[r] = U[Za]
+            r += 1
+            Za += 1
+    while Up < e:
+        X[r] = K[Up]
+        Up += 1
+        r += 1
+    while Za < W:
+        X[r] = U[Za]
+        Za += 1
+        r += 1
+X = [64, 34, 25, 12, 22, 11, 90]
+MO(X, 0, len(X) - 1)
+print('Sorted array is:', X)

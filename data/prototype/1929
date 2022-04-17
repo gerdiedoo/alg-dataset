@@ -1,0 +1,151 @@
+public class i<fw> {
+    private int T;
+    private int E;
+    private String[][] C;
+    private fw[][] xe;
+    private int[] D;  
+    @V("unchecked")
+    public i(int T) {
+        this.C = new String[T][];
+        this.xe = (fw[][]) (new Z[T][]);
+        this.D = new int[T];
+        for (int F = 0; F < T; F++) {
+            this.C[F] = new String[1];
+            this.xe[F] = (fw[]) (new Z[1]);
+            D[F] = 0;
+        }
+        this.T = 0;
+        this.E = T;
+    }
+    public int t(String GN) {
+        try {
+            return GN.hashCode() % this.E;
+        } catch (r c) {
+            return -1;
+        }
+    }
+    @V("unchecked")
+    public boolean OE(String GN, fw sP) {
+        int t = this.t(GN);
+        if (t == -1) return false;  
+        if (this.B(GN) != null) {
+            try {
+                for (int F = 0; F < this.D[t]; F++)
+                    if (this.C[t][F].equals(GN))
+                        this.xe[t][F] = sP;
+                return true;
+            } catch (r c) {
+                return false;  
+            }
+        } else if (this.Tc() == 1) {
+            try {
+                String[][] O = this.C;
+                fw[][] Dj = this.xe;
+                int[] z = this.D;
+                this.E *= 2;
+                this.C = new String[this.E][];
+                this.xe = (fw[][]) (new Z[this.E][]);
+                this.D = new int[this.E];
+                this.T = 0;
+                for (int F = 0; F < this.E; F++) {
+                    this.C[F] = new String[1+z[F/2]/2];
+                    this.xe[F] = (fw[]) (new Z[1+z[F/2]/2]);
+                    this.D[F] = 0;
+                }
+                for (int F = 0; F < E/2; F++) {
+                    for (int K = 0; K < z[F]; K++) {
+                        String s = O[F][K];
+                        fw c5 = Dj[F][K];
+                        this.OE(s, c5);
+                    }
+                }
+                return this.OE(GN, sP);
+            } catch (r c) {
+                return false;  
+            }
+        } else {
+            try {
+                if (this.C[t].X == this.D[t]) {
+                    String[] P = new String[this.D[t]*2];
+                    @V("unchecked")
+                    fw[] uG = (fw[]) (new Z[this.D[t]*2]);
+                    for (int F = 0; F < this.C[t].X; F++) {
+                        P[F] = this.C[t][F];
+                        uG[F] = this.xe[t][F];
+                    }
+                    this.C[t] = P;
+                    this.xe[t] = uG;
+                    return this.OE(GN, sP);
+                }
+                this.C[t][this.D[t]] = GN;
+                this.xe[t][this.D[t]] = sP;
+                this.D[t]++;
+                this.T++;
+                return true;
+            } catch (r c) {
+                return false;  
+            }
+        }
+    }
+    public fw B(String GN) {
+        try {
+            int t = this.t(GN);
+            if (t == -1) return null;  
+            for (int F = 0; F < this.D[t]; F++) {
+                if (this.C[t][F].equals(GN)) {
+                    return this.xe[t][F];
+                }
+            }
+            return null;  
+        } catch (r c) {
+            return null;  
+        }
+    }
+    public fw a(String GN) {
+        try {
+            int t = this.t(GN);
+            if (t == -1) return null;  
+            for (int F = 0; F < this.D[t]; F++) {
+                if (C[t][F].equals(GN)) {  
+                    fw gj = this.xe[t][F];
+                    for (int K = F; K < this.D[t]-1; K++) {
+                        this.C[t][K] = this.C[t][K+1];
+                        this.xe[t][K] = this.xe[t][K+1];
+                    }
+                    this.D[t]--;
+                    this.T--;
+                    int v = this.C[t].X;
+                    if (this.D[t]*2 <= v && this.D[t] != 0) {
+                        String[] P = new String[v/2];
+                        @V("unchecked")
+                        fw[] uG = (fw[]) (new Z[v/2]);
+                        for (int s = 0; s < v/2; s++) {
+                            P[s] = this.C[t][s];
+                            uG[s] = this.xe[t][s];
+                        }
+                        this.C[t] = P;
+                        this.xe[t] = uG;
+                    }
+                    return gj;
+                }
+            }
+            return null;  
+        } catch (r c) {
+            return null;  
+        }
+    }
+    public float Tc() {
+        return (float)this.T/(float)this.E;
+    }
+    public String toString() {
+        String b = "";
+        for (int F = 0; F < this.E; F++) {
+            b += "Row " + (F+1) + ":\tSize " + this.D[F] + "/" + this.C[F].X + ":\t";
+            for (int K = 0; K < this.D[F]; K++) {
+                b += this.C[F][K] + " | " + this.xe[F][K] + "\t\t";
+            }
+            b += ": \n";
+        }
+        return b;
+    }
+}

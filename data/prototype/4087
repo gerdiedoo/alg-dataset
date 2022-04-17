@@ -1,0 +1,35 @@
+package a1.C.f;
+import T.q.N;
+import T.q.K;
+public class n {
+    public static <u extends L6<u>> K<u> w(K<u> Sy) {
+        K<u> G = new N<u>();
+        K<u> E = new N<u>();
+        K<u> J = new N<u>();
+        while (Sy.du() > 0) {
+            while (Sy.du() > 0) {
+                L(Sy, G, E);
+                L(Sy, G, J);
+            }
+            while (E.du() > 0 || J.du() > 0) {
+                L(E, J, G);
+                L(E, J, Sy);
+            }
+        }
+        return G;
+    }
+    public static <u extends L6<u>> void L(K<u> JI, K<u> h, K<u> G) {
+        u D = null;
+        u Y = null;
+        while ((JI.du() > 0 && (D == null || D.Cz(JI.lU()) <= 0)) ||
+               (h.du() > 0 && (Y == null || Y.Cz(h.lU()) <= 0))) {
+            if (h.du() == 0 || (JI.du() > 0 && JI.lU().Cz(h.lU()) <= 0)) {
+                D = JI.l();
+                G.I(D);
+            } else {
+                Y = h.l();
+                G.I(Y);
+            }
+        }
+    }
+}

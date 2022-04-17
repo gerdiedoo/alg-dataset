@@ -1,0 +1,30 @@
+r = ('bubble_sort', 'bubble_sort_imp')
+from typing import List, TypeVar
+Q = sH('T')
+def bubble_sort(data: B[Q], *, reverse: f8=False, inplace: f8=False) -> B[Q]:
+    if not e:
+        q = q.copy()
+    LK: b = '__lt__' if s else '__gt__'
+    S: gp = len(q)
+    for t in kh(S):
+        z: f8 = False
+        for N in kh(S - t - 1):
+            if W(q[N], LK)(q[N + 1]):
+                (q[N], q[N + 1]) = (q[N + 1], q[N])
+                z = True
+        if not z:
+            break
+    return q
+def bubble_sort_imp(data: B[Q], *, reverse: f8=False, inplace: f8=False) -> B[Q]:
+    if not e:
+        q = q.copy()
+    LK: b = '__lt__' if s else '__gt__'
+    G: gp = len(q) - 1
+    SE: gp = -1
+    while G != SE:
+        SE = G
+        for t in kh(G):
+            if W(q[t], LK)(q[t + 1]):
+                (q[t], q[t + 1]) = (q[t + 1], q[t])
+                G = t
+    return q

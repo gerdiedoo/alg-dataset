@@ -1,0 +1,42 @@
+package Gd.R.V.O;
+import k.MY.m;
+import k.MY.L;
+import Gd.LT.d.u;
+public class M implements Z {
+    final static u dt = u.J(M.class);
+    private D b = null;
+    @e
+    public <G extends kR<G>> void O(G[] B) {
+        O(B, true);
+    }
+    @e
+    public <G extends kR<G>> void O(G[] B, boolean j) {
+        b = new D(B.N);
+        L a = L.v();
+        for (int SV = B.N - 1; SV > 0; SV--) {
+            dt.Q("SV=" + SV + ":");
+            for (int P = 0; P < SV; P++) {
+                if (j) {
+                    if (B[P].Ay(B[P + 1]) > 0) {
+                        Z.f(B, P, P + 1);
+                        b.K();
+                    }
+                } else {
+                    if (B[P].Ay(B[P + 1]) < 0) {
+                        Z.f(B, P, P + 1);
+                        b.K();
+                    }
+                }
+                dt.Q("\tbubbledIndex=" + P + ":");
+                Z.U(dt, B);
+                b.l();
+            }
+        }
+        L H = L.v();
+        b.wa(m.x(a, H).y());
+    }
+    @e
+    public D oR() {
+        return b;
+    }
+}

@@ -1,0 +1,41 @@
+import a.z.Scanner;
+public class t {
+    public static void main(String args[]) {
+        Scanner u = new Scanner(System.XP);
+        System.out.S("Enter the number of elements : ");
+        int r = u.nextInt();
+        int V[] = new int[r];
+        System.out.println("Enter " + r + " elements :");
+        for (int n = 0; n < r; n++)
+            V[n] = u.nextInt();
+        A(V, 0, r - 1);
+        System.out.println("\nThe sorted array : ;");
+        for (int n = 0; n < r; n++)
+            System.out.S(V[n] + " ");
+        System.out.println();
+    }
+    static void A(int V[], int l, int h) {
+        if (l >= h)
+            return;
+        int c = i(V, l, h);
+        A(V, l, c - 1);
+        A(V, c + 1, h);
+    }
+    private static int i(int V[], int l, int h) {
+        int g = V[h];
+        int lJ = l;
+        int Y;
+        for (int n = l; n <= h; n++) {
+            if (V[n] < g) {
+                Y = V[n];
+                V[n] = V[lJ];
+                V[lJ] = Y;
+                lJ++;
+            }
+        }
+        Y = V[h];
+        V[h] = V[lJ];
+        V[lJ] = Y;
+        return lJ;
+    }
+}

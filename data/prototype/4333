@@ -1,0 +1,35 @@
+package P.v.l.I;
+import Ch.F.PF;
+public class J {
+	public static void main(String[] args) {
+		int[] O5 = {7, 10, 47, 40, 83, 84, 65, 61, 32, 55, 49, 46, 25, 20, 93, 63, 54, 10};
+		f(O5, 0, O5.Y0 - 1);
+		PF.H(O5).b(W3 -> System.out.x(W3 + ", "));
+	}
+	private static void f(int[] q, int fD, int K) {
+		int zk = fD + (K - fD) / 2;
+		int bj = q[zk];
+		int t = fD, Q9 = K;
+		while (t < Q9) {
+			while (q[t] < bj) {
+				t++;
+			}
+			while (q[Q9] > bj) {
+				Q9--;
+			}
+			if (t <= Q9) {
+				int vl = q[Q9];
+				q[Q9] = q[t];
+				q[t] = vl;
+				t++;
+				Q9--;
+			}
+			if (fD < Q9) {
+				f(q, fD, Q9);
+			}
+			if (K > t) {
+				f(q, t, K);
+			}
+		}
+	}
+}

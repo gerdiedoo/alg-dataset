@@ -1,0 +1,14 @@
+def merge_sort(LIST):
+    r = []
+    Xw = []
+    while len(hU) > 1:
+        R = se(hU)
+        k8 = max(hU)
+        r.append(R)
+        Xw.append(k8)
+        hU.remove(R)
+        hU.remove(k8)
+    if hU:
+        r.append(hU[0])
+    Xw.reverse()
+    return r + Xw

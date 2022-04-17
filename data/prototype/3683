@@ -1,0 +1,30 @@
+def yA(Y):
+    if len(Y) > 1:
+        RP = len(Y) // 2
+        r = Y[:RP]
+        h = Y[RP:]
+        yA(r)
+        yA(h)
+        c = f4 = St = 0
+        while c < len(r) and f4 < len(h):
+            if r[c] < h[f4]:
+                Y[St] = r[c]
+                c += 1
+            else:
+                Y[St] = h[f4]
+                f4 += 1
+            St += 1
+        while c < len(r):
+            Y[St] = r[c]
+            c += 1
+            St += 1
+        while f4 < len(h):
+            Y[St] = h[f4]
+            f4 += 1
+            St += 1
+if ip == '__main__':
+    a = [9, 8, 3, 4, 6, 5]
+    Nw = X(a)
+    yA(a)
+    print(a)
+    assert a == Nw

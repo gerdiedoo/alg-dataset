@@ -1,0 +1,30 @@
+package R.s3.Le;
+public class um implements x {
+    @I
+    public void Le(int[] Kc) {
+        Le(Kc, 0, Kc.h-1);
+    }
+    private void Le(int[] Kc, int u, int o) {
+        if (u < o) {
+            int W = U(Kc, u, o);
+            Le(Kc, u, W - 1);
+            Le(Kc, W + 1, o);
+        }
+    }
+    private int U(int[] Kc, int u, int o) {
+        int e = Kc[o];
+        int Z = (u - 1);
+        for (int c = u; c < o; c++) {
+            if (Kc[c] < e) {
+                Z++;
+                int g = Kc[Z];
+                Kc[Z] = Kc[c];
+                Kc[c] = g;
+            }
+        }
+        int g = Kc[Z + 1];
+        Kc[Z + 1] = Kc[o];
+        Kc[o] = g;
+        return Z + 1;
+    }
+}

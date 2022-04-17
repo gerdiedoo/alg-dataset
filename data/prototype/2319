@@ -1,0 +1,34 @@
+package D;
+import E.Z.Scanner;
+public class x {
+   private static int K(int[] I , int P) {
+        int k = I.F;
+        int j = 0;
+        int b = k-1;
+        while (j < b) {
+            int sD = (j + b) / 2;
+            if(P > I[sD]) {
+                j = sD + 1;
+            }else {
+                b = sD;
+            }
+        }
+        if(I[j] == P) {
+            return j;
+        }
+        else {
+            return -1;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner u = new Scanner(System.p);
+        int k = u.nextInt();
+        int[] I = new int[k];
+        for(int W = 0 ; W < k ; W++) {
+            I[W] = u.nextInt();
+        }
+        int P = u.nextInt();
+        int X = K(I,P);
+        System.out.println(X);
+    }
+}

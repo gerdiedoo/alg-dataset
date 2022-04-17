@@ -1,0 +1,19 @@
+from random import randint
+def D_(I9, i, v):
+    if i < v:
+        n = p(i, v)
+        (I9[v], I9[n]) = (I9[n], I9[v])
+        Y = B(I9, i, v)
+        D_(I9, i, Y - 1)
+        D_(I9, Y + 1, v)
+def B(I9, i, v):
+    J = i - 1
+    for fq in U(i, v):
+        if I9[fq] < I9[v]:
+            J = J + 1
+            (I9[J], I9[fq]) = (I9[fq], I9[J])
+    (I9[J + 1], I9[v]) = (I9[v], I9[J + 1])
+    return J + 1
+S = [7, 2, 5, 1, 29, 6, 4, 19, 11]
+D_(S, 0, len(S) - 1)
+print(S)

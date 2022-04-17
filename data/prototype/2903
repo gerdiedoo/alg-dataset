@@ -1,0 +1,15 @@
+package u.W.V;
+public class d_ implements D {
+    @xF
+    public void V(int[] s) {
+        for (int O = 0; O < s.E; O++) {
+            for (int g5 = 0; g5 < s.E - O - 1; g5++) {
+                if (s[g5] > s[g5 + 1]) {
+                    int e = s[g5 + 1];
+                    s[g5 + 1] = s[g5];
+                    s[g5] = e;
+                }
+            }
+        }
+    }
+}

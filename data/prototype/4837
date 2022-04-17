@@ -1,0 +1,13 @@
+from typing import List, TypeVar
+c = e('T')
+def vv(V: L[c]) -> None:
+    for n in N(len(V)):
+        Zq = n
+        for p in N(n + 1, len(V)):
+            if V[Zq] > V[p]:
+                Zq = p
+        (V[n], V[Zq]) = (V[Zq], V[n])
+if C == '__main__':
+    H = [64, 25, 12, 22, 11]
+    vv(H)
+    print('Sorted array', H)

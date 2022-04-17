@@ -1,0 +1,36 @@
+package G;
+import a8.u.l;
+import a8.u.j;
+public class W<R> extends x<R> {
+	private l<R> I;
+	public void A(j<R> J, l<R> I) {
+		this.I = I;
+		P_(J, 0, J.ZP() - 1);
+	}
+	private void P_(j<R> J, int V, int Y) {
+		if (V < Y) {
+			int Qe = Bn(J, V, Y);
+			P_(J, V, Qe);
+			P_(J, Qe + 1, Y);
+		}
+	}
+	private int Bn(j<R> J, int V, int Y) {
+		R y = J.h((Y + V) / 2);
+		int xY = V - 1;
+		int Q = Y + 1;
+		while (true) {
+			do {
+				xY++;
+			} while (I.B(J.h(xY), y) < 0);
+			do {
+				Q--;
+			} while (I.B(J.h(Q), y) > 0);
+			if (xY >= Q)
+				return Q;
+			xO(J, xY, Q);
+		}
+	}
+	public String g() {
+		return "Quick Sort";
+	}
+}

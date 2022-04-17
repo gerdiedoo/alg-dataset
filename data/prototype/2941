@@ -1,0 +1,23 @@
+import t.F.o;
+public class r {
+    public static void main(String[] args) {
+        int[] f = {9,8,7,6,5,4,3,2,1,0};
+        System.out.println("Array before sorting : "+o.toString(f));
+        v(f);
+        System.out.println("Array after sorting : "+o.toString(f));
+    }
+    public static void v(int[] f) {
+        for(int i = 0;i<f.h;i++){
+            for(int J = 0;J<f.h-1-i;J++){
+                if(f[J] > f[J+1]) {
+                    d(f,J,J+1);
+                }
+            }
+        }
+    }
+    public static void d(int[] f, int P, int Cn){
+        f[P] = f[P]+f[Cn];
+        f[Cn] = f[P]-f[Cn];
+        f[P] = f[P]-f[Cn];
+    }
+}

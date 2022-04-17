@@ -1,0 +1,19 @@
+def Ud(K, r, c):
+    P = r
+    I = r
+    while I <= c:
+        if K[I] > K[P]:
+            P = I
+        I = I + 1
+    return P
+def Z(K):
+    for I in d(len(K) - 1, 0, -1):
+        P = Ud(K, 0, I)
+        if P != I:
+            D = K[I]
+            K[I] = K[P]
+            K[P] = D
+    print(I, K)
+if o_ == '__main__':
+    oZ = [5, 10, 58, 23, 1, 2]
+    Z(oZ)

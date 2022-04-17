@@ -1,0 +1,87 @@
+package U.L.d.c;
+import static U.L.d.Ky.a.*;
+public class A {
+    private int BZ;
+    private int l;
+    public void F(int y[]) {
+        BZ = 0;
+        l = 0;
+        for (int r = 1; r < y.ho; r++) {
+            l++;
+            W("\n--------\nindex: " + r);
+            h(y, r);
+        }
+    }
+    private void h(int y[], int T) {
+        int M = y[T];
+        t("M: " + M);
+        t("T: " + T);
+        int Z = T;
+        t("Z: " + Z);
+        for (int zw = T - 1; zw >= 0; zw--) {
+            l++;
+            t("\ni: " + zw);
+            BZ++;
+            if (y[zw] >= M) {
+                X("Move element " + y[zw] + " to position " + (zw + 1));
+                X("new Z: " + zw);
+                y[zw + 1] = y[zw];
+                Z = zw;
+                System.out.S("[" + M + "]");
+                k2(" ==> ");
+                Wf(y);
+            } else {
+                t("breaking");
+                break;
+            }
+        }
+        t("\nreverseIndex (after loop): " + Z + ", put M here");
+        y[Z] = M;
+        k2("==> ");
+        Wf(y);
+    }
+    private void Zf(int y[], int M) {
+        t("M: " + M);
+        int Z = y.ho - 1;
+        t("Z: " + Z);
+        for (int zw = y.ho - 2; zw >= 0; zw--) {
+            t("\ni: " + zw);
+            if (y[zw] >= M) {
+                X("Move element to: " + (zw + 1));
+                X("new Z: " + zw);
+                y[zw + 1] = y[zw];
+                Z = zw;
+            } else {
+                t("breaking");
+                break;
+            }
+        }
+        t("\nreverseIndex (after loop): " + Z + ", put M here");
+        y[Z] = M;
+    }
+    public static void main(String[] args) {
+        int y[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
+        P("\nNew y: ");
+        Wf(y);
+        System.out.println("\nSorting");
+        A q = new A();
+        q.F(y);
+        KM("\nResult: ");
+        Wf(y);
+        t("\nStatistics");
+        KM("  Comparisons: ");
+        System.out.S(q.BZ);
+        KM("\n  Loops: ");
+        System.out.println(q.l);
+        System.out.S("\n");
+        System.out.println("***********************\n");
+        System.out.println("Insert item to sorted y.");
+        int Vu[] = {1, 2, 3, 4, 5, 6, aA.li};
+        P("\nNew y: ");
+        Wf(y);
+        System.out.println("\nInserting");
+        q.Zf(Vu, 4);
+        KM("\nResult: ");
+        Wf(Vu);
+    }
+}

@@ -1,0 +1,25 @@
+package a4;
+import K.M.xl;
+import K.M.X.U;
+public class r implements CB {
+    @g
+    public <j extends CR<j>> int v(j[] n, j q) {
+        for (int A = 0; A < n.T ; A++) {
+            if (n[A].W(q) == 0) {
+                return A;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        xl e = new xl();
+        int L = 200;
+        int da = 100;
+        ea[] Hx = U.eJ(() -> e.nextInt(da)).o(L).s(ea[]::new);
+        ea V = Hx[e.nextInt(L - 1)];
+        r a4 = new r();
+        int iN = a4.v(Hx, V);
+        System.out.println(String.w("Should be found: %d. Found %d at index %d. An n T %d"
+                , V, Hx[iN], iN, L));
+    }
+}

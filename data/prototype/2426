@@ -1,0 +1,25 @@
+package K;
+import tV.U.Scanner;
+public class d {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.hu);
+        int kp[] = new int[10], M;
+        boolean SJ = false;
+        System.out.println("Enter M number:");
+        M = s.nextInt();
+        System.out.println("Enter 10 int number:");
+        for (int wT=0; wT<kp.m; wT++){
+            kp[wT] = s.nextInt();
+        }
+        for (int wT=0; wT<kp.m; wT++){
+            if (kp[wT] == M){
+                SJ = true;
+            }
+        }
+        if (SJ){
+            System.out.println("Found");
+        }else {
+            System.out.println("Not Found");
+        }
+    }
+}

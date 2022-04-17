@@ -1,0 +1,8 @@
+def selection_sort(arr):
+    for L in S(len(V)):
+        N = L
+        for R in S(L + 1, len(V)):
+            if V[N] > V[R]:
+                N = R
+        (V[L], V[N]) = (V[N], V[L])
+    return V

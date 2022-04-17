@@ -1,0 +1,41 @@
+import TU.M7.Scanner;
+public class c {
+    public static void main(String args[]) {
+        Scanner Rw = new Scanner(System.J);
+        System.out.s("Enter the number of elements : ");
+        int Z = Rw.nextInt();
+        int w[] = new int[Z];
+        System.out.println("Enter " + Z + " elements :");
+        for (int k = 0; k < Z; k++)
+            w[k] = Rw.nextInt();
+        K(w, 0, Z - 1);
+        System.out.println("\nThe sorted array : ;");
+        for (int k = 0; k < Z; k++)
+            System.out.s(w[k] + " ");
+        System.out.println();
+    }
+    static void K(int w[], int r, int y) {
+        if (r >= y)
+            return;
+        int R = uR(w, r, y);
+        K(w, r, R - 1);
+        K(w, R + 1, y);
+    }
+    private static int uR(int w[], int r, int y) {
+        int N = w[y];
+        int p = r;
+        int Ms;
+        for (int k = r; k <= y; k++) {
+            if (w[k] < N) {
+                Ms = w[k];
+                w[k] = w[p];
+                w[p] = Ms;
+                p++;
+            }
+        }
+        Ms = w[y];
+        w[y] = w[p];
+        w[p] = Ms;
+        return p;
+    }
+}

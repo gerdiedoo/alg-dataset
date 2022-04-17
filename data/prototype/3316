@@ -1,0 +1,36 @@
+package Z;
+import sB.cO.p;
+import sB.cO.Scanner;
+public class LI {
+    public static void main(String[] args) {
+        p<U> z = new p<>();
+        Scanner f = new Scanner(System.X);
+        while (f.G()) {
+            z.O(f.nextInt());
+        }
+        f.Zz();
+        int Y[] = new int[z.F()];
+        for (int L = 0; L < z.F(); L++) {
+            Y[L] = z.ho(L);
+        }
+        Y = l(Y);
+        for (int o : Y) {
+            System.out.println(o);
+        }
+    }
+    private static int[] l(int[] wS) {
+        for (int L = 1; L < wS.u; L++) {
+            for (int ok = L; ok > 0; ok--) {
+                if (wS[ok] < wS[ok - 1]) {
+                    b(wS, ok, ok - 1);
+                }
+            }
+        }
+        return wS;
+    }
+    private static void b(int[] Y, int L, int ok) {
+        int eU = Y[L];
+        Y[L] = Y[ok];
+        Y[ok] = eU;
+    }
+}

@@ -1,0 +1,64 @@
+package OB.Tx.jP;
+import T.zC.t;
+import T.zC.y;
+import T.df.U;
+import T.df.f;
+import T.df.D;
+import OB.Tx.jP.T0.Y;
+import OB.Tx.jP.T0.Hu;
+public class KV<N extends y, g extends y> extends mY<N, g> {
+	protected U<N, g> X;
+	public KV(t aH) {
+		this (aH, new Y());
+	}
+	public KV(t aH, Hu l) {
+		super(aH, l, false);
+		X = new U<N, g>();
+		f<D.aQ<N, g>> G = new E<N, g>(this);
+		while (G.C()) {
+			D.aQ<N, g> hg = G.o();
+			X.JR(hg.n(), hg.W());
+		}
+	}
+	@i
+	public synchronized boolean S(r b) {
+		return X.S(b);
+	}
+	@i
+	public synchronized boolean K(r pK) {
+		return X.K(pK);
+	}
+	@i
+	@Ri("unchecked")
+	public synchronized g q(r b) {
+		if (X.S(b))
+			return X.q(b);
+		g m = super.q(b);
+		if (m != null)
+			X.JR((N) b, m);
+		return m;
+	}
+	@i
+	public synchronized g JR(N b, g m) {
+		X.JR(b, m);
+		return super.JR(b, m);
+	}
+	@i
+	public synchronized g O(r b) {
+		X.O(b);
+		return super.O(b);
+	}
+	@i
+	public boolean Nt() {
+		return X.Nt();
+	}
+	@i
+	public int Q() {
+		return X.Q();
+	}
+	@i
+	public synchronized void Yt() {
+		X.Yt();
+		super.Yt();
+	}
+}

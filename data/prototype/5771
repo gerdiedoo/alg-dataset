@@ -1,0 +1,23 @@
+def q(W):
+    if len(W) <= 1:
+        return W
+    Z = len(W) // 2
+    o = W[:Z]
+    Ti = W[Z:]
+    F = q(o)
+    Aa = q(Ti)
+    return gy(F, Aa)
+def gy(M, O):
+    H = []
+    while M and O:
+        if M[0] < O[0]:
+            H.append(M[0])
+            M.pop(0)
+        else:
+            H.append(O[0])
+            O.pop(0)
+    if M:
+        H += M
+    if O:
+        H += O
+    return H

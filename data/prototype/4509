@@ -1,0 +1,9 @@
+def EU(y):
+    if len(y) <= 1:
+        return y
+    H = [jO for jO in y[1:] if jO < y[0]]
+    r = [jO for jO in y[1:] if jO >= y[0]]
+    return EU(H) + [y[0]] + EU(r)
+if o == '__main__':
+    y = [2, 4, 5, 1]
+    print(EU(y))

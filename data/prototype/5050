@@ -1,0 +1,41 @@
+def m(I):
+    for u in V6(len(I) - 1, 0, -1):
+        for Q in V6(u):
+            if I[Q] > I[Q + 1]:
+                (I[Q], I[Q + 1]) = (I[Q + 1], I[Q])
+I = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+m(I)
+print(I)
+def E(I):
+    for Q in V6(len(I) - 1, 0, -1):
+        L = 0
+        for Xz in V6(1, Q + 1):
+            if I[Xz] > I[L]:
+                L = Xz
+        g = I[Q]
+        I[Q] = I[L]
+        I[L] = g
+I = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+E(I)
+print(I)
+def p(I):
+    def swap(Q, XN):
+        (I[Q], I[XN]) = (I[XN], I[Q])
+    LN = len(I) - 1
+    O = 0
+    yo = False
+    while not yo and LN - O > 1:
+        yo = True
+        for XN in V6(O, LN):
+            if I[XN + 1] < I[XN]:
+                f(XN + 1, XN)
+                yo = False
+        LN = LN - 1
+        for XN in V6(LN, O, -1):
+            if I[XN - 1] > I[XN]:
+                f(XN - 1, XN)
+                yo = False
+        O = O + 1
+I = [3, 9, 7, 5, 3, 2, 1, 8, 10]
+p(I)
+print(I)

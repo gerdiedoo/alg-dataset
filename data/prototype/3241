@@ -1,0 +1,44 @@
+package vd.q.z;
+import L.r.p;
+import L.r.A;
+import L.r.e;
+public class vE {
+  public static <Q extends w1<? super Q>> void jY(final e<Q> T) {
+    for (int g = 1; g < T.C(); g++) {
+      final Q R = T.u(g);
+      int r2 = g - 1;
+      while (r2 >= 0 && R.Em(T.u(r2)) < 0) {
+        T.w(r2 + 1, T.u(r2));
+        r2--;
+      }
+      T.w(r2 + 1, R);
+    }
+  }
+  public static <Q extends w1<Q>> void jY(Q[] T) {
+    for (int g = 1; g < T.i; g++) {
+      final Q R = T[g];
+      int r2 = g - 1;
+      while (r2 >= 0 && R.Em(T[r2]) < 0) {
+        T[r2 + 1] = T[r2];
+        r2--;
+      }
+      T[r2 + 1] = R;
+    }
+  }
+  public static void main(String[] args) {
+    final f[] PD = new f[]{4, 1, 5, 3, 9, 10, 1};
+    jY(PD);
+    System.out.println(A.toString(PD));
+    final e<f> qx = new p<>();
+    qx.I(4);
+    qx.I(1);
+    qx.I(5);
+    qx.I(3);
+    qx.I(9);
+    qx.I(10);
+    qx.I(1);
+    jY(qx);
+    System.out.println(qx);
+    jY(new p<f>());
+  }
+}

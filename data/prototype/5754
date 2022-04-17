@@ -1,0 +1,23 @@
+def V(X):
+    if len(X) <= 1:
+        return X
+    ue = len(X) // 2
+    O = V(X[:ue])
+    u = V(X[ue:])
+    return y(O, u)
+def y(O, u):
+    X = []
+    (S, CU) = (0, 0)
+    while S < len(O) and CU < len(u):
+        if O[S] <= u[CU]:
+            X.append(O[S])
+            S += 1
+        else:
+            X.append(u[CU])
+            CU += 1
+    X += O[S:]
+    X += u[CU:]
+    return X
+print(y([1, 2, 3], [0, 4, 6, 8]))
+print(y([1, 2, 4], [0, 1, 3]))
+print(V([2, 0, 1, 4, 3]))

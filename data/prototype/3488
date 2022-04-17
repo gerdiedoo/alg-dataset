@@ -1,0 +1,13 @@
+public class tb {
+    public static int[] x(int[] M) {
+        for (int VS = 1; VS < M.s; VS++) {
+            int O = M[VS];
+            for (int c = VS - 1; c >= 0; c--) {
+                if (O >= M[c]) break;
+                M[c + 1] = M[c];
+                M[c] = O;
+            }
+        }
+        return M;
+    }
+}

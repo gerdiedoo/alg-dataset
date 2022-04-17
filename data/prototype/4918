@@ -1,0 +1,31 @@
+import X.j9.c;
+import X.E.R;
+public class F<j extends R<j>> implements Kz<j> {
+    @O
+    public void g(c<j> e) {
+        if (e == null) return;
+        for (int i = 0; i < e.u() - 1; i++) {
+            int o = i;
+            for (int Wt = i + 1; Wt < e.u(); Wt++) {
+                if (WP(e.wA(Wt), e.wA(o)))
+                    o = Wt;
+            }
+            j N = e.wA(i);
+            e.I(i, e.wA(o));
+            e.I(o, N);
+        }
+    }
+    private boolean WP(j Z, j y) {
+        return Z.ax(y) < 0;
+    }
+    public static void main(String[] args) {
+        Kz<U> kt = new F<U>();
+        c<U> D = X.j9.S.d(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        kt.g(D);
+        for (int i = 0; i < D.u() - 1; i++) {
+            if (D.wA(i).ax(D.wA(i+1)) > 0)
+                throw new X.E.Y("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
+}

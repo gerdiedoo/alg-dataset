@@ -1,0 +1,36 @@
+def Z(V, k, g, I):
+    MF = V[k:g + 1]
+    eO = V[g + 1:I + 1]
+    z = 0
+    wn = 0
+    N = k
+    while z < len(MF) and wn < len(eO):
+        if MF[z] < eO[wn]:
+            V[N] = MF[z]
+            z += 1
+        else:
+            V[N] = eO[wn]
+            wn += 1
+        N += 1
+    while z < len(MF):
+        V[N] = MF[z]
+        z += 1
+        N += 1
+    while wn < len(eO):
+        V[N] = eO[wn]
+        wn += 1
+        N += 1
+def w(V, k, I):
+    if k < I:
+        g = k + (I - k) // 2
+        w(V, k, g)
+        w(V, g + 1, I)
+        Z(V, k, g, I)
+def ps(V):
+    w(V, 0, len(V) - 1)
+    return V
+assert ps([3, 4, 5, 2, 1]) == [1, 2, 3, 4, 5]
+assert ps([3, 4, 5, 2, 1, 6]) == [1, 2, 3, 4, 5, 6]
+assert ps([]) == []
+assert ps([1]) == [1]
+assert ps([2, 1]) == [1, 2]

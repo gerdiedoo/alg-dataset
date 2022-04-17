@@ -1,0 +1,99 @@
+import d.k.aL;
+import d.k.B;
+public class l8<Up,V> implements n<Up, V> {
+	private int q;
+	private B<n.l<Up, V>> J;
+	private int S4=0;
+	l8(int q)
+	{
+		J=new aL<n.l<Up, V>>();
+		n.l<Up,V> w2;
+		for(int S=0;S<q;S++)
+			{
+				w2=new I();
+				J.X(w2);
+			}
+		this.q=q;
+	}
+	@h
+	public V Z(Up ah) {
+		int S=G(ah.hashCode(),q);
+		n.l<Up,V> w2=J.Z(S);
+		for(n.x<Up, V> C:w2.D())
+		{
+			if(C.U().equals(ah))
+				return C.jU();
+		}
+		return null;
+	}
+	@h
+	public V s(Up ah, V M) {
+		int S=G(ah.hashCode(),q);
+		n.l<Up,V> w2=J.Z(S);
+		for(n.x<Up, V> C:w2.D())
+		{
+			if(C.U().equals(ah))
+				{
+					V A=((pE)C).v;
+					((I)w2).m.K(C);
+					((pE)C).v=M;
+					((I)w2).m.X(C);
+					return A;
+				}
+		}
+		n.x<Up, V> N=new pE();
+		((pE)N).Zg=ah;
+		((pE)N).v=M;
+		((I)w2).m.X(N);
+		S4++;
+		return null;
+	}
+	@h
+	public V K(Up ah) {
+		int S=G(ah.hashCode(),q);
+		n.l<Up,V> w2=J.Z(S);
+		for(n.x<Up, V> C:w2.D())
+		{
+			if(C.U()==ah)
+			{
+				V A=((pE)C).v;
+				((I)w2).m.K(C);
+				S4--;
+				return A;
+			}
+		}
+		return null;
+	}
+	@h
+	public int S4() {
+		return S4;
+	}
+	@h
+	public B<? extends n.l<Up, V>> R() {
+		return J;
+	}
+	public int G(int hashCode, int S4) {
+		return t.E(hashCode) % S4;
+	}
+	public class pE implements n.x<Up, V>
+	{
+		Up Zg;
+		V v;
+		@h
+		public Up U() {
+			return Zg;
+		}
+		@h
+		public V jU() {
+			return v;
+		}
+	}
+	public class I implements n.l<Up, V>
+	{
+		private B<n.x<Up, V>> m=new aL<n.x<Up, V>>();
+		@h
+		public B<? extends n.x<Up, V>> D() {
+			return m;
+		}
+	}
+}

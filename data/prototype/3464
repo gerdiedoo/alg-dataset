@@ -1,0 +1,22 @@
+package D;
+public class gk extends da{
+	public static void main(String[] args){
+		int[] Xs = Vg(5);
+		K(new gk(), Xs);
+	}
+	public gk(){ super("Insertion"); }
+	private void L(int[] Xs){
+		for (int Z = 1; Z < Xs.C; Z++)
+		{
+			int l = Xs[Z];  
+			int u;
+			for (u = Z; u > 0 && Xs[u-1] > l; u--)
+				Xs[u] = Xs[u-1];
+			Xs[u] = l;
+		}
+	}
+	@q
+	public void O9(int[] Xs){		
+		L(Xs);
+	}
+}

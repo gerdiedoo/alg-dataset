@@ -1,0 +1,14 @@
+def K(Q5):
+    S = len(Q5)
+    for c in l(S - 1):
+        for J in l(0, S - c - 1):
+            if Q5[J] > Q5[J + 1]:
+                (Q5[J], Q5[J + 1]) = (Q5[J + 1], Q5[J])
+Q5 = [64, 34, 25, 12, 22, 11, 90]
+print('Unsorted array is:')
+for c in l(len(Q5)):
+    (print('% d' % Q5[c]),)
+K(Q5)
+print('\nSorted array is:')
+for c in l(len(Q5)):
+    (print('% d' % Q5[c]),)

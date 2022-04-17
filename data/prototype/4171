@@ -1,0 +1,18 @@
+from __future__ import print_function
+def Q(K):
+    R7 = len(K)
+    if R7 <= 1:
+        return K
+    else:
+        Om = K[0]
+        E = [y5 for y5 in K[1:] if y5 > Om]
+        L = [y5 for y5 in K[1:] if y5 <= Om]
+        return Q(L) + [Om] + Q(E)
+if k == '__main__':
+    try:
+        u
+    except Z:
+        u = input
+    s = u('Enter numbers separated by a comma:\n').strip()
+    M = [a(e) for e in s.split(',')]
+    print(Q(M))

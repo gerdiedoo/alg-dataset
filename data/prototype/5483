@@ -1,0 +1,33 @@
+def c(z, R):
+    j = 0
+    iz = len(z) - 1
+    LN = u('inf')
+    v = None
+    if len(z) == 0:
+        return -1
+    if len(z) == 1:
+        return z[0]
+    while j <= iz:
+        F = (j + iz) // 2
+        if F > 0:
+            V = abs(z[F - 1] - R)
+        if F < len(z) - 1:
+            JE = abs(z[F + 1] - R)
+        if V < LN:
+            LN = V
+            v = z[F - 1]
+        if JE < LN:
+            LN = JE
+            v = z[F + 1]
+        if R > z[F]:
+            j = F + 1
+        elif R < z[F]:
+            iz = F - 1
+        else:
+            return z[F]
+    return v
+if m == '__main__':
+    M = [1, 2, 5, 7, 9, 11, 14, 15]
+    W = 12
+    p = c(M, W)
+    print(p)

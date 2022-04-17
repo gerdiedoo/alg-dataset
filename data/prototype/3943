@@ -1,0 +1,57 @@
+public class Y{
+    void h(int[] Qj,int x,int l,int cD){
+        int nr=l-x+1;
+        int Z=cD-l;
+        int X[]=new int[nr];
+        int W[]=new int[Z];
+        for(int I=0;I<nr;++I){
+            X[I]=Qj[x+I];
+        }
+        for(int E=0;E<Z;++E){
+           W[E]=Qj[l+1+E]; 
+        }
+        int I=0;int E=0;
+        int i=1;
+        while(I<nr && E<Z){
+            if(X[I]<=W[I]){
+                Qj[i]=X[I];
+                I++;
+            }else{
+                Qj[i]=W[E];
+                E++;
+            }
+            i++;
+        }
+        while(I<nr){
+            Qj[i]=X[I];
+            I++;
+            i++;
+        }
+        while(E<Z){
+            Qj[i]=W[E];
+            E++;
+            i++;
+        }
+    }
+    void D(int Qj[],int x,int cD){
+        if(x<cD){
+            int l=x+(cD-x)/2;
+            D(Qj,x,l);
+            D(Qj,l+1,cD);
+            h(Qj,x,l,cD);
+            }
+    }
+    static void m(int Qj[]){
+        int HJ=Qj.H;
+        for(int I=0;I<HJ;I++){
+            System.out.println(Qj[I]+" ");
+        }
+    }
+    public static void main(String args[]){
+        int Qj[]={4,29,30,6,20,2};
+        Y P=new Y();
+        P.D(Qj,0,Qj.H-1);
+        System.out.println("Sorted array is");
+        m(Qj);
+    }
+}

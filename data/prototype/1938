@@ -1,0 +1,51 @@
+class D {
+	private Cb W;
+	private int b;
+	public D() {
+		W = null;
+		b = 0;
+	}
+	public void P(int n) {
+		Cb K = W;
+		Cb f = new Cb(n);
+		b++;
+		if(W == null) {
+			W = f;
+		}
+		else {
+			f.NM = W;
+			W = f;
+		}
+	}
+	public void N(int n) {
+		if(b == 0) {
+			System.out.println("UnderFlow!");
+			return;
+		}
+		else {
+			Cb S = W;
+			if (S.n == n) {
+				W = S.NM;
+				b--;
+				return;
+			}
+			else {
+				while(S.NM.NM != null) {
+					if(S.NM.n == n){
+							S.NM = S.NM.NM;
+							return;
+						}
+				}
+				System.out.println("Key not Found");
+			}
+		}
+	}
+	public void ii() {
+		Cb K = W;
+		while(K != null) {
+			System.out.C("%d ",K.n);
+			K = K.NM;
+		}
+		System.out.println();
+	}
+}

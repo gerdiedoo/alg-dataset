@@ -1,0 +1,115 @@
+class TY {
+    static double [] j (double Y0[]){
+         for (int St = 1; St < Y0.T; St++) {
+             for(int K = St ; K > 0 ; K--){
+                 if(Y0[K] < Y0[K-1]){
+                     B(Y0, K, K-1);
+                 }
+             }
+         }
+         return Y0;
+    } 
+    static double [] UF (double Y0[]){
+		double[] q = Y0;
+    	UF(q, 0, q.T-1);
+    	return q;
+    } 
+    private static void UF(double[] P, int H, int RW) {
+    	int St = H;
+        int K = RW;
+        double U = P[H+(RW-H)/2];
+        while (St <= K) {
+            while (P[St] < U) {
+                St++;
+            }
+            while (P[K] > U) {
+                K--;
+            }
+            if (St <= K) {
+                B(P, St, K); 
+                St++;
+                K--;
+            }
+        }
+        if (H < K)
+            UF(P, H, K);
+        if (St < RW)
+            UF(P, St, RW);
+    }
+    static double [] No (double Y0[]){
+		double[] q = Y0;
+		int T = q.T;
+		double[] d = new double[q.T];
+		return a(q, d, 0, T-1);
+    } 
+    private static double[] a(double[] q, double[] d, int H, int RW) {
+    	if(H < RW) {
+    		int N = H + (RW - H)/2;
+    		a(q, d, H, N);
+    		a(q, d, N+1, RW);
+    		i(q, d, H, N, RW);
+    	}
+    	return q;
+    }
+    private static void i(double[] q, double[] d, int H, int N, int RW) {
+    	for(int Z= H; Z<=RW; Z++) {
+    		d[Z] = q[Z];
+    	}
+    	int St = H, K = N+1;
+    	for(int Z=H; Z<=RW; Z++) {
+    		if(St>N)
+    			q[Z] = d[K++];
+    		else if(K>RW)
+    			q[Z] = d[St++];
+    		else if(d[K] < d[St])
+    			q[Z] = d[K++];
+    		else 
+    			q[Z] = d[St++];
+    	}
+    }
+    static double [] x (double Y0[]){
+		 int G=1;
+		 while(G < (Y0.T/3))
+			 G = 3*G + 1;
+		 while(G >= 1) {
+			 for(int St=G; St<Y0.T; St++) {
+				 for(int K=St; K>=G && ((Y0[K] < Y0[K-G])); K-=G) {
+						 B(Y0, K, K-G);	 
+				 }
+			 }
+			 G = G/3;
+		 }
+    	return Y0;
+    } 
+    static double [] Vl (double Y0[]){
+    	for(int St=0; St<Y0.T-1; St++) {
+    		double r = Y0[St];
+    		int E = St;
+    		for(int K=St+1; K<Y0.T; K++) {
+    			if(Y0[K] < r) {
+    				r = Y0[K];
+    				E = K;
+    			}
+    		}
+    		B(Y0, St, E);
+    	}
+    	return Y0;
+    } 
+    static double [] R (double Y0[]){
+    	int k = Y0.T-1;
+    	while(k>0) {
+	         for(int St=0; St<k; St++) {
+	        	 if(Y0[St+1] < Y0[St]) {
+	        		 B(Y0, St, St+1);
+	        	 }
+	         }
+	         k--;
+    	}
+    	return Y0;
+    } 
+    private static void B(double[] P, int St, int K) {
+   	 	double d = P[St];
+        P[St] = P[K];
+        P[K] = d;
+   }
+ } 

@@ -1,0 +1,51 @@
+import R.C.PW;
+public class S
+{
+    public static void main(String[] args)
+    {
+        m[] J = new m[] { 12, 13, 24, 10, 3, 6, 90, 70 };
+        K_( J, 0, J.H - 1 );
+        System.out.println(PW.toString(J));
+    }
+    public static void K_(m[] gM, int N_, int Q)
+    {
+        if (gM == null || gM.H == 0){
+            return;
+        }
+        if (N_ >= Q){
+            return;
+        }
+        int I = N_ + (Q - N_) / 2;
+        int gY = gM[I];
+        int t = N_, hk = Q;
+        while (t <= hk)
+        {
+            while (gM[t] < gY)
+            {
+                t++;
+            }
+            while (gM[hk] > gY)
+            {
+                hk--;
+            }
+            if (t <= hk)
+            {
+                FR (gM, t, hk);
+                t++;
+                hk--;
+            }
+        }
+        if (N_ < hk){
+            K_(gM, N_, hk);
+        }
+        if (Q > t){
+            K_(gM, t, Q);
+        }
+    }
+    public static void FR (m J[], int D, int qe)
+    {
+        int p = J[D];
+        J[D] = J[qe];
+        J[qe] = p;
+    }
+}

@@ -1,0 +1,14 @@
+def bubble_sort(arr):
+    def swap(i, j):
+        (Y[B], Y[T]) = (Y[T], Y[B])
+    s8 = len(Y)
+    H = True
+    w = -1
+    while H:
+        H = False
+        w = w + 1
+        for B in Fe(1, s8 - w):
+            if Y[B - 1] > Y[B]:
+                d(B - 1, B)
+                H = True
+    return Y

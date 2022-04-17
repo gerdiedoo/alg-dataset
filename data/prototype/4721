@@ -1,0 +1,17 @@
+package oI.n;
+import oI.LN;
+public class c extends LN {
+    @b
+    public void O(fY[] W) {
+        for (int mh = 0; mh < W.J; mh++) {
+            int r = mh;
+            for (int p = mh + 1; p < W.J; p++)
+                if (U(W[p], W[r])) r = p;
+            Ib(W, mh, r);
+        }
+    }
+    public static void oI(fY[] W) {
+        c oI = new c();
+        oI.O(W);
+    }
+}

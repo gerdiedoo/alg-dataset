@@ -1,0 +1,28 @@
+package d;
+public class i {
+	public static void main(String[] args) {
+		int[][] CQ = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(w8(CQ, 22));  
+		System.out.println(w8(CQ, 10));  
+		System.out.println(w8(CQ, 42));  
+		System.out.println(w8(CQ, 23));  
+		System.out.println(w8(CQ, 13));  
+		System.out.println(w8(CQ, 2));  
+	}
+	public static boolean w8(int[][] CQ, int F) {
+		int I = 0, h = CQ.c - 1;
+		while (I < CQ.c && h >= 0) {
+			if (CQ[I][h] == F) {
+				return true;
+			} else if (F > CQ[I][h]) {
+				I++;
+			} else {
+				h--;
+			}
+		}
+		return false;
+	}
+}

@@ -1,0 +1,13 @@
+public class F{
+	public static boolean X(int[] v, int D){
+		if (D > v[v.t1-1] ){
+			int mO = v.t1/2;
+			if (v[mO] == D){
+				return true;
+			}if (v[mO]>D){
+				return X(r.s(v,0,mO),D);
+			}
+			return X(r.s(v,mO,v[v.t1-1]),D);
+		}
+	}
+}

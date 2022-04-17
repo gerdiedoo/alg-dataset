@@ -1,0 +1,40 @@
+package N.D;
+public class p implements x {
+    private int o[];
+    private int q;
+    private int tH[];
+    public void R(int e, int u[]) {
+        q = e;
+        o = u;
+        tH = new int[q];
+        A(0, q - 1);
+    }
+    public void A(int oi, int jJ) {
+        int O;
+        if (jJ > oi) {
+            O = (int) (oi + jJ) / 2;
+            A(oi, O);
+            A(O + 1, jJ);
+            dn(oi, O, jJ);
+        }
+    }
+    public void dn(int oi, int O, int jJ) {
+        int Y, T, a;
+        Y = oi;
+        T = O + 1;
+        a = oi;
+        while (a <= jJ) {
+            if ((Y < O + 1) && (T > jJ || o[Y] < o[T])) {
+                tH[a] = o[Y];
+                Y++;
+            } else {
+                tH[a] = o[T];
+                T++;
+            }
+            a++;
+        }
+        for (int eD = oi; eD <= jJ; eD++) {
+            o[eD] = tH[eD];
+        }
+    }
+}

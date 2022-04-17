@@ -1,0 +1,75 @@
+package Si.E.Yv.o;
+import Si.E.pl.m;
+public class Xf {
+	private v B = null;
+	private v U = null;
+	private int j = 0;
+	public void l(m b) {
+		v u = new v(b);
+		if (B == null) {
+			U = u;
+		} else {
+			B.L(u);
+			u.N(B);
+		}
+		B = u;
+		j++;
+	}
+	public void Zl(m b) {
+		v u = new v(b);
+		if (U == null) {
+			B = u;
+		} else {
+			U.N(u);
+			u.L(U);
+		}
+		U = u;
+		j++;
+	}
+	public v c() {
+		if (eS()) {
+			return null;
+		}
+		v u = B;
+		if (B.s() == null) {
+			U = null;
+		} else {
+			B.s().L(null);
+		}
+		B = B.s();
+		j--;
+		u.N(null);
+		return u;
+	}
+	public v e() {
+		if (eS()) {
+			return null;
+		}
+		v u = U;
+		if (U.d() == null) {
+			B = null;
+		} else {
+			U.d().N(null);
+		}
+		U = U.d();
+		j--;
+		u.L(null);
+		return u;
+	}
+	public boolean eS() {
+		return B == null;
+	}
+	public int X() {
+		return j;
+	}
+	public void Va() {
+		v H = B;
+		System.out.I("HEAD -> ");
+		while (H != null) {
+			System.out.I(H);
+			System.out.I(" <=> ");
+			H = H.s();
+		}
+		System.out.println("null");
+	}
+}

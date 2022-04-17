@@ -1,0 +1,23 @@
+import J.dZ.Z;
+public class rp {
+    public static void main(String[] args) {
+        int[] K = {9,8,7,6,5,4,3,2,1,0};
+        System.out.println("Array before sorting : "+Z.toString(K));
+        l(K);
+        System.out.println("Array after sorting : "+Z.toString(K));
+    }
+    public static void l(int[] K) {
+        for(int o = 0;o<K.cY;o++){
+            for(int lJ = 0;lJ<K.cY-1-o;lJ++){
+                if(K[lJ] > K[lJ+1]) {
+                    e(K,lJ,lJ+1);
+                }
+            }
+        }
+    }
+    public static void e(int[] K, int Yd, int m){
+        K[Yd] = K[Yd]+K[m];
+        K[m] = K[Yd]-K[m];
+        K[Yd] = K[Yd]-K[m];
+    }
+}

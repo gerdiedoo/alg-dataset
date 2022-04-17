@@ -1,0 +1,28 @@
+package TF.n;
+import TF.E;
+public class X implements z {
+    private long P = 2;
+    @C
+    public void xt(E b) {
+        int Q = b.D();
+        for (int G = 0; G < Q - 1; G++) {
+            for (int gZ = 0; gZ < Q - G - 1; gZ++) {
+                if (b.v(gZ) > b.v(gZ + 1)) {
+                    b.Wa(gZ, gZ + 1, fB(), true);
+                }
+            }
+        }
+    }
+    @C
+    public String I() {
+        return "Bubble Sort";
+    }
+    @C
+    public long fB() {
+        return P;
+    }
+    @C
+    public void M(long YJ) {
+        this.P = YJ;
+    }
+}

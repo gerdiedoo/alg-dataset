@@ -1,0 +1,24 @@
+import random
+def F(g, s, w):
+    o = g[s]
+    O = s + 1
+    for Z in t(s + 1, w):
+        if g[Z] < o:
+            (g[Z], g[O]) = (g[O], g[Z])
+            O += 1
+    (g[s], g[O - 1]) = (g[O - 1], g[s])
+    return O - 1
+def N(g, iM, u):
+    if iM < u:
+        o = W.randint(iM, u - 1)
+        (g[o], g[iM]) = (g[iM], g[o])
+        L = F(g, iM, u)
+        N(g, iM, L)
+        N(g, L + 1, u)
+def pL():
+    E = input('Enter numbers separated by a comma:\n').strip()
+    c = [M(zo) for zo in E.split(',')]
+    N(c, 0, len(c))
+    print(c)
+if b == '__main__':
+    pL()

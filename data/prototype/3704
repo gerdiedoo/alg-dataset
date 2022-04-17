@@ -1,0 +1,21 @@
+def U(c):
+    if len(c) <= 1:
+        return c
+    RM = len(c) // 2
+    z = U(c[:RM])
+    A = U(c[RM:])
+    S = []
+    pT = 0
+    t = 0
+    while pT < len(z) and t < len(A):
+        if z[pT] < A[t]:
+            S.append(z[pT])
+            pT += 1
+        else:
+            S.append(A[t])
+            t += 1
+    S += z[pT:]
+    S += A[t:]
+    return S
+r9 = [3, 21, 7, 1, 9, 17, 14, 2, 5, 10, 6]
+print(U(r9))

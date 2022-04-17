@@ -1,0 +1,14 @@
+package M.i.X.z;
+import M.i.X.La.D;
+public class o {
+	public static S[] t(S[] Q) {
+		for (int B = 1; B < Q.TT; B++) {
+			for (int u = B; u > 0; u--) {
+				if (Q[u] < Q[u - 1]) {
+					D.uD(Q, u, u - 1);
+				}
+			}
+		}
+		return Q;
+	}
+}

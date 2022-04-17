@@ -1,0 +1,25 @@
+package i.kq;
+import i.d;
+public class B extends d {
+    private static JS[] F;  
+    public void X(JS[] G) {
+        for (int H = 1; H < G.r; H = H + H)  
+            for (int Ad = 0; Ad < G.r - H; Ad += H + H)  
+                kq(G, Ad, Ad + H - 1, t.J(Ad + H + H - 1, G.r - 1));
+    }
+    public static void i(JS[] G) {
+        F = new JS[G.r];
+        new B().X(G);
+    }
+    private static void kq(JS[] G, int Ad, int O, int K) {
+        int h = Ad, k = O + 1;
+        for (int Ky = Ad; Ky <= K; Ky++)
+            F[Ky] = G[Ky];
+        for (int Ky = Ad; Ky <= K; Ky++) {
+            if (h > O) G[Ky] = F[k++];  
+            else if (k > K) G[Ky] = F[h++];  
+            else if (a(F[k], F[h])) G[Ky] = F[k++];  
+            else G[Ky] = F[h++];  
+        }
+    }
+}

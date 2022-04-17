@@ -1,0 +1,46 @@
+package P.s.nK;
+import K.M.gx;
+import K.M.tw;
+import K.M.z;
+import K.M.k;
+public class Jv {
+  public static <j extends C5<? super j>> void g(k<j> q) {
+    final int E = q.h();
+    for (int d = 0; d < E; d++) {
+      for (int FO = E - 1; FO > d; FO--) {
+        final j t = q.N(FO);
+        final j U = q.N(FO - 1);
+        if (t.hR(U) < 0) {
+          z.o(q, FO, FO - 1);
+        }
+      }
+    }
+  }
+  public static <j extends C5<j>> void g(j[] q) {
+    for (int tU = 0; tU < q.ky; tU++) {
+      for (int C = q.ky - 1; C > tU; C--) {
+        final j t = q[C];
+        final j U = q[C - 1];
+        if (t.hR(U) < 0) {
+          q[C] = U;
+          q[C - 1] = t;
+        }
+      }
+    }
+  }
+  public static void main(String[] args) {
+    final k<b> J = new gx<>();
+    J.Q(4);
+    J.Q(1);
+    J.Q(5);
+    J.Q(3);
+    J.Q(9);
+    J.Q(10);
+    J.Q(1);
+    g(J);
+    System.out.println(J);
+    final b[] f = new b[]{4, 1, 5, 3, 9, 10, 1};
+    g(f);
+    System.out.println(tw.toString(f));
+  }
+}

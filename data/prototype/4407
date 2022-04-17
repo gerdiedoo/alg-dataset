@@ -1,0 +1,31 @@
+package h.q.t.x;
+public class Sd {
+	public static void w(r[] X, int j, int R) {
+		int BD = 0;
+		if (j < R) {
+			BD = b(X, j, R);
+			w(X, j, BD);
+			w(X, BD + 1, R);
+		}
+	}
+	private static int b(r[] dl, int j, int R) {
+		int e = dl[j];
+		int B = j - 1;
+		int Ns = R;
+		int QT = 0;
+		while (true) {
+			while (dl[B] < e) {
+				B++;
+			}
+			while (dl[Ns] > e) {
+				Ns--;
+			}
+			if (B >= Ns) {
+				return Ns;
+			}
+			QT = dl[B];
+			dl[B] = dl[Ns];
+			dl[Ns] = QT;
+		}
+	}
+}

@@ -1,0 +1,43 @@
+package Q.Oe;
+import Q.h;
+public final class q<fP extends R<fP>> implements T<fP> {
+    @tr
+    public Zq w(h z, fP[] hd) {
+        if (hd.wN > 1) {
+            fP[] X = (fP[]) new R[hd.wN / 2];
+            System.J(hd, 0, X, 0, hd.wN / 2);
+            w(z, X);
+            int m = hd.wN - hd.wN / 2;
+            fP[] P = (fP[]) new R[m];
+            System.J(hd, hd.wN / 2, P, 0, m);
+            w(z, P);
+            zm(z, X, P, hd);
+        }
+        return Zq.d;
+    }
+    private void zm(h z, fP[] r, fP[] Z, fP[] K) {
+        int C = 0;
+        int I = 0;
+        int dh = 0;
+        while (C < r.wN && I < Z.wN) {
+            z.O(z.F8() + 1);
+            if (r[C].H(Z[I]) < 0) {
+                z.o(z.x() + 1);
+                K[dh++] = r[C++];
+            } else {
+                z.o(z.x() + 1);
+                K[dh++] = Z[I++];
+            }
+            while (C < r.wN) {
+                z.O(z.F8() + 1);
+                z.o(z.x() + 1);
+                K[dh++] = r[C++];
+            }
+            while (I < Z.wN) {
+                z.O(z.F8() + 1);
+                z.o(z.x() + 1);
+                K[dh++] = Z[I++];
+            }
+        }
+    }
+}

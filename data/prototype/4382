@@ -1,0 +1,42 @@
+package vQ.u.I;
+import Lr.T.cB;
+public final class dw {
+    private dw() {
+    }
+    public static <pJ> void I(pJ[] Kc, cB<? super pJ> R) {
+        if (Kc.F <= 1) {
+            return;
+        }
+        if (R == null) {
+            R = J.A();
+        }
+        c(Kc, 0, Kc.F - 1, R);
+    }
+    public static <pJ extends E<? super pJ>> void I(pJ[] Kc) {
+        I(Kc, null);
+    }
+    private static <pJ> void c(pJ[] Kc, int C, int Z, cB<pJ> R) {
+        if (C < Z) {
+            int jM = i(Kc, C, Z, R);
+            c(Kc, C, jM, R);
+            c(Kc, jM + 1, Z, R);
+        }
+    }
+    private static <pJ> int i(pJ[] Kc, int C, int Z, cB<pJ> R) {
+        pJ In = Kc[C + ((Z - C) / 2)];
+        int tQ = C - 1;
+        int BL = Z + 1;
+        while (tQ < BL) {
+            do {
+                tQ++;
+            } while (R.d(Kc[tQ], In) < 0);
+            do {
+                BL--;
+            } while (R.d(Kc[BL], In) > 0);
+            if (tQ < BL) {
+                J.B(Kc, tQ, BL);
+            }
+        }
+        return BL;
+    }
+}

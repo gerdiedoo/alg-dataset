@@ -1,0 +1,51 @@
+package Di.m;
+import hq.Pa.P8;
+public class J {
+	private J() {
+	}
+	public static void O(C[] tx) {
+		if(tx == null)
+			throw new e();
+		int p5 = tx.X;
+		int rc;
+		for (int T = 0; T < p5; T++) {
+			rc = T;
+			for (int z = T + 1; z < p5; z++) {
+				if (V(tx[z], tx[rc]))
+					rc = z;
+			}
+			u(tx, T, rc);
+		}
+	}
+	public static void O(M[] tx, P8 zB) {
+		if(tx == null)
+			throw new e();
+		int p5 = tx.X;
+		int rc;
+		for (int T = 0; T < p5; T++) {
+			rc = T;
+			for (int z = T + 1; z < p5; z++) {
+				if (V(zB, tx[z], tx[rc]))
+					rc = z;
+			}
+			u(tx, T, rc);
+		}
+	}
+	private static boolean V(C t, C F) {
+		return t.y0(F) < 0;
+	}
+	private static boolean V(P8 zB, M t, M F) {
+		return zB.c(t, F) < 0;
+	}
+	private static void u(M[] L, int T, int z) {
+		M ki = L[T];
+		L[T] = L[z];
+		L[z] = ki;
+	}
+	public static void k(C[] tx) {
+		int U = tx.X;
+		for (int T = 0; T < U; T++) {
+			System.out.g(tx[T] + ",");
+		}
+	}
+}

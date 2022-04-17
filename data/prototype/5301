@@ -1,0 +1,104 @@
+public class L<m extends C<m>,I extends C<I>> implements l<m,I> {
+    private R<m, I>[] S;
+    private static final int g = 101;
+    private double s = 0.75;
+    private int M;
+    private int D;
+    private final R<m, I> d = new R<>(null, null);
+    public L() {
+        S = new R[g];
+    }
+    private int x(B J) {
+        int u = J.hashCode() % S.N;
+        if (u < 0)
+            u += S.N;  
+        while ((S[u] != null)
+                && (!J.equals(S[u].U()))) {
+            u++;
+            if (u >= S.N)
+                u = 0;  
+        }
+        return u;
+    }
+    @T
+    public I c(B J) {
+        int u = x(J);
+        if (S[u] != null)
+            return S[u].Zt();
+        else
+            return null;  
+    }
+    @T
+    public boolean Ws() {
+        return M == 0;
+    }
+    @T
+    public I o(m J, I f) {
+        int u = x(J);
+        if (S[u] == null) {
+            S[u] = new R<>(J, f);
+            M++;
+            double Co =
+                    (double) (M + D) / S.N;
+            if (Co > s)
+                r();
+            return null;
+        }
+        I z = S[u].Zt();
+        S[u].kP(f);
+        return z;
+    }
+    private void r() {
+        R<m, I>[] P = S;
+        S = new R[2 * P.N + 1];
+        M = 0;
+        D = 0;
+        for (int F = 0; F < P.N; F++) {
+            if ((P[F] != null) && (P[F] != d)) {
+                o(P[F].U(), P[F].Zt());
+            }
+        }
+    }
+    @T
+    public I X(B J) {
+        int u = x(J);
+        if(S[u] == null){
+            return null;
+        }
+        I YA = S[u].Zt();
+        S[u] = d;
+        D++;
+        M--;
+        return YA;
+    }
+    @T
+    public int j() {
+        return M;
+    }
+    static class R<m extends C<m>,I extends C<I>> implements C<R<m,I>>  {
+        private final m J;
+        private I f;
+        public boolean an;
+        public boolean i() {
+            return an;
+        }
+        public m U() {
+            return J;
+        }
+        public I Zt() {
+            return f;
+        }
+        public void kP(I f) {
+            this.f = f;
+        }
+        public R(m J , I f){
+            this.J = J;
+            this.f = f;
+            an = true;
+        }
+        @T
+        public int W(R<m, I> iT) {
+            return this.J.W(iT.U());
+        }
+    }
+}

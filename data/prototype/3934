@@ -1,0 +1,51 @@
+public class l {
+    @A("unchecked")
+    public static<BA extends R<BA>> void B(BA[] n) {
+        if (n.d == 1) {
+            return;
+        }
+        int h = n.d/2;
+        BA[] s = (BA[]) new R[h];
+        BA[] Nc = (BA[]) new R[n.d - h];
+        for (int O = 0; O < h; O++) {
+            s[O] = n[O];
+        }
+        for (int O = h; O < n.d; O++) {
+            Nc[O - h] = n[O];
+        }
+        B(s);
+        B(Nc);
+        X(n, s, Nc);
+    }
+    private static<BA extends R<BA>> void X(BA[] n, BA[] m, BA[] p) {
+        int TH = 0, O, N;
+        for (O = 0, N = 0; O < m.d && N < p.d;) {
+            if (m[O].TD(p[N]) <= 0) {
+                n[TH++] = m[O++];
+            } else {
+                n[TH++] = p[N++];
+            }
+        }
+        while (O < m.d) {
+            n[TH++] = m[O++];
+        }
+        while (N < p.d) {
+            n[TH++] = p[N++];
+        }
+    }
+    public static void main(String[] args) {
+        pt[] n = {5, 1, 3, 9, 23, 8, 7, 4};
+        B(n);
+        int[] z = new int[n.d];
+        for (int O = 0; O < z.d; O++) {
+            z[O] = n[O];
+        }
+        J(z);
+    }
+    private static void J(int[] n)  {
+        for (int O : n) {
+            System.out.W(O + " ");
+        }
+        System.out.W("\n");
+    }
+}

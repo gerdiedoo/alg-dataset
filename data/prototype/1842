@@ -1,0 +1,365 @@
+package K7.B;
+import x5.Ip.a1.w_.Te.u;
+import HZ.KP.D;
+import HZ.KP.Mn;
+import HZ.KP.X;
+import HZ.zA.*;
+abstract class S<z, C> {
+    public static final S J = new st(
+            new x5.Ip.a1.w_.Te.A3());
+    final x5.Ip.a1.w_.Te.v<z, fO> ia;  
+    public static final String Xu = new String("Non existing mapping M");
+    private static final r dq = new r();
+    public S(x5.Ip.a1.w_.Te.v<z, fO> ia) {
+        this.ia = ia;
+    }
+    private z Q(z wR) {
+        return wR == null ? (z) dq : wR;
+    }
+    private z M_(z wR) {
+        return wR == dq ? null : wR;
+    }
+    protected v<z, C> s() {
+        return F.rE();
+    }
+    protected abstract st<z, C> N();
+    public C xa(a<z, C> mC, z wR) {
+        r G = A(mC, wR);
+        return G != Xu ? (C) G : null;
+    }
+    private r A(a<z, C> mC, r wR) {
+        z R = Q((z) wR);
+        final fO d = ia.xa(R);
+        if (d == null)
+            return s().xa(R);
+        return IE(mC, d);
+    }
+    protected static r IE(a mC, int d) {
+        switch (d) {
+            case -1:
+                return mC.f;
+            case -2:
+                return mC.Od;
+            case -3:
+                return mC.T;
+        }
+        return ((r[]) mC.f)[d];
+    }
+    public C vb(a<z, C> mC, z wR, r M) {
+        z R = Q(wR);
+        fO d = ia.xa(R);
+        r Dp = Xu;
+        if (d == null) {
+            Dp = s().xa(R);
+            v<z, C> kX = bj.A1(s(), R, M);
+            if (kX != null) {
+                mC.eS = N().MM(kX);
+                return (C) Dp;
+            }
+            if (M == Xu)
+                return (C) Dp;
+            d = y(mC, R);
+        }
+        switch (d) {
+            case -1:
+                if (Dp == Xu)
+                    Dp = mC.f;
+                mC.f = M;
+                break;
+            case -2:
+                if (Dp == Xu)
+                    Dp = mC.Od;
+                mC.Od = M;
+                break;
+            case -3:
+                if (Dp == Xu)
+                    Dp = mC.T;
+                mC.T = M;
+                break;
+            default:
+                r[] Di = (r[]) mC.f;
+                if (Dp == Xu)
+                    Dp = Di[d];
+                Di[d] = M;
+                break;
+        }
+        return (C) Dp;
+    }
+    private fO y(a<z, C> mC, z wR) {
+        final S<z, C> hG = N().xL(wR, s());
+        mC.eS = hG;
+        int x = ia.Hv();
+        if (x == 3) {
+            r[] Di = new r[4];
+            Di[0] = mC.f;
+            mC.f = Di;
+        } else if (x > 3) {
+            r[] Di = (r[]) mC.f;
+            if (Di.LJ < x - 1) {
+                int dc = Di.LJ * 3 / 2;
+                dc += dc & 1;  
+                r[] p = new r[dc];
+                System.U(Di, 0, p, 0, Di.LJ);
+                mC.f = p;
+            }
+        }
+        return hG.ia.xa(wR);
+    }
+    public int Hv(a<z, C> mC) {
+        return ia.Hv() + s().Hv() - Lc(mC);
+    }
+    private int Lc(a<z, C> mC) {
+        int f2 = 0;
+        switch (ia.Hv()) {
+            default:  
+                for (r o : (r[]) mC.f) {
+                    if (o == Xu) f2++;
+                }
+            case 3:  
+                if (mC.f == Xu) f2++;
+            case 2:  
+                if (mC.Od == Xu) f2++;
+            case 1:  
+                if (mC.T == Xu) f2++;
+            case 0:
+        }
+        return f2;
+    }
+    public boolean ky(a<z, C> mC, r wR) {
+        z R = Q((z) wR);
+        final fO d = ia.xa(R);
+        if (d == null)
+            return s().ky(R);
+        return IE(mC, d) != Xu;
+    }
+    public XB<z> K(a<z, C> mC) {
+        return new S.xc<z, C>(mC);
+    }
+    public XB<C> lm(a<z, C> mC) {
+        return new S.H<z, C>(mC);
+    }
+    public XB<v.P<z, C>> vB(a<z, C> mC) {
+        return new S.gr<z, C>(mC);
+    }
+    public void q3(final a<z, C> mC, final X q0) throws D {
+        int Hv = ia.Hv() - Lc(mC);
+        q0.l(Hv);
+        if (Hv > 0)
+            for (u<z, fO> ZX : ia) {
+                r M = IE(mC, ZX.Gl());
+                if (M == Xu) continue;
+                q0.QR(M_(ZX.yL()));
+                q0.QR(M);
+            }
+        q0.QR(s());
+    }
+    public static <z, C> void V(a<z, C> mC, Mn q0) throws D, I {
+        int Hv = q0.Fc();
+        mC.eS = S.J;
+        for (int i = 0; i < Hv; i++) {
+            z wR = (z) q0.m();
+            C M = (C) q0.m();
+            mC.vb(wR, M);
+        }
+        v<z, C> O = (v<z, C>) q0.m();
+        for (v.P<z, C> ZX : O.vB()) {
+            mC.vb(ZX.yp(), ZX.t());
+        }
+    }
+    static class xc<z, C> extends j<z> {
+        private final a<z, C> mC;
+        public xc(a<z, C> mC) {
+            this.mC = mC;
+        }
+        @h
+        public int Hv() {
+            return mC.Hv();
+        }
+        @h
+        public boolean n(r o) {
+            return mC.ky(o);
+        }
+        @h
+        public boolean L(r o) {
+            return mC.L(o) != null;  
+        }
+        @h
+        public Z<z> XI() {
+            return new vS<z, C>(mC);
+        }
+        @h
+        public void U4() {
+            mC.U4();
+        }
+    }
+    static class H<z, C> extends j<C> {
+        private final a<z, C> mC;
+        public H(a<z, C> mC) {
+            this.mC = mC;
+        }
+        @h
+        public int Hv() {
+            return mC.Hv();
+        }
+        @h
+        public Z<C> XI() {
+            return new q<z, C>(mC);
+        }
+        @h
+        public void U4() {
+            mC.U4();
+        }
+    }
+    static class gr<z, C> extends j<v.P<z, C>> {
+        private final a<z, C> mC;
+        public gr(a<z, C> mC) {
+            this.mC = mC;
+        }
+        @h
+        public Z<v.P<z, C>> XI() {
+            return new vv<z, C>(mC);
+        }
+        @h
+        public boolean n(r o) {
+            if (!(o instanceof v.P))
+                return false;
+            v.P<z, C> e = (v.P<z, C>) o;
+            z wR = e.yp();
+            C M = e.t();
+            C g = mC.xa(wR);
+            if (M == null) {
+                return g == null && mC.ky(wR);
+            }
+            return M.equals(g);
+        }
+        @h
+        public boolean L(r o) {
+            if (!(o instanceof v.P))
+                return false;
+            v.P<z, C> e = (v.P<z, C>) o;
+            return mC.L(e.yp()) != null;  
+        }
+        @h
+        public int Hv() {
+            return mC.Hv();
+        }
+        @h
+        public void U4() {
+            mC.U4();
+        }
+    }
+    static abstract class WO<z, C, sE> implements Z<sE> {
+        boolean cL = true;
+        private final a<z, C> mC;
+        Z w;
+        v.P<z, C> fn, Y;
+        public WO(a<z, C> mC) {
+            this.mC = mC;
+            if (mC.uN()) return;
+            this.w = mC.eS.s().vB().XI();
+            nW();
+        }
+        private void nW() {
+            if (!w.W() && cL) {
+                cL = false;
+                w = mC.eS.ia.k().vB().XI();
+            }
+            if (!w.W()) {
+                Y = null;
+                return;
+            }
+            while (w.W()) {
+                v.P ZX = (v.P) w.Y();
+                C M;
+                if (cL)
+                    M = (C) ZX.t();
+                else {
+                    M = (C) IE(mC, (fO) ZX.t());
+                    if (M == Xu) continue;
+                }
+                Y = new Jt<z, C>(mC, (z) ZX.yp(), M);
+                return;
+            }
+            Y = null;
+        }
+        public boolean W() {
+            return Y != null;
+        }
+        public v.P<z, C> nM() {
+            if (Y == null)
+                throw new jO();
+            fn = Y;
+            nW();
+            return fn;
+        }
+        public void L() {
+            if (fn == null) {
+                throw new CI();
+            }
+            mC.L(fn.yp());
+            fn = null;
+        }
+    }
+    static class vS<z, C> extends WO<z, C, z> {
+        public vS(a<z, C> eW) {
+            super(eW);
+        }
+        public z Y() {
+            return nM().yp();
+        }
+    }
+    static class q<z, C> extends WO<z, C, C> {
+        public q(a<z, C> eW) {
+            super(eW);
+        }
+        public C Y() {
+            return nM().t();
+        }
+    }
+    static class vv<z, C> extends WO<z, C, v.P<z, C>> {
+        public vv(a<z, C> eW) {
+            super(eW);
+        }
+        public v.P<z, C> Y() {
+            return nM();
+        }
+    }
+    static class Jt<z, C> implements v.P<z, C> {
+        final z wR;
+        C M;
+        private final a<z, C> mC;
+        public Jt(a<z, C> mC, z wR, C M) {
+            this.mC = mC;
+            this.wR = wR;
+            this.M = M;
+        }
+        public z yp() {
+            return mC.eS.M_(wR);
+        }
+        public C t() {
+            return M;
+        }
+        public C b(C M) {
+            this.M = M;
+            return mC.vb(wR, M);
+        }
+        private static boolean c(r Vn, r iu) {
+            return Vn == null ? iu == null : Vn.equals(iu);
+        }
+        public boolean equals(r o) {
+            if (!(o instanceof v.P)) {
+                return false;
+            }
+            v.P<?, ?> e = (v.P<?, ?>) o;
+            return c(yp(), e.yp()) && c(M, e.t());
+        }
+        public int hashCode() {
+            return (wR == dq ? 0 : wR.hashCode()) ^
+                    (M == null ? 0 : M.hashCode());
+        }
+        @h
+        public String toString() {
+            return mC.eS.M_(wR) + "=" + M;
+        }
+    }
+}

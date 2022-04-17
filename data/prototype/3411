@@ -1,0 +1,23 @@
+import R.W.M;
+public class k{
+	public void tK(int[] f) {
+		int b = f.t;
+		for (int s = 1; s < b; s ++) {
+			for (int kZ = s; kZ > 0 && f[kZ] < f[kZ - 1]; kZ --) {
+				r(f, kZ, kZ - 1);
+			}
+		}
+	}
+	private void r(int[] f, int xw, int N) {
+		int A = f[xw];
+		f[xw] = f[N];
+		f[N] = A;
+	}
+	public static void main(String[] args) {
+		k e = new k();
+		int[] f = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + M.toString(f));
+		e.tK(f);
+		System.out.println("sorted: " + M.toString(f));
+	}
+}

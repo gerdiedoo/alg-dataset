@@ -1,0 +1,29 @@
+def N(l):
+    if len(l) > 1:
+        o = len(l) // 2
+        r = l[:o]
+        Q = l[o:]
+        N(r)
+        N(Q)
+        B = 0
+        T = 0
+        d = 0
+        while B < len(r) and T < len(Q):
+            if r[B] < Q[T]:
+                l[d] = r[B]
+                B = B + 1
+            else:
+                l[d] = Q[T]
+                T = T + 1
+            d = d + 1
+        while B < len(r):
+            l[d] = r[B]
+            B = B + 1
+            d = d + 1
+        while T < len(Q):
+            l[d] = Q[T]
+            T = T + 1
+            d = d + 1
+l = [11, 2, 5, 4, 7, 6, 8, 1, 23]
+N(l)
+print(l)

@@ -1,0 +1,23 @@
+import Q.M.U;
+public class Z{
+	public void wy(int[] cu) {
+		int Ww = cu.b;
+		for (int o = 1; o < Ww; o ++) {
+			for (int J = o; J > 0 && cu[J] < cu[J - 1]; J --) {
+				x(cu, J, J - 1);
+			}
+		}
+	}
+	private void x(int[] cu, int Y, int f) {
+		int X = cu[Y];
+		cu[Y] = cu[f];
+		cu[f] = X;
+	}
+	public static void main(String[] args) {
+		Z Jg = new Z();
+		int[] cu = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + U.toString(cu));
+		Jg.wy(cu);
+		System.out.println("sorted: " + U.toString(cu));
+	}
+}

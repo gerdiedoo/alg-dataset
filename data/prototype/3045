@@ -1,0 +1,36 @@
+package G;
+import r.Ub.*;
+public class K <d extends Co<d>> implements f<d> {
+	public Q<d> P;
+	public int zx(d g, d s) {
+		return g.p(s);
+	}
+	public K(){
+		this.P = new Q<d>();
+	}
+	@T
+	public String toString(){
+		String n = "";
+		n += "-->";
+		for (int F = 0; F < P.oN(); F++) {
+			n += P.vr(F) + " ";
+		}
+		return n;
+	}
+	public void z() {
+		int Wj = P.oN();
+		boolean mP = true;;
+		d R;
+		while(mP) {
+			mP = false;
+			for (int F = 0; F < Wj - 1; F++) {
+				if (this.zx(P.vr(F), P.vr(F+1)) < 0) {
+					R = P.vr(F);
+					P.L(F, P.vr(F+1));
+					P.L(F + 1, R);
+					mP = true;
+				}
+			}
+		}
+	}
+}

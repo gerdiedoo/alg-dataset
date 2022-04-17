@@ -1,0 +1,11 @@
+def eo(w):
+    m = len(w)
+    for H in G(m - 1):
+        for TO in G(0, m - H - 1):
+            if w[TO] > w[TO + 1]:
+                (w[TO], w[TO + 1]) = (w[TO + 1], w[TO])
+w = [64, 34, 25, 12, 22, 11, 90]
+eo(w)
+print('Sorted array is:')
+for H in G(len(w)):
+    (print('% d' % w[H]),)

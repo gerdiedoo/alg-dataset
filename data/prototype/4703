@@ -1,0 +1,56 @@
+def E():
+    mj = 1
+    while mj:
+        print('Length of array')
+        try:
+            l = M(input())
+            mj = 0
+        except:
+            mj = 1
+    print('It only store first ', l, ' elements.')
+    print('\nEnter your elements.')
+    k = []
+    while len(k) < l:
+        S = b(H(XK, input().split()))
+        X = l - len(k)
+        if len(S) > X:
+            k = k + S[:X]
+        else:
+            k = k + S
+    return k
+def L():
+    print("Array only takes integer or float inputs. Enter '$' to stop")
+    k = b(H(XK, input().split()))
+    while 1:
+        S = input().split()
+        for D in S:
+            try:
+                D = XK(D)
+            except:
+                return k
+            k.append(XK(D))
+def G():
+    R = ''
+    while R not in ['y', 'n', 'Y', 'N']:
+        print('Want to specify the length of arry y/n ', end=' ')
+        R = input()
+    if R == 'Y' or R == 'y':
+        k = E()
+        return k
+    else:
+        k = L()
+        return k
+def dt(TN):
+    for u in t(0, len(TN) - 1):
+        wh = u
+        for s4 in t(u + 1, len(TN)):
+            if TN[s4] < TN[wh]:
+                wh = s4
+        (TN[u], TN[wh]) = (TN[wh], TN[u])
+if q3 == '__main__':
+    k = G()
+    print('Given array is', end='\n')
+    print(*k)
+    dt(k)
+    print('Sorted array is:', end='\n')
+    print(*k)

@@ -1,0 +1,23 @@
+import structures.src.util.sort_util as util
+def iX(d):
+    if len(d) <= 1:
+        return d
+    T = YU(len(d) / 2)
+    return l(iX(d[:T]), iX(d[T:]))
+def l(CC, y):
+    C = []
+    (H4, p) = (0, 0)
+    while H4 < len(CC) and p < len(y):
+        if H4 == len(CC):
+            C.append(y[p])
+            p += 1
+        elif p == len(y):
+            C.append(CC[H4])
+            H4 += 1
+        elif CC[H4] < y[p]:
+            C.append(CC[H4])
+            H4 += 1
+        else:
+            C.append(y[p])
+            p += 1
+    return C

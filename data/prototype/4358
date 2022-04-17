@@ -1,0 +1,33 @@
+from random import shuffle
+def vI(nP):
+    c = [*nP]
+    z(c)
+    Gp(c, 0, len(c) - 1)
+    return c
+def cZ(Y, k, K):
+    h = j = k
+    while j < K:
+        if Y[j] < Y[K]:
+            (Y[h], Y[j]) = (Y[j], Y[h])
+            h += 1
+        j += 1
+    (Y[h], Y[K]) = (Y[K], Y[h])
+    return h
+def Gp(Y, k, K):
+    if k >= K:
+        return
+    p = cZ(Y, k, K)
+    Gp(Y, k, p - 1)
+    Gp(Y, p + 1, K)
+if t == '__main__':
+    import unittest
+    class TestQuicksort(J.TestCase):
+        def setUp(self):
+            r.ordered = [x for x in pc(20)]
+            r.shuffled = [*r.ordered]
+            while r.ordered == r.shuffled:
+                z(r.shuffled)
+        def test_quicksort(self):
+            r.assertEqual(r.ordered, vI(r.shuffled))
+            r.assertNotEqual(r.ordered, r.shuffled)
+    J.main()

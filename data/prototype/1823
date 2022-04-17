@@ -1,0 +1,69 @@
+package P.v;
+import P.j;
+import C.L.I;
+import C.L.X;
+import P.EW.S;
+public class t {
+    private I<S>[] g;
+    public t() {
+        g = new I[10];
+        for (int p = 0; p < g.D5; p++) {
+            g[p] = new I<S>();
+        }
+    }
+    public void M(String o, j c) {
+        int dh = a(o);
+        g[dh].zG(new S(o, c));
+    }
+    public j aw(String o) {
+        int dh = a(o);
+        X<S> CG = g[dh].Z();
+        S c = null;
+        while (CG.R()) {
+            c = CG.e();
+            if (c.o.equals(o)) {
+                return c.c;
+            }
+        }
+        return null;
+    }
+    public j An(String o) {
+        int dh = a(o);
+        X<S> CG = g[dh].Z();
+        S c = null;
+        int w = -1;
+        while (CG.R()) {
+            c = CG.e();
+            w++;
+            if (c.o.equals(o)) {
+                break;
+            }
+        }
+        if (c == null) {
+            return null;
+        }
+        else {
+            g[dh].An(w);
+            return c.c;
+        }
+    }
+    private int a(String o) {
+        return x.H(o.hashCode() % g.D5);
+    }
+    public void Wk() {
+        for (int p = 0; p < g.D5; p++) {
+            if (g[p].Y()) {
+                System.out.println("Position " + p + ": empty");
+            }
+            else {
+                System.out.W("Position " + p + ": ");
+                X<S> CG = g[p].Z();
+                while (CG.R()) {
+                    System.out.W(CG.e().c);
+                    System.out.W("->");
+                }
+                System.out.println("null");
+            }
+        }
+    }
+}

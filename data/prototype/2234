@@ -1,0 +1,14 @@
+def gE(n2, X, e, P):
+    if P >= e:
+        Vd = P + e // 2
+        if n2[Vd] == X:
+            return Vd + 1
+        elif X < n2[Vd]:
+            return gE(n2, X, e, Vd - 1)
+        else:
+            return gE(n2, X, Vd + 1, P)
+    else:
+        return '-1'
+n2 = [1, 2, 4, 5, 6, 7, 8]
+S = 8
+print('Found at ', gE(n2, S, 0, len(n2) - 1))

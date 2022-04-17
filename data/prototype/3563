@@ -1,0 +1,51 @@
+package s.m;
+import s.oy;
+public class B implements K
+{
+	private long c = 5;
+	@GC
+	public void n(oy Y) 
+	{
+		for(int e = 1; e < Y.W(); e <<= 1)
+			for(int x = 0, j = e+e, l = Y.W()-e; x<l; x+=j)
+				Q(Y, x, e);
+	}
+	private int[] o(oy Y, int Ib, int cQ)
+	{
+		int h = cQ - Ib;
+		int Z[] = new int[h];
+		for (int WP = 0; WP < h; WP++) 
+			Z[WP] = Y.D(Ib + WP);		
+		return Z;
+	}
+	private void Q(oy Z, int Ib, int e)
+	{
+		int l = Ib;
+		int r = Ib + e;
+		int cQ = (Z.W() < r+e) ? Z.W() : r + e;				
+		int[] X = o(Z, l, r);
+		int[] H = o(Z, r, cQ);
+		int WP = 0, j = 0;
+		while(WP < X.T && j < H.T)
+			if(X[WP] <= H[j])
+				Z.g(Ib++, X[WP++], C(), true);
+			else
+				Z.g(Ib++, H[j++], C(), true);
+		while (WP < X.T)
+			Z.g(Ib++, X[WP++], C(), true);
+		while (j < X.T)
+			Z.g(Ib++, H[j++], C(), true);		
+	}	
+	@GC
+	public String eI() {
+		return "Iterative Merge Sort";
+	}
+	@GC
+	public long C() {
+		return c;
+	}
+	@GC
+	public void d(long I) {
+		this.c = I;
+	}
+}

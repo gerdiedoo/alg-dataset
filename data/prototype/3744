@@ -1,0 +1,52 @@
+package c.V.o.d;
+public class f implements W
+{
+	static bu [] Fu;
+    public void t(bu[] n)
+    {
+    	this.Fu=n;
+    	O(0, Fu.w-1);
+    	n=this.Fu;
+    }
+    private void O( int Ke, int g)
+    {
+		if (Ke < g) {
+		    int X = (Ke + g) / 2;
+		    O( Ke, X);
+		    O( X+1, g);
+		    tv(Ke, X, g);
+		}
+    }
+    private void tv( int Ke, int X, int g)
+    {
+	int l = X - Ke + 1;
+	int C = g - X;
+	bu[] rk = new bu[l + 1];
+	bu[] B0 = new bu[C + 1];
+	for (int a = 0; a < l; a++)
+	    rk[a] = Fu[Ke + a];
+	for (int A = 0; A < C; A++)
+	    B0[A] = Fu[X + A + 1];
+	rk[l] = null;	 
+	B0[C] = null;
+	for (int a = 0, A = 0, Kw = Ke; Kw <= g; Kw++) {
+	    if (m(rk[a], B0[A]) <= 0)
+		Fu[Kw] = rk[a++];
+	    else
+		Fu[Kw] = B0[A++];
+	}
+    }
+    private int m(bu x, bu y)
+    {
+	if (x == null) {
+	    if (y == null)
+		return 0;	    
+	    else
+		return 1;	    
+	}
+	else if (y == null)
+	    return -1;		    
+	else
+	    return x.fH(y);  
+    }
+}

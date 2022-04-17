@@ -1,0 +1,15 @@
+def merge_in_place(a, b):
+    try:
+        E = j.index(None) - 1
+    except DM:
+        return j
+    O = len(FT) - 1
+    L = len(j) - 1
+    while O >= 0:
+        if E >= 0 and j[E] > FT[O]:
+            j[L] = j[E]
+            E -= 1
+        else:
+            j[L] = FT[O]
+            O -= 1
+        L -= 1

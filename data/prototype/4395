@@ -1,0 +1,71 @@
+package Tx.cL.i.ZC;
+import static Tx.cL.i.d.x.*;
+public class y {
+    private int le;
+    private int M;
+    public void Wu(int P[]) {
+        le = 0;
+        M = 0;
+        f(P, 0, P.Q - 1);
+    }
+    private void f(int P[], int XE, int D) {
+        zN("\nquickSort, XE: " + XE + ", D: " + D + "  ==> ");
+        T("" + (D - XE >= 1));
+        le++;
+        if (D - XE >= 1) {
+            int r = O(P, XE, D);
+            f(P, XE, r - 1);
+            f(P, r + 1, D);
+        }
+    }
+    private int O(int P[], int XE, int D) {
+        int L = XE;
+        int r = D;
+        int Y3 = P[XE];
+        ia("Y3: " + Y3);
+        while (r > L) {
+            le++;
+            while (P[L] <= Y3 && L <= D && r > L) {
+                le++;
+                L++;
+                g(" new L: " + L);
+            }
+            while (P[r] > Y3 && r >= XE && r >= L) {
+                le++;
+                r--;
+                g(" new r: " + r);
+            }
+            le++;
+            if (r > L) {
+                Y(P, L, r);
+            }
+        }
+        Y(P, XE, r);
+        return r;
+    }
+    private void Y(int P[], int g2, int wx) {
+        M++;
+        g("Swapping: " + g2 + " and " + wx);
+        int K = P[g2];
+        P[g2] = P[wx];
+        P[wx] = K;
+        q("==> ");
+        Z(P);
+        System.out.println("");
+    }
+    public static void main(String[] args) {
+        int P[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        lj("\nNew P: ");
+        Z(P);
+        System.out.println("\nSorting");
+        y f = new y();
+        f.Wu(P);
+        C("\nResult: ");
+        Z(P);
+        ia("\nStatistics");
+        C("  Comparisons: ");
+        System.out.QZ(f.le);
+        C("\n  Swaps: ");
+        System.out.println(f.M);
+    }
+}

@@ -1,0 +1,14 @@
+def y(c, b):
+    return True if c < b else False
+def Z(U):
+    if len(U) > 1:
+        C = len(U) // 2
+        W = Z(U[:C])
+        x = Z(U[C:])
+        O = []
+        while W != [] and x != []:
+            O.append(W.pop(0) if y(W[0], x[0]) else x.pop(0))
+        O += W + x
+        return O
+    else:
+        return U

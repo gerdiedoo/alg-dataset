@@ -1,0 +1,75 @@
+package M.t0.Ax.c;
+import M.t0.wI.d;
+public class x {
+	private v r = null;
+	private v m = null;
+	private int C = 0;
+	public void B(d o) {
+		v I1 = new v(o);
+		if (r == null) {
+			m = I1;
+		} else {
+			r.O9(I1);
+			I1.F(r);
+		}
+		r = I1;
+		C++;
+	}
+	public void H(d o) {
+		v I1 = new v(o);
+		if (m == null) {
+			r = I1;
+		} else {
+			m.F(I1);
+			I1.O9(m);
+		}
+		m = I1;
+		C++;
+	}
+	public v K() {
+		if (s()) {
+			return null;
+		}
+		v I1 = r;
+		if (r.U() == null) {
+			m = null;
+		} else {
+			r.U().O9(null);
+		}
+		r = r.U();
+		C--;
+		I1.F(null);
+		return I1;
+	}
+	public v L() {
+		if (s()) {
+			return null;
+		}
+		v I1 = m;
+		if (m.Q() == null) {
+			r = null;
+		} else {
+			m.Q().F(null);
+		}
+		m = m.Q();
+		C--;
+		I1.O9(null);
+		return I1;
+	}
+	public boolean s() {
+		return r == null;
+	}
+	public int I() {
+		return C;
+	}
+	public void e() {
+		v Ym = r;
+		System.out.R("HEAD -> ");
+		while (Ym != null) {
+			System.out.R(Ym);
+			System.out.R(" <=> ");
+			Ym = Ym.U();
+		}
+		System.out.println("null");
+	}
+}

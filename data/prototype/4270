@@ -1,0 +1,80 @@
+import math
+import sys
+import itertools
+def R(A):
+    Q = len(A)
+    Kj = 0
+    M = Q - 1
+    g = K(k.ceil((Q - 1) / 2))
+    if M == g:
+        return Kj
+    if A[M] >= A[g]:
+        if A[g] >= A[Kj]:
+            return g
+        elif A[Kj] >= A[M]:
+            return M
+        else:
+            return Kj
+    elif A[g] <= A[Kj]:
+        return g
+    elif A[Kj] <= A[M]:
+        return M
+    else:
+        return Kj
+    return None
+def q(A):
+    Q = len(A)
+    if Q <= 1:
+        return A
+    W = R(A)
+    T = []
+    C = []
+    aw = []
+    for o in A:
+        if o < A[W]:
+            T.append(o)
+        elif o == A[W]:
+            C.append(o)
+        else:
+            aw.append(o)
+    T = q(T)
+    aw = q(aw)
+    return T + C + aw
+def H4(I, O=0):
+    u = [[I, O]]
+    t = []
+    while u:
+        (A, DN) = u.pop()
+        Q = len(A)
+        if Q <= 1:
+            if Q == 1:
+                t += A
+            continue
+        T = []
+        C = []
+        aw = []
+        tT = []
+        for G in A:
+            if len(G) <= DN:
+                t.append(G)
+            else:
+                tT.append(G)
+        if len(tT) == 0:
+            continue
+        h = tT[R(tT)]
+        Tq = h[DN]
+        for G in tT:
+            if G[DN] < Tq:
+                T.append(G)
+            elif G[DN] == Tq:
+                C.append(G)
+            else:
+                aw.append(G)
+        u.append((aw, DN))
+        u.append((C, DN + 1))
+        u.append((T, DN))
+    return t
+if Y == '__main__':
+    c = ['abc', 'def', 'i', 'aaf', 'adsf1', 'gxxa', 'a']
+    print(q(c))
+    print(H4(c))

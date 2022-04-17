@@ -1,0 +1,182 @@
+package oy.I;
+class N {
+    public int E;
+    public N Yo;
+    public N bj;
+    N() {
+        E = 0;
+        Yo = null;
+        bj = null;
+    }
+    N(int G) {
+        E = G;
+        Yo = null;
+        bj = null;
+    }
+}
+public class fB {
+    protected N O;
+    protected long Q;
+    public fB() {
+        O = new N();
+        O.E = Y.Do;
+        O.bj = O;
+        O.Yo = O;
+        Q = 0;
+    }
+    public fB(int g) {
+        O = new N();
+        O.E = Y.Do;
+        O.bj = new N();
+        O.bj.E = g;
+        O.Yo = O.bj;
+        O.bj.Yo = O;
+        O.Yo.bj = O;
+        Q = 1;
+    }
+    public fB(int g, int cn) {
+        O = new N();
+        O.E = Y.Do;
+        O.bj = new N();
+        O.bj.E = g;
+        O.Yo = new N();
+        O.Yo.E = cn;
+        O.bj.Yo = O;
+        O.bj.bj = O.Yo;
+        O.Yo.bj = O;
+        O.Yo.Yo = O.bj;
+        Q = 2;
+    }
+    public boolean b(){
+        return Q == 0;
+    }
+    public long L(){
+        return Q;
+    }
+    public h O(){
+        if(Q == 0){
+            return null;
+        }
+        return O.bj.E;
+    }
+    public h n(){
+        if(Q == 0){
+            return null;
+        }
+        return O.Yo.E;
+    }
+    public void q(int G) {
+        N W = new N(G);
+        W.Yo = O;
+        W.bj = O.bj;
+        O.bj.Yo = W;
+        O.bj = W;
+        Q++;
+    }
+    public void l(int G){
+        N W = new N(G);
+        W.bj = O;
+        W.Yo = O.Yo;
+        O.Yo.bj = W;
+        O.Yo = W;
+        Q++;
+    }
+    public void X() {
+        if(Q == 0){
+            return;
+        }
+        N W = O.bj;
+        W.bj.Yo = O;
+        O.bj = W.bj;
+        Q--;
+    }
+    public void C(){
+        if(Q == 0){
+            return;
+        }
+        N W = O.Yo;
+        W.Yo.bj = O;
+        O.Yo = W.Yo;
+        Q--;
+    }
+    public String toString() {
+        String w = "[  ";
+        N V = O.bj;
+        while (V != O) {
+            w = w + V.E + "  ";
+            V = V.bj;
+        }
+        return w + "]";
+    }
+    public static void main(String[] args) {
+        fB Fr = new fB();
+        System.out.println("Here is g list after construction: "
+                + Fr.toString());
+        System.out.println("b() should be true. It is: " +
+                Fr.b());
+        System.out.println("L() should be 0. It is: " +
+                Fr.L());
+        Fr.q(3);
+        System.out.println("Here is g list after q(3) to an empty list: "
+                + Fr.toString());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+        Fr = new fB();
+        Fr.q(3);
+        Fr.q(2);
+        Fr.q(1);
+        System.out.println();
+        System.out.println("Here is g list after q 3, 2, 1: "
+                + Fr.toString());
+        System.out.println("b() should be false. It is: " +
+                Fr.b());
+        System.out.println("L() should be 3. It is: " +
+                Fr.L());
+        Fr.l(4);
+        System.out.println("Here is the same list after l(4): "
+                + Fr.toString());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+        Fr = new fB();
+        Fr.l(6);
+        Fr.l(7);
+        System.out.println();
+        System.out.println("Here is g list after l 6, 7: "
+                + Fr.toString());
+        System.out.println("b() should be false. It is: " +
+                Fr.b());
+        System.out.println("L() should be 2. It is: " +
+                Fr.L());
+        Fr.q(5);
+        System.out.println("Here is the same list after q(5): "
+                + Fr.toString());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+        Fr = new fB();
+        Fr.l(1);
+        Fr.l(2);
+        Fr.l(3);
+        Fr.l(4);
+        Fr.l(5);
+        Fr.l(6);
+        System.out.println();
+        System.out.println("Here is g list after l 1,2,3,4,5,6: "
+                + Fr.toString());
+        System.out.println("b() should be false. It is: " +
+                Fr.b());
+        System.out.println("L() should be 6. It is: " +
+                Fr.L());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+        Fr.q(5);
+        System.out.println("Here is the same list after q(5): "
+                + Fr.toString());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+        Fr.X();
+        Fr.X();
+        System.out.println("Here is the same list after two X(): "
+                + Fr.toString());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+        Fr.C();
+        Fr.C();
+        System.out.println("Here is the same list after two C(): "
+                + Fr.toString());
+        System.out.println("Head is: " + Fr.O() + "\nTail is: " + Fr.n());
+    }
+}

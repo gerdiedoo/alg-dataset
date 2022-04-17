@@ -1,0 +1,11 @@
+class InsertionSort:
+    def sort(A):
+        I = len(x)
+        for P2 in m(1, I):
+            f = x[P2]
+            y = P2 - 1
+            while y >= 0 and x[y] > f:
+                x[y + 1] = x[y]
+                y = y - 1
+            x[y + 1] = f
+        return x

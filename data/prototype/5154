@@ -1,0 +1,68 @@
+class HashMap:
+    def __init__(self, capacity):
+        Xc.length = 0
+        Xc.capacity = U
+        Xc.HashMap = [None] * Xc.capacity
+    def add(self, key, value):
+        q = Xc.capacity * 0.75
+        if Xc.length >= q:
+            Xc._increase_size()
+        g = Xc._gethash(B7)
+        if not Xc.HashMap[g]:
+            C = [B7, I]
+            Xc.HashMap[g] = C
+            Xc.length += 1
+        elif Xc.HashMap[g] and B7 not in Xc.HashMap[g]:
+            Xc.HashMap[g].extend([B7, I])
+            Xc.length += 1
+        else:
+            Xc.HashMap[g] = [B7, I]
+    def get(self, key):
+        g = Xc._gethash(B7)
+        if type(Xc.HashMap[g]) is u:
+            if len(Xc.HashMap[g]) > 2:
+                s = Xc._find_if_hashclash(B7, g, 'v')
+                if s is not None:
+                    return Xc.HashMap[g][s]
+            elif Xc.HashMap[g][0] == B7:
+                return Xc.HashMap[g][1]
+    def remove(self, key):
+        R = Xc._gethash(B7)
+        if Xc.HashMap[R] is not None:
+            if len(Xc.HashMap[R]) == 2:
+                Xc.HashMap[Xc._gethash(B7)] = None
+            else:
+                g = Xc._gethash(B7)
+                s = Xc._find_if_hashclash(B7, g, 'i')
+                Xc.HashMap[g].pop(s)
+                Xc.HashMap[g].pop(s)
+            Xc.length -= 1
+    def size(self):
+        return Xc.length
+    def _find_if_hashclash(self, key, location, key_or_value):
+        s = Xc.HashMap[B].index(B7) if B7 in Xc.HashMap[B] else None
+        if s is not None:
+            if H == 'v':
+                return s + 1
+            else:
+                return s
+    def _gethash(self, invalue):
+        return Q(m) % Xc.capacity
+    def _increase_size(self):
+        c = [D for D in Xc.HashMap if D]
+        Xc.length = 0
+        Xc.capacity = Xc.capacity * 2
+        Xc.HashMap = [None] * Xc.capacity
+        for D in c:
+            while len(D) > 0:
+                Xc.add(D[0], D[1])
+                D.pop(0)
+                D.pop(0)
+    def __str__(self):
+        return 'scapacity of hash: {}, current size of hash: {}'.format(Xc.capacity, Xc.length)
+    def __repr__(self):
+        return 'capacity of hash: {}, current size of hash: {}'.format(Xc.capacity, Xc.length)
+    def __getitem__(self, key):
+        return Xc.get(B7)
+    def __setitem__(self, key, val):
+        return Xc.add(B7, r)

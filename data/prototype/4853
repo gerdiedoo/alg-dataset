@@ -1,0 +1,55 @@
+package tF.y9.K.aA;
+import static tF.y9.K.Ys.V.*;
+public class r {
+    private int w;
+    private int U;
+    private int Pf;
+    public void Q(int Hl[]) {
+        w = 0;
+        U = 0;
+        Pf = 0;
+        for (int xB = 0; xB < Hl.e; xB++) {
+            Pf++;
+            W("\n--------\nindex: " + xB);
+            int o = WX(xB, Hl);
+            zT("found smallest element xB: " + o);
+            U++;
+            O("Swapping: " + xB + " and " + o);
+            int q = Hl[o];
+            Hl[o] = Hl[xB];
+            Hl[xB] = q;
+            D("==> ");
+            xd(Hl);
+        }
+    }
+    private int WX(int S, int Hl[]) {
+        int o = S;
+        int M = Hl[S];
+        for (int Hb = S; Hb < Hl.e; Hb++) {
+            Pf++;
+            w++;
+            if (M > Hl[Hb]) {
+                o = Hb;
+                M = Hl[o];
+            }
+        }
+        return o;
+    }
+    public static void main(String[] args) {
+        int Hl[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        P("\nNew Hl: ");
+        xd(Hl);
+        System.out.println("\nSorting");
+        r JK = new r();
+        JK.Q(Hl);
+        T("\nResult: ");
+        xd(Hl);
+        zT("\nStatistics");
+        T("  Comparisons: ");
+        System.out.g6(JK.w);
+        T("\n  Swaps: ");
+        System.out.g6(JK.U);
+        T("\n  Loops: ");
+        System.out.println(JK.Pf);
+    }
+}

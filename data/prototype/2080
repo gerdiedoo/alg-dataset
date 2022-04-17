@@ -1,0 +1,97 @@
+public class r{
+	int B;    
+	r pN;
+	static int n;
+	static r LV;
+	static r R;
+	public r(){
+		pN=null;
+	}
+	public void u(int H){
+		System.out.println("Adding element at the back of the list : " + H);
+		r D = new r();
+		D.B=H;
+		if(n==0){
+			LV=D;
+			R=D;
+		}
+		else{
+			R.pN=D;
+			R=D;
+		}
+		n++;
+	}
+	public void bg(int H){
+		System.out.println("Inserting element at the front of the list : " + H);
+		r D = new r();
+		D.B=H;
+		n++;	
+		if(LV==null){
+			LV=D;
+			R=D;
+		}
+		else{
+			if(LV==R){
+				D.pN=R;
+				LV=D;
+			}
+			else{
+				D.pN=LV;
+				LV=D;
+			}
+		}
+	}
+	public int c() throws d{
+		if(LV==null){
+			throw new d("r is empty");
+		}
+		return LV.B;
+	}
+	public void o() throws d{
+		System.out.println("PopFront Operation.");
+		if(LV==null){
+			throw new d("r is empty");
+		}
+		n--; 
+		if(LV==R){
+			LV=null;
+			R=null;
+		}
+		else{
+			LV=LV.pN;
+		}
+	}
+	public void l(int H){
+		System.out.println("Inserting element at the back of the list : " + H);
+		r D = new r();
+		D.B=H;
+		n++;
+		if(R==null){
+			LV=D;
+			R=D;
+		}
+		else{
+			R.pN=D;
+			R=D;
+		}
+	}
+	public int N() throws d{
+		if(R==null){
+			throw new d("r is empty!");
+		}
+		return R.B;
+	}
+	public void LQ(){
+		System.out.L("r : ");
+		System.out.L("[ ");
+		r z = LV;
+		while(z!=null){
+			System.out.L(z.B + " ");
+			z=z.pN;
+		}
+		System.out.println("]");
+	}
+	public int Ln(){
+		return n;
+	}
+}

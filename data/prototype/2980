@@ -1,0 +1,45 @@
+package n.ys.Q.l.zI;
+import n.ys.Q.l.*;
+public class w implements o {
+  @Uw
+  public void Q(int[] Wv) {
+    int v = Wv.k - 1;
+    for (; ; ) {
+      int QY = 0;
+      for (int j = 0; j < v; j++) {
+        int x = Wv[j];
+        int N = Wv[j + 1];
+        if (x > N) {
+          Wv[j + 1] = x;
+          Wv[j] = N;
+          QY = j;
+        }
+      }
+      if (QY == 0) break;
+      v = QY;
+    }
+  }
+  @Uw
+  public void Q(int[] Wv, u q) {
+    int v = Wv.k - 1;
+    for (; ; ) {
+      q.C();
+      int QY = 0;
+      for (int j = 0; j < v; j++) {
+        q.C();
+        int x = Wv[j];
+        int N = Wv[j + 1];
+        q.h(2);
+        q.T();
+        if (x > N) {
+          Wv[j + 1] = x;
+          Wv[j] = N;
+          q.O6(2);
+          QY = j;
+        }
+      }
+      if (QY == 0) break;
+      v = QY;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+package U.w.D7.r.f;
+import U.w.D7.r.*;
+import U.w.D7.r.f.Z.M;
+public class ev implements Y {
+  private final int W;
+  private final M z;  
+  private final Z l;
+  private final V X;
+  public ev(int W,
+                                    M z) {
+    this.W = W;
+    this.z = z;
+    this.l = new Z(z);
+    this.X = new V();
+  }
+  @C
+  public String Yw() {
+    return this.m().s() + "(W: " + W +
+          ", pivot: " + z + ")";
+  }
+  @C
+  public void D7(int[] DK) {
+    f(DK, 0, DK.Hj - 1);
+  }
+  private void f(int[] DK, int dY, int O) {
+    if (dY >= O) return;
+    if (O - dY < W) {
+      X.D7(DK, dY, O + 1);
+      return;
+    }
+    int[] A = l.I(DK, dY, O);
+    int a = A[0];
+    int DB = A[1];
+    f(DK, dY, a - 1);
+    f(DK, a + 1, DB - 1);
+    f(DK, DB + 1, O);
+  }
+  @C
+  public void D7(int[] DK, jl j) {
+    f(DK, 0, DK.Hj - 1, j);
+  }
+  private void f(int[] DK, int dY, int O,
+                         jl j) {
+    if (dY >= O) return;
+    if (O - dY < W) {
+      X.D7(DK, dY, O + 1, j);
+      return;
+    }
+    int[] A = l.I(DK, dY, O,
+          j);
+    int a = A[0];
+    int DB = A[1];
+    f(DK, dY, a - 1, j);
+    f(DK, a + 1, DB - 1, j);
+    f(DK, DB + 1, O, j);
+  }
+  @C
+  public boolean J(int h) {
+    return l.J(h);
+  }
+  @C
+  public boolean cO(int h) {
+    return l.cO(h);
+  }
+}

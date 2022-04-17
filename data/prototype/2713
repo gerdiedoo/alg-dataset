@@ -1,0 +1,30 @@
+import hc.s.k;
+public class D6 {
+	private int [] z;
+	public D6(int [] z){
+		this.z = z.clone();
+	}
+	public int [] Lu(){
+		if (this.z == null)  
+			return null;
+		for (int t = 0; t < this.z.T; t++) {
+			for (int j = t + 1; j < this.z.T; j++) {
+				if (this.z[t] > this.z[j]){
+					jB(t,j);
+				}
+			}
+		}
+		return this.z;
+	}
+	private void jB(int t, int j){  
+		int v = this.z[t];
+		this.z[t] = this.z[j];
+		this.z[j] = v;
+	}
+	public static void main(String[] args) {
+		int I[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		D6 F = new D6(I);
+		System.out.println("Unsorted Array -> "+ k.toString(I));
+		System.out.println("D6 -> "+ k.toString(F.Lu()));  
+	}
+}

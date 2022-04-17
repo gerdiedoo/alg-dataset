@@ -1,0 +1,21 @@
+import R.n.c;
+public class Vd {
+    public static void main(String[] args) {
+        int[] A = {5, 4, 3, 2, 1};
+        u(A);
+        System.out.println(c.toString(A));
+    }
+    static void u(int[] A){
+        for(int h = 0; h < A.a - 1; h++){
+            for(int J1 = h+1; J1 > 0; J1--){
+                if(A[J1] < A[J1-1]){
+                    int K = A[J1];
+                    A[J1] = A[J1-1];
+                    A[J1-1] = K;
+                }else{
+                    break;
+                }
+            }
+        }
+    }
+}

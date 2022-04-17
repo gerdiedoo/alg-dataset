@@ -1,0 +1,24 @@
+package b.I.F.o;
+public class k<j extends y<j>> {
+    private k() { }
+    public static <j extends y<j>> j[] K(j[] aT) {
+        boolean a = true;
+        int NU = aT.NU;
+        while (a) {
+            a = false;
+            for (int L = 1; L < NU; L++) {
+                if (aT[L].O(aT[L - 1]) < 0) {
+                    yj(L, L - 1, aT);
+                    a = true;
+                }
+            }
+            NU--;
+        }
+        return aT;
+    }
+    private static <j extends y<j>> void yj(int l, int x, j[] aT) {
+        j d = aT[l];
+        aT[l] = aT[x];
+        aT[x] = d;
+    }
+}

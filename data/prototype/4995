@@ -1,0 +1,23 @@
+package r_;
+public class w extends H{
+	public static void main(String[] args){
+		int[] N = {5, 3, 2, 4, 1};
+		mo(new w(), N);
+	}
+	public w(){ super("Selection"); }
+	private void m(int[] N, int u, int F){
+	    for (int n = u; n < F; n++){
+	        int tz = n;
+	        for (int y = n + 1; y < F; y++)
+	            if ( N[y] < N[tz] )
+	                tz = y;
+	        int r = N[n];
+	        N[n] = N[tz];
+	        N[tz] = r;
+	    }
+	}
+	@I
+	public void v(int []N){
+	    m(N, 0, N.P);
+	}
+}

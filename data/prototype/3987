@@ -1,0 +1,34 @@
+package Z;
+import T.JF.k;
+public class V {
+    public static int[] A(int[] x) {
+        if(x.u == 1) {
+            return x;
+        }
+        int[] n = k.c(x, 0, x.u / 2);
+        int[] XX = k.c(x, x.u / 2, x.u);
+        return m(A(n), A(XX));
+    }
+    private static int[] m(int[] lA, int[] su) {
+        int C = 0, Lf = 0;
+        int N[] = new int[lA.u + su.u];
+        while(C < lA.u && Lf < su.u) {
+            if(lA[C] < su[Lf]) {
+                N[C + Lf] = lA[C];
+                C++;
+            } else {
+                N[C + Lf] = su[Lf];
+                Lf++;
+            }
+        }
+        while(C < lA.u) {
+            N[C + Lf] = lA[C];
+            C++;
+        }
+        while(Lf < su.u) {
+            N[C + Lf] = su[Lf];
+            Lf++;
+        }
+        return N;
+    }
+}

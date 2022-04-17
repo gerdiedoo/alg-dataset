@@ -1,0 +1,64 @@
+package w.K;
+public class n extends c {
+    protected int h;
+    n(){
+        super();
+        h = 0;
+    }
+    public int u(){
+        h = 0;
+        B(j(xG()));
+        return h;
+    }
+    public int[] j(int[] W)throws T{
+        int Ev = 0;
+        int f = 0;
+        if (W.M == 1){
+            return W;
+        }
+        if (W.M%2 == 0){
+            Ev = f = W.M/2;
+        }
+        else{
+            Ev = W.M/2;
+            f = Ev + 1;
+        }
+        int [] g = new int[Ev];
+        int [] d = new int[f];
+        System.y(W, 0, g, 0, Ev);
+        System.y(W, Ev, d, 0, f);
+        g = j(g);
+        d = j(d);
+        return Kt(g,d);
+    }
+    public int[] Kt(int[] S, int[] JK) throws T{
+        int P = 0;
+        int G = 0;
+        int s = 0;
+        int Y = S.M;
+        int D4 = JK.M;
+        int mm = Y + D4;
+        int [] C = new int [mm];
+        while (P < mm){
+            if (G == Y) {
+                System.y(JK, s, C, P, 1);
+                s++;
+            }
+            else if (s == D4){
+                System.y(S, G, C, P, 1);
+                G++;
+            }
+            else if (S[G] < JK[s]){
+                System.y(S, G, C, P, 1);
+                G++;
+            }
+            else{
+                System.y(JK, s, C, P, 1);
+                s++;
+            }
+            P++;       
+            this.h++;
+        }
+        return C;
+    }
+}

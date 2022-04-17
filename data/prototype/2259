@@ -1,0 +1,21 @@
+package g.v.l.L;
+public class DO {
+	public static int Za(int[] w, int Vq) {
+		int i = -1;
+		int p = 0;
+		int f;
+		int a = w.H5 - 1;
+		while (a >= p) {
+			f = (a + p)/2;
+			if (Vq < w[f]) { 
+				a = f - 1;
+			} else if (Vq > w[f]) {
+				p = f + 1;
+			} else {
+				i = f;
+				break;
+			}
+		}
+		return i;
+	}
+}

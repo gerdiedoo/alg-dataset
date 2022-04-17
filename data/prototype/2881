@@ -1,0 +1,22 @@
+package F.fF;
+public class l {
+    public int[] Y(int[] X) {
+        int W = X.J;
+        int ZB = 0;
+        int D;
+        boolean Q = true;
+        while (Q) {
+            Q = false;
+            ZB++;
+            for (int pR = 0; pR < W - ZB; pR++) {
+                if (X[pR] > X[pR + 1]) {
+                    D = X[pR];
+                    X[pR] = X[pR + 1];
+                    X[pR + 1] = D;
+                    Q = true;
+                }
+            }
+        }
+        return X;
+    }
+}

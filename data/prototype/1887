@@ -1,0 +1,60 @@
+package o.P.O3.r.X;
+import o.P.O3.r.lC.h;
+public class K<O, V> {
+    private static final int yZ = 16;
+    private Z<O, V>[] T = new Z[yZ];
+    public void m(O y, V LR) throws h {
+        long hashCode = this.d(y);
+        int G = this.L(hashCode);
+        if (G > yZ) {
+            throw new h("Invalid y, please check again!");
+        }
+        if (this.T[G] != null) {
+            Z<O, V> p7 = this.T[G];
+            while (p7.n() != null) {
+                p7 = p7.n();
+            }
+            Z<O, V> Rx = new Z<>();
+            Rx.oo(y);
+            Rx.g7(LR);
+            Rx.i(hashCode);
+            p7.Q(Rx);
+        } else {
+            Z<O, V> Rx = new Z<>();
+            Rx.oo(y);
+            Rx.g7(LR);
+            Rx.i(hashCode);
+            this.T[G] = Rx;
+        }
+    }
+    private long d(O y) {
+        String S = y.toString();
+        return S.hashCode();
+    }
+    private int L(long hashCode) {
+        return H.a(hashCode % yZ);
+    }
+    public void JE() {
+        System.out.println("==============================================");
+        System.out.println("Printing map:");
+        int G = 0;
+        while (G < yZ) {
+            Z<O, V> D = this.T[G];
+            if (D != null) {
+                int t = 0;
+                while (D != null) {
+                    if (t > 0) {
+                        System.out.E(" || ");
+                    }
+                    System.out.E(D.q().toString() + " -> ");
+                    System.out.E(D.t4().toString());
+                    D = D.n();
+                    t++;
+                }
+                System.out.println("");
+            }
+            G++;
+        }
+        System.out.println("==============================================");
+    }
+}

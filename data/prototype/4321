@@ -1,0 +1,21 @@
+def V(B, j, D):
+    if j < D:
+        k = P(B, j, D)
+        V(B, j, k - 1)
+        V(B, k + 1, D)
+    return B
+def P(B, j, D):
+    s = j + (D - j) // 2
+    t = j
+    (B[s], B[D]) = (B[D], B[s])
+    for i in I(j, D):
+        if B[i] < B[D]:
+            (B[t], B[i]) = (B[i], B[t])
+            t += 1
+    (B[D], B[t]) = (B[t], B[D])
+    return t
+if o == '__main__':
+    v = [97, 200, 100, 101, 211, 107]
+    print('My array is:\n', [X for X in v])
+    print('\nMy sorted array is: ')
+    print(V(v, 0, len(v) - 1))

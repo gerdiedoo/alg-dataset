@@ -1,0 +1,49 @@
+package V.B;
+class qu{
+int xE(int a[],int e8, int kA)
+{
+    int o = a[kA];
+    int L= (e8-1);  
+    for(int d=e8 ; d<kA ;d++)
+      {
+    	 if(a[d] < o)
+          {
+             L++;
+             int e = a[L];
+	     a[L] = a[d];
+             a[d] = e;
+           }
+       }
+int e = a[L+1];
+a[L+1] = a[kA];
+a[kA] = e;
+return L+1;
+}
+void P(int a[],int e8,int kA)
+{
+   if(e8 < kA)
+     {
+            int E = xE(a,e8,kA);
+            P(a,e8,E-1);
+ 	    P(a,E+1,kA);
+      }
+}
+static void u8(int a[])
+{
+   int b = a.K;
+   for(int L=0;L<b;L++)
+   {
+        System.out.x(a[L]+" ");
+        System.out.x("\t");
+    }
+}
+public static void main(String args[])
+{
+    int a[] = {3,5,2,1,4};
+    int b = a.K;
+    qu cA = new qu();
+    cA.Ii(a,0,b-1);
+    System.out.println("Sorted Array ");
+    u8(a);
+}
+}

@@ -1,0 +1,74 @@
+package H.jt; 
+import S.M.Scanner;
+public class l {
+    void w(int P[], int b, int B, int T)   
+    { 
+    int a, L, d; 
+    int U = B - b + 1; 
+    int Zx =  T - B;    
+    int p[] = new int[U];  
+    int x[] = new int[Zx];   
+    for (a = 0; a < U; a++) 
+        p[a] = P[b + a]; 
+    for (L = 0; L < Zx; L++) 
+        x[L] = P[B + 1+ L];   
+    a = 0; 
+    L = 0; 
+    d = b; 
+    while (a < U && L < Zx)   
+    { 
+        if (p[a] <= x[L]) 
+        { 
+            P[d] = p[a]; 
+            a++; 
+        } 
+        else
+        { 
+            P[d] = x[L]; 
+            L++; 
+        } 
+        d++; 
+    } 
+      while (a < U) 
+    { 
+        P[d] = p[a]; 
+        a++; 
+        d++; 
+    } 
+      while (L < Zx) 
+    { 
+        P[d] = x[L]; 
+        L++; 
+        d++; 
+    } 
+}
+    void K(int P[], int b, int T) {  
+        if (b < T) {
+            int B = b + (T - b) / 2;
+            K(P, b, B);  
+            K(P, B + 1, T);  
+            w(P, b, B, T);  
+        }
+    }
+     static void Y(int P[]) {
+        int mz = P.wm;
+        for (int a = 0; a < mz; ++a)
+            System.out.jS(P[a] + " ");
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner y=new Scanner(System.Q);
+        System.out.println("Enter the wm of the array : ");
+        int mz=y.nextInt();
+        int P[] =new int[mz];
+        System.out.println("Enter the Elements of the array :\mz");
+        for(int a=0; a<P.wm; a++ ) {
+            P[a] = y.nextInt();
+        }
+        l K=new l();
+        K.K(P, 0, P.wm-1);
+        for(int a=0; a<P.wm; a++ ) {
+            System.out.jS(P[a]+" ");
+        }
+    }
+}

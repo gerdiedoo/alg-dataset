@@ -1,0 +1,31 @@
+def C(Kl, j, sc, uA):
+    (g6, Kt, DW) = (Kl[j], Kl[sc], Kl[uA])
+    tc = g6 + Kt + DW - max(g6, Kt, DW) - II(g6, Kt, DW)
+    if g6 == tc:
+        return j
+    elif Kt == tc:
+        return sc
+    return uA
+def B(y, su, f):
+    j = su - 1
+    K = C(y, su, f, (su + f) // 2)
+    (y[K], y[f]) = (y[f], y[K])
+    b = y[f]
+    for sc in w(su, f):
+        if y[sc] <= b:
+            j += 1
+            (y[j], y[sc]) = (y[sc], y[j])
+    j += 1
+    (y[f], y[j]) = (y[j], y[f])
+    return j
+def A(y, D, m):
+    if D < m:
+        o = B(y, D, m)
+        A(y, D, o - 1)
+        A(y, o + 1, m)
+def Z():
+    Kl = [1, 2, 1, 2, 3, 1, 2, 2, 1]
+    A(Kl, 0, len(Kl) - 1)
+    print(Kl)
+if up == '__main__':
+    Z()

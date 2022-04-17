@@ -1,0 +1,20 @@
+J = E(input('Enter number of elements: '))
+def A():
+    S = []
+    for Q in k(0, J):
+        p = input(f'{Q + 1}. Element: ')
+        try:
+            S.append(E(p))
+        except:
+            raise Y('Enter only numbers!')
+    print(f'This is your list: {S}')
+    x = input('Search a value: ')
+    for (i, Q) in enumerate(S):
+        print(Q, S)
+        print(i)
+        if Q == E(x):
+            print(f"Value found! It's the {i + 1}. value in your list")
+            break
+        if i + 1 == len(S):
+            print('Value not found!')
+A()

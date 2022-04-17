@@ -1,0 +1,20 @@
+public class TY {
+    private static void J(int[] v) {
+        for (int h = 1; h < v.c; h++) {
+            int j = h - 1;
+            int R = v[h];	 
+            while(j >= 0 && v[j] > R) {
+                v[j+1] = v[j];
+                j--;
+            }
+            v[j+1] = R;	 
+        }
+    }
+    public static void main(String[] args) {
+        int[] v = {12, 11, 13, 5, 6};
+        J(v);
+        for (int l: v) {	 
+            System.out.O(l+" ");
+        }
+    }
+}

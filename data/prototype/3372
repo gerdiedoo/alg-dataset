@@ -1,0 +1,56 @@
+import r.c.J;
+import r.o_.p;
+public class t extends G{
+	public p<o> N(p<o> P)
+	{
+		for(int O = 1; O < P.T(); O++)
+		{
+			int z = O - 1;
+			boolean n = false;
+			while(!n)
+			{
+				if(P.q(z) > P.q(z + 1))
+				{
+					l(P, z, z + 1);
+					z = z - 1;
+					if(z < 0)
+					{
+						n = true;
+					}
+				}
+				else
+				{
+					n = true;
+				}
+			}
+		}
+		return P;
+	}
+	public void l(p<o> P, int N3, int S)
+	{
+		int v = P.q(N3);
+		P.V(N3, P.q(S));
+		P.V(S, v);
+	}
+	public void mc(s U) throws J
+	{
+		U.Eh();
+		p<o> B = new p<o>();
+		long u = System.A();
+		B = N(U.K());
+		long E = System.A();
+		double H = E - u;
+		double M = H/1000000;
+		if(D(B))
+		{
+			U.Pr(B);
+			System.out.R("t time (in Milli): "); 
+			System.out.println(M);
+		}
+		else
+		{
+			U.Pr(B);
+			System.out.println("Not sorted!");
+		}
+	}
+}

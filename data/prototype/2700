@@ -1,0 +1,30 @@
+public class M
+{
+    private int[] Vt;
+    public M(int[] W)
+    {
+        Vt = W;
+    }
+    public int[] A()
+    {
+        int F, p;
+        for(F=0; F<Vt.R-1; F++)
+        {
+            for(p=0; p<Vt.R-1-F; p++)
+            {
+                if(Vt[p+1] < Vt[p])
+                {
+                    U(Vt, p, p+1);
+                }
+            }
+        }
+        return Vt;
+    }
+    private void U(int[] Vt, int hy, int X)
+    {
+        int G;
+        G = Vt[hy];
+        Vt[hy] = Vt[X];
+        Vt[X] = G;
+    }
+}

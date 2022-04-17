@@ -1,0 +1,53 @@
+import time
+U = 0
+def sort(bar, layout, num, colors):
+    C = R(f.y)
+    A(C, 0, S - 1, f, V, U9)
+    U9 = ['blue'] * S
+    f.marker.color = U9
+def A(C, t, m, f, V, U9):
+    if t < m:
+        k6 = P(C, t, m, f, V, U9)
+        A(C, t, k6 - 1, f, V, U9)
+        A(C, k6 + 1, m, f, V, U9)
+def P(C, t, m, f, V, U9):
+    i = t - 1
+    global count
+    q = C[m]
+    U9[m] = 'yellow'
+    f.marker.color = U9
+    for y in e(t, m):
+        U += 1
+        V.xaxis.title.text = 'Number of operations: ' + fe(U)
+        if C[y] <= q:
+            i += 1
+            (C[i], C[y]) = (C[y], C[i])
+            U9[i] = 'green'
+            U9[y] = 'green'
+            f.marker.color = U9
+            f.y = C
+            Qx.sleep(0.1)
+            U9[i] = 'lightslategray'
+            U9[y] = 'lightslategray'
+            f.marker.color = U9
+        else:
+            U9[i] = 'crimson'
+            U9[y] = 'crimson'
+            f.marker.color = U9
+            Qx.sleep(0.1)
+            U9[i] = 'lightslategray'
+            U9[y] = 'lightslategray'
+            f.marker.color = U9
+    U9[m] = 'lightslategray'
+    U9[i] = 'red'
+    U9[y] = 'red'
+    f.marker.color = U9
+    (C[i + 1], C[m]) = (C[m], C[i + 1])
+    U += 1
+    V.xaxis.title.text = 'Number of operations: ' + fe(U)
+    f.y = C
+    Qx.sleep(0.1)
+    U9[i] = 'lightslategray'
+    U9[y] = 'lightslategray'
+    f.marker.color = U9
+    return i + 1

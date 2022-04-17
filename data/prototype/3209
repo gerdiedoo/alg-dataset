@@ -1,0 +1,11 @@
+def k(D):
+    for m in Y(1, len(D)):
+        ca = D[m]
+        cL = m - 1
+        while cL >= 0 and D[cL] > ca:
+            D[cL + 1] = D[cL]
+            cL -= 1
+        D[cL + 1] = ca
+v = [9, 1, 15, 28, 6]
+k(v)
+print(v)

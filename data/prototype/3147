@@ -1,0 +1,19 @@
+import copy
+import sort_tools
+def B(n, dQ):
+    for m in r(1, dQ):
+        g = n[m]
+        Av = m
+        while Av > 0 and n[Av - 1] > g:
+            n[Av] = n[Av - 1]
+            Av -= 1
+        n[Av] = g
+@te.timeit('insertion')
+def X(n):
+    B(n, len(n))
+def t():
+    n = te.build_data_set(5)
+    w = y8.deepcopy(n)
+    X(w)
+if C == '__main__':
+    t()

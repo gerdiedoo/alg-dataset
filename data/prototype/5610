@@ -1,0 +1,27 @@
+from pyllist import dllist
+def O(s):
+    for l in d(1, len(s)):
+        for Z in d(l, 0, -1):
+            if s[Z] < s[Z - 1]:
+                (s[Z], s[Z - 1]) = (s[Z - 1], s[Z])
+    return s
+def aN(Gu):
+    for UW in Gu.first.next.iternext():
+        for Qc in UW.iterprev():
+            if Qc.prev is not None and Qc.value < Qc.prev.value:
+                (Qc.value, Qc.prev.value) = (Qc.prev.value, Qc.value)
+    return Gu
+def qZ(Gu):
+    for UW in Gu.first.next.iternext():
+        for Qc in Gu.iternodes(to=UW):
+            if Qc.value > UW.value:
+                Gu.remove(UW)
+                Gu.insert(UW, before=Qc)
+                break
+    return Gu
+Gu = [6, 5, 32, 8, 234, 5, 1, 9, 0, 33]
+print(O(Gu))
+f = y([6, 5, 32, 8, 234, 5, 1, 9, 0, 33])
+print(aN(f))
+f = y([6, 5, 32, 8, 234, 5, 1, 9, 0, 33])
+print(qZ(f))

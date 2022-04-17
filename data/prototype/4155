@@ -1,0 +1,39 @@
+package x.S;
+import d.f.oQ;
+public class o extends Y {
+    public oQ T;
+    o() {
+        super();
+        T = new oQ();
+    }
+    public int PI (){
+        return F(0, N.j);
+    }
+    public int F(int G, int l){
+        if (l <= 1){
+            return 0;
+        }
+        int U = ((w.A(T.nextInt()) % l) + G);
+        int m = 0;
+        int R = 0;
+        int u = G+1;
+        m = N[U];
+        N[U] = N[G];
+        N[G] = m;
+        for (int M = G; M < G+l; M++ ){
+            if (N[M] < N[G]){
+                m = N[M];
+                N[M] = N[u];
+                N[u] = m;
+                u++;
+            }
+            R++;
+        }
+        m = N[G];
+        N[G] = N[u-1];
+        N[u-1] = m;
+        R += (F(G, u-G-1));    
+        R += (F(u, l+G-u) + 1);  
+        return R;                                               
+    }
+}

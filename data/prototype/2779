@@ -1,0 +1,28 @@
+package J.B;
+import J.p;
+public class T implements j {
+    private long n = 2;
+    @k4
+    public void y(p s) {
+        int i = s.t();
+        for (int g = 0; g < i - 1; g++) {
+            for (int Q = 0; Q < i - g - 1; Q++) {
+                if (s.W(Q) > s.W(Q + 1)) {
+                    s.M(Q, Q + 1, C(), true);
+                }
+            }
+        }
+    }
+    @k4
+    public String oL() {
+        return "Bubble Sort";
+    }
+    @k4
+    public long C() {
+        return n;
+    }
+    @k4
+    public void d(long G) {
+        this.n = G;
+    }
+}

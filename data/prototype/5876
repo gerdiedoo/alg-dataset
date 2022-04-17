@@ -1,0 +1,10 @@
+Y = [-1, 10, 15, 3, 5, 19, 5, 19]
+T = len(Y)
+for tQ in RX(T - 1):
+    C = Y[tQ]
+    f = tQ
+    for wP in RX(tQ, T):
+        if Y[wP] < Y[f]:
+            f = wP
+    (Y[tQ], Y[f]) = (Y[f], Y[tQ])
+print(Y)

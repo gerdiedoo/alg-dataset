@@ -1,0 +1,55 @@
+package De;
+import static De.P.Eq;
+class iE implements TX {
+    @r
+    @F("unchecked")
+    public <Z extends C<Z>> Z[] h(Z[] u) {
+        Z[] Jt = (Z[]) new C[u.z];
+        w(u, Jt, 0, u.z - 1);
+        return u;
+    }
+    private  static <Z extends C<Z>> void w(Z[] f, Z[] zf, int E, int N) {
+        if (E < N) {
+            int T = E + (N - E) / 2;
+            w(f, zf, E, T);
+            w(f,  zf,T + 1, N);
+            e(f, zf, E, T, N);
+        }
+    }
+    private static <Z extends C<Z>> void e(Z[] f, Z[] zf, int E, int T, int N) {
+        System.o(f, E, zf, E, N - E + 1);
+        int j= E;
+        int j9 = T + 1;
+        int c = E;
+        while (j <= T && j9 <= N) {
+            if (zf[j].a(zf[j9]) <= 0) {
+                f[c] = zf[j];
+                j++;
+            }
+            else {
+                f[c] = zf[j9];
+                j9++;
+            }
+            c++;
+        }
+        while (j <= T) {
+            f[c] = zf[j];
+            j++;
+            c++;
+        }
+	while (j9 <= N) {
+	    f[c] = zf[j9];
+	    j9++;
+	    c++;
+	}
+    }
+    public static void main(String[] args) {
+        LB[] f = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        iE m = new iE();
+        m.h(f);
+        Eq(f);
+        String[] U6 = {"c", "a", "e", "b","d"};
+        m.h(U6);
+        Eq(U6);
+    }
+}

@@ -1,0 +1,15 @@
+def merge_in_place(a, b):
+    try:
+        s3 = y.index(None) - 1
+    except z:
+        return y
+    d = len(G) - 1
+    X = len(y) - 1
+    while d >= 0:
+        if s3 >= 0 and y[s3] > G[d]:
+            y[X] = y[s3]
+            s3 -= 1
+        else:
+            y[X] = G[d]
+            d -= 1
+        X -= 1

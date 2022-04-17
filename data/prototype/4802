@@ -1,0 +1,16 @@
+package o.c.p1.z;
+import o.c.p1.d.A;
+public class F {
+	public static rD[] w1(rD[] a) {
+		for (int W = 0; W < a.WR - 1; W++) {
+			int K = a[W];
+			for (int h = W + 1; h < a.WR; h++) {
+				if (a[h] < K) {
+					K = a[h];
+					A.r(a, W, h);
+				}
+			}
+		}
+		return a;
+	}
+}

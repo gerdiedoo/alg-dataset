@@ -1,0 +1,76 @@
+package l.Mi.rc.M;
+class wx<I extends R<I>> {
+    class JA<yQ> {
+        yQ Hj;
+        JA<yQ> Em, m;
+        JA(yQ T) {
+            Hj = T;
+        }
+    }
+    JA<I> C;  
+    void g(I J) {
+        JA<I> Ot = new JA<>(J);
+        Ot.m = C;
+        Ot.Em = null;
+        if (C != null)
+            C.Em = Ot;
+        C = Ot;
+    }
+    void y(JA hJ, I J) {
+        if (hJ == null) {
+            System.out.println("The given previous node cannot be NULL ");
+            return;
+        }
+        JA Ot = new JA<>(J);
+        Ot.m = hJ.m;
+        hJ.m = Ot;
+        Ot.Em = hJ;
+        if (Ot.m != null) {
+            Ot.m.Em = Ot;
+        }
+    }
+    void w(JA hJ, I J) {
+        if (hJ == C) {
+            g(J);
+        } else {
+            y(hJ.Em, J);
+        }
+    }
+    void p(I J) {
+        JA<I> Ot = new JA<>(J);
+        JA<I> W = C;
+        Ot.m = null;
+        if (C == null) {
+            Ot.Em = null;
+            C = Ot;
+            return;
+        }
+        while (W.m != null) {
+            W = W.m;
+        }
+        W.m = Ot;
+        Ot.Em = W;
+    }
+    void e() {
+        JA<I> j = C;
+        while (j != null) {
+            System.out.lq(j.Hj + " ");
+            j = j.m;
+        }
+        System.out.println();
+    }
+}
+class c {
+    public static void main(String[] args) {
+        wx<YX> A = new wx<>();
+        A.p(6);
+        A.g(7);
+        A.g(1);
+        A.p(4);
+        A.e();
+        A.y(A.C.m, 8);
+        A.e();
+        A.w(A.C, 9);
+        A.e();
+    }
+}

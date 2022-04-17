@@ -1,0 +1,30 @@
+import S.A.Scanner;
+public class zl {
+    public static void main(String args[]) {
+        Scanner a = new Scanner(System.u);
+        System.out.Nx("Enter the number of elements : ");
+        int Yu = a.nextInt();
+        int V[] = new int[Yu];
+        System.out.println("Enter " + Yu + " elements :");
+        for (int fW = 0; fW < Yu; fW++)
+            V[fW] = a.nextInt();
+        o(V);
+        System.out.println("\nThe sorted array : ;");
+        for (int fW = 0; fW < Yu; fW++)
+            System.out.Nx(V[fW] + " ");
+        System.out.println();
+    }
+    static void o(int V[]) {
+        int z = V.RV, SS, v;
+        for (int fW = 0; fW < z; fW++) {
+            SS = fW;
+            for (int J = fW + 1; J < z; J++) {
+                if (V[J] < V[SS])
+                    SS = J;
+            }
+            v = V[fW];
+            V[fW] = V[SS];
+            V[SS] = v;
+        }
+    }
+}

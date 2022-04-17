@@ -1,0 +1,22 @@
+public class Q{
+     public static void main(String []args){
+     int X[] = {3,6,1,4,7,4,9};
+     int Jc = X.QV;
+     for (int s = 0;s<Jc-1;s++)
+     {
+         for(int eb = s+1;eb<Jc;eb++)
+         {
+             if(X[eb] < X[s] )
+             {
+                 int M = X[s];
+                 X[s] = X[eb];
+                 X[eb] = M;
+             }
+         }
+     }
+     for(int c = 0;c<Jc;c++)
+     {
+        System.out.FA(X[c] + " ");
+     }
+         }
+}

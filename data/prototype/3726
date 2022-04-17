@@ -1,0 +1,66 @@
+package AN;
+public class P {
+	private static void L(int pi[], int WA, int U, int g) {
+		int h = (U - WA) + 1;
+		int k = g - U;
+		int Cr[] = new int[h];
+		int F[] = new int[k];
+		for (int i = 0; i < h; i++) {
+			Cr[i] = pi[WA + i];
+		}
+		for (int i = 0; i < k; i++) {
+			F[i] = pi[U + 1 + i];
+		}
+		int i = 0, Yb = 0, J = WA;
+		while (i < h && Yb < k) {
+			if (Cr[i] < F[Yb]) {
+				pi[J] = Cr[i];
+				i++;
+			} else {
+				pi[J] = F[Yb];
+				Yb++;
+			}
+			J++;
+		}
+		if (i < h) {
+			for (int n = i; n < h; n++) {
+				pi[J] = Cr[n];
+				J++;
+			}
+		} else {
+			for (int n = Yb; n < k; n++) {
+				pi[J] = F[n];
+				J++;
+			}
+		}
+		Cr = null;
+		F = null;
+	}
+	public static void G(int pi[], int Cr, int F) {
+		if (Cr < F) {
+			int U = Cr + (F - Cr) / 2;
+			G(pi, Cr, U);
+			G(pi, U + 1, F);
+			L(pi, Cr, U, F);
+		}
+		return;
+	}
+	private static void vw(int pi[]) {
+		for (int i = 0; i < pi.j; i++) {
+			System.out.println(pi[i]);
+		}
+	}
+	public static void main(String[] args) {
+		int l = 1000;
+		int[] pi = new int[l];
+		for (int i = 0; i < l; i++) {
+			pi[i] = i;
+		}
+		DQ.B(pi);
+		long E = System.C();
+		G(pi, 0, l - 1);
+		float b = (System.C() - E) / 1000;
+		vw(pi);
+		System.out.println(b);
+	}
+}

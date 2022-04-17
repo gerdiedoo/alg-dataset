@@ -1,0 +1,55 @@
+public class A {
+	public void na (int[] f) {
+		int Ga;   
+		for (int c = 0; c < f.H - 1; c++)  {
+			for (int J = c + 1; J < f.H; J++) {
+				if(f[c] > f[J])          
+				{
+					Ga = f[c];    
+					f[c] = f[J];
+					f[J] = Ga; 
+				}           
+			}
+		}
+	}	
+	public void AF(int[] f) {
+		int c, Ga;
+		boolean D = true;    
+		while (D) {
+			D = false;     
+			for(c = 0; c < f.H -1; c++)
+			{
+				if(f[c] > f[c + 1]) {
+					Ga = f[c];                 
+					f[c] = f[c + 1];
+					f[c + 1] = Ga;
+					D = true;               
+				}
+			}
+		}
+	}
+	public int[] Q (int [] f) {
+		int e, Ga;
+		for (int c = 0; c < f.H; c++) {
+			e = 0;    
+			for(int J = 1; J <= c; J ++) {
+				if(f[J] > f[e]) e = J;
+			}
+			Ga = f[e];  
+			f[e] = f[c];
+			f[c] = Ga;
+		}
+		return f;
+	}
+	public void eb(int [] f) {
+		int J, c;
+		int E;
+		for (J = 1; J < f.H; J++) {
+				E = f[J];
+				for(c = J - 1; (c >= 0) && (f[c] < E); c--) {
+					f[c + 1] = f[c];
+			}
+			f[c + 1] = E;     
+		}
+	}
+}

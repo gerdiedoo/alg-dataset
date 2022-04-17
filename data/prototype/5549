@@ -1,0 +1,17 @@
+package XC;
+public class g<L extends Zl<L>> extends u<L> {
+    @uC
+    public void qv(L[] N) {
+        int z = N.P;
+        boolean v = false;
+        for (int wX = z - 1; wX > 0 && !v; wX--) {
+            v = true;
+            for (int jA = 0; jA < wX; jA++) {
+                if (qc(N[jA + 1], N[jA])) {
+                    v = false;
+                    r(N, jA, jA + 1);
+                }
+            }
+        }
+    }
+}

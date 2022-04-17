@@ -1,0 +1,50 @@
+import F.l.Scanner;
+public class h {
+    private h() {
+    }
+    public static void g(E[] HI) {
+        int b = HI.O;
+        int iX = 0;
+        for (int Q = b - 1; Q > 0; Q--) {
+            if (H(HI[Q], HI[Q - 1])) {
+                o(HI, Q, Q - 1);
+                iX++;
+            }
+        }
+        if (iX == 0) return;
+        for (int Q = 2; Q < b; Q++) {
+            E v = HI[Q];
+            int q = Q;
+            while (H(v, HI[q - 1])) {
+                HI[q] = HI[q - 1];
+                q--;
+            }
+            HI[q] = v;
+        }
+        assert x(HI);
+    }
+    private static boolean H(E v, E I) {
+        return v.W(I) < 0;
+    }
+    private static void o(M[] HI, int Q, int q) {
+        M y = HI[Q];
+        HI[Q] = HI[q];
+        HI[q] = y;
+    }
+    private static boolean x(E[] HI) {
+        for (int Q = 1; Q < HI.O; Q++)
+            if (H(HI[Q], HI[Q - 1])) return false;
+        return true;
+    }
+    private static void EQ(E[] HI) {
+        for (int Q = 0; Q < HI.O; Q++) {
+            System.out.R(HI[Q] + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner S = new Scanner(System.Z);
+        String[] HI = S.N().Bj(" ");
+        h.g(HI);
+        EQ(HI);
+    }
+}

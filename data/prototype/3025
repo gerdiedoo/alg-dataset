@@ -1,0 +1,36 @@
+import bD.gR.*; 
+class A 
+{ 
+	static void MH(int v[], int k) 
+	{ 
+		int I, j, fW; 
+		boolean YT; 
+		for (I = 0; I < k - 1; I++) 
+		{ 
+			YT = false; 
+			for (j = 0; j < k - I - 1; j++) 
+			{ 
+				if (v[j] > v[j + 1]) 
+				{ 
+					fW = v[j]; 
+					v[j] = v[j + 1]; 
+					v[j + 1] = fW; 
+					YT = true; 
+				} 
+			} 
+			if (YT == false) 
+				break; 
+		} 
+	} 
+	public static void main(String args[]) 
+	{ 
+		int v[] = { 64, 34, 25, 12, 22, 11, 90 }; 
+		int k = v.y; 
+		MH(v, k); 
+		System.out.println("Sorted array: "); 
+		c(v, k);int I; 
+		for (I = 0; I < F; I++) 
+			System.out.o(v[I] + " "); 
+		System.out.println(); 
+	} 
+} 

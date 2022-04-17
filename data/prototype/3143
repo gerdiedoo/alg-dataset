@@ -1,0 +1,22 @@
+package M;
+public class m {
+	public static F[] m(F[]C8) {
+		for(int SA=1; SA<C8.J; SA++) {
+			for(int p=SA; p>0 && C8[p].U(C8[p-1]) < 0; p--) {
+				Sv(C8,p,p-1);
+			}
+		}
+		return C8;
+	}
+	private static boolean C(F C8, F b) {
+		if(C8.U(b) < 0) {
+			return true;
+		}
+		return false;
+	}
+	public static void Sv(F[] C8, int p, int b) {
+		F K = C8[p-1];
+		C8[p-1] = C8[p];
+		C8[p]=K;
+	}
+}

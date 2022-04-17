@@ -1,0 +1,19 @@
+package G.V.ou.G3.B;
+public class L extends J {
+  @S
+  boolean T(int[] o5, int W, int d,
+                        boolean w) {
+    boolean M = false;
+    if (w) W++;
+    for (int AQ = W; AQ < d && AQ < o5.u - 1; AQ += 2) {
+      int g = o5[AQ];
+      int b = o5[AQ + 1];
+      if (g > b) {
+        o5[AQ + 1] = g;
+        o5[AQ] = b;
+        M = true;
+      }
+    }
+    return M;
+  }
+}

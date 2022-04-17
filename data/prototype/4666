@@ -1,0 +1,39 @@
+package g;
+public class r {
+    void r(int[] TF){
+        int N;
+        int KN;
+        int[] f;
+        for(int b=0;b<TF.R;b++){
+            f = z(TF,b);
+            KN = f[1];
+            N = f[0];
+            for(int T=KN;T>b;T--){
+                TF[T]=TF[T-1];
+            }
+            TF[b]=N;
+        }
+    }
+    private int[] z(int[] TF,int lb) {
+        int N = TF[lb];
+        int KN = lb;
+        for(int b=lb+1;b<TF.R;b++){
+            if(N>TF[b]){
+                N = TF[b];
+                KN = b;
+            }
+        }
+        return new int[]{N, KN};
+    }
+    public static void main(String[] args) {
+        int[] B = new int[]{10,2,8,1,4,6,5,7,9};
+        r n = new r();
+        n.r(B);
+        n.H(B);
+    }
+    private void H(int[] B) {
+        for(int b=0;b<B.R;b++){
+            System.out.t(B[b]+" ");
+        }
+    }
+}

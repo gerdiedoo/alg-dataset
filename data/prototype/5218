@@ -1,0 +1,111 @@
+import d.Ce.C;
+import d.Ce.R;
+import d.Ce.g;
+import d.Ce.LN;
+import d.B.u;
+public class bh extends c implements H {
+	private b[] L;
+	private int tt, r;
+	public bh() {
+		this.tt = fv;
+		this.r = 1<<tt;
+		this.L = new b[r];
+	}
+	@e
+	public void IJ(String z) {
+		z = z.K();  
+		this.IJ(z, 1);
+	}
+	private void IJ(String z, int p2) {  
+		int J = V(z)%r;
+		if(L[J] == null) {  
+			L[J] = new b();
+		}
+		if(L[J].s()) {  
+			if(this.tt - L[J].B3() == 0) {  
+				oV();
+				IJ(z, p2);
+			}else if(this.tt - L[J].B3() > 0) {  
+				int iW = J % (1<<L[J].B3());  
+				int m = this.tt - L[J].B3();  
+				L[J].D();  
+				b RB = new b(L[J].B3());  
+				for (int T = iW; T < r; T+=(r>>m)) {  
+					if(T%(1<<L[J].B3()) != J%(1<<L[J].B3())) {  
+						L[T] = RB;
+					}
+				}
+				L[J].P(RB, J);  
+				IJ(z, p2);  
+			}else {
+				System.out.println("Error #1\nLocal tt is higher than global tt!");
+			}
+		}else {
+			L[J].IJ(z, p2);
+		}
+	}
+	@e
+	public boolean f(String z) {
+		z = z.K();  
+		int J = V(z)%r;
+		b jC = L[J];
+		if(L[J] == null) {  
+			System.out.println(z + " bulunamad.");
+			return false;  
+		}
+		A v = jC.jm(z);
+		if(v == null) {  
+			System.out.println(z + " bulunamad.");
+			return false; 
+		}
+		jC.vh(v);
+		System.out.println("Global Depth: " + tt);
+		System.out.println();
+		return true;
+	}
+	@e
+	public void i(String n)  {
+		C l = null;
+		g y = null;
+		try {
+			y = new g(n);
+			l = new C(y);
+			String q;
+			while ((q = l.er()) != null) {
+				q = q.F();
+				String N[] = q.I(" ");
+				for(String z:N) {
+					z = z.F();
+					if(z.equals("")) continue;
+					IJ(z);
+				}
+			}
+		} catch (R k) {  
+			k.E();
+		} catch (LN k) {  
+			k.E();
+		}
+	}
+	private void oV() {  
+		int r = 1<<tt;
+		this.tt++;
+		this.L = u.U(L, r*2);  
+		for (int T = 0; T < r; T++) {  
+			L[r+T] = L[T];
+		}
+		this.r = 1<<tt;
+	}
+	public int B3() {
+		return tt;
+	}
+	public void vh() {
+		System.out.println("----------Extendible Hashing----------");
+		System.out.println("Global Depth: " + tt);
+		for (int T = 0; T < r; T++) {
+			if(L[T] != null) {
+				System.out.println("");
+				L[T].vh();
+			}
+		}
+	}
+}

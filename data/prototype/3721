@@ -1,0 +1,25 @@
+package O.z;
+import O.c;
+public class s extends c {
+    private static PE[] d;  
+    public void tt(PE[] C) {
+        for (int W = 1; W < C.m; W = W + W)  
+            for (int b = 0; b < C.m - W; b += W + W)  
+                z(C, b, b + W - 1, Xe.g3(b + W + W - 1, C.m - 1));
+    }
+    public static void O(PE[] C) {
+        d = new PE[C.m];
+        new s().tt(C);
+    }
+    private static void z(PE[] C, int b, int L, int k) {
+        int yF = b, Yu = L + 1;
+        for (int l = b; l <= k; l++)
+            d[l] = C[l];
+        for (int l = b; l <= k; l++) {
+            if (yF > L) C[l] = d[Yu++];  
+            else if (Yu > k) C[l] = d[yF++];  
+            else if (Z7(d[Yu], d[yF])) C[l] = d[Yu++];  
+            else C[l] = d[yF++];  
+        }
+    }
+}

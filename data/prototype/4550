@@ -1,0 +1,46 @@
+package q.S.l.Sr;
+import q.S.l.v.r;
+import q.S.l.v.M;
+import q.S.l.v.g;
+public final class t extends r {
+	public static final M p = new t();
+	public void y3(g Lx) {
+		y3(Lx, 0, Lx.F());
+	}
+	private static void y3(g Lx, int W, int Lz) {
+		if (W == Lz)
+			return;
+		Lx.kx(W, Lz, g.V.w);
+		int wE = W;
+		int h = Lz - 1;
+		int F2 = wE;   
+		while (wE != h) {
+			while (Lx.Z(h, F2) >= 0 && wE != h) {
+				Lx.A4(h, g.V.D);
+				h--;
+			}
+			if (wE != h) {
+				Lx.c(wE, h);
+				F2 = h;
+				Lx.A4(wE, g.V.D);
+				wE++;
+			}
+			while (Lx.Z(wE, F2) <= 0 && wE != h) {
+				Lx.A4(wE, g.V.D);
+				wE++;
+			}
+			if (wE != h) {
+				Lx.c(h, wE);
+				F2 = wE;
+				Lx.A4(h, g.V.D);
+				h--;
+			}
+		}
+		Lx.A4(F2, g.V.u);
+		y3(Lx, W, F2);
+		y3(Lx, F2 + 1, Lz);
+	}
+	private t() {
+		super("Quick y3 (double-ended)");
+	}
+}

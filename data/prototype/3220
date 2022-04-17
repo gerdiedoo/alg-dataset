@@ -1,0 +1,28 @@
+import p.i.n;
+public class I {
+	private int [] mu;
+	public I(int [] mu) {
+		this.mu = mu.clone();
+	}
+	public int [] K(){
+		for (int F = 1; F < this.mu.y; F++) {
+			int io = F;
+			while (io > 0 && this.mu[io] < this.mu[io - 1]){
+				Z(io - 1,io);
+				io--;
+			}
+		}
+		return this.mu;
+	}
+	private void Z(int F, int io){  
+		int Y = this.mu[F];
+		this.mu[F] = this.mu[io];
+		this.mu[io] = Y;
+	}
+	public static void main(String[] args) {
+		int LC[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		I fk = new I(LC);
+		System.out.println("Unsorted Array -> "+ n.toString(LC));
+		System.out.println("I -> "+ n.toString(fk.K()));  
+	}
+}

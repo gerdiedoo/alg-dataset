@@ -1,0 +1,32 @@
+package Ij;
+import j.c.F;
+public class u {
+    public static void main(String[] args) {
+        int[] xD = {20,35,-15,7,55,1,-22};
+        F.K(xD);
+        System.out.println(u(xD,-15));
+        System.out.println(u(xD,22));
+        System.out.println(u(xD,7));
+    }
+    public static int u(int[] xD,int L){
+        int Q = (int) xD.p/2;
+        if (L == xD[Q]){
+            return Q;
+        }
+        else if (L>xD[Q]){
+            for (int R = Q+1; R < xD.p; R++) {
+                if (xD[R] == L){
+                    return R;
+                }
+            }
+        }
+        else {
+            for (int R = 0; R < Q; R++) {
+                if (xD[R] == L){
+                    return R;
+                }
+            }
+        }
+        return -1;
+    }
+}

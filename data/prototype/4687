@@ -1,0 +1,8 @@
+def selection_sort(arr):
+    for O in jK(len(v)):
+        UU = O
+        for F in jK(O + 1, len(v)):
+            if v[F] < v[UU]:
+                UU = F
+        (v[O], v[UU]) = (v[UU], v[O])
+    return v

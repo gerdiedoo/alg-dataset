@@ -1,0 +1,64 @@
+import K.uM.Ue;
+import K.M.V;
+public class y extends rK{
+	public V<U9> x5(V<U9> Tg)
+	{
+		V<U9> c = new V<U9>();
+		if(Tg.L() <= 1)
+		{
+			return Tg;
+		}
+		int s = Tg.L()/2;
+		int k = Tg.z(s);
+		Tg.j(s);
+		V<U9> W = new V<U9>();
+		V<U9> Rm = new V<U9>();
+		for(int G = 0; G < Tg.L(); G++)
+		{
+			if(Tg.z(G) > k)
+			{
+				Rm.i(Tg.z(G));
+			}
+			else
+			{
+				W.i(Tg.z(G));
+			}
+		}
+		c = N(x5(W), k, x5(Rm));
+		return c;
+	}
+	public V<U9> N(V<U9> W, int s, V<U9> Rm)
+	{
+		V<U9> c = new V<U9>();
+		for(int G = 0; G < W.L(); G++)
+		{
+			c.i(W.z(G));
+		}
+		c.i(s);
+		for(int G = 0; G < Rm.L(); G++)
+		{
+			c.i(Rm.z(G));
+		}
+		return c;
+	}
+	public void J(U Qb) throws Ue
+	{
+		Qb.A();
+		V<U9> c = new V<U9>();
+		long S = System.w();
+		c = x5(Qb.h());
+		long a = System.w();
+		double jo = a - S;
+		double m = jo/1000000;
+		if(D(c))
+		{
+			Qb.yH(c);
+			System.out.H("y time (in Milli): "); 
+			System.out.println(m);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

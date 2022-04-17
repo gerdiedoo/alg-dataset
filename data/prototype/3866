@@ -1,0 +1,64 @@
+import time
+g = 0
+def sort(bar, layout, num, colors):
+    QC = P(f.y)
+    J = P(f.y)
+    Jn(QC, f, i, s, n, 0, J)
+def Jn(QC, f, i, s, n, G, J):
+    global count
+    if len(QC) > 1:
+        bl = len(QC) // 2
+        t = G + bl
+        Yo = QC[:bl]
+        jt = QC[bl:]
+        Jn(Yo, f, i, s, n, G, J)
+        Jn(jt, f, i, s, n, t, J)
+        L = r = M = 0
+        e = G
+        n[G:t] = ['yellow'] * (t - G)
+        n[t:t + bl] = ['orange'] * bl
+        f.marker.color = n
+        sy.sleep(0.1)
+        while L < len(Yo) and r < len(jt):
+            g += 1
+            i.xaxis.title.text = 'Number of operations: ' + qZ(g)
+            if Yo[L] < jt[r]:
+                J[e] = Yo[L]
+                QC[M] = Yo[L]
+                f.y = J
+                sy.sleep(0.1)
+                L += 1
+            else:
+                J[e] = jt[r]
+                QC[M] = jt[r]
+                f.y = J
+                sy.sleep(0.1)
+                r += 1
+            e += 1
+            M += 1
+        while L < len(Yo):
+            g += 1
+            i.xaxis.title.text = 'Number of operations: ' + qZ(g)
+            J[e] = Yo[L]
+            QC[M] = Yo[L]
+            f.y = J
+            sy.sleep(0.1)
+            L += 1
+            e += 1
+            M += 1
+        while r < len(jt):
+            g += 1
+            i.xaxis.title.text = 'Number of operations: ' + qZ(g)
+            J[e] = jt[r]
+            QC[M] = jt[r]
+            f.y = J
+            sy.sleep(0.1)
+            r += 1
+            e += 1
+            M += 1
+        f.y = J
+        sy.sleep(0.1)
+        n[G:t] = ['blue'] * (t - G)
+        n[t:t + bl] = ['blue'] * bl
+        f.marker.color = n
+        sy.sleep(0.1)

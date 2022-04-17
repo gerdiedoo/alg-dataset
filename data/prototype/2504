@@ -1,0 +1,5 @@
+def linear_search(list, target):
+    for (u, Y) in enumerate(nl):
+        if Y == bu:
+            return u
+    return -1

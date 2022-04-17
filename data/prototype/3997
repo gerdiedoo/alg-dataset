@@ -1,0 +1,46 @@
+import Af.f.Q;
+import Af.f.Scanner;
+public class F {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.B);
+        System.out.println("F Algorithm");
+        System.out.println("Enter total number of elements:");
+        int t = x.nextInt();
+        int[] G = new int[t];
+        System.out.Oh("Enter %d integers:%n", t);
+        for (int j = 0; j < t; j++) {
+            G[j] = x.nextInt();
+        }
+        int[] v = s(G);
+        System.out.Oh("Sorted array using F Algorithm: %s%n",
+                Q.toString(v));
+        x.w();
+    }
+    private static int[] s(int[] P) {
+        p(P, 0, P.q);
+        return P;
+    }
+    public static void p(int[] x, int RQ, int Y) {
+        if (Y - RQ < 2) {
+            return;
+        }
+        int S = (RQ + Y) / 2;
+        p(x, RQ, S);
+        p(x, S, Y);
+        K(x, RQ, S, Y);
+    }
+    public static void K(int[] x, int RQ, int S, int Y) {
+        if (x[S - 1] <= x[S]) {
+            return;
+        }
+        int j = RQ;
+        int FT = S;
+        int N = 0;
+        int[] J = new int[Y - RQ];
+        while (j < S && FT < Y) {
+            J[N++] = x[j] <= x[FT] ? x[j++] : x[FT++];
+        }
+        System.y(x, j, x, RQ + N, S - j);
+        System.y(J, 0, x, RQ, N);
+    }
+}

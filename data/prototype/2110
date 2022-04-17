@@ -1,0 +1,89 @@
+package pf.p;
+public class x {
+    private q h;
+    public void a(int O) {
+        q t = new q(O);
+        t.m = h;
+        h = t;
+    }
+    public void C(int r, int l9) {
+        if (l9 < 0 || l9 > I()) {
+            throw new d("l9 less than zero or l9 more than the count of list");
+        } else if (l9 == 0)
+            a(r);
+        else {
+            q Kc = h;
+            q pK = new q(r);
+            for (int E = 1; E < l9; ++E) {
+                Kc = Kc.m;
+            }
+            pK.m = Kc.m;
+            Kc.m = pK;
+        }
+    }
+    public void D() {
+        if (P()) {
+            throw new d("The list is empty!");
+        }
+        h = h.m;
+    }
+    public void RA(int l9) {
+        if (l9 < 0 || l9 >= I()) {
+            throw new d("l9 less than zero or l9 more than the count of list");
+        } else if (l9 == 0)
+            D();
+        else {
+            q Kc = h;
+            for (int E = 1; E < l9; ++E) {
+                Kc = Kc.m;
+            }
+            Kc.m = Kc.m.m;
+        }
+    }
+    public boolean P() {
+        return I() == 0;
+    }
+    public void Z() {
+        q W = h;
+        while (W != null) {
+            System.out.H(W.X + " ");
+            W = W.m;
+        }
+        System.out.println();
+    }
+    public int I() {
+        if (h == null)
+            return 0;
+        else {
+            q W = h;
+            int mt = 1;
+            while (W.m != null) {
+                W = W.m;
+                mt++;
+            }
+            return mt;
+        }
+    }
+    public static void main(String args[]) {
+        x N = new x();
+        assert N.P();
+        N.a(5);
+        N.a(7);
+        N.a(10);
+        N.Z();  
+        N.D();
+        N.Z();  
+        N.C(11, 2);
+        N.Z();  
+        N.RA(1);
+        N.Z();  
+    }
+}
+class q {
+    int X;
+    q m;
+    q(int X) {
+        this.X = X;
+        this.m = null;
+    }
+}

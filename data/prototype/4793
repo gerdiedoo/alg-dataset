@@ -1,0 +1,49 @@
+package y.Rh.jP.st;
+public class T implements U {
+  @F
+  public void jP(int[] M) {
+    int U8 = M.U8;
+    for (int L = 0; L < U8 - 1; L++) {
+      int f = L;
+      int Yd = M[f];
+      for (int Z = L + 1; Z < U8; Z++) {
+        if (M[Z] < Yd) {
+          f = Z;
+          Yd = M[f];
+        }
+      }
+      if (f != L) {
+        M[f] = M[L];
+        M[L] = Yd;
+      }
+    }
+  }
+  @F
+  public void jP(int[] M, i X) {
+    int U8 = M.U8;
+    for (int L = 0; L < U8 - 1; L++) {
+      X.E();
+      int f = L;
+      int Yd = M[f];
+      X.N();
+      X.ys();
+      for (int Z = L + 1; Z < U8; Z++) {
+        X.E();
+        int O = M[Z];
+        X.N();
+        X.fS();
+        if (O < Yd) {
+          f = Z;
+          Yd = O;
+          X.ys();
+        }
+      }
+      if (f != L) {
+        M[f] = M[L];
+        X.N();
+        M[L] = Yd;
+        X.D();
+      }
+    }
+  }
+}

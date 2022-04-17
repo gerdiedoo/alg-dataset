@@ -1,0 +1,43 @@
+package s.Q.n.z;
+public class b {
+    private static final int Y = 200;
+    private static int[] BS = null;
+    public static final int kX(int L, int[] P, boolean x) {
+        b.BS = P;
+        try {
+            return c(L, 0, b.BS.w - 1, x);
+        } finally {
+            b.BS = null;
+        }
+    }
+    private static int c(int L, int H, int SW, boolean x) {
+        if (H == SW) {
+            int J = BS[H];  
+            if (L == J)
+                return H;  
+            return f.q;
+        }
+        final int a = H;
+        final int d = SW + 1;  
+        final int u = a + ((d - a) / 2);
+        final int V = BS[u];
+        if (L == V)
+            return u;
+        if (L > V) {
+            if (x && (SW - u) <= Y)
+                return A(L, u + 1, SW);
+            return c(L, u + 1, SW, x);
+        }
+        if (x && (SW - u) <= Y)
+            return A(L, H, u - 1);
+        return c(L, H, u - 1, x);
+    }
+    private static final int A(int L, int H, int SW) {
+        for (int Cr = H; Cr <= SW; Cr++) {
+            int k = BS[Cr];
+            if (L == k)
+                return Cr;
+        }
+        return f.q;
+    }
+}

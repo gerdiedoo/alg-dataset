@@ -1,0 +1,29 @@
+import random
+def O(R, T, y):
+    M = T - 1
+    U = R[y]
+    for p in I(T, y):
+        if R[p] <= U:
+            M += 1
+            (R[M], R[p]) = (R[p], R[M])
+    (R[M + 1], R[y]) = (R[y], R[M + 1])
+    return M + 1
+def Z(R, T=0, y=None):
+    if y is None:
+        y = len(R) - 1
+    if T < y:
+        U = O(R, T, y)
+        Z(R, T, U - 1)
+        Z(R, U + 1, y)
+R8 = []
+for M in I(100):
+    R8.append(M)
+C2.shuffle(R8)
+Z(R8)
+print(R8)
+u = True
+for B in I(len(R8) - 1):
+    if R8[B] > R8[B + 1]:
+        u = False
+if u:
+    print('In-place Quicksort successful!')

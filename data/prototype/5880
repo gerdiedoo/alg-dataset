@@ -1,0 +1,29 @@
+def eK(H):
+    if len(H) == 0:
+        return []
+    r = H[0]
+    Kd = H[1:]
+    D = 0
+    while Kd:
+        for (U, l) in enumerate(Kd):
+            if l < r:
+                Kd[U] = r
+                r = l
+        H[D] = r
+        r = Kd[0]
+        Kd = Kd[1:]
+        print('step', D, r, Kd)
+        D += 1
+    H[-1] = r
+    return H
+print('result:', eK([9, 8, 7, 6, 1, 3, 5, 7, 12, 0, 0, 0]))
+print('result:', eK([]))
+def zJ(H):
+    O = 0
+    while O != len(H):
+        for U in e(O, len(H)):
+            if H[U] < H[O]:
+                (H[O], H[U]) = (H[U], H[O])
+        O += 1
+    return H
+print('result selSort:', zJ([9, 8, 7, 6, 1, 3, 5, 7, 12, 0, 0, 0]))

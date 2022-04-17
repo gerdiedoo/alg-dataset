@@ -1,0 +1,7 @@
+def y(Q, z):
+    for S in Q:
+        if z == S:
+            return 'Found'
+W = [1, 2, 3, 4, 5, 6, 7, 8]
+a = 4
+print(y(W, a))

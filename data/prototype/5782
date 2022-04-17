@@ -1,0 +1,35 @@
+import random
+def f(V):
+    if len(V) > 1:
+        n = len(V) // 2
+        fi = V[:n]
+        E = V[n:]
+        Lb = len(fi)
+        fK = len(E)
+        f(fi)
+        f(E)
+        iC = 0
+        y = 0
+        B = 0
+        while iC < Lb and y < fK:
+            if fi[iC] <= E[y]:
+                V[B] = fi[iC]
+                iC = iC + 1
+            else:
+                V[B] = E[y]
+                y = y + 1
+            B = B + 1
+        while iC < Lb:
+            V[B] = fi[iC]
+            iC = iC + 1
+            B = B + 1
+        while y < fK:
+            V[B] = E[y]
+            y = y + 1
+            B = B + 1
+V = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+K.shuffle(V)
+print('input >>>', V)
+f(V)
+print('merge sort >>>', V)
+assert V == [17, 20, 26, 31, 44, 54, 55, 77, 93], 'Merge Sort error!'

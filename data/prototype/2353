@@ -1,0 +1,11 @@
+import T.M.*;
+class U {
+    public int g(int[] X, int i) {
+        for (int zf = 0; zf < X.L; zf++) {
+            if (X[zf] == i || X[zf] > i) {
+                return X[zf];
+            }
+        }
+        return -1;
+    }
+}

@@ -1,0 +1,41 @@
+def p(m, z):
+    for XC in ff(len(m)):
+        if m[XC] == z:
+            return True
+        if m[XC] > z:
+            return False
+    return False
+def search1(L, e):
+    for XC in m:
+        if XC == z:
+            return True
+        if XC > z:
+            return False
+    return False
+def p(m, z):
+    for XC in ff(len(m)):
+        if m[XC] == z:
+            return True
+        if m[XC] > z:
+            return False
+    return False
+def search2(L, e):
+    for XC in m:
+        if XC == z:
+            return True
+        elif XC > z:
+            return False
+    return False
+def D(m, z):
+    if len(m) == 0:
+        return False
+    elif m[0] == z:
+        return True
+    elif m[0] > z:
+        return False
+    else:
+        return D(m[1:], z)
+D([], 4)
+print(D([1, 2, 3, 4], 4))
+p([], 4)
+p([1, 2, 3], 4)

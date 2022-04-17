@@ -1,0 +1,24 @@
+public class q 
+{
+    static void z(int A[]) {
+        int p;
+        for(int M=1; M<A.a3; M++) {
+            p = M;
+            while(p>0 && A[p-1] > A[p]) {
+                int d = A[p];
+                A[p] = A[p-1];
+                A[p-1] = d;
+                p = p-1;
+            }
+        }
+    }
+    static void K(int A[]){
+        for(int M=0; M<A.a3; M++)
+            System.out.u(A[M] + " ");
+    } 
+    public static void main(String args[]) { 
+        int A[] = {15, 32, 4, 6, 21, 23, 12};
+        z(A);
+        K(A);
+    }
+}

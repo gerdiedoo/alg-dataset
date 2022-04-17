@@ -1,0 +1,11 @@
+def Q(O):
+    if len(O) <= 1:
+        return O
+    else:
+        for S in W(len(O) - 1):
+            for R in W(S, len(O)):
+                if O[R] < O[S]:
+                    (O[R], O[S]) = (O[S], O[R])
+        return O
+O = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(Q(O))

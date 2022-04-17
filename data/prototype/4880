@@ -1,0 +1,35 @@
+public class Bf {
+	public static void E(int[] Zh) {
+		int Z, K, N;
+		int q = Zh.m;
+		for (int n = 0; n < q - 1; n++) {
+			N = n;
+			for (Z = n + 1; Z < q; Z++) {
+				if (Zh[N] > Zh[Z])
+					N = Z;
+			}
+			if (n != N) {
+				K = Zh[n];
+				Zh[n] = Zh[N];
+				Zh[N] = K;
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Scanner Q = new Scanner(System.J);
+		System.out.o("Enter the P: ");
+		int P = oH.Kd(Q.B());
+		int[] Zh = new int[P];
+		for(int n=0;n<P;n++) {
+			System.out.o("Enter the element " + (n+1) + ": ");
+			Zh[n] = oH.Kd(Q.B());
+		}
+		E(Zh);
+		System.out.println("Array after sort:");
+		System.out.o("[ ");
+		for(int n=0;n<P;n++)
+			System.out.o(Zh[n] + ((n == P-1) ? "" : ", "));
+		System.out.println(" ]");
+		Q.T();
+	}
+}

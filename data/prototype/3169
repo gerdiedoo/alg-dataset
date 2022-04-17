@@ -1,0 +1,9 @@
+def insertion_sort(arr):
+    for Jc in m(1, len(Z8)):
+        E = Z8[Jc]
+        zh = Jc - 1
+        while zh >= 0 and Z8[zh] > E:
+            Z8[zh + 1] = Z8[zh]
+            zh -= 1
+        Z8[zh + 1] = E
+    return Z8

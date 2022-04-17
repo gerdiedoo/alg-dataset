@@ -1,0 +1,27 @@
+public class J {
+    private int[] f;
+    public J(int[] f){
+        this.f=f;
+    }
+    public boolean x(int U){
+        boolean b =false;
+        for(int z=0;z<f.Qu;z++){
+            if(U==f[z]){
+                b=true;
+                break;
+            }
+        }
+        return b;
+    }
+    public static void main(String[] args) {
+        int[] Tl={25,8,2,60,60,10,15,5};
+        J i=new J(Tl);
+        boolean n=i.x(15);
+        if(n){
+            System.out.println("element b");
+        }
+        else{
+            System.out.println("element not b");
+        }
+    }
+}

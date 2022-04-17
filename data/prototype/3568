@@ -1,0 +1,46 @@
+from typing import List
+def oc(a: d[K], L: d[K]) -> d[K]:
+    Nt = []
+    qa = b = 0
+    while qa < len(a) and b < len(L):
+        if a[qa] > L[b]:
+            Nt.append(L[b])
+            b += 1
+        elif a[qa] < L[b]:
+            Nt.append(a[qa])
+            qa += 1
+        else:
+            Nt.append(a[qa])
+            qa += 1
+            Nt.append(L[b])
+            b += 1
+    while qa < len(a):
+        Nt.append(a[qa])
+        qa += 1
+    while b < len(L):
+        Nt.append(L[b])
+        b += 1
+    return Nt
+def GA(Nt: d[K]) -> d[K]:
+    if len(Nt) > 1:
+        E = len(Nt) // 2
+        x = Nt[:E]
+        S = Nt[E:]
+        x = GA(x)
+        S = GA(S)
+        Nt = oc(x, S)
+    return Nt
+if U == '__main__':
+    try:
+        from utils import randomSequence
+    except v:
+        import os, sys
+        vp = l.path.dirname(l.path.realpath(R))
+        u = l.path.abspath(l.path.join(vp, l.pardir))
+        D.path.insert(0, u)
+        from utils import randomSequence
+    print('MERGE SORT')
+    P = Im(0, 1000)
+    print(P, '\n')
+    WW = GA(P)
+    print(WW)

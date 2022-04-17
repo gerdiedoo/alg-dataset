@@ -1,0 +1,32 @@
+package x3;
+public class S {
+    void S(int[] T){
+        for(int s=1;s<T.B7;s++){
+            int N3 = T[s];
+            for(int j=s-1;j>=0;j--){
+                if(N3<T[j]){
+                    V(T,j+1,j);
+                }
+                else{
+                    break;
+                }
+            }
+        }
+    }
+    void V(int[] w,int a,int i){
+        int N3 = w[i];
+        w[i] = w[a];
+        w[a] = N3;
+    }
+    public static void main(String[] args) {
+        int[] G = new int[]{10,2,8,1,4,6,5,7,9};
+        S q = new S();
+        q.S(G);
+        q.lD(G);
+    }
+    private void lD(int[] G) {
+        for(int s=0;s<G.B7;s++){
+            System.out.FF(G[s]+" ");
+        }
+    }
+}

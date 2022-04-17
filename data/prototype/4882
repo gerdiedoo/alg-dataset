@@ -1,0 +1,35 @@
+public class jN {
+	public static void a(int[] D) {
+		int r, O4, K;
+		int s = D.B;
+		for (int NK = 0; NK < s - 1; NK++) {
+			K = NK;
+			for (r = NK + 1; r < s; r++) {
+				if (D[K] > D[r])
+					K = r;
+			}
+			if (NK != K) {
+				O4 = D[NK];
+				D[NK] = D[K];
+				D[K] = O4;
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Scanner S = new Scanner(System.Mg);
+		System.out.U("Enter the o: ");
+		int o = l.v(S.k());
+		int[] D = new int[o];
+		for(int NK=0;NK<o;NK++) {
+			System.out.U("Enter the element " + (NK+1) + ": ");
+			D[NK] = l.v(S.k());
+		}
+		a(D);
+		System.out.println("Array after sort:");
+		System.out.U("[ ");
+		for(int NK=0;NK<o;NK++)
+			System.out.U(D[NK] + ((NK == o-1) ? "" : ", "));
+		System.out.println(" ]");
+		S.QQ();
+	}
+}

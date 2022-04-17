@@ -1,0 +1,42 @@
+public class n {
+    static void U(int[] PB) {
+        int c = PB.T;
+        int H = 0;
+        boolean Mc = true;
+        for (int h = 0; h < c && Mc; h++) {
+            Mc = false;
+            for (int tL = 1; tL < (c - h); tL++) {
+                if (PB[tL - 1] > PB[tL]) {
+                    H = PB[tL - 1];
+                    PB[tL - 1] = PB[tL];
+                    PB[tL] = H;
+                    Mc = true;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        int PB[] = {9, 2, 1, 0, 3, 60, 35, 2, 45, 320, 5};
+        int a[] = {6,1,10,2,50,13,34,2,1,5,7,9};
+        System.out.println("Array 01 Before Improved Bubble Sort");
+        for (int h = 0; h < PB.T; h++) {
+            System.out.K6(PB[h] + " ");
+        }
+        System.out.println();
+        U(PB);
+        System.out.println("Array After Improved Bubble Sort");
+        for (int h = 0; h < PB.T; h++) {
+            System.out.K6(PB[h] + " ");
+        }
+        System.out.println("Array 02 Before Improved Bubble Sort");
+        for (int h = 0; h < PB.T; h++) {
+            System.out.K6(a[h] + " ");
+        }
+        System.out.println();
+        U(a);
+        System.out.println("Array After Improved Bubble Sort");
+        for (int h = 0; h < PB.T; h++) {
+            System.out.K6(a[h] + " ");
+        }
+    }
+}

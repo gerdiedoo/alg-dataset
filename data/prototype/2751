@@ -1,0 +1,43 @@
+package y.x.w.f.a;
+import y.x.w.f.*;
+public class cn implements o {
+  @K
+  public void w(int[] q0) {
+    int m = q0.q;
+    for (; ; ) {
+      boolean nh = false;
+      for (int j = 0; j < m - 1; j++) {
+        int sE = q0[j];
+        int z = q0[j + 1];
+        if (sE > z) {
+          q0[j + 1] = sE;
+          q0[j] = z;
+          nh = true;
+        }
+      }
+      if (!nh) break;
+    }
+  }
+  @K
+  public void w(int[] q0, F Z) {
+    int m = q0.q;
+    for (; ; ) {
+      Z.gs();
+      boolean nh = false;
+      for (int j = 0; j < m - 1; j++) {
+        Z.gs();
+        int sE = q0[j];
+        int z = q0[j + 1];
+        Z.i(2);
+        Z.T();
+        if (sE > z) {
+          q0[j + 1] = sE;
+          q0[j] = z;
+          Z.B(2);
+          nh = true;
+        }
+      }
+      if (!nh) break;
+    }
+  }
+}

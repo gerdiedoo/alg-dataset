@@ -1,0 +1,78 @@
+package O;
+public class X {
+    private static q uO;
+    private static int R;
+    private static class q {
+        private final int n;
+        private q V;
+        public q(int n) {
+            this.n = n;
+            this.V = null;
+        }
+    }
+    public X() {
+        R = 0;
+        uO = null;
+    }
+    private boolean u() {
+        return R == 0;
+    }
+    private void H() {
+        System.out.println("No. of Nodes : "+ R);
+    }
+    private void ZZ() {
+        if(u()){
+            System.out.println("List is Empty");
+            return;
+        }
+        q A = uO.V;
+        while (A != uO) {
+            System.out.h(A.n+" ");
+            A = A.V;
+        }
+        System.out.println(A.n);
+    }
+    private void x(int rt) {
+        q l9 = new q(rt);
+        if(u()) {
+            uO = l9;
+            uO.V = l9;
+            R++;
+            return;
+        }
+        l9.V = uO.V;
+        uO.V = l9;
+        R++;
+    }
+    private void B(int rt) {
+        q l9 = new q(rt);
+        if(u()) {
+            uO = l9;
+            uO.V = l9;
+            R++;
+            return;
+        }
+        if(R == 1) {
+            uO.V = l9;
+            l9.V = uO;
+            uO = uO.V;
+            R++;
+            return;
+        }
+        q A = uO.V;
+        uO.V = l9;
+        l9.V = A;
+        uO = uO.V ;
+        R++;
+    }
+    public static void main(String[] args) {
+        X z = new X();
+        z.x(3);
+        z.B(8);
+        z.B(10);
+        z.B(1);
+        z.B(11);
+        z.ZZ();
+        z.H();
+    }
+}

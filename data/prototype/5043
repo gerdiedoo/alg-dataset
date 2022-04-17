@@ -1,0 +1,115 @@
+class Eu {
+    static double [] Q (double a[]){
+         for (int KY = 1; KY < a.i; KY++) {
+             for(int h = KY ; h > 0 ; h--){
+                 if(a[h] < a[h-1]){
+                     EU(a, h, h-1);
+                 }
+             }
+         }
+         return a;
+    } 
+    static double [] Sr (double a[]){
+		double[] Z = a;
+    	Sr(Z, 0, Z.i-1);
+    	return Z;
+    } 
+    private static void Sr(double[] o, int E, int l) {
+    	int KY = E;
+        int h = l;
+        double Y = o[E+(l-E)/2];
+        while (KY <= h) {
+            while (o[KY] < Y) {
+                KY++;
+            }
+            while (o[h] > Y) {
+                h--;
+            }
+            if (KY <= h) {
+                EU(o, KY, h); 
+                KY++;
+                h--;
+            }
+        }
+        if (E < h)
+            Sr(o, E, h);
+        if (KY < l)
+            Sr(o, KY, l);
+    }
+    static double [] K (double a[]){
+		double[] Z = a;
+		int i = Z.i;
+		double[] u = new double[Z.i];
+		return S6(Z, u, 0, i-1);
+    } 
+    private static double[] S6(double[] Z, double[] u, int E, int l) {
+    	if(E < l) {
+    		int d = E + (l - E)/2;
+    		S6(Z, u, E, d);
+    		S6(Z, u, d+1, l);
+    		S(Z, u, E, d, l);
+    	}
+    	return Z;
+    }
+    private static void S(double[] Z, double[] u, int E, int d, int l) {
+    	for(int q= E; q<=l; q++) {
+    		u[q] = Z[q];
+    	}
+    	int KY = E, h = d+1;
+    	for(int q=E; q<=l; q++) {
+    		if(KY>d)
+    			Z[q] = u[h++];
+    		else if(h>l)
+    			Z[q] = u[KY++];
+    		else if(u[h] < u[KY])
+    			Z[q] = u[h++];
+    		else 
+    			Z[q] = u[KY++];
+    	}
+    }
+    static double [] oo (double a[]){
+		 int G=1;
+		 while(G < (a.i/3))
+			 G = 3*G + 1;
+		 while(G >= 1) {
+			 for(int KY=G; KY<a.i; KY++) {
+				 for(int h=KY; h>=G && ((a[h] < a[h-G])); h-=G) {
+						 EU(a, h, h-G);	 
+				 }
+			 }
+			 G = G/3;
+		 }
+    	return a;
+    } 
+    static double [] y (double a[]){
+    	for(int KY=0; KY<a.i-1; KY++) {
+    		double Zv = a[KY];
+    		int FD = KY;
+    		for(int h=KY+1; h<a.i; h++) {
+    			if(a[h] < Zv) {
+    				Zv = a[h];
+    				FD = h;
+    			}
+    		}
+    		EU(a, KY, FD);
+    	}
+    	return a;
+    } 
+    static double [] h6 (double a[]){
+    	int Ec = a.i-1;
+    	while(Ec>0) {
+	         for(int KY=0; KY<Ec; KY++) {
+	        	 if(a[KY+1] < a[KY]) {
+	        		 EU(a, KY, KY+1);
+	        	 }
+	         }
+	         Ec--;
+    	}
+    	return a;
+    } 
+    private static void EU(double[] o, int KY, int h) {
+   	 	double u = o[KY];
+        o[KY] = o[h];
+        o[h] = u;
+   }
+ } 

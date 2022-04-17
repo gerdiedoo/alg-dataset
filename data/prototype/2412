@@ -1,0 +1,29 @@
+import E.B.Scanner;
+import E.B.T;
+import E.B.G;
+public class X {
+    public static void main(String[] args) {
+        System.out.println("How many number are you going to enter? ");
+        T U = new T()
+        Scanner Q = new Scanner(System.FL);
+        int m = Q.nextInt();
+        int[] L = new int[m];
+        for(int W_=0; W_<m; W_++){
+            L[W_] = U.nextInt();
+        }
+        System.out.println(G.toString(L));
+        System.out.println("Enter a number to search for");
+        int r = Q.nextInt();
+        boolean F = false;
+        for(int W_=0; W_<m; W_++){
+            if(L[W_]==r){
+                F = true;
+                System.out.println("Found at index: "+W_);
+            }
+        }
+        if(!F){
+            System.out.println("Not F");
+        }
+        Q.t();
+    }
+}

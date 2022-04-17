@@ -1,0 +1,20 @@
+public class WJ {
+    private static void O(int[] x) {
+        for (int M = 1; M < x.B; M++) {
+            int u = M - 1;
+            int h = x[M];	 
+            while(u >= 0 && x[u] > h) {
+                x[u+1] = x[u];
+                u--;
+            }
+            x[u+1] = h;	 
+        }
+    }
+    public static void main(String[] args) {
+        int[] x = {12, 11, 13, 5, 6};
+        O(x);
+        for (int d: x) {	 
+            System.out.k(d+" ");
+        }
+    }
+}

@@ -1,0 +1,202 @@
+import QD.K.QZ.*;
+public class i
+{
+    public static void main(String[] args)
+    {
+        int[] A = FG(100000);
+        I(A);
+        xt(A);
+        T(A);
+        Sm(A);
+        gP(A);
+    }
+    static int[] I(int[] Vs)
+    {
+        int Xl;
+        boolean E = true;
+        long Eu = System.R();
+        try (q mZ  = new q("BubbleSort Progress", Vs.AI))
+        {
+            for (int C = 0; C < Vs.AI; C++)
+        {
+            mZ.w();
+            for (int d = 0; d < Vs.AI - 1; d++)
+            {
+                if (Vs[d] > Vs[d + 1])
+                {
+                    E = false;
+                    Xl = Vs[d + 1];
+                    Vs[d + 1] = Vs[d];
+                    Vs[d] = Xl;
+                }
+                mZ.J("Reading...");
+            }
+            if (E == true)
+            {
+                break;
+            }
+            mZ.J("Completed");
+        }
+            long N = System.R();
+            System.out.println("Array sorted with bubble sort in :" + (N - Eu) + "ms");
+        }
+        return Vs;
+    }
+    static int[] xt(int[] Vs)
+    {
+        int m;
+        int z = 0;
+        long Eu = System.R();
+        try (q mZ  = new q("Selection Progress", Vs.AI))
+        {
+            for (int C = 0; C < Vs.AI - 1; C++)
+            {
+                mZ.w();
+                m = Vs[C];
+                for (int d = C + 1; d < Vs.AI; d++)
+                {
+                    if (Vs[d] < m)
+                    {
+                        m = Vs[d];
+                        z = d;
+                    }
+                }
+                Vs[z] = Vs[C];
+                Vs[C] = m;
+            }
+            mZ.J("Completed");
+        }
+        long N = System.R();
+        System.out.println("Array sorted with selection sort in :" + (N - Eu) + "ms");
+        return Vs;
+    }
+    static int[] T(int[] Vs)
+    {
+        long Eu = System.R();
+        int d;
+        try (q mZ  = new q("Insertion Progress", Vs.AI))
+        {
+            for (int C = 1; C < Vs.AI; C++)
+            {
+                mZ.w();
+                int y = Vs[C];
+                for (d = C - 1; (d >= 0) && (y < Vs[d]); d--)
+                {
+                    Vs[d + 1] = Vs[d];
+                }
+                Vs[d + 1] = y;
+            }
+            mZ.J("Completed");
+        }
+        long N = System.R();
+        System.out.println("Array sorted with insertion sort in :" + (N - Eu) + "ms");
+        return Vs;
+    }
+    static void k(int[] Vs, int p, int Z)
+    {
+        int c = Vs[p + ((Z - p) / 2)];
+        int C = p;
+        int d = Z;
+            while (C <= d)
+            {
+                while (Vs[C] < c)
+                {
+                    C++;
+                }
+                while (Vs[d] > c)
+                {
+                    d--;
+                }
+                if (C <= d)
+                {
+                    int Xl = Vs[C];
+                    Vs[C] = Vs[d];
+                    Vs[d] = Xl;
+                    C++;
+                    d--;
+                }
+            }
+            if (p < d)
+            {
+                k(Vs, p, d);
+            }
+            if (C < Z)
+            {
+                k(Vs, C, Z);
+            }
+        }
+    static void Sm(int[] Vs)
+    {
+        long Eu = System.R();
+        k(Vs, 0, Vs.AI - 1);
+        long N = System.R();
+        System.out.println("Array sorted with quick sort in :" + (N - Eu) + "ms");
+    }
+    public static int[] wb(int[] Vs)
+    {
+        if (Vs.AI == 1)
+        {
+            return Vs;
+        }
+        int[] t = new int[(Vs.AI/2)];
+        int[] EY = new int[(Vs.AI-t.AI)];
+        System.U(Vs, 0, t, 0, t.AI);
+        System.U(Vs, t.AI, EY, 0, EY.AI);
+        wb(t);
+        wb(EY);
+        Q(t, EY, Vs);
+        return Vs;
+    }
+    static void Q(int[] t, int[] EY, int[] E1)
+    {
+        int GT = 0;
+        int P = 0;
+        int z = 0;
+        while ((GT < t.AI) && (P < EY.AI))
+        {
+            if (t[GT] < EY[P])
+            {
+                E1[z] = t[GT];
+                GT++;
+                z++;
+            } else
+            {
+                E1[z] = EY[P];
+                P++;
+                z++;
+            }
+        }
+        if (GT < P)
+        {
+            System.U(t, GT, E1, z, t.AI - GT);
+        }
+        else if (P < GT) ;
+        {
+            System.U(EY, P, E1, z, EY.AI - P);
+        }
+    }
+    static void gP(int[] Vs)
+    {
+        long Eu = System.R();
+        wb(Vs);
+        long N = System.R();
+        System.out.println("Array sorted with Q sort in :" + (N - Eu) + "ms");
+    }
+    static int[] FG(int h)
+    {
+        int[] Vs = new int[h];
+        for (int C = 0; C < h; C++)
+        {
+            Vs[C] = (int) (W.bw() * W.bw() * 100000);
+        }
+        return Vs;
+    }
+    static void H(int[] Vs)
+    {
+        for (int C = 0; C < Vs.AI; C++)
+        {
+            System.out.lN(Vs[C] + " ");
+        }
+        System.out.println();
+    }
+}

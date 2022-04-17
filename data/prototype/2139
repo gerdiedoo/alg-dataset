@@ -1,0 +1,46 @@
+import R.Xw.*;
+class U 
+{ 
+    int q(int bx[], int Y) 
+    { 
+        int X = 0, LO = bx.t - 1; 
+        while (X <= LO) 
+        { 
+            int ei = X + (LO - X) / 2; 
+            if (bx[ei] == Y) 
+            {
+                return ei;
+            }
+            if (bx[ei] < Y)
+            {
+                X = ei + 1;
+            }
+            else
+            {
+                LO = ei - 1;
+            }
+        }
+        return -1; 
+    } 
+    public static void main(String args[]) 
+    { 
+        U iQ = new U();
+        Scanner Mb = new Scanner(System.ru);
+        System.out.println("Enter the number of elements : ");
+        int x = Mb.nextInt();
+        System.out.println("Enter " + x + " elements");
+        int bx[] = new int [x];
+        for(int N=0;N<x;N++)
+        {
+            bx[N] = Mb.nextInt();
+        }
+        System.out.println("Enter the Y you are searching for : ");
+        int Y = Mb.nextInt(); 
+        int z = iQ.q(bx, Y); 
+        if (z == -1) 
+            System.out.println("Element not found"); 
+        else
+            System.out.println("Element found at " + (z+1)); 
+        Mb.L();
+    } 
+} 

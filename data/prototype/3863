@@ -1,0 +1,64 @@
+import time
+A = 0
+def sort(bar, layout, num, colors):
+    M = U(c.y)
+    b = U(c.y)
+    KY(M, c, Q, m3, ua, 0, b)
+def KY(M, c, Q, m3, ua, I, b):
+    global count
+    if len(M) > 1:
+        j = len(M) // 2
+        x = I + j
+        W = M[:j]
+        I_ = M[j:]
+        KY(W, c, Q, m3, ua, I, b)
+        KY(I_, c, Q, m3, ua, x, b)
+        X = z = B = 0
+        q = I
+        ua[I:x] = ['yellow'] * (x - I)
+        ua[x:x + j] = ['orange'] * j
+        c.marker.color = ua
+        m.sleep(0.1)
+        while X < len(W) and z < len(I_):
+            A += 1
+            Q.xaxis.title.text = 'Number of operations: ' + o(A)
+            if W[X] < I_[z]:
+                b[q] = W[X]
+                M[B] = W[X]
+                c.y = b
+                m.sleep(0.1)
+                X += 1
+            else:
+                b[q] = I_[z]
+                M[B] = I_[z]
+                c.y = b
+                m.sleep(0.1)
+                z += 1
+            q += 1
+            B += 1
+        while X < len(W):
+            A += 1
+            Q.xaxis.title.text = 'Number of operations: ' + o(A)
+            b[q] = W[X]
+            M[B] = W[X]
+            c.y = b
+            m.sleep(0.1)
+            X += 1
+            q += 1
+            B += 1
+        while z < len(I_):
+            A += 1
+            Q.xaxis.title.text = 'Number of operations: ' + o(A)
+            b[q] = I_[z]
+            M[B] = I_[z]
+            c.y = b
+            m.sleep(0.1)
+            z += 1
+            q += 1
+            B += 1
+        c.y = b
+        m.sleep(0.1)
+        ua[I:x] = ['blue'] * (x - I)
+        ua[x:x + j] = ['blue'] * j
+        c.marker.color = ua
+        m.sleep(0.1)

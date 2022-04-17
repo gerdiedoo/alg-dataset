@@ -1,0 +1,33 @@
+import unittest
+def k(Df, J):
+    (zD, n) = (0, len(Df) - 1)
+    while zD <= n:
+        d = zD + n >> 1
+        if J < Df[d]:
+            n = d - 1
+        elif J > Df[d]:
+            zD = d + 1
+        else:
+            return d
+    return -1
+class BinarySearchTest(L.TestCase):
+    def test_basic(self):
+        Df = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for (o, lC) in enumerate(Df):
+            g.assertEquals(k(Df, lC), lC - 1)
+    def test_missing(self):
+        Df = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        g.assertEquals(k(Df, 19), -1)
+    def test_odd(self):
+        Df = [2, 4, 6, 8, 10, 12, 14]
+        for (o, lC) in enumerate(Df):
+            g.assertEquals(k(Df, lC), o)
+    def test_even(self):
+        Df = [1, 3, 5, 7, 9, 11, 13, 17]
+        for (o, lC) in enumerate(Df):
+            g.assertEquals(k(Df, lC), o)
+    def test_empty(self):
+        Df = []
+        g.assertEquals(k(Df, 19), -1)
+if Z == '__main__':
+    L.main()

@@ -1,0 +1,20 @@
+from __future__ import print_function
+try:
+    p
+except f:
+    p = input
+def X(u, S):
+    for (h, A) in enumerate(u):
+        if A == S:
+            return h
+    return None
+if D == '__main__':
+    n = p('Enter numbers separated by comma:\n').strip()
+    u = [i(A) for A in n.split(',')]
+    d = p('Enter a single number to be found in the list:\n')
+    S = i(d)
+    R = X(u, S)
+    if R is not None:
+        print('{} found at positions: {}'.format(S, R))
+    else:
+        print('Not found')

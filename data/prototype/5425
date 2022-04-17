@@ -1,0 +1,20 @@
+def T(V, J, m, f):
+    while J < m:
+        I = J + (m - 1) // 2
+        if V[I] == f:
+            return I
+        elif V[I] < f:
+            J = I + 1
+        else:
+            m = I - 1
+    return -1
+print('Enter a list of number')
+V = a(q(W, input().split()))
+J0 = len(V)
+V.sort()
+f = W(input('Enter the number to find\n'))
+B = T(V, 0, len(V) - 1, f)
+if B == -1:
+    print('Element not found')
+else:
+    print('Element found at ', B + 1, ' position')

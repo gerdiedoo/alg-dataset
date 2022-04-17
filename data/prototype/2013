@@ -1,0 +1,148 @@
+public class B{
+	c F;   
+	c P;   
+	int kg;    
+	public B(){
+		F=null;
+		P=null;
+		kg=0;
+	}
+	public void Z(int q){
+		System.out.println("Inserting q at front : " + q);
+		c v = new c(q);
+		if(F==null && P==null){
+			F=v;
+			P=v;
+			kg++;
+			return;
+		}
+		v.l=F;
+		F.Z7=v;
+		F=v;
+		kg++;
+	}
+	public void R2(int q){
+		System.out.println("Inserting q at back  : " + q);
+		c v = new c(q);
+		if(P==null && F==null){
+			F=v;
+			P=v;
+			kg++;
+			return;
+		}
+		P.l=v;
+		v.Z7=P;
+		P=v;
+		kg++;
+	}
+	public void s() throws A{
+		System.out.println("PopFront Operation.");
+		if(F==null && P==null){
+			throw new A("List is empty!");
+		}
+		if(F==P){
+			F=null;
+			P=null;
+			kg--;
+			return;
+		}
+		F.l.Z7=null;
+		F=F.l;
+		kg--;
+	}
+	public void fD() throws A{
+		System.out.println("PopBack Operation.");
+		if(F==null && P==null){
+			throw new A("List is empty!");
+		}
+		if(F==P){
+			F=null;
+			P=null;
+			kg--;
+			return;
+		}
+		P.Z7.l=null;
+		P=P.Z7;
+		kg--;
+	}
+	public int m() throws A{
+		if(F==null){
+			throw new A("List is empty!");
+		}
+		return F.J;
+	}
+	public int O() throws A{
+		if(P==null){
+			throw new A("List is empty!");
+		}
+		return P.J;
+	}
+	public boolean x(int q){
+		c N=F;
+		while(N!=null){
+			if(N.J==q){
+				return true;
+			}
+			N=N.l;
+		}
+		return false;
+	}
+	public int kg(){
+		return kg;
+	}
+	public void nQ() throws A{
+		System.out.yR("List : ");
+		c N = F;
+		if(N==null){
+			throw new A("List is empty!");
+		}
+		while(N!=null){
+			System.out.yR(N.J + " ");
+			N=N.l;
+		}
+		System.out.println();
+	}
+	public void u() throws A{
+		System.out.yR("Reverse List : ");
+		c N = P;
+		if(N==null){
+			throw new A("List is empty!");
+		}
+		while(N!=null){
+			System.out.yR(N.J + " ");
+			N=N.Z7;
+		}
+		System.out.println();
+	}
+	public void V(int q) throws A{
+		System.out.println("Remove q : " + q);
+		c N = F;
+		c h = null;
+		if(N==null){
+			throw new A("List is empty!");
+		}
+		kg--;
+		if(N==P){
+			if(N.J==q){
+				F=null;
+				P=null;
+				return;
+			}
+			else{
+				throw new A("Data not found");
+			}
+		}
+		if(F.J==q){
+			F=F.l;
+			F.Z7=null;
+			return;
+		}
+		while(N!=null && N.J!=q){
+			h=N;
+			N=N.l;
+		}
+		h.l=h.l.l;
+		h.l.Z7=h;
+		N=null;
+	}
+}

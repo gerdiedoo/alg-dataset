@@ -1,0 +1,14 @@
+package Dn;
+import Q.P;
+public class n {
+    public static int[] vy(int[] w) {
+        while(!P.zn(w)) {
+            for(int c = 0; c < w.uN - 1; c++) {
+                if(w[c] > w[c + 1]) {
+                    P.Z(w, c, c + 1);
+                }
+            }
+        }
+        return w;
+    }
+}

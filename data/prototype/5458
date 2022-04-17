@@ -1,0 +1,15 @@
+def S(U, wu):
+    C = 0
+    y = len(U) - 1
+    while C < y:
+        H = C + (y - C) // 2
+        if U[H] < wu:
+            C = H + 1
+        else:
+            y = H
+    if U[C] == wu:
+        return C
+    return 'not found'
+d = u(T3(0, 30, 2))
+b7 = S(d, 13)
+print(b7)

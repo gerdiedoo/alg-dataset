@@ -1,0 +1,103 @@
+package n.R1;
+import i.K.p;
+import i.K.C.Bv;
+class gV<kA, w> {
+    private T<kA, w> F;
+    private int A;
+    gV() {
+        this(null, 0);
+    }
+    gV(T<kA, w> F, int A) {
+        this.F = F;
+        this.A = A;
+    }
+    private void EA(T<kA, w> U) {
+        if (this.F != null) {
+            U.N(this.F);
+            this.F.LO(U);
+        }
+        this.F = U;
+        A++;
+    }
+    private T<kA, w> oM(kA J) {
+        T<kA, w> z = this.F;
+        while (z != null) {
+            if (z.J().equals(J))
+                return z;
+            z = z.N();
+        }
+        return null;
+    }
+    private void E(T<kA, w> v) {
+        A--;
+        T<kA, w> x = v.LO();
+        T<kA, w> f = v.N();
+        if (x == null) {
+            this.F = v.N();
+        } else if (f == null) {
+            x.N(null);
+        } else {
+            v.N(null);
+            v.LO(null);
+            x.N(f);
+            f.LO(x);
+        }
+    }
+    private Bv<T<kA, w>> s() {
+        p<T<kA, w>> r = new p<>();
+        T<kA, w> z = this.F;
+        while (z != null) {
+            r.An(z);
+            z = z.N();
+        }
+        return r.C();
+    }
+    void An(kA J, w u) {
+        T<kA, w> U = new T<>(J, u);
+        b(J);
+        EA(U);
+    }
+    w d(kA J, w y) {
+        T<kA, w> v = oM(J);
+        if (v == null)
+            return y;
+        return v.u();
+    }
+    w d(kA J) throws O {
+        T<kA, w> v = oM(J);
+        if (v == null)
+            throw new O(J.toString());
+        return v.u();
+    }
+    boolean b(kA J) {
+        T<kA, w> t = this.oM(J);
+        if (t == null)
+            return false;
+        E(t);
+        return true;
+    }
+    e<kA, w> R(int XV) {
+        if (XV >= this.G())
+            return null;
+        T<kA, w> z = this.F;
+        for (int g = 0; g < XV; g++) {
+            z = z.N();
+        }
+        return z.M();
+    }
+    int G() {
+        return A;
+    }
+    boolean UE() {
+        return this.G() == 0;
+    }
+    Bv<kA> MM() {
+        return s().fK(T::J);
+    }
+    Bv<w> k() {
+        return s().fK(T::u);
+    }
+    Bv<e<kA, w>> P() {
+        return s().fK(v -> new e<>(v.J(), v.u()));
+    }
+}

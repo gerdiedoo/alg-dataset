@@ -1,0 +1,99 @@
+package v;
+public class R {
+	private Q NC;
+	private int U;
+	public R() {
+		NC = null;
+		U = 0;
+	}
+	public R(int F) {
+		this();
+	}
+	private class Q {
+		private Q s;  
+		private int MM;  
+		public Q() {
+			s = null;  
+			MM = 0;  
+		}
+	}
+	public void be(R T) {
+		if (this != T) {  
+			Q X;  
+			if (T.U == 0) {  
+				X = null;  
+			} else {
+				Q sv = T.NC;  
+				X = new Q();  
+				X.MM = sv.MM;  
+				Q C = X;   
+				sv = sv.s;  
+				while (sv != null) {
+					C.s = new Q();  
+					C = C.s;  
+					C.MM = sv.MM;  
+					sv = sv.s;    
+				}
+			}
+			NC = X;
+			U = T.U;
+		}
+	}
+	public boolean m(int F) {
+		if (F < 0)
+			return false;
+		Q sv = NC;  
+		while (sv != null && sv.MM != F)
+			sv = sv.s;
+		if (sv == null)  
+			return false;
+		else  
+			return true;
+	}
+	public void Uo(int F) {
+		if (!m(F)) {
+			Q P = new Q();
+			P.MM = F;
+			P.s = this.NC;  
+			NC = P;
+			U++;
+		}
+	}
+	public void d(int F) {
+		if (m(F)) {
+			Q sv = NC;  
+			Q H = null;  
+			while (sv != null && sv.MM != F) {  
+				H = sv;  
+				sv = sv.s;  
+			}
+			if (sv != null) { 
+				if (H == null) {
+					NC = sv.s; 
+				} else {
+					H.s = sv.s;
+				}
+				this.U--;  
+			}
+		}
+	}
+	public int L() {
+		return this.U;
+	}
+	public void JW() {
+		Q sv = NC;
+		while (sv != null) {
+			System.out.println(sv.MM);
+			sv = sv.s;
+		}
+	}
+	public boolean equals(R T) {
+		boolean w = (this.U == T.U);
+		Q sv = this.NC;
+		while (sv != null && w) {
+			w = T.m(sv.MM);
+			sv = sv.s;
+		}
+		return w;
+	}
+}

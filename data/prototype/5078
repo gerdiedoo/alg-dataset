@@ -1,0 +1,59 @@
+import xc.il.J;
+import xc.Bl.w;
+public class H extends G{
+	t z = new t();
+	public w<n> Pl(w<n> y)
+	{
+		w<n> l = new w<n>();
+		w<w<n>> q = new w<w<n>>();
+		for(int S = 0; S < 10; S++)
+		{
+			q.FS(new w<n>());
+		}
+		for(int S = 0; S < y.O(); S++)
+		{
+			int r = 10;
+			int U = 0;
+			boolean c = true;
+			while(c)
+			{
+				if(y.yX(S) > r)
+				{
+					r = r * 10;
+					U++;
+				}
+				else
+				{
+					q.yX(U).FS(y.yX(S));
+					c = false;
+				}
+			}
+		}
+		for(int S = 0; S < q.O(); S++)
+		{
+			l.Db(z.e(q.yX(S)));
+		}
+		return l;
+	}
+	public void m(s o) throws J
+	{
+		o.Do();
+		w<n> l = new w<n>();
+		long i = System.A();
+		l = Pl(o.X());
+		long V = System.A();
+		double Ew = V - i;
+		double f = Ew/1000000;
+		if(Yy(l))
+		{
+			o.HK(l);
+			System.out.a("H time (in Milli): "); 
+			System.out.println(f);
+		}
+		else
+		{
+			o.HK(l);
+			System.out.println("Not sorted!");
+		}
+	}
+}

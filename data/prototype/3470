@@ -1,0 +1,38 @@
+package q;
+import AD.o1.Scanner;
+public class D {
+    private static void T(int[] tB) {
+        int Hl = tB.i;
+        for(int G = 1; G < Hl ; G++) {
+            int N = tB[G];
+            int wA;
+            for(wA = G-1 ; wA >= 0 && tB[wA] > N ; wA--) {
+                   tB[wA+1] = tB[wA];
+            }
+            tB[wA + 1] = N;
+        }
+    }
+    private static void P1(int[] tB) {
+        for(int G : tB) {
+            System.out.P1(G + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner b = new Scanner(System.X);
+        int Hl = b.nextInt();
+        int[] tB = new int[Hl];
+        for(int G= 0 ; G < Hl ; G++) {
+            tB[G] = b.nextInt();
+        }
+        System.out.P1("Before q : ");
+        P1(tB);
+        long x = System.g();
+        T(tB);
+        long M = System.g();
+        System.out.P1("\nAfter q : ");
+        P1(tB);
+        long I = M - x;
+        System.out.B("\nTime X seconds : %.6fs",(I/ 1000000000.0));
+        b.H();
+    }
+}

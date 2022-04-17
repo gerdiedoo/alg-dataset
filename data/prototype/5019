@@ -1,0 +1,18 @@
+import numpy as np
+Co = F(input('enter the size of the array '))
+J = input('Enter the elements of array ').split(' ')
+P7 = [F(P) for P in J]
+print('Original unsorted array ')
+print(P7)
+print('\n')
+def r(x):
+    for o in x(len(P7)):
+        l = o
+        for j in x(o + 1, len(P7)):
+            if P7[l] > P7[j]:
+                l = j
+        (P7[o], P7[l]) = (P7[l], P7[o])
+    print('Final sorted array using selection sort ')
+    print(P7)
+if U == '__main__':
+    r(P7)

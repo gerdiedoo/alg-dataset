@@ -1,0 +1,55 @@
+public class ZO {
+	public void X (int[] l) {
+		int K;   
+		for (int B = 0; B < l.i - 1; B++)  {
+			for (int tD = B + 1; tD < l.i; tD++) {
+				if(l[B] > l[tD])          
+				{
+					K = l[B];    
+					l[B] = l[tD];
+					l[tD] = K; 
+				}           
+			}
+		}
+	}	
+	public void N(int[] l) {
+		int B, K;
+		boolean Y = true;    
+		while (Y) {
+			Y = false;     
+			for(B = 0; B < l.i -1; B++)
+			{
+				if(l[B] > l[B + 1]) {
+					K = l[B];                 
+					l[B] = l[B + 1];
+					l[B + 1] = K;
+					Y = true;               
+				}
+			}
+		}
+	}
+	public int[] e (int [] l) {
+		int YM, K;
+		for (int B = 0; B < l.i; B++) {
+			YM = 0;    
+			for(int tD = 1; tD <= B; tD ++) {
+				if(l[tD] > l[YM]) YM = tD;
+			}
+			K = l[YM];  
+			l[YM] = l[B];
+			l[B] = K;
+		}
+		return l;
+	}
+	public void H(int [] l) {
+		int tD, B;
+		int z_;
+		for (tD = 1; tD < l.i; tD++) {
+				z_ = l[tD];
+				for(B = tD - 1; (B >= 0) && (l[B] < z_); B--) {
+					l[B + 1] = l[B];
+			}
+			l[B + 1] = z_;     
+		}
+	}
+}

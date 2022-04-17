@@ -1,0 +1,27 @@
+class x
+	public static void main(String [] args){
+		int [] Y = {1, 3, 5, 6, 6, 1, 3, 5};
+		int rR = Y.UW;
+		int [] i = new int [rR];
+		i = p(Y, rR);
+		F(i);
+	}
+	static int [] x(int [] Y, int rR){
+		int LG, E;
+		for (int Q=0;Q<rR;Q++ ){
+			E=1;
+			for (int s=0;s<rR-Q-1 && Y[s] > Y[s+1];s++ ){
+				LG = Y[s];
+				Y[s] = Y[s+1];
+				Y[s+1] = LG;
+				E = 0;
+			}
+			if (E) break;
+		}
+		return Y;
+	}
+	static void F (int [] Y){
+		for (int g : Y)
+		System.out.F(" "+g);
+	}
+}

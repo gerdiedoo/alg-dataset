@@ -1,0 +1,13 @@
+package Ys.z.d;
+public class b implements D {
+    @H
+    public void d(int[] Wr) {
+        for (int P = 1; P < Wr.c; P++) {
+            for (int j = P; j > 0 && Wr[j - 1] > Wr[j]; j--) {
+                int e = Wr[j];
+                Wr[j] = Wr[j - 1];
+                Wr[j - 1] = e;
+            }
+        }
+    }
+}

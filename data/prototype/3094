@@ -1,0 +1,42 @@
+package xN.cq;
+import u.f.HC;
+public class m {
+	private m() {
+	}
+	public static void pj(w[] J) {
+		if(J == null)
+			throw new T();
+		int q = J.F;
+		for (int Q = 0; Q < q; Q++) {
+			for (int j = Q; j > 0 && gu(J[j], J[j - 1]); j--) {
+				KN(J, j - 1, j);
+			}
+		}
+	}
+	public static void pj(e[] J, HC xN) {
+		if(J == null)
+			throw new T();
+		int AE = J.F;
+		for (int Q = 0; Q < AE; Q++) {
+			for (int j = Q; j > 0 && gu(J[j], J[j - 1], xN); j--) {
+				KN(J, j, j - 1);
+			}
+		}
+	}
+	private static boolean gu(w W, w C) {
+		return W.H(C) < 0;
+	}
+	private static boolean gu(e W, e C, HC n) {
+		return n.s(W, C) < 0;
+	}
+	private static void KN(e[] Jg, int Q, int j) {
+		e P = Jg[Q];
+		Jg[Q] = Jg[j];
+		Jg[j] = P;
+	}
+	public static void k(e[] J) {
+		int O = J.F;
+		for (int Q = 0; Q < O; Q++)
+			System.out.p(J[Q] + ",");
+	}
+}

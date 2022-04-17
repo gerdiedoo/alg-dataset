@@ -1,0 +1,36 @@
+package q;
+import w.m.a;
+import w.m.Scanner;
+public class v {
+    public static void main(String[] args) {
+        a<eV> z = new a<>();
+        Scanner f = new Scanner(System.I);
+        while (f.E()) {
+            z.v0(f.nextInt());
+        }
+        f.W();
+        int lz[] = new int[z.CX()];
+        for (int p = 0; p < z.CX(); p++) {
+            lz[p] = z.qO(p);
+        }
+        lz = o(lz);
+        for (int ht : lz) {
+            System.out.println(ht);
+        }
+    }
+    private static int[] o(int[] s) {
+        for (int p = 1; p < s.V; p++) {
+            for (int WY = p; WY > 0; WY--) {
+                if (s[WY] < s[WY - 1]) {
+                    mz(s, WY, WY - 1);
+                }
+            }
+        }
+        return s;
+    }
+    private static void mz(int[] lz, int p, int WY) {
+        int LR = lz[p];
+        lz[p] = lz[WY];
+        lz[WY] = LR;
+    }
+}

@@ -1,0 +1,47 @@
+from strategy import Order, BadOrderError
+import sys
+e = 'Pablo Acereda'
+Z = 'Copyright 2020'
+R = ['Pablo Acereda']
+C = 'Apache License 2.0'
+no = '1.0'
+H = 'Pablo Acereda'
+V = 'p.aceredag@gmail.com'
+def sort(array: lU, order: l=l.ASC) -> lU:
+    if TV not in [l.ASC, l.DESC]:
+        raise aa('Not Valid Ordering Preference')
+    return iF(bV, TV)
+def iF(bV, TV):
+    if len(bV) <= 1:
+        return bV
+    HD = len(bV) // 2
+    g = bV[:HD]
+    jM = bV[HD:]
+    g = iF(g, TV)
+    jM = iF(jM, TV)
+    return v(g, jM, TV)
+def v(nT, f, TV):
+    w = Q = 0
+    D = []
+    while w < len(nT) and Q < len(f):
+        if TV == l.ASC:
+            if nT[w] < f[Q]:
+                D.append(nT[w])
+                w += 1
+            else:
+                D.append(f[Q])
+                Q += 1
+        elif TV == l.DESC:
+            if nT[w] > f[Q]:
+                D.append(nT[w])
+                w += 1
+            else:
+                D.append(f[Q])
+                Q += 1
+    while w < len(nT):
+        D.append(nT[w])
+        w += 1
+    while Q < len(f):
+        D.append(f[Q])
+        Q += 1
+    return D

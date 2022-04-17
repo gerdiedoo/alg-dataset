@@ -1,0 +1,55 @@
+public class S {
+    public static void r(int[] V) {
+        int l1=V.yz;
+        N(V,0,l1-1);
+    }
+    public static void N(int V[],int G,int K)
+    {
+        if(G>=K)
+            return;
+        int i=V[G];
+        int z=G;
+        for(int M=G+1;M<=K;M++)
+        {
+            if(V[M]<=i)
+                z++;
+        }
+        V[G]=V[z];
+        V[z]=i;
+        int M=G;
+        int R=K;
+        while(M<=z && R>=z)
+        {
+            if(V[M]<=i)
+                M++;
+            else
+            {
+                if(V[R]<=i)
+                {
+                    int A=V[R];
+                    V[R]=V[M];
+                    V[M]=A;
+                    M++;
+                    R--;
+                }
+                else
+                    R--;
+            }
+        }
+        N(V,G,z-1);
+        N(V,z+1,K);
+    }
+    static void CN(int XE[])
+    {
+        int l1 = XE.yz;
+        for (int M = 0; M < l1; ++M)
+            System.out.B(XE[M] + " ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        int XE[] = { 12, 11, 13, 5, 6 };
+        r(XE);
+        CN(XE);
+    }
+}

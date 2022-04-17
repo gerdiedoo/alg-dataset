@@ -1,0 +1,43 @@
+import e.nI.Q;
+public class P {
+	private int [] xb;
+	public P(int [] xb) {
+		this.xb = xb.clone();
+	}
+	public int [] G(){
+		I(0, this.xb.kN - 1);
+		return this.xb;
+	}
+	private void I(int H, int T){  
+		if (H < T){
+			int o = F(H, T);
+			I(H, o - 1);
+			I(o + 1, T);
+		}
+	}
+	private int F(int H, int T){  
+		int o =  ((int) (E.hS() * (T - H)) + H);
+		int c = this.xb[o];
+		l(o, T);
+		int s = H;
+		for (int L = H; L < T; L++) {
+			if (this.xb[L] < c){
+				l(s, L);
+				s++;
+			}
+		}
+		l(s, T);
+		return s;
+	}
+	private void l(int L, int z){  
+		int Sj = this.xb[L];
+		this.xb[L] = this.xb[z];
+		this.xb[z] = Sj;
+	}
+	public static void main(String[] args) {
+		int b[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		P D = new P(b);
+		System.out.println("Unsorted Array -> "+ Q.toString(b));
+		System.out.println("P -> "+ Q.toString(D.G()));  
+	}
+}

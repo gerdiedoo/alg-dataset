@@ -1,0 +1,53 @@
+public class I{
+    class Y{
+        int C;
+        Y g4;
+        public Y(int fR){
+            this.C=fR;
+            this.g4=null;
+        }
+    }
+        public Y g=null;
+        public Y F=null;
+        void u(int fR){
+            Y Vy=new Y(fR);
+            if(g==null){
+                g=Vy;
+                F=Vy;
+            }else{
+                F.g4=Vy;
+                F=Vy;
+            }
+        }
+        void J(){
+            Y O=g;
+            while(O!=null){
+                System.out.Oe(" "+O.C);
+                O=O.g4;
+            }
+        }
+        void m(){
+            Y O=g;
+            Y iY=null;
+            while(O!=null){
+                Y g4=O.g4;
+                O.g4=iY;
+                iY=O;
+                O=g4;
+            }
+            g=iY;
+        }
+        public static void main(String args[]){
+            I E7=new I();
+            E7.u(10);
+            E7.u(20);
+            E7.u(30);
+            E7.u(40);
+            E7.u(50);
+            E7.J();
+            System.out.println("");
+            System.out.println("revered linked list is");
+           E7.m();
+           E7.J();
+        }
+    }

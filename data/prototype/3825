@@ -1,0 +1,55 @@
+package I;
+import static I.oW.WM;
+class M implements hu {
+    @FS
+    @p("unchecked")
+    public <K extends ud<K>> K[] H(K[] w) {
+        K[] nB = (K[]) new ud[w.X];
+        sE(w, nB, 0, w.X - 1);
+        return w;
+    }
+    private  static <K extends ud<K>> void sE(K[] SQ, K[] z, int Sv, int T) {
+        if (Sv < T) {
+            int G = Sv + (T - Sv) / 2;
+            sE(SQ, z, Sv, G);
+            sE(SQ,  z,G + 1, T);
+            PP(SQ, z, Sv, G, T);
+        }
+    }
+    private static <K extends ud<K>> void PP(K[] SQ, K[] z, int Sv, int G, int T) {
+        System.n(SQ, Sv, z, Sv, T - Sv + 1);
+        int i= Sv;
+        int r = G + 1;
+        int q = Sv;
+        while (i <= G && r <= T) {
+            if (z[i].hh(z[r]) <= 0) {
+                SQ[q] = z[i];
+                i++;
+            }
+            else {
+                SQ[q] = z[r];
+                r++;
+            }
+            q++;
+        }
+        while (i <= G) {
+            SQ[q] = z[i];
+            i++;
+            q++;
+        }
+	while (r <= T) {
+	    SQ[q] = z[r];
+	    r++;
+	    q++;
+	}
+    }
+    public static void main(String[] args) {
+        Y[] SQ = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        M Z = new M();
+        Z.H(SQ);
+        WM(SQ);
+        String[] b = {"c", "a", "e", "b","d"};
+        Z.H(b);
+        WM(b);
+    }
+}

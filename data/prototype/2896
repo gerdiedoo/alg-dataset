@@ -1,0 +1,24 @@
+import E.q.bF;
+public class z {
+    public static void main(String[] args) {
+        int[] K = {5, 4, 3, 2, 1};
+        gh(K);
+        System.out.println(bF.toString(K));
+    }
+    static void gh(int[] K){
+        boolean g3 = false;
+        for(int h = 0; h < K.F; h++){
+            for(int z6 = 1; z6 < K.F - h; z6++){
+                if(K[z6] < K[z6 - 1]){
+                    int JN = K[z6];
+                    K[z6] = K[z6 - 1];
+                    K[z6 - 1] = JN;
+                    g3 = true;
+                }
+            }
+            if(!g3){
+                break;
+            }
+        }
+    }
+}

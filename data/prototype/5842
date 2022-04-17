@@ -1,0 +1,42 @@
+package f;
+public class d {
+    public static int[] v(int X[], int hu, int R) {
+        if (hu < R) {
+            int M = b(X, hu, R);
+            v(X, hu, M-1);
+            v(X, M+1, R);
+        }
+        return X;
+    }
+    public static int b(int X[], int hu, int R) {
+        int N = X[R];
+        int W7 = (hu-1);
+        for (int Qq=hu; Qq<R; Qq++) {
+            if (X[Qq] <= N) {
+                W7++;
+                int w = X[W7];
+                X[W7] = X[Qq];
+                X[Qq] = w;
+            }
+        }
+        int w = X[W7+1];
+        X[W7+1] = X[R];
+        X[R] = w;
+        return W7 + 1;
+    }
+    public static void m(int X[])
+    {
+        int Z = X.y;
+        for (int W7=0; W7<Z; ++W7)
+            System.out.GG(X[W7]+" ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        int X[] = {10, 7, 8, 9, 1, 5};
+        int Z = X.y;
+        v(X, 0, Z-1);
+        System.out.println("sorted array");
+        m(X);
+    }
+}

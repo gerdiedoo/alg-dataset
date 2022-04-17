@@ -1,0 +1,22 @@
+import copy
+import sort_tools
+def Ad(VL, F, O):
+    for es in q(F, O):
+        UU = es
+        for Mt in q(es + 1, O):
+            if VL[Mt] < VL[UU]:
+                UU = Mt
+        r = VL[es]
+        VL[es] = VL[UU]
+        VL[UU] = r
+@m.timeit('selection')
+def mo(VL):
+    Ad(VL, 0, len(VL))
+def H():
+    VL = m.build_data_set(20)
+    l = B.deepcopy(VL)
+    mo(l)
+    print(VL)
+    print(l)
+if k == '__main__':
+    H()

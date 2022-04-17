@@ -1,0 +1,45 @@
+import um.Bx.y;
+import um.e5.S;
+public class m extends N{
+	public S<s> V(S<s> CA)
+	{
+		S<s> l = new S<s>();
+		boolean w = true;
+		while(w)
+		{
+			w = false;
+			for(int z = 1; z < CA.k(); z++)
+			{
+				if(CA.s1(z) < CA.s1(z - 1))
+				{
+					int v = CA.s1(z);
+					CA.gB(z, CA.s1(z - 1));
+					CA.gB(z - 1, v);
+					w = true;
+				}
+			}
+		}
+		l = CA;
+		return l;
+	}
+	public void Q(su n) throws y
+	{
+		n.S8();
+		S<s> l = new S<s>();
+		long q = System.F();
+		l = V(n.M());
+		long I = System.F();
+		double E = I - q;
+		double Y = E/1000000;
+		if(D(l))
+		{
+			n.H(l);
+			System.out.C("m time (in Milli): "); 
+			System.out.println(Y);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

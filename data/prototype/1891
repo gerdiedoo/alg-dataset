@@ -1,0 +1,138 @@
+import d.l.T0;
+import d.l.h;
+import d.l.F_;
+import d.l.M7;
+public class V6<e, cG> implements b<e, cG> {
+    private U<e, cG>[] C;
+    private int u;
+    public V6() {
+        D9();
+    }
+    @O
+    public cG hT(e IX, cG dE) {
+        if (IX == null || dE == null) {
+            throw new HP("Argument cannot be null.");
+        }
+        if (this.k() > G) {
+            uV();
+        }
+        int Q = this.e1(IX);
+        U<e, cG> rQ = this.C[Q];
+        cG Fw = null;
+        if (rQ == null) {
+            this.C[Q] = new U<e, cG>(IX, dE);
+        } else if (rQ.s().equals(IX)) {
+            if (!rQ.S()) {
+                Fw = rQ.a();
+            }
+            rQ.RP(dE);
+            rQ.N(false);
+        } else {
+            rQ.D(IX);
+            rQ.RP(dE);
+            rQ.N(false);
+        }
+        if (Fw == null) {
+            u++;
+        }
+        return Fw;
+    }
+    @O
+    public cG X(e IX) {
+        if (IX == null) {
+            throw new HP("Argument cannot be null.");
+        }
+        int Q = this.e1(IX);
+        U<e, cG> rQ = this.C[Q];
+        if (rQ != null && rQ.s().equals(IX) && !rQ.S()) {
+            rQ.N(true);
+            u--;
+            return rQ.a();
+        }
+        return null;
+    }
+    @O
+    public cG z(e IX) {
+        if (IX == null) {
+            throw new HP("Argument cannot be null.");
+        }
+        int Q = this.e1(IX);
+        U<e, cG> rQ = this.C[Q];
+        return (rQ != null && !rQ.S()
+                && rQ.s().equals(IX) ? rQ.a() : null);
+    }
+    @O
+    public boolean y(e IX) {
+        return z(IX) != null;
+    }
+    @I("unchecked")
+    @O
+    public void D9() {
+        this.C = (U<e, cG>[]) new U[pf];
+        this.u = 0;
+    }
+    @O
+    public int u() {
+        return this.u;
+    }
+    @O
+    public M7<e> j() {
+        h<e> Fw = new h<e>(u);
+        for (int i = 0; i < this.C.F; i++) {
+            U<e, cG> rQ = this.C[i];
+            if (rQ != null && !rQ.S()) {
+                Fw.hT(rQ.s());
+            }
+        }
+        return Fw;
+    }
+    @O
+    public F_<cG> xI() {
+        T0<cG> Fw = new T0<cG>(u);
+        for (int i = 0; i < this.C.F; i++) {
+            U<e, cG> rQ = this.C[i];
+            if (rQ != null && !rQ.S()) {
+                Fw.hT(rQ.a());
+            }
+        }
+        return Fw;
+    }
+    private double k() {
+        return (double) (u + 1) / (double) this.C.F;
+    }
+    @I("unchecked")
+    private void uV() {
+        U<e, cG>[] nT = this.C;
+        this.C = (U<e, cG>[]) new U[nT.F * 2];
+        this.u = 0;
+        for (int i = 0; i < nT.F; i++) {
+            U<e, cG> rQ = nT[i];
+            if (rQ != null && !rQ.S()) {
+                this.hT(rQ.s(), rQ.a());
+            }
+        }
+    }
+    private int e1(e IX) {
+        int Q = R.sk(IX.hashCode()) % this.C.F;
+        U<e, cG> x = this.C[Q];
+        int H = -1;
+        int o = Q;
+        boolean Y = false;
+        while (x != null && !x.s().equals(IX)
+                && (!Y || o != Q)) {
+            if (H == -1 && x.S()) {
+                H = Q;
+            }
+            if (++o >= this.C.F) {
+                o = 0;
+                Y = true;
+            }
+            x = this.C[o];
+        }
+        if (x != null && x.s().equals(IX)) {
+            return o;
+        } else {
+            return (H == -1 ? o : H);
+        }
+    }
+}

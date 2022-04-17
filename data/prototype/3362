@@ -1,0 +1,19 @@
+package c.r.R;
+import K.d.I;
+import K.d.n.Z;
+@w({"unchecked", "unused"})
+public class x<hc extends t> extends E<hc> {
+    hc[] u(hc[] k, Z<hc, hc, D> z){
+        hc[] dO = I.B(k, k.F);
+        for (int C = 1; C < dO.F; C++) {
+            hc s = dO[C];
+            int h = C;
+            while(h  > 0 && z.pW(s, dO[h -1])){
+                dO[h] = dO[h - 1];
+                h--;
+            }
+            dO[h] = s;
+        }
+        return dO;
+    }
+}

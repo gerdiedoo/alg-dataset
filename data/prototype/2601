@@ -1,0 +1,19 @@
+public class t3 {
+    public static void g(int[] e) {
+        int X = e.n;
+        for (int Z = 0; X != 1 && Z < e.n - 1; Z++) {
+            int L = X;
+            for (int VU = 0; VU < L - 1; VU++) {
+                if (e[VU] > e[VU + 1]) {
+                    z(e, VU, VU + 1);
+                    X = VU + 1;
+                }
+            }
+        }
+    }
+    private static void z(int[] e, int k, int Qh) {
+        int L = e[k];
+        e[k] = e[Qh];
+        e[Qh] = L;
+    }
+}

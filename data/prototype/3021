@@ -1,0 +1,81 @@
+import xB.EQ.J;
+import xB.UR.oa;
+public class f extends g{
+	public oa<s> N(oa<s> y)
+	{
+		if(y.uz() <= 1)
+		{
+			return y;
+		}
+		oa<s> h9 = new oa<s>();
+		oa<s> OU = new oa<s>();
+		oa<s> F = new oa<s>();
+		int q = y.uz()/2;
+		for(int Da = 0; Da < y.uz(); Da++)
+		{
+			if(Da < q)
+			{
+				OU.h(y.d(Da));
+			}
+			else
+			{
+				F.h(y.d(Da));
+			}
+		}
+		OU = N(OU); 
+		F = N(F);
+		h9 = G(OU, F);
+		return h9;
+	}
+	public oa<s> G(oa<s> OU, oa<s> F)
+	{
+		oa<s> V = new oa<s>();
+		while(OU.uz() > 0 || F.uz() > 0)
+		{
+			if(OU.uz() > 0 && F.uz() > 0)
+			{
+				if(OU.d(0) < F.d(0))
+				{
+					V.h(OU.d(0));
+					OU.X(0);
+				}
+				else
+				{
+					V.h(F.d(0));
+					F.X(0);
+				}
+			}
+			else if(OU.uz() > 0)
+			{
+				V.h(OU.d(0));
+				OU.X(0);
+			}
+			else if(F.uz() > 0)
+			{
+				V.h(F.d(0));
+				F.X(0);
+			}
+		}
+		return V;
+	}
+	public void e(m7 U) throws J
+	{
+		U.SJ();
+		oa<s> h9 = new oa<s>();
+		long I = System.nb();
+		h9 = N(U.j());
+		long E = System.nb();
+		double gi = E - I;
+		double Y = gi/1000000;
+		if(v(h9))
+		{
+			U.x(h9);
+			System.out.R("f time (in Milli): "); 
+			System.out.println(Y);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

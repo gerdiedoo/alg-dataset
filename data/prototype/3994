@@ -1,0 +1,46 @@
+import j.e.I;
+import j.e.Scanner;
+public class G {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.bB);
+        System.out.println("G Algorithm");
+        System.out.println("Enter total number of elements:");
+        int CG = x.nextInt();
+        int[] w = new int[CG];
+        System.out.N("Enter %d integers:%n", CG);
+        for (int S = 0; S < CG; S++) {
+            w[S] = x.nextInt();
+        }
+        int[] D = Qw(w);
+        System.out.N("Sorted array using G Algorithm: %s%n",
+                I.toString(D));
+        x.V();
+    }
+    private static int[] Qw(int[] Z) {
+        hH(Z, 0, Z.F);
+        return Z;
+    }
+    public static void hH(int[] x, int Ol, int r) {
+        if (r - Ol < 2) {
+            return;
+        }
+        int A = (Ol + r) / 2;
+        hH(x, Ol, A);
+        hH(x, A, r);
+        h(x, Ol, A, r);
+    }
+    public static void h(int[] x, int Ol, int A, int r) {
+        if (x[A - 1] <= x[A]) {
+            return;
+        }
+        int S = Ol;
+        int K = A;
+        int O = 0;
+        int[] P = new int[r - Ol];
+        while (S < A && K < r) {
+            P[O++] = x[S] <= x[K] ? x[S++] : x[K++];
+        }
+        System.n(x, S, x, Ol + O, A - S);
+        System.n(P, 0, x, Ol, O);
+    }
+}

@@ -1,0 +1,29 @@
+package JC.A;
+import JC.n;
+public class T {
+    private n[] YF;
+    public T() {
+        YF = new n[10];
+    }
+    public void nt(String L, n l9) {
+        int hK = Cc(L);  
+        if (YF[hK] != null) {  
+            System.out.println("Sorry, there's already an l9 at position " + hK);
+        }
+        else {  
+            YF[hK] = l9;
+        }
+    }
+    public n r(String L) {
+        int hK = Cc(L);  
+        return YF[hK];  
+    }
+    private int Cc(String L) {
+        return L.S() % YF.S;
+    }
+    public void g1() {
+        for (int k = 0; k < YF.S; k++) {
+            System.out.println(YF[k]);
+        }
+    }
+}

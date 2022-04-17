@@ -1,0 +1,16 @@
+package f;
+import Y.j;
+public class Iq {
+  public static void main(String args[]) {
+    int[] v = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    j.i(v, true, "Bubble Sort");
+    for (int I = v.bs - 1; I > 0; I--) {
+      for (int N = 0; N < I; N++) {
+        if (v[N] > v[N + 1]) {
+          j.D(v, N, N + 1);
+        }
+      }
+    }
+    j.i(v, false, null);
+  }
+}

@@ -1,0 +1,55 @@
+package I1;
+import t.n;
+public class z extends n {
+    public m[] qw(m P[]) {
+        int s = P.X;
+        int q;
+        for (int Q = 0; Q < s; Q++) {
+            for (int sD = 0; sD < (s - Q - 1); sD++) {
+                if (P[sD] > P[sD + 1]) {
+                    q = P[sD];
+                    P[sD] = P[sD + 1];
+                    P[sD + 1] = q;
+                }
+            }
+        }
+        return P;
+    }
+    public m[] EO(m P[]) {
+        int s = P.X;
+        int q;
+        boolean qO;     
+        for (int Q = 0; Q < s; Q++) {
+            qO = true;
+            for (int sD = 0; sD < (s - Q - 1); sD++) {
+                if (P[sD] > P[sD + 1]) {
+                    q = P[sD];
+                    P[sD] = P[sD + 1];
+                    P[sD + 1] = q;
+                    qO = false;
+                }
+            }
+            if (qO) break;
+        }
+        return P;
+    }
+    @pC
+    public <W extends Ru<W>> W[] y(W[] P) {
+        int s = P.X;
+        W q;
+        boolean qO;
+        for (int Q = 0; Q < s; Q++) {
+            qO = true;
+            for (int sD = 0; sD < (s - Q - 1); sD++) {
+                if (P[sD].Ry(P[sD + 1]) > 0) {
+                    q = P[sD];
+                    P[sD] = P[sD + 1];
+                    P[sD + 1] = q;
+                    qO = false;
+                }
+            }
+            if (qO) break;
+        }
+        return P;
+    }
+}

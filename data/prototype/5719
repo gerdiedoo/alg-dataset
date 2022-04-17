@@ -1,0 +1,34 @@
+def x(QE):
+    if len(QE) <= 1:
+        return
+    Z = len(QE) // 2
+    d = QE[:Z]
+    y = QE[Z:]
+    x(d)
+    x(y)
+    A(d, y, QE)
+def A(E, R, QE):
+    r = len(E)
+    s = len(R)
+    H = mL = L = 0
+    while H < r and mL < s:
+        if E[H] <= R[mL]:
+            QE[L] = E[H]
+            H += 1
+        else:
+            QE[L] = R[mL]
+            mL += 1
+        L += 1
+    while H < r:
+        QE[L] = E[H]
+        H += 1
+        L += 1
+    while mL < s:
+        QE[L] = R[mL]
+        mL += 1
+        L += 1
+if a == '__main__':
+    l = [[10, 3, 15, 7, 8, 23, 98, 29], [], [3], [9, 8, 7, 2], [1, 2, 3, 4, 5]]
+    for QE in l:
+        x(QE)
+        print(QE)

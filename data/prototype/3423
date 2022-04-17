@@ -1,0 +1,17 @@
+package h;
+import w.J;
+public class Us {
+  public static void main(String[] args) {
+    int[] bi = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    J.YA(bi, true, "Insertion Sort");
+    for (int Z = 1; Z < bi.T; Z++) {
+      int t = bi[Z];
+      int y;
+      for (y = Z; y > 0 && bi[y - 1] > t; y--) {
+        bi[y] = bi[y - 1];
+      }
+      bi[y] = t;
+    }
+    J.YA(bi, false, null);
+  }
+}

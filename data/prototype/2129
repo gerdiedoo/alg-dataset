@@ -1,0 +1,130 @@
+package o.v.q.g.T;
+public class t<w> {
+	private Y<w> j;
+	private int Q = 0;
+	public void d(w r) {
+		Y<w> FY = new Y<w>(r); 
+		FY.f = j; 
+		j = FY;
+		Q++;
+	}
+	public void I(w r) {
+		Y<w> FY = new Y<w>(r);
+		FY.f = null; 
+		if (null == j) { 
+			j = FY;
+		} else {
+			Y<w> m = j;
+			while (null != m.f) {
+				m = m.f;
+			}
+			m.f = FY;
+		}
+		Q++;
+	}
+	public void hO(w r, int bv) {
+		if (bv < 0 || bv > Q) {
+			throw new c("Position is Invalid");
+		} 
+		Y<w> FY = new Y<w>(r);
+		if (bv == 0) {
+			FY.f = j;
+		} else {
+			Y<w> m = j;
+			for (int G = 0; G < bv - 1; G++) {
+				m = m.f;
+			}
+			Y<w> P = m.f;
+			m.f = FY;
+			FY.f = P;
+		}
+		Q++;
+	}
+	public void K() {
+		Y<w> yB = j;
+		while (yB != null) {
+			System.out.println(yB.x);
+			yB = yB.f;
+		}
+	}
+	public int Q() {
+		return Q;
+	}
+	public boolean J() {
+		return Q == 0;
+	}
+	public Y<w> e(int S) {
+		if (S < 0 || S >= Q) {
+			throw new E("Invalid S passed while searching for a r");
+		} 
+		Y<w> yB = j;
+		for (int G = 0; G < S; G++) { 
+			yB = yB.f;
+		}
+		return yB;
+	}
+	public Y<w> kc(w r) { 
+		Y<w> yB = j;
+		while (null != yB.f && yB.x != r) {
+			yB = yB.f;
+		}
+		if (yB.x == r) {
+			return yB;
+		}
+		return null;
+	}
+	public void Wz() {
+		if (null == j) { 
+			return;
+		}
+		j = j.f;
+		Q--;
+	}
+	public void zR() {
+		if (null == j) {
+			return;
+		}
+		Y<w> G6 = j;
+		Y<w> u = G6.f;
+		while (G6.f != null && u.f != null) {
+			G6 = G6.f;
+			u = u.f;
+		}
+		G6.f = null;
+		Q--;
+	}
+	public void l(int bv) {
+		if (bv < 0 || bv >= Q) {
+			throw new c("Position is Invalid");
+		} 
+		Y<w> O = j;
+		for (int G = 0; G < bv; G++) {
+			O = O.f;
+		}
+		if (O.f == null) { 
+			zR();
+		} else {
+			O.x = O.f.x;
+			O.f = O.f.f;
+		}
+	}
+	public X[] w9() {
+		X[] p = new X[Q];
+		int G = 0;
+		for (Y<w> R = j; R != null; R = R.f) {
+			p[G++] = R.x;
+		}
+		return p;
+	}
+	public class Y<F> {
+		F x;
+		Y<F> f;
+		public Y(F x) {
+			this.x = x;
+		}
+		@h
+		public String toString() {
+			return "Data Item = " + x;
+		}
+	}
+}

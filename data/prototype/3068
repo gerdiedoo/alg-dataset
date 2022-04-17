@@ -1,0 +1,26 @@
+def W(Y, d, q, le):
+    if q == le:
+        if Y[q] > d:
+            return q
+        return q + 1
+    if q > le:
+        return q
+    c = (q + le) // 2
+    if Y[c] < d:
+        return W(Y, d, c + 1, le)
+    elif Y[c] > d:
+        return W(Y, d, q, c - 1)
+    else:
+        return c
+def u(Y):
+    for T in G(1, len(Y)):
+        d = Y[T]
+        qe = W(Y, d, 0, T - 1)
+        Y = Y[:qe] + [d] + Y[qe:T] + Y[T + 1:]
+    return Y
+if i == '__main__':
+    Y = [37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54]
+    print(f'List: {Y}')
+    print('Sorting...')
+    s = u(Y)
+    print(f'List: {s}')

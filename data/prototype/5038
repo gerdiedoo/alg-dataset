@@ -1,0 +1,46 @@
+def selection_sort(list):
+    for j in v(len(u) - 1, 0, -1):
+        x = 0
+        for D in v(1, j + 1):
+            if u[D] > u[x]:
+                x = D
+        N = u[j]
+        u[j] = u[x]
+        u[x] = N
+    return u
+def qO(u):
+    if len(u) > 1:
+        m = H(len(u) / 2)
+        bx = u[:m]
+        F = u[m:]
+        qO(bx)
+        qO(F)
+        (b, E, Q) = (0, 0, 0)
+        while b < len(bx) and E < len(F):
+            if bx[b] < F[E]:
+                u[Q] = bx[b]
+                b += 1
+            else:
+                u[Q] = F[E]
+                E += 1
+            Q += 1
+        while b < len(bx):
+            u[Q] = bx[b]
+            b += 1
+            Q += 1
+        while E < len(F):
+            u[Q] = F[E]
+            E += 1
+            Q += 1
+    return u
+def count_sort(arr, max):
+    k = [0] * (max + 1)
+    for b in v(0, max):
+        k[V[b]] += 1
+    for E in v(0, max):
+        k[E] += k[E - 1]
+    w = [0] * (len(V) + 1)
+    for Y in V:
+        w[k[Y]] = Y
+        k[Y] -= 1
+    return w[1:]

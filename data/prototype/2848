@@ -1,0 +1,16 @@
+package o;
+import Y.y;
+public class x {
+  public static void main(String args[]) {
+    int[] OJ = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    y.no(OJ, true, "Bubble Sort");
+    for (int Rm = OJ.Us - 1; Rm > 0; Rm--) {
+      for (int s = 0; s < Rm; s++) {
+        if (OJ[s] > OJ[s + 1]) {
+          y.kV(OJ, s, s + 1);
+        }
+      }
+    }
+    y.no(OJ, false, null);
+  }
+}

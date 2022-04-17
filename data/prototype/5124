@@ -1,0 +1,142 @@
+import Q.d.*;
+public class Z<QP,E>{
+	static final int p = 1 << 2;
+	VI<QP,E>[] g;
+	int Rm;
+	int w;
+	public Z() {
+		w = p;
+	}
+	public Z(int yb) {
+		this.w = yb;
+	}
+	class VI<QP, E> {
+		final int D4;
+		final QP o9;
+		E v;
+		VI<QP,E> Fk;
+		VI(int D4, QP o9, E v, VI<QP,E> Fk) {
+			this.D4 = D4;
+			this.o9 = o9;
+			this.v = v;
+			this.Fk = Fk;
+		}
+		public QP M() {
+			return o9;
+		}
+		public E jr() {
+			return v;
+		}
+		public final String toString() { return o9 + "=" + v; }
+		public final int hashCode() {
+			return y.hashCode(o9) ^ y.hashCode(v);
+		}
+	}
+	static final int D4(j o9) {
+		return (o9 == null) ? 0 : o9.hashCode();
+	}
+	public int Rm() {
+		return Rm;
+	}
+	public boolean Jk() {
+		return Rm == 0;
+	}
+	@V("unchecked")
+	public E fL(QP o9, E v) {
+		VI<QP, E> n;  int D4 = D4(o9);
+		if (g == null || g.Yc == 0) {
+			g = (VI<QP, E>[]) new VI[w];
+		}
+		int G = g.Yc;
+		int L = (G - 1) & D4;
+		if (g[L] == null) {
+			g[L] = new VI<QP,E>(D4, o9, v, null);
+		} else {
+			VI<QP, E> k;
+			n = g[L];
+			if (n.D4 == D4 && 
+					n.o9 == o9 || (o9 != null && n.o9.equals(o9))){
+				k = n;
+			} else {
+				for (int eC = 0; ; eC++) {
+					System.out.println("LinkedList: Not " + n.o9);
+					k = n.Fk;
+					if (n.Fk == null) {
+						n.Fk = new VI(D4, o9, v, null);
+						break;
+					}
+					if (k.D4 == D4 &&
+							(k.o9 == o9 || (o9 != null && k.o9.equals(o9)))) {
+						break;
+					}
+					n = k;
+				}
+			}
+			if (k != null) {
+				E q = k.v;
+				k.v = v;
+				return q;
+			}
+		}
+		Rm++;
+		return null;
+	}
+	public E NE(j o9) {
+		int D4 = D4(o9);
+		int G = g.Yc;
+		if (g != null && g.Yc > 0 && g[D4 & (G - 1)] != null) {
+			VI<QP, E> c = g[D4 & (G - 1)];
+			if (c.D4 == D4 && 
+					c.o9 == o9 || (o9 != null && c.o9.equals(o9))) {
+				return c.v;
+			}
+			VI<QP, E> k = c.Fk;
+			if (c.Fk != null) {
+				do {
+					if (k.D4 == D4 &&
+							k.o9 == o9 || (k.o9 != null && k.o9.equals(o9))) {
+						return k.v;
+					} 
+				}while ((k = k.Fk) != null);
+			}
+		}
+		return null;
+	}
+	public boolean mq(j o9) {
+		return NE(o9) != null;
+	}
+	public E i(j o9) {
+		int D4 = D4(o9);
+		int G = g.Yc;
+		int L = D4 & (G - 1);
+		if (g != null && g.Yc > 0 && g[L] != null) {
+			VI<QP, E> h = g[L];
+			VI<QP, E> k = null; VI<QP, E> R = null;
+			if (h.D4 == D4 && 
+					h.o9 == o9 || (o9 != null && h.o9.equals(o9))) {
+				R = h;
+			}
+			k = h.Fk;
+			if (h.Fk != null) {
+				do {
+					if (k.D4 == D4 && 
+							k.o9 == o9 || (o9 != null && k.o9.equals(o9))) {
+						R = k;
+						break;
+					}
+					h = k;
+				} while ((k = k.Fk) != null);
+			}
+			if (R != null) {
+				if (R == h) {
+					g[L] = R.Fk;
+				} else {
+					h.Fk = R.Fk;
+				}
+				Rm--;
+				return R.v;
+			}
+		}
+		return null;
+	}
+}

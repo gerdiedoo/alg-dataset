@@ -1,0 +1,51 @@
+package h.Y.G;
+import c.U.C;
+import c.U.P;
+public final class b {
+    private b() {
+    }
+    public static <m> void G(m[] y, P<? super m> ee) {
+        if (y.B <= 1) {
+            return;
+        }
+        if (ee == null) {
+            ee = JK.E();
+        }
+        l(y, y.B, ee);
+    }
+    public static <m extends t<? super m>> void G(m[] y) {
+        G(y, null);
+    }
+    private static <m> void l(m[] y, int v, P<m> ee) {
+        if (y.B <= 1) {
+            return;
+        }
+        int d = v / 2;
+        m[] Mc = C.T(y, 0, d);
+        m[] u = C.T(y, d, v);
+        int IA = d;
+        int J = v - d;
+        l(Mc, d, ee);
+        l(u, v - d, ee);
+        TU(y, Mc, IA, u, J, ee);
+    }
+    private static <m> void TU(m[] y, m[] Mc, int IA, m[] u, int J,
+            P<m> ee) {
+        int Q = 0;
+        int uW = 0;
+        int I = 0;
+        while (Q < IA && uW < J) {
+            if (ee.aB(Mc[Q], u[uW]) <= 0) {
+                y[I++] = Mc[Q++];
+            } else {
+                y[I++] = u[uW++];
+            }
+        }
+        while (Q < IA) {
+            y[I++] = Mc[Q++];
+        }
+        while (uW < J) {
+            y[I++] = u[uW++];
+        }
+    }
+}

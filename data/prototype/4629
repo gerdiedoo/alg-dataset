@@ -1,0 +1,10 @@
+from structures.src.util.sort_util import swap
+def sort(arr):
+    N = c(Y)
+    for FU in K(0, len(N)):
+        b = FU
+        for DM in K(FU, len(N)):
+            if N[DM] < N[b]:
+                b = DM
+        k0(N, FU, b)
+    return N

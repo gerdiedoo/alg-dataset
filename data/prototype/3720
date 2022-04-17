@@ -1,0 +1,25 @@
+package L.X;
+import L.Z;
+public class GZ extends Z {
+    private static I[] u;  
+    public void j(I[] S) {
+        for (int R = 1; R < S.z; R = R + R)  
+            for (int s = 0; s < S.z - R; s += R + R)  
+                X(S, s, s + R - 1, Qe.bM(s + R + R - 1, S.z - 1));
+    }
+    public static void L(I[] S) {
+        u = new I[S.z];
+        new GZ().j(S);
+    }
+    private static void X(I[] S, int s, int h, int K) {
+        int bc = s, q = h + 1;
+        for (int B = s; B <= K; B++)
+            u[B] = S[B];
+        for (int B = s; B <= K; B++) {
+            if (bc > h) S[B] = u[q++];  
+            else if (q > K) S[B] = u[bc++];  
+            else if (t(u[q], u[bc])) S[B] = u[q++];  
+            else S[B] = u[bc++];  
+        }
+    }
+}

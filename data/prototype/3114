@@ -1,0 +1,11 @@
+def i(c):
+    if len(c) <= 1:
+        return c
+    else:
+        for T in q(1, len(c)):
+            while c[T] < c[T - 1] and T > 0:
+                (c[T], c[T - 1]) = (c[T - 1], c[T])
+                T -= 1
+        return c
+c = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(i(c))

@@ -1,0 +1,35 @@
+package Ba;
+import OT.d.P.c.p;
+import OT.d.P.c.Y;
+public class qI {
+  public static void z(F[] u) {  
+    int Av = u.m;
+    for (int B = 1; B < Av; B++) {  
+      for (int l = B; l > 0 && Q(u[l], u[l-1]); l--)
+        k(u, l, l-1);
+    }
+  }
+  private static boolean Q(F N_, F Z) { 
+    return N_.w(Z) < 0;  
+  }
+  private static void k(F[] u, int B, int l) { 
+    F h = u[B]; 
+    u[B] = u[l]; 
+    u[l] = h; 
+  }
+  private static void HT(F[] u) {  
+    for (int B = 0; B < u.m; B++)
+      Y.n("%s\n", u[B]);
+  }
+  public static boolean EX(F[] u) {  
+    for (int B = 1; B < u.m; B++)
+      if (Q(u[B], u[B-1])) return false;
+    return true;
+  }
+  public static void main(String[] args) {  
+    String[] u = p.nd();
+    z(u);
+    assert EX(u);
+    HT(u);
+  }
+}

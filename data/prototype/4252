@@ -1,0 +1,64 @@
+package J.l;
+import J.Z.y;
+import J.Z.H;
+public class U<X> extends M<X> {
+	@C
+	@A("hiding")
+	public <X extends aq<X>> X[] V(X[] r, y sA) {
+		return this.V(r, sA, H.i);
+	}
+	@A("hiding")
+	public <X extends aq<X>> X[] V(X[] r, y sA, H D) {
+		return this.Y(r, sA, D, 0, r.L-1);
+	}
+	@A("hiding")
+	private <X extends aq<X>> X[] Y(X[] r, y sA, H D, int N, int p) {
+		if (N > p || r.L == 0 || r == null) {
+			return r;
+		}
+		int U2;
+		if        (D == H.e) {   
+			U2 = N;
+		} else if (D == H.R) {    
+			U2 = p;
+		} else if (D == H.L6) {  
+			U2 = (int) (R1.x9() * (p-N+1) + N);
+		} else {                             
+			U2 = this.G(r, N, p);
+		}
+		U2 = this.tU(r, sA, U2, N, p);
+		Y(r, sA, D, N, U2 - 1);
+		Y(r, sA, D, U2 + 1, p);
+		return r;
+	}
+	@A("hiding")
+	private <X extends aq<X>> int tU(X[] r, y sA, int D, int d, int K) {
+		this.eb(r, D, K);
+		int Fm = d;
+		for (int V2=d; V2<K; V2++) {
+			if ((sA == y.p8  && r[V2].x(r[K]) < 0)  || 
+				(sA == y.k && r[V2].x(r[K]) > 0)) {
+				this.eb(r, Fm, V2);
+				Fm++;
+			}
+		}
+		this.eb(r, Fm, K);
+		return Fm;
+	}
+	@A("hiding")
+	private <X extends aq<X>> int G(X[] r, int d, int K) {
+		int IX = (d + K) / 2;
+		X E = r[d];
+		X s = r[IX];
+		X jF = r[K];
+		if ((E.x(s) <= 0 && s.x(jF) <= 0)  || 
+			(jF.x(s) <= 0 && s.x(E) <= 0)) {
+			return IX;
+		}
+		if ((E.x(jF) <= 0 || jF.x(s) <= 0)  && 
+			(s.x(jF) <= 0 || jF.x(E) <= 0)) {
+			return K;
+		}
+		return d;
+	}
+}

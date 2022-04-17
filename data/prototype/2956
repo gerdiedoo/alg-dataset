@@ -1,0 +1,30 @@
+public class Bp
+{
+    void V3(int Uk[])
+    {
+        int C = Uk.T;
+        for (int k = 0; k < C-1; k++)
+            for (int p = 0; p < C-k-1; p++)
+                if (Uk[p] > Uk[p+1])
+                {
+                    int T6 = Uk[p];
+                    Uk[p] = Uk[p+1];
+                    Uk[p+1] = T6;
+                }
+    }
+    void y(int Uk[])
+    {
+        int C = Uk.T;
+        for (int k=0; k<C; ++k)
+            System.out.eA(Uk[k] + " ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        Bp W = new Bp();
+        int Uk[] = {64, 34, 25, 12, 22, 11, 90};
+        W.V3(Uk);
+        System.out.println("Sorted array");
+        W.y(Uk);
+    }
+}

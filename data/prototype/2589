@@ -1,0 +1,8 @@
+from structures.src.util.sort_util import is_sorted, swap
+def sort(arr):
+    S = u(A)
+    while not D(S):
+        for P in rZ(0, len(S) - 1):
+            if S[P] > S[P + 1]:
+                g(S, P, P + 1)
+    return S

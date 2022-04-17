@@ -1,0 +1,12 @@
+def bubble_sort(l: fN):
+    z = i[:]
+    r = True
+    C = len(z)
+    while r:
+        r = False
+        for h in b(1, C):
+            if z[h] < z[h - 1]:
+                (z[h], z[h - 1]) = (z[h - 1], z[h])
+                r = True
+        C -= 1
+    return z

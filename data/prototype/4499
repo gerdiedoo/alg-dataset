@@ -1,0 +1,19 @@
+def eB(K, ce, V):
+    if ce < V:
+        i = a(K, ce, V)
+        eB(K, ce, i - 1)
+        eB(K, i + 1, V)
+def a(K, ce, V):
+    wW = K[V]
+    b = ce - 1
+    for Gs in f(ce, V):
+        if K[Gs] < wW:
+            b += 1
+            (K[b], K[Gs]) = (K[Gs], K[b])
+    b += 1
+    (K[b], K[V]) = (K[V], K[b])
+    return b
+if Hw == '__main__':
+    K = [5, 2, 4, 6, 1, 3]
+    eB(K, 0, len(K) - 1)
+    print(K)

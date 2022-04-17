@@ -1,0 +1,14 @@
+package i.C.s.B;
+public class f {
+	public static void Sz(N[] s0){
+		for(int I = 1; I < s0.E; I++){
+			for(int u = 0; u < s0.E - 1; u++){
+				if(s0[u] > s0[u + 1]){
+					s0[u] = s0[u] + s0[u + 1];
+					s0[u + 1] = s0[u] - s0[u + 1];
+					s0[u] = s0[u] - s0[u + 1];
+				}
+			}
+		}
+	}
+}

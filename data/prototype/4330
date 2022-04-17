@@ -1,0 +1,7 @@
+def wY(N: Kp) -> Kp:
+    DL = N[:]
+    if len(DL) <= 1:
+        return DL
+    N = [g for g in DL[1:] if g <= DL[0]]
+    W = [g for g in DL[1:] if g > DL[0]]
+    return wY(N) + DL[0:1] + wY(W)

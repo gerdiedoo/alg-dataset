@@ -1,0 +1,27 @@
+import u.M.Scanner;
+class pD{
+    int a(int OC[], int z){
+        int sA = OC.y;
+        int S = 0;  
+        for(int s =0;s<sA;s++){
+            if(OC[s] == z){
+                S = 1;
+                break;
+            }
+        }
+        return S;
+    }
+    public static void main(String[] args) {
+        System.out.println("Enter Number of elements: ");
+        int U = j.nextInt();
+        int OC[] = new int[U];
+        System.out.println("Enter "+U+" elements: ");
+        for(int s=0;s<U;s++) OC[s] = j.nextInt();
+        System.out.println("Enter number to be searched: ");
+        int z = j.nextInt();
+        pD J = new pD();
+        int S = J.a(OC, z);
+        if(S == 1) System.out.println("Number Found!");
+        else System.out.println("Number Not Found!");
+    }
+}

@@ -1,0 +1,26 @@
+def e(t):
+    if len(t) > 1:
+        l = len(t) // 2
+        N = t[:l]
+        o = t[l:]
+        e(N)
+        e(o)
+        ew = 0
+        T = 0
+        Z = 0
+        while ew < len(N) and T < len(o):
+            if N[ew] < o[T]:
+                t[Z] = N[ew]
+                ew += 1
+            else:
+                t[Z] = o[T]
+                T += 1
+            Z += 1
+        while ew < len(N):
+            t[Z] = N[ew]
+            ew += 1
+            Z += 1
+        while T < len(o):
+            t[Z] = o[T]
+            T += 1
+            Z += 1

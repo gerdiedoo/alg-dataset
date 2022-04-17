@@ -1,0 +1,64 @@
+package y.mT.lk;
+import T.s.a;
+import T.s.kZ;
+import T.xH.n;
+import T.xH.Vk;
+import T.xH.x;
+import y.mT.lk.V.k;
+import y.mT.lk.V.z;
+public class mZ<K extends kZ, w extends kZ> extends t<K, w> {
+	protected n<K, w> j;
+	public mZ(a FI) {
+		this (FI, new k());
+	}
+	public mZ(a FI, z f) {
+		super(FI, f, false);
+		j = new n<K, w>();
+		Vk<x.W<K, w>> C = new p<K, w>(this);
+		while (C.qB()) {
+			x.W<K, w> N = C.wR();
+			j.b(N.HC(), N.H());
+		}
+	}
+	@i
+	public synchronized boolean I(JA J) {
+		return j.I(J);
+	}
+	@i
+	public synchronized boolean X(JA D) {
+		return j.X(D);
+	}
+	@i
+	@GS("unchecked")
+	public synchronized w d(JA J) {
+		if (j.I(J))
+			return j.d(J);
+		w e = super.d(J);
+		if (e != null)
+			j.b((K) J, e);
+		return e;
+	}
+	@i
+	public synchronized w b(K J, w e) {
+		j.b(J, e);
+		return super.b(J, e);
+	}
+	@i
+	public synchronized w u(JA J) {
+		j.u(J);
+		return super.u(J);
+	}
+	@i
+	public boolean TO() {
+		return j.TO();
+	}
+	@i
+	public int L() {
+		return j.L();
+	}
+	@i
+	public synchronized void L4() {
+		j.L4();
+		super.L4();
+	}
+}

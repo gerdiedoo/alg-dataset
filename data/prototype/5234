@@ -1,0 +1,84 @@
+class HashTable:
+    def __init__(self):
+        QS.size = 10
+        QS.hashmap = [[] for t in M(0, QS.size)]
+        QS.enable_rehash = False
+        QS.__DIVIDE_FACTOR = 3
+        QS.__MULTIPLIER = 3
+        QS.__KEYERROR = 'Key {} not found in hash table'
+    def hash_func(self, key):
+        H = O(R5) % QS.size
+        return H
+    def set(self, key, value):
+        if QS.__get_size() >= QS.size - QS.size // QS.__DIVIDE_FACTOR:
+            QS.__rehash()
+        H = QS.hash_func(R5)
+        J = False
+        L = QS.hashmap[H]
+        t = 0
+        for (t, f) in enumerate(L):
+            GB = f[0]
+            if R5 == GB:
+                J = True
+                break
+        if J:
+            L[t] = (R5, w)
+        else:
+            L.append((R5, w))
+    def get(self, key):
+        H = QS.hash_func(R5)
+        L = QS.hashmap[H]
+        for f in L:
+            (GB, ce) = f
+            if R5 == GB:
+                return ce
+        raise y(QS.__KEYERROR.format(R5))
+    def delete_key(self, key):
+        H = QS.hash_func(R5)
+        L = QS.hashmap[H]
+        for (t, f) in enumerate(L):
+            (GB, ce) = f
+            if GB == R5:
+                L.pop(t)
+                return True
+        raise y(QS.__KEYERROR.format(R5))
+    def is_keyExists(self, key):
+        H = QS.hash_func(R5)
+        L = QS.hashmap[H]
+        if L is not None:
+            for f in L:
+                GB = f[0]
+                if GB == R5:
+                    return True
+        return False
+    def __rehash(self):
+        QS.size = QS.size * QS.__MULTIPLIER
+        Pz = [[] for t in M(0, QS.size)]
+        for L in QS.hashmap:
+            if L is not None:
+                for f in L:
+                    (R5, w) = f
+                    H = QS.hash_func(R5)
+                    J = False
+                    Zq = Pz[H]
+                    t = 0
+                    for (t, f) in enumerate(Zq):
+                        GB = f[0]
+                        if R5 == GB:
+                            J = True
+                            break
+                    if J:
+                        Zq[t] = (R5, w)
+                    else:
+                        Zq.append((R5, w))
+        QS.hashmap = Pz
+    def __get_size(self):
+        lj = 0
+        for L in QS.hashmap:
+            if L is not None:
+                lj += len(L)
+        return lj
+    def __setitem__(self, key, value):
+        return QS.set(R5, w)
+    def __getitem__(self, key):
+        return QS.get(R5)

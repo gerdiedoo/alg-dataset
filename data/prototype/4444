@@ -1,0 +1,41 @@
+package S.WD;
+import S.L;
+public final class b<g extends w<g>> implements K<g> {
+    @fZ
+    public V1 cd(L Es, g[] J) {
+        cd(Es, J, 0, J.sV - 1);
+        return V1.y;
+    }
+    private void cd(L Es, g[] J, int e1, int Y) {
+        int I = e1;
+        int e = Y;
+        g l = J[e1 + (Y - e1) / 2];
+        while (I <= e) {
+            while (J[I].p(l) < 0) {
+                Es.i(Es.m() + 1);
+                I++;
+            }
+            while (J[e].p(l) > 0) {
+                Es.i(Es.m() + 1);
+                e--;
+            }
+            if (I <= e) {
+                Yu(J, I, e);
+                Es.wD(Es.do() + 1);
+                I++;
+                e--;
+            }
+        }
+        if (e1 < e) {
+            cd(Es, J, e1, e);
+        }
+        if (I < Y) {
+            cd(Es, J, I, Y);
+        }
+    }
+    private void Yu(g[] J, int I, int e) {
+        g Z = J[I];
+        J[I] = J[e];
+        J[e] = Z;
+    }
+}

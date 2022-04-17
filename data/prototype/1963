@@ -1,0 +1,91 @@
+package Bb.R;
+import Bb.m;
+public class L {
+    private sJ[] A;
+    public L() {
+        A = new sJ[10];
+    }
+    public void l(String n, m U) {
+        int nP = V(n);
+        if (K(nP)) {
+            int D = nP;  
+            if (nP == A.S - 1) {  
+                nP = 0;
+            }
+            else {
+                nP++;
+            }
+            while (K(nP) && nP != D) {  
+                nP = (nP + 1) % A.S;
+            }
+        }
+        if (K(nP)) {
+            System.out.println("Sorry, there's already an U at position " + nP);
+        }
+        else {
+            A[nP] = new sJ(n, U);
+        }
+    }
+    public m I(String n) {
+        int nP = LH(n);
+        if (nP == -1) {
+            return null;
+        } else {
+            m U = A[nP].U;
+            A[nP] = null;
+            sJ[] E = A;  
+            A = new sJ[E.S];
+            for (int w = 0; w < E.S ; w++) {
+                if (E[w]!=null){
+                    l(E[w].n,E[w].U);
+                }
+            }
+            return U;
+        }
+    }
+    public m d(String n) {
+        int nP = LH(n);
+        if (nP == -1) {
+            return null;  
+        }
+        return A[nP].U;
+    }
+    private int V(String n) {
+        return n.S() % A.S;
+    }
+    private int LH(String n) {
+        int nP = V(n);
+        if (A[nP] != null && A[nP].n.equals(n)) {
+            return nP;
+        }
+        int D = nP;
+        if (nP == A.S - 1) {
+            nP = 0;
+        }
+        else {
+            nP++;
+        }
+        while (nP != D && A[nP] != null && !A[nP].n.equals(n)) {
+            nP = (nP + 1) % A.S;
+        }
+        if (A[nP]!=null && A[nP].n.equals(n)){
+            return nP;
+        }
+        else{
+            return -1;
+        }
+    }
+    private boolean K(int o5) {
+        return A[o5] != null;
+    }
+    public void e() {
+        for (int w = 0; w < A.S; w++) {
+            if (A[w] == null) {
+                System.out.println("empty");
+            }
+            else {
+                System.out.println("Position " + w + ": " +A[w].U);
+            }
+        }
+    }
+}

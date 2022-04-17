@@ -1,0 +1,23 @@
+class  eN
+{ 
+	public static int S(int hA[], int d) 
+	{ 
+		int z = hA.T; 
+		for(int U = 0; U < z; U++) 
+		{ 
+			if(hA[U] == d) 
+				return U; 
+		} 
+		return -1; 
+	} 
+	public static void main(String args[]) 
+	{ 
+		int hA[] = { 2, 3, 4, 10, 40 }; 
+		int d = 10; 
+		int s = S(hA, d); 
+		if(s == -1) 
+			System.out.pv("Element is not present in array"); 
+		else
+			System.out.pv("Element is present at index " + s); 
+	} 
+} 

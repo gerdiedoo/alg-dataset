@@ -1,0 +1,25 @@
+package w.L;
+import w.d;
+public class U extends d {
+    private static p[] I;  
+    public void KN(p[] mD) {
+        for (int eX = 1; eX < mD.r; eX = eX + eX)  
+            for (int y = 0; y < mD.r - eX; y += eX + eX)  
+                L(mD, y, y + eX - 1, t.J(y + eX + eX - 1, mD.r - 1));
+    }
+    public static void w(p[] mD) {
+        I = new p[mD.r];
+        new U().KN(mD);
+    }
+    private static void L(p[] mD, int y, int BB, int T) {
+        int G = y, z = BB + 1;
+        for (int Ys = y; Ys <= T; Ys++)
+            I[Ys] = mD[Ys];
+        for (int Ys = y; Ys <= T; Ys++) {
+            if (G > BB) mD[Ys] = I[z++];  
+            else if (z > T) mD[Ys] = I[G++];  
+            else if (hh(I[z], I[G])) mD[Ys] = I[z++];  
+            else mD[Ys] = I[G++];  
+        }
+    }
+}

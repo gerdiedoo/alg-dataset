@@ -1,0 +1,58 @@
+package l;
+import G.c.*;
+public class Vf <S extends D<S>> implements Y3<S> {
+	public H<S> b;
+	u[] uU;
+	public int m0(S x, S P) {
+		return x.v(P);
+	}
+	public Vf(){
+		b = new H<S>();
+	}
+	@A
+	public String toString(){
+		String n = "";
+		n += "-->";
+		for (int VR = 0; VR < b.qY(); VR++) {
+			n += b.N(VR) + " ";
+		}
+		return n;
+	}
+	public void YU() {
+		int g = b.qY();
+		uU = new u[g];
+		Rf(0, g - 1);
+	}
+	private void Rf(int t, int XB) {
+		if (t < XB) {
+			int mL = t + ((XB - t) / 2);
+			Rf(t, mL);
+			Rf(mL + 1, XB);
+			gQ(t, mL, XB);
+		}
+	}
+	@R("unchecked")
+	private void gQ(int t, int mL, int XB) {
+		for (int VR = t; VR <= XB; VR++) {
+			uU[VR] = b.N(VR);
+		}
+		int VR = t;
+		int L = mL + 1;
+		int k = t;
+		while ((VR <= mL) && (L <= XB)) {
+			if (m0((S) uU[VR], (S) uU[L]) > 0) {
+				b.a(k, (S) uU[VR]);
+				VR++;
+			} else {
+				b.a(k, (S) uU[L]);
+				L++;
+			}
+			k++;
+		}
+		while (VR <= mL) {
+			b.a(k, (S) uU[VR]);
+			k++;
+			VR++;
+		}
+	}
+}

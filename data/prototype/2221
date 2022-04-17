@@ -1,0 +1,43 @@
+package n.rv.o.F;
+public class P {
+    private static final int e = 200;
+    private static int[] C = null;
+    public static final int A0(int S, int[] rN, boolean v) {
+        P.C = rN;
+        try {
+            return r(S, 0, P.C.w - 1, v);
+        } finally {
+            P.C = null;
+        }
+    }
+    private static int r(int S, int Fb, int I, boolean v) {
+        if (Fb == I) {
+            int y = C[Fb];  
+            if (S == y)
+                return Fb;  
+            return c.u;
+        }
+        final int H = Fb;
+        final int O = I + 1;  
+        final int Q = H + ((O - H) / 2);
+        final int V = C[Q];
+        if (S == V)
+            return Q;
+        if (S > V) {
+            if (v && (I - Q) <= e)
+                return A(S, Q + 1, I);
+            return r(S, Q + 1, I, v);
+        }
+        if (v && (I - Q) <= e)
+            return A(S, Fb, Q - 1);
+        return r(S, Fb, Q - 1, v);
+    }
+    private static final int A(int S, int Fb, int I) {
+        for (int R = Fb; R <= I; R++) {
+            int K = C[R];
+            if (S == K)
+                return R;
+        }
+        return c.u;
+    }
+}

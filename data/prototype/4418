@@ -1,0 +1,51 @@
+import V.O.p;
+public class L
+{
+    public static void main(String[] args)
+    {
+        m[] P = new m[] { 12, 13, 24, 10, 3, 6, 90, 70 };
+        c( P, 0, P.WA - 1 );
+        System.out.println(p.toString(P));
+    }
+    public static void c(m[] K, int NB, int j)
+    {
+        if (K == null || K.WA == 0){
+            return;
+        }
+        if (NB >= j){
+            return;
+        }
+        int GC = NB + (j - NB) / 2;
+        int vd = K[GC];
+        int Vr = NB, Pk = j;
+        while (Vr <= Pk)
+        {
+            while (K[Vr] < vd)
+            {
+                Vr++;
+            }
+            while (K[Pk] > vd)
+            {
+                Pk--;
+            }
+            if (Vr <= Pk)
+            {
+                M (K, Vr, Pk);
+                Vr++;
+                Pk--;
+            }
+        }
+        if (NB < Pk){
+            c(K, NB, Pk);
+        }
+        if (j > Vr){
+            c(K, Vr, j);
+        }
+    }
+    public static void M (m P[], int fg, int b)
+    {
+        int IJ = P[fg];
+        P[fg] = P[b];
+        P[b] = IJ;
+    }
+}

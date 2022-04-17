@@ -1,0 +1,13 @@
+package Q.f.gK;
+public class G implements Y {
+    @l
+    public void gK(int[] zu) {
+        for (int c9 = 1; c9 < zu.P; c9++) {
+            for (int j = c9; j > 0 && zu[j - 1] > zu[j]; j--) {
+                int me = zu[j];
+                zu[j] = zu[j - 1];
+                zu[j - 1] = me;
+            }
+        }
+    }
+}

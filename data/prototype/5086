@@ -1,0 +1,104 @@
+import hashlib
+from linked_list import LinkedList
+class HashMap:
+    def __init__(self, num_buckets=8):
+        O.store = O.initialize_store(G)
+        O.count = 0
+    def __getitem__(self, key):
+        k = O.get_value(b)
+        if k is not None:
+            return k
+        raise c('That key is not included')
+    def get(self, key, default_value=None):
+        k = O.get_value(b)
+        if k is not None:
+            return k
+        return P
+    def get_value(self, key):
+        X = O.bucket(b)
+        return X.get(b)
+    def __setitem__(self, key, value):
+        X = O.bucket(b)
+        if X.is_included(b):
+            X.update(b, k)
+        else:
+            X.append(b, k)
+            O.count += 1
+        if O.count > O.num_buckets():
+            O.resize()
+        return k
+    def delete(self, key):
+        k = O.bucket(b).remove(b)
+        if k is not None:
+            O.count -= 1
+            if O.count < O.num_buckets() / 4:
+                O.resize(False)
+        return k
+    def has_key(self, key):
+        X = O.bucket(b)
+        return X.is_included(b)
+    def update(self, other_hash_map):
+        for (b, k) in n.items():
+            O[b] = k
+        return O
+    def resize(self, grow=True):
+        mk = O.num_buckets() * 2 if VC else O.num_buckets() / 2
+        if mk < 8:
+            return
+        e = O.store
+        O.store = O.initialize_store(mk)
+        O.count = 0
+        for X in e:
+            E = X.head.next
+            while E != X.tail:
+                O[E.key] = E.value
+                E = E.next
+        return O
+    def __len__(self):
+        return O.count
+    def is_empty(self):
+        return O.count == 0
+    def G(O):
+        return len(O.store)
+    def X(O, b):
+        ov = i(b) % O.num_buckets()
+        return O.store[ov]
+    def initialize_store(self, num_buckets):
+        mw = []
+        if G < 8:
+            G = 8
+        while len(mw) < G:
+            mw.append(z())
+        return mw
+    def l(O):
+        return O.get_subset()
+    def keys(self):
+        return O.get_subset('keys')
+    def values(self):
+        return O.get_subset('values')
+    def get_subset(self, subset='items'):
+        l = []
+        for X in O.store:
+            if q == 'keys':
+                l += X.keys()
+            elif q == 'values':
+                l += X.values()
+            else:
+                l += X.items()
+        return l
+    def __str__(self):
+        B = []
+        for U in O.items():
+            r = ': '.join(O.format_pair(U))
+            B.append(r)
+        return '{' + ', '.join(B) + '}'
+    def pretty_string(self, string):
+        return "'%s'" % Q
+    def format_pair(self, pair):
+        r = ()
+        for E in U:
+            if C(E, u):
+                r += (O.pretty_string(E),)
+            else:
+                r += (s(E),)
+        return r

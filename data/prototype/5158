@@ -1,0 +1,253 @@
+package lA.F.U;
+import h.N.Ut;
+import h.N.e;
+import h.N.b;
+import h.N.Z;
+public class Yl<j,W>  implements Ut<j,W>
+{
+	private DL[] E;
+	private int i;
+	public Yl(int R) {
+		if (R <= 0)
+			throw new M(
+				"Illegal R: " + R);
+		E = new DL[R];
+		i = 0;
+	}
+	public Yl() {
+		this(16);
+	}
+	public Yl(Ut<? extends j, ? extends W> I_) {
+		throw new tn();	
+	}
+	public int i() {
+		return i;
+	}
+	public boolean P() {
+		return i == 0 ? true : false;
+	}
+	public W X(Hd wk) {
+		int eC = wk == null ? 0 : wk.hashCode();
+		int I = wk == null ? 0 : eC % E.Q;
+		for (DL<j,W> Qn = E[I]; Qn != null; Qn = Qn.cX) {
+			if (eC == Qn.eC && (wk == Qn.wk ||
+			   (wk != null && wk.equals(Qn.wk)))) {
+				return Qn.K;
+			}
+		}
+		return null;
+	}
+	public boolean p(Hd wk) {
+		int eC = wk == null ? 0 : wk.hashCode();
+		int I = wk == null ? 0 : eC % E.Q;
+		for (DL<j,W> Qn = E[I]; Qn != null; Qn = Qn.cX)
+			if (eC == Qn.eC && (wk == Qn.wk ||
+			   (wk != null && wk.equals(Qn.wk))))
+				return true;
+		return false;
+	}
+	public boolean u(Hd K) {
+		for (int I = 0; I < E.Q; I++)
+			for (DL<j,W> Qn = E[I]; Qn != null; Qn = Qn.cX)
+				if (K == Qn.K ||
+				   (K != null && K.equals(Qn.K)))
+					return true;
+		return false;
+	}
+	public W dE(j wk, W K) {
+		int eC = wk == null ? 0 : wk.hashCode();
+		int I = wk == null ? 0 : eC % E.Q;
+		for (DL<j,W> Qn = E[I]; Qn != null; Qn = Qn.cX) {
+			if (eC == Qn.eC && (wk == Qn.wk ||
+			   (wk != null && wk.equals(Qn.wk)))) {
+				W B = Qn.K;
+				Qn.K = K;
+				return B;
+			}
+		}
+		DL<j,W> Qn = new DL(eC, wk, K, E[I]);
+		E[I] = Qn;
+		i++;
+		return null;
+	}
+	public void to(Ut<? extends j, ? extends W> I_) {
+		if (I_.i() == 0)
+			return;
+		for (Z<? extends Ut.DL<? extends j, ? extends W>> S =
+				I_.O().t(); S.Nr(); ) {
+			Ut.DL<? extends j, ? extends W> Qn = S.cX();
+			dE(Qn.Tb(), Qn.hX());
+		}
+	}
+	public W Go(Hd wk) {
+		int eC = wk == null ? 0 : wk.hashCode();
+		int I = wk == null ? 0 : eC % E.Q;
+		DL<j,W> mS = E[I];
+		for (DL<j,W> Qn = E[I]; Qn != null; Qn = Qn.cX) {
+			if (eC == Qn.eC && (wk == Qn.wk ||
+			   (wk != null && wk.equals(Qn.wk)))) {
+				if (mS == Qn)
+					E[I] = Qn.cX;
+				else
+					mS.cX = Qn.cX;
+                		i--;
+				return Qn.K;
+			}
+			mS = Qn;
+		}
+		return null;
+	}
+	public void S_() {
+		for (int I = 0; I < E.Q; I++)
+			E[I] = null;
+		i = 0;
+	}
+	static class DL<j,W> implements Ut.DL<j,W> {
+        	final int eC;
+		final j wk;
+		W K;
+	        DL<j,W> cX;
+		DL(int G, j r, W D, DL<j,W> o) {
+			eC = G;
+			wk = r;
+			K = D;
+			cX = o;
+		}
+		public j Tb() {
+			return wk;
+		}
+		public W hX() {
+			return K;
+		}
+		public W b9(W D) {
+			W a = K;
+            		K = D;
+            		return a;
+		}
+		public boolean equals(Hd gQ) {
+			if (gQ == this)
+				return true;
+			if (!(gQ instanceof Ut.DL))
+				return false;
+			j gF = Tb();
+			W Y = hX();
+			j c = ((DL<j,W>)gQ).Tb();
+			W s = ((DL<j,W>)gQ).hX();
+			if ((gF == c || (gF != null && gF.equals(c))) &&
+				(Y == s || (Y != null && Y.equals(s))))
+					return true;
+			return false;
+		}
+		public int hashCode() {
+			 return (wk == null ? 0 : wk.hashCode()) ^
+				(K == null ? 0 : K.hashCode());
+		}
+	}
+	public e<j> L() {
+		return new z();
+	}
+	private class z extends h.N.T<j> {
+		public int i() {
+			return i;
+		}
+		public Z<j> t() {
+			return new n();
+		}
+	}
+	private class n extends Yk<j> {
+		public j cX() {
+			return jY().Tb();
+		}
+	}
+	public b<W> k() {
+		return new H();
+	}
+	private class H extends h.N.x<W> {
+		public int i() {
+			return i;
+		}
+		public Z<W> t() {
+			return new tX();
+		}
+	}
+	private class tX extends Yk<W> {
+		public W cX() {
+			return jY().hX();
+		}
+	}
+	public e<Ut.DL<j,W>> O() {
+		return new nU();
+	}
+	private class nU extends h.N.T<Ut.DL<j,W>> {
+		public int i() {
+			return i;
+		}
+		public Z<Ut.DL<j,W>> t() {
+			return new D6();
+		}
+	}
+	private class D6 extends Yk<Ut.DL<j,W>> {
+		public Ut.DL<j,W> cX() {
+			return jY();
+		}
+	}
+	private abstract class Yk<YD> implements Z<YD> {
+		private int I;	
+		private DL<j,W> DG;
+		private DL<j,W> jY;
+		public Yk() {
+			I = 0;
+			DG = null;
+			jY = null;
+			for ( ; I < E.Q; I++)
+				if (E[I] != null)
+					jY = E[I];
+		}
+		public boolean Nr() {
+			return jY != null ? true : false;
+		}
+		public abstract YD cX();
+		public DL<j,W> jY() {
+			DG = jY;
+			if (jY.cX != null) {
+				jY = jY.cX;
+			} else {
+				jY = null;
+				for ( ; I < E.Q; I++)
+					if (E[I] != null)
+						jY = E[I];
+			}
+			return DG;
+		}
+		public void Go() {
+			Yl.this.Go(jY.Tb());
+		}
+	}
+	public boolean equals(Hd gQ) {
+		if (gQ == this)
+			return true;
+		if (!(gQ instanceof Ut))
+			return false;		
+		Ut<j,W> I_ = (Ut<j,W>)gQ;
+		if (I_.i() != i)
+			return false;
+		e<Ut.DL<j,W>> f = O();
+		for (Z<Ut.DL<j,W>> S = f.t(); S.Nr(); ) {
+			Ut.DL<j,W> Qn = S.cX();
+			j wk = Qn.Tb();
+			W K = Qn.hX();
+			if (!I_.p(wk))
+				return false;
+			if (!K.equals(I_.X(wk)))
+				return false;
+		}
+		return true;
+	}
+	public int hashCode() {
+		int eC = 0;
+		e<Ut.DL<j,W>> f = O();
+		for (Z<Ut.DL<j,W>> S = f.t(); S.Nr(); )
+			eC += S.cX().hashCode();
+		return eC;
+	} 
+}

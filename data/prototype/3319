@@ -1,0 +1,22 @@
+package H.l.A.s;
+public class I {
+    public static void K(M[] Z) {
+        K(Z, true);
+    }
+    public static void K(M[] Z, boolean gY) {
+        M J;
+        int u;
+        for (int G = 1; G < Z.F; G++) {
+            J = Z[G];
+            u = G;
+            while(--u >= 0){
+                if((gY && Z[u].Am(J) > 0)
+                        || (!gY && Z[u].Am(J) < 0))
+                    Z[u + 1] = Z[u];
+                else
+                    break;
+            }
+            Z[u + 1] = J;
+        }
+    }
+}

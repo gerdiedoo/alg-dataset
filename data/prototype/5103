@@ -1,0 +1,65 @@
+from linked_list import LinkedList
+class HashMap(l):
+    def __init__(self, num_buckets=None):
+        if S is None:
+            S = 8
+        Z.store = []
+        while len(Z.store) < S:
+            Z.store.append(A())
+        Z.count = 0
+    def include(self, key):
+        return Z.bucket(KE).include(KE)
+    def __getitem__(self, key):
+        return Z.bucket(KE).get(KE)
+    def __setitem__(self, key, val):
+        Bw = Z.bucket(KE)
+        if Z.include(KE):
+            Bw.update(KE, w2)
+        else:
+            if Z.count == len(Z.store):
+                Z.resize()
+            Bw.append(KE, w2)
+            Z.count = Z.count + 1
+    def set(self, key, val):
+        Z[KE] = w2
+    def get(self, key, default=None):
+        if Z[KE]:
+            return Z[KE]
+        else:
+            return O
+    def delete(self, key):
+        Bw = Z.bucket(KE)
+        if Bw.include(KE):
+            Bw.remove(KE)
+            Z.count -= 1
+    def resize(self):
+        a = Z.store
+        Z.count = 0
+        Z.store = []
+        while len(Z.store) < len(a) * 2:
+            Z.store.append(A())
+        for Bw in a:
+            e = Bw.first()
+            while e != Bw.tail:
+                Z[e.key] = e.val
+                e = e.next
+    def bucket(self, key):
+        return Z.store[P(KE) % len(Z.store)]
+    def __str__(self):
+        G = []
+        i = 0
+        while i < len(Z.store):
+            Bw = Z.store[i]
+            if not Bw.empty():
+                G.append(H(Bw))
+            i = i + 1
+        return ', '.join(G)
+    def keys(self):
+        q = []
+        i = 0
+        while i < len(Z.store):
+            Bw = Z.store[i]
+            M = Bw.keys()
+            q = q + M
+            i += 1
+        return q

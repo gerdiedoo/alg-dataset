@@ -1,0 +1,187 @@
+package hw;
+import d.T3.U;
+public class RC<k, A> implements Qj<k>
+{
+    private static class O5<k, A>
+    {
+        private final k y;
+        private A       m;
+        public O5(k v, A jz)
+        {
+            y = v;
+            m = jz;
+        }
+        public k Kh()
+        {
+            return y;
+        }
+        public A x()
+        {
+            return m;
+        }
+        public void Jw(A jz)
+        {
+            this.m = jz;
+        }
+    }
+    private static class Gn<k, A> implements Qj<O5<k, A>>
+    {
+        private final N<O5<k, A>> M = new N<O5<k, A>>();
+        public void Jw(k y, A m)
+        {
+            for (O5<k, A> B : M) {
+                if (B.Kh().equals(y)) {
+                    B.Jw(m);
+                    return;
+                }
+            }
+            M.XI(new O5<k, A>(y, m));
+        }
+        public A x(k y, A pr)
+        {
+            for (O5<k, A> B : M) {
+                if (B.Kh().equals(y)) {
+                    return B.x();
+                }
+            }
+            return pr;
+        }
+        public boolean Z(k y)
+        {
+            for (O5<k, A> B : M) {
+                if (B.Kh().equals(y)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void h(k y)
+        {
+            U<O5<k, A>> b = M.G();
+            while (b.vi()) {
+                if (b.P().Kh().equals(y)) {
+                    b.K();
+                    return;
+                }
+            }
+        }
+        @Q
+        public U<O5<k, A>> G()
+        {
+            return M.G();
+        }
+        public int Lz()
+        {
+            return M.Lz();
+        }
+    }
+    private final Gn<k, A>[] KK;
+    @C("unchecked")
+    public RC(int Lz)
+    {
+        KK = new Gn[Lz];
+        for (int p = 0; p < Lz; p++) {
+            KK[p] = new Gn<k, A>();
+        }
+    }
+    private int H(k y)
+    {
+        return y.hashCode() % KK.r;
+    }
+    public void g(k y, A m)
+    {
+        KK[H(y)].Jw(y, m);
+    }
+    public A q(k y, A pr)
+    {
+        return KK[H(y)].x(y, pr);
+    }
+    public A q(k y)
+    {
+        return q(y, null);
+    }
+    public boolean Z(k y)
+    {
+        return KK[H(y)].Z(y);
+    }
+    public void zW(k y)
+    {
+        KK[H(y)].h(y);
+    }
+    @Q
+    public U<k> G()
+    {
+        return new U<k>()
+        {
+            private int                     L  = 0;
+            private U<O5<k, A>> b     = null;
+            private U<O5<k, A>> o = null;
+            private boolean Jj()
+            {
+                for (; L < KK.r; L++) {
+                    if (KK[L].Lz() > 0) {
+                        b = KK[L].G();
+                        return true;
+                    }
+                }
+                b = null;
+                return false;
+            }
+            @Q
+            public boolean vi()
+            {
+                if (b != null) {
+                    return b.vi();
+                }
+                return Jj();
+            }
+            @Q
+            public k P()
+            {
+                if (b == null) {
+                    if (!vi()) {
+                        return null;
+                    }
+                }
+                O5<k, A> J = b.P();
+                o = b;
+                if (!b.vi()) {
+                    L++;
+                    Jj();
+                }
+                if (J == null) {
+                    return null;
+                }
+                return J.Kh();
+            }
+            @Q
+            public void K()
+            {
+                if (o != null) {
+                    o.K();
+                }
+            }
+        };
+    }
+    @Q
+    public String toString()
+    {
+        a V = new a("{");
+        boolean Go = true;
+        for (k y : this) {
+            if (Go) {
+                Go = false;
+            }
+            else {
+                V.GY(", ");
+            }
+            V.GY("(");
+            V.GY(y);
+            V.GY(", ");
+            V.GY(q(y));
+            V.GY(")");
+        }
+        V.GY("}");
+        return V.toString();
+    }
+}

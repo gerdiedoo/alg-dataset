@@ -1,0 +1,19 @@
+package P0;
+public class Sk<H extends i<H>> implements a<H>, I<H> {
+    @s
+    public void v(H[] M) {
+        for (int W = 1; W < M.O; W++) {
+            for (int n = W; n > 0 && M[n].Q5(M[n - 1]) < 0; n--) {
+                QH.N(M, n, n - 1);
+            }
+        }
+    }
+    @s
+    public void r(H[] M, int yG, int D) {
+        for (int W = yG + 1; W < D; W++) {
+            for (int n = W; n > yG && M[n].Q5(M[n - 1]) < 0; n--) {
+                QH.N(M, n, n - 1);
+            }
+        }
+    }
+}

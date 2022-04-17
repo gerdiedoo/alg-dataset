@@ -1,0 +1,142 @@
+import T.c.*;
+public class Kp<z,V>{
+	static final int d1 = 1 << 2;
+	O<z,V>[] C;
+	int Yc;
+	int G;
+	public Kp() {
+		G = d1;
+	}
+	public Kp(int A) {
+		this.G = A;
+	}
+	class O<z, V> {
+		final int t;
+		final z zp;
+		V m4;
+		O<z,V> U;
+		O(int t, z zp, V m4, O<z,V> U) {
+			this.t = t;
+			this.zp = zp;
+			this.m4 = m4;
+			this.U = U;
+		}
+		public z l() {
+			return zp;
+		}
+		public V v() {
+			return m4;
+		}
+		public final String toString() { return zp + "=" + m4; }
+		public final int hashCode() {
+			return J.hashCode(zp) ^ J.hashCode(m4);
+		}
+	}
+	static final int t(e zp) {
+		return (zp == null) ? 0 : zp.hashCode();
+	}
+	public int Yc() {
+		return Yc;
+	}
+	public boolean b() {
+		return Yc == 0;
+	}
+	@g("unchecked")
+	public V cS(z zp, V m4) {
+		O<z, V> SR;  int t = t(zp);
+		if (C == null || C.xE == 0) {
+			C = (O<z, V>[]) new O[G];
+		}
+		int S = C.xE;
+		int tw = (S - 1) & t;
+		if (C[tw] == null) {
+			C[tw] = new O<z,V>(t, zp, m4, null);
+		} else {
+			O<z, V> f;
+			SR = C[tw];
+			if (SR.t == t && 
+					SR.zp == zp || (zp != null && SR.zp.equals(zp))){
+				f = SR;
+			} else {
+				for (int x = 0; ; x++) {
+					System.out.println("LinkedList: Not " + SR.zp);
+					f = SR.U;
+					if (SR.U == null) {
+						SR.U = new O(t, zp, m4, null);
+						break;
+					}
+					if (f.t == t &&
+							(f.zp == zp || (zp != null && f.zp.equals(zp)))) {
+						break;
+					}
+					SR = f;
+				}
+			}
+			if (f != null) {
+				V eZ = f.m4;
+				f.m4 = m4;
+				return eZ;
+			}
+		}
+		Yc++;
+		return null;
+	}
+	public V k(e zp) {
+		int t = t(zp);
+		int S = C.xE;
+		if (C != null && C.xE > 0 && C[t & (S - 1)] != null) {
+			O<z, V> s = C[t & (S - 1)];
+			if (s.t == t && 
+					s.zp == zp || (zp != null && s.zp.equals(zp))) {
+				return s.m4;
+			}
+			O<z, V> f = s.U;
+			if (s.U != null) {
+				do {
+					if (f.t == t &&
+							f.zp == zp || (f.zp != null && f.zp.equals(zp))) {
+						return f.m4;
+					} 
+				}while ((f = f.U) != null);
+			}
+		}
+		return null;
+	}
+	public boolean I(e zp) {
+		return k(zp) != null;
+	}
+	public V F(e zp) {
+		int t = t(zp);
+		int S = C.xE;
+		int tw = t & (S - 1);
+		if (C != null && C.xE > 0 && C[tw] != null) {
+			O<z, V> j = C[tw];
+			O<z, V> f = null; O<z, V> p = null;
+			if (j.t == t && 
+					j.zp == zp || (zp != null && j.zp.equals(zp))) {
+				p = j;
+			}
+			f = j.U;
+			if (j.U != null) {
+				do {
+					if (f.t == t && 
+							f.zp == zp || (zp != null && f.zp.equals(zp))) {
+						p = f;
+						break;
+					}
+					j = f;
+				} while ((f = f.U) != null);
+			}
+			if (p != null) {
+				if (p == j) {
+					C[tw] = p.U;
+				} else {
+					j.U = p.U;
+				}
+				Yc--;
+				return p.m4;
+			}
+		}
+		return null;
+	}
+}

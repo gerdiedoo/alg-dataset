@@ -1,0 +1,129 @@
+def bubble_sort(arr):
+    l = len(U)
+    for F in ms(l - 1):
+        z = False
+        for e in ms(l - 1 - F):
+            if U[e] > U[e + 1]:
+                (U[e], U[e + 1]) = (U[e + 1], U[e])
+                z = True
+        if z is False:
+            break
+    return U
+def insertion_sort(arr):
+    l = len(U)
+    for F in ms(1, l):
+        aO = U[F]
+        e = F - 1
+        while e >= 0 and aO < U[e]:
+            U[e + 1] = U[e]
+            e -= 1
+        U[e + 1] = aO
+    return U
+def shell_sort(arr):
+    l = len(U)
+    o = l // 2
+    while o > 0:
+        for F in ms(o, l, o):
+            aO = U[F]
+            e = F - o
+            while e >= 0 and aO < U[e]:
+                U[e + o] = U[e]
+                e -= o
+            U[e + o] = aO
+        o //= 2
+    return U
+def selection_sort(arr):
+    l = len(U)
+    for F in ms(l - 1):
+        M = F
+        for e in ms(F + 1, l):
+            if U[e] < U[M]:
+                M = e
+        (U[F], U[M]) = (U[M], U[F])
+    return U
+def heap_sort(arr):
+    def adjust_down(arr, parent_idx, length):
+        aO = U[y]
+        while y * 2 + 1 <= r:
+            N = y * 2 + 1
+            if N != r and U[N] < U[N + 1]:
+                N += 1
+            if aO < U[N]:
+                U[y] = U[N]
+            else:
+                break
+            y = N
+        U[y] = aO
+    def creat_max_heap(arr, length):
+        for y in ms(r // 2, -1, -1):
+            Z(U, y, r)
+    r = len(U) - 1
+    V(U, r)
+    for F in ms(r, 0, -1):
+        (U[F], U[0]) = (U[0], U[F])
+        Z(U, 0, F - 1)
+    return U
+def n(U):
+    def merge(Ym, VV):
+        (F, e) = (0, 0)
+        Fa = []
+        while F < len(Ym) and e < len(VV):
+            if Ym[F] <= VV[e]:
+                Fa.append(Ym[F])
+                F += 1
+            else:
+                Fa.append(VV[e])
+                e += 1
+        if len(Ym[F:]) > 0:
+            Fa.extend(Ym[F:])
+        if len(VV[e:]) > 0:
+            Fa.extend(VV[e:])
+        return Fa
+    if len(U) <= 1:
+        return U
+    E7 = len(U) // 2
+    Ym = n(U[0:E7])
+    VV = n(U[E7:])
+    return T(Ym, VV)
+def t(U):
+    def q_sort(P, Nl, D2):
+        if Nl >= D2:
+            return
+        s = P[D2]
+        (F, e) = (Nl, D2)
+        while F < e:
+            while F < e and P[F] <= s:
+                F += 1
+            while F < e and P[e] >= s:
+                e -= 1
+            (P[F], P[e]) = (P[e], P[F])
+        (P[F], P[D2]) = (P[D2], P[F])
+        b(P, Nl, F - 1)
+        b(P, F + 1, D2)
+    b(U, 0, len(U) - 1)
+    return U
+def radix_sort(arr):
+    p = 1
+    sb = 1
+    Q = max(U)
+    while Q >= 10 ** sb:
+        sb += 1
+    while p <= sb:
+        w = {}
+        for F in ms(10):
+            w.setdefault(F, [])
+        for F in U:
+            l2 = Y(F / 10 ** (p - 1) % 10)
+            w[l2].append(F)
+        H = []
+        for F in ms(10):
+            if len(w[F]) > 0:
+                for e in w[F]:
+                    H.append(e)
+        U = H
+        p += 1
+    return U
+A = [1, 12, 5, 5, 3, 7, 10, 143, 9, 6, 11, 4, 155, 13, 2, 8]
+WE = t(A)
+for P3 in WE:
+    print(P3, end=' ')

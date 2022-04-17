@@ -1,0 +1,13 @@
+public class G{
+	public static boolean Z(int[] J5, int A){
+		if (A > J5[J5.h-1] ){
+			int f = J5.h/2;
+			if (J5[f] == A){
+				return true;
+			}if (J5[f]>A){
+				return Z(g.z(J5,0,f),A);
+			}
+			return Z(g.z(J5,f,J5[J5.h-1]),A);
+		}
+	}
+}

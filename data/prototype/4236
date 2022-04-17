@@ -1,0 +1,15 @@
+def i(rl):
+    if len(rl) <= 1:
+        return rl
+    I0 = []
+    O = []
+    c = rl[0]
+    for b in rl[1:]:
+        if b <= c:
+            I0.append(b)
+        else:
+            O.append(b)
+    return i(I0) + [c] + i(O)
+G3 = [8, 3, 19, 43, 17, 22, 1, 4, 15, 2, 16, 32, 5]
+a = i(G3)
+print(a)

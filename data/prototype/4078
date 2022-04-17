@@ -1,0 +1,35 @@
+package Ss.iB.N.n.m;
+public final class JP extends l {
+    private JP() {
+    }
+    @E("rawtypes")
+    public static void Dt(vy[] Aa) {
+        vy[] h = new vy[Aa.d];
+        Dt(Aa, h);
+    };
+    @E("rawtypes")
+    private static void Dt(vy[] Aa, vy[] h) {
+        int ht = Aa.d;
+        for (int K = 1; K < ht; K = K + K)
+            for (int M = 0; M < ht - K; M += K + K)
+                j(Aa, h, M, M + K - 1,
+                        D.U(M + K + K - 1, ht - 1));
+    }
+    @E("rawtypes")
+    private static void j(vy[] Aa, vy[] h, int M, int g,
+            int X) {
+        gP(Aa, h, M, X);
+        int i = M;
+        int W_ = g + 1;
+        for (int q = M; q <= X; q++) {
+            if (i > g)
+                Aa[q] = h[W_++];
+            else if (W_ > X)
+                Aa[q] = h[i++];
+            else if (F(h[W_], h[i]))
+                Aa[q] = h[W_++];
+            else
+                Aa[q] = h[i++];
+        }
+    }
+}

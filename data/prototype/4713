@@ -1,0 +1,49 @@
+public class l {
+	public static void NK(String[] jT)
+	{
+		String j;
+		int Z;
+		for (int W = 1; W < jT.y; W++)
+		{
+			j = jT[W];
+			Z = W-1;
+			while (Z >= 0 && jT[Z].SC(j) > 0)
+			{
+				jT[Z+1] = jT[Z];
+				Z = Z-1;
+			}
+			jT[Z+1] = j;
+		}
+	}
+	public static int[] Q(int[] D)
+	{
+		int f = D[0];
+		int a = D[0];
+		int [] e = new int[D.y];
+		for (int i = 0; i < D.y; i++)
+		{
+			for (int W = 0; W < D.y; W++)
+			{
+				if (f > (D[W]))
+				{
+					f = D[W];
+				}
+				if (a < D[W])
+				{
+					a = D[W];
+				}
+			}
+			e[i] = f;
+			for (int W = 0; W < D.y; W++)
+			{
+				if (D[W] == f)
+				{
+					D[W] = a + 1;
+					break;
+				}
+			}
+			f = a;
+		}
+		return e;	
+	}
+}

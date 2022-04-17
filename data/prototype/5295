@@ -1,0 +1,105 @@
+public class V {
+    public bd[] G;
+    private int q, T, y;
+    private double W;
+    public int r = 0;
+    public V(int q, double y){
+        this.q = q;
+        this.W = y;
+        int v = (int) (q/y);
+        while(this.m(v) == false){
+            v++;
+        }
+        G = new bd[v];
+        this.T = v;
+        this.y = 0;
+    }
+    public void fv(int IZ){
+        int t = IZ % this.T;
+        if((this.y +1) > this.q){
+            this.u();
+            this.fv(IZ);
+        }
+        else{
+            y++;
+            while(this.G[t] != null){
+                r++;
+                if(this.G[t] == IZ){
+                    return;
+                }
+                if(t < (this.T-1)){
+                    t++;
+                }
+                else{
+                    t = 0;
+                }
+            }
+            this.G[t] = IZ;
+        }
+    }
+    public void u(){
+        V K;  
+        K = new V((this.T * 2), this.W);
+        for(int L=0; L<this.T; L++){
+            if(this.G[L] != null){
+                K.fv(this.G[L]);
+            }
+        }
+        this.G = K.G;
+        this.q = K.q;
+        this.T = K.T;
+        this.y = K.y;
+    }
+    public boolean e(int IZ){
+        int t = IZ % this.T;
+        while(this.G[t] != null){
+            if(this.G[t] == IZ){
+                return true;
+            }
+            if(t < (this.T-1)){
+                t++;
+            }
+            else{
+                t = 0;
+            }
+        }
+        return false;
+    }
+    public void oH(){
+        for(int L=0; L<this.T; L++){
+            if(this.G[L] != null){
+                System.out.println(this.G[L]);
+            }
+        }
+    }
+    public void p(){
+        System.out.println("Key ==> Index");
+        for(int L=0; L<this.T; L++){
+            if(this.G[L] != null){
+                System.out.println(this.G[L] + " ==> " + L);
+            }
+        }
+    }
+    public int w(){
+        return this.q;
+    }
+    public int c(){
+        return this.y;
+    }
+    public int j(){
+        return this.T;
+    }
+    public double d(){
+        return this.W;
+    }
+    private boolean m(int wT){
+        int P = 0;
+        for(int L=2; L<(D.C(wT)); L++){
+            if(wT%L == 0){
+                P++;
+            }
+        }
+        if(P == 0) return true;
+        else return false;
+    }
+}

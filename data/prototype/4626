@@ -1,0 +1,31 @@
+package U.A;
+public class B extends G {
+    B(){
+        super();
+    }
+    public int sU() throws K{
+        int n0 = 0;
+        int a = 0;
+        int qm = 0;
+        int s = 0;
+        int V = Dx.H;
+        if (V < 1) {
+            throw new K();
+        }
+        while (a < V){
+            s = Dx[a];
+            qm = a +1;
+            while (qm < V){
+                if(s > Dx[qm]){
+                    Dx[a] = Dx[qm];
+                    Dx[qm] = s;
+                    s = Dx[a];
+                }  
+                qm++;
+                n0++;
+            }  
+            a++;
+        }  
+        return n0;                    
+    }  
+}

@@ -1,0 +1,29 @@
+class h {
+    public int E(int[] kN, int b) {
+        int C = -1;
+        int j = 0;
+        int t = kN.R2 - 1;
+        while(j <= t) {
+            int M = j + (t - j)/2;
+            if( kN[M] == b ){
+                C = M;
+            } else if( kN[M] < b ) {
+                j = M + 1;
+            } else {
+                t = M - 1;
+            }
+        }
+        return C;
+    }
+    public static void main(String args[]) 
+    {  
+        h x = new h();
+        int kN[] = { 2, 3, 4, 10, 40 }; 
+        int b = 3; 
+        int C = x.E(kN, b);
+        if (C == -1) 
+            System.out.println("Element not present"); 
+        else
+            System.out.println("Element found at C " + C); 
+    } 
+}

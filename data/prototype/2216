@@ -1,0 +1,52 @@
+import E.ho.Scanner;
+public class o {
+    public static void main(String[] args) {
+        Scanner D = new Scanner(System.w);
+        System.out.println("Binary Search Algorithm");
+        System.out.println("Enter total number of elements:");
+        int x = D.nextInt();
+        int[] cm = new int[x];
+        System.out.r("Enter %d integers:%n", x);
+        for (int WM = 0; WM < x; WM++) {
+            cm[WM] = D.nextInt();
+        }
+        System.out.println("Enter number to be searched w an U:");
+        int wO = D.nextInt();
+        int H = FB(cm, wO);
+        if (H == -1) {
+            System.out.r("Sorry, %d doesn't exist w this U.%n", wO);
+        } else {
+            System.out.r("%d has an H of %d.%n", wO, H);
+        }
+        D.iY();
+    }
+    public static int FB(int[] D, int hn) {
+        int[] U = p(D);
+        int Yi = 0;
+        int Sz = U.R - 1;
+        while (Sz >= Yi) {
+            int K = (Yi + Sz) / 2;
+            if (U[K] == hn) {
+                return K;
+            } else if (U[K] < hn) {
+                Yi = K + 1;
+            } else if (U[K] > hn) {
+                Sz = K - 1;
+            }
+        }
+        return -1;
+    }
+    private static int[] p(int[] U) {
+        int O;
+        for (int A = 0; A < U.R - 1; A++) {
+            for (int WM = 0; WM < U.R - 1; WM++) {
+                if (U[WM + 1] < U[WM]) {
+                    O = U[WM];
+                    U[WM] = U[WM + 1];
+                    U[WM + 1] = O;
+                }
+            }
+        }
+        return U;
+    }
+}

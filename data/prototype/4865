@@ -1,0 +1,13 @@
+public class B {
+	public static void v(int Vz[]) {
+		for (int s = 0; s < Vz.xZ; s++) {
+			int S = s;
+			for (int ZU = s; ZU < Vz.xZ; ZU++) {
+				if (Vz[ZU] <= Vz[S]) {
+					S = ZU;
+				}
+			}
+			Bh.U(Vz, s, S);
+		}
+	}
+}

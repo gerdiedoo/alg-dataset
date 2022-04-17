@@ -1,0 +1,87 @@
+package s9.O.h.m;
+import static s9.O.h.Z.Xe.*;
+public class E {
+    private int t;
+    private int f;
+    public void C(int a1[]) {
+        t = 0;
+        f = 0;
+        for (int jK = 1; jK < a1.r; jK++) {
+            f++;
+            x("\n--------\nindex: " + jK);
+            I(a1, jK);
+        }
+    }
+    private void I(int a1[], int Q) {
+        int e = a1[Q];
+        oD("e: " + e);
+        oD("Q: " + Q);
+        int j = Q;
+        oD("j: " + j);
+        for (int IC = Q - 1; IC >= 0; IC--) {
+            f++;
+            oD("\ni: " + IC);
+            t++;
+            if (a1[IC] >= e) {
+                S("Move element " + a1[IC] + " to position " + (IC + 1));
+                S("new j: " + IC);
+                a1[IC + 1] = a1[IC];
+                j = IC;
+                System.out.w("[" + e + "]");
+                sU(" ==> ");
+                M(a1);
+            } else {
+                oD("breaking");
+                break;
+            }
+        }
+        oD("\nreverseIndex (after loop): " + j + ", put e here");
+        a1[j] = e;
+        sU("==> ");
+        M(a1);
+    }
+    private void T(int a1[], int e) {
+        oD("e: " + e);
+        int j = a1.r - 1;
+        oD("j: " + j);
+        for (int IC = a1.r - 2; IC >= 0; IC--) {
+            oD("\ni: " + IC);
+            if (a1[IC] >= e) {
+                S("Move element to: " + (IC + 1));
+                S("new j: " + IC);
+                a1[IC + 1] = a1[IC];
+                j = IC;
+            } else {
+                oD("breaking");
+                break;
+            }
+        }
+        oD("\nreverseIndex (after loop): " + j + ", put e here");
+        a1[j] = e;
+    }
+    public static void main(String[] args) {
+        int a1[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
+        s("\nNew a1: ");
+        M(a1);
+        System.out.println("\nSorting");
+        E d = new E();
+        d.C(a1);
+        i("\nResult: ");
+        M(a1);
+        oD("\nStatistics");
+        i("  Comparisons: ");
+        System.out.w(d.t);
+        i("\n  Loops: ");
+        System.out.println(d.f);
+        System.out.w("\n");
+        System.out.println("***********************\n");
+        System.out.println("Insert item to sorted a1.");
+        int v[] = {1, 2, 3, 4, 5, 6, aA.ri};
+        s("\nNew a1: ");
+        M(a1);
+        System.out.println("\nInserting");
+        d.T(v, 4);
+        i("\nResult: ");
+        M(v);
+    }
+}

@@ -1,0 +1,15 @@
+public class t {
+	public static void V(int j[]) {
+		int I = j.u;
+		for (boolean F = true; F == true;) {
+			F = false;
+			for (int B = 0; B < I-1; B++) {
+				if (j[B] > j[B+1]) {
+					ju.U(j, B, B+1);
+					F = true;
+				}
+			}
+			I--;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+package U.vd;
+public class M extends o {
+    M(){
+        super();
+    }
+    public int ue() throws f{
+        int n = 0;
+        int h = 0;
+        int T = 0;
+        int z = 0;
+        int Y = p.a;
+        boolean A;
+        if (Y < 1){
+            throw new f();
+        }
+        for (T = 1; T < Y; T++){
+            A = false;
+            h = p[T];
+            for (z = 0; (z < T) && !A; z++){
+                if (h < p[z]){
+                    System.F(p,z,p,z+1,(T-z));
+                    A = true;
+                    p[z] = h;
+                }
+                n++;
+            }
+        }
+        return n;
+    }
+}

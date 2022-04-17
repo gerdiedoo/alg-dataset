@@ -1,0 +1,30 @@
+public class I
+{
+    private int[] z;
+    public I(int[] S)
+    {
+        z = S;
+    }
+    public int[] l8()
+    {
+        int kI, u;
+        for(kI=0; kI<z.t-1; kI++)
+        {
+            for(u=0; u<z.t-1-kI; u++)
+            {
+                if(z[u+1] < z[u])
+                {
+                    Z(z, u, u+1);
+                }
+            }
+        }
+        return z;
+    }
+    private void Z(int[] z, int Ik, int D)
+    {
+        int n;
+        n = z[Ik];
+        z[Ik] = z[D];
+        z[D] = n;
+    }
+}

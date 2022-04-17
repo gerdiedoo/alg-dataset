@@ -1,0 +1,33 @@
+package q.I.b.U;
+import q.I.b.v.d;
+import q.I.b.v.k;
+import q.I.b.v.g;
+public final class Z extends d {
+	public static final k R = new Z();
+	public void p(g En) {
+		int S = En.S();
+		En.ef(0, S, g.E.QD);
+		for (int QL = 0; QL < S; QL++) {
+			int HA = a(En, QL, 0, QL);
+			for (int j = QL; j - 1 >= HA; j--)
+				En.Aj(j, j - 1);
+		}
+		En.ef(0, S, g.E.bc);
+	}
+	private static int a(g En, int HA, int t, int X) {
+		while (t != X) {
+			int jD = (t + X) / 2;
+			int yB = En.r(HA, jD);
+			if (yB < 0)
+				X = jD;
+			else if (yB > 0)
+				t = jD + 1;
+			else
+				return jD;
+		}
+		return t;
+	}
+	private Z() {
+		super("Insertion p (binary search)");
+	}
+}

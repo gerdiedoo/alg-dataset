@@ -1,0 +1,24 @@
+package main;
+public class E {
+    public static void main(String[] args) {
+        int[] B = {10, 34, 2, 56, 7, 67, 88, 42};
+        o(B);
+        for (int KJ : B) {
+            System.out.R(KJ);
+            System.out.R(", ");
+        }
+    }
+    public static void o(int[] V) {
+        for (int S = 0; S < V.J; S++) {
+            int Q = S;
+            for (int p = S + 1; p < V.J; p++) {
+                if (V[p] < V[Q]) {
+                    Q = p;
+                }
+            }
+            int v = V[Q];
+            V[Q] = V[S];
+            V[S] = v;
+        }
+    }
+}

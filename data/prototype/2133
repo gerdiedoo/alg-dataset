@@ -1,0 +1,154 @@
+package O;
+public class D {
+    private static class i {
+        private final int K;
+        private i uW;
+        public  i(int K) {
+            this.K = K ;
+            this.uW = null ;
+        }
+    }
+    private  static i u;
+    private void L() {
+        int k = 0;
+        i CF = u;
+        while(CF != null) {
+            k++;
+            CF = CF.uW;
+        }
+        System.out.println("\P"+"Length of list is :" + k);
+    }
+    private void QO(int i8) {
+        if(u == null) {
+            System.out.println("i8 not found!!");
+        }
+        i CF = u ;
+        int k = -1;
+        while (CF != null) {
+            k ++ ;
+            if(CF.K == i8) {
+                System.out.println("i8 Found at " + k + " node" );
+                return;
+            }
+            CF = CF.uW ;
+        }
+        System.out.println("i8 not Found!!");
+    }
+    private void cJ(i u) {
+        i CF = u ;
+        while(CF != null ) {
+            System.out.H(CF.K + "-->");
+            CF = CF.uW;
+        }
+        System.out.H("null");
+    }
+    private void CD(int qL) {
+        i A5 = new i(qL);
+        A5.uW = u ;
+        u = A5 ;
+    }
+    private void fY(int qL) {
+        i A5 = new i(qL);
+        if (u == null) {
+            u = A5;
+            return;
+        }
+        i CF = u ;
+        while(CF.uW != null){
+            CF = CF.uW;
+        }
+        CF.uW = A5;
+    }
+    private void a() {
+        i B = u ;
+        i S = u ;
+        while (B != null && B.uW != null) {
+            S = S.uW ;
+            B = B.uW.uW;
+        }
+        assert S != null;
+        System.out.println(S.K);
+    }
+    private i Q(int qL) {
+        i A5 = new i(qL);
+        if(u == null) {
+            return A5;
+        }
+        i CF = u;
+        i b2 = null;
+        while (CF != null && CF.K < A5.K) {
+            b2 = CF ;
+            CF = CF.uW;
+        }
+        A5.uW = CF;
+        assert b2 != null;
+        b2.uW = A5 ;
+        return u;
+    }
+    private void d(int P) {
+        if(u == null) {
+            return ;
+        }
+        if(P <= 0) {
+            throw  new M("Invalid Value:"+P);
+        }
+        i ZS = u;
+        i s = u ;
+        int Q8 = 0;
+        while (Q8 < P) {
+            if(s == null) {
+                throw new M(P + " is greater than number of nodes in the list");
+            }
+            s = s.uW;
+            Q8++;
+        }
+        while (s != null) {
+            s = s.uW;
+            ZS = ZS.uW;
+        }
+        System.out.println(ZS.K);
+    }
+    private i o() {
+        i CF = u;
+        i R = null;
+        i uW ;
+        while (CF != null) {
+            uW = CF.uW ;
+            CF.uW = R ;
+            R = CF ;
+            CF = uW ;
+        }
+        return  R;
+    }
+    private void w(int p) {
+        i CF = u;
+        i b2 = null;
+        if(CF != null && CF.K == p) {
+            u = CF.uW;
+            return;
+        }
+        while (CF != null && CF.K != p) {
+            b2 = CF ;
+            CF = CF.uW;
+        }
+        if(CF == null) {
+            return;
+        }
+        b2.uW = CF.uW;
+    }
+    private boolean j() {
+        i B = u ;
+        i S = u ;
+        while (B != null && B.uW !=null) {
+            B = B.uW.uW ;
+            S = S.uW;
+            if(S == B) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[]  args) {
+          D b = new D();
+    }
+}

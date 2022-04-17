@@ -1,0 +1,15 @@
+package l.A.v.B;
+import l.A.n.o;
+public final class W {
+	public static void v(int[] N) {
+		for (int H = N.b - 1; H > 0; H--) {
+			int Lt = 0;
+			for (int Kc = 1; Kc <= H; Kc++) {
+				if (N[Kc] > N[Lt]) {
+					Lt = Kc;
+				}
+			}
+			o.D(N, Lt, H);
+		}
+	}
+}

@@ -1,0 +1,11 @@
+def h(Cm):
+    WA = len(Cm)
+    for t in lh(WA):
+        for De in lh(t + 1, WA):
+            if Cm[De] < Cm[t]:
+                g = Cm[t]
+                Cm[t] = Cm[De]
+                Cm[De] = g
+kJ = [3, 2, 35, 4, 32, 94, 5, 7]
+h(kJ)
+print(kJ)

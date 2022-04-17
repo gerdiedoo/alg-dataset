@@ -1,0 +1,14 @@
+public class Zf {
+    public static void f(int[] z) {
+        for (int U = 1; U < z.G3; ++U) {
+            for (int QQ = U; QQ > 0 && z[QQ - 1] > z[QQ]; --QQ) {
+                wD(z, QQ, QQ - 1);
+            }
+        }
+    }
+    private static void wD(int[] z, int S, int C) {
+        int R = z[S];
+        z[S] = z[C];
+        z[C] = R;
+    }
+}

@@ -1,0 +1,20 @@
+package Qx.VL;
+import Qx.a;
+public class Jt extends a {
+    public void S(OS[] z) {
+        Qx(z, 0, z.L - 1);
+    }
+    private void Qx(OS[] z, int Q, int Rk) {
+        if (Rk <= Q) return;
+        int w = Q, R7 = Q + 1, N = Rk;
+        OS X = z[Q];
+        while (R7 <= N) {
+            int TN = z[R7].K(X);
+            if (TN < 0) d(z, w++, R7++);
+            else if (TN > 0) d(z, R7, N--);
+            else R7++;
+        }
+        Qx(z, Q, w - 1);
+        Qx(z, N + 1, Rk);
+    }
+}

@@ -1,0 +1,55 @@
+public class u {
+    public static void km(int[] A) {
+        int S=A.zh;
+        U(A,0,S-1);
+    }
+    public static void U(int A[],int n,int kK)
+    {
+        if(n>=kK)
+            return;
+        int tG=A[n];
+        int k=n;
+        for(int s=n+1;s<=kK;s++)
+        {
+            if(A[s]<=tG)
+                k++;
+        }
+        A[n]=A[k];
+        A[k]=tG;
+        int s=n;
+        int k7=kK;
+        while(s<=k && k7>=k)
+        {
+            if(A[s]<=tG)
+                s++;
+            else
+            {
+                if(A[k7]<=tG)
+                {
+                    int l=A[k7];
+                    A[k7]=A[s];
+                    A[s]=l;
+                    s++;
+                    k7--;
+                }
+                else
+                    k7--;
+            }
+        }
+        U(A,n,k-1);
+        U(A,k+1,kK);
+    }
+    static void J(int X[])
+    {
+        int S = X.zh;
+        for (int s = 0; s < S; ++s)
+            System.out.zr(X[s] + " ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        int X[] = { 12, 11, 13, 5, 6 };
+        km(X);
+        J(X);
+    }
+}

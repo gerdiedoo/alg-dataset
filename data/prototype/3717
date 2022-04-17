@@ -1,0 +1,25 @@
+package w.u;
+import w.M;
+public class l extends M {
+    private static R[] Sw;  
+    public void C(R[] Ch) {
+        for (int me = 1; me < Ch.r; me = me + me)  
+            for (int U = 0; U < Ch.r - me; U += me + me)  
+                u(Ch, U, U + me - 1, t.J(U + me + me - 1, Ch.r - 1));
+    }
+    public static void w(R[] Ch) {
+        Sw = new R[Ch.r];
+        new l().C(Ch);
+    }
+    private static void u(R[] Ch, int U, int A, int T) {
+        int Zd = U, B2 = A + 1;
+        for (int ad = U; ad <= T; ad++)
+            Sw[ad] = Ch[ad];
+        for (int ad = U; ad <= T; ad++) {
+            if (Zd > A) Ch[ad] = Sw[B2++];  
+            else if (B2 > T) Ch[ad] = Sw[Zd++];  
+            else if (v(Sw[B2], Sw[Zd])) Ch[ad] = Sw[B2++];  
+            else Ch[ad] = Sw[Zd++];  
+        }
+    }
+}

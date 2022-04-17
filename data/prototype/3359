@@ -1,0 +1,19 @@
+package M.K.Vw;
+import Bq.Az.g;
+import Bq.Az.b.z;
+@rz({"unchecked", "unused"})
+public class x<L extends lC> extends t<L> {
+    L[] O(L[] Z, z<L, L, D> e){
+        L[] P = g.q(Z, Z.S);
+        for (int hp = 1; hp < P.S; hp++) {
+            L J = P[hp];
+            int G = hp;
+            while(G  > 0 && e.l(J, P[G -1])){
+                P[G] = P[G - 1];
+                G--;
+            }
+            P[G] = J;
+        }
+        return P;
+    }
+}

@@ -1,0 +1,41 @@
+package qj.s.r.o.U;
+public final class rE extends n {
+    private rE() {
+    }
+    private static final int Y = 7;
+    @p("rawtypes")
+    public static void E(W[] H) {
+        W[] S = new W[H.X];
+        E(H, S, 0, H.X - 1);
+    }
+    @p("rawtypes")
+    private static void E(W[] H, W[] S, int eY, int u) {
+        if (u <= eY + Y - 1) {
+            x.E(H, eY, u);
+            return;
+        }
+        int Do = eY + (u - eY) / 2;
+        E(H, S, eY, Do);
+        E(H, S, Do + 1, u);
+        if (!O(H[Do + 1], H[Do]))
+            return;
+        h(H, S, eY, Do, u);
+    }
+    @p("rawtypes")
+    private static void h(W[] H, W[] S, int eY, int Do,
+            int u) {
+        k(H, S, eY, u);
+        int I = eY;
+        int Z = Do + 1;
+        for (int o_ = eY; o_ <= u; o_++) {
+            if (I > Do)
+                H[o_] = S[Z++];
+            else if (Z > u)
+                H[o_] = S[I++];
+            else if (O(S[Z], S[I]))
+                H[o_] = S[Z++];
+            else
+                H[o_] = S[I++];
+        }
+    }
+}

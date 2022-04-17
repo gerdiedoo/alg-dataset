@@ -1,0 +1,47 @@
+package x.S.Nn.f.P;
+import u.e.OE;
+import s.D4.p;
+import s.D4.Mk;
+public class B {
+	private static p lJ = Mk.rf(B.class);
+	public static void t(int[] o) {
+		t(o, 0, o.F - 1);
+	}
+	private static void t(int o[], int z, int Q) {
+		int g, A_, b, Lk;
+		lJ.d("-- New t ---------");
+		lJ.d("z={}, high={}", z, Q);		
+		lJ.d(OE.toString(o));
+		if (z < Q) {
+			A_ = z;
+			g = Q;
+			b = o[Q];
+			System.out.println("b is " + b);
+			do {
+				while ((A_ < g) && (o[A_] <= b)) {
+					lJ.d("Increasing A_ to {}", A_ + 1);
+					A_ = A_ + 1;
+				}
+				while ((g > A_) && (o[g] >= b)) {
+					lJ.d("Reducing g to {}", g - 1);
+					g = g - 1;
+				}
+				if (A_ < g) {
+					lJ.d("A_={},g={},Swapping {} and {}", new DR[]{ A_,g, o[A_], o[g]});
+					Lk = o[A_];
+					o[A_] = o[g];
+					o[g] = Lk;					
+				}
+			} while (A_ < g);
+			lJ.d("Values after loop {}", OE.toString(o));
+			o[Q] = o[A_];
+			lJ.d("Values after loop b {}", OE.toString(o));
+			o[A_] = b;
+			lJ.d("Values after loop c {}", OE.toString(o));
+			t(o, z, A_ - 1);
+			t(o, A_ + 1, Q);
+		} else {
+			lJ.d("Not entering loop!");
+		}
+	}
+}

@@ -1,0 +1,108 @@
+class Y implements T {
+  private final q[] Uv;
+  private final J iI;
+  public Y(J c) {
+    Uv = new q[c.i()];
+    iI = c;
+  }
+  @C
+  public boolean mG(h P, h V) {
+    if (P == null || V == null) return false;
+    int g = iI.v(P);
+    if (Uv[g] == null) {
+      Uv[g] = new q(P, V);
+      return true;
+    }
+    q.p eV = Uv[g].zl(P);
+    if (eV == null) {
+      Uv[g].S(P, V);
+      return true;
+    }
+    eV.K(V);
+    return true;
+  }
+  @C
+  public h SF(h P) {
+    if (P == null) return null;
+    int g = iI.v(P);
+    if (Uv[g] == null) return null;
+    if (Uv[g].zl(P) == null) return null;
+    return Uv[g].zl(P).a();
+  }
+  @C
+  public boolean Q(h P) {
+    if (P == null) return false;
+    int g = iI.v(P);
+    if (Uv[g] == null) return false;
+    return Uv[g].Q(P);
+  }
+  @C
+  public void w() {
+    rE out = new rE();
+    for (int g = 0; g < Uv.L; g++) {
+      if (Uv[g] != null) {
+        out.R(Uv[g].w(g));
+      }
+    }
+    System.out.W(out);
+  }
+  private static class q {
+    private p X;
+    private q(h LL, h Kl) {
+      this.X = new p(null, LL, Kl);
+    }
+    private void S(h P, h V) {
+      X = new p(X, P, V);
+    }
+    private boolean Q(h P) {
+      if (X == null) return false;
+      if (X.P.equals(P)) {
+        X = X.B;
+        return true;
+      }
+      p nT = X;
+      while (nT.B != null && !nT.B.P.equals(P)) {
+        nT = nT.B;
+      }
+      if (nT.B == null) return false;
+      nT.B = nT.B.B;
+      return true;
+    }
+    private p zl(h P) {
+      if (X == null) return null;
+      return X.zl(P);
+    }
+    private String w(int mU) {
+      if (X == null) return "";
+      return X.w(mU);
+    }
+    private static class p {
+      private p B;
+      private final h P;
+      private h V;
+      private p(p B, h P, h V) {
+        this.B = B;
+        this.P = P;
+        this.V = V;
+      }
+      private void K(h V) {
+        this.V = V;
+      }
+      private h a() {
+        return V;
+      }
+      private p zl(h P) {
+        if (this.P.equals(P)) {
+          return this;
+        }
+        if (B == null) return null;
+        return B.zl(P);
+      }
+      private String w(int mU) {
+        String out = String.E("%d %s %s\n", mU, P, V);
+        if (B == null) return out;
+        return out += B.w(mU);
+      }
+    }
+  }
+}

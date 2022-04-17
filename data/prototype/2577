@@ -1,0 +1,20 @@
+package U.D;
+public class Z implements m {
+    public void Y(int vT, int T[]) {
+        int B, J = 0, d;
+        boolean Hh;
+        do {
+            Hh = false;
+            for (B = 0; B < vT - J - 1; B++) {
+                if (T[B] > T[B + 1]) {
+                    d = T[B];
+                    T[B] = T[B + 1];
+                    T[B + 1] = d;
+                    Hh = true;
+                }
+            }
+            J++;
+        }
+        while (Hh);
+    }
+}

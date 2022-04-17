@@ -1,0 +1,53 @@
+public class v {
+    public static void main(String args[]) {
+        int[] a6 = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        v Te = new v();
+        Te.Dc(a6, 0, a6.fN - 1);
+        System.out.println("Merge Sort : Sorted List");
+        for (int J = 0; J < a6.fN; J++) {
+            System.out.println(a6[J] + "");
+        }
+    }
+    void Dc(int a6[], int ur, int x) {
+        if (ur < x) {
+            int m = (ur + x) / 2;
+            Dc(a6, ur, m);
+            Dc(a6, m + 1, x);
+            kp(a6, ur, m, x);
+        }
+    }
+    void kp(int a6[], int ur, int Ja, int x) {
+        int a = Ja - ur + 1;
+        int yq = x - Ja;
+        int[] Yd = new int[a];
+        int[] G = new int[yq];
+        for (int J = 0; J < a; ++J) {
+            Yd[J] = a6[ur + J];
+        }
+        for (int HB = 0; HB < yq; ++HB) {
+            G[HB] = a6[Ja + 1 + HB];
+        }
+        int J = 0, HB = 0;
+        int R = ur;
+        while (J < a && HB < yq) {
+            if (Yd[J] <= G[HB]) {
+                a6[R] = Yd[J];
+                J++;
+            } else {
+                a6[R] = G[HB];
+                HB++;
+            }
+            R++;
+        }
+        while (J < a) {
+            a6[R] = Yd[J];
+            J++;
+            R++;
+        }
+        while (HB < yq) {
+            a6[R] = G[HB];
+            HB++;
+            R++;
+        }
+    }
+}

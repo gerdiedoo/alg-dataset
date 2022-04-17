@@ -1,0 +1,103 @@
+public class v{
+    class Za{
+        int K;
+        Za m;
+        public Za(int K){
+            this.K=K;
+            this.m=null;
+        }
+    }
+     public Za O=null;
+     public Za o=null;
+    void U8(int T){
+        Za G=new Za(T);
+        if(O==null){
+            O=G;
+            o=G;
+        }else{
+            o.m=G;
+            o=G;
+        }
+    }
+    void J(int T){
+        Za G=new Za(T);
+        if(O==null){
+            O=G;
+            o=G;
+        }else{
+            G.m=O;
+            O=G;
+        }
+    }
+    void b(){
+        if(O==null){
+            System.out.println("List is empty");
+        }else{
+            O=O.m;
+        }
+    }
+    void oj(){
+        if(O==null){
+            System.out.println("List is empty");
+        }else{
+            Za Yi=O;
+            while(Yi.m.m!=null){
+                Yi=Yi.m;
+            }
+            Yi.m=null;
+            o=Yi;
+        }
+    }
+    void gb(int s){
+        if(O==null){
+            System.out.println("List is empty");
+        }else{
+            Za Yi=O;
+            Za I=O;
+            for(int h=0;h<s;h++){
+                I=Yi;
+                Yi=Yi.m;
+            }
+            I.m=Yi.m;
+        }
+    }
+    void lq(int T,int s){
+        Za G=new Za(T);
+        if(O==null){
+            System.out.println("List is empty");
+        }else{
+            Za Yi=O;
+            Za I=O;
+            for(int h=0;h<s;h++){
+                I=Yi;
+                Yi=Yi.m;
+            }
+           G.m=Yi;
+           I.m=G;
+        }
+    }
+    void N(){
+           Za  Yi=O;
+           while(Yi!=null){
+               System.out.a("  "+Yi.K);
+               Yi=Yi.m;
+           }
+    }
+    public static void main(String args[]){
+        v d=new v();
+        d.U8(10);
+        d.U8(20);
+        d.U8(30);
+        d.U8(40);
+        d.U8(50);
+        d.J(5);
+        d.J(7);
+        d.N();
+        System.out.println("");
+        d.b();
+        d.oj();
+        d.gb(3);
+        d.lq(25,2);
+        d.N();
+    }
+}

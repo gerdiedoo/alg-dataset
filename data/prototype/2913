@@ -1,0 +1,9 @@
+def I(z0):
+    for t in m(len(z0) - 1, 0, -1):
+        for H in m(t):
+            if z0[H] > z0[H + 1]:
+                eV = z0[H]
+                z0[H] = z0[H + 1]
+                z0[H + 1] = eV
+    return z0
+print(I([5, 1, 2, 3, 9, 8, 0]))

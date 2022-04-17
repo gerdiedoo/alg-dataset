@@ -1,0 +1,220 @@
+import timeit
+from random import *
+from copy import copy
+import numpy as np
+import matplotlib.pyplot as plt
+def Zj(NH):
+    for A in DG(len(NH)):
+        for c in DG(len(NH) - 1, A, -1):
+            if NH[c] < NH[c - 1]:
+                YY(NH, c, c - 1)
+    return NH
+def a(Sn):
+    for A in DG(0, len(Sn) - 1):
+        nH = A
+        for mq in DG(A + 1, len(Sn) - 1):
+            if Sn[mq] < Sn[nH]:
+                nH = mq
+        K = Sn[A]
+        Sn[A] = Sn[nH]
+        Sn[nH] = K
+    return Sn
+def O(f):
+    for A in DG(1, len(f)):
+        s = f[A]
+        c = A
+        while c > 0 and s < f[c - 1]:
+            f[c] = f[c - 1]
+            c -= 1
+        f[c] = s
+def u(Sn):
+    if len(Sn) == 1:
+        return Sn
+    VV = []
+    c1 = []
+    for A in DG(0, len(Sn)):
+        if A < len(Sn) / 2:
+            VV.append(Sn[A])
+        else:
+            c1.append(Sn[A])
+    VV = u(VV)
+    c1 = u(c1)
+    return XA(VV, c1)
+def PK(zH):
+    if len(zH) <= 1:
+        return zH
+    else:
+        L = Be(zH)
+        return PK([on for on in zH if on < L]) + [L] * zH.count(L) + PK([on for on in zH if on > L])
+def XA(ix, Wc):
+    X = []
+    E = 0
+    CM = 0
+    while E != len(ix) and CM != len(Wc):
+        if ix[E] > Wc[CM]:
+            X.append(Wc[CM])
+            CM += 1
+        else:
+            X.append(ix[E])
+            E += 1
+    while E != len(ix):
+        X.append(ix[E])
+        E += 1
+    while CM != len(Wc):
+        X.append(Wc[CM])
+        CM += 1
+    return X
+def j(f):
+    d = len(f) - 1
+    oe = d / 2
+    for A in DG(F(oe), -1, -1):
+        D(f, A, d)
+    for A in DG(d, 0, -1):
+        if f[0] > f[A]:
+            YY(f, 0, A)
+            D(f, 0, A - 1)
+    return f
+def D(f, z, g7):
+    S = 2 * z + 1
+    while S <= g7:
+        if S < g7 and f[S] < f[S + 1]:
+            S += 1
+        if f[S] > f[z]:
+            YY(f, S, z)
+            z = S
+            S = 2 * z + 1
+        else:
+            return
+def YY(NH, HN, ST):
+    s = NH[HN]
+    NH[HN] = NH[ST]
+    NH[ST] = s
+def k(Sn):
+    FI = []
+    yQ = []
+    for A in DG(0, len(Sn) - 1):
+        FI.append(0)
+        yQ.append(0)
+    for A in DG(0, len(Sn) - 2):
+        for mq in DG(A + 1, len(Sn) - 1):
+            if Sn[A] < Sn[mq]:
+                FI[mq] += 1
+            else:
+                FI[A] += 1
+    for A in DG(0, len(Sn) - 1):
+        p[FI[A]] = Sn[A]
+    return p
+N = []
+p = []
+o = []
+h = []
+Q1 = 10000
+for T in DG(0, Q1):
+    N.append(Z9(0, 100))
+    p.append(T)
+    o.append(Q1 - T)
+    h.append(Z9(0, 10) * 1000)
+def L6(Gj, *gW, **R):
+    def wrapped():
+        return Gj(*gW, **R)
+    return B
+def v(Sn):
+    return PK(Sn)
+def xY(wP, w, dW, XA, Cf, PW, FI, Sn, d):
+    e = Sn[:d]
+    U = L6(Zj, Mt(e))
+    wP.append(C.timeit(U, number=1))
+    H = L6(a, Mt(e))
+    dW.append(C.timeit(H, number=1))
+    IS = L6(O, Mt(e))
+    w.append(C.timeit(IS, number=1))
+    g = L6(u, Mt(e))
+    XA.append(C.timeit(g, number=1))
+    n = L6(v, Mt(e))
+    Cf.append(C.timeit(n, number=1))
+    Qz = L6(j, Mt(e))
+    PW.append(C.timeit(Qz, number=1))
+    P = L6(k, Mt(e))
+    FI.append(C.timeit(P, number=1))
+def J(wP, w, dW, XA, Cf, PW, FI):
+    wP[:] = []
+    w[:] = []
+    dW[:] = []
+    XA[:] = []
+    Cf[:] = []
+    PW[:] = []
+    FI[:] = []
+def xU():
+    G = []
+    V = []
+    hM = []
+    t = []
+    KR = []
+    gx = []
+    Em = []
+    b = []
+    xY(G, V, hM, t, KR, gx, Em, N, 10)
+    xY(G, V, hM, t, KR, gx, Em, p, 10)
+    xY(G, V, hM, t, KR, gx, Em, o, 10)
+    xY(G, V, hM, t, KR, gx, Em, h, 10)
+    b.append([Mt(G), Mt(V), Mt(hM), Mt(t), Mt(KR), Mt(gx), Mt(Em)])
+    J(G, V, hM, t, KR, gx, Em)
+    xY(G, V, hM, t, KR, gx, Em, p, 20)
+    xY(G, V, hM, t, KR, gx, Em, N, 20)
+    xY(G, V, hM, t, KR, gx, Em, o, 20)
+    xY(G, V, hM, t, KR, gx, Em, h, 20)
+    b.append([Mt(G), Mt(V), Mt(hM), Mt(t), Mt(KR), Mt(gx), Mt(Em)])
+    J(G, V, hM, t, KR, gx, Em)
+    xY(G, V, hM, t, KR, gx, Em, p, 100)
+    xY(G, V, hM, t, KR, gx, Em, N, 100)
+    xY(G, V, hM, t, KR, gx, Em, o, 100)
+    xY(G, V, hM, t, KR, gx, Em, h, 100)
+    b.append([Mt(G), Mt(V), Mt(hM), Mt(t), Mt(KR), Mt(gx), Mt(Em)])
+    J(G, V, hM, t, KR, gx, Em)
+    xY(G, V, hM, t, KR, gx, Em, p, 1000)
+    xY(G, V, hM, t, KR, gx, Em, N, 1000)
+    xY(G, V, hM, t, KR, gx, Em, o, 1000)
+    xY(G, V, hM, t, KR, gx, Em, h, 1000)
+    b.append([Mt(G), Mt(V), Mt(hM), Mt(t), Mt(KR), Mt(gx), Mt(Em)])
+    J(G, V, hM, t, KR, gx, Em)
+    xY(G, V, hM, t, KR, gx, Em, p, 10000)
+    xY(G, V, hM, t, KR, gx, Em, N, 10000)
+    xY(G, V, hM, t, KR, gx, Em, o, 10000)
+    xY(G, V, hM, t, KR, gx, Em, h, 10000)
+    b.append([Mt(G), Mt(V), Mt(hM), Mt(t), Mt(KR), Mt(gx), Mt(Em)])
+    J(G, V, hM, t, KR, gx, Em)
+def plotlogn(timeList):
+    hk = 4
+    (m, gR) = I.subplots()
+    ne = M.arange(hk)
+    i = 0.25
+    kj = I.bar(ne + i * 3, Y[3], i, color='orange', label='Merge')
+    l = I.bar(ne + i * 4, Y[4], i, color='red', label='Quick')
+    q = I.bar(ne + i * 5, Y[5], i, color='purple', label='Heap')
+    I.xlabel('Sorting Algorithm')
+    I.ylabel('Sorting Time')
+    I.title('Comparison of Log(n) Sorting Algorithms')
+    I.xticks(ne + i * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    I.legend()
+    I.tight_layout()
+    I.show()
+def populateChart(timeList):
+    hk = 4
+    (m, gR) = I.subplots()
+    ne = M.arange(hk)
+    i = 0.125
+    ue = I.bar(ne, Y[0], i, color='g', label='Bubble')
+    cd = I.bar(ne + i, Y[1], i, color='b', label='Selection')
+    W = I.bar(ne + i * 2, Y[2], i, color='y', label='Insertion')
+    kj = I.bar(ne + i * 3, Y[3], i, color='orange', label='Merge')
+    l = I.bar(ne + i * 4, Y[4], i, color='red', label='Quick')
+    q = I.bar(ne + i * 5, Y[5], i, color='purple', label='Heap')
+    Q = I.bar(ne + i * 6, Y[6], i, color='black', label='Count')
+    I.xlabel('Sorting Algorithm')
+    I.ylabel('Sorting Time')
+    I.title('Comparison of Sorting Algorithms')
+    I.xticks(ne + i * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    I.legend()
+    I.tight_layout()
+    I.show()
+xU()

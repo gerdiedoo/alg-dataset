@@ -1,0 +1,29 @@
+package v;
+import J.n.G;
+public class P {
+    public static void main(String[] args) {
+        int[] Ut = {20,35,-15,7,55,1,-22};
+        G.V(Ut);
+        System.out.println(i(Ut,-15));
+        System.out.println(i(Ut,22));
+        System.out.println(i(Ut,7));
+    }
+    public static int i(int[] Ut,int KV) {
+        return AV(Ut,0,Ut.L,KV);
+    }
+    public static int AV(int[] Ut,int w,int x,int KV){
+        if (w>=x){
+            return -1;
+        }
+        int k = (w+x)/2;
+        if (Ut[k] == KV){
+            return k;
+        }
+        else if(Ut[k]<KV){
+            return AV(Ut,k+1,x,KV);
+        }
+        else {
+            return AV(Ut,0,k,KV);
+        }
+    }
+}

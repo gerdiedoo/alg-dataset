@@ -1,0 +1,37 @@
+from __future__ import print_function
+def Z(A):
+    t = len(A)
+    if t > 1:
+        sk = t // 2
+        b = Z(A[:sk])
+        v = Z(A[sk:])
+        uP = 0
+        j = 0
+        q = 0
+        T = len(b)
+        p = len(v)
+        while uP < T and j < p:
+            if b[uP] < v[j]:
+                A[q] = b[uP]
+                uP += 1
+            else:
+                A[q] = v[j]
+                j += 1
+            q += 1
+        while uP < T:
+            A[q] = b[uP]
+            uP += 1
+            q += 1
+        while j < p:
+            A[q] = v[j]
+            j += 1
+            q += 1
+    return A
+if W == '__main__':
+    try:
+        y
+    except Y:
+        y = input
+    bN = y('Enter numbers separated by a comma:\n').strip()
+    eR = [a(D) for D in bN.split(',')]
+    print(Z(eR))

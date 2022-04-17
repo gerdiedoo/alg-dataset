@@ -1,0 +1,55 @@
+package Y.R.C.q;
+import static Y.R.C.N.W.*;
+public class S {
+    private int t0;
+    private int B;
+    private int D;
+    public void hU(int l[]) {
+        t0 = 0;
+        B = 0;
+        D = 0;
+        for (int dN = 0; dN < l.j; dN++) {
+            D++;
+            Jd("\n--------\nindex: " + dN);
+            int c = X(dN, l);
+            JU("found smallest element dN: " + c);
+            B++;
+            V("Swapping: " + dN + " and " + c);
+            int K = l[c];
+            l[c] = l[dN];
+            l[dN] = K;
+            k6("==> ");
+            QC(l);
+        }
+    }
+    private int X(int hB, int l[]) {
+        int c = hB;
+        int e = l[hB];
+        for (int g = hB; g < l.j; g++) {
+            D++;
+            t0++;
+            if (e > l[g]) {
+                c = g;
+                e = l[c];
+            }
+        }
+        return c;
+    }
+    public static void main(String[] args) {
+        int l[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        f("\nNew l: ");
+        QC(l);
+        System.out.println("\nSorting");
+        S J = new S();
+        J.hU(l);
+        uH("\nResult: ");
+        QC(l);
+        JU("\nStatistics");
+        uH("  Comparisons: ");
+        System.out.a(J.t0);
+        uH("\n  Swaps: ");
+        System.out.a(J.B);
+        uH("\n  Loops: ");
+        System.out.println(J.D);
+    }
+}

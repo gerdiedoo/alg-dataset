@@ -1,0 +1,31 @@
+def q(T):
+    cp = len(T)
+    if cp <= 1:
+        return T
+    else:
+        J = S(cp / 2)
+        h = T[0:J]
+        I = T[J:]
+        q(h)
+        q(I)
+        n = gR = Co = 0
+        while len(h) > n and len(I) > gR:
+            if h[n] < I[gR]:
+                T[Co] = h[n]
+                n += 1
+            else:
+                T[Co] = I[gR]
+                gR += 1
+            Co += 1
+        while n < len(h):
+            T[Co] = h[n]
+            n += 1
+            Co += 1
+        while gR < len(I):
+            T[Co] = I[gR]
+            gR += 1
+            Co += 1
+        return T
+R = [67, 34, 3, 56, 24, 77, 23, 89, 56, 35, 65, 764]
+print('List\n', R)
+print('Sorted List\n', q(R))

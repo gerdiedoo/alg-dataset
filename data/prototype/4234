@@ -1,0 +1,15 @@
+def A(R):
+    if len(R) <= 1:
+        return R
+    u = []
+    XD = []
+    hO = R[0]
+    for g in R[1:]:
+        if g <= hO:
+            u.append(g)
+        else:
+            XD.append(g)
+    return A(u) + [hO] + A(XD)
+D = [8, 3, 19, 43, 17, 22, 1, 4, 15, 2, 16, 32, 5]
+Q = A(D)
+print(Q)

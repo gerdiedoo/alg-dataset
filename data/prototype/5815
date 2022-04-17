@@ -1,0 +1,49 @@
+package C.z;
+class ix{
+int L(int TM[],int c, int i)
+{
+    int xO = TM[i];
+    int I= (c-1);  
+    for(int r=c ; r<i ;r++)
+      {
+    	 if(TM[r] < xO)
+          {
+             I++;
+             int d = TM[I];
+	     TM[I] = TM[r];
+             TM[r] = d;
+           }
+       }
+int d = TM[I+1];
+TM[I+1] = TM[i];
+TM[i] = d;
+return I+1;
+}
+void o(int TM[],int c,int i)
+{
+   if(c < i)
+     {
+            int V = L(TM,c,i);
+            o(TM,c,V-1);
+ 	    o(TM,V+1,i);
+      }
+}
+static void EQ(int TM[])
+{
+   int J = TM.h;
+   for(int I=0;I<J;I++)
+   {
+        System.out.by(TM[I]+" ");
+        System.out.by("\t");
+    }
+}
+public static void main(String args[])
+{
+    int TM[] = {3,5,2,1,4};
+    int J = TM.h;
+    ix m = new ix();
+    m.w7(TM,0,J-1);
+    System.out.println("Sorted Array ");
+    EQ(TM);
+}
+}

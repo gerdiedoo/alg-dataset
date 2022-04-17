@@ -1,0 +1,104 @@
+public class g6<N extends eD<N>,V extends eD<V>> implements Y<N,V> {
+    private W<N, V>[] w;
+    private static final int R = 101;
+    private double l = 0.75;
+    private int Z2;
+    private int By;
+    private final W<N, V> j = new W<>(null, null);
+    public g6() {
+        w = new W[R];
+    }
+    private int D(K J) {
+        int i = J.hashCode() % w.X;
+        if (i < 0)
+            i += w.X;  
+        while ((w[i] != null)
+                && (!J.equals(w[i].EQ()))) {
+            i++;
+            if (i >= w.X)
+                i = 0;  
+        }
+        return i;
+    }
+    @Q
+    public V Z(K J) {
+        int i = D(J);
+        if (w[i] != null)
+            return w[i].n7();
+        else
+            return null;  
+    }
+    @Q
+    public boolean b() {
+        return Z2 == 0;
+    }
+    @Q
+    public V f(N J, V c) {
+        int i = D(J);
+        if (w[i] == null) {
+            w[i] = new W<>(J, c);
+            Z2++;
+            double QE =
+                    (double) (Z2 + By) / w.X;
+            if (QE > l)
+                y6();
+            return null;
+        }
+        V s4 = w[i].n7();
+        w[i].v(c);
+        return s4;
+    }
+    private void y6() {
+        W<N, V>[] n = w;
+        w = new W[2 * n.X + 1];
+        Z2 = 0;
+        By = 0;
+        for (int L = 0; L < n.X; L++) {
+            if ((n[L] != null) && (n[L] != j)) {
+                f(n[L].EQ(), n[L].n7());
+            }
+        }
+    }
+    @Q
+    public V O(K J) {
+        int i = D(J);
+        if(w[i] == null){
+            return null;
+        }
+        V eO = w[i].n7();
+        w[i] = j;
+        By++;
+        Z2--;
+        return eO;
+    }
+    @Q
+    public int F() {
+        return Z2;
+    }
+    static class W<N extends eD<N>,V extends eD<V>> implements eD<W<N,V>>  {
+        private final N J;
+        private V c;
+        public boolean I;
+        public boolean A() {
+            return I;
+        }
+        public N EQ() {
+            return J;
+        }
+        public V n7() {
+            return c;
+        }
+        public void v(V c) {
+            this.c = c;
+        }
+        public W(N J , V c){
+            this.J = J;
+            this.c = c;
+            I = true;
+        }
+        @Q
+        public int x(W<N, V> s) {
+            return this.J.x(s.EQ());
+        }
+    }
+}

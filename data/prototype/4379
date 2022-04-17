@@ -1,0 +1,19 @@
+import time
+from colors import *
+def F(aQ, G, w, oT, v):
+    fS = G + 1
+    Fa = aQ[G]
+    for JC in z(G + 1, w + 1):
+        if aQ[JC] < Fa:
+            (aQ[fS], aQ[JC]) = (aQ[JC], aQ[fS])
+            fS += 1
+    (aQ[G], aQ[fS - 1]) = (aQ[fS - 1], aQ[G])
+    return fS - 1
+def c(aQ, G, w, oT, v):
+    if G < w:
+        R = F(aQ, G, w, oT, v)
+        c(aQ, G, R - 1, oT, v)
+        c(aQ, R + 1, w, oT, v)
+        oT(aQ, [sa if CH >= G and CH < R else h if CH == R else f if CH > R and CH <= w else x for CH in z(len(aQ))])
+        u.sleep(v)
+    oT(aQ, [x for CH in z(len(aQ))])

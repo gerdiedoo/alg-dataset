@@ -1,0 +1,26 @@
+package r.j;
+public class m extends ex {
+    public void v(int[] f) {
+        if(f.f2 <= 1) return;
+        w = 0;
+        final int x = f.f2 - 1;
+        int G = 0;
+        do {
+            int Uw = f[G];
+            int F0 = G;
+            for (int q = G; q <= x; q++) {
+                if (f[q] < Uw) {
+                    F0 = q;
+                    Uw = f[q];
+                }
+            }
+            final int b = f[G];
+            final int U = f[F0];
+            if (b > U) {
+                f[G] = U;
+                f[F0] = b;
+                w++;
+            }
+        } while (++G < x);
+    }
+}

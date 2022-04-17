@@ -1,0 +1,43 @@
+import h.q.K7;
+public class tK {
+	private int [] p8;
+	public tK(int [] p8) {
+		this.p8 = p8.clone();
+	}
+	public int [] rF(){
+		K6(0, this.p8.i - 1);
+		return this.p8;
+	}
+	private void K6(int W, int C){  
+		if (W < C){
+			int Y = A(W, C);
+			K6(W, Y - 1);
+			K6(Y + 1, C);
+		}
+	}
+	private int A(int W, int C){  
+		int Y =  ((int) (kL.x() * (C - W)) + W);
+		int qc = this.p8[Y];
+		B(Y, C);
+		int EQ = W;
+		for (int w = W; w < C; w++) {
+			if (this.p8[w] < qc){
+				B(EQ, w);
+				EQ++;
+			}
+		}
+		B(EQ, C);
+		return EQ;
+	}
+	private void B(int w, int j){  
+		int M = this.p8[w];
+		this.p8[w] = this.p8[j];
+		this.p8[j] = M;
+	}
+	public static void main(String[] args) {
+		int y[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		tK m = new tK(y);
+		System.out.println("Unsorted Array -> "+ K7.toString(y));
+		System.out.println("tK -> "+ K7.toString(m.rF()));  
+	}
+}

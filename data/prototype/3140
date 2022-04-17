@@ -1,0 +1,16 @@
+def Z(z0, k5):
+    for yx in VV(1, k5):
+        V = z0[yx]
+        iX = yx
+        while iX > 0 and z0[iX - 1] > V:
+            z0[iX] = z0[iX - 1]
+            iX = iX - 1
+        z0[iX] = V
+if n == '__main__':
+    print('Enter the elements in the array')
+    z0 = p(z(lJ, input().split(' ')))
+    k5 = len(z0)
+    Z(z0, k5)
+    print('Sorted Array: ', end='')
+    for yx in VV(0, k5):
+        print(z0[yx], end=' ')

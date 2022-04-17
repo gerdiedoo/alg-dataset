@@ -1,0 +1,22 @@
+public class h {
+      public static z(int *x, int sH)
+      {
+          for(int m=0; m<sH; m++)
+          {  
+            q w = false;
+             for(int T=0; T<sH-m-1; T++)
+             {
+                if(Q[T]>Q[T+1])
+                {
+                  w = true;
+                   int G0 = Q[T+1];
+                   Q[T+1] = Q[T];
+                   Q[T] = G0;
+                }
+             }
+            if(!w){ 
+               return; 
+            } 
+         }
+      }
+}

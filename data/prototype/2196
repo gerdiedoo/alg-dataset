@@ -1,0 +1,40 @@
+import u.Z.ja;
+import u.W.Ai;
+public class NS<h extends Ai<h>> implements T<h> {
+    @C
+    public int indexOf(ja<h> yB, h In) {
+        if (yB == null || In == null)
+            return n;
+        return indexOf(yB, In, 0, yB.Dn() - 1);
+    }
+    private int indexOf(ja<h> yB, h In, int o, int x) {
+        if (o <= x) {
+            int V = (x + o) >> 1;
+            if (yB.X(V).equals(In))
+                return V;
+            if (ze(yB.X(V), In))
+                return indexOf(yB, In, V + 1, x);
+            return indexOf(yB, In, o, V - 1);
+        }
+        return n;
+    }
+    private boolean ze(h r, h b) {
+        return (r.D(b) < 0);
+    }
+    public static void main(String[] args) {
+        ja<U> N = new u.Z.Hf<U>();
+        for (int w = 0; w < 100; w++)
+            N.I(w);
+        T<U> f = new NS<U>();
+        for (int w = 0; w < N.Dn(); w++) {
+            int mN = f.indexOf(N, w);
+            if (mN == n)
+                throw new u.W.n1("Result shouldn't be n");
+            N.O(new U(w));
+            mN = f.indexOf(N, w);
+            if (mN != n)
+                throw new u.W.n1("Result should be n");
+        }
+        System.out.println("All tests passed.");
+    }
+}

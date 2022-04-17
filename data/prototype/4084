@@ -1,0 +1,35 @@
+package b.WZ.B;
+import F.X.eA;
+import F.X.j;
+public class U {
+    public static <L extends a<L>> j<L> E(j<L> r) {
+        j<L> kE = new eA<L>();
+        j<L> H = new eA<L>();
+        j<L> P = new eA<L>();
+        while (r.I() > 0) {
+            while (r.I() > 0) {
+                g(r, kE, H);
+                g(r, kE, P);
+            }
+            while (H.I() > 0 || P.I() > 0) {
+                g(H, P, kE);
+                g(H, P, r);
+            }
+        }
+        return kE;
+    }
+    public static <L extends a<L>> void g(j<L> Ux, j<L> Lj, j<L> kE) {
+        L v = null;
+        L M = null;
+        while ((Ux.I() > 0 && (v == null || v.W(Ux.f()) <= 0)) ||
+               (Lj.I() > 0 && (M == null || M.W(Lj.f()) <= 0))) {
+            if (Lj.I() == 0 || (Ux.I() > 0 && Ux.f().W(Lj.f()) <= 0)) {
+                v = Ux.QU();
+                kE.A(v);
+            } else {
+                M = Lj.QU();
+                kE.A(M);
+            }
+        }
+    }
+}

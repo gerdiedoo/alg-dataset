@@ -1,0 +1,40 @@
+def P(Y, v, fg, t):
+    H = fg - v + 1
+    q = t - fg
+    z = []
+    y = []
+    for o in d(0, H):
+        z.append(Y[v + o])
+    for F in d(0, q):
+        y.append(Y[fg + 1 + F])
+    o = 0
+    F = 0
+    z1 = v
+    while o < H and F < q:
+        if z[o] <= y[F]:
+            Y[z1] = z[o]
+            o += 1
+        else:
+            Y[z1] = y[F]
+            F += 1
+        z1 += 1
+    while o < H:
+        Y[z1] = z[o]
+        o += 1
+        z1 += 1
+    while F < q:
+        Y[z1] = y[F]
+        F += 1
+        z1 += 1
+def x(Y, v, t):
+    if v < t:
+        fg = (v + t) // 2
+        x(Y, v, fg)
+        x(Y, fg + 1, t)
+        P(Y, v, fg, t)
+def i():
+    Y = [ET(D) for D in input().split()]
+    x(Y, 0, len(Y) - 1)
+    print(Y)
+if C == '__main__':
+    i()

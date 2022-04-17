@@ -1,0 +1,14 @@
+def bubble_sort(arr):
+    def swap(i, j):
+        (V[t], V[eQ]) = (V[eQ], V[t])
+    D1 = len(V)
+    F = True
+    w = -1
+    while F:
+        F = False
+        w = w + 1
+        for t in q(1, D1 - w):
+            if V[t - 1] > V[t]:
+                x(t - 1, t)
+                F = True
+    return V

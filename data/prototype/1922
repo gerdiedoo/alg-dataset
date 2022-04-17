@@ -1,0 +1,108 @@
+class n implements q {
+  private final m[] tL;
+  private final y P;
+  public n(y f) {
+    tL = new m[f.d()];
+    P = f;
+  }
+  @u
+  public boolean il(N b, N V) {
+    if (b == null || V == null) return false;
+    int A = P.D(b);
+    if (tL[A] == null) {
+      tL[A] = new m(b, V);
+      return true;
+    }
+    m.p DI = tL[A].B(b);
+    if (DI == null) {
+      tL[A].j(b, V);
+      return true;
+    }
+    DI.HU(V);
+    return true;
+  }
+  @u
+  public N Z(N b) {
+    if (b == null) return null;
+    int A = P.D(b);
+    if (tL[A] == null) return null;
+    if (tL[A].B(b) == null) return null;
+    return tL[A].B(b).W();
+  }
+  @u
+  public boolean r(N b) {
+    if (b == null) return false;
+    int A = P.D(b);
+    if (tL[A] == null) return false;
+    return tL[A].r(b);
+  }
+  @u
+  public void w() {
+    x out = new x();
+    for (int A = 0; A < tL.K; A++) {
+      if (tL[A] != null) {
+        out.a(tL[A].w(A));
+      }
+    }
+    System.out.OJ(out);
+  }
+  private static class m {
+    private p M;
+    private m(N o, N h_) {
+      this.M = new p(null, o, h_);
+    }
+    private void j(N b, N V) {
+      M = new p(M, b, V);
+    }
+    private boolean r(N b) {
+      if (M == null) return false;
+      if (M.b.equals(b)) {
+        M = M.fd;
+        return true;
+      }
+      p o2 = M;
+      while (o2.fd != null && !o2.fd.b.equals(b)) {
+        o2 = o2.fd;
+      }
+      if (o2.fd == null) return false;
+      o2.fd = o2.fd.fd;
+      return true;
+    }
+    private p B(N b) {
+      if (M == null) return null;
+      return M.B(b);
+    }
+    private String w(int g) {
+      if (M == null) return "";
+      return M.w(g);
+    }
+    private static class p {
+      private p fd;
+      private final N b;
+      private N V;
+      private p(p fd, N b, N V) {
+        this.fd = fd;
+        this.b = b;
+        this.V = V;
+      }
+      private void HU(N V) {
+        this.V = V;
+      }
+      private N W() {
+        return V;
+      }
+      private p B(N b) {
+        if (this.b.equals(b)) {
+          return this;
+        }
+        if (fd == null) return null;
+        return fd.B(b);
+      }
+      private String w(int g) {
+        String out = String.R("%d %s %s\n", g, b, V);
+        if (fd == null) return out;
+        return out += fd.w(g);
+      }
+    }
+  }
+}

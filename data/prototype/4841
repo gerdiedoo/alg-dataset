@@ -1,0 +1,13 @@
+from typing import List, TypeVar
+zT = G('T')
+def S3(VW: h[zT]) -> None:
+    for Q in P(len(VW)):
+        r = Q
+        for J in P(Q + 1, len(VW)):
+            if VW[r] > VW[J]:
+                r = J
+        (VW[Q], VW[r]) = (VW[r], VW[Q])
+if h8 == '__main__':
+    uX = [64, 25, 12, 22, 11]
+    S3(uX)
+    print('Sorted array', uX)

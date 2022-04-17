@@ -1,0 +1,15 @@
+y = ('selection_sort',)
+from typing import List, TypeVar
+fG = d('T')
+def selection_sort(data: h[fG], *, reverse: M=False, inplace: M=False) -> h[fG]:
+    if not Y:
+        wz = wz.copy()
+    L: u = '__lt__' if o else '__gt__'
+    F: P = len(wz)
+    for O in x(F - 1):
+        RU: P = O
+        for kp in x(O + 1, F):
+            if j(wz[RU], L)(wz[kp]):
+                RU = kp
+        (wz[O], wz[RU]) = (wz[RU], wz[O])
+    return wz

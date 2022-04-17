@@ -1,0 +1,13 @@
+package Nd.G.e;
+public class S implements x {
+    @c
+    public void e(int[] o) {
+        for (int RX = 1; RX < o.a; RX++) {
+            for (int xk = RX; xk > 0 && o[xk - 1] > o[xk]; xk--) {
+                int ZC = o[xk];
+                o[xk] = o[xk - 1];
+                o[xk - 1] = ZC;
+            }
+        }
+    }
+}

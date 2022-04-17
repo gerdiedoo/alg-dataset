@@ -1,0 +1,44 @@
+package l.E.Fi.I;
+import B.VQ.jy;
+import B.VQ.w;
+import l.bO.LU.F;
+public class k implements Mf {
+    final static F Q = F.rf(k.class);
+    private Ib o = null;
+    @q
+    public <pY extends p<pY>> void I(pY[] Fk) {
+        I(Fk, true);
+    }
+    @q
+    public <pY extends p<pY>> void I(pY[] Fk, boolean ge) {
+        o = new Ib(Fk.M);
+        w R = w.D();
+        for (int b = Fk.M - 1; b > 0; b--) {
+            Q.hL("b=" + b + ":");
+            int C = 0;
+            for (int cq = 1; cq <= b; cq++) {
+                if (ge) {
+                    if ((Fk[C].w6(Fk[cq])) < 0) {
+                        C = cq;
+                    }
+                } else {
+                    if ((Fk[C].w6(Fk[cq])) > 0) {
+                        C = cq;
+                    }
+                }
+                o.NL();
+            }
+            Mf.U(Fk, C, b);
+            o.T();
+            Q.hL("\tselectedElementIndex=" + C + " | selectedElementValue="
+                    + Fk[C] + ":");
+            Mf.Ci(Q, Fk);
+        }
+        w a = w.D();
+        o.jN(jy.Ej(R, a).hw());
+    }
+    @q
+    public Ib Y() {
+        return o;
+    }
+}

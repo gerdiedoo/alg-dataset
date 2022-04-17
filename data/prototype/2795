@@ -1,0 +1,16 @@
+package n;
+public class x<P extends G<P>> implements s<P> {
+    @pq
+    public void Tw(P[] vA) {
+        boolean e = false;
+        for (int BQ = 0; !e && BQ < vA.B; BQ++) {
+            e = true;
+            for (int y = 0; y < vA.B; y++) {
+                if (vA[BQ].d(vA[y]) < 0) {
+                    O.w(vA, BQ, y);
+                    e = false;
+                }
+            }
+        }
+    }
+}

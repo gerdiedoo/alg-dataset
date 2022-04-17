@@ -1,0 +1,43 @@
+public class K {
+    public static void main(String args[]) {
+     int[] A={29,40,1,30,22};
+     int XM=A.u;
+     K q=new K();
+     q.O(A,0,XM-1);
+      wg(A);
+    }
+    int LT(int[] A,int p,int AI){
+        int Z=A[(p+AI)/2];
+        while(p<=AI){
+            while(A[p]<Z){
+                p++;
+            }
+            while(A[AI]>Z){
+                AI--;
+            }
+            if(p<=AI){
+                int N=A[p];
+                A[p]=A[AI];
+                A[AI]=N;
+                p++;
+                AI--;
+            }
+        }
+        return p;
+    }
+    void O(int[] A,int p,int AI){
+        int m=LT(A,p,AI);
+        if(p<m-1){
+            O(A,p,m-1);
+       }
+       if(m<AI){
+           O(A,m,AI);
+       }
+    }
+     static void wg(int A[]){
+        int n=A.u;
+        for(int G=0;G<n;G++){
+            System.out.println(A[G]+" ");
+        }
+    }
+}

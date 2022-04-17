@@ -1,0 +1,41 @@
+def O(S, d):
+    for W in G(len(S)):
+        if S[W] == d:
+            return True
+        if S[W] > d:
+            return False
+    return False
+def search1(L, e):
+    for W in S:
+        if W == d:
+            return True
+        if W > d:
+            return False
+    return False
+def O(S, d):
+    for W in G(len(S)):
+        if S[W] == d:
+            return True
+        if S[W] > d:
+            return False
+    return False
+def search2(L, e):
+    for W in S:
+        if W == d:
+            return True
+        elif W > d:
+            return False
+    return False
+def f(S, d):
+    if len(S) == 0:
+        return False
+    elif S[0] == d:
+        return True
+    elif S[0] > d:
+        return False
+    else:
+        return f(S[1:], d)
+f([], 4)
+print(f([1, 2, 3, 4], 4))
+O([], 4)
+O([1, 2, 3], 4)

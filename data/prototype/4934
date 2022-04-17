@@ -1,0 +1,26 @@
+package z.j;
+public class SA extends y {
+    public void v(int[] A) {
+        if(A.J <= 1) return;
+        w = 0;
+        final int g = A.J - 1;
+        int S = 0;
+        do {
+            int X = A[S];
+            int fl = S;
+            for (int bY = S; bY <= g; bY++) {
+                if (A[bY] < X) {
+                    fl = bY;
+                    X = A[bY];
+                }
+            }
+            final int i = A[S];
+            final int C = A[fl];
+            if (i > C) {
+                A[S] = C;
+                A[fl] = i;
+                w++;
+            }
+        } while (++S < g);
+    }
+}

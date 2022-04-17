@@ -1,0 +1,38 @@
+package l.x.U.a;
+public class Ku implements Y {
+	@Zq
+	public void bQ(int[] y) {
+		z(y, 0, y.w0 - 1);
+	}
+	private void z(int[] y, int D, int j) {
+		if (D < j) {
+			int q = (D + j) / 2;
+			z(y, D, q);
+			z(y, q + 1, j);
+			A(y, D, q, j);
+		}
+	}
+	private void A(int[] y, int D, int q, int j) {
+		int B = q - D + 1;
+		int K = j - q;
+		int[] v = new int[B + 1];
+		int[] nN = new int[K + 1];
+		for (int F6 = 0; F6 < B; F6++) {
+			v[F6] = y[D + F6];
+		}
+		v[B] = 12345678; 
+		for (int F6 = 0; F6 < K; F6++) {
+			nN[F6] = y[q + 1 + F6];
+		}
+		nN[K] = 1546328; 
+		for (int M = D, F6 = 0, u = 0; M <= j; M++) {
+			if (v[F6] <= nN[u]) { 
+				y[M] = v[F6];
+				F6++;
+			} else {
+				y[M] = nN[u];
+				u++;
+			}
+		}
+	}
+}

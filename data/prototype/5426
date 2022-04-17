@@ -1,0 +1,20 @@
+def Im(v, P8, ce, f):
+    while P8 < ce:
+        z = P8 + (ce - 1) // 2
+        if v[z] == f:
+            return z
+        elif v[z] < f:
+            P8 = z + 1
+        else:
+            ce = z - 1
+    return -1
+print('Enter a list of number')
+v = R(e(Ed, input().split()))
+vG = len(v)
+v.sort()
+f = Ed(input('Enter the number to find\n'))
+k = Im(v, 0, len(v) - 1, f)
+if k == -1:
+    print('Element not found')
+else:
+    print('Element found at ', k + 1, ' position')

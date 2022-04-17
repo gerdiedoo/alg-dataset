@@ -1,0 +1,20 @@
+import s.q.r;
+public class R {
+    public static void Y(w[] b9){
+        for(int o = 0; o < b9.My; o++){
+            int F = o;
+            while(F > 0 && b9[F] < b9[F - 1]){
+                int V = b9[F];
+                b9[F] = b9[F-1];
+                b9[F-1] = V;
+                F--;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        w[] UV = new w[]{5, 6, 4, 3};
+        System.out.println(r.toString(UV));
+        Y(UV);
+        System.out.println(r.toString(UV));
+    }
+}

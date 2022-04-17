@@ -1,0 +1,134 @@
+import YD.r2.*;
+public class u <h> {
+	private R <L <h>> p;
+	public int G, gX;
+	public double B;
+	public u () {
+		G = 0;
+		gX = 10;
+		B = 0.6;
+		p = M(10);
+	}
+	private R <L <h>> M (int G) {
+		R <L <h>> UA = new R <L <h>> ();
+		for (int A = 0; A < G; A ++) {
+			UA.g(null);
+		}
+		return UA;
+	}
+	public void g (h Jb) {
+		int K = f8.a(Jb.hashCode()) % gX;
+		if (p.ex(K) == null) {
+			p.r3(K, new L <h> ());
+		}
+		p.ex(K).g(Jb);
+		G += 1;
+		if (t() - B > 0.01) {
+			z();
+		}
+	}
+	public void I (h Jb) {
+		int K = f8.a(Jb.hashCode()) % gX;
+		if (p.ex(K) != null) {
+			if (p.ex(K).G() == 1) {
+				p.r3(K, null);
+			}
+			else {
+				p.ex(K).I(Jb);
+			}
+		}
+	}
+	public h ex (int b3) {
+		int K = f8.a(b3) % gX;
+		if (p.ex(K) != null) {
+			for (h Jb: p.ex(K)) {
+				if (Jb.hashCode() == b3) {
+					return Jb;
+				}
+			}
+		}
+		return null;
+	}
+	public L<h> d (int b3) {
+		int K = f8.a(b3) % gX;
+		L<h> o = p.ex(K);
+        if (o != null && o.G() > 0) {
+            return o;
+        }
+        return null;
+	}
+	public void z (double s) {
+		R <L <h>> UA = p;
+		gX = (int) ((double) G/s);
+		System.out.println(gX);
+		G = 0;
+		p = M(gX);
+		for (L <h> w : UA) {
+			if (w != null) {
+				for (h Jb : w) {
+					g(Jb);
+				}
+			}
+		}
+	}
+  	public void z () {
+	    R <L <h>> UA = p;
+	    gX *= 10;
+	    G = 0;
+	    p = M(gX);
+	    for (L <h> w : UA) {
+	        if (w != null) {
+	        	for (h Jb : w) {
+	          		g(Jb);
+	        	}
+	      	}
+	    }
+	}
+	public double t () {
+        return (double)G / (double)gX;
+	}
+	public void E (double s) {
+		if (s >= 0.1 && s <= 0.8) {
+            B = s;
+        }
+	}
+	public void Z (double s) {
+		if (s >= 0.1 && s <= 0.8) {
+			if (s >= B) {
+				B = s;
+			}
+			else {
+				B = s;
+				z(B);
+			}
+		}
+	}
+	public R <h> T () {
+		R <h> out = new R <h> ();
+		for (int A = 0; A < gX; A ++) {
+			if (p.ex(A) != null) {
+				for (int O = 0; O < p.ex(A).G(); O ++) {
+					out.g(p.ex(A).ex(O));
+				}
+			}
+		}
+		return out;
+	}
+	public String toString () {
+		if (G > 0) {
+			String x = "[";
+			for (int A = 0; A < gX; A ++) {
+				if (p.ex(A) != null) {
+					for (int O = 0; O < p.ex(A).G(); O ++) {
+						x += p.ex(A).ex(O) + ", ";
+					}
+				}
+			}
+			x = x.Y(0, x.N(",")) + "]";
+			return x;
+		}
+		else {
+			return "[]";
+		}
+	}
+}

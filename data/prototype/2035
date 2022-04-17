@@ -1,0 +1,152 @@
+package f.v.K.R.i;
+public class Ks<RQ> {
+	private Ei<RQ> Q;
+	private Ei<RQ> U;
+	private int X0 = 0;
+	public void T(RQ PJ) {
+		Ei<RQ> a = new Ei<RQ>(PJ);
+		if (null == Q) { 
+			a.k = null;
+			a.BT = null;
+			Q = a;
+			U = a;
+			X0++;
+		} else {
+			a.k = Q;
+			a.BT = null;
+			Q.BT = a;
+			Q = a;
+			X0++;
+		}
+	}
+	public void VW(RQ PJ) {
+		Ei<RQ> a = new Ei<RQ>(PJ);
+		if (null == U) { 
+			a.k = null;
+			a.BT = null;
+			Q = a;
+			U = a;
+			X0++;
+		} else {
+			U.k = a;
+			a.k = null;
+			a.BT = U;
+			U = a;
+			X0++;
+		}
+	}
+	public void c(RQ PJ, int ki) {
+		if (ki < 0 || ki > X0) {
+			throw new N("Position is Invalid");
+		} 
+		if (ki == 0) { 
+			T(PJ);
+		} else if (ki == X0 -1) { 
+			VW(PJ);
+		} else { 
+			Ei<RQ> r = Q;
+			for (int V = 0; V < ki; V++) {
+				r = r.k;
+			}
+			Ei<RQ> rh = r.BT;
+			Ei<RQ> a = new Ei<RQ>(PJ);
+			a.k = r;
+			a.BT = rh;
+			rh.k = a;
+			r.BT = a;
+			X0++;
+		}
+	}
+	public void o() {
+		Ei<RQ> u = Q;
+		while (u != null) {
+			System.out.println(u.D);
+			u = u.k;
+		}
+	}
+	public void t() {
+		Ei<RQ> u = U;
+		while (u != null) {
+			System.out.println(u.D);
+			u = u.BT;
+		}
+	}
+	public int X0() {
+		return X0;
+	}
+	public boolean y() {
+		return X0 == 0;
+	}
+	public Ei<RQ> X(int w) {
+		if (w < 0 || w >= X0) {
+			throw new W("Invalid w passed while searching for a PJ");
+		} 
+		Ei<RQ> u = Q;
+		for (int V = 0; V < w; V++) { 
+			u = u.k;
+		}
+		return u;
+	}
+	public Ei<RQ> rD(RQ PJ) { 
+		Ei<RQ> u = Q;
+		while (null != u.k && u.D != PJ) {
+			u = u.k;
+		}
+		if (u.D == PJ) {
+			return u;
+		}
+		return null;
+	}
+	public void n() {
+		if (null == Q) { 
+			return;
+		}
+		Ei<RQ> u = Q;
+		Q = u.k;
+		Q.BT = null;
+		X0--;
+	}
+	public void L() {
+		if (null == U) { 
+			return;
+		}
+		Ei<RQ> u = U;
+		U = u.BT;
+		U.k = null;
+		X0--;
+	}
+	public void m(int ki) {
+		if (ki < 0 || ki >= X0) {
+			throw new N("Position is Invalid");
+		} 
+		Ei<RQ> fu = Q;
+		for (int V = 0; V < ki; V++) {
+			fu = fu.k;
+		}
+		Ei<RQ> rh = fu.BT;
+		Ei<RQ> S = fu.k;
+		rh.k = S;
+		S.BT = rh;
+		X0--;
+	}
+	public h[] H0() {
+		h[] D4 = new h[X0];
+		int V = 0;
+		for (Ei<RQ> x = Q; x != null; x = x.k) {
+			D4[V++] = x.D;
+		}
+		return D4;
+	}
+	public class Ei<G> {
+		G D;
+		Ei<G> k;
+		Ei<G> BT;
+		public Ei(G D) {
+			this.D = D;
+		}
+		@A
+		public String toString() {
+			return String.E(D);
+		}
+	}
+}

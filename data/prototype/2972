@@ -1,0 +1,17 @@
+package H;
+import y.dX.w;
+import y.dX.m;
+public class V<pS> extends d<pS> {
+	public void v(m<pS> J, w<pS> s) {
+		for (int G = 0; G < J.a(); G++) {
+			for (int M = 0; M < J.a() - G - 1; M++) {
+				if (s.R(J.g(M), J.g(M + 1)) > 0) {
+					x8(J, M, M + 1);
+				}
+			}
+		}
+	}
+	public String A() {
+		return "Bubble Sort";
+	}
+}

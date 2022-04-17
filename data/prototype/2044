@@ -1,0 +1,33 @@
+package Y;
+public class M {
+    int[] Wq;
+    int[] yc;
+    public M(int G) {
+        Wq = new int[G + 1];
+        yc = new int[G + 1];
+    }
+    public void a(int Zq, int ti) {
+        yc[Zq] = ti;
+        Wq[Zq] = Wq[ti];
+        yc[Wq[Zq]] = Zq;
+        Wq[yc[Zq]] = Zq;
+    }
+    public void H9(int Zq) {
+        Wq[yc[Zq]] = Wq[Zq];
+        yc[Wq[Zq]] = yc[Zq];
+    }
+    public static void main(String[] args) {
+        int n = 10;
+        M j = new M(n);
+        for (int Cd = 1; Cd <= n; Cd++) {
+            j.a(Cd, Cd - 1);
+        }
+        j.H9(1);
+        j.H9(10);
+        j.H9(5);
+        for (int Cd = j.Wq[0]; Cd != 0; Cd = j.Wq[Cd]) {
+            System.out.L(Cd + " ");
+        }
+        System.out.println();
+    }
+}

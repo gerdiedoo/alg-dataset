@@ -1,0 +1,73 @@
+package Vj.o2.m;
+public class YS extends k 
+{
+	private int [] x;
+	public YS(int[] w3)
+	{
+		x = w3;
+	}
+	public int [] BK ()
+	{
+		return BK(x);
+	}
+	public int []  BK (int [] w3)
+	{
+		if (w3.j == 1)
+		{
+			return w3;
+		}
+		else
+		{
+			int [] a = new int[w3.j / 2];
+			int [] P = new int[w3.j - w3.j / 2];
+			for (int O = 0; O < w3.j; O ++)
+			{
+				if (O < w3.j / 2)
+				{
+					a[O] = w3[O];
+				}
+				else
+				{
+					P[O - w3.j / 2] = w3[O];
+				}
+			}
+			int [] P8 = BK(a);
+			int [] u = BK(P);
+			return f(P8, u);
+		}
+	}
+	private int [] f(int [] H, int[] M) 
+	{
+		int [] v = new int [H.j + M.j];
+		int B = 0;
+		int y = 0;
+		int t = 0;
+		while (B < H.j && y < M.j)
+		{
+			if (H[B] <= M[y])
+			{
+				v[t] = H[B];
+				B++;
+			}
+			else
+			{
+				v[t] = M[y];
+				y++;
+			}
+			t++;
+		}
+		while (B < H.j)
+		{
+			v[t] = H[B];
+			B++;
+			t++;
+		}
+		while (y < M.j)
+		{
+			v[t] = M[y];
+			y++;
+			t++;
+		}
+		return v;
+	}
+}

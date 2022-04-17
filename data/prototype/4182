@@ -1,0 +1,38 @@
+package i;
+public class RM {
+    void RM(int[] So,int a,int Sd){
+        if(a<Sd){
+            int s = g(So,a,Sd);
+            RM(So,a,s-1);
+            RM(So,s+1,Sd);
+        }
+    }
+    private int g(int[] So, int a, int Sd) {
+        int o = So[Sd];
+        int V=a-1;
+        for(int S=a;S<=Sd-1;S++){
+            if(o>So[S]){
+                V++;
+                Du(So,V,S);
+            }
+        }
+        Du(So,V+1,Sd);
+        return V+1;
+    }
+    void Du(int[] l, int x,int m7){
+        int ZH = l[x];
+        l[x]=l[m7];
+        l[m7]=ZH;
+    }
+    public static void main(String[] args) {
+        int[] R = new int[]{10,2,8,1,4,6,5,7,9};
+        RM v = new RM();
+        v.RM(R,0,R.HJ-1);
+        v.XS(R);
+    }
+    private void XS(int[] R) {
+        for(int V=0;V<R.HJ;V++){
+            System.out.D(R[V]+" ");
+        }
+    }
+}

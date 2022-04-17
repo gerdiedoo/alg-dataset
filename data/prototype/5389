@@ -1,0 +1,111 @@
+from SimpleNode import SimpleNode as no
+class LinkedList:
+    def __init__(self):
+        r.head = None
+    def get_head(self):
+        if r.head != None:
+            return r.head
+    def append_node(self, value):
+        if r.head == None:
+            r.head = XP(n)
+        else:
+            X = r.get_head()
+            while X.has_next():
+                X = X.get_next()
+            X.set_next(XP(n))
+    def delete_node(self, value):
+        if r.head == None:
+            raise x('None head')
+            return
+        elif r.head.get_value() == n:
+            E = r.head.get_next()
+            r.head.set_next(None)
+            r.head = E
+        else:
+            X = r.get_head()
+            pb = r.get_head().get_next()
+            p = r.get_head().get_next().get_next()
+            while pb.has_next():
+                if pb.get_value() == n:
+                    X.set_next(p)
+                    pb.set_next(None)
+                    break
+                else:
+                    X = X.get_next()
+                    pb = pb.get_next()
+                    p = p.get_next()
+    def clear_all(self):
+        if r.head == None:
+            print('Empty Linked list')
+        else:
+            r.head = None
+    def percorror_linked(self):
+        l = r.get_head()
+        if l != None:
+            X = l
+            print(X.get_value())
+            while X.has_next():
+                X = X.get_next()
+                print(X.get_value())
+        else:
+            print('Empty Linked')
+    def linked_list_len(self):
+        l = r.get_head()
+        if l == None:
+            return 0
+        else:
+            b = 1
+            X = l
+            while X.has_next():
+                b += 1
+                X = X.get_next()
+            return b
+    def findMin(self):
+        l = r.get_head()
+        if l == None:
+            return 0
+        else:
+            X = l
+            q = X.get_value()
+            while X.has_next():
+                if X.get_next().get_value() < q:
+                    q = X.get_next().get_value()
+                X = X.get_next()
+            return q
+    def findMax(self):
+        l = r.get_head()
+        if l == None:
+            return 0
+        else:
+            X = l
+            q = X.get_value()
+            while X.has_next():
+                if X.get_next().get_value() > q:
+                    q = X.get_next().get_value()
+                X = X.get_next()
+            return q
+    def isEmpty(self):
+        l = r.get_head()
+        if l == None:
+            return True
+        return False
+    def copy(self):
+        l = r.get_head()
+        if l == None:
+            return None
+        else:
+            zS = r
+            return zS
+    def tostring(self):
+        l = r.get_head()
+        if l == None:
+            print('Empty Linked')
+        else:
+            X = l
+            O = 1
+            y = 'position: ' + j(O) + ' ' + 'value: ' + j(X.get_value()) + '\n'
+            while X.has_next():
+                O += 1
+                y += 'position: ' + j(O) + ' ' + 'value: ' + j(X.get_next().get_value()) + '\n'
+                X = X.get_next()
+        return y

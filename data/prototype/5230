@@ -1,0 +1,134 @@
+import F.N.*;
+public class r <AI> {
+	private wK <T <AI>> g;
+	public int Q, o;
+	public double w9;
+	public r () {
+		Q = 0;
+		o = 10;
+		w9 = 0.6;
+		g = l(10);
+	}
+	private wK <T <AI>> l (int Q) {
+		wK <T <AI>> m = new wK <T <AI>> ();
+		for (int C = 0; C < Q; C ++) {
+			m.ap(null);
+		}
+		return m;
+	}
+	public void ap (AI p) {
+		int e = x.mN(p.hashCode()) % o;
+		if (g.X(e) == null) {
+			g.Jx(e, new T <AI> ());
+		}
+		g.X(e).ap(p);
+		Q += 1;
+		if (bf() - w9 > 0.01) {
+			q();
+		}
+	}
+	public void h (AI p) {
+		int e = x.mN(p.hashCode()) % o;
+		if (g.X(e) != null) {
+			if (g.X(e).Q() == 1) {
+				g.Jx(e, null);
+			}
+			else {
+				g.X(e).h(p);
+			}
+		}
+	}
+	public AI X (int b) {
+		int e = x.mN(b) % o;
+		if (g.X(e) != null) {
+			for (AI p: g.X(e)) {
+				if (p.hashCode() == b) {
+					return p;
+				}
+			}
+		}
+		return null;
+	}
+	public T<AI> z (int b) {
+		int e = x.mN(b) % o;
+		T<AI> P = g.X(e);
+        if (P != null && P.Q() > 0) {
+            return P;
+        }
+        return null;
+	}
+	public void q (double y) {
+		wK <T <AI>> m = g;
+		o = (int) ((double) Q/y);
+		System.out.println(o);
+		Q = 0;
+		g = l(o);
+		for (T <AI> G : m) {
+			if (G != null) {
+				for (AI p : G) {
+					ap(p);
+				}
+			}
+		}
+	}
+  	public void q () {
+	    wK <T <AI>> m = g;
+	    o *= 10;
+	    Q = 0;
+	    g = l(o);
+	    for (T <AI> G : m) {
+	        if (G != null) {
+	        	for (AI p : G) {
+	          		ap(p);
+	        	}
+	      	}
+	    }
+	}
+	public double bf () {
+        return (double)Q / (double)o;
+	}
+	public void tv (double y) {
+		if (y >= 0.1 && y <= 0.8) {
+            w9 = y;
+        }
+	}
+	public void eH (double y) {
+		if (y >= 0.1 && y <= 0.8) {
+			if (y >= w9) {
+				w9 = y;
+			}
+			else {
+				w9 = y;
+				q(w9);
+			}
+		}
+	}
+	public wK <AI> d () {
+		wK <AI> out = new wK <AI> ();
+		for (int C = 0; C < o; C ++) {
+			if (g.X(C) != null) {
+				for (int u = 0; u < g.X(C).Q(); u ++) {
+					out.ap(g.X(C).X(u));
+				}
+			}
+		}
+		return out;
+	}
+	public String toString () {
+		if (Q > 0) {
+			String D = "[";
+			for (int C = 0; C < o; C ++) {
+				if (g.X(C) != null) {
+					for (int u = 0; u < g.X(C).Q(); u ++) {
+						D += g.X(C).X(u) + ", ";
+					}
+				}
+			}
+			D = D.s(0, D.B(",")) + "]";
+			return D;
+		}
+		else {
+			return "[]";
+		}
+	}
+}

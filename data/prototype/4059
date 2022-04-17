@@ -1,0 +1,48 @@
+package Q;
+import S.M.W;
+import S.M.T;
+import S.M.cX;
+public class ua {
+	private static cX<PH> V(cX<PH> v, cX<PH> G) {
+		cX<PH> y = new W<>();
+		int zs = v.fu();
+		int j = G.fu();
+		int E = 0;
+		int h = 0;
+		while (E < zs && h < j) {
+			if (v.K(E) < G.K(h)) {
+				y.Ox(v.K(E));
+				E++;
+			} else {
+				y.Ox(G.K(h));
+				h++;
+			}
+		}
+		if (E < zs) {
+			y.Vx(v.a(E, v.fu()));
+		} else {
+			y.Vx(G.a(h, G.fu()));
+		}
+		return y;
+	}
+	public static cX<PH> WT(cX<PH> z) {
+		int fu = z.fu();
+		if (fu == 1)
+			return z;
+		int r = fu / 2;
+		cX<PH> qs = WT(z.a(0, r));
+		cX<PH> cm = WT(z.a(r, z.fu()));
+		return V(qs, cm);
+	}
+	public static void main(String[] args) {
+		cX<PH> z = new W<PH>();
+		for (int E = 0; E < 1000000; E++) {
+			z.Ox(E);
+		}
+		T.cc(z);
+		long D = System.x();
+		cX<PH> s = ua.WT(z);
+		float m = (System.x() - D) / 1000;
+		System.out.println(m);
+	}
+}

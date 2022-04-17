@@ -1,0 +1,42 @@
+import copy
+import sort_tools
+def uZ(P, r, e):
+    S = P[r]
+    P[r] = P[e]
+    P[e] = S
+def Y8(P, j, T):
+    Q = (T - j) // 2 + j
+    if P[j] > P[Q]:
+        uZ(P, j, Q)
+    if P[j] > P[T]:
+        uZ(P, j, T)
+    if P[Q] > P[T]:
+        uZ(P, Q, T)
+    uZ(P, Q, T - 1)
+    return T - 1
+def E(P, j, T):
+    h = Y8(P, j, T)
+    while j < h:
+        if P[j] > P[h]:
+            S = P[j]
+            P[j] = P[h - 1]
+            P[h - 1] = P[h]
+            P[h] = S
+            h -= 1
+        else:
+            j += 1
+    return h
+def F(P, j, T):
+    if j < T:
+        Q = E(P, j, T)
+        F(P, j, Q - 1)
+        F(P, Q + 1, T)
+@p.timeit('quick')
+def X(P):
+    F(P, 0, len(P) - 1)
+def tD():
+    P = p.build_data_set(5)
+    M = R.deepcopy(P)
+    X(M)
+if L == '__main__':
+    tD()

@@ -1,0 +1,30 @@
+public class X<E extends t<E>> {
+    public void x(E[] s, int N, int y) {
+        if (N < y) this.F(s, N, y);
+    }
+    private void F(E[] s, int N, int y) {
+        if (N < y) {
+            int ql = N;
+            int w = y;
+            int H = N;
+            E H_ = s[N];
+            while (H <= w) {
+                if (s[H].V(H_) < 0) {
+                    this.f(s, ql, H);
+                    ql++;
+                    H++;
+                } else if (s[H].V(H_) > 0) {
+                    this.f(s, H, w);
+                    w--;
+                } else H++;
+            }
+            x(s, N, ql - 1);
+            x(s, w + 1, y);
+        }
+    }
+    private void f(E[] s, int H, int CL){
+        E g = s[H];
+        s[H] = s[CL];
+        s[CL] = g;
+    }
+}

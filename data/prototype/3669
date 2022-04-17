@@ -1,0 +1,31 @@
+def hF(V):
+    print('Splitting ', V)
+    if len(V) > 1:
+        W = len(V) // 2
+        U = V[:W]
+        h = V[W:]
+        hF(U)
+        hF(h)
+        L = 0
+        UE = 0
+        k = 0
+        while L < len(U) and UE < len(h):
+            if U[L] < h[UE]:
+                V[k] = U[L]
+                L = L + 1
+            else:
+                V[k] = h[UE]
+                UE = UE + 1
+            k = k + 1
+        while L < len(U):
+            V[k] = U[L]
+            L = L + 1
+            k = k + 1
+        while UE < len(h):
+            V[k] = h[UE]
+            UE = UE + 1
+            k = k + 1
+    print('Merging ', V)
+V = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+hF(V)
+print(V)

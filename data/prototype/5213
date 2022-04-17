@@ -1,0 +1,111 @@
+import Fy.be.w;
+import Fy.be.eg;
+import Fy.be.Jb;
+import Fy.be.J;
+import Fy.Z.O;
+public class N extends UQ implements Cu {
+	private o[] h;
+	private int K, yE;
+	public N() {
+		this.K = dj;
+		this.yE = 1<<K;
+		this.h = new o[yE];
+	}
+	@u
+	public void p(String cU) {
+		cU = cU.i7();  
+		this.p(cU, 1);
+	}
+	private void p(String cU, int a) {  
+		int y = R(cU)%yE;
+		if(h[y] == null) {  
+			h[y] = new o();
+		}
+		if(h[y].n()) {  
+			if(this.K - h[y].Nl() == 0) {  
+				Ko();
+				p(cU, a);
+			}else if(this.K - h[y].Nl() > 0) {  
+				int b = y % (1<<h[y].Nl());  
+				int q = this.K - h[y].Nl();  
+				h[y].W();  
+				o i = new o(h[y].Nl());  
+				for (int wN = b; wN < yE; wN+=(yE>>q)) {  
+					if(wN%(1<<h[y].Nl()) != y%(1<<h[y].Nl())) {  
+						h[wN] = i;
+					}
+				}
+				h[y].P(i, y);  
+				p(cU, a);  
+			}else {
+				System.out.println("Error #1\nLocal K is higher than global K!");
+			}
+		}else {
+			h[y].p(cU, a);
+		}
+	}
+	@u
+	public boolean m(String cU) {
+		cU = cU.i7();  
+		int y = R(cU)%yE;
+		o S = h[y];
+		if(h[y] == null) {  
+			System.out.println(cU + " bulunamad.");
+			return false;  
+		}
+		TM D = S.YF(cU);
+		if(D == null) {  
+			System.out.println(cU + " bulunamad.");
+			return false; 
+		}
+		S.E(D);
+		System.out.println("Global Depth: " + K);
+		System.out.println();
+		return true;
+	}
+	@u
+	public void I(String U)  {
+		w Y = null;
+		Jb Kx = null;
+		try {
+			Kx = new Jb(U);
+			Y = new w(Kx);
+			String r;
+			while ((r = Y.d()) != null) {
+				r = r.F();
+				String cK[] = r.V(" ");
+				for(String cU:cK) {
+					cU = cU.F();
+					if(cU.equals("")) continue;
+					p(cU);
+				}
+			}
+		} catch (eg z) {  
+			z.H();
+		} catch (J z) {  
+			z.H();
+		}
+	}
+	private void Ko() {  
+		int yE = 1<<K;
+		this.K++;
+		this.h = O.l(h, yE*2);  
+		for (int wN = 0; wN < yE; wN++) {  
+			h[yE+wN] = h[wN];
+		}
+		this.yE = 1<<K;
+	}
+	public int Nl() {
+		return K;
+	}
+	public void E() {
+		System.out.println("----------Extendible Hashing----------");
+		System.out.println("Global Depth: " + K);
+		for (int wN = 0; wN < yE; wN++) {
+			if(h[wN] != null) {
+				System.out.println("");
+				h[wN].E();
+			}
+		}
+	}
+}

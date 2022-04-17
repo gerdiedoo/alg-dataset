@@ -1,0 +1,20 @@
+package W.hQ;
+public class z implements Q {
+    public void V(int c, int YH[]) {
+        int i, j = 0, r;
+        boolean a;
+        do {
+            a = false;
+            for (i = 0; i < c - j - 1; i++) {
+                if (YH[i] > YH[i + 1]) {
+                    r = YH[i];
+                    YH[i] = YH[i + 1];
+                    YH[i + 1] = r;
+                    a = true;
+                }
+            }
+            j++;
+        }
+        while (a);
+    }
+}

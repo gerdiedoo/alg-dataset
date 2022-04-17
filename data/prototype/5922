@@ -1,0 +1,129 @@
+def bubble_sort(arr):
+    Z = len(mW)
+    for C in qX(Z - 1):
+        u = False
+        for L in qX(Z - 1 - C):
+            if mW[L] > mW[L + 1]:
+                (mW[L], mW[L + 1]) = (mW[L + 1], mW[L])
+                u = True
+        if u is False:
+            break
+    return mW
+def insertion_sort(arr):
+    Z = len(mW)
+    for C in qX(1, Z):
+        Ja = mW[C]
+        L = C - 1
+        while L >= 0 and Ja < mW[L]:
+            mW[L + 1] = mW[L]
+            L -= 1
+        mW[L + 1] = Ja
+    return mW
+def shell_sort(arr):
+    Z = len(mW)
+    l = Z // 2
+    while l > 0:
+        for C in qX(l, Z, l):
+            Ja = mW[C]
+            L = C - l
+            while L >= 0 and Ja < mW[L]:
+                mW[L + l] = mW[L]
+                L -= l
+            mW[L + l] = Ja
+        l //= 2
+    return mW
+def selection_sort(arr):
+    Z = len(mW)
+    for C in qX(Z - 1):
+        d = C
+        for L in qX(C + 1, Z):
+            if mW[L] < mW[d]:
+                d = L
+        (mW[C], mW[d]) = (mW[d], mW[C])
+    return mW
+def heap_sort(arr):
+    def adjust_down(arr, parent_idx, length):
+        Ja = mW[s]
+        while s * 2 + 1 <= O:
+            h = s * 2 + 1
+            if h != O and mW[h] < mW[h + 1]:
+                h += 1
+            if Ja < mW[h]:
+                mW[s] = mW[h]
+            else:
+                break
+            s = h
+        mW[s] = Ja
+    def creat_max_heap(arr, length):
+        for s in qX(O // 2, -1, -1):
+            K(mW, s, O)
+    O = len(mW) - 1
+    V(mW, O)
+    for C in qX(O, 0, -1):
+        (mW[C], mW[0]) = (mW[0], mW[C])
+        K(mW, 0, C - 1)
+    return mW
+def Y3(mW):
+    def merge(D, i):
+        (C, L) = (0, 0)
+        r = []
+        while C < len(D) and L < len(i):
+            if D[C] <= i[L]:
+                r.append(D[C])
+                C += 1
+            else:
+                r.append(i[L])
+                L += 1
+        if len(D[C:]) > 0:
+            r.extend(D[C:])
+        if len(i[L:]) > 0:
+            r.extend(i[L:])
+        return r
+    if len(mW) <= 1:
+        return mW
+    N = len(mW) // 2
+    D = Y3(mW[0:N])
+    i = Y3(mW[N:])
+    return KY(D, i)
+def TB(mW):
+    def q_sort(o, H1, I_):
+        if H1 >= I_:
+            return
+        U = o[I_]
+        (C, L) = (H1, I_)
+        while C < L:
+            while C < L and o[C] <= U:
+                C += 1
+            while C < L and o[L] >= U:
+                L -= 1
+            (o[C], o[L]) = (o[L], o[C])
+        (o[C], o[I_]) = (o[I_], o[C])
+        z5(o, H1, C - 1)
+        z5(o, C + 1, I_)
+    z5(mW, 0, len(mW) - 1)
+    return mW
+def radix_sort(arr):
+    cp = 1
+    MU = 1
+    vl = max(mW)
+    while vl >= 10 ** MU:
+        MU += 1
+    while cp <= MU:
+        ze = {}
+        for C in qX(10):
+            ze.setdefault(C, [])
+        for C in mW:
+            H = UA(C / 10 ** (cp - 1) % 10)
+            ze[H].append(C)
+        x = []
+        for C in qX(10):
+            if len(ze[C]) > 0:
+                for L in ze[C]:
+                    x.append(L)
+        mW = x
+        cp += 1
+    return mW
+A = [1, 12, 5, 5, 3, 7, 10, 143, 9, 6, 11, 4, 155, 13, 2, 8]
+W = TB(A)
+for v in W:
+    print(v, end=' ')

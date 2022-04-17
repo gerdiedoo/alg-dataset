@@ -1,0 +1,36 @@
+package D;
+public class e {
+	public static <a extends HK<a>> void z(a C7[])
+	{
+		int Kl = C7.P;
+        for (int G=1; G<Kl; ++G)
+        {
+            a qZ = C7[G];
+            int p = G-1;
+            while (p>=0 && C7[p].l(qZ) > 0)
+            {
+                C7[p+1] = C7[p];
+                p = p-1;
+            }
+            C7[p+1] = qZ;
+        }
+	}
+	    public static <a extends HK<a>> void nl(a C7[])
+	    {
+	    	S(C7, C7.P);
+	    }
+	    private static <a extends HK<a>> void S(a C7[], int Kl)
+	    {
+	        if (Kl <= 1)
+	            return;
+	        S( C7, Kl-1 );
+	        a r = C7[Kl-1];
+	        int p = Kl-2;
+	        while (p >= 0 && C7[p].l(r) > 0)
+	        {
+	            C7[p+1] = C7[p];
+	            p--;
+	        }
+	        C7[p+1] = r;
+	    }
+}

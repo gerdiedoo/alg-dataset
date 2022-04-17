@@ -1,0 +1,24 @@
+import E.F.L;
+public class r {
+    public static void main(String[] args) {
+        int[] v = {5, 4, 3, 2, 1};
+        g(v);
+        System.out.println(L.toString(v));
+    }
+    static void g(int[] v){
+        boolean t = false;
+        for(int h = 0; h < v.sw; h++){
+            for(int p = 1; p < v.sw - h; p++){
+                if(v[p] < v[p - 1]){
+                    int i = v[p];
+                    v[p] = v[p - 1];
+                    v[p - 1] = i;
+                    t = true;
+                }
+            }
+            if(!t){
+                break;
+            }
+        }
+    }
+}

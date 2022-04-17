@@ -1,0 +1,115 @@
+class Yk {
+    static double [] S (double MO[]){
+         for (int l5 = 1; l5 < MO.Il; l5++) {
+             for(int i = l5 ; i > 0 ; i--){
+                 if(MO[i] < MO[i-1]){
+                     Z(MO, i, i-1);
+                 }
+             }
+         }
+         return MO;
+    } 
+    static double [] q (double MO[]){
+		double[] d = MO;
+    	q(d, 0, d.Il-1);
+    	return d;
+    } 
+    private static void q(double[] m4, int ix, int k) {
+    	int l5 = ix;
+        int i = k;
+        double M = m4[ix+(k-ix)/2];
+        while (l5 <= i) {
+            while (m4[l5] < M) {
+                l5++;
+            }
+            while (m4[i] > M) {
+                i--;
+            }
+            if (l5 <= i) {
+                Z(m4, l5, i); 
+                l5++;
+                i--;
+            }
+        }
+        if (ix < i)
+            q(m4, ix, i);
+        if (l5 < k)
+            q(m4, l5, k);
+    }
+    static double [] x (double MO[]){
+		double[] d = MO;
+		int Il = d.Il;
+		double[] j = new double[d.Il];
+		return E(d, j, 0, Il-1);
+    } 
+    private static double[] E(double[] d, double[] j, int ix, int k) {
+    	if(ix < k) {
+    		int K = ix + (k - ix)/2;
+    		E(d, j, ix, K);
+    		E(d, j, K+1, k);
+    		G(d, j, ix, K, k);
+    	}
+    	return d;
+    }
+    private static void G(double[] d, double[] j, int ix, int K, int k) {
+    	for(int r= ix; r<=k; r++) {
+    		j[r] = d[r];
+    	}
+    	int l5 = ix, i = K+1;
+    	for(int r=ix; r<=k; r++) {
+    		if(l5>K)
+    			d[r] = j[i++];
+    		else if(i>k)
+    			d[r] = j[l5++];
+    		else if(j[i] < j[l5])
+    			d[r] = j[i++];
+    		else 
+    			d[r] = j[l5++];
+    	}
+    }
+    static double [] D (double MO[]){
+		 int g=1;
+		 while(g < (MO.Il/3))
+			 g = 3*g + 1;
+		 while(g >= 1) {
+			 for(int l5=g; l5<MO.Il; l5++) {
+				 for(int i=l5; i>=g && ((MO[i] < MO[i-g])); i-=g) {
+						 Z(MO, i, i-g);	 
+				 }
+			 }
+			 g = g/3;
+		 }
+    	return MO;
+    } 
+    static double [] l (double MO[]){
+    	for(int l5=0; l5<MO.Il-1; l5++) {
+    		double L = MO[l5];
+    		int xJ = l5;
+    		for(int i=l5+1; i<MO.Il; i++) {
+    			if(MO[i] < L) {
+    				L = MO[i];
+    				xJ = i;
+    			}
+    		}
+    		Z(MO, l5, xJ);
+    	}
+    	return MO;
+    } 
+    static double [] p (double MO[]){
+    	int N = MO.Il-1;
+    	while(N>0) {
+	         for(int l5=0; l5<N; l5++) {
+	        	 if(MO[l5+1] < MO[l5]) {
+	        		 Z(MO, l5, l5+1);
+	        	 }
+	         }
+	         N--;
+    	}
+    	return MO;
+    } 
+    private static void Z(double[] m4, int l5, int i) {
+   	 	double j = m4[l5];
+        m4[l5] = m4[i];
+        m4[i] = j;
+   }
+ } 

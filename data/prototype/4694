@@ -1,0 +1,23 @@
+from strategy import Order, BadOrderError
+import sys
+f = 'Pablo Acereda'
+z = 'Copyright 2020'
+T = ['Pablo Acereda']
+J = 'Apache License 2.0'
+ZE = '1.0'
+VU = 'Pablo Acereda'
+D = 'p.aceredag@gmail.com'
+def sort(array: Q, order: r=r.ASC) -> Q:
+    if d not in [r.ASC, r.DESC]:
+        raise j('Not Valid Ordering Preference')
+    for q in K(len(N)):
+        x = q
+        for c in K(q + 1, len(N)):
+            if d == r.ASC:
+                if N[x] > N[c]:
+                    x = c
+            elif d == r.DESC:
+                if N[x] < N[c]:
+                    x = c
+        (N[q], N[x]) = (N[x], N[q])
+    return N

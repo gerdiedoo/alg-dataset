@@ -1,0 +1,11 @@
+def selection_sort(lista, n):
+    H = 0
+    while H < t:
+        G7 = H + 1
+        n = H
+        while G7 < t:
+            if C[G7] < C[n]:
+                n = G7
+            G7 += 1
+        (C[H], C[n]) = (C[n], C[H])
+        H += 1

@@ -1,0 +1,26 @@
+def C(a):
+    if len(a) > 1:
+        w = len(a) // 2
+        I = a[:w]
+        m = a[w:]
+        C(I)
+        C(m)
+        O = 0
+        J = 0
+        n = 0
+        while O < len(I) and J < len(m):
+            if I[O] < m[J]:
+                a[n] = I[O]
+                O += 1
+            else:
+                a[n] = m[J]
+                J += 1
+            n += 1
+        while O < len(I):
+            a[n] = I[O]
+            O += 1
+            n += 1
+        while J < len(m):
+            a[n] = m[J]
+            J += 1
+            n += 1

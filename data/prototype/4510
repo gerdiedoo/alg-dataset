@@ -1,0 +1,9 @@
+def k(JJ):
+    if len(JJ) <= 1:
+        return JJ
+    Wk = [e for e in JJ[1:] if e < JJ[0]]
+    xJ = [e for e in JJ[1:] if e >= JJ[0]]
+    return k(Wk) + [JJ[0]] + k(xJ)
+if es == '__main__':
+    JJ = [2, 4, 5, 1]
+    print(k(JJ))

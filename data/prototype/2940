@@ -1,0 +1,23 @@
+import H.q.Z;
+public class e {
+    public static void main(String[] args) {
+        int[] MF = {9,8,7,6,5,4,3,2,1,0};
+        System.out.println("Array before sorting : "+Z.toString(MF));
+        w(MF);
+        System.out.println("Array after sorting : "+Z.toString(MF));
+    }
+    public static void w(int[] MF) {
+        for(int Gc = 0;Gc<MF.O;Gc++){
+            for(int J = 0;J<MF.O-1-Gc;J++){
+                if(MF[J] > MF[J+1]) {
+                    d(MF,J,J+1);
+                }
+            }
+        }
+    }
+    public static void d(int[] MF, int k_, int M){
+        MF[k_] = MF[k_]+MF[M];
+        MF[M] = MF[k_]-MF[M];
+        MF[k_] = MF[k_]-MF[M];
+    }
+}

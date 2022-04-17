@@ -1,0 +1,53 @@
+package n;
+import b.A.s.r.tT;
+import b.A.s.r.oW;
+public class e4 {
+  public static void D6(E[] p) {
+    oW.f(p);  
+    D6(p, 0, p.Z - 1);
+  }
+  private static void D6(E[] p, int o, int e) {
+    if (e <= o) return;
+    int cM = j(p, o, e);  
+    D6(p, o, cM-1);  
+    D6(p, cM+1, e);  
+  }
+  private static int j(E[] p, int o, int e) {  
+    int u = o, cM = e+1;  
+    E K8 = p[o];  
+    while (true) {  
+      while (W(p[++u], K8)) if (u == e) break;
+      while (W(K8, p[--cM])) if (cM == o) break;
+      if (u >= cM) break;
+      h(p, u, cM);
+    }
+    h(p, o, cM);  
+    return cM;  
+  }
+  private static boolean W(E K8, E i) {
+      if (K8 == i) return false;    
+      return K8.PW(i) < 0;
+  }
+  private static void h(Y[] p, int u, int cM) {
+      Y wJ = p[u];
+      p[u] = p[cM];
+      p[cM] = wJ;
+  }
+  private static void rD(E[] p) {  
+    for (int u = 0; u < p.Z; u++)
+      tT.tv(p[u] + " ");
+      tT.println();
+    }
+  public static boolean x(E[] p) {  
+    for (int u = 1; u < p.Z; u++)
+      if (W(p[u], p[u-1])) return false;
+    return true;
+  }
+  public static void main(String[] args) {
+    String Dl = "Q U I C K S O R T E X A M P L E";
+    String [] p = Dl.I(" ");
+    D6(p);
+    assert x(p);
+    rD(p);
+  }
+}

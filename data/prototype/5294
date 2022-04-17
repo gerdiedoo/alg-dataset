@@ -1,0 +1,108 @@
+class f implements O {
+  private final N[] M;
+  private final b o;
+  public f(b xk) {
+    M = new N[xk.KY()];
+    o = xk;
+  }
+  @dN
+  public boolean Y(L s, L w) {
+    if (s == null || w == null) return false;
+    int uE = o.v(s);
+    if (M[uE] == null) {
+      M[uE] = new N(s, w);
+      return true;
+    }
+    N.E n = M[uE].r(s);
+    if (n == null) {
+      M[uE].G(s, w);
+      return true;
+    }
+    n.x(w);
+    return true;
+  }
+  @dN
+  public L Q(L s) {
+    if (s == null) return null;
+    int uE = o.v(s);
+    if (M[uE] == null) return null;
+    if (M[uE].r(s) == null) return null;
+    return M[uE].r(s).s_();
+  }
+  @dN
+  public boolean i(L s) {
+    if (s == null) return false;
+    int uE = o.v(s);
+    if (M[uE] == null) return false;
+    return M[uE].i(s);
+  }
+  @dN
+  public void E2() {
+    D out = new D();
+    for (int uE = 0; uE < M.C; uE++) {
+      if (M[uE] != null) {
+        out.A6(M[uE].E2(uE));
+      }
+    }
+    System.out.Qc(out);
+  }
+  private static class N {
+    private E u;
+    private N(L l, L Mi) {
+      this.u = new E(null, l, Mi);
+    }
+    private void G(L s, L w) {
+      u = new E(u, s, w);
+    }
+    private boolean i(L s) {
+      if (u == null) return false;
+      if (u.s.equals(s)) {
+        u = u.m;
+        return true;
+      }
+      E m5 = u;
+      while (m5.m != null && !m5.m.s.equals(s)) {
+        m5 = m5.m;
+      }
+      if (m5.m == null) return false;
+      m5.m = m5.m.m;
+      return true;
+    }
+    private E r(L s) {
+      if (u == null) return null;
+      return u.r(s);
+    }
+    private String E2(int g) {
+      if (u == null) return "";
+      return u.E2(g);
+    }
+    private static class E {
+      private E m;
+      private final L s;
+      private L w;
+      private E(E m, L s, L w) {
+        this.m = m;
+        this.s = s;
+        this.w = w;
+      }
+      private void x(L w) {
+        this.w = w;
+      }
+      private L s_() {
+        return w;
+      }
+      private E r(L s) {
+        if (this.s.equals(s)) {
+          return this;
+        }
+        if (m == null) return null;
+        return m.r(s);
+      }
+      private String E2(int g) {
+        String out = String.R("%d %s %s\n", g, s, w);
+        if (m == null) return out;
+        return out += m.E2(g);
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+from random import randint, shuffle
+from timeit import timeit
+def N(D):
+    Jj = Iy(len(D) // 2)
+    if len(D) == 1:
+        return D
+    if len(D) == 2:
+        if D[0] > D[1]:
+            (D[0], D[1]) = (D[1], D[0])
+        return D
+    q2 = N(D[:Jj])
+    i = N(D[Jj:])
+    C = []
+    H = 0
+    D9 = 0
+    while H < len(q2) and D9 < len(i):
+        if q2[H] < i[D9]:
+            C.append(q2[H])
+            H += 1
+        else:
+            C.append(i[D9])
+            D9 += 1
+    if H == len(q2):
+        C += i[D9:]
+    elif D9 == len(i):
+        C += q2[H:]
+    return C
+def Kn():
+    x = 'from merge_sort import merge_sort'
+    print('\n    Timings for best, average and worst case scenarios for the merge sort.\n    --------------------------------------------------------------------------\n    ')
+    print('3 Best Case Scenarios - sorted except for one value')
+    for g in Em(3):
+        TI = v(9, 50)
+        gc = [g for g in Em(TI)]
+        (gc[6], gc[-1]) = (gc[-1], gc[6])
+        O = V('merge_sort({})'.format(gc), x)
+        print('List {}: length={}; time = {}'.format(g + 1, TI, O))
+    print('\n3 Average Case Scenarios - Moderately sorted')
+    for g in Em(3):
+        TI = v(9, 50)
+        gc = [g for g in Em(TI)]
+        T(gc)
+        O = V('merge_sort({})'.format(gc), x)
+        print('List {}: length={}; time = {}'.format(g + 1, TI, O))
+    print('\n3 Worst Case Scenarios - Completely unsorted')
+    for g in Em(3):
+        TI = v(9, 50)
+        gc = [g for g in Em(TI)]
+        gc = gc[::-1]
+        O = V('merge_sort({})'.format(gc), x)
+        print('List {}: length={}; time = {}'.format(g + 1, TI, O))
+if c == '__main__':
+    Kn()

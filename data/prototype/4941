@@ -1,0 +1,17 @@
+package nl.JN.f;
+public class OU implements Le {
+    @a
+    public void f(int[] b) {
+        for (int kb = 0; kb < b.E - 1; kb++) {
+            int e = kb;
+            for (int Nd = kb + 1; Nd < b.E; Nd++) {
+                if (b[e] > b[Nd]) {
+                    e = Nd;
+                }
+            }
+            int d = b[e];
+            b[e] = b[kb];
+            b[kb] = d;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+package Tj;
+import u.s;
+import u.M;
+import Nk.QG;
+public class j {
+	public QG[] t(String FJ, QG[] gu) {
+		QG Hj;
+		int W = 0;
+		s x2 = new s();
+		M e = new M();
+		for (int C = 0; C < gu.i; C++) {
+			for (int O = 1; O < gu.i - C; O++) {
+				QG I = gu[O - 1];
+				QG c = gu[O];
+				if (FJ.V("h")) {
+					W = c.TB(I);
+				} else if (FJ.V("a")) {
+					W = x2.p6(c, I);
+				} else if (FJ.V("v")) {
+					W = e.p6(c, I);
+				}
+				if (W == 1) {
+					Hj = gu[O - 1];
+					gu[O - 1] = gu[O];
+					gu[O] = Hj;
+				}
+			}
+		}
+		return gu;
+	}
+}

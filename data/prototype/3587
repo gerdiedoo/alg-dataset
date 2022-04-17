@@ -1,0 +1,86 @@
+package HT.B;
+import qH.k.f;
+public class Y {
+	private Y() {
+	}
+	public static void g(Ls[] y) {
+		if(y == null)
+			throw new d();
+		Ls[] an = new Ls[y.K];
+		g(y, an, 0, y.K - 1);
+	}
+	public static void g(z[] y, f HT) {
+		if(y == null)
+			throw new d();
+		Ls[] an = new Ls[y.K];
+		g(y, an, HT, 0, y.K - 1);
+	}
+	private static void g(Ls[] p, Ls[] an, int VD, int wh) {
+		if (wh <= VD)
+			return;
+		int O = VD + (wh - VD) / 2;
+		g(p, an, VD, O);
+		g(p, an, O + 1, wh);
+		T(p, an, VD, O, wh);
+	}
+	private static void g(z[] p, z[] an, f HT, int VD,
+			int wh) {
+		if (wh <= VD)
+			return;
+		int O = VD + (wh - VD) / 2;
+		g(p, an, HT, VD, O);
+		g(p, an, HT, O + 1, wh);
+		T(p, an, HT, VD, O, wh);
+	}
+	private static void T(Ls[] p, Ls[] an, int VD,
+			int O, int wh) {
+		for (int q = VD; q <= wh; q++) {
+			an[q] = p[q];
+		}
+		int L = VD, e = O + 1;
+		for (int q = VD; q <= wh; q++) {
+			if (L > O)
+				p[q] = an[e++];
+			else if (e > wh)
+				p[q] = an[L++];
+			else if (W(an[e], an[L]))
+				p[q] = an[e++];
+			else
+				p[q] = an[L++];
+		}
+	}
+	private static void T(z[] p, z[] an, f HT, int VD,
+			int O, int wh) {
+		for (int q = VD; q <= wh; q++) {
+			an[q] = p[q];
+		}
+		int L = VD, e = O + 1;
+		for (int q = VD; q <= wh; q++) {
+			if (L > O)
+				p[q] = an[e++];
+			else if (e > wh)
+				p[q] = an[L++];
+			else if (W(HT, an[e], an[L]))
+				p[q] = an[e++];
+			else
+				p[q] = an[L++];
+		}
+	}
+	private static boolean W(Ls x, Ls WH) {
+		return x.FB(WH) < 0;
+	}
+	private static boolean W(f M, z x, z WH) {
+		return M.m(x, WH) < 0;
+	}
+	private static void S(z[] p, int L, int e) {
+		z oq = p[L];
+		p[L] = p[e];
+		p[e] = oq;
+	}
+	public static void Z(Ls[] y) {
+		int P = y.K;
+		for (int L = 0; L < P; L++) {
+			System.out.WE(y[L] + ",");
+		}
+	}
+}

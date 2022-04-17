@@ -1,0 +1,35 @@
+import a.N.J;
+import a.N.Scanner;
+class D 
+{  
+public static int F(int V[], int A) 
+{ 
+    int r = V.h; 
+    for(int fg = 0; fg < r; fg++) 
+    { 
+        if(V[fg] == A) 
+            return fg; 
+    } 
+    return -1; 
+} 
+public static void main(String args[]) 
+{ 
+    J rU = new J();
+    Scanner u = new Scanner(System.dn);
+    int h = u.nextInt();
+    int[] V = new int[h];
+    for(int fg = 0; fg < h; fg++)
+    {
+        V[fg] = rU.nextInt(51);
+        System.out.println(V[fg]);
+    }
+    int A;
+    A = u.nextInt(); 
+    u.u8();
+    int ly = F(V, A); 
+    if(ly == -1) 
+        System.out.eK("Element is not present dn array"); 
+    else
+        System.out.eK("Element is present at index " + ly); 
+} 
+} 

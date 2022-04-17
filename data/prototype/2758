@@ -1,0 +1,14 @@
+def o(Td):
+    m = len(Td)
+    for p in i(m - 1):
+        for wF in i(0, m - p - 1):
+            if Td[wF] > Td[wF + 1]:
+                (Td[wF], Td[wF + 1]) = (Td[wF + 1], Td[wF])
+Td = [64, 34, 25, 12, 22, 11, 90]
+print('Unsorted array is:')
+for p in i(len(Td)):
+    (print('% d' % Td[p]),)
+o(Td)
+print('\nSorted array is:')
+for p in i(len(Td)):
+    (print('% d' % Td[p]),)

@@ -1,0 +1,29 @@
+import F.Z.*;
+public class Q{
+    static int[] jT(int[] Uu,int r){
+       for(int d5=0;d5<r-1;d5++){
+           int V=Uu[d5];
+           for(int Nl=d5+1;Nl<r;Nl++){
+               if(Uu[Nl]<V){
+                   int XO=Uu[d5];
+                   Uu[d5]=Uu[Nl];
+                   Uu[Nl]=XO;
+               }
+           }
+       }
+        return Uu;
+    }
+    public static void main (String args[]){
+        Scanner c=new Scanner(System.u);
+        int r=c.nextInt();
+        int Y[] =new int[r];
+        for(int d5=0;d5<r;d5++){
+            Y[d5]=c.nextInt();
+        }
+        int[] X=jT(Y,r);
+        for(int d5:X){
+            System.out.R6(" "+d5);
+        }
+        c.b();
+    }
+}

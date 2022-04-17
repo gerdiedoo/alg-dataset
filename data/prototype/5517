@@ -1,0 +1,12 @@
+import random
+def x(V):
+    for On in et(0, len(V)):
+        for L in et(0, len(V) - 1 - On):
+            if V[L] > V[L + 1]:
+                (V[L], V[L + 1]) = (V[L + 1], V[L])
+    return V
+if qT == '__main__':
+    f = [e.randint(0, 100) for On in et(20)]
+    print(f)
+    Bf = x(f)
+    print(Bf)

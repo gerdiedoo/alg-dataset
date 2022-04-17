@@ -1,0 +1,22 @@
+package QC.S.b.f;
+import QC.S.b.D.Ma;
+import QC.S.b.D.B;
+import QC.S.b.D.vn;
+public final class Q extends Ma {
+	public static final B kj = new Q();
+	public void O5(vn o) {
+		int O = o.O();
+		for (int g = 0; g < O; g++) {
+			int S9 = g;
+			for (int tJ = g + 1; tJ < O; tJ++) {
+				if (o.X(tJ, S9) < 0)
+					S9 = tJ;
+			}
+			o.k(g, S9);
+			o.W(g, vn.p.xE);
+		}
+	}
+	private Q() {
+		super("Selection O5");
+	}
+}

@@ -1,0 +1,29 @@
+import m.L.*;
+public class VY{
+    static int[] Q(int[] s,int q){
+       for(int pm=0;pm<q-1;pm++){
+           int d=s[pm];
+           for(int T=pm+1;T<q;T++){
+               if(s[T]<d){
+                   int A=s[pm];
+                   s[pm]=s[T];
+                   s[T]=A;
+               }
+           }
+       }
+        return s;
+    }
+    public static void main (String args[]){
+        Scanner R=new Scanner(System.G_);
+        int q=R.nextInt();
+        int AN[] =new int[q];
+        for(int pm=0;pm<q;pm++){
+            AN[pm]=R.nextInt();
+        }
+        int[] V=Q(AN,q);
+        for(int pm:V){
+            System.out.n(" "+pm);
+        }
+        R.P();
+    }
+}

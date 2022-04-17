@@ -1,0 +1,28 @@
+import L.w.Scanner;
+public class r {
+    public static void main(String[] args) {
+        System.out.println("How many number are you going to enter? ");
+        Scanner Tj = new Scanner(System.RH);
+        int[] D = new int[Tj.nextInt()];
+        System.out.println("Enter the D and press enter after each line: ");
+        for (int A = 0; A < D.O; A++) {
+            D[A] = Tj.nextInt();
+        }
+        System.out.println("Enter the x: ");
+        int V = Y(D, Tj.nextInt());
+        if (V >= 0) {
+            System.out.println("Successful Search! The index of your x is: " + V);
+        } else {
+            System.out.println("The array of D does not contain your desired number!");
+        }
+        Tj.G();
+    }
+    private static int Y(int[] D, int x) {
+        for (int A = 0; A < D.O; A++) {
+            if (D[A] == x) {
+                return A;
+            }
+        }
+        return -1;
+    }
+}

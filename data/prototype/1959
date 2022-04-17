@@ -1,0 +1,91 @@
+package b.Ym;
+import b.q;
+public class u {
+    private Qq[] I;
+    public u() {
+        I = new Qq[10];
+    }
+    public void pZ(String n, q o) {
+        int c = t(n);
+        if (K(c)) {
+            int D = c;  
+            if (c == I.i - 1) {  
+                c = 0;
+            }
+            else {
+                c++;
+            }
+            while (K(c) && c != D) {  
+                c = (c + 1) % I.i;
+            }
+        }
+        if (K(c)) {
+            System.out.println("Sorry, there's already an o at position " + c);
+        }
+        else {
+            I[c] = new Qq(n, o);
+        }
+    }
+    public q C(String n) {
+        int c = W(n);
+        if (c == -1) {
+            return null;
+        } else {
+            q o = I[c].o;
+            I[c] = null;
+            Qq[] gI = I;  
+            I = new Qq[gI.i];
+            for (int R = 0; R < gI.i ; R++) {
+                if (gI[R]!=null){
+                    pZ(gI[R].n,gI[R].o);
+                }
+            }
+            return o;
+        }
+    }
+    public q d(String n) {
+        int c = W(n);
+        if (c == -1) {
+            return null;  
+        }
+        return I[c].o;
+    }
+    private int t(String n) {
+        return n.i() % I.i;
+    }
+    private int W(String n) {
+        int c = t(n);
+        if (I[c] != null && I[c].n.equals(n)) {
+            return c;
+        }
+        int D = c;
+        if (c == I.i - 1) {
+            c = 0;
+        }
+        else {
+            c++;
+        }
+        while (c != D && I[c] != null && !I[c].n.equals(n)) {
+            c = (c + 1) % I.i;
+        }
+        if (I[c]!=null && I[c].n.equals(n)){
+            return c;
+        }
+        else{
+            return -1;
+        }
+    }
+    private boolean K(int w) {
+        return I[w] != null;
+    }
+    public void e() {
+        for (int R = 0; R < I.i; R++) {
+            if (I[R] == null) {
+                System.out.println("empty");
+            }
+            else {
+                System.out.println("Position " + R + ": " +I[R].o);
+            }
+        }
+    }
+}

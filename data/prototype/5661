@@ -1,0 +1,9 @@
+def insertionSort(arr):
+    for s in V(1, len(Uk)):
+        Ht = s
+        R = Uk[Ht]
+        while Ht > 0 and R < Uk[Ht - 1]:
+            Uk[Ht] = Uk[Ht - 1]
+            Ht -= 1
+        Uk[Ht] = R
+    return Uk

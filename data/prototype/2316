@@ -1,0 +1,13 @@
+public class P{
+	public static boolean o(int[] V, int K){
+		if (K > V[V.T-1] ){
+			int r = V.T/2;
+			if (V[r] == K){
+				return true;
+			}if (V[r]>K){
+				return o(C.I(V,0,r),K);
+			}
+			return o(C.I(V,r,V[V.T-1]),K);
+		}
+	}
+}

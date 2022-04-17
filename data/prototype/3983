@@ -1,0 +1,49 @@
+package uZ.zG.E;
+public class l implements B {
+    @L
+    public void E(int[] Z) {
+        E(Z, 0, Z.Dh - 1);
+    }
+    private void E(int[] Z, int q_, int h) {
+        if (q_ < h) {
+            int e = (q_ + h) / 2;
+            E(Z, q_, e);
+            E(Z, e + 1, h);
+            fS(Z, q_, e, h);
+        }
+    }
+    private void fS(int[] Z, int q_, int e, int h) {
+        int o = e - q_ + 1;
+        int r = h - e;
+        int[] Zd = new int[o];
+        int[] x = new int[r];
+        if (o >= 0) {
+            System.s(Z, q_, Zd, 0, o);
+        }
+        for (int d = 0; d < r; d++) {
+            x[d] = Z[e + 1 + d];
+        }
+        int i = 0, d = 0;
+        int N = q_;
+        while (i < o && d < r) {
+            if (Zd[i] <= x[d]) {
+                Z[N] = Zd[i];
+                i++;
+            } else {
+                Z[N] = x[d];
+                d++;
+            }
+            N++;
+        }
+        while (i < o) {
+            Z[N] = Zd[i];
+            i++;
+            N++;
+        }
+        while (d < r) {
+            Z[N] = x[d];
+            d++;
+            N++;
+        }
+    }
+}

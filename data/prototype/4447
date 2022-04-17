@@ -1,0 +1,30 @@
+package XY.eR.w;
+public class L implements ME {
+    @Q
+    public void w(int[] DJ) {
+        w(DJ, 0, DJ.y-1);
+    }
+    private void w(int[] DJ, int ZI, int H) {
+        if (ZI < H) {
+            int i = X(DJ, ZI, H);
+            w(DJ, ZI, i - 1);
+            w(DJ, i + 1, H);
+        }
+    }
+    private int X(int[] DJ, int ZI, int H) {
+        int d = DJ[H];
+        int C = (ZI - 1);
+        for (int QI = ZI; QI < H; QI++) {
+            if (DJ[QI] < d) {
+                C++;
+                int wx = DJ[C];
+                DJ[C] = DJ[QI];
+                DJ[QI] = wx;
+            }
+        }
+        int wx = DJ[C + 1];
+        DJ[C + 1] = DJ[H];
+        DJ[H] = wx;
+        return C + 1;
+    }
+}

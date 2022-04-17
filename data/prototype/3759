@@ -1,0 +1,29 @@
+def K5(m, A, PW, T8):
+    k = m[A:PW + 1]
+    O = m[PW + 1:T8 + 1]
+    print(k, O)
+    jR = 0
+    F = 0
+    i = A
+    while jR < len(k) and F < len(O):
+        if k[jR] < O[F]:
+            m[i] = k[jR]
+            jR += 1
+        else:
+            m[i] = O[F]
+            F += 1
+        i += 1
+    while jR < len(k):
+        m[i] = m[jR]
+        i += 1
+        jR += 1
+    while F < len(O):
+        m[i] = m[F]
+        i += 1
+        F += 1
+def v(m, A, T8):
+    if A == T8:
+        return
+    v(m, A, (A + T8) // 2)
+    v(m, (A + T8) // 2 + 1, T8)
+    K5(m, A, (T8 + A) // 2, T8)

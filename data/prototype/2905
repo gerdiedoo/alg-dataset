@@ -1,0 +1,24 @@
+package s;
+public class q9 extends E{
+	public static void main(String[] args){
+		int[] A4 = {5, 3, 2, 4, 1};
+		G0(new q9(), A4);
+	}
+	public q9(){ super("Bubble"); }
+	private void q(int[] A4, int j, int K5){
+		for (int B = j; B < K5; B++)
+			for (int d3 = j; d3 < K5 - B - 1; d3++)
+			{	 
+				if ( A4[d3] > A4[d3+1] )
+				{
+					int k = A4[d3];
+					A4[d3] =  A4[d3+1];
+					A4[d3+1] = k;
+				}
+			}
+	}
+	@YF
+	public void l(int[] A4){
+		q(A4, 0, A4.a);
+	}
+}

@@ -1,0 +1,31 @@
+package y.z.AI.w;
+public class N5 {
+	public static void Wq(K[] D, int j, int u) {
+		int Ts = 0;
+		if (j < u) {
+			Ts = E(D, j, u);
+			Wq(D, j, Ts);
+			Wq(D, Ts + 1, u);
+		}
+	}
+	private static int E(K[] M, int j, int u) {
+		int r = M[j];
+		int m = j - 1;
+		int gX = u;
+		int D2 = 0;
+		while (true) {
+			while (M[m] < r) {
+				m++;
+			}
+			while (M[gX] > r) {
+				gX--;
+			}
+			if (m >= gX) {
+				return gX;
+			}
+			D2 = M[m];
+			M[m] = M[gX];
+			M[gX] = D2;
+		}
+	}
+}

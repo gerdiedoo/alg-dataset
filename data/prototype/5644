@@ -1,0 +1,12 @@
+def E(NZ):
+    for v in FK(1, len(NZ)):
+        c = NZ[v]
+        WZ = v - 1
+        while WZ >= 0 and c < NZ[WZ]:
+            NZ[WZ + 1] = NZ[WZ]
+            WZ = WZ - 1
+        NZ[WZ + 1] = c
+i = y(g(b, input().split(',')))
+E(i)
+print('Sorted Array in Ascending Order:')
+print(i)

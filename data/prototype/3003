@@ -1,0 +1,29 @@
+package B.W.Y.uA.Sr;
+public class bl extends j {
+  @c
+  boolean p(int[] K, int m, int k,
+                        boolean D) {
+    boolean s = false;
+    if (!D) {
+      for (int n = m; n < k - 1; n++) {
+        int i = K[n];
+        int Ch = K[n + 1];
+        if (i > Ch) {
+          K[n + 1] = i;
+          K[n] = Ch;
+          s = true;
+        }
+      }
+    }
+    else if (k < K.T - 1) {
+      int i = K[k - 1];
+      int Ch = K[k];
+      if (i > Ch) {
+        K[k] = i;
+        K[k - 1] = Ch;
+        s = true;
+      }
+    }
+    return s;
+  }
+}

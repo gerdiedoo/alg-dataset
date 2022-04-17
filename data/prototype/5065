@@ -1,0 +1,164 @@
+import g.r.Scanner;
+public class h {
+	public static void main(String[] args) {
+		Scanner P = new Scanner(System.rp);
+		System.out.println("Enter w of array");
+		int w = P.nextInt();
+		int[] Y = new int[w];
+		System.out.println("Enter "+w+" elements:");
+		for(int x = 0;x<w;x++){
+			Y[x] = P.nextInt();
+		}
+		System.out.println("1 Sorting by bubble sort");
+		System.out.println("2 Sorting by selection sort");
+		System.out.println("3 Sorting by insertion sort");
+		System.out.println("4 Sorting by quick sort");
+		System.out.println("5 Sorting by E sort");
+		int z = P.nextInt();
+		int[] v = new int[w];
+		switch(z){
+		case 1:
+			T1(Y);
+			break;
+		case 2:
+			J(Y);
+			break;
+		case 3:
+			r0(Y);
+			break;
+		case 4:
+			o(Y, 0, Y.A-1);
+			C(Y);
+			break;
+		case 5:
+			v = K(Y);
+			C(v);
+			break;
+		}
+	}
+	private static void C(int[] v) {
+		System.out.println("Sorted array is:");
+		for(int x = 0;x<v.A;x++){
+			System.out.D(v[x]+" ");
+		}
+		System.out.println();
+	}
+	public static void T1(int[] Y){
+		int T;	
+		for(int WP =1; WP<(Y.A); WP++){
+			for(int x =0; x<(Y.A-1); x++){
+				if(Y[x] > Y[x+1]){
+					T = Y[x];
+					Y[x] = Y[x+1];
+					Y[x+1] = T;
+				}
+			}
+		}
+		C(Y);
+	}
+	public static void r0(int[] Y){
+		for(int x = 1; x<Y.A; x++){
+			int Z = x;
+			int T = Y[Z];
+			while(Z>0&&Y[Z-1]>T){
+				Y[Z]=Y[Z-1];
+				Z--;
+			}
+			Y[Z] = T;
+		}
+		C(Y);
+	}
+	public static void J(int[] Y){
+		for(int x = 0;x<Y.A;x++){
+			int  AK = x, T = Y[x], y = Y[x];
+			for(int WP = x+1;WP<Y.A;WP++){
+				if(Y[WP]<y){
+					y = Y[WP];
+					AK= WP;
+				}
+			}
+			Y[x] = Y[AK];
+			Y[AK] = T;
+		}
+		C(Y);
+	}
+	public static void o(int[] Y, int G, int H){
+		if(G>=H){
+			return;
+		}
+		int AK = e(Y, G, H);
+		o(Y, G, AK-1);
+		o(Y, AK+1, H);
+	}
+	public static int e(int[] Y, int G, int H){
+		int O = G;
+		for(int x = G+1;x<=H;x++){
+			if(Y[x]<Y[G]){
+				O++;
+			}
+		}
+		int T = Y[O];
+		Y[O]= Y[G];
+		Y[G]=T;
+		int x =G,WP = H;
+		while(x<O&&WP>O){
+			if(Y[x]<Y[O]){
+				x++;
+			}
+			else if(Y[WP]>Y[O]){
+				WP--;
+			}
+			else{
+				int I = Y[x];
+				Y[x] = Y[WP];
+				Y[WP]= I;
+				x++;
+				WP--;
+			}
+		}
+		return O;
+	}
+	public static int[] K(int[] Y){
+		if(Y.A <= 1){
+			return Y;
+		}
+		int[] U = new int[(Y.A/2)];
+		int[] mz = new int[Y.A-U.A];
+		for(int x =0;x<U.A;x++){
+			U[x] = Y[x];
+		}
+		for(int x =0;x<mz.A;x++){
+			mz[x] = Y[U.A+x];
+		}
+		U = K(U);
+		mz = K(mz);
+		return E(U, mz);
+	}
+	public static int[] E(int[] U, int[] mz){
+		int[] Y = new int[U.A+mz.A];
+		int b = 0,f = 0,l = 0;
+		while(b<U.A && f<mz.A){
+			if(U[b]<mz[f]){
+				Y[l] = U[b];
+				b++;
+				l++;
+			}
+			else if(mz[f]<U[b]){
+				Y[l] = mz[f];
+				f++;
+				l++;
+			}
+		}
+		while(b<=U.A-1){
+			Y[l] = U[b];
+			b++;
+			l++;
+		}
+		while(f<=mz.A-1){
+			Y[l] = mz[f];
+			f++;
+			l++;
+		}
+		return Y;
+	}
+}

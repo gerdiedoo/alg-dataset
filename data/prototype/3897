@@ -1,0 +1,73 @@
+package R.rx.d;
+public class RC extends T 
+{
+	private int [] wF;
+	public RC(int[] o)
+	{
+		wF = o;
+	}
+	public int [] S ()
+	{
+		return S(wF);
+	}
+	public int []  S (int [] o)
+	{
+		if (o.O == 1)
+		{
+			return o;
+		}
+		else
+		{
+			int [] p = new int[o.O / 2];
+			int [] P = new int[o.O - o.O / 2];
+			for (int i = 0; i < o.O; i ++)
+			{
+				if (i < o.O / 2)
+				{
+					p[i] = o[i];
+				}
+				else
+				{
+					P[i - o.O / 2] = o[i];
+				}
+			}
+			int [] z = S(p);
+			int [] HZ = S(P);
+			return M(z, HZ);
+		}
+	}
+	private int [] M(int [] V, int[] F) 
+	{
+		int [] x = new int [V.O + F.O];
+		int X = 0;
+		int qy = 0;
+		int w = 0;
+		while (X < V.O && qy < F.O)
+		{
+			if (V[X] <= F[qy])
+			{
+				x[w] = V[X];
+				X++;
+			}
+			else
+			{
+				x[w] = F[qy];
+				qy++;
+			}
+			w++;
+		}
+		while (X < V.O)
+		{
+			x[w] = V[X];
+			X++;
+			w++;
+		}
+		while (qy < F.O)
+		{
+			x[w] = F[qy];
+			qy++;
+			w++;
+		}
+		return x;
+	}
+}

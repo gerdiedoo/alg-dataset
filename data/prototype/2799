@@ -1,0 +1,28 @@
+package z.n.O.XO;
+public class x {
+    public static <y extends P> void XO(y[] b) {
+        for (int W = 0; W < b.Q; W++) {
+            for (int j = 1; j < b.Q - W; j++) {
+                if (b[j - 1].N(b[j]) > 0) {
+                    y d = b[j - 1];  
+                    b[j - 1] = b[j];
+                    b[j] = d;
+                }
+            }
+        }
+    }
+    public static void q(int[] b) {
+        for (int W = 0; W < b.Q; W++) {
+            boolean A = true;  
+            for (int j = 1; j < b.Q - W; j++) {
+                if (b[j] < b[j - 1]) {  
+                    int d = b[j - 1];
+                    b[j - 1] = b[j];
+                    b[j] = d;
+                    A = false;
+                }
+            }
+            if (A) break;
+        }
+    }
+}

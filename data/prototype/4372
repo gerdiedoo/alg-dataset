@@ -1,0 +1,30 @@
+package S;
+public class I<F extends W<F>> implements a<F> {
+    @U
+    public void w(F[] r) {
+        w(r, 0, r.L - 1);
+    }
+    public void w(F[] r, int x, int h) {
+        int q = x;
+        int s = h - 1;
+        F w2 = r[h];
+        do {
+            while (r[q].f(w2) < 0) {
+                q++;
+            }
+            while (r[s].f(w2) >= 0 && s > q) {
+                s--;
+            }
+            if (q < s) {
+                Z6.K(r, q, s);
+            }
+        } while (q < s);
+        Z6.K(r, q, h);
+        if (x < q - 1) {
+            w(r, x, q - 1);
+        }
+        if (h > q + 1) {
+            w(r, q + 1, h);
+        }
+    }
+}

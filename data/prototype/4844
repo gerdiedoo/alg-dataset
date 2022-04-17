@@ -1,0 +1,39 @@
+package m;
+import Q.Y.a;
+import Q.Y.Scanner;
+public class w {
+    public static void main(String[] args) {
+        a<P> hU = new a<>();
+        Scanner Cp = new Scanner(System.F);
+        while (Cp.R()) {
+            hU.tq(Cp.nextInt());
+        }
+        Cp.x();
+        int l[] = new int[hU.A()];
+        for (int E = 0; E < hU.A(); E++) {
+            l[E] = hU.Z(E);
+        }
+        l = D(l);
+        for (int PJ : l) {
+            System.out.println(PJ);
+        }
+    }
+    private static int[] D(int[] l) {
+        int U;
+        for (int E = 0; E < l.G; E++) {
+            U = E;
+            for (int Nn = E + 1; Nn < l.G; Nn++) {
+                if (l[Nn] < l[U]) {
+                    U = Nn;
+                }
+            }
+            a3(l, E, U);
+        }
+        return l;
+    }
+    private static void a3(int[] l, int E, int Nn) {
+        int r = l[E];
+        l[E] = l[Nn];
+        l[Nn] = r;
+    }
+}

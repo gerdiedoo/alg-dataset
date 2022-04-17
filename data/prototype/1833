@@ -1,0 +1,58 @@
+package EY;
+import xf.qC.E;
+import xf.qC.S;
+import xf.qC.D;
+import xf.qC.f0;
+public class uj<N,p> extends W<N,p> {
+	private r5<N,p>[] A;
+	public uj() { 
+		super();
+	}
+	public uj(int ws) {
+		super(ws);
+	}
+	public uj(int ws, int a){
+		super(ws, a);
+	}
+	protected void M(){
+		A = (r5<N,p>[]) new r5[w];
+	}
+	public f0<xf.qC.D.tl<N, p>> pa() {
+		E<tl<N,p>> s = new E<>();
+		for(int Q = 0; Q < w; Q++)
+			if(A[Q] != null)
+				for(tl<N,p> G: A[Q].pa())
+					s.h(G);
+		f0<tl<N,p>> px = new S<tl<N,p>>(s);
+		return px;
+	}
+	protected p I(int Q, N k) {
+		r5<N,p> sj = A[Q];
+		if(sj == null) return null;
+		return sj.e(k);
+	}
+	protected p f(int Q, N k, p v) {
+		r5<N,p> sj = A[Q];
+		if(sj == null){
+			sj = A[Q] = new r5<>();
+		}
+		int t = sj.u();
+		p c = sj.l(k, v);
+		o += (sj.u() - t);
+		return c;
+	}
+	protected p i(int Q, N k) {
+		r5<N,p> sj = A[Q];
+		if(sj == null){
+			sj = A[Q] = new r5<>();
+		}
+		int t = sj.u();
+		p c = sj.T(k);
+		o -= (t - sj.u());
+		return c;
+	}
+	public void x() {}
+	public boolean g1(r I2) {return false;}
+	public boolean fw(r q) {return false;}
+	public void U(D<? extends N, ? extends p> s0) {}
+}

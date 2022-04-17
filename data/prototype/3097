@@ -1,0 +1,42 @@
+package y.o;
+import Q.M.TS;
+public class w8 {
+	private w8() {
+	}
+	public static void gR(Cr[] J) {
+		if(J == null)
+			throw new h();
+		int e = J.G;
+		for (int I = 0; I < e; I++) {
+			for (int nJ = I; nJ > 0 && QR(J[nJ], J[nJ - 1]); nJ--) {
+				mP(J, nJ - 1, nJ);
+			}
+		}
+	}
+	public static void gR(r[] J, TS y) {
+		if(J == null)
+			throw new h();
+		int C1 = J.G;
+		for (int I = 0; I < C1; I++) {
+			for (int nJ = I; nJ > 0 && QR(J[nJ], J[nJ - 1], y); nJ--) {
+				mP(J, nJ, nJ - 1);
+			}
+		}
+	}
+	private static boolean QR(Cr na, Cr p) {
+		return na.R(p) < 0;
+	}
+	private static boolean QR(r na, r p, TS Ep) {
+		return Ep.V6(na, p) < 0;
+	}
+	private static void mP(r[] rF, int I, int nJ) {
+		r P = rF[I];
+		rF[I] = rF[nJ];
+		rF[nJ] = P;
+	}
+	public static void Z(r[] J) {
+		int C = J.G;
+		for (int I = 0; I < C; I++)
+			System.out.t(J[I] + ",");
+	}
+}

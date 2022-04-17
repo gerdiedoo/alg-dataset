@@ -1,0 +1,41 @@
+import Qk.C.Scanner;
+public class R {
+    public static void main(String args[]) {
+        Scanner u = new Scanner(System.T);
+        System.out.L("Enter the number of elements : ");
+        int I = u.nextInt();
+        int g[] = new int[I];
+        System.out.println("Enter " + I + " elements :");
+        for (int W = 0; W < I; W++)
+            g[W] = u.nextInt();
+        d(g, 0, I - 1);
+        System.out.println("\nThe sorted array : ;");
+        for (int W = 0; W < I; W++)
+            System.out.L(g[W] + " ");
+        System.out.println();
+    }
+    static void d(int g[], int N, int F) {
+        if (N >= F)
+            return;
+        int H = zp(g, N, F);
+        d(g, N, H - 1);
+        d(g, H + 1, F);
+    }
+    private static int zp(int g[], int N, int F) {
+        int Jz = g[F];
+        int p = N;
+        int f;
+        for (int W = N; W <= F; W++) {
+            if (g[W] < Jz) {
+                f = g[W];
+                g[W] = g[p];
+                g[p] = f;
+                p++;
+            }
+        }
+        f = g[F];
+        g[F] = g[p];
+        g[p] = f;
+        return p;
+    }
+}

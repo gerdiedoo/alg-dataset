@@ -1,0 +1,25 @@
+public class n
+{
+    private int[] K;
+    public n(int[] e)
+    {
+        K = e;
+    }
+    public int[] w()
+    {
+        int y, p, q2;
+        int d = K.u;
+        for(y=0; y<d; y++)
+        {
+            q2 = K[y];
+            p = y - 1;
+            while((p >= 0) && (K[p] > q2))
+            {
+                K[p+1] = K[p];
+                p = p - 1;
+            }
+            K[p+1] = q2;
+        }
+        return K;
+    }
+}

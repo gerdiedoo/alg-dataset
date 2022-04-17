@@ -1,0 +1,27 @@
+package U0;
+public class Ka {
+    public static void main(String[] args) {
+        int[] v={20,35,-15,7,55,1,-22};
+        I(v);
+    }
+    public static void I(int[] v){
+        for (int SK = v.R-1; SK>0; SK--){
+            for(int k=0;k<SK;k++){
+                if (v[k]>v[k+1]){
+                    qN(v,k,k+1);
+                }
+            }
+        }
+        for(int J=0;J<v.R;J++){
+            System.out.s(v[J]+" ");
+        }
+    }
+    public static void qN(int[] v,int k,int J){
+        if (k==J){
+            return;
+        }
+        int mU = v[k];
+        v[k] = v[J];
+        v[J] = mU;
+    }
+}

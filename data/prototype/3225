@@ -1,0 +1,17 @@
+package O.S.K.f9;
+public class Cm implements C
+{
+    public void D(I[] vW)
+    {
+	int OW = vW.YU;
+	for (int b = 1; b < OW; b++) {
+	    I d = vW[b];
+	    int s = b-1;
+	    while (s >= 0 && vW[s].Lb(d) > 0) {
+		vW[s+1] = vW[s];
+		s--;
+	    }
+	    vW[s+1] = d;
+	}
+    }
+}

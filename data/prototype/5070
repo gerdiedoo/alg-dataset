@@ -1,0 +1,118 @@
+package c;
+import O.M.t;
+import O.M.Oz;
+public class l0 {
+    public static <Q extends Cd> void jw(Oz<Q> U) {
+        if (U.wT()) {
+            return;
+        }
+        for (int p = 1; p < U.S(); p++) {
+            int u = p;
+            Q PQ = U.r(p);
+            while (u > 0 && PQ.D(U.r(u - 1)) < 0) {
+                U.R(u, U.r(u - 1));
+                u--;
+            }
+            U.R(u, PQ);
+        }
+    }
+    public static <Q extends Cd> void E(Oz<Q> U) {
+        if (U.wT()) {
+            return;
+        }
+        int S = U.S();
+        for (int p = 1; p < S; p++) {
+            for (int u = (S - 1); u >= p; u--) {
+                if (U.r(u - 1).D(U.r(u)) > 0) {
+                    Q PQ = U.r(u);
+                    U.R(u, U.r(u - 1));
+                    U.R(u - 1, PQ);
+                }
+            }
+        }
+    }
+    public static <Q extends Cd> void YA(Oz<Q> U) {
+        int x =0;
+        int j = U.S()-1;
+        YA(U, x, j);
+    }
+    private static <Q extends Cd> void YA(Oz<Q> U, int x, int j) {
+        Q f = U.r((x + j) / 2);
+        int p = x;
+        int u = j;
+        while (p < u) {
+            while (U.r(p).D(f) < 0) {
+                p++;
+            }
+            while (U.r(u).D(f) > 0) {
+                u--;
+            }
+            if (p <= u) {
+                Q PQ = U.r(p);
+                U.R(p, U.r(u));
+                U.R(u, PQ);
+                p++;
+                u--;
+            }
+        }
+        if (u > x) {
+            YA(U, x, u);
+        }
+        if (p < j) {
+            YA(U, p, j);
+        }
+    }
+    public static <Q extends Cd> void d(Oz<Q> U) {
+        int S = U.S();
+        if (S >= 2) {
+            int Z = S / 2;
+            Oz<Q> l = new t<>();
+            Oz<Q> N = new t<>();
+            for (int p = 0; p < Z; p++) {
+                Q r = U.r(p);
+                l.G(r);
+            }
+            for (int p = Z; p < S; p++) {
+                Q r = U.r(p);
+                N.G(r);
+            }
+            d(l);
+            d(N);
+            C(U, l, N);
+        }
+    }
+    private static <Q extends Cd> void C(Oz<Q> U, Oz<Q> l, Oz<Q> N) {
+        U.v();
+        while (!N.wT() && !l.wT()) {
+            if (N.r(0).D(l.r(0)) > 0) {
+                U.G(l.r(0));
+                l.h(0);
+            } else {
+                Q r = N.r(0);
+                U.G(r);
+                N.h(0);
+            }
+        }
+        while (!l.wT()) {
+            U.G(l.r(0));
+            l.h(0);
+        }
+        while (!N.wT()) {
+            U.G(N.r(0));
+            N.h(0);
+        }
+    }
+    public static void main(String[] args) {
+        t<String> V = new t<>();
+        V.G("Zla");
+        V.G("Ala");
+        V.G("Gla");
+        V.G("Jla");
+        V.G("Bla");
+        V.G("Jla");
+        V.G("Bla");
+        V.G("Lla");
+        System.out.println(V);
+        System.out.println(V);
+    }
+}

@@ -1,0 +1,32 @@
+package f;
+import p.P.h;
+public class ya {
+    public static void main(String[] args) {
+        int[] N = {20,35,-15,7,55,1,-22};
+        h.l(N);
+        System.out.println(ya(N,-15));
+        System.out.println(ya(N,22));
+        System.out.println(ya(N,7));
+    }
+    public static int ya(int[] N,int Q){
+        int m = (int) N.US/2;
+        if (Q == N[m]){
+            return m;
+        }
+        else if (Q>N[m]){
+            for (int T = m+1; T < N.US; T++) {
+                if (N[T] == Q){
+                    return T;
+                }
+            }
+        }
+        else {
+            for (int T = 0; T < m; T++) {
+                if (N[T] == Q){
+                    return T;
+                }
+            }
+        }
+        return -1;
+    }
+}

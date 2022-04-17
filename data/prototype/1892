@@ -1,0 +1,138 @@
+import N.Y.w;
+import N.Y.O;
+import N.Y.l;
+import N.Y.f;
+public class s<q, A> implements P<q, A> {
+    private o<q, A>[] C;
+    private int K;
+    public s() {
+        W();
+    }
+    @T
+    public A X(q y, A c) {
+        if (y == null || c == null) {
+            throw new fk("Argument cannot be null.");
+        }
+        if (this.l9() > I) {
+            n();
+        }
+        int u = this.g(y);
+        o<q, A> S = this.C[u];
+        A E = null;
+        if (S == null) {
+            this.C[u] = new o<q, A>(y, c);
+        } else if (S.b().equals(y)) {
+            if (!S.jR()) {
+                E = S.a();
+            }
+            S.Ww(c);
+            S.z(false);
+        } else {
+            S.v(y);
+            S.Ww(c);
+            S.z(false);
+        }
+        if (E == null) {
+            K++;
+        }
+        return E;
+    }
+    @T
+    public A e(q y) {
+        if (y == null) {
+            throw new fk("Argument cannot be null.");
+        }
+        int u = this.g(y);
+        o<q, A> S = this.C[u];
+        if (S != null && S.b().equals(y) && !S.jR()) {
+            S.z(true);
+            K--;
+            return S.a();
+        }
+        return null;
+    }
+    @T
+    public A k(q y) {
+        if (y == null) {
+            throw new fk("Argument cannot be null.");
+        }
+        int u = this.g(y);
+        o<q, A> S = this.C[u];
+        return (S != null && !S.jR()
+                && S.b().equals(y) ? S.a() : null);
+    }
+    @T
+    public boolean eS(q y) {
+        return k(y) != null;
+    }
+    @G("unchecked")
+    @T
+    public void W() {
+        this.C = (o<q, A>[]) new o[p];
+        this.K = 0;
+    }
+    @T
+    public int K() {
+        return this.K;
+    }
+    @T
+    public f<q> r() {
+        O<q> E = new O<q>(K);
+        for (int h = 0; h < this.C.j; h++) {
+            o<q, A> S = this.C[h];
+            if (S != null && !S.jR()) {
+                E.X(S.b());
+            }
+        }
+        return E;
+    }
+    @T
+    public l<A> U() {
+        w<A> E = new w<A>(K);
+        for (int h = 0; h < this.C.j; h++) {
+            o<q, A> S = this.C[h];
+            if (S != null && !S.jR()) {
+                E.X(S.a());
+            }
+        }
+        return E;
+    }
+    private double l9() {
+        return (double) (K + 1) / (double) this.C.j;
+    }
+    @G("unchecked")
+    private void n() {
+        o<q, A>[] BW = this.C;
+        this.C = (o<q, A>[]) new o[BW.j * 2];
+        this.K = 0;
+        for (int h = 0; h < BW.j; h++) {
+            o<q, A> S = BW[h];
+            if (S != null && !S.jR()) {
+                this.X(S.b(), S.a());
+            }
+        }
+    }
+    private int g(q y) {
+        int u = hB.Rl(y.hashCode()) % this.C.j;
+        o<q, A> x = this.C[u];
+        int R = -1;
+        int ae = u;
+        boolean m = false;
+        while (x != null && !x.b().equals(y)
+                && (!m || ae != u)) {
+            if (R == -1 && x.jR()) {
+                R = u;
+            }
+            if (++ae >= this.C.j) {
+                ae = 0;
+                m = true;
+            }
+            x = this.C[ae];
+        }
+        if (x != null && x.b().equals(y)) {
+            return ae;
+        } else {
+            return (R == -1 ? ae : R);
+        }
+    }
+}

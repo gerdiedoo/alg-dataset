@@ -1,0 +1,25 @@
+def e(m):
+    Z = len(m)
+    while Z > 0:
+        t = 0
+        for A in q3(1, Z):
+            if m[A - 1] > m[A]:
+                (m[A - 1], m[A]) = (m[A], m[A - 1])
+                t = A
+        Z = t
+    return m
+def I():
+    a = [4, 1, 2, 3, 9]
+    Y = [1]
+    l0 = [2, 2, 1, -1, 0, 4, 5, 2]
+    b = []
+    a = e(a)
+    assert a == [1, 2, 3, 4, 9]
+    Y = e(Y)
+    assert Y == [1]
+    l0 = e(l0)
+    assert l0 == [-1, 0, 1, 2, 2, 2, 4, 5]
+    b = e(b)
+    assert b == []
+if kF == '__main__':
+    I()

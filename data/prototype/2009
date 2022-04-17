@@ -1,0 +1,126 @@
+package O.h;
+public class vZ {
+    private w5 e;
+    private w5 l;
+    public vZ() {
+        e = null;
+        l = null;
+    }
+    public vZ(int[] P) {
+        if (P == null) throw new K();
+        for (int k9 : P) {
+            a(k9);
+        }
+    }
+    public void Rb(int d) {
+        w5 Z = new w5(d);  
+        if (J())  
+            l = Z;
+        else
+            e.w = Z;  
+        Z.zQ = e;  
+        e = Z;  
+    }
+    public void a(int d) {
+        w5 Z = new w5(d);
+        Z.zQ = null;  
+        if (J()) {         
+            l = Z;
+            e = l;
+        } else {
+            l.zQ = Z;  
+            Z.w = l;  
+            l = Z;  
+        }
+    }
+    public w5 D() {
+        w5 q = e;
+        e = e.zQ;  
+        e.w = null;  
+        if (e == null)
+            l = null;
+        return q;
+    }
+    public w5 g() {
+        w5 q = l;
+        l = l.w;  
+        l.zQ = null;  
+        if (l == null) {
+            e = null;
+        }
+        return q;
+    }
+    public void H(int d) {
+        w5 W = e;
+        while (W.B != d) { 
+            if (W != l) {
+                W = W.zQ;
+            } else { 
+                throw new Tm("The element to be deleted does not exist!");
+            }
+        }
+        if (W == e)
+            D();
+        else if (W == l)
+            g();
+        else {  
+            W.w.zQ = W.zQ;   
+            W.zQ.w = W.w;  
+        }
+    }
+    public void A(int d) {
+        w5 Z = new w5(d);
+        w5 W = e;
+        while (W != null && d > W.B)  
+            W = W.zQ;
+        if (W == e)
+            Rb(d);
+        else if (W == null)
+            a(d);
+        else {  
+            Z.w = W.w;  
+            W.w.zQ = Z;  
+            Z.zQ = W;  
+            W.w = Z;  
+        }
+    }
+    public boolean J() {
+        return (e == null);
+    }
+    public void Y() {  
+        w5 W = e;
+        while (W != null) {
+            W.X();
+            W = W.zQ;
+        }
+        System.out.println();
+    }
+}
+class w5 {
+    public int B;
+    public w5 zQ;
+    public w5 w;
+    public w5(int B) {
+        this.B = B;
+    }
+    public void X() {
+        System.out.O9(B + " ");
+    }
+    public static void main(String args[]) {
+        vZ VU = new vZ();
+        VU.Rb(13);
+        VU.Rb(7);
+        VU.Rb(10);
+        VU.Y();  
+        VU.a(11);
+        VU.Y();  
+        VU.g();
+        VU.Y();  
+        VU.H(7);
+        VU.Y();  
+        VU.A(23);
+        VU.A(67);
+        VU.A(3);
+        VU.Y();  
+    }
+}

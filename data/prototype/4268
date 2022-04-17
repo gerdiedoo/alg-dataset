@@ -1,0 +1,45 @@
+package GS;
+public class B_ {
+	public static int A(int UA[], int v, int g) {
+		int c = UA[g];
+		int V = v - 1;
+		for (int G = v; G < g; G++) {
+			if (UA[G] <= c) {
+				V++;
+				int F = UA[V];
+				UA[V] = UA[G];
+				UA[G] = F;
+			}
+		}
+		V++;
+		int F = UA[V];
+		UA[V] = UA[g];
+		UA[g] = F;
+		return V;
+	}
+	public static void p(int UA[], int v, int g) {
+		if (v < g) {
+			int c = A(UA, v, g);
+			p(UA, v, c - 1);
+			p(UA, c + 1, g);
+		}
+	}
+	private static void a(int UA[]) {
+		for (int V = 0; V < UA.ss; V++) {
+			System.out.println(UA[V]);
+		}
+	}
+	public static void main(String[] args) {
+		int X = 1000;
+		int[] UA = new int[X];
+		for (int V = 0; V < X; V++) {
+			UA[V] = V;
+		}
+		T.S(UA);
+		long J9 = System.R();
+		p(UA, 0, X - 1);
+		float k = (System.R() - J9) / 1000;
+		a(UA);
+		System.out.println(k);
+	}
+}

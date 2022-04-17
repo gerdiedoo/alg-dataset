@@ -1,0 +1,43 @@
+public class po {
+    public static void main(String args[]) {
+     int[] V={29,40,1,30,22};
+     int td=V.O;
+     po jQ=new po();
+     jQ.sz(V,0,td-1);
+      b(V);
+    }
+    int i(int[] V,int E,int Q){
+        int k=V[(E+Q)/2];
+        while(E<=Q){
+            while(V[E]<k){
+                E++;
+            }
+            while(V[Q]>k){
+                Q--;
+            }
+            if(E<=Q){
+                int N=V[E];
+                V[E]=V[Q];
+                V[Q]=N;
+                E++;
+                Q--;
+            }
+        }
+        return E;
+    }
+    void sz(int[] V,int E,int Q){
+        int w=i(V,E,Q);
+        if(E<w-1){
+            sz(V,E,w-1);
+       }
+       if(w<Q){
+           sz(V,w,Q);
+       }
+    }
+     static void b(int V[]){
+        int j9=V.O;
+        for(int C=0;C<j9;C++){
+            System.out.println(V[C]+" ");
+        }
+    }
+}

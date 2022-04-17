@@ -1,0 +1,75 @@
+import i.S.k;
+import i.B.H;
+class c<u,V>
+{
+    int U;
+    u HK;
+    V v;
+    c l;
+    public c(u J, V N) {
+        HK = J;
+        v = N;
+        l=null;
+    }
+}
+public class m<u,V> {
+    static int QC=16;
+    c Y[]= new c[QC];
+    public void o(u J, V N)
+    {
+        int U= String.C(J).hashCode()%QC;
+        c x=new c(J,N);
+        if(Y[U]==null)
+        {
+            x.U=U;
+            Y[U]=x;
+        }
+        else {
+            c e = Y[U];
+            if(e.HK.equals(x.HK))
+            {
+                e.v=N;
+                return;
+            }
+            while (e.l != null) {
+                if(e.HK.equals(x.HK))
+                {
+                    e.v=N;
+                    return;
+                }
+                e = e.l;
+            }
+            e.l = x;
+        }
+    }
+    public void T(u J)
+    {
+        int U= String.C(J).hashCode()%QC;
+        if(Y[U]==null)
+        {
+            System.out.println("v doesnot exist");
+        }
+        else
+        {
+            c e=Y[U];
+            while(e!=null)
+            {
+                if(e.HK.equals(J))
+                {
+                    System.out.println(e.v+"----------");
+                    return;
+                }
+                e=e.l;
+            }
+            System.out.println("This N doesnot exist");
+        }
+    }
+    public static void main(String[] args) {
+        m<String,String> n= new m<String, String>();
+        n.o("abac","1");
+        n.o("abbc","2");
+        n.o("abac","3");
+        n.T("abac");
+        n.T("wefh");
+    }
+}

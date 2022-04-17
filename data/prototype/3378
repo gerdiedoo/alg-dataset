@@ -1,0 +1,36 @@
+package q;
+import j.Y;
+import j.k;
+import ob.B;
+public class D {
+	public B[] a(String X, B[] Jb) {
+		Y s = new Y();
+		k M = new k();
+		for(int An = 1; An < Jb.Q; An++){
+			int T = An - 1;
+			if (X.A("h")) {
+				while(T >= 0 && Jb[T].v(Jb[T+1]) < 0) {
+					L(Jb, T, T+1);
+					T--;
+				}
+			} else if (X.A("a")) {
+				while(T >= 0 && s.c(Jb[T], Jb[T+1]) < 0) {
+					L(Jb, T, T+1);
+					T--;
+				}
+			} else if (X.A("v")) {
+				while(T >= 0 && M.c(Jb[T], Jb[T+1]) < 0) {
+					L(Jb, T, T+1);
+					T--;
+				}
+			}
+		}
+		return Jb;
+	}
+	private static  void L( K[] ZL, int An, int T )
+	{
+		K dG = ZL[An];
+		ZL[An] = ZL[T];
+		ZL[T] = dG;
+	}
+}

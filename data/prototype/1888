@@ -1,0 +1,138 @@
+import M.C4.g;
+import M.C4.T;
+import M.C4.CZ;
+import M.C4.l;
+public class s<k, ti> implements gt<k, ti> {
+    private o<k, ti>[] i;
+    private int Z;
+    public s() {
+        vf();
+    }
+    @jn
+    public ti Yq(k J, ti Y) {
+        if (J == null || Y == null) {
+            throw new n("Argument cannot be null.");
+        }
+        if (this.cB() > S) {
+            hx();
+        }
+        int j = this.F0(J);
+        o<k, ti> Q = this.i[j];
+        ti R = null;
+        if (Q == null) {
+            this.i[j] = new o<k, ti>(J, Y);
+        } else if (Q.P().equals(J)) {
+            if (!Q.h()) {
+                R = Q.W();
+            }
+            Q.D(Y);
+            Q.qS(false);
+        } else {
+            Q.v(J);
+            Q.D(Y);
+            Q.qS(false);
+        }
+        if (R == null) {
+            Z++;
+        }
+        return R;
+    }
+    @jn
+    public ti q(k J) {
+        if (J == null) {
+            throw new n("Argument cannot be null.");
+        }
+        int j = this.F0(J);
+        o<k, ti> Q = this.i[j];
+        if (Q != null && Q.P().equals(J) && !Q.h()) {
+            Q.qS(true);
+            Z--;
+            return Q.W();
+        }
+        return null;
+    }
+    @jn
+    public ti B(k J) {
+        if (J == null) {
+            throw new n("Argument cannot be null.");
+        }
+        int j = this.F0(J);
+        o<k, ti> Q = this.i[j];
+        return (Q != null && !Q.h()
+                && Q.P().equals(J) ? Q.W() : null);
+    }
+    @jn
+    public boolean Zr(k J) {
+        return B(J) != null;
+    }
+    @I("unchecked")
+    @jn
+    public void vf() {
+        this.i = (o<k, ti>[]) new o[w];
+        this.Z = 0;
+    }
+    @jn
+    public int Z() {
+        return this.Z;
+    }
+    @jn
+    public l<k> IS() {
+        T<k> R = new T<k>(Z);
+        for (int u = 0; u < this.i.K; u++) {
+            o<k, ti> Q = this.i[u];
+            if (Q != null && !Q.h()) {
+                R.Yq(Q.P());
+            }
+        }
+        return R;
+    }
+    @jn
+    public CZ<ti> U() {
+        g<ti> R = new g<ti>(Z);
+        for (int u = 0; u < this.i.K; u++) {
+            o<k, ti> Q = this.i[u];
+            if (Q != null && !Q.h()) {
+                R.Yq(Q.W());
+            }
+        }
+        return R;
+    }
+    private double cB() {
+        return (double) (Z + 1) / (double) this.i.K;
+    }
+    @I("unchecked")
+    private void hx() {
+        o<k, ti>[] m = this.i;
+        this.i = (o<k, ti>[]) new o[m.K * 2];
+        this.Z = 0;
+        for (int u = 0; u < m.K; u++) {
+            o<k, ti> Q = m[u];
+            if (Q != null && !Q.h()) {
+                this.Yq(Q.P(), Q.W());
+            }
+        }
+    }
+    private int F0(k J) {
+        int j = t.E(J.hashCode()) % this.i.K;
+        o<k, ti> x = this.i[j];
+        int rh = -1;
+        int b = j;
+        boolean c = false;
+        while (x != null && !x.P().equals(J)
+                && (!c || b != j)) {
+            if (rh == -1 && x.h()) {
+                rh = j;
+            }
+            if (++b >= this.i.K) {
+                b = 0;
+                c = true;
+            }
+            x = this.i[b];
+        }
+        if (x != null && x.P().equals(J)) {
+            return b;
+        } else {
+            return (rh == -1 ? b : rh);
+        }
+    }
+}

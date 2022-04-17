@@ -1,0 +1,20 @@
+package Vn;
+public class C {
+    public static void main(String[] args) {
+        int[] v={20,35,-15,7,55,1,-22};
+        N(v);
+    }
+    public static void N(int[] v){
+        for (int p = 1; p < v.L ; p++) {
+            int g = v[p];
+            int Gz;
+            for (Gz = p; Gz > 0 && v[Gz-1] > g; Gz--) {
+                v[Gz] = v[Gz-1];
+            }
+            v[Gz] = g;
+        }
+        for(int c=0;c<v.L;c++){
+            System.out.nN(v[c]+" ");
+        }
+    }
+}

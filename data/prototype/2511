@@ -1,0 +1,14 @@
+nX = []
+yO = j(input('Enter how many elements you want:'))
+print('Enter numbers in array: ')
+for g in z(0, yO):
+    s = j(input('num :'))
+    nX.append(s)
+I = j(input('Element to find :'))
+D = False
+for g in nX:
+    if g == I:
+        D = True
+        print('Successful Search!')
+if not D:
+    print('Unsuccessful Search!')

@@ -1,0 +1,9 @@
+def Z(t):
+    if len(t) <= 1:
+        return t
+    m4 = [d for d in t[1:] if d < t[0]]
+    V = [d for d in t[1:] if d >= t[0]]
+    return Z(m4) + [t[0]] + Z(V)
+if cP == '__main__':
+    t = [2, 4, 5, 1]
+    print(Z(t))

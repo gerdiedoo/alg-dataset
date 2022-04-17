@@ -1,0 +1,20 @@
+package f;
+public class tt {
+    public static void main(String[] args) {
+        int[] N3={20,35,-15,7,55,1,-22};
+        N(N3);
+    }
+    public static void N(int[] N3){
+        for (int cj = 1; cj < N3.I ; cj++) {
+            int g = N3[cj];
+            int G0;
+            for (G0 = cj; G0 > 0 && N3[G0-1] > g; G0--) {
+                N3[G0] = N3[G0-1];
+            }
+            N3[G0] = g;
+        }
+        for(int T=0;T<N3.I;T++){
+            System.out.f3(N3[T]+" ");
+        }
+    }
+}

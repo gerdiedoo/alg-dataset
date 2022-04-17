@@ -1,0 +1,29 @@
+def t(Hi):
+    if len(Hi) == 0:
+        return []
+    W = Hi[0]
+    j = Hi[1:]
+    A = 0
+    while j:
+        for (R, Wx) in enumerate(j):
+            if Wx < W:
+                j[R] = W
+                W = Wx
+        Hi[A] = W
+        W = j[0]
+        j = j[1:]
+        print('step', A, W, j)
+        A += 1
+    Hi[-1] = W
+    return Hi
+print('result:', t([9, 8, 7, 6, 1, 3, 5, 7, 12, 0, 0, 0]))
+print('result:', t([]))
+def n(Hi):
+    p2 = 0
+    while p2 != len(Hi):
+        for R in Zp(p2, len(Hi)):
+            if Hi[R] < Hi[p2]:
+                (Hi[p2], Hi[R]) = (Hi[R], Hi[p2])
+        p2 += 1
+    return Hi
+print('result selSort:', n([9, 8, 7, 6, 1, 3, 5, 7, 12, 0, 0, 0]))

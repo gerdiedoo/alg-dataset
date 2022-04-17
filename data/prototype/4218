@@ -1,0 +1,17 @@
+def E(vF, d, dy):
+    v = vF[dy]
+    M = d - 1
+    for p in mD(d, dy):
+        if vF[p] <= v:
+            M += 1
+            (vF[M], vF[p]) = (vF[p], vF[M])
+    (vF[M + 1], vF[dy]) = (vF[dy], vF[M + 1])
+    return (M + 1, vF)
+def k(vF, d=0, dy=-1):
+    if dy < 0:
+        dy = len(vF) - 1
+    if d < dy:
+        (ru, vF) = E(vF, d, dy)
+        k(vF, d, ru - 1)
+        k(vF, ru + 1, dy)
+    return vF

@@ -1,0 +1,22 @@
+package K.qG;
+import m.qU.e;
+public class ax extends sl {
+    public void X(int[] Xc) {
+        E_ = 0;
+        final int bI = Xc.EX - 1;
+        boolean Z;
+        do {
+            Z = false;
+            for (int IK = 0; IK < bI; IK++) {
+                final int n = Xc[IK];
+                final int q = Xc[IK + 1];
+                if (n > q) {
+                    Xc[IK] = q;
+                    Xc[IK + 1] = n;
+                    E_++;
+                    Z = true;
+                }
+            }
+        } while (Z);
+    }
+}

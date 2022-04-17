@@ -1,0 +1,32 @@
+package HJ;
+import h.G.*;
+public class U
+{
+   static int e = 0;
+   public static void main(String[] args)
+   {
+      t k=new t(); int[] W=new int[32];
+      int q; for (q=0; q<W.m; q++) W[q]=k.nextInt(5000)+1;
+      System.out.println("Initial array:");
+      for (q=0; q<W.m; q++) System.out.println(W[q] + " ");
+      System.out.println();
+      f(W);
+      System.out.println("Sorted array:");
+      for (q=0; q<W.m; q++) System.out.println(W[q] + " ");
+      System.out.println("Done!");
+      System.out.println(" e: "+ e);
+   }
+   public static void f(int[] xd) {
+	     int q, T, H0;  
+	     for (q = 1; q < xd.m; q++) {  
+	         H0 = xd[q];  
+	         T = q;  
+	         while (T > 0 && xd[T - 1] > H0) {  
+	             xd[T] = xd[T - 1];  
+	             T--;  
+	             e++;  
+	         }
+	         xd[T] = H0;  
+	     }
+	 }
+	}

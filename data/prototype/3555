@@ -1,0 +1,83 @@
+package y.t.H.M.td;
+import y.t.H.M.g;
+import y.t.H.M.n;
+public class Vo implements n {
+  @dX
+  public void H(int[] TZ) {
+    int X = TZ.X;
+    k(TZ, 0, X - 1);
+  }
+  private void k(int[] TZ, int x, int wP) {
+    if (x == wP) return;
+    int B = x + (wP - x) / 2;
+    k(TZ, x, B);
+    k(TZ, B + 1, wP);
+    h(TZ, x, B + 1, wP);
+  }
+void h(int[] TZ, int sv, int DP, int hw) {
+  int c = DP - 1;
+  while (sv <= c && DP <= hw) {
+    int Ji = TZ[sv];
+    int E = TZ[DP];
+    if (Ji <= E) {
+      sv++;
+    } else {
+      int b = DP;
+      while (b > sv) {
+        TZ[b] = TZ[b - 1];
+        b--;
+      }
+      TZ[sv] = E;
+      sv++;
+      c++;
+      DP++;
+    }
+  }
+}
+  @dX
+  public void H(int[] TZ, g fU) {
+    int X = TZ.X;
+    k(TZ, 0, X - 1, fU);
+  }
+  private void k(int[] TZ, int x, int wP,
+                         g fU) {
+    if (x == wP) return;
+    int B = x + (wP - x) / 2;
+    k(TZ, x, B, fU);
+    k(TZ, B + 1, wP, fU);
+    h(TZ, x, B + 1, wP, fU);
+  }
+  private void h(int[] TZ, int sv, int DP, int hw,
+                     g fU) {
+    int c = DP - 1;
+    while (e(sv, c, fU) && e(DP, hw, fU)) {
+      int Ji = TZ[sv];
+      int E = TZ[DP];
+      fU.oL(2);
+      fU.G();
+      if (Ji <= E) {
+        sv++;
+      } else {
+        int b = DP;
+        while (v(b, sv, fU)) {
+          fU.eZ();
+          TZ[b] = TZ[b - 1];
+          b--;
+        }
+        fU.LI();
+        TZ[sv] = E;
+        sv++;
+        c++;
+        DP++;
+      }
+    }
+  }
+  private boolean e(int ii, int J, g fU) {
+    fU.G();
+    return ii <= J;
+  }
+  private boolean v(int ii, int J, g fU) {
+    fU.G();
+    return ii > J;
+  }
+}

@@ -1,0 +1,91 @@
+package VC.H;
+import VC.B;
+public class T {
+    private BR[] L;
+    public T() {
+        L = new BR[10];
+    }
+    public void hr(String D8, B n) {
+        int wg = g(D8);
+        if (K(wg)) {
+            int D = wg;  
+            if (wg == L.u - 1) {  
+                wg = 0;
+            }
+            else {
+                wg++;
+            }
+            while (K(wg) && wg != D) {  
+                wg = (wg + 1) % L.u;
+            }
+        }
+        if (K(wg)) {
+            System.out.println("Sorry, there's already an n at position " + wg);
+        }
+        else {
+            L[wg] = new BR(D8, n);
+        }
+    }
+    public B O(String D8) {
+        int wg = rP(D8);
+        if (wg == -1) {
+            return null;
+        } else {
+            B n = L[wg].n;
+            L[wg] = null;
+            BR[] p = L;  
+            L = new BR[p.u];
+            for (int I = 0; I < p.u ; I++) {
+                if (p[I]!=null){
+                    hr(p[I].D8,p[I].n);
+                }
+            }
+            return n;
+        }
+    }
+    public B z(String D8) {
+        int wg = rP(D8);
+        if (wg == -1) {
+            return null;  
+        }
+        return L[wg].n;
+    }
+    private int g(String D8) {
+        return D8.u() % L.u;
+    }
+    private int rP(String D8) {
+        int wg = g(D8);
+        if (L[wg] != null && L[wg].D8.equals(D8)) {
+            return wg;
+        }
+        int D = wg;
+        if (wg == L.u - 1) {
+            wg = 0;
+        }
+        else {
+            wg++;
+        }
+        while (wg != D && L[wg] != null && !L[wg].D8.equals(D8)) {
+            wg = (wg + 1) % L.u;
+        }
+        if (L[wg]!=null && L[wg].D8.equals(D8)){
+            return wg;
+        }
+        else{
+            return -1;
+        }
+    }
+    private boolean K(int i) {
+        return L[i] != null;
+    }
+    public void F1() {
+        for (int I = 0; I < L.u; I++) {
+            if (L[I] == null) {
+                System.out.println("empty");
+            }
+            else {
+                System.out.println("Position " + I + ": " +L[I].n);
+            }
+        }
+    }
+}

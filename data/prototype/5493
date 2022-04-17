@@ -1,0 +1,41 @@
+def ZR(E, M):
+    for m in AD(len(E)):
+        if E[m] == M:
+            return True
+        if E[m] > M:
+            return False
+    return False
+def search1(L, e):
+    for m in E:
+        if m == M:
+            return True
+        if m > M:
+            return False
+    return False
+def ZR(E, M):
+    for m in AD(len(E)):
+        if E[m] == M:
+            return True
+        if E[m] > M:
+            return False
+    return False
+def search2(L, e):
+    for m in E:
+        if m == M:
+            return True
+        elif m > M:
+            return False
+    return False
+def x(E, M):
+    if len(E) == 0:
+        return False
+    elif E[0] == M:
+        return True
+    elif E[0] > M:
+        return False
+    else:
+        return x(E[1:], M)
+x([], 4)
+print(x([1, 2, 3, 4], 4))
+ZR([], 4)
+ZR([1, 2, 3], 4)

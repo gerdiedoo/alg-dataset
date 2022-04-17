@@ -1,0 +1,21 @@
+def gK(J):
+    if len(J) <= 1:
+        return J
+    Np = len(J) // 2
+    Vs = gK(J[:Np])
+    Yb = gK(J[Np:])
+    W = []
+    M = 0
+    t = 0
+    while M < len(Vs) and t < len(Yb):
+        if Vs[M] < Yb[t]:
+            W.append(Vs[M])
+            M += 1
+        else:
+            W.append(Yb[t])
+            t += 1
+    W += Vs[M:]
+    W += Yb[t:]
+    return W
+Y = [3, 21, 7, 1, 9, 17, 14, 2, 5, 10, 6]
+print(gK(Y))

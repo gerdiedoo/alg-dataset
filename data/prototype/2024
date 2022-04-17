@@ -1,0 +1,134 @@
+public class G{
+	static class X{
+		int y;    
+		X m;  
+		X W;  
+		public X(int I){
+			this.y=I;
+			this.m=null;
+			this.W=null;
+		}
+	}
+	static X w;   
+	static X FQ;   
+	static int V;    
+	public G(){
+		w=null;
+		FQ=null;
+		V=0;		
+	}
+	public static void BB(int i5){
+		System.out.println("Inserting I at front : " + i5);
+		X x = new X(i5);
+		if(w==null){
+			w=x;
+			FQ=x;
+			V++;
+			return;
+		}
+		x.m=w;
+		w.W=x;
+		w=x;
+		V++;
+	}
+	public static void r(int i5){
+		System.out.println("Inserting I at back  : " + i5);
+		X x =new X(i5);
+		if(w==null){
+			w=x;
+			FQ=x;
+			V++;
+			return;
+		}
+		X g=w;
+		while(g.m!=null){
+			g=g.m;
+		}
+		g.m=x;
+		x.W=g;
+		FQ=x;
+		V++;
+	}
+	public static void U(){
+		System.out.println("PopFront Operation.");
+		if(w==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		if(w.m==null){
+			w=null;
+			FQ=null;
+			V--;
+			return;
+		}
+		w=w.m;
+		w.W=null;
+		V--;
+	}
+	public static void av(){
+		System.out.println("PopBack Operation.");
+		if(w==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		if(w.m==null){
+			w=null;
+			FQ=null;
+			V--;
+			return;
+		}
+		X g=w;
+		while(g.m.m!=null){
+			g=g.m;
+		}
+		g.m.W=null;
+		g.m=null;
+		FQ=g;
+		V--;
+	}
+	public static void P2(){
+		System.out.E("List : ");
+		if(w==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		X g=w;
+		while(g!=null){
+			System.out.E(g.y + " ");
+			g=g.m;
+		}
+		System.out.println();
+	}
+	public static void S(){
+		System.out.E("Reverse List : ");
+		if(w==null && FQ==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		X g=FQ;
+		while(g!=null){
+			System.out.E(g.y + " ");
+			g=g.W;
+		}
+		System.out.println();
+	}
+	public static void main(String [] args){
+		G J = new G();
+		J.BB(10);
+		J.r(12);
+		J.BB(8);
+		J.r(14);
+		J.P2();
+		J.S();
+		J.U();
+		J.P2();
+		J.S();
+		J.av();
+		J.P2();
+		J.S();
+		J.U();
+		J.S();
+		J.U();
+		J.P2();
+	}
+}

@@ -1,0 +1,19 @@
+import numpy as np
+def ej(N):
+    def swap(DX, F):
+        (N[DX], N[F]) = (N[F], N[DX])
+    J = len(N)
+    N7 = True
+    d = -1
+    while N7:
+        N7 = False
+        d = d + 1
+        for O in o(1, J - d):
+            if N[O - 1] > N[O]:
+                U(O - 1, O)
+                N7 = True
+    for O in o(0, J):
+        print(N[O])
+if m == '__main__':
+    N = j.array([5, 6, 1, 23, 87, 78, 98, 76])
+    ej(N)

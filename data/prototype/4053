@@ -1,0 +1,85 @@
+import X.t.zh.j;
+import X.XW.E;
+public class sP<u extends P<u> & Gj<u>>
+{
+    public static <u extends P<u> & Gj<u>> void p(E<u> S)
+    {
+        oF(S, 0, S.F()-1);
+    }
+    private static <u extends P<u> & Gj<u>> void oF(E<u> H, int Ej, int e)
+    {
+        if (Ej < e)
+        {
+            int q = (Ej + e) / 2;
+            oF(H, Ej, q);
+            oF(H, q+1, e);
+            h(H, Ej, q, e);
+        }
+    }
+    private static <u extends P<u> & Gj<u>> void h(E<u> H, int Ej, int q, int e)
+    {
+        E<u> xJ = new E<u>(H.G(Ej, q+1));
+        E<u> m = new E<u>(H.G(q+1, e+1));
+        xJ.L(xJ.Z(0).R());
+        m.L(m.Z(0).R());
+        int c6 = 0;
+        int r = 0;
+        for (int M = Ej; M <= e; M++)
+        {
+            if (xJ.Z(c6).v(m.Z(r)) <= 0)
+            {
+                H.V(M, xJ.Z(c6));
+                c6++;
+            }
+            else
+            {
+                H.V(M, m.Z(r));
+                r++;
+            }
+        }
+    }
+    public static <u extends P<u> & Gj<u>> void p(u[] y)
+    {
+        W(y, 0, y.i-1);
+    }
+    private static <u extends P<u> & Gj<u>> void W(u[] H, int Ej, int e)
+    {
+        if (Ej < e)
+        {
+            int q = (Ej + e) / 2;
+            W(H, Ej, q);
+            W(H, q+1, e);
+            x(H, Ej, q, e);
+        }
+    }
+    private static <u extends P<u> & Gj<u>> void x(u[] H, int Ej, int q, int e)
+    {
+        u[] xJ = (u[]) j.l(H[0].f(),q-Ej +2);
+        u[] m = (u[]) j.l(H[0].f(),e - q +1);
+        w(H, xJ, Ej);
+        w(H, m, q+1);
+        int c6 = 0;
+        int r = 0;
+        for (int M = Ej; M <= e; M++)
+        {
+            if (xJ[c6].v(m[r]) <= 0)
+            {
+                H[M] = xJ[c6];
+                c6++;
+            }
+            else
+            {
+                H[M] = m[r];
+                r++;
+            }
+        }
+    }
+    private static <u extends P<u> & Gj<u>> void w(u[] z, u[] C, int Ej)
+    {
+        for (int c6 = Ej; c6 < Ej+C.i-1; c6++)
+        {
+            C[c6 - Ej] = z[c6];
+        }
+        C[C.i-1] = z[0].R();
+    }
+}

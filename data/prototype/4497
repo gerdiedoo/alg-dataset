@@ -1,0 +1,36 @@
+package yJ;
+import p.e.*;
+public class H {
+    static J b_ = new J();
+    public static void u_(int[] e7, int W, int S9) {
+        if (W >= S9)
+            return;
+        int TA = e7[W + b_.nextInt(S9 - W + 1)];
+        int t = W;
+        int Q = S9;
+        while (t <= Q) {
+            while (e7[t] < TA) ++t;
+            while (e7[Q] > TA) --Q;
+            if (t <= Q) {
+                int x = e7[t];
+                e7[t] = e7[Q];
+                e7[Q] = x;
+                ++t;
+                --Q;
+            }
+        }
+        u_(e7, W, Q);
+        u_(e7, t, S9);
+    }
+    public static void main(String[] args) {
+        int n = 10_000_000;
+        int[] y = b_.B(n).YV();
+        int[] O = y.clone();
+        a.yJ(O);
+        long c = System.wj();
+        u_(y, 0, y.R - 1);
+        System.out.println(System.wj() - c);
+        if (!a.equals(y, O))
+            throw new M();
+    }
+}

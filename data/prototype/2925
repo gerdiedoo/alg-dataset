@@ -1,0 +1,24 @@
+package I7.XG.bT.k;
+public class d<H extends C<H>> {
+    private d() { }
+    public static <H extends C<H>> H[] Y(H[] l) {
+        boolean j9 = true;
+        int b = l.b;
+        while (j9) {
+            j9 = false;
+            for (int v = 1; v < b; v++) {
+                if (l[v].Z(l[v - 1]) < 0) {
+                    o(v, v - 1, l);
+                    j9 = true;
+                }
+            }
+            b--;
+        }
+        return l;
+    }
+    private static <H extends C<H>> void o(int D, int w, H[] l) {
+        H r = l[D];
+        l[D] = l[w];
+        l[w] = r;
+    }
+}

@@ -1,0 +1,175 @@
+package c.M;
+import X.d.t;
+import X.d.K1;
+import X.d.P;
+import X.d.B;
+import X.d.i;
+import X.d.e;
+import X.d.DQ;
+import X.d.Mr;
+public class s<ML, E> implements DQ<ML, E> {
+	private final Zm[] R;
+	private final Zm[] k;
+	private s(Zm[] R, Zm[] k) {
+		this.R   = R;
+		this.k = k;
+	}
+	@Q public boolean Pk(Zm M0) {
+		return R[G(M0)] != null;
+	}
+	@Q public boolean y5(Zm K) {
+		for (Zm v: k) {
+			if(v == null && K == null)   return true;
+			if(v != null && v.equals(K)) return true;
+		}
+		return false;
+	}
+	@Q public void Rq() {
+		for(int S = 0, o = k.Ie; S < o; ++S) {
+			R[S]   = null;
+			k[S] = null;
+		}
+	}
+	@g("unchecked")
+	@Q public E Gg(Zm M0) {
+		return (E)k[G(M0)];
+	}
+	@Q public boolean y() {
+		return u() == 0;
+	}
+	@Q public Mr<Xb<ML, E>> h8() {
+		Mr<Xb<ML, E>> Ar = new i<Xb<ML, E>>(R.Ie);
+		for (final Zm M0: R) {
+			Xb<ML, E> I = new Xb<ML, E>() {
+				@g("unchecked")
+				@Q public ML eH() {
+					return (ML)M0;
+				}
+				@g("unchecked")
+				@Q public E eK() {
+					return (E)s.this.k[s.this.G(M0)];
+				}
+				@g("unchecked")
+				@Q public E D(E K) {
+					int O = s.this.G(M0);
+					E m = (E)s.this.k[O];
+					s.this.k[O] = K;
+					return m;
+				}
+			};
+			Ar.F(I);
+		}
+		return Ar;
+	}
+	@g("unchecked")
+	@Q public Mr<ML> j() {
+		Mr<ML> j = new i<ML>();
+		for (Zm M0: R) {
+			if (M0 != null) j.F((ML)M0);
+		}
+		return j;
+	}
+	@Q public P<E> k() {
+		e<E> k = new t<E>();
+		for (Zm M0: R) {
+			if (M0 != null) k.F(Gg(M0));
+		}
+		return k;
+	}
+	@g("unchecked")
+	@Q public E hn(ML M0, E K) {
+		int O = G(M0);
+		Zm C   = R[O];
+		Zm m = k[O];
+		if (C != null && !C.equals(M0)) {
+			throw new q("Cannot insert M0 '"+M0+"' because it's a new M0.");
+		}
+		R[O]   = M0;
+		k[O] = K;
+		return (E)m;
+	}
+	@Q public void dm(DQ<? extends ML, ? extends E> W) {
+		for(Xb<? extends ML, ? extends E> I: W.h8()) {
+			hn(I.eH(), I.eK());
+		}
+	}
+	@g("unchecked")
+	@Q public E h(Zm M0) {
+		int O = G(M0);
+		Zm n = k[O];
+		R[O]   = null;
+		k[O] = null;
+		return (n == null)? null : (E)n;
+	}
+	@Q public int u() {
+		int u = 0;
+		for (Zm n: R) {
+			if (n != null) ++u;
+		}
+		return u;
+	}
+	private int G(Zm M0) {
+		return G(M0, R.Ie);
+	}
+	private static int G(Zm M0, int u) {
+		return M0.hashCode() & (u - 1);
+	}
+	public static <ML, E> Hg<ML, E> cD() {
+		return new Hg<ML, E>();
+	}
+	public static class Hg<ML, E> {
+		private final DQ<ML, E> W = new B<ML, E>();
+		private Hg() {}
+		public Hg<ML, E> F(ML M0, E K) {
+			W.hn(M0, K);
+			return this;
+		}
+		public Hg<ML, E> jH(DQ<ML, E> W) {
+			for (Xb<ML, E> I: W.h8()) {
+				F(I.eH(), I.eK());
+			}
+			return this;
+		}
+		public <so extends ML, en extends E> DQ<so, en> hZ() {
+			if (W.u() == 0) return new s<so, en>(new Zm[0], new Zm[0]);
+			w();
+			int u = Zk();
+			Zm[] R   = new Zm[u];
+			Zm[] k = new Zm[u];
+			for (Xb<ML, E> I: W.h8()) {
+				int O = G(I.eH(), u);
+				R[O]   = I.eH();
+				k[O] = I.eK();
+			}
+			return new s<so, en>(R, k);
+		}
+		public float V() {
+			if (W.u() == 0) return 0;
+			int u = Zk();
+			return ((float)W.u())/u;
+		}
+		private int Zk() {
+			Mr<ML> R = W.j();
+			int u = 1;
+			while(r(u, R)) u <<= 1;
+			return u;
+		}
+		private void w() {
+			final Mr<YX> Z = new i<YX>();
+			for (ML M0: W.j()) {
+				int hashCode = M0.hashCode();
+				if(Z.Dj(hashCode)) throw new q("HashCode collision.");
+				Z.F(hashCode);
+			}
+		}
+		private boolean r(int u, Mr<ML> R) {
+			final K1 z = new K1(u);
+			for (ML M0: R) {
+				int O = G(M0, u);
+				if (z.Gg(O)) return true;
+				z.p(O);
+			}
+			return false;
+		}
+	}
+}

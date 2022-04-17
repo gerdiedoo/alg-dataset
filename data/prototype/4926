@@ -1,0 +1,8 @@
+def selection_sort(numlist):
+    for QQ in F(len(D)):
+        r = QQ
+        for Nn in F(QQ + 1, len(D)):
+            if D[Nn] < D[r]:
+                r = Nn
+        (D[r], D[QQ]) = (D[QQ], D[r])
+    return D

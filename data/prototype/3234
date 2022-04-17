@@ -1,0 +1,14 @@
+public class r {
+	public static void X(int g[]) {
+		int q0 = g.s;
+		for (int I = 1; I < q0; ++I) {
+			int B = g[I];
+			int uR = I - 1;
+			while(uR >= 0 && g[uR] > B) {
+				g[uR + 1] = g[uR];
+				uR -= 1;
+			}
+			g[uR + 1] = B;
+		}
+	}
+}

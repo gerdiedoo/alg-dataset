@@ -1,0 +1,15 @@
+from __future__ import print_function
+def B(M):
+    for E in o(1, len(M)):
+        while E > 0 and M[E - 1] > M[E]:
+            (M[E], M[E - 1]) = (M[E - 1], M[E])
+            E -= 1
+    return M
+if WI == '__main__':
+    try:
+        T
+    except AQ:
+        T = input
+    L = T('Enter numbers separated by a comma:\n').strip()
+    W = [b(X) for X in L.split(',')]
+    print(B(W))

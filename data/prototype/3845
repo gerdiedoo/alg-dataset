@@ -1,0 +1,65 @@
+package J.f;
+import J.R;
+public class k implements z {
+    private long l = 20;
+    private int[] s(R n, int Dq, int L) {
+        int Y[] = new int[L];
+        for (int DA = 0; DA < L; DA++) {
+            Y[DA] = n.D(Dq + DA);
+        }
+        return Y;
+    }
+    private void C(R n, int IT, int K, int I) {
+        int X = K - IT + 1;
+        int T = I - K;
+        int N[] = s(n, IT, X);
+        int a[] = s(n, K + 1, T);
+        int DA = 0, u = 0, r = IT;
+        while (DA < X && u < T) {
+            if (N[DA] <= a[u]) {
+                n.H(r, N[DA], g(), true);
+                DA++;
+            } else {
+                n.H(r, a[u], g(), true);
+                u++;
+            }
+            r++;
+        }
+        while (DA < X) {
+            n.H(r, N[DA], g(), true);
+            DA++;
+            r++;
+        }
+        while (u < T) {
+            n.H(r, a[u], g(), true);
+            u++;
+            r++;
+        }
+    }
+    private void oN(R n, int IT, int I) {
+        if (IT < I) {
+            int F = (IT + I) / 2;
+            oN(n, IT, F);
+            oN(n, F + 1, I);
+            C(n, IT, F, I);
+        }
+    }
+    @Cw
+    public void w9(R n) {
+        int IT = 0;
+        int I = n.e9() - 1;
+        oN(n, IT, I);
+    }
+    @Cw
+    public String V() {
+        return "Merge Sort";
+    }
+    @Cw
+    public long g() {
+        return l;
+    }
+    @Cw
+    public void IM(long Jj) {
+        this.l = Jj;
+    }
+}

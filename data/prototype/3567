@@ -1,0 +1,46 @@
+from typing import List
+def Q(p: o[M], L: o[M]) -> o[M]:
+    f7 = []
+    Z = J = 0
+    while Z < len(p) and J < len(L):
+        if p[Z] > L[J]:
+            f7.append(L[J])
+            J += 1
+        elif p[Z] < L[J]:
+            f7.append(p[Z])
+            Z += 1
+        else:
+            f7.append(p[Z])
+            Z += 1
+            f7.append(L[J])
+            J += 1
+    while Z < len(p):
+        f7.append(p[Z])
+        Z += 1
+    while J < len(L):
+        f7.append(L[J])
+        J += 1
+    return f7
+def Oo(f7: o[M]) -> o[M]:
+    if len(f7) > 1:
+        g = len(f7) // 2
+        E = f7[:g]
+        h = f7[g:]
+        E = Oo(E)
+        h = Oo(h)
+        f7 = Q(E, h)
+    return f7
+if rs == '__main__':
+    try:
+        from utils import randomSequence
+    except IM:
+        import os, sys
+        Ic = s.path.dirname(s.path.realpath(A))
+        Nd = s.path.abspath(s.path.join(Ic, s.pardir))
+        H.path.insert(0, Nd)
+        from utils import randomSequence
+    print('MERGE SORT')
+    zr = aB(0, 1000)
+    print(zr, '\n')
+    D = Oo(zr)
+    print(D)

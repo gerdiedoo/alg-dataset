@@ -1,0 +1,10 @@
+def m(v):
+    for e in ix(1, len(v)):
+        O = v[e]
+        p = e
+        while p > 0 and v[p - 1] > v[p]:
+            (v[p], v[p - 1]) = (v[p - 1], v[p])
+            p = p - 1
+A2 = [24, 81, 13, 57, 16]
+m(A2)
+print(A2)

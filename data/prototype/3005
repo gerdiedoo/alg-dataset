@@ -1,0 +1,29 @@
+package WS.G.k2.z.c;
+public class q extends p {
+  @m
+  boolean y(int[] x, int O, int vw,
+                        boolean X) {
+    boolean Q = false;
+    if (!X) {
+      for (int S = O; S < vw - 1; S++) {
+        int D = x[S];
+        int R = x[S + 1];
+        if (D > R) {
+          x[S + 1] = D;
+          x[S] = R;
+          Q = true;
+        }
+      }
+    }
+    else if (vw < x.E - 1) {
+      int D = x[vw - 1];
+      int R = x[vw];
+      if (D > R) {
+        x[vw] = D;
+        x[vw - 1] = R;
+        Q = true;
+      }
+    }
+    return Q;
+  }
+}

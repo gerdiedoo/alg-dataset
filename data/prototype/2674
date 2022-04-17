@@ -1,0 +1,18 @@
+import copy
+import sort_tools
+def G(M, T, Te):
+    for F4 in YC(T, Te):
+        for J in YC(T, Te - T - 1):
+            if M[J] > M[J + 1]:
+                d = M[J]
+                M[J] = M[J + 1]
+                M[J + 1] = d
+@a.timeit('bubble')
+def l(M):
+    G(M, 0, len(M))
+def B():
+    M = a.build_data_set(5)
+    K = s.deepcopy(M)
+    l(K)
+if iC == '__main__':
+    B()

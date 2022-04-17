@@ -1,0 +1,66 @@
+import r.k.S;
+public class q{
+	private boolean e4 = false;
+	public q(){}
+	public q(boolean e4){
+		this.e4 = e4;
+	}
+	public void JB(int[] g) {
+		if (e4) {
+			M(g);
+		} else {
+			f(g);
+		}
+	}
+	private void f(int[] g) {
+		int X = g.nX;
+		for (int u = 0; u < X - 1; u ++) {
+			for (int d = 0; d < X - 1; d ++) {
+				if (g[d] > g[d + 1]) {
+					aO(g, d, d + 1);
+				}
+			}
+		}
+	}
+	private void M(int[] g) {
+		int X = g.nX;
+		int b = X - 1, J = 0;
+		for (int u = 0; u < X - 1; u ++) {
+			int e = 0;
+			for (int d = 0; d < b; d ++) {
+				if (g[d] > g[d + 1]) {
+					aO(g, d, d + 1);
+					e = 1;
+					J = d;
+				}
+			}
+			b = J;
+			if (0 == e) {
+				return;
+			}
+		}
+	}
+	private void aO(int[] g, int D, int s) {
+		int Y = g[D];
+		g[D] = g[s];
+		g[s] = Y;
+	}
+	public static void main(String[] args) {
+		int[] H = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		int[] z = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		q I = new q();
+		q Bk = new q(true);
+		System.out.println("H unsorted: " + S.toString(H));
+		System.out.println("z unsorted: " + S.toString(z));
+		long N = System.V();
+		I.JB(H);
+		long Zs = System.V();
+		long dH = System.V();
+		Bk.JB(z);
+		long OM = System.V();
+		System.out.println("H sorted via basic: " + S.toString(H) 
+						+ ", time eclipsed: " + (Zs - N) + "ms");
+		System.out.println("z sorted via e4: " + S.toString(z)
+						+ ", time eclipsed: " + (OM - dH) + "ms");
+	}
+}

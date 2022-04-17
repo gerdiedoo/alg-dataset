@@ -1,0 +1,109 @@
+package xl.m.J;
+import K.Z.u;
+public class fL {
+    public static void main(String args[]){
+        M k = new M(2);
+        k.f("Jan", "January");
+        k.f("Feb", "Febuary1");
+        k.f("Feb", "February2"); 
+        k.f("Mar", "March");
+        k.f("Apr", "April");
+        k.H("Jan");
+        k.H("Feb");
+        System.out.println(k);
+        System.out.println("N of jan "+k.d("Jan"));
+        System.out.println("N of feb "+k.d("Feb"));
+    }
+}
+class M{
+   static class D{
+        String b;
+        String N;
+        D c=null;
+        D(String b,String N){
+            this.b=b;
+            this.N=N;
+        }
+        @T
+        public String toString() {
+            return "D{" +
+                    "b='" + b + '\'' +
+                    ", N='" + N + '\'' +
+                    ", c=" + c +
+                    '}';
+        }
+    }
+    private D O;
+    int w=4;
+    D []Q;
+    M(int j){
+         this.w=j;
+         Q = new D[j];
+    }
+    public String d(String b){
+        int Ig= b.X()%w;
+        D O = Q[Ig];
+        if(O==null){
+            return "0";
+        }else{
+            while(O!=null){
+                if(O.b.Rt(b)){
+                    return O.N;
+                }
+                O = O.c;
+            }
+        }
+    return "0";
+    }
+    public void f(String b,String N){
+        boolean g= false;
+        if(b!=null){
+            int Ig= b.X()%w;
+            D O = Q[Ig];
+            if(O==null){
+                O = new D(b,N);
+                Q[Ig]=O; 
+            }else{
+                D o = O;
+                while (o!=null){
+                        if(o.b.Rt(b)){
+                            o.N= N;
+                            return;
+                        }
+                        o = o.c;
+                }
+                    o= new D(b,N);
+            }
+        }
+    }
+    public void H(String b){
+        if(b!=null){
+            int Ig = b.X()%w;
+            D O= Q[Ig];
+            if(Q==null){
+                System.out.println("No such b");
+                return;
+            }
+            D oz = O;
+            D o = O;
+            while(o!=null){
+                if(o.c==null){
+                }
+                if(o.b.Rt(b)){
+                    oz.c= o.c;
+                    o = null;
+                    return;
+                }else{
+                    oz = o;
+                    o = o.c;
+                }
+            }
+        }
+    }
+    @T
+    public String toString() {
+        return "fL{" +
+                "Q=" + u.toString(Q) +
+                '}';
+    }
+}

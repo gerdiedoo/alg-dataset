@@ -1,0 +1,140 @@
+import X.k.p;
+import X.k.n8.t;
+class sO {
+    String J, Z;
+    sO U;
+    public sO(String J, String Z) {
+        this.J = J;
+        this.Z = Z;
+    }
+}
+public class H extends I {
+    private p<sO> r;
+    private int zn;
+    private int F;
+    public H() {
+        this.zn = 10;
+        w();
+    }
+    public H(int zn) {
+        this.zn = zn;
+        w();
+    }
+    private void w() {
+        r = new p<sO>(zn);
+        F = 0;
+        for (int C = 0; C < zn; C++) {
+            r.O(null);
+        }
+    }
+    public b d() {
+        return (double) this.F / (double) this.zn;
+    }
+    private sO q(String J) {
+        int i = K(J);
+        return r.e(i);
+    }
+    private int K(String J) {
+        int R = J.hashCode();
+        int i = UR(R);
+        return i < 0 ? i * -1 : i;
+    }
+    private int UR(long R) {
+        return (int) (R % this.zn);
+    }
+    private void W() {
+        p<sO> RH = r;
+        zn *= 2;
+        w();
+        for (sO x : RH) {
+            while (x != null) {
+                n(x.J, x.Z);
+                x = x.U;
+            }
+        }
+    }
+    @h
+    public int F() {
+        return this.F;
+    }
+    @h
+    public String e(String J) {
+        sO Wc = q(J);
+        while (Wc != null) {
+            if (Wc.J.equals(J)) {
+                return Wc.Z;
+            }
+            Wc = Wc.U;
+        }
+        return null;
+    }
+    @h
+    public String n(String J, String Z) {
+        sO Wc = q(J);
+        while (Wc != null) {
+            if (Wc.J.equals(J)) {
+                String y = Wc.Z;
+                Wc.Z = Z;
+                return y;
+            }
+            Wc = Wc.U;
+        }
+        Wc = q(J);
+        int Ie = K(J);
+        sO Lk = new sO(J, Z);
+        Lk.U = Wc;
+        r.V(Ie, Lk);
+        F++;
+        if (d() >= 0.75) {
+            W();
+        }
+        return null;
+    }
+    @h
+    public String u(String J) {
+        int i = K(J);
+        sO Wc = q(J);
+        sO db = null;
+        while (Wc != null) {
+            if (Wc.J.equals(J)) {
+                F--;
+                if (db != null) {
+                    db.U = Wc.U;
+                } else {
+                    r.V(i, Wc.U);
+                }
+                return Wc.Z;
+            }
+            db = Wc;
+            Wc = Wc.U;
+        }
+        return null;
+    }
+    @h
+    public EW<String> BD() {
+        p<String> l2 = new p<String>();
+        for (sO x : r) {
+            while (x != null) {
+                l2.O(x.J);
+                x = x.U;
+            }
+        }
+        return l2;
+    }
+    @h
+    public EW<String> f() {
+        p<String> l2 = new p<String>();
+        for (sO x : r) {
+            while (x != null) {
+                l2.O(x.Z);
+                x = x.U;
+            }
+        }
+        return l2;
+    }
+    @h
+    public EW<t<String, String>> S() {
+        p<t<String, String>> l2 = null;
+        return l2;
+    }
+}

@@ -1,0 +1,42 @@
+import random
+import timeit
+def c(E):
+    if len(E) > 1:
+        w = len(E) // 2
+        vi = E[:w]
+        N = E[w:]
+        c(vi)
+        c(N)
+        A = 0
+        uu = 0
+        B = 0
+        while A < len(vi) and uu < len(N):
+            if vi[A] < N[uu]:
+                E[B] = vi[A]
+                A = A + 1
+            else:
+                E[B] = N[uu]
+                uu = uu + 1
+            B = B + 1
+        while A < len(vi):
+            E[B] = vi[A]
+            A = A + 1
+            B = B + 1
+        while uu < len(N):
+            E[B] = N[uu]
+            uu = uu + 1
+            B = B + 1
+        return E
+def H(Ra, *z, **V):
+    def _wrapped():
+        return Ra(*z, **V)
+    return b
+if JP == '__main__':
+    print('Sorting list of 10 rand nums between 0-1000')
+    E = []
+    for A in Em(10):
+        E.append(D.randint(0, 1000))
+    v = c(E)
+    yO = H(c, E)
+    print('Time to sort 1M times:')
+    print(a.timeit(yO))

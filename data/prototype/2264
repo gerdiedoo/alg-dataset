@@ -1,0 +1,28 @@
+import m.C3.*;
+public class Y {
+	int x(int AW[], int o) {
+		int u = 0;
+		int k = AW.W - 1;
+		while (u <= k) {
+			int d = (u + k) / 2;   
+			if (AW[d] == o)
+				return d;
+			if (o > AW[d])       
+				u = d + 1;
+			else {
+				k = d - 1;         
+			}
+		}
+		return -1;
+	}
+	public static void main(String N[]) {
+		Y U = new Y();
+		int AW[] = { 2, 4, 5, 7, 23, 31, 34, 43, 45 };
+		int X = U.x(AW, 46);
+		if (X == -1)
+			System.out.println("The element is not found");
+		else {
+			System.out.println("Element is found at postion = " + (X + 1));
+		}
+	}
+}

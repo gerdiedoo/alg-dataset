@@ -1,0 +1,337 @@
+package Y.Kq.U;
+import RZ.k.cB;
+import RZ.k.s;
+import RZ.k.B;
+import RZ.k.SN;
+public class K<p> implements cB<p>
+{
+	private i<p> e;
+	private int Dd;
+	public K() {
+		e = new i<p>(null, null, null);
+		e.m0 = e;
+		e.Ew = e;
+		Dd = 0;
+	}
+	public int Dd() {
+		return Dd;
+	}
+	public boolean y() {
+		return Dd == 0 ? true : false;
+	}
+	public boolean Ih(p AV) {
+		i<p> o = e;
+		i<p> v = new i<p>(AV, o, o.Ew);
+		o.Ew.m0 = v;
+		o.Ew = v;
+		Dd++;
+		return true;
+	}
+	public void Ih(int F, p AV) {
+		i<p> o = e;
+		if (F == Dd) {
+			o = e;
+		} else if (F >= 0 && F < Dd/2) {
+			for (int S = 0; S <= F; S++)
+				o = o.m0;
+		} else if (F < Dd && F >= Dd/2) {
+			for (int S = Dd; S > F; S--)
+				o = o.Ew;
+		} else {
+			throw new PF(
+				"Index: " + F + ", Size: " + Dd);
+		}
+		i<p> v = new i<p>(AV, o, o.Ew);
+		o.Ew.m0 = v;
+		o.Ew = v;
+		Dd++;
+	}
+	public p z(int F) {
+		i<p> o = e;
+		if (F >= 0 && F < Dd/2) {
+			for (int S = 0; S <= F; S++)
+				o = o.m0;
+		} else if (F < Dd && F >= Dd/2) {
+			for (int S = Dd; S > F; S--)
+				o = o.Ew;
+		} else {
+			throw new PF(
+				"Index: " + F + ", Size: " + Dd);
+		}
+		return o.W9;
+	}
+	public p A(int F, p AV) {
+		i<p> o = e;
+		if (F >= 0 && F < Dd/2) {
+			for (int S = 0; S <= F; S++)
+				o = o.m0;
+		} else if (F < Dd && F >= Dd/2) {
+			for (int S = Dd; S > F; S--)
+				o = o.Ew;
+		} else {
+			throw new PF(
+				"Index: " + F + ", Size: " + Dd);
+		}
+		p M = o.W9;
+		o.W9 = AV;
+		return M;
+	}
+	public p T(int F) {
+		i<p> o = e;
+		if (F >= 0 && F < Dd/2) {
+			for (int S = 0; S <= F; S++)
+				o = o.m0;
+		} else if (F < Dd && F >= Dd/2) {
+			for (int S = Dd; S > F; S--)
+				o = o.Ew;
+		} else {
+			throw new PF(
+				"Index: " + F + ", Size: " + Dd);
+		}
+		o.m0.Ew = o.Ew;
+		o.Ew.m0 = o.m0;
+		Dd--;
+		return o.W9;
+	}
+	public boolean T(kU dB) {
+		i<p> o = e;
+		for (int S = 0; S < Dd; S++) {
+			o = o.m0;
+			if ((dB != null && dB.equals(o.W9)) ||
+					(dB == null && o.W9 == null)) {
+				o.m0.Ew = o.Ew;
+				o.Ew.m0 = o.m0;
+				Dd--;
+				return true;
+			}
+		}
+		return false;
+	}
+	public void W() {
+		i<p> o = e;
+		while (Dd > 0) {
+			o.m0.Ew = o.Ew;
+			o.Ew.m0 = o.m0;
+			Dd--;
+		}
+	}
+	public int indexOf(kU dB) {
+		i<p> o = e;
+		for (int S = 0; S < Dd; S++) {
+			o = o.m0;
+			if ((dB != null && dB.equals(o.W9)) ||
+					(dB == null && o.W9 == null))
+				return S;
+		}
+		return -1;
+	}
+	public int c(kU dB) {
+		i<p> o = e;
+		for (int S = 0; S < Dd; S++) {
+			o = o.Ew;
+			if ((dB != null && dB.equals(o.W9)) ||
+					(dB == null && o.W9 == null))
+				return Dd - 1 - S;
+		}
+		return -1;
+	}
+	public boolean LZ(kU dB) {
+		return indexOf(dB) != -1 ? true : false;
+	}
+	public B<p> g() {
+		return new lv(0);
+	}
+	public SN<p> f() {
+		return new lv(0);
+	}
+	public SN<p> f(int F) {
+		return new lv(F);
+	}
+	private class lv implements SN<p> {
+		private i<p> h;
+		private i<p> j;
+		private int x;
+		lv(int F) {
+			h = e;
+			j = e;
+			if (F >= 0 && F < Dd/2) {
+				for (int S = 0; S <= F; S++)
+					j = j.m0;
+			} else if (F <= Dd && F >= Dd/2) {
+				for (int S = Dd; S >= F; S--)
+					j = j.Ew;
+			} else {
+				throw new PF(
+					"Index: " + F + ", Size: " + Dd);
+			}
+			x = F;
+		}
+		public boolean T0() {
+			return x == Dd ? false : true;
+		}
+		public p m0() {
+			h = j;
+			j = j.m0;
+			x++;
+			return h.W9;
+		}
+		public int x() {
+			return x;
+		}
+		public boolean Jp() {
+			return x == 0 ? false : true;
+		}
+		public p dk() {
+			h = j;
+			j = j.Ew;
+			x--;
+			return h.W9;
+		}
+		public int q() {
+			return x;
+		}
+		public void A(p AV) {
+			h.W9 = AV;
+		}
+		public void Ih(p AV) {
+			i<p> o = j;
+			i<p> v = new i<p>(AV, o, o.Ew);
+			o.Ew.m0 = v;
+			o.Ew = v;
+			x++;
+			Dd++;
+		}
+		public void T() {
+			i<p> o = j;
+			o.Ew.Ew.m0 = o;
+			o.Ew = o.Ew.Ew;
+			x--;
+			Dd--;
+		}
+	}
+	public kU[] l() {
+		kU[] dB = new kU[Dd];
+		i<p> o = e;
+		for (int S = 0; S < Dd; S++) {
+			o = o.m0;
+			dB[S] = o.W9;
+		}
+		return dB;
+	} 
+	public <L> L[] l(L[] R) {
+		if (R.Q < Dd)
+			R = (L[])RZ.E.kS.O.nY(
+				R.Pm().ji(), Dd);
+		i<p> o = e;
+		for (int S = 0; S < Dd; S++) {
+			o = o.m0;
+			R[S] = (L)o.W9;
+		}
+		return R;
+	}
+	public boolean N(s<? extends kU> m) {
+		B<? extends kU> S = m.g();
+		while (S.T0())
+			if (!LZ(S.m0()))
+				return false;
+		return true;
+	}
+	public boolean a(s<? extends p> m) {
+		i<p> o = e;
+		B<? extends p> S = m.g();
+		while (S.T0()) {
+			i<p> v =
+				new i<p>((p)S.m0(), o, o.Ew);
+			o.Ew.m0 = v;
+			o.Ew = v;
+			Dd++;
+		}
+		return true;
+	}
+	public boolean a(int F, s<? extends p> m) {
+		i<p> o = e;
+		if (F == Dd) {
+			o = e;
+		} else if (F >= 0 && F < Dd/2) {
+			for (int S = 0; S <= F; S++)
+				o = o.m0;
+		} else if (F < Dd && F >= Dd/2) {
+			for (int S = Dd; S > F; S--)
+				o = o.Ew;
+		} else {
+			throw new PF(
+				"Index: " + F + ", Size: " + Dd);
+		}
+		B<? extends p> S = m.g();
+		while (S.T0()) {
+			i<p> v =
+				new i<p>((p)S.m0(), o, o.Ew);
+			o.Ew.m0 = v;
+			o.Ew = v;
+			Dd++;
+		}
+		return true;
+	}	
+	public boolean I(s<?> m) {
+		i<p> o = e;
+		for (int S = 0, t = Dd; S < t; S++) {
+			o = o.m0;
+			if (m.LZ(o.W9)) {
+				o.m0.Ew = o.Ew;
+				o.Ew.m0 = o.m0;
+				Dd--;
+			}
+		}
+		return true;
+	}
+	public boolean JS(s<?> m) {
+		i<p> o = e;
+		for (int S = 0, t = Dd; S < t; S++) {
+			o = o.m0;
+			if (!m.LZ(o.W9)) {
+				o.m0.Ew = o.Ew;
+				o.Ew.m0 = o.m0;
+				Dd--;
+			}
+		}
+		return true;
+	}
+	public cB<p> G(int xI, int C) {
+		throw new P();
+	}
+	public boolean equals(kU dB) {
+		if (dB == this)
+			return true;
+		if (!(dB instanceof cB))
+			return false;
+		B<p> S = g();
+		B<?> r = ((cB<?>) dB).g();
+		while (S.T0() && r.T0()) {
+			p W9 = S.m0();
+			kU d = r.m0();
+			if (!(d != null && d.equals(W9)) ||
+					(d == null && W9 == null))
+				return false;
+		}
+		return !(S.T0() || r.T0());
+	}
+	public int hashCode() {
+		int H = 1;
+		B<p> S = g();
+		while (S.T0()) {
+			p W9 = S.m0();
+			H = 31*H + (W9 == null ? 0 : W9.hashCode());
+		}
+		return H;
+	}
+	private static class i<p> {
+		p W9;
+		i<p> m0;
+		i<p> Ew;
+		i(p AV, i<p> o, i<p> V) {
+			W9 = AV;
+			m0 = o;
+			Ew = V;
+		}
+	}
+}

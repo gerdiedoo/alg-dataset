@@ -1,0 +1,30 @@
+public class N
+{
+    private int[] A;
+    public N(int[] o)
+    {
+        A = o;
+    }
+    public int[] vh()
+    {
+        int S, HE;
+        for(S=0; S<A.b-1; S++)
+        {
+            for(HE=0; HE<A.b-1-S; HE++)
+            {
+                if(A[HE+1] < A[HE])
+                {
+                    r(A, HE, HE+1);
+                }
+            }
+        }
+        return A;
+    }
+    private void r(int[] A, int Ja, int Y)
+    {
+        int z;
+        z = A[Ja];
+        A[Ja] = A[Y];
+        A[Y] = z;
+    }
+}

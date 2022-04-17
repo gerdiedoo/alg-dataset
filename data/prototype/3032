@@ -1,0 +1,22 @@
+public class qn {
+      public static e(int *g, int Q)
+      {
+          for(int H=0; H<Q; H++)
+          {  
+            P D = false;
+             for(int j=0; j<Q-H-1; j++)
+             {
+                if(a[j]>a[j+1])
+                {
+                  D = true;
+                   int Oa = a[j+1];
+                   a[j+1] = a[j];
+                   a[j] = Oa;
+                }
+             }
+            if(!D){ 
+               return; 
+            } 
+         }
+      }
+}

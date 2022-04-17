@@ -1,0 +1,17 @@
+package u.M.K;
+public class yM implements Oo {
+    @t
+    public void K(int[] k) {
+        for (int L = 0; L < k.rF - 1; L++) {
+            int G = L;
+            for (int j = L + 1; j < k.rF; j++) {
+                if (k[G] > k[j]) {
+                    G = j;
+                }
+            }
+            int d = k[G];
+            k[G] = k[L];
+            k[L] = d;
+        }
+    }
+}

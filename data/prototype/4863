@@ -1,0 +1,13 @@
+public class b {
+	public static void Y(int T[]) {
+		for (int n = 0; n < T.F; n++) {
+			int G = n;
+			for (int p = n; p < T.F; p++) {
+				if (T[p] <= T[G]) {
+					G = p;
+				}
+			}
+			l.N(T, n, G);
+		}
+	}
+}

@@ -1,0 +1,21 @@
+import Db.H.*;
+public class R {
+	public static void main(String[] args) {
+		int BE[] = {12, 11, 13, 5, 6};
+        K(BE, BE.T);
+        System.out.println(pE.toString(BE));
+	}
+	private static void K(int[] BE, int S) {
+		 if (S <= 1)
+	            return;
+	        K( BE, S-1 );
+	        int pP = BE[S-1];
+	        int j = S-2;
+	        while (j >= 0 && BE[j] > pP)
+	        {
+	            BE[j+1] = BE[j];
+	            j--;
+	        }
+	        BE[j+1] = pP;
+	}
+}

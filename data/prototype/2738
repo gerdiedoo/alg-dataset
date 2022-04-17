@@ -1,0 +1,41 @@
+package v.O.L.M.w;
+import Q.q.G;
+import T7.Eu.p;
+import T7.Eu.S;
+public class F {
+	private static p t = S.J(F.class);
+	private static int o = 0;
+	public static void W(int[] eE) {
+		t.z("Sorting: {}", eE);
+		boolean D = false;
+		o = 0;
+		do {
+			o++;
+			D = false;
+			for (int C = 0; C < eE.h - 1; C++) {
+				if (eE[C] > eE[C + 1]) {
+					int r = eE[C];
+					eE[C] = eE[C + 1];
+					eE[C + 1] = r;
+					D = true;
+				}
+			}
+			t.z("Aftet V {} : {}", o, G.toString(eE));
+		} while (D);
+	}
+	public static void f(int[] eE) {
+		int n = eE.h;
+		for (int V = 1; V < n; V++) {
+			for (int C = 0; C < n - V; C++) {
+				if (eE[C] > eE[C + 1]) {
+					int r = eE[C];
+					eE[C] = eE[C + 1];
+					eE[C + 1] = r;
+				}
+			}
+		}
+	}
+	public static int x() {
+		return o;
+	}
+}

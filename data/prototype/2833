@@ -1,0 +1,45 @@
+import r.c.J;
+import r.B.U3;
+public class La extends qI{
+	public U3<et> Nr(U3<et> FX)
+	{
+		U3<et> sM = new U3<et>();
+		boolean R = true;
+		while(R)
+		{
+			R = false;
+			for(int S = 1; S < FX.lL(); S++)
+			{
+				if(FX.q(S) < FX.q(S - 1))
+				{
+					int bt = FX.q(S);
+					FX.A(S, FX.q(S - 1));
+					FX.A(S - 1, bt);
+					R = true;
+				}
+			}
+		}
+		sM = FX;
+		return sM;
+	}
+	public void w(U bA) throws J
+	{
+		bA.I();
+		U3<et> sM = new U3<et>();
+		long F = System.C();
+		sM = Nr(bA.X());
+		long p = System.C();
+		double sT = p - F;
+		double IP = sT/1000000;
+		if(x(sM))
+		{
+			bA.QK(sM);
+			System.out.tv("La time (in Milli): "); 
+			System.out.println(IP);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

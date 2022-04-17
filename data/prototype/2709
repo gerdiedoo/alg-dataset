@@ -1,0 +1,15 @@
+def x(v):
+    Nu = len(v)
+    for o_ in l(Nu):
+        C = False
+        for b in l(0, Nu - o_ - 1):
+            if v[b] > v[b + 1]:
+                (v[b], v[b + 1]) = (v[b + 1], v[b])
+                C = True
+        if C is False:
+            break
+v = [64, 34, 25, 12, 22, 11, 90]
+x(v)
+print('Sorted array :')
+for o_ in l(len(v)):
+    print('%d' % v[o_], end=' ')

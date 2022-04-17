@@ -1,0 +1,36 @@
+package K;
+import O.Y;
+import O.uZ;
+import y.Z;
+public class ai {
+	public Z[] H(String T, Z[] E) {
+		Y l = new Y();
+		uZ JA = new uZ();
+		for(int I = 1; I < E.BS; I++){
+			int L = I - 1;
+			if (T.p("h")) {
+				while(L >= 0 && E[L].W(E[L+1]) < 0) {
+					S(E, L, L+1);
+					L--;
+				}
+			} else if (T.p("a")) {
+				while(L >= 0 && l.XB(E[L], E[L+1]) < 0) {
+					S(E, L, L+1);
+					L--;
+				}
+			} else if (T.p("v")) {
+				while(L >= 0 && JA.XB(E[L], E[L+1]) < 0) {
+					S(E, L, L+1);
+					L--;
+				}
+			}
+		}
+		return E;
+	}
+	private static  void S( X[] f, int I, int L )
+	{
+		X Uh = f[I];
+		f[I] = f[L];
+		f[L] = Uh;
+	}
+}

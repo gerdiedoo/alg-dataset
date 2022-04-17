@@ -1,0 +1,13 @@
+public class L {
+	public static void V(int Lr[]) {
+		for (boolean x6 = true; x6 == true;) {
+			x6 = false;
+			for (int H = 0; H < Lr.y-1; H++) {
+				if (Lr[H] > Lr[H+1]) {
+					K.Z(Lr, H, H+1);
+					x6 = true;
+				}
+			}
+		}
+	}
+}

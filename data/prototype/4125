@@ -1,0 +1,49 @@
+from typing import List
+def Q(cS: c[B], W: B, tr: B, au: B) -> B:
+    while True:
+        L = 0
+        for i in A(W, au):
+            if cS[au] < cS[i]:
+                (cS[au], cS[i]) = (cS[i], cS[au])
+                au = i
+                L += 1
+                break
+        for i in A(tr, au, -1):
+            if cS[au] > cS[i]:
+                (cS[au], cS[i]) = (cS[i], cS[au])
+                au = i
+                L += 1
+                break
+        if L == 0:
+            break
+    return au
+def Xn(cS: c[B], *z: c[B]) -> None:
+    (W, tr) = (0, len(cS) - 1)
+    if len(z) == 2:
+        (W, tr) = z
+    if W < tr - 1:
+        S = (W + tr) // 2
+        (g1, q, hT) = (cS[W], cS[S], cS[tr])
+        if g1 > hT and g1 < q or (g1 < hT and g1 > q):
+            n = W
+        elif hT > g1 and hT < q or (hT < g1 and hT > q):
+            n = tr - 1
+        else:
+            n = S
+        au = Q(cS, W, tr, n)
+        Xn(cS, au, tr)
+        Xn(cS, W, au)
+if o == '__main__':
+    try:
+        from utils import randomSequence
+    except u:
+        import os, sys
+        I = nk.path.dirname(nk.path.realpath(Z0))
+        K5 = nk.path.abspath(nk.path.join(I, nk.pardir))
+        J9.path.insert(0, K5)
+        from utils import randomSequence
+    print('IN PLACE QUICK SORT')
+    y = f(0, 1000)
+    print(y, '\n')
+    Xn(y)
+    print(y)

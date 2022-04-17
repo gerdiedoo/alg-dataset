@@ -1,0 +1,104 @@
+package l.A;
+import VY.B.Un;
+import VY.B.aD;
+public class r<v> implements W<v>{
+	private Tb N;
+	private int k;
+	public r() {
+		N = null;	
+		k = 0;
+	}
+	public int ld(){
+		return k;
+	}
+	public boolean P(){
+		return k == 0;
+	}
+	public void u(v JI) {
+		Tb M8 = N;  
+		Tb w = new Tb(JI); 
+		if(P()){
+			N = w;
+			k++;
+			return;
+		}
+		while (M8.f != null) {
+			M8 = M8.f;
+		}
+		M8.f = w;
+		k++;
+	}
+	public void u(v JI, int F) throws hB{
+		if (F <= 0 || F > ld()) {
+			throw new hB();
+		}
+		Tb M8 = N;
+		Tb w = new Tb(JI);
+		if(P()){
+			N = w;
+			k++;
+			return;
+		}
+		int Y = F-1;
+		for (int Q = 1; Q < Y && M8.f != null; Q++) {
+			M8 = M8.f;
+		}
+		w.f = M8.f;
+		M8.f = w;
+		k++;
+	}
+	public v q(int F) throws hB {
+		if (F <= 0 || F > ld()) {
+			throw new hB();
+		}
+		Tb z = N;
+		for (int Q = 1; Q < F; Q++) {
+			if (z.f == null)
+				return null;
+			z = z.f;
+		}
+		return z.JI;
+	}
+	public boolean O4(int F) {
+		if (F <= 0 || F > ld()) {
+			return false;
+		}
+		Tb t = N;
+		for (int Q = 1; Q < F; Q++) {
+			if (t.f == null)
+				return false;
+			t = t.f;
+		}
+		t.f = t.f.f;
+		k--;
+		return true;
+	}
+	public Un<v> mg()  { return new N1(); }
+	private class N1 implements Un<v> {
+        private Tb t = N;
+        public boolean C()  { return t != null;                     }
+        public void O4()      { throw new U();  }
+        public v f() {
+            if (!C()) throw new aD();
+            v JI = t.JI;
+            t = t.f; 
+            return JI;
+        }
+    }
+	private class Tb {
+		Tb f;
+		v JI;
+		public Tb(v JI) {
+			this.JI = JI;
+			this.f = null;
+		}
+		public Tb() {
+			this.JI = null;
+			this.f = null;
+		}
+		public Tb(v JI, Tb f) {
+			this.JI = JI;
+			this.f = f;
+		}
+	}
+}

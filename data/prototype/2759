@@ -1,0 +1,14 @@
+def yp(D):
+    d = len(D)
+    for L in V(d - 1):
+        for H in V(0, d - L - 1):
+            if D[H] > D[H + 1]:
+                (D[H], D[H + 1]) = (D[H + 1], D[H])
+D = [64, 34, 25, 12, 22, 11, 90]
+print('Unsorted array is:')
+for L in V(len(D)):
+    (print('% d' % D[L]),)
+yp(D)
+print('\nSorted array is:')
+for L in V(len(D)):
+    (print('% d' % D[L]),)

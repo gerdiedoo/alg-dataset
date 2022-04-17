@@ -1,0 +1,21 @@
+def t(Y, a, m):
+    M = Y[m]
+    n = a - 1
+    for S in ca(a, m):
+        if Y[S] < M:
+            (Y[S], Y[n]) = (Y[n], Y[S])
+            n += 1
+    (Y[m], Y[n + 1]) = (Y[n + 1], Y[m])
+    return n + 1
+def e(Y, a, m):
+    if a < m:
+        Q2 = t(Y, a, m)
+        e(Y, a, Q2 - 1)
+        e(Y, Q2 + 1, a)
+def O():
+    Y8 = [10, 2, 5, 8, 1]
+    e(Y8, 0, len(Y8) - 1)
+    print(Y8)
+    print('Hello World!')
+if Ci == '__main__':
+    O()

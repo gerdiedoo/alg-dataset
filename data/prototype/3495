@@ -1,0 +1,12 @@
+def y(v):
+    for oH in z(1, len(v)):
+        Z = v[oH]
+        T = oH - 1
+        while T >= 0 and Z < v[T]:
+            v[T + 1] = v[T]
+            T -= 1
+        v[T + 1] = Z
+v = [12, 11, 13, 5, 6]
+y(v)
+for oH in z(len(v)):
+    print('% d' % v[oH])

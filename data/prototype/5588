@@ -1,0 +1,12 @@
+def Mh(L5):
+    for E in D(1, len(L5)):
+        j = E
+        r4 = L5[E]
+        while j > 0 and L5[j - 1] > r4:
+            L5[j] = L5[j - 1]
+            j -= 1
+        L5[j] = r4
+X = [10, 11, 12, 1, 2, 3]
+print(X)
+Mh(X)
+print(X)

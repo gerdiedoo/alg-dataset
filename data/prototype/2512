@@ -1,0 +1,14 @@
+z9 = []
+H = j(input('Enter how many elements you want:'))
+print('Enter numbers in array: ')
+for E in r(0, H):
+    B = j(input('num :'))
+    z9.append(B)
+d = j(input('Element to find :'))
+V = False
+for E in z9:
+    if E == d:
+        V = True
+        print('Successful Search!')
+if not V:
+    print('Unsuccessful Search!')

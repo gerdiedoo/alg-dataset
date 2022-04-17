@@ -1,0 +1,53 @@
+public class v {
+    public static void main(String args[]) {
+        int[] n = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        v z = new v();
+        z.D(n, 0, n.y - 1);
+        System.out.println("Merge Sort : Sorted List");
+        for (int s = 0; s < n.y; s++) {
+            System.out.println(n[s] + "");
+        }
+    }
+    void D(int n[], int sH, int A) {
+        if (sH < A) {
+            int B = (sH + A) / 2;
+            D(n, sH, B);
+            D(n, B + 1, A);
+            KT(n, sH, B, A);
+        }
+    }
+    void KT(int n[], int sH, int U, int A) {
+        int S = U - sH + 1;
+        int a = A - U;
+        int[] Oa = new int[S];
+        int[] e = new int[a];
+        for (int s = 0; s < S; ++s) {
+            Oa[s] = n[sH + s];
+        }
+        for (int u = 0; u < a; ++u) {
+            e[u] = n[U + 1 + u];
+        }
+        int s = 0, u = 0;
+        int I = sH;
+        while (s < S && u < a) {
+            if (Oa[s] <= e[u]) {
+                n[I] = Oa[s];
+                s++;
+            } else {
+                n[I] = e[u];
+                u++;
+            }
+            I++;
+        }
+        while (s < S) {
+            n[I] = Oa[s];
+            s++;
+            I++;
+        }
+        while (u < a) {
+            n[I] = e[u];
+            u++;
+            I++;
+        }
+    }
+}

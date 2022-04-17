@@ -1,0 +1,182 @@
+package bb.s.NE.su.mX;
+import I.NE.su.l.Be;
+import I.NE.su.l.D;
+public class nU<O, t> implements M {
+    private static final String j = "The x2 or T can not be null.";
+    public static final int o = 8092;  
+    public static final int e = 8;
+    public static final float GQ = 0.75f;
+    public static final int X = 1 << 30;
+    public static final int n = 2;
+    public static final int P = X / n;
+    public static final float Wm = 0.95f;
+    private final ez r;
+    private final Be SS;
+    private final Be WY;
+    public nU() {
+        this(o, e, GQ);
+    }
+    public nU(int L, int d, float K) {
+        SS = new Be(0);
+        WY = new Be(0);
+        d = T0(d);
+        K = (K < Wm) ? K : Wm;
+        r = Bg.E(d, L, K, WY, SS);
+    }
+    public t c(O x2, t T) {
+        if (x2 == null || T == null) {
+            throw new q(j);
+        }
+        return c(x2, T, true);
+    }
+    public t J(O x2, t T) {
+        if (x2 == null || T == null) {
+            throw new q(j);
+        }
+        return c(x2, T, false);
+    }
+    private t c(O x2, t T, boolean dS) {
+        int hashCode = B.xS().Vy(x2.hashCode());
+        while (true) {
+            Z<O, t> LS = r.F(hashCode);
+            LS.tZ();
+            if (LS.W()) {
+                LS.p();
+                continue;
+            }
+            else {
+                try {
+                    t s2 = null;
+                    boolean w;
+                    if (LS.Xv()) {
+                        try {
+                            s2 = (t) LS.c(x2, T, hashCode, dS);
+                            w = true;
+                        } catch (Z4 yk) {
+                            w = false;
+                        }
+                    } else {
+                        w = false;
+                    }
+                    if (!w) {
+                        s2 = LS.m(x2, T, hashCode, dS);
+                    }
+                    return s2;
+                } finally {
+                    LS.p();
+                }
+            }
+        }
+    }
+    public boolean C(O x2, t T) {
+        if (x2 == null || T == null) {
+            throw new q(j);
+        }
+        int A = B.xS().Vy(x2.hashCode());
+        while (true) {
+            Z LS = r.F(A);
+            LS.tZ();
+            try {
+                if (!LS.W()) {
+                    return LS.C(x2, A, T) != null;
+                }
+            } finally {
+                LS.p();
+            }
+        }
+    }
+    public t replace(O x2, t T) {
+        if (x2 == null || T == null) {
+            throw new q(j);
+        }
+        int A = B.xS().Vy(x2.hashCode());
+        while (true) {
+            Z LS = r.F(A);
+            LS.tZ();
+            try {
+                if (!LS.W()) {
+                    return (t) LS.replace(x2, A, null, T);
+                }
+            } finally {
+                LS.p();
+            }
+        }
+    }
+    public boolean replace(O x2, t Hp, t Q) {
+        if (x2 == null || Hp == null || Q == null) {
+            throw new q(j);
+        }
+        int A = B.xS().Vy(x2.hashCode());
+        while (true) {
+            Z LS = r.F(A);
+            LS.tZ();
+            try {
+                if (!LS.W()) {
+                    return LS.replace(x2, A, Hp, Q) != null;
+                }
+            } finally {
+                LS.p();
+            }
+        }
+    }
+    public t u(O x2) {
+        if (x2 == null) {
+            throw new q(j);
+        }
+        int hashCode = B.xS().Vy(x2.hashCode());
+        Z<O, t> LS = r.F(hashCode);
+        return LS.u(x2, hashCode);
+    }
+    public t C(O x2) {
+        if (x2 == null) {
+            throw new q(j);
+        }
+        int A = B.xS().Vy(x2.hashCode());
+        while (true) {
+            Z<O, t> LS = r.F(A);
+            LS.tZ();
+            try {
+                if (!LS.W()) {
+                    return (t) LS.C(x2, A, null);
+                }
+            } finally {
+                LS.p();
+            }
+        }
+    }
+    public int h0() {
+        return WY.u();
+    }
+    public int H() {
+        return SS.u();
+    }
+    public int f() {
+        return r.f();
+    }
+    @qA
+    public int v() {
+        D<Z> i = r.u();
+        int iV = ZH.hP;
+        int g4 = ZH.a;
+        for (int V=0; V<i.G(); V++) {
+            Z LS = i.u(V);
+            if (LS instanceof Bm) {
+                int S = ((Bm)LS).N();
+                if (S < iV) {
+                    iV = S;
+                }
+                if (S > g4) {
+                    g4 = S;
+                }
+            }
+        }
+        return g4-iV;
+    }
+    private int T0 (int V) {
+        int h = 1;
+        while (h < V) {
+            h = h << 1;
+        }
+        return h;
+    }
+}

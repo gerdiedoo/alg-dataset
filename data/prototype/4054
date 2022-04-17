@@ -1,0 +1,85 @@
+import N.p.J.q;
+import N.l.G;
+public class b<r extends P<r> & R<r>>
+{
+    public static <r extends P<r> & R<r>> void rR(G<r> T)
+    {
+        c(T, 0, T.K()-1);
+    }
+    private static <r extends P<r> & R<r>> void c(G<r> MK, int W, int Pt)
+    {
+        if (W < Pt)
+        {
+            int Y = (W + Pt) / 2;
+            c(MK, W, Y);
+            c(MK, Y+1, Pt);
+            X(MK, W, Y, Pt);
+        }
+    }
+    private static <r extends P<r> & R<r>> void X(G<r> MK, int W, int Y, int Pt)
+    {
+        G<r> S = new G<r>(MK.h(W, Y+1));
+        G<r> U = new G<r>(MK.h(Y+1, Pt+1));
+        S.Sa(S.M(0).g());
+        U.Sa(U.M(0).g());
+        int Q = 0;
+        int z = 0;
+        for (int f = W; f <= Pt; f++)
+        {
+            if (S.M(Q).Gf(U.M(z)) <= 0)
+            {
+                MK.I(f, S.M(Q));
+                Q++;
+            }
+            else
+            {
+                MK.I(f, U.M(z));
+                z++;
+            }
+        }
+    }
+    public static <r extends P<r> & R<r>> void rR(r[] y)
+    {
+        MR(y, 0, y.j-1);
+    }
+    private static <r extends P<r> & R<r>> void MR(r[] MK, int W, int Pt)
+    {
+        if (W < Pt)
+        {
+            int Y = (W + Pt) / 2;
+            MR(MK, W, Y);
+            MR(MK, Y+1, Pt);
+            D(MK, W, Y, Pt);
+        }
+    }
+    private static <r extends P<r> & R<r>> void D(r[] MK, int W, int Y, int Pt)
+    {
+        r[] S = (r[]) q.s(MK[0].n(),Y-W +2);
+        r[] U = (r[]) q.s(MK[0].n(),Pt - Y +1);
+        i(MK, S, W);
+        i(MK, U, Y+1);
+        int Q = 0;
+        int z = 0;
+        for (int f = W; f <= Pt; f++)
+        {
+            if (S[Q].Gf(U[z]) <= 0)
+            {
+                MK[f] = S[Q];
+                Q++;
+            }
+            else
+            {
+                MK[f] = U[z];
+                z++;
+            }
+        }
+    }
+    private static <r extends P<r> & R<r>> void i(r[] Z, r[] F, int W)
+    {
+        for (int Q = W; Q < W+F.j-1; Q++)
+        {
+            F[Q - W] = Z[Q];
+        }
+        F[F.j-1] = Z[0].g();
+    }
+}

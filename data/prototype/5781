@@ -1,0 +1,35 @@
+import random
+def G(Iy):
+    if len(Iy) > 1:
+        b = len(Iy) // 2
+        N = Iy[:b]
+        E = Iy[b:]
+        lQ = len(N)
+        s = len(E)
+        G(N)
+        G(E)
+        a = 0
+        T = 0
+        O = 0
+        while a < lQ and T < s:
+            if N[a] <= E[T]:
+                Iy[O] = N[a]
+                a = a + 1
+            else:
+                Iy[O] = E[T]
+                T = T + 1
+            O = O + 1
+        while a < lQ:
+            Iy[O] = N[a]
+            a = a + 1
+            O = O + 1
+        while T < s:
+            Iy[O] = E[T]
+            T = T + 1
+            O = O + 1
+Iy = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+Z.shuffle(Iy)
+print('input >>>', Iy)
+G(Iy)
+print('merge sort >>>', Iy)
+assert Iy == [17, 20, 26, 31, 44, 54, 55, 77, 93], 'Merge Sort error!'

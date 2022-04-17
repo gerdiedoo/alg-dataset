@@ -1,0 +1,18 @@
+from __future__ import print_function
+def b(V):
+    y = len(V)
+    if y <= 1:
+        return V
+    else:
+        Z = V[0]
+        Q = [lG for lG in V[1:] if lG > Z]
+        T = [lG for lG in V[1:] if lG <= Z]
+        return b(T) + [Z] + b(Q)
+if p1 == '__main__':
+    try:
+        R
+    except w:
+        R = input
+    gP = R('Enter numbers separated by a comma:\n').strip()
+    U = [P(EL) for EL in gP.split(',')]
+    print(b(U))

@@ -1,0 +1,120 @@
+package l.V;
+import X.k.c;
+public class L<D> implements JO<D>{
+    r e, s;
+    int h;
+    public L(){
+        e = null;
+        s = null;
+        h = 0;
+    }
+    public int K(){
+        return h;
+    }
+    public boolean oW(){
+        return h == 0;
+    }
+    public void Q(D rY){
+        r g = new r(rY);
+        if(oW()){
+            e = g;
+            s = g;
+        }
+        else{
+            s.f = g;
+            s = g;
+        }
+        g.f = e;
+        h++;
+    }
+    public void Q(D rY, int i)throws R{
+        if(i < 0 || i > h - 1){
+            throw new R();
+        }
+        r g = new r(rY);
+        if(i == h - 1){
+            Q(rY);
+        }
+        else if(i == 0){
+            g.f = e.f;
+            e = g;
+            h++;
+        }
+        else {
+            r p = e;
+            while (i != 1) {
+                i--;
+                p = p.f;
+            }
+            g.f = p.f;
+            p.f = g;
+            h++;
+        }
+    }
+    public D z(int i) throws R{
+        if(i < 0 || i > h - 1){
+            throw new R();
+        }
+        if(i == 0){
+            return e.rY;
+        }
+        else if(i == h - 1){
+            return s.rY;
+        }
+        else{
+            r p = e;
+            while (i != 0) {
+                i--;
+                p = p.f;
+            }
+            return p.rY;
+        }
+    }
+    public void aR(int i) throws R{
+        if(i < 0 || i > h - 1){
+            throw new R();
+        }
+        if(i == 0){
+            e = e.f;
+            s.f = e;
+        }
+        else{
+            r p = e;
+            int q = i;
+            while(q != 1){
+                q--;
+                p = p.f;
+            }
+            p.f = p.f.f;
+            if(i == h - 1){
+                s = p;
+            }
+            h--;
+        }
+    }
+    public c<D> C(){
+        return new yj();
+    }
+    class yj implements c<D> {
+        private r vT = e;
+        public boolean w(){
+            return true;
+        }
+        public void aR(){
+            throw new P();
+        }
+        public D f(){
+            D rY = vT.rY;
+            vT = vT.f;
+            return rY;
+        }
+    }
+    class r{
+        D rY;
+        r f;
+        r(D rY){
+            this.rY = rY;
+            f = null;
+        }
+    }
+}

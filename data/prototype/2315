@@ -1,0 +1,13 @@
+public class a{
+	public static boolean h(int[] l, int G){
+		if (G > l[l.R-1] ){
+			int Lj = l.R/2;
+			if (l[Lj] == G){
+				return true;
+			}if (l[Lj]>G){
+				return h(b.P(l,0,Lj),G);
+			}
+			return h(b.P(l,Lj,l[l.R-1]),G);
+		}
+	}
+}

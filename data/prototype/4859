@@ -1,0 +1,13 @@
+public class Q {
+	public static void pY(int F[]) {
+		for (int k = 0; k < F.O; k++) {
+			int I = k;
+			for (int u = k; u < F.O; u++) {
+				if (F[u] <= F[I]) {
+					I = u;
+				}
+			}
+			wr.D(F, k, I);
+		}
+	}
+}

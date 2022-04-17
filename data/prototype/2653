@@ -1,0 +1,26 @@
+import s.c.*;
+public class oH {
+    public static void main(String[] args) {
+        Scanner L = new Scanner(System.L);
+        int oy = L.nextInt();
+        int[] I = new int[oy];
+        for(int G=0; G < oy; G++){
+            I[G] = L.nextInt();
+        }
+        int D =0;
+        for(int G_ = 0; G_<oy-1;G_++)
+        {
+            for(int lC = 0;lC<oy-1;lC++)
+            {
+                if(I[lC]>I[lC+1])
+                {
+                    int l = I[lC];
+                    I[lC] = I[lC+1];
+                    I[lC+1] = l;
+                    D++;
+                }
+            }
+        }   
+        System.out.println("Array is sorted L " + D +" swaps. \nFirst Element: "+ I[0] +"\nLast Element: "+ I[oy-1]);
+    }
+}

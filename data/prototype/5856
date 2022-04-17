@@ -1,0 +1,22 @@
+package h;
+public class G<j extends u<j>> extends QQ<j> {
+    protected void w(j[] k, int g, int y) {
+        if (y <= g) {
+            return;
+        }
+        int f = g, a = g + 1, p = y;
+        j D = k[g];
+        while (a <= p) {
+            int O = k[a].Zc(D);
+            if (O < 0) {
+                Z(k, f++, a++);
+            } else if (O > 0) {
+                Z(k, a, p--);
+            } else {
+                a++;
+            }
+        }
+        w(k, g, f - 1);
+        w(k, p + 1, y);
+    }
+}

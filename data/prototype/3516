@@ -1,0 +1,15 @@
+package uG;
+import Q.n.tE;
+import Q.n.o;
+public class C<P> extends x<P> {
+	public void U8(o<P> j, tE<P> Z) {
+		for (int I = 1; I < j.i(); I++) {
+			for (int k = I; k > 0 && Z.B(j.TC(k - 1), j.TC(k)) > 0; k--) {
+				A(j, k - 1, k);
+			}
+		}
+	}
+	public String f() {
+		return "Insertion Sort";
+	}
+}

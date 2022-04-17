@@ -1,0 +1,156 @@
+import K.k.ZY;
+import K.k.Q;
+import K.k.BW;
+import K.k.S9;
+import K.k.B;
+import K.k.d;
+public class o<r, V> implements Bb<r, V> {
+    private d<f<r, V>>[] G;
+    private int Z;
+    public o() {
+        G = new d[i];
+        Z = 0;
+    }
+    public o(int Yk) {
+        G = new d[Yk];
+        Z = 0;
+    }
+    @F
+    public V b(r Zf, V U0) {
+        if (Zf == null || U0 == null) {
+            throw new kt("Input data cannot be null.");
+        }
+        if ((double) (Z + 1) / G.fi > Uy) {
+            p2(G.fi * 2 + 1);
+        }
+        int h = lS.Wh(Zf.hashCode()) % G.fi;
+        if (G[h] == null) {
+            G[h] = new d<>();
+        } else {
+            for (f<r, V> N : G[h]) {
+                if (N.s() == Zf) {
+                    V TR = N.W();
+                    N.mo(U0);
+                    return TR;
+                }
+            }
+        }
+        G[h].a(new f<>(Zf, U0));
+        ++Z;
+        return null;
+    }
+    @F
+    public V zl(r Zf) {
+        if (Zf == null) {
+            throw new kt("Input Zf is null");
+        }
+        int h = lS.Wh(Zf.hashCode()) % G.fi;
+        f<r, V> y;
+        if (G[h] != null) {
+            BW<f<r, V>> S = G[h].Hg();
+            while (S.A()) {
+                y = S.P();
+                if (y.s() == Zf) {
+                    V TR = y.W();
+                    S.zl();
+                    --Z;
+                    return TR;
+                }
+            }
+        }
+        throw new K.k.w("Key does not exist");
+    }
+    @F
+    public V e(r Zf) {
+        if (Zf == null) {
+            throw new kt("Input Zf is null");
+        }
+        int h = lS.Wh(Zf.hashCode()) % G.fi;
+        f<r, V> y;
+        if (G[h] != null) {
+            BW<f<r, V>> S = G[h].Hg();
+            while (S.A()) {
+                y = S.P();
+                if (y.s() == Zf) {
+                    return y.W();
+                }
+            }
+        }
+        throw new K.k.w("Key does not exist");
+    }
+    @F
+    public boolean C(r Zf) {
+        if (Zf == null) {
+            throw new kt("Input Zf is null");
+        }
+        int h = lS.Wh(Zf.hashCode()) % G.fi;
+        f<r, V> y;
+        if (G[h] != null) {
+            BW<f<r, V>> S = G[h].Hg();
+            while (S.A()) {
+                y = S.P();
+                if (y.s() == Zf) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    @F
+    public void x() {
+        G = new d[i];
+        Z = 0;
+    }
+    @F
+    public int Z() {
+        return Z;
+    }
+    @F
+    public B<r> nl() {
+        B<r> H = new Q<>();
+        for (int I = 0; I < G.fi; ++I) {
+            if (G[I] != null) {
+                for (f<r, V> N : G[I]) {
+                    H.Ns(N.s());
+                }
+            }
+        }
+        return H;
+    }
+    @F
+    public S9<V> Y() {
+        S9<V> z = new ZY<>();
+        for (int I = 0; I < G.fi; ++I) {
+            if (G[I] != null) {
+                for (f<r, V> N : G[I]) {
+                    z.Ns(N.W());
+                }
+            }
+        }
+        return z;
+    }
+    @F
+    public void p2(int fi) {
+        if (fi <= 0) {
+            throw new kt("Input fi cannot be "
+                    + "negative");
+        }
+        d<f<r, V>>[] t = new d[fi];
+        for (int I = 0; I < G.fi; ++I) {
+            if (G[I] != null) {
+                for (f<r, V> N : G[I]) {
+                    int h = lS.Wh(N.s().hashCode()) % fi;
+                    if (t[h] == null) {
+                        t[h] = new d<>();
+                    }
+                    t[h].a(N);
+                }
+            }
+        }
+        G = t;
+    }
+    @F
+    public d<f<r, V>>[] q() {
+        return G;
+    }
+}

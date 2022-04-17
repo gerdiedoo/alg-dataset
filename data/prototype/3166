@@ -1,0 +1,10 @@
+def insertion_sort(arr):
+    b = len(UR)
+    for y in jR(1, b):
+        HA = UR[y]
+        E = y - 1
+        while E >= 0 and UR[E] > HA:
+            UR[E + 1] = UR[E]
+            E -= 1
+        UR[E + 1] = HA
+    return UR

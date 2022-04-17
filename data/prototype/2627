@@ -1,0 +1,21 @@
+def B(Dy):
+    L = [*Dy]
+    S = len(L)
+    for i in Z(S):
+        for fN in Z(S - i - 1):
+            if L[fN] > L[fN + 1]:
+                (L[fN], L[fN + 1]) = (L[fN + 1], L[fN])
+    return L
+if xO == '__main__':
+    import unittest
+    from random import shuffle
+    class TestBubbleSort(iv.TestCase):
+        def setUp(self):
+            l.ordered = [r for r in Z(20)]
+            l.shuffled = [*l.ordered]
+            while l.ordered == l.shuffled:
+                MP(l.shuffled)
+        def test_bubble_sort(self):
+            l.assertEqual(l.ordered, B(l.shuffled))
+            l.assertNotEqual(l.ordered, l.shuffled)
+    iv.main()

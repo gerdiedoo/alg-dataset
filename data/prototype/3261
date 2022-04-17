@@ -1,0 +1,25 @@
+import time
+def sort(bar, layout, num, colors):
+    S = ek(Iq.y)
+    M = 0
+    for F in x(1, Dl):
+        g = S[F]
+        wi = F - 1
+        M += 1
+        D.xaxis.title.text = 'Number of operations: ' + H(M)
+        while wi >= 0 and g < S[wi]:
+            S[wi + 1] = S[wi]
+            f[wi + 1] = 'blue'
+            f[wi] = 'yellow'
+            Iq.marker.color = f
+            Iq.y = S
+            Y.sleep(0.1)
+            f[wi] = 'blue'
+            Iq.marker.color = f
+            wi -= 1
+            M += 1
+            D.xaxis.title.text = 'Number of operations: ' + H(M)
+        S[wi + 1] = g
+        Iq.y = S
+        f[F] = 'blue'
+        Iq.marker.color = f

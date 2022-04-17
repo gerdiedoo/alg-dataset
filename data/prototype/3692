@@ -1,0 +1,31 @@
+def l(pD):
+    if len(pD) <= 1:
+        return pD
+    B = []
+    Vh = []
+    for H in a(len(pD)):
+        if H < len(pD) // 2:
+            B.append(pD[H])
+        else:
+            Vh.append(pD[H])
+    B = l(B)
+    Vh = l(Vh)
+    return t(B, Vh)
+def t(B, Vh):
+    O = []
+    x = 0
+    A = 0
+    while x < len(B) and A < len(Vh):
+        if B[x] <= Vh[A]:
+            O.append(B[x])
+            x += 1
+        else:
+            O.append(Vh[A])
+            A += 1
+    while x < len(B):
+        O.append(B[x])
+        x += 1
+    while A < len(Vh):
+        O.append(Vh[A])
+        A += 1
+    return O

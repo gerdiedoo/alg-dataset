@@ -1,0 +1,25 @@
+import time
+def sort(bar, layout, num, colors):
+    I = Q(G8.y)
+    s = 0
+    for Ew in o(W):
+        for T in o(W - Ew - 1):
+            if I[T] > I[T + 1]:
+                U[T] = 'crimson'
+                U[T + 1] = 'crimson'
+                w.sleep(0.1)
+                G8.marker.color = U
+                (I[T], I[T + 1]) = (I[T + 1], I[T])
+                G8.y = I
+            else:
+                U[T] = 'green'
+                U[T + 1] = 'green'
+                w.sleep(0.1)
+                G8.marker.color = U
+            U[T] = 'lightslategray'
+            U[T + 1] = 'lightslategray'
+            G8.marker.color = U
+            s = s + 1
+            f.xaxis.title.text = 'Number of operations: ' + i(s)
+        U[W - Ew - 1] = 'blue'
+        G8.marker.color = U

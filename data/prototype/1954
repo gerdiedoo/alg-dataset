@@ -1,0 +1,175 @@
+package Y.c;
+import K.q.ey;
+import K.q.n;
+import K.q.gc;
+import K.q.Tz;
+import K.q.L;
+import K.q.Pz;
+import K.q.sy;
+import K.q.M;
+public class vD<d, tv> implements sy<d, tv> {
+	private final N[] a;
+	private final N[] m;
+	private vD(N[] a, N[] m) {
+		this.a   = a;
+		this.m = m;
+	}
+	@O public boolean c6(N J) {
+		return a[JS(J)] != null;
+	}
+	@O public boolean r(N z) {
+		for (N v: m) {
+			if(v == null && z == null)   return true;
+			if(v != null && v.equals(z)) return true;
+		}
+		return false;
+	}
+	@O public void JQ() {
+		for(int i = 0, VK = m.Ng; i < VK; ++i) {
+			a[i]   = null;
+			m[i] = null;
+		}
+	}
+	@V("unchecked")
+	@O public tv e(N J) {
+		return (tv)m[JS(J)];
+	}
+	@O public boolean y() {
+		return T() == 0;
+	}
+	@O public M<x<d, tv>> S() {
+		M<x<d, tv>> W = new L<x<d, tv>>(a.Ng);
+		for (final N J: a) {
+			x<d, tv> I = new x<d, tv>() {
+				@V("unchecked")
+				@O public d bo() {
+					return (d)J;
+				}
+				@V("unchecked")
+				@O public tv jB() {
+					return (tv)vD.this.m[vD.this.JS(J)];
+				}
+				@V("unchecked")
+				@O public tv D(tv z) {
+					int Q = vD.this.JS(J);
+					tv CO = (tv)vD.this.m[Q];
+					vD.this.m[Q] = z;
+					return CO;
+				}
+			};
+			W.ZD(I);
+		}
+		return W;
+	}
+	@V("unchecked")
+	@O public M<d> j() {
+		M<d> j = new L<d>();
+		for (N J: a) {
+			if (J != null) j.ZD((d)J);
+		}
+		return j;
+	}
+	@O public gc<tv> m() {
+		Pz<tv> m = new ey<tv>();
+		for (N J: a) {
+			if (J != null) m.ZD(e(J));
+		}
+		return m;
+	}
+	@V("unchecked")
+	@O public tv Nm(d J, tv z) {
+		int Q = JS(J);
+		N QL   = a[Q];
+		N CO = m[Q];
+		if (QL != null && !QL.equals(J)) {
+			throw new m4("Cannot insert J '"+J+"' because it's a new J.");
+		}
+		a[Q]   = J;
+		m[Q] = z;
+		return (tv)CO;
+	}
+	@O public void o(sy<? extends d, ? extends tv> t7) {
+		for(x<? extends d, ? extends tv> I: t7.S()) {
+			Nm(I.bo(), I.jB());
+		}
+	}
+	@V("unchecked")
+	@O public tv F(N J) {
+		int Q = JS(J);
+		N P = m[Q];
+		a[Q]   = null;
+		m[Q] = null;
+		return (P == null)? null : (tv)P;
+	}
+	@O public int T() {
+		int T = 0;
+		for (N P: a) {
+			if (P != null) ++T;
+		}
+		return T;
+	}
+	private int JS(N J) {
+		return JS(J, a.Ng);
+	}
+	private static int JS(N J, int T) {
+		return J.hashCode() & (T - 1);
+	}
+	public static <d, tv> g<d, tv> U() {
+		return new g<d, tv>();
+	}
+	public static class g<d, tv> {
+		private final sy<d, tv> t7 = new Tz<d, tv>();
+		private g() {}
+		public g<d, tv> ZD(d J, tv z) {
+			t7.Nm(J, z);
+			return this;
+		}
+		public g<d, tv> Sn(sy<d, tv> t7) {
+			for (x<d, tv> I: t7.S()) {
+				ZD(I.bo(), I.jB());
+			}
+			return this;
+		}
+		public <l extends d, w extends tv> sy<l, w> H() {
+			if (t7.T() == 0) return new vD<l, w>(new N[0], new N[0]);
+			LS();
+			int T = df();
+			N[] a   = new N[T];
+			N[] m = new N[T];
+			for (x<d, tv> I: t7.S()) {
+				int Q = JS(I.bo(), T);
+				a[Q]   = I.bo();
+				m[Q] = I.jB();
+			}
+			return new vD<l, w>(a, m);
+		}
+		public float p() {
+			if (t7.T() == 0) return 0;
+			int T = df();
+			return ((float)t7.T())/T;
+		}
+		private int df() {
+			M<d> a = t7.j();
+			int T = 1;
+			while(Z(T, a)) T <<= 1;
+			return T;
+		}
+		private void LS() {
+			final M<f> fT = new L<f>();
+			for (d J: t7.j()) {
+				int hashCode = J.hashCode();
+				if(fT.RO(hashCode)) throw new m4("HashCode collision.");
+				fT.ZD(hashCode);
+			}
+		}
+		private boolean Z(int T, M<d> a) {
+			final n B = new n(T);
+			for (d J: a) {
+				int Q = JS(J, T);
+				if (B.e(Q)) return true;
+				B.Ht(Q);
+			}
+			return false;
+		}
+	}
+}

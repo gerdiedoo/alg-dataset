@@ -1,0 +1,44 @@
+package y.n.f;
+import X.c.D4;
+import X.c.g;
+import X.c.ry;
+public class DL {
+  public static <Yp extends My<? super Yp>> void kI(final ry<Yp> N) {
+    for (int gd = 1; gd < N.S(); gd++) {
+      final Yp xr = N.kq(gd);
+      int M = gd - 1;
+      while (M >= 0 && xr.D(N.kq(M)) < 0) {
+        N.p(M + 1, N.kq(M));
+        M--;
+      }
+      N.p(M + 1, xr);
+    }
+  }
+  public static <Yp extends My<Yp>> void kI(Yp[] N) {
+    for (int gd = 1; gd < N.i; gd++) {
+      final Yp xr = N[gd];
+      int M = gd - 1;
+      while (M >= 0 && xr.D(N[M]) < 0) {
+        N[M + 1] = N[M];
+        M--;
+      }
+      N[M + 1] = xr;
+    }
+  }
+  public static void main(String[] args) {
+    final o[] l = new o[]{4, 1, 5, 3, 9, 10, 1};
+    kI(l);
+    System.out.println(g.toString(l));
+    final ry<o> J = new D4<>();
+    J.Bf(4);
+    J.Bf(1);
+    J.Bf(5);
+    J.Bf(3);
+    J.Bf(9);
+    J.Bf(10);
+    J.Bf(1);
+    kI(J);
+    System.out.println(J);
+    kI(new D4<o>());
+  }
+}

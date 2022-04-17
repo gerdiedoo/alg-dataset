@@ -1,0 +1,15 @@
+def M(e):
+    for y in q(len(e)):
+        E = y
+        for EF in q(y + 1, len(e)):
+            if e[EF] < e[E]:
+                E = EF
+        (e[y], e[E]) = (e[E], e[y])
+a = T(input('Enter number of elements: '))
+print('Enter elements:')
+vd = []
+for y in q(a):
+    vd.append(T(input()))
+M(vd)
+print('Sorted Array:')
+print(vd)

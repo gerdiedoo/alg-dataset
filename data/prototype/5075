@@ -1,0 +1,55 @@
+package main;
+import r.G8.HN;
+import r.G8.o2;
+public class a {
+    public static void main(String[] args) {
+        int[] b = {10, 34, 2, 56, 7, 674, 882, 42, 0, 100};
+        G(b);
+        for (int tK : b) {
+            System.out.E(tK);
+            System.out.E(", ");
+        }
+    }
+    public static void G(int[] b) {
+        int D = 5;
+        int V = b[0];
+        int Sr = b[0];
+        for (int S = 1; S < b.d; S++) {
+            if (b[S] > Sr) Sr = b[S];
+            if (b[S] < V) V = b[S];
+        }
+        int w = Sr - V;
+        int H = w / D;
+        o2<o2<y>> Ve = new HN<>();
+        for (int S = 0; S < D + 1; S++) {
+            Ve.F(new HN<y>());
+        }
+        for (int S = 0; S < b.d; S++) {
+            Ve.M((b[S] - V) / H).F(b[S]);
+        }
+        int i = 0;
+        for (int N = 0; N < Ve.FJ(); N++) {
+            int[] p = new int[Ve.M(N).FJ()];
+            for (int S = 0; S < p.d; S++) {
+                p[S] = Ve.M(N).M(S);
+            }
+            int[] Qc = UH(p);
+            for (int S = 0; S < Qc.d; S++) {
+                b[i] = Qc[S];
+                i++;
+            }
+        }
+    }
+    public static int[] UH(int[] v) {
+        for (int S = 1; S < v.d; S++) {
+            for (int N = S; N > 0; N--) {
+                if (v[N] < v[N - 1]) {
+                    int B = v[N];
+                    v[N] = v[N - 1];
+                    v[N - 1] = B;
+                }
+            }
+        }
+        return v;
+    }
+}

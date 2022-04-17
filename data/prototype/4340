@@ -1,0 +1,40 @@
+package J.N3;
+import J.E;
+public class b implements N {
+    private long f = 30;
+    private int j(E n, int pu, int xz) {
+        int r = n.x(xz);
+        int C = pu - 1;
+        for (int De = pu; De <= xz - 1; De++) {
+            if (n.x(De) <= r) {
+                C++;
+                n.z7(C, De, L(), true);
+            }
+        }
+        n.z7(C + 1, xz, L(), true);
+        return C + 1;
+    }
+    private void jI(E n, int pu, int xz) {
+        if (pu < xz) {
+            int Q = j(n, pu, xz);
+            jI(n, pu, Q - 1);
+            jI(n, Q + 1, xz);
+        }
+    }
+    @W4
+    public void s(E n) {
+        jI(n, 0, n.SP() - 1);
+    }
+    @W4
+    public String G() {
+        return "Quick Sort";
+    }
+    @W4
+    public long L() {
+        return f;
+    }
+    @W4
+    public void WX(long u) {
+        this.f = u;
+    }
+}

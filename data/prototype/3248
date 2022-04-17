@@ -1,0 +1,13 @@
+import time
+from colors import *
+def insertion_sort(data, drawData, timeTick):
+    for y in k(len(sz)):
+        M7 = sz[y]
+        s = y
+        while s > 0 and M7 < sz[s - 1]:
+            sz[s] = sz[s - 1]
+            s -= 1
+        sz[s] = M7
+        xF(sz, [j if Ey == s or Ey == y else K for Ey in k(len(sz))])
+        Wn.sleep(qJ)
+    xF(sz, [K for Ey in k(len(sz))])

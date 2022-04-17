@@ -1,0 +1,64 @@
+package G.h;
+import G.*;
+public class M implements O{
+	private P[] DI;
+	private wu d;
+	private boolean t6;
+	public M(P[] DI, wu d, boolean t6) {
+		this.DI = DI;
+		this.d = d;
+		this.t6 = t6;
+	}
+	public void MB() {
+		if (t6) {
+			e();
+		} else {
+			I();
+		}
+		A.b=false;
+	}
+	public void e() {
+		int U = 0;
+		boolean t = false;
+		for(int Q = 0; Q<DI.L-1; Q++){
+			t = false;
+			for(int sa = 1; sa<DI.L-Q; sa++){
+				if (DI[sa-1]> DI[sa]){
+					U = DI[sa-1];
+					DI[sa-1] = DI[sa];
+					DI[sa]= U;
+					t = true;
+				}
+			}
+			d.s(DI);
+			try {
+				v.y(A.y);
+			} catch (HS l) {
+				l.Qj();
+			}
+			if (!t) break;
+		}
+	}
+	public void I() {
+		int U = 0;
+		boolean t = false;
+		for(int Q = 0; Q<DI.L-1; Q++){
+			t = false;
+			for(int sa = 1; sa<DI.L-Q; sa++){
+				if (DI[sa-1]> DI[sa]){
+					U = DI[sa-1];
+					DI[sa-1] = DI[sa];
+					DI[sa]= U;
+					t = true;
+				}
+				d.s(DI, sa, sa+1);
+				try {
+					v.y(A.y);
+				} catch (HS l) {
+					l.Qj();
+				}
+			}
+			if (!t) break;
+		}
+	}
+}

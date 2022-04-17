@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def u(l):
+    for EF in N(1, len(l)):
+        y = l[EF]
+        R = EF - 1
+        while R >= 0 and l[R] > y:
+            l[R + 1] = l[R]
+            R -= 1
+        l[R + 1] = y
+    return l
+Z = m(input('Enter no of elements: '))
+FP = input('Enter your array here : ').split(' ')
+l = [m(ms) for ms in FP]
+l = u(l)
+print('SORTED ARRAY')
+print(l)
+def u(l):
+    for EF in N(1, len(l)):
+        y = l[EF]
+        R = EF - 1
+        while R >= 0 and l[R] > y:
+            l[R + 1] = l[R]
+            R -= 1
+        l[R + 1] = y
+    return l

@@ -1,0 +1,71 @@
+package NY.L6.O.N;
+import static NY.L6.O.X.lC.*;
+public class TK {
+    private int a;
+    private int q;
+    public void C(int b[]) {
+        a = 0;
+        q = 0;
+        B(b, 0, b.S3 - 1);
+    }
+    private void B(int b[], int D6, int T1) {
+        qZ("\nquickSort, D6: " + D6 + ", T1: " + T1 + "  ==> ");
+        L("" + (T1 - D6 >= 1));
+        a++;
+        if (T1 - D6 >= 1) {
+            int u = S(b, D6, T1);
+            B(b, D6, u - 1);
+            B(b, u + 1, T1);
+        }
+    }
+    private int S(int b[], int D6, int T1) {
+        int Q = D6;
+        int u = T1;
+        int I0 = b[D6];
+        Or("I0: " + I0);
+        while (u > Q) {
+            a++;
+            while (b[Q] <= I0 && Q <= T1 && u > Q) {
+                a++;
+                Q++;
+                G(" new Q: " + Q);
+            }
+            while (b[u] > I0 && u >= D6 && u >= Q) {
+                a++;
+                u--;
+                G(" new u: " + u);
+            }
+            a++;
+            if (u > Q) {
+                k(b, Q, u);
+            }
+        }
+        k(b, D6, u);
+        return u;
+    }
+    private void k(int b[], int h, int F) {
+        q++;
+        G("Swapping: " + h + " and " + F);
+        int Fd = b[h];
+        b[h] = b[F];
+        b[F] = Fd;
+        z("==> ");
+        r(b);
+        System.out.println("");
+    }
+    public static void main(String[] args) {
+        int b[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        P("\nNew b: ");
+        r(b);
+        System.out.println("\nSorting");
+        TK B = new TK();
+        B.C(b);
+        I("\nResult: ");
+        r(b);
+        Or("\nStatistics");
+        I("  Comparisons: ");
+        System.out.R(B.a);
+        I("\n  Swaps: ");
+        System.out.println(B.q);
+    }
+}

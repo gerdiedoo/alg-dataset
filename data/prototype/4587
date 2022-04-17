@@ -1,0 +1,24 @@
+import random
+def k(A, s, V):
+    o = A[s]
+    h = s + 1
+    for lg in fQ(s + 1, V):
+        if A[lg] < o:
+            (A[lg], A[h]) = (A[h], A[lg])
+            h += 1
+    (A[s], A[h - 1]) = (A[h - 1], A[s])
+    return h - 1
+def Y(A, RN, m):
+    if RN < m:
+        o = Ex.randint(RN, m - 1)
+        (A[o], A[RN]) = (A[RN], A[o])
+        u = k(A, RN, m)
+        Y(A, RN, u)
+        Y(A, u + 1, m)
+def Z():
+    R = input('Enter numbers separated by a comma:\n').strip()
+    n = [U(D) for D in R.split(',')]
+    Y(n, 0, len(n))
+    print(n)
+if b == '__main__':
+    Z()

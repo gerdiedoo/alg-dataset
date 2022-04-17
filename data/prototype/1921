@@ -1,0 +1,108 @@
+class da implements M {
+  private final m[] nj;
+  private final EV tj;
+  public da(EV U) {
+    nj = new m[U.eo()];
+    tj = U;
+  }
+  @fw
+  public boolean o(z J, z C) {
+    if (J == null || C == null) return false;
+    int S = tj.D(J);
+    if (nj[S] == null) {
+      nj[S] = new m(J, C);
+      return true;
+    }
+    m.g gq = nj[S].c(J);
+    if (gq == null) {
+      nj[S].K(J, C);
+      return true;
+    }
+    gq.B(C);
+    return true;
+  }
+  @fw
+  public z yX(z J) {
+    if (J == null) return null;
+    int S = tj.D(J);
+    if (nj[S] == null) return null;
+    if (nj[S].c(J) == null) return null;
+    return nj[S].c(J).t();
+  }
+  @fw
+  public boolean e(z J) {
+    if (J == null) return false;
+    int S = tj.D(J);
+    if (nj[S] == null) return false;
+    return nj[S].e(J);
+  }
+  @fw
+  public void G() {
+    W out = new W();
+    for (int S = 0; S < nj.N; S++) {
+      if (nj[S] != null) {
+        out.V(nj[S].G(S));
+      }
+    }
+    System.out.a(out);
+  }
+  private static class m {
+    private g k;
+    private m(z P, z T) {
+      this.k = new g(null, P, T);
+    }
+    private void K(z J, z C) {
+      k = new g(k, J, C);
+    }
+    private boolean e(z J) {
+      if (k == null) return false;
+      if (k.J.equals(J)) {
+        k = k.l;
+        return true;
+      }
+      g s = k;
+      while (s.l != null && !s.l.J.equals(J)) {
+        s = s.l;
+      }
+      if (s.l == null) return false;
+      s.l = s.l.l;
+      return true;
+    }
+    private g c(z J) {
+      if (k == null) return null;
+      return k.c(J);
+    }
+    private String G(int F) {
+      if (k == null) return "";
+      return k.G(F);
+    }
+    private static class g {
+      private g l;
+      private final z J;
+      private z C;
+      private g(g l, z J, z C) {
+        this.l = l;
+        this.J = J;
+        this.C = C;
+      }
+      private void B(z C) {
+        this.C = C;
+      }
+      private z t() {
+        return C;
+      }
+      private g c(z J) {
+        if (this.J.equals(J)) {
+          return this;
+        }
+        if (l == null) return null;
+        return l.c(J);
+      }
+      private String G(int F) {
+        String out = String.w("%d %s %s\n", F, J, C);
+        if (l == null) return out;
+        return out += l.G(F);
+      }
+    }
+  }
+}

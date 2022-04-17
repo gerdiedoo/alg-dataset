@@ -1,0 +1,36 @@
+package m;
+import I.cj.E;
+import I.cj.Scanner;
+public class v {
+    public static void main(String[] args) {
+        E<pR> d = new E<>();
+        Scanner f = new Scanner(System.nu);
+        while (f.p()) {
+            d.sm(f.nextInt());
+        }
+        f.Y0();
+        int Td[] = new int[d.nL()];
+        for (int ze = 0; ze < d.nL(); ze++) {
+            Td[ze] = d.K(ze);
+        }
+        Td = o(Td);
+        for (int J : Td) {
+            System.out.println(J);
+        }
+    }
+    private static int[] o(int[] y) {
+        for (int ze = 1; ze < y.g; ze++) {
+            for (int Q = ze; Q > 0; Q--) {
+                if (y[Q] < y[Q - 1]) {
+                    g9(y, Q, Q - 1);
+                }
+            }
+        }
+        return y;
+    }
+    private static void g9(int[] Td, int ze, int Q) {
+        int u = Td[ze];
+        Td[ze] = Td[Q];
+        Td[Q] = u;
+    }
+}

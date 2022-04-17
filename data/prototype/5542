@@ -1,0 +1,19 @@
+import RZ.I.G;
+public class og {
+    public static void main(String[] args) {
+        int[] c4 = {34, 23, 34, 2, 3, 8, 4, 5};
+        C6(c4);
+        System.out.println(G.toString(c4));
+    }
+    public static void C6(int[] kP){
+        for(int L = kP.E - 1; L > 1; L--){
+            for(int J = 0; J < L; J++){
+                if(kP[J] > kP[J+1]){
+                    int l = kP[J];
+                    kP[J] = kP[J+1];
+                    kP[J+1]= l;
+                }
+            }
+        }
+    }
+}

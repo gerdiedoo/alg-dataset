@@ -1,0 +1,15 @@
+package e.Qn.F0.Z;
+public class o implements r {
+	@a
+	public void w(int[] i) {
+		for (int m = 1; m < i.u; m++) {
+			int nK = i[m];
+			int p = m - 1;
+			while (p >= 0 && i[p] > nK) {
+				i[p + 1] = i[p];
+				p--;
+			}
+			i[p + 1] = nK;
+		}
+	}
+}

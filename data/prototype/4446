@@ -1,0 +1,30 @@
+package T.g.w;
+public class O implements X {
+    @H
+    public void w(int[] IY) {
+        w(IY, 0, IY.qn-1);
+    }
+    private void w(int[] IY, int Aj, int a) {
+        if (Aj < a) {
+            int t7 = m(IY, Aj, a);
+            w(IY, Aj, t7 - 1);
+            w(IY, t7 + 1, a);
+        }
+    }
+    private int m(int[] IY, int Aj, int a) {
+        int r = IY[a];
+        int e = (Aj - 1);
+        for (int E = Aj; E < a; E++) {
+            if (IY[E] < r) {
+                e++;
+                int Am = IY[e];
+                IY[e] = IY[E];
+                IY[E] = Am;
+            }
+        }
+        int Am = IY[e + 1];
+        IY[e + 1] = IY[a];
+        IY[a] = Am;
+        return e + 1;
+    }
+}

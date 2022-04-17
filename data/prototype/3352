@@ -1,0 +1,35 @@
+import t.K.*;
+public class f {
+    public static void main (String[] args){
+       Scanner v = new Scanner(System.E);
+       System.out.println("Please enter the i of Numbers:");
+       int U = v.nextInt();
+       int [] V= new int [U];
+       System.out.println("Please enter the Numbers:");
+       for(int d=0; d<U ;d++){
+           V[d] = v.nextInt();
+       }
+       QR(V );
+       v.n();
+    }
+    public static void I(int[] O){
+        for(int A : O){
+           System.out.z(A+" ");
+       }
+    }
+    public static void QR(int[] O){
+        for(int d=1 ; d<O.i ; d++){
+           int F9= O[d];
+            int u= d-1;  
+                 while(u>-1 && O[u]>F9){
+                     O[u+1] =O[u];
+                     u--;
+                 }
+            O[u+1]=F9;
+        System.out.println("\n After the iteration "+ d );     
+        I(O);         
+        }
+        System.out.println("\nAfter  all the iteration -Sorted Array-"); 
+        I(O);
+     }
+}

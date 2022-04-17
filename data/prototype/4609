@@ -1,0 +1,220 @@
+import timeit
+from random import *
+from copy import copy
+import numpy as np
+import matplotlib.pyplot as plt
+def K(g):
+    for h in a(len(g)):
+        for c in a(len(g) - 1, h, -1):
+            if g[c] < g[c - 1]:
+                Z(g, c, c - 1)
+    return g
+def y(HO):
+    for h in a(0, len(HO) - 1):
+        FG = h
+        for I in a(h + 1, len(HO) - 1):
+            if HO[I] < HO[FG]:
+                FG = I
+        rq = HO[h]
+        HO[h] = HO[FG]
+        HO[FG] = rq
+    return HO
+def S(ca):
+    for h in a(1, len(ca)):
+        s = ca[h]
+        c = h
+        while c > 0 and s < ca[c - 1]:
+            ca[c] = ca[c - 1]
+            c -= 1
+        ca[c] = s
+def cA(HO):
+    if len(HO) == 1:
+        return HO
+    M = []
+    Rz = []
+    for h in a(0, len(HO)):
+        if h < len(HO) / 2:
+            M.append(HO[h])
+        else:
+            Rz.append(HO[h])
+    M = cA(M)
+    Rz = cA(Rz)
+    return T(M, Rz)
+def b(UX):
+    if len(UX) <= 1:
+        return UX
+    else:
+        j = ZL(UX)
+        return b([U for U in UX if U < j]) + [j] * UX.count(j) + b([U for U in UX if U > j])
+def T(xr, O):
+    lF = []
+    w = 0
+    r = 0
+    while w != len(xr) and r != len(O):
+        if xr[w] > O[r]:
+            lF.append(O[r])
+            r += 1
+        else:
+            lF.append(xr[w])
+            w += 1
+    while w != len(xr):
+        lF.append(xr[w])
+        w += 1
+    while r != len(O):
+        lF.append(O[r])
+        r += 1
+    return lF
+def of(ca):
+    eJ = len(ca) - 1
+    fQ = eJ / 2
+    for h in a(X(fQ), -1, -1):
+        n(ca, h, eJ)
+    for h in a(eJ, 0, -1):
+        if ca[0] > ca[h]:
+            Z(ca, 0, h)
+            n(ca, 0, h - 1)
+    return ca
+def n(ca, m, qV):
+    C = 2 * m + 1
+    while C <= qV:
+        if C < qV and ca[C] < ca[C + 1]:
+            C += 1
+        if ca[C] > ca[m]:
+            Z(ca, C, m)
+            m = C
+            C = 2 * m + 1
+        else:
+            return
+def Z(g, uq, fh):
+    s = g[uq]
+    g[uq] = g[fh]
+    g[fh] = s
+def k(HO):
+    ms = []
+    p = []
+    for h in a(0, len(HO) - 1):
+        ms.append(0)
+        p.append(0)
+    for h in a(0, len(HO) - 2):
+        for I in a(h + 1, len(HO) - 1):
+            if HO[h] < HO[I]:
+                ms[I] += 1
+            else:
+                ms[h] += 1
+    for h in a(0, len(HO) - 1):
+        x[ms[h]] = HO[h]
+    return x
+po = []
+x = []
+o = []
+VL = []
+OL = 10000
+for P0 in a(0, OL):
+    po.append(yl(0, 100))
+    x.append(P0)
+    o.append(OL - P0)
+    VL.append(yl(0, 10) * 1000)
+def A(oG, *F, **R):
+    def wrapped():
+        return oG(*F, **R)
+    return B
+def v(HO):
+    return b(HO)
+def pY(d, ga, q, T, Iz, kb, ms, HO, eJ):
+    e = HO[:eJ]
+    Ra = A(K, f(e))
+    d.append(V.timeit(Ra, number=1))
+    H = A(y, f(e))
+    q.append(V.timeit(H, number=1))
+    N = A(S, f(e))
+    ga.append(V.timeit(N, number=1))
+    u = A(cA, f(e))
+    T.append(V.timeit(u, number=1))
+    Es = A(v, f(e))
+    Iz.append(V.timeit(Es, number=1))
+    Ts = A(of, f(e))
+    kb.append(V.timeit(Ts, number=1))
+    P = A(k, f(e))
+    ms.append(V.timeit(P, number=1))
+def J(d, ga, q, T, Iz, kb, ms):
+    d[:] = []
+    ga[:] = []
+    q[:] = []
+    T[:] = []
+    Iz[:] = []
+    kb[:] = []
+    ms[:] = []
+def tE():
+    G = []
+    zo = []
+    i = []
+    iU = []
+    D = []
+    t = []
+    Bm = []
+    As = []
+    pY(G, zo, i, iU, D, t, Bm, po, 10)
+    pY(G, zo, i, iU, D, t, Bm, x, 10)
+    pY(G, zo, i, iU, D, t, Bm, o, 10)
+    pY(G, zo, i, iU, D, t, Bm, VL, 10)
+    As.append([f(G), f(zo), f(i), f(iU), f(D), f(t), f(Bm)])
+    J(G, zo, i, iU, D, t, Bm)
+    pY(G, zo, i, iU, D, t, Bm, x, 20)
+    pY(G, zo, i, iU, D, t, Bm, po, 20)
+    pY(G, zo, i, iU, D, t, Bm, o, 20)
+    pY(G, zo, i, iU, D, t, Bm, VL, 20)
+    As.append([f(G), f(zo), f(i), f(iU), f(D), f(t), f(Bm)])
+    J(G, zo, i, iU, D, t, Bm)
+    pY(G, zo, i, iU, D, t, Bm, x, 100)
+    pY(G, zo, i, iU, D, t, Bm, po, 100)
+    pY(G, zo, i, iU, D, t, Bm, o, 100)
+    pY(G, zo, i, iU, D, t, Bm, VL, 100)
+    As.append([f(G), f(zo), f(i), f(iU), f(D), f(t), f(Bm)])
+    J(G, zo, i, iU, D, t, Bm)
+    pY(G, zo, i, iU, D, t, Bm, x, 1000)
+    pY(G, zo, i, iU, D, t, Bm, po, 1000)
+    pY(G, zo, i, iU, D, t, Bm, o, 1000)
+    pY(G, zo, i, iU, D, t, Bm, VL, 1000)
+    As.append([f(G), f(zo), f(i), f(iU), f(D), f(t), f(Bm)])
+    J(G, zo, i, iU, D, t, Bm)
+    pY(G, zo, i, iU, D, t, Bm, x, 10000)
+    pY(G, zo, i, iU, D, t, Bm, po, 10000)
+    pY(G, zo, i, iU, D, t, Bm, o, 10000)
+    pY(G, zo, i, iU, D, t, Bm, VL, 10000)
+    As.append([f(G), f(zo), f(i), f(iU), f(D), f(t), f(Bm)])
+    J(G, zo, i, iU, D, t, Bm)
+def plotlogn(timeList):
+    rg = 4
+    (Y, iv) = Q.subplots()
+    z = Im.arange(rg)
+    qL = 0.25
+    iR = Q.bar(z + qL * 3, l[3], qL, color='orange', label='Merge')
+    xI = Q.bar(z + qL * 4, l[4], qL, color='red', label='Quick')
+    ZC = Q.bar(z + qL * 5, l[5], qL, color='purple', label='Heap')
+    Q.xlabel('Sorting Algorithm')
+    Q.ylabel('Sorting Time')
+    Q.title('Comparison of Log(n) Sorting Algorithms')
+    Q.xticks(z + qL * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    Q.legend()
+    Q.tight_layout()
+    Q.show()
+def populateChart(timeList):
+    rg = 4
+    (Y, iv) = Q.subplots()
+    z = Im.arange(rg)
+    qL = 0.125
+    M1 = Q.bar(z, l[0], qL, color='g', label='Bubble')
+    B0 = Q.bar(z + qL, l[1], qL, color='b', label='Selection')
+    W = Q.bar(z + qL * 2, l[2], qL, color='y', label='Insertion')
+    iR = Q.bar(z + qL * 3, l[3], qL, color='orange', label='Merge')
+    xI = Q.bar(z + qL * 4, l[4], qL, color='red', label='Quick')
+    ZC = Q.bar(z + qL * 5, l[5], qL, color='purple', label='Heap')
+    L = Q.bar(z + qL * 6, l[6], qL, color='black', label='Count')
+    Q.xlabel('Sorting Algorithm')
+    Q.ylabel('Sorting Time')
+    Q.title('Comparison of Sorting Algorithms')
+    Q.xticks(z + qL * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    Q.legend()
+    Q.tight_layout()
+    Q.show()
+tE()

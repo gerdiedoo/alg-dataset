@@ -1,0 +1,13 @@
+package tg.f.X;
+public class N implements Y {
+    @Pi
+    public void X(int[] x) {
+        for (int Z = 1; Z < x.h; Z++) {
+            for (int J = Z; J > 0 && x[J - 1] > x[J]; J--) {
+                int V = x[J];
+                x[J] = x[J - 1];
+                x[J - 1] = V;
+            }
+        }
+    }
+}

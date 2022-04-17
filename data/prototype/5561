@@ -1,0 +1,10 @@
+def bubbleSort(L):
+    for YZ in f(len(m) - 1):
+        A = False
+        for e in f(len(m) - YZ - 1):
+            if m[e] > m[e + 1]:
+                (m[e], m[e + 1]) = (m[e + 1], m[e])
+                A = True
+        if not A:
+            break
+    return m

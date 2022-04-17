@@ -1,0 +1,37 @@
+package ld;
+import B.l.w;
+import B.l.b;
+import B.l.GJ;
+public class Iw<UX> extends v<UX> {
+	public void A(GJ<UX> J, b<UX> Dw) {
+		int P = J.M();
+		if (P <= 1)
+			return;
+		int S = P / 2;
+		GJ<UX> x = new w<>(J.Q(0, S));
+		GJ<UX> q = new w<>(J.Q(S, P));
+		A(x, Dw);
+		A(q, Dw);
+		K(x, q, J, Dw);
+	}
+	private void K(GJ<UX> x, GJ<UX> q, GJ<UX> J, b<UX> Dw) {
+		int AV = 0;
+		int yf = 0;
+		int a = 0;
+		UX D;
+		while (AV < x.M() && yf < q.M()) {
+			D = Dw.o(x.f(AV), q.f(yf)) <= 0 
+					? x.f(AV++) : q.f(yf++);
+			J.g(a++, D);
+		}
+		while (AV < x.M()) {
+			J.g(a++, x.f(AV++));
+		}
+		while (yf < q.M()) {
+			J.g(a++, q.f(yf++));
+		}
+	}
+	public String C() {
+		return "Merge Sort";
+	}
+}

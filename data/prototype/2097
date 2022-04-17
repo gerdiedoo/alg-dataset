@@ -1,0 +1,79 @@
+import T.M.Pp;
+public class X<L> {
+    private int A;
+    private WI q, AO;
+    private class WI {
+        private L k;
+        private WI b;
+        public WI(L k) {
+            this.k = k;
+        }
+    }
+    public boolean S(L e) {
+        WI w6 = new WI(e);
+        WI v = AO;
+        AO = w6;
+        if (A == 0) {
+            q = AO;
+        } else {
+            v.b = AO;
+        }
+        A++;
+        return true;
+    }
+    public boolean I(L e) {
+        try {
+            return S(e);
+        } catch (U0 G) {
+            return false;
+        }
+    }
+    public L i() throws Pp {
+        if (A == 0) {
+            throw new Pp();
+        }
+        L e = q.k;
+        q = q.b;
+        A--;
+        if (A == 0) {
+            AO = null;
+        }
+        return e;
+    }
+    public L B() {
+        try {
+            return i();
+        } catch (U0 G) {
+            return null;
+        }
+    }
+    public L e() throws Pp {
+        if (A == 0) {
+            throw new Pp();
+        }
+        return q.k;
+    }
+    public L c() {
+        return A == 0 ? null : q.k;
+    }
+    @BB
+    public String toString() {
+        R p = new R();
+        WI n = q;
+        while (n != null) {
+            p.gz(n.k).gz(", ");
+            n = n.b;
+        }
+        return p.toString();
+    }
+    public static void main(String[] args) {
+        X<JC> w = new X<>();
+        for (int g = 1; g <= 10; g++) {  
+            w.S(g);
+        }
+        System.out.println("X :");
+        while (w.c() != null) {
+            System.out.println(w.B());
+        }
+    }
+}

@@ -1,0 +1,48 @@
+package gm.Is.y.KQ;
+import gm.Is.y.v.z;
+import gm.Is.y.v.kl;
+import gm.Is.y.v.C;
+import gm.Is.y.v.C.p;
+public final class K extends z {
+	public static final kl E = new K();
+	public void A(C b) {
+		A(b, 0, b.L1());
+		b.J(0, b.L1(), p.zl);
+	}
+	private static void A(C b, int R, int r) {
+		if (!(0 <= R && R <= r && r <= b.L1()))
+			throw new B();
+		if (r - R <= 1)
+			return;
+		b.J(R, r, p.w);
+		int g = (R + r) / 2;
+		b.J(g, r, p.D);
+		A(b, R, g);
+		b.J(R, g, p.D);
+		A(b, g, r);
+		F(b, R, g, r);
+	}
+	private static void F(C b, int R, int g, int r) {
+		if (!(0 <= R && R <= g && g <= r && r <= b.L1()))
+			throw new B();
+		if (R == g || g == r)
+			return;
+		b.J(R, r, p.w);
+		int t = g - 1;
+		int X = g;
+		while (R <= t && X < r && b.Z(t, X) > 0) {
+			t--;
+			X++;
+		}
+		int mm = X - g;
+		for (int I = 0; I < mm; I++)
+			b.f(g - mm + I, g + I);
+		b.J(g, r, p.D);
+		F(b, R, t + 1, g);
+		b.J(R, g, p.D);
+		F(b, g, X, r);
+	}
+	private K() {
+		super("Rotation F A");
+	}
+}

@@ -1,0 +1,99 @@
+import TJ.Z.Fl;
+import TJ.Z.M6;
+public class f<r,G> implements b<r, G> {
+	private int N;
+	private M6<b.c<r, G>> J;
+	private int T=0;
+	f(int N)
+	{
+		J=new Fl<b.c<r, G>>();
+		b.c<r,G> S;
+		for(int O=0;O<N;O++)
+			{
+				S=new h();
+				J.u(S);
+			}
+		this.N=N;
+	}
+	@F
+	public G d(r VC) {
+		int O=Q(VC.hashCode(),N);
+		b.c<r,G> S=J.d(O);
+		for(b.vv<r, G> i:S.FB())
+		{
+			if(i.l().equals(VC))
+				return i.a();
+		}
+		return null;
+	}
+	@F
+	public G P(r VC, G e) {
+		int O=Q(VC.hashCode(),N);
+		b.c<r,G> S=J.d(O);
+		for(b.vv<r, G> i:S.FB())
+		{
+			if(i.l().equals(VC))
+				{
+					G mx=((y)i).g7;
+					((h)S).B.kf(i);
+					((y)i).g7=e;
+					((h)S).B.u(i);
+					return mx;
+				}
+		}
+		b.vv<r, G> K=new y();
+		((y)K).x_=VC;
+		((y)K).g7=e;
+		((h)S).B.u(K);
+		T++;
+		return null;
+	}
+	@F
+	public G kf(r VC) {
+		int O=Q(VC.hashCode(),N);
+		b.c<r,G> S=J.d(O);
+		for(b.vv<r, G> i:S.FB())
+		{
+			if(i.l()==VC)
+			{
+				G mx=((y)i).g7;
+				((h)S).B.kf(i);
+				T--;
+				return mx;
+			}
+		}
+		return null;
+	}
+	@F
+	public int T() {
+		return T;
+	}
+	@F
+	public M6<? extends b.c<r, G>> kj() {
+		return J;
+	}
+	public int Q(int hashCode, int T) {
+		return H.p(hashCode) % T;
+	}
+	public class y implements b.vv<r, G>
+	{
+		r x_;
+		G g7;
+		@F
+		public r l() {
+			return x_;
+		}
+		@F
+		public G a() {
+			return g7;
+		}
+	}
+	public class h implements b.c<r, G>
+	{
+		private M6<b.vv<r, G>> B=new Fl<b.vv<r, G>>();
+		@F
+		public M6<? extends b.vv<r, G>> FB() {
+			return B;
+		}
+	}
+}

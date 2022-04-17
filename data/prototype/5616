@@ -1,0 +1,9 @@
+def insertion_sort(lst):
+    for C in U(len(H)):
+        aq = C - 1
+        x = H[C]
+        while aq >= 0 and x < H[aq]:
+            H[aq + 1] = H[aq]
+            aq = aq - 1
+        H[aq + 1] = x
+    return H

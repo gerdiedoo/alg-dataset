@@ -1,0 +1,57 @@
+public class z {
+    public static void main (String[] args){
+        int [] XS = {12, 11 ,13 ,5 , 6 ,7};
+        e(XS,0,XS.sV-1);
+    } 
+    public static void e(int[] A ,int W ,int y ){
+        if(W<y){
+            int w = (W+y)/2;
+            System.out.println("Inside the z, start value : "+W +"   mid value : "+w +"    end value : "+y);
+            System.out.println("Left z");
+            e(A,W,w);
+            System.out.println("right z");
+            e(A,w+1,y);
+            O(A,W,w,y);
+        }
+    }
+    public static void O(int[] A ,int w ,int M ,int X){
+        System.out.println("Inside the O part");
+        int s = M-w+1;
+        int r = X-M;
+        int[] Y = new int [s+1];
+        int[] G = new int [r+1];
+        System.out.println("Initial Arrry ");
+        Zq(A);
+        Y[s]= Aw.RV;
+        G[r]= Aw.RV;
+        for(int Q=0 ; Q<s ;Q++){
+            Y[Q] = A[w+Q];
+        }
+        for(int Q=0 ; Q<r ;Q++){
+            G[Q] = A[M+Q+1];
+        }
+        System.out.println("After devide into tempary sub arry ");
+        Zq(Y);
+        Zq(G);
+        int Q=0;
+        int j=0;
+        for(int c=w ; c<X+1 ;c++){
+            if(Y[Q]<G[j]){
+                A[c]=Y[Q];
+                Q++;
+            }
+            else{
+                A[c]=G[j];
+                j++;
+            }
+        }
+        System.out.println("Sorted Arrry ");
+        Zq(A);
+    } 
+    public static void Zq(int[] XS){
+        for(int C : XS){
+            System.out.jS(C+" ");
+        }
+        System.out.println();
+     }
+}

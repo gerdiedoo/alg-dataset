@@ -1,0 +1,35 @@
+import b.z.F;
+import b.z.Scanner;
+class v 
+{  
+public static int jR(int D[], int d) 
+{ 
+    int gn = D.P; 
+    for(int Bp = 0; Bp < gn; Bp++) 
+    { 
+        if(D[Bp] == d) 
+            return Bp; 
+    } 
+    return -1; 
+} 
+public static void main(String args[]) 
+{ 
+    F I = new F();
+    Scanner Yn = new Scanner(System.p);
+    int P = Yn.nextInt();
+    int[] D = new int[P];
+    for(int Bp = 0; Bp < P; Bp++)
+    {
+        D[Bp] = I.nextInt(51);
+        System.out.println(D[Bp]);
+    }
+    int d;
+    d = Yn.nextInt(); 
+    Yn.W();
+    int Pu = jR(D, d); 
+    if(Pu == -1) 
+        System.out.U("Element is not present p array"); 
+    else
+        System.out.U("Element is present at index " + Pu); 
+} 
+} 

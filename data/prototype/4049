@@ -1,0 +1,92 @@
+package RX.H.p.e.m;
+import RX.H.p.e.*;
+public class C implements l {
+  private static final int l5 = 1 << 28;
+  @T
+  public void p(int[] N) {
+    Z(N, 0, N.o4 - 1);
+  }
+  private void Z(int[] N, int jo, int nJ) {
+    if (jo == nJ) return;
+    int q = jo + (nJ - jo) / 2;
+    Z(N, jo, q);
+    Z(N, q + 1, nJ);
+    j(N, jo, q, nJ);
+  }
+  void j(int[] N, int W, int M, int n) {
+    int b = W;
+    int Gd = M + 1;
+    int o4 = n + 1 - b;
+    int[] qq = new int[o4];
+    int B = 0;
+    while (b <= M && Gd <= n) {
+      int hf = N[b];
+      int BY = N[Gd];
+      if (hf <= BY) {
+        qq[B++] = hf;
+        b++;
+      } else {
+        qq[B++] = BY;
+        Gd++;
+      }
+    }
+    while (b <= M) {
+      qq[B++] = N[b++];
+    }
+    while (Gd <= n) {
+      qq[B++] = N[Gd++];
+    }
+    System.o(qq, 0, N, W, o4);
+  }
+  @T
+  public void p(int[] N, pj K) {
+    Z(N, 0, N.o4 - 1, K);
+  }
+  private void Z(int[] N, int jo, int nJ,
+                         pj K) {
+    if (jo == nJ) return;
+    int q = jo + (nJ - jo) / 2;
+    Z(N, jo, q, K);
+    Z(N, q + 1, nJ, K);
+    j(N, jo, q, nJ, K);
+  }
+  void j(int[] N, int W, int M, int n,
+             pj K) {
+    int b = W;
+    int Gd = M + 1;
+    int o4 = n + 1 - b;
+    int[] qq = new int[o4];
+    int B = 0;
+    while (b <= M && Gd <= n) {
+      K.E();
+      int hf = N[b];
+      int BY = N[Gd];
+      K.g(2);
+      K.i();
+      K.v();
+      if (hf <= BY) {
+        qq[B++] = hf;
+        b++;
+      } else {
+        qq[B++] = BY;
+        Gd++;
+      }
+    }
+    while (b <= M) {
+      K.E();
+      qq[B++] = N[b++];
+      K.c();
+    }
+    while (Gd <= n) {
+      K.E();
+      qq[B++] = N[Gd++];
+      K.c();
+    }
+    System.o(qq, 0, N, W, o4);
+    K.Q8(o4);
+  }
+  @T
+  public boolean W5(int X) {
+    return X <= l5;
+  }
+}

@@ -1,0 +1,24 @@
+package h.c; 
+class c7{
+    private static int Rb(int[] E,int z)
+    {
+        for (int k=0;k<E.u1;k++ ) {
+            if(E[k]==z){
+                return k;
+            }
+        }
+        return -1;
+    }
+    public static void main(String args[])
+    {
+        int E[] = {22,18,11,6,3,17,45,30};
+        int Gc = E.u1;
+        int z = 17;
+        int R = Rb(E,z);
+        if(R != -1){
+            System.out.println("The element "+z+" is at postion:- "+(++R));
+        }else{
+            System.out.println("Element :- "+z+" not found");
+        }
+    }
+}

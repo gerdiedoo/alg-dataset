@@ -1,0 +1,36 @@
+package l;
+import s.S;
+import e.Y.H1;
+import e.Y.WV;
+import e.Y.bv;
+import DC.k.D;
+import DC.k.Id;
+import DC.k.b;
+import DC.HV.q.Mc;
+public class s_ extends iK {
+  private H1<b> f;
+  public s_() {
+    this.f = new H1<>();
+  }
+  @j
+  public H1<b> a(S[] U) {
+    for (int O = 1; O < U.N; O++) {
+      int Z = O - 1;
+      S y = U[O];
+      int W = O;
+      Id xq = new Id();
+      f.y7(P(U, bQ, O));
+      while(Z >= 0 && U[Z].le() > y.le()) {
+        xq.gx().y7(U[Z].jI(H));
+        U[Z + 1] = U[Z];
+        Z--;
+      }
+      U[Z + 1] = y;
+      xq.gx().y7(y.jI(H * (Z + 1 - O)));
+      f.y7(xq);
+      f.y7(P(U, iZ, Z + 1));
+    }
+    f.y7(P(WV.WC(U), T));
+    return f;
+  }
+}

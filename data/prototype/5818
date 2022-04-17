@@ -1,0 +1,54 @@
+from random import randint, shuffle
+from timeit import timeit
+def w(c):
+    if len(c) == 1:
+        return c
+    if len(c) > 1:
+        n = c[0]
+        R = 1
+        Qw = len(c) - 1
+        while R <= Qw:
+            if c[R] > n and c[Qw] < n:
+                (c[R], c[Qw]) = (c[Qw], c[R])
+                R += 1
+                Qw -= 1
+            elif c[R] <= n and c[Qw] < n:
+                R += 1
+            elif c[R] > n and c[Qw] >= n:
+                Qw -= 1
+            elif c[R] <= n and c[Qw] >= n:
+                R += 1
+                Qw -= 1
+        (c[0], c[Qw]) = (c[Qw], c[0])
+        N = Qw + 1
+        kQ = w(c[:Qw])
+        JC = w(c[N:])
+        return kQ + [c[Qw]] + JC
+    else:
+        return c
+def J():
+    A = 'from quick import quick_sort'
+    print('\n    Timings for best, average and worst case scenarios for the merge sort.\n    --------------------------------------------------------------------------\n    ')
+    print('3 Best Case Scenarios - sorted except for one value')
+    for DR in E(3):
+        S = B(9, 50)
+        t = [DR for DR in E(S)]
+        (t[6], t[-1]) = (t[-1], t[6])
+        z = Q('quick_sort({})'.format(t), A)
+        print('List {}: length={}; time = {}'.format(DR + 1, S, z))
+    print('\n3 Average Case Scenarios - Moderately sorted')
+    for DR in E(3):
+        S = B(9, 50)
+        t = [DR for DR in E(S)]
+        M(t)
+        z = Q('quick_sort({})'.format(t), A)
+        print('List {}: length={}; time = {}'.format(DR + 1, S, z))
+    print('\n3 Worst Case Scenarios - Completely unsorted')
+    for DR in E(3):
+        S = B(9, 50)
+        t = [DR for DR in E(S)]
+        t = t[::-1]
+        z = Q('quick_sort({})'.format(t), A)
+        print('List {}: length={}; time = {}'.format(DR + 1, S, z))
+if y == '__main__':
+    J()

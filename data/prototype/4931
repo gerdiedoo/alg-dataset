@@ -1,0 +1,22 @@
+package t.k;
+public class H {
+    public int[] r(int[] tz) {
+        int a = tz.E;
+        int d;  
+        int Z;  
+        for (int aV = 0; aV < a - 1; aV++) {
+            d = aV;
+            for (int p = aV + 1; p < a; p++) {
+                if (tz[p] < tz[d]) {
+                    d = p;  
+                }
+            }
+            if (d != aV) {
+                Z = tz[aV];
+                tz[aV] = tz[d];
+                tz[d] = Z;
+            }
+        }
+        return tz;
+    }
+}

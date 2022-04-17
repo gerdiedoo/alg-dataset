@@ -1,0 +1,10 @@
+def w(R, L):
+    for (o, V) in enumerate(R):
+        if V == L:
+            return o
+    return -1
+if g == '__main__':
+    i_ = [12, 15, 17, 19, 21, 24, 45, 67]
+    A = 12
+    I = w(i_, A)
+    print(I)

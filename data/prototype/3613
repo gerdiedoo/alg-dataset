@@ -1,0 +1,35 @@
+def x(D):
+    if len(D) > 1:
+        r = len(D) // 2
+        Z = D[:r]
+        G = D[r:]
+        x(Z)
+        x(G)
+        cD = E = K = 0
+        while cD < len(Z) and E < len(G):
+            if Z[cD] < G[E]:
+                D[K] = Z[cD]
+                cD += 1
+            else:
+                D[K] = G[E]
+                E += 1
+            K += 1
+        while cD < len(Z):
+            D[K] = Z[cD]
+            cD += 1
+            K += 1
+        while E < len(G):
+            D[K] = G[E]
+            E += 1
+            K += 1
+def TB(D):
+    for cD in bJ(len(D)):
+        print(D[cD], end=' ')
+    print()
+if w6 == '__main__':
+    D = [1, 12, 11, 2, 13, 5, 6, 7]
+    print('Given array is', end='\n')
+    TB(D)
+    x(D)
+    print('Sorted array is: ', end='\n')
+    TB(D)

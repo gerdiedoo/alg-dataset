@@ -1,0 +1,222 @@
+import O.k.zL;
+import O.k.f;
+import O.k.X;
+import O.k.j;
+import O.k.J;
+public class IY {
+    public static <Q> void F(Q[] Vn, f<Q> fH) {
+        if (Vn == null) {
+            throw new zv("Input array can not be null.");
+        }
+        if (fH == null) {
+            throw new zv("Input fH can not "
+                    + "be null.");
+        }
+        int y;
+        Q Fp;
+        for (int NP = 1; NP < Vn.L; NP++) {
+            y = NP;
+            while (y > 0
+                    && fH.Sd(Vn[y - 1],
+                    Vn[y]) > 0) {
+                Fp = Vn[y - 1];
+                Vn[y - 1] = Vn[y];
+                Vn[y] = Fp;
+                --y;
+            }
+        }
+    }
+    public static <Q> Q SY(int Z, Q[] Vn, f<Q> fH,
+                                     J dW) {
+        if (Vn == null) {
+            throw new zv("Input array can not be null.");
+        }
+        if (fH == null) {
+            throw new zv("f can not be null.");
+        }
+        if (dW == null) {
+            throw new zv("J can not be null.");
+        }
+        if (Z < 1 || Z > Vn.L) {
+            throw new zv("K is out of the array range.");
+        }
+        return Fl(Z, Vn, fH, dW, 0,
+                Vn.L - 1);
+    }
+    private static <Q> Q Fl(int Z,
+                                         Q[] Vn, f<Q> fH,
+                                         J dW, int MB,
+                                         int nE) {
+        if (MB == nE) {
+            return Vn[MB];
+        }
+        int U = dW.nextInt(nE + 1 - MB) + MB;
+        Q Fp;
+        Fp = Vn[MB];
+        Vn[MB] = Vn[U];
+        Vn[U] = Fp;
+        int NP = MB + 1;
+        int ta = nE;
+        while (ta > NP) {
+            while (NP < nE && ta > NP && fH.Sd(Vn[NP],
+                    Vn[MB]) < 0) {
+                ++NP;
+            }
+            while (ta >= MB && ta > NP && fH.Sd(Vn[ta],
+                    Vn[MB]) > 0) {
+                --ta;
+            }
+            if (ta > NP) {
+                Fp = Vn[NP];
+                Vn[NP] = Vn[ta];
+                Vn[ta] = Fp;
+            }
+        }
+        if (nE - MB == 1) {
+            if (fH.Sd(Vn[ta], Vn[MB]) < 0) {
+                Fp = Vn[MB];
+                Vn[MB] = Vn[nE];
+                Vn[nE] = Fp;
+                --ta;
+            }
+        } else if (NP == nE) {
+            Fp = Vn[MB];
+            Vn[MB] = Vn[nE];
+            Vn[nE] = Fp;
+        } else {
+            Fp = Vn[MB];
+            Vn[MB] = Vn[--ta];
+            Vn[ta] = Fp;
+        }
+        if (ta == Z - 1) {
+            return Vn[ta];
+        } else if (ta < Z - 1) {
+            return Fl(Z, Vn, fH, dW, ta + 1, nE);
+        } else {
+            return Fl(Z, Vn, fH, dW, MB, ta - 1);
+        }
+    }
+    @g("unchecked")
+    public static <Q> void N(Q[] Vn, f<Q> fH) {
+        if (Vn == null) {
+            throw new zv("Input array can not be null.");
+        }
+        if (fH == null) {
+            throw new zv("Input fH can not "
+                    + "be null.");
+        }
+        if (Vn.L <= 1) {
+            return;
+        }
+        if (Vn.L > 1) {
+            if (Vn.L == 2) {
+                Q Fp;
+                if (fH.Sd(Vn[0], Vn[1]) > 0) {
+                    Fp = Vn[0];
+                    Vn[0] = Vn[1];
+                    Vn[1] = Fp;
+                }
+            } else {
+                int gU = Vn.L / 2;
+                if (Vn.L % 2 == 1) {
+                    ++gU;
+                }
+                Q[] H = (Q[]) new K[Vn.L / 2];
+                Q[] uk = (Q[]) new K[gU];
+                for (int NP = 0; NP < Vn.L / 2; NP++) {
+                    H[NP] = Vn[NP];
+                }
+                for (int NP = 0; NP < gU; NP++) {
+                    uk[NP] = Vn[NP + (Vn.L / 2)];
+                }
+                N(H, fH);
+                N(uk, fH);
+                int I = 0;
+                int V = 0;
+                int c = 0;
+                while (I < Vn.L) {
+                    if (V >= H.L) {
+                        Vn[I++] = uk[c++];
+                    } else if (c >= uk.L) {
+                        Vn[I++] = H[V++];
+                    } else if (fH.Sd(H[V],
+                           uk[c]) > 0) {
+                        Vn[I++] = uk[c++];
+                    } else {
+                        Vn[I++] = H[V++];
+                    }
+                }
+            }
+        } else {
+            return;
+        }
+    }
+    public static int[] da(int[] Vn) {
+        if (Vn == null) {
+            throw new zv("Input array can not be null");
+        }
+        if (Vn.L <= 1) {
+            return Vn;
+        }
+        int xC = x.kD(Vn[0]);
+        for (int NP = 1; NP < Vn.L; ++NP) {
+            if (Vn[NP] == EE.E) {
+                xC = EE.m;
+                NP = Vn.L;
+            } else if (x.kD(Vn[NP]) > xC) {
+                xC = x.kD(Vn[NP]);
+            }
+        }
+        int B = 1;
+        int s = 10;
+        while (xC / s != 0) {
+            s *= 10;
+            ++B;
+        }
+        zL<j<EE>> M = new zL<>(9);
+        int I;
+        for (int NP = 0; NP < B; ++NP) {
+            for (int ta = 0; ta < 19; ++ta) {
+                M.S(new X<>());
+            }
+            for (int ta = 0; ta < Vn.L; ++ta) {
+                I = (x.kD(Vn[ta]) / Fe(10, NP)) % 10;
+                if (Vn[ta] == EE.E) {
+                    M.e(0).S(Vn[ta]);
+                } else if (Vn[ta] < 0) {
+                    M.e(9 - I).S(Vn[ta]);
+                } else {
+                    M.e(9 + I).S(Vn[ta]);
+                }
+            }
+            int t4 = 0;
+            for (int ta = 0; ta < M.h(); ++ta) {
+                if (M.e(ta) != null) {
+                    while (!M.e(ta).VK()) {
+                        Vn[t4++] = M.e(ta).C();
+                    }
+                }
+            }
+            M.v();
+        }
+        return Vn;
+    }
+    private static int Fe(int o, int l) {
+        if (l < 0) {
+            throw new zv("Exponent cannot be negative.");
+        } else if (o == 0 && l == 0) {
+            throw new zv(
+                    "Both o and exponent cannot be 0.");
+        } else if (l == 0) {
+            return 1;
+        } else if (l == 1) {
+            return o;
+        }
+        int q = Fe(o, l / 2);
+        if (l % 2 == 0) {
+            return q * q;
+        } else {
+            return q * q * o;
+        }
+    }
+}

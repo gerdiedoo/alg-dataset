@@ -1,0 +1,23 @@
+def i(P):
+    L = [*P]
+    for NZ in EN(len(L)):
+        f_ = L[NZ]
+        u = NZ - 1
+        while u >= 0 and L[u] > f_:
+            L[u + 1] = L[u]
+            u -= 1
+        L[u + 1] = f_
+    return L
+if n == '__main__':
+    import unittest
+    from random import shuffle
+    class TestInsertionSort(m.TestCase):
+        def setUp(self):
+            r.ordered = [g for g in EN(20)]
+            r.shuffled = [*r.ordered]
+            while r.ordered == r.shuffled:
+                N(r.shuffled)
+        def test_insertion_sort(self):
+            r.assertEqual(r.ordered, i(r.shuffled))
+            r.assertNotEqual(r.ordered, r.shuffled)
+    m.main()

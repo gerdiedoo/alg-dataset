@@ -1,0 +1,115 @@
+package s.D;
+public class f<B,u> {
+    private x<B,u>[] SY;
+    private int Up = 16;  
+    static class x<B, u> {
+        B y;
+        u Y;
+        x <B, u> U;
+        public x(B y, u Y, x<B,u> U) {
+            this.y = y;
+            this.Y = Y;
+            this.U = U;
+        }
+    }
+    public f(int kh) {
+        this.Up = kh;
+        SY = new x[Up];
+    }
+    private int L (B y) {
+        return E.h(y.hashCode()) % Up;
+    }
+    public boolean T (B y, u Y) {
+        if (y == null) {
+            return false;
+        }
+        int C = L(y);
+        x<B,u> Z = new x<B,u>(y, Y, null);
+        if(SY[C] == null) {
+            SY[C] = Z;
+        } else {
+            x<B,u> F = null;
+            x<B,u> DH = SY[C];
+            while(DH != null) {
+                if (DH.y.equals(y)) {
+                    if(F == null) {
+                        Z.U = DH.U;
+                        SY[C] = Z;
+                        return true;
+                    } else {
+                        Z.U = DH.U;
+                        F.U = Z;
+                        return true;
+                    }
+                }
+                F = DH;
+                DH = F.U;
+            }
+            F.U = Z;
+        }
+        return false;
+    }
+    public u kW(B y){
+        int C = L(y);
+        if(SY[C] == null) {
+            return null;
+        } else {
+            x<B,u> hq = SY[C];
+            while(hq != null) {
+                if(hq.y.equals(y)) {
+                    return hq.Y;
+                }
+                hq = hq.U;
+            }
+            return null;
+        }
+    }
+    public boolean Gi(B y) {
+        int C = L(y);
+        if (SY[C] == null) {
+            return false;
+        } else {
+            x<B,u> F = null;
+            x<B,u> DH = SY[C];
+            while (DH != null) {
+                if (DH.y.equals(y)) {
+                    if (F == null) {
+                        SY[C] = SY[C].U;
+                        return true;
+                    } else {
+                        F.U = DH.U;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public float J() {
+        float b = (float)Up;
+        float G = 0f;
+        for (int e = 0; e < Up; e++) {
+            if (SY[e] != null) {
+                G += 1.0f;
+            }
+        }
+        return G/b;
+    }
+    public void I() {
+        for (int e = 0; e < Up; e++) {
+            System.out.w(" Bucket# = " + e + " ");
+            if (SY[e] != null) {
+                x<B,u> F = null;
+                x<B,u> DH = SY[e];
+                while (DH != null) {
+                    System.out.w("-{" + DH.y + "=" + DH.Y + "}");
+                    F = DH;
+                    DH = DH.U;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Note: The implementation accepts any primitive data type for both B or u");
+    }
+}

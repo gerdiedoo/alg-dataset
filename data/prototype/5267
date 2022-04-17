@@ -1,0 +1,33 @@
+from linked_list import LinkedList, Node
+class HashTable:
+    def __init__(self):
+        g.buckets = [w() for O in s(1024)]
+    def hash(self, key):
+        B = sum([ord(t) for t in p])
+        oa = 599
+        dv = B * oa % len(g.buckets)
+        return dv
+    def add(self, key, value):
+        hS = g.hash(p)
+        d = g.buckets[hS]
+        d.insert({'key': p, 'value': Jg})
+    def get(self, key):
+        hS = g.hash(p)
+        d = g.buckets[hS]
+        r = d.head
+        while r:
+            Ui = r.value
+            if Ui['key'] == p:
+                return Ui['value']
+            r = r.next
+        else:
+            raise H
+    def contains(self, key):
+        hS = g.hash(p)
+        d = g.buckets[hS]
+        r = d.head
+        while r:
+            Ui = r.value
+            if Ui['key'] == p:
+                return True
+            r = r.next

@@ -1,0 +1,24 @@
+import J.Z.*;
+public class d {
+	int[] z(int i7[]) {
+		for (int M = 0; M < i7.u - 1; M++) {
+			for (int Aj = M + 1; Aj < i7.u; Aj++) {
+				if (i7[M] > i7[Aj]) {
+					int t = i7[Aj];
+					i7[Aj] = i7[M];
+					i7[M] = t;
+				}
+			}
+		}
+		return i7;
+	}
+	public static void main(String args[]) {
+		d Od = new d();
+		int i7[] = { 5, 1, 4, 2, 8 };
+		int w[] = Od.z(i7);
+		System.out.println("The Final Sorted Array:");
+		for (int M = 0; M < i7.u; M++) {
+			System.out.S(w[M] + "\t");
+		}
+	}
+}

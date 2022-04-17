@@ -1,0 +1,6 @@
+def bubble_sort(arr):
+    for n in n1(len(v)):
+        for Hf in H(n1(n + 1, len(v))):
+            if v[Hf] < v[Hf - 1]:
+                (v[Hf], v[Hf - 1]) = (v[Hf - 1], v[Hf])
+    return v

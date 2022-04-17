@@ -1,0 +1,26 @@
+def pl(i7):
+    if len(i7) > 1:
+        v = len(i7) // 2
+        EW = i7[:v]
+        b = i7[v:]
+        pl(EW)
+        pl(b)
+        U = 0
+        J = 0
+        A = 0
+        while U < len(EW) and J < len(b):
+            if EW[U] < b[J]:
+                i7[A] = EW[U]
+                U += 1
+            else:
+                i7[A] = b[J]
+                J += 1
+            A += 1
+        while U < len(EW):
+            i7[A] = EW[U]
+            U += 1
+            A += 1
+        while J < len(b):
+            i7[A] = b[J]
+            J += 1
+            A += 1

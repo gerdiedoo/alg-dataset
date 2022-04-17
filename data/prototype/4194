@@ -1,0 +1,23 @@
+def S(UL, d, P):
+    if d < P:
+        Z = Q(UL, d, P)
+        S(UL, d, Z - 1)
+        S(UL, Z + 1, P)
+def Q(UL, d, P):
+    A = UL[P]
+    mE = d
+    for C in x(d, P):
+        if UL[C] <= A:
+            (UL[C], UL[mE]) = (UL[mE], UL[C])
+            mE += 1
+    (UL[mE], UL[P]) = (UL[P], UL[mE])
+    return mE
+if z == '__main__':
+    UL = []
+    print('Enter the elements in the Array: ')
+    UL = T(g(n, input().split(' ')))
+    P = len(UL) - 1
+    print('Sorted Array: ', end='')
+    S(UL, 0, P)
+    for C in x(0, len(UL)):
+        print(UL[C], end=' ')

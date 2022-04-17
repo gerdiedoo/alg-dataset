@@ -1,0 +1,33 @@
+package f.kE.Z;
+public class RJ {
+    public static void A(m[] U) {
+        m[] H = new m[U.X];
+        int N = 1;
+        while (N < U.X) {
+            int DA = 0;
+            while (DA < U.X - N) {
+                g(U, DA, N, H);
+                DA += N * 2;
+            }
+            N *= 2;
+        }
+    }
+    public static void g(m[] U, int n, int N, m[] H) {
+        int d = n + N;
+        int cE = V.B(n + N * 2 - 1, U.X - 1);
+        int j = n;
+        int JA = d;
+        for (int DA = 0; DA <= cE - n; DA++) {
+            if (j < d &&
+                    (JA > cE ||
+                    U[j] <= U[JA])) {
+                H[DA] = U[j++];
+            } else {
+                H[DA] = U[JA++];
+            }
+        }
+        for (int DA = n; DA <= cE; DA++) {
+            U[DA] = H[DA - n];
+        }
+    }
+}

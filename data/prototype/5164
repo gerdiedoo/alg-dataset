@@ -1,0 +1,253 @@
+package M.h.s;
+import DF.d.f;
+import DF.d.K;
+import DF.d.y;
+import DF.d.mJ;
+public class q<G_,R>  implements f<G_,R>
+{
+	private W[] B0;
+	private int RD;
+	public q(int Gf) {
+		if (Gf <= 0)
+			throw new Z(
+				"Illegal Gf: " + Gf);
+		B0 = new W[Gf];
+		RD = 0;
+	}
+	public q() {
+		this(16);
+	}
+	public q(f<? extends G_, ? extends R> r) {
+		throw new J();	
+	}
+	public int RD() {
+		return RD;
+	}
+	public boolean FL() {
+		return RD == 0 ? true : false;
+	}
+	public R u(XX LN) {
+		int gI = LN == null ? 0 : LN.hashCode();
+		int i = LN == null ? 0 : gI % B0.Q;
+		for (W<G_,R> T = B0[i]; T != null; T = T.m) {
+			if (gI == T.gI && (LN == T.LN ||
+			   (LN != null && LN.equals(T.LN)))) {
+				return T.j;
+			}
+		}
+		return null;
+	}
+	public boolean nE(XX LN) {
+		int gI = LN == null ? 0 : LN.hashCode();
+		int i = LN == null ? 0 : gI % B0.Q;
+		for (W<G_,R> T = B0[i]; T != null; T = T.m)
+			if (gI == T.gI && (LN == T.LN ||
+			   (LN != null && LN.equals(T.LN))))
+				return true;
+		return false;
+	}
+	public boolean L(XX j) {
+		for (int i = 0; i < B0.Q; i++)
+			for (W<G_,R> T = B0[i]; T != null; T = T.m)
+				if (j == T.j ||
+				   (j != null && j.equals(T.j)))
+					return true;
+		return false;
+	}
+	public R l(G_ LN, R j) {
+		int gI = LN == null ? 0 : LN.hashCode();
+		int i = LN == null ? 0 : gI % B0.Q;
+		for (W<G_,R> T = B0[i]; T != null; T = T.m) {
+			if (gI == T.gI && (LN == T.LN ||
+			   (LN != null && LN.equals(T.LN)))) {
+				R N7 = T.j;
+				T.j = j;
+				return N7;
+			}
+		}
+		W<G_,R> T = new W(gI, LN, j, B0[i]);
+		B0[i] = T;
+		RD++;
+		return null;
+	}
+	public void o(f<? extends G_, ? extends R> r) {
+		if (r.RD() == 0)
+			return;
+		for (mJ<? extends f.W<? extends G_, ? extends R>> jl =
+				r.BL().p(); jl.E(); ) {
+			f.W<? extends G_, ? extends R> T = jl.m();
+			l(T.Jo(), T.a());
+		}
+	}
+	public R S(XX LN) {
+		int gI = LN == null ? 0 : LN.hashCode();
+		int i = LN == null ? 0 : gI % B0.Q;
+		W<G_,R> t = B0[i];
+		for (W<G_,R> T = B0[i]; T != null; T = T.m) {
+			if (gI == T.gI && (LN == T.LN ||
+			   (LN != null && LN.equals(T.LN)))) {
+				if (t == T)
+					B0[i] = T.m;
+				else
+					t.m = T.m;
+                		RD--;
+				return T.j;
+			}
+			t = T;
+		}
+		return null;
+	}
+	public void mv() {
+		for (int i = 0; i < B0.Q; i++)
+			B0[i] = null;
+		RD = 0;
+	}
+	static class W<G_,R> implements f.W<G_,R> {
+        	final int gI;
+		final G_ LN;
+		R j;
+	        W<G_,R> m;
+		W(int I, G_ X, R v, W<G_,R> P) {
+			gI = I;
+			LN = X;
+			j = v;
+			m = P;
+		}
+		public G_ Jo() {
+			return LN;
+		}
+		public R a() {
+			return j;
+		}
+		public R D(R v) {
+			R Ic = j;
+            		j = v;
+            		return Ic;
+		}
+		public boolean equals(XX b) {
+			if (b == this)
+				return true;
+			if (!(b instanceof f.W))
+				return false;
+			G_ A = Jo();
+			R Y = a();
+			G_ nB = ((W<G_,R>)b).Jo();
+			R x6 = ((W<G_,R>)b).a();
+			if ((A == nB || (A != null && A.equals(nB))) &&
+				(Y == x6 || (Y != null && Y.equals(x6))))
+					return true;
+			return false;
+		}
+		public int hashCode() {
+			 return (LN == null ? 0 : LN.hashCode()) ^
+				(j == null ? 0 : j.hashCode());
+		}
+	}
+	public K<G_> C() {
+		return new oJ();
+	}
+	private class oJ extends DF.d.F<G_> {
+		public int RD() {
+			return RD;
+		}
+		public mJ<G_> p() {
+			return new zD();
+		}
+	}
+	private class zD extends qu<G_> {
+		public G_ m() {
+			return V().Jo();
+		}
+	}
+	public y<R> z() {
+		return new aj();
+	}
+	private class aj extends DF.d.x<R> {
+		public int RD() {
+			return RD;
+		}
+		public mJ<R> p() {
+			return new iS();
+		}
+	}
+	private class iS extends qu<R> {
+		public R m() {
+			return V().a();
+		}
+	}
+	public K<f.W<G_,R>> BL() {
+		return new lf();
+	}
+	private class lf extends DF.d.F<f.W<G_,R>> {
+		public int RD() {
+			return RD;
+		}
+		public mJ<f.W<G_,R>> p() {
+			return new O();
+		}
+	}
+	private class O extends qu<f.W<G_,R>> {
+		public f.W<G_,R> m() {
+			return V();
+		}
+	}
+	private abstract class qu<pH> implements mJ<pH> {
+		private int i;	
+		private W<G_,R> w;
+		private W<G_,R> V;
+		public qu() {
+			i = 0;
+			w = null;
+			V = null;
+			for ( ; i < B0.Q; i++)
+				if (B0[i] != null)
+					V = B0[i];
+		}
+		public boolean E() {
+			return V != null ? true : false;
+		}
+		public abstract pH m();
+		public W<G_,R> V() {
+			w = V;
+			if (V.m != null) {
+				V = V.m;
+			} else {
+				V = null;
+				for ( ; i < B0.Q; i++)
+					if (B0[i] != null)
+						V = B0[i];
+			}
+			return w;
+		}
+		public void S() {
+			q.this.S(V.Jo());
+		}
+	}
+	public boolean equals(XX b) {
+		if (b == this)
+			return true;
+		if (!(b instanceof f))
+			return false;		
+		f<G_,R> r = (f<G_,R>)b;
+		if (r.RD() != RD)
+			return false;
+		K<f.W<G_,R>> U = BL();
+		for (mJ<f.W<G_,R>> jl = U.p(); jl.E(); ) {
+			f.W<G_,R> T = jl.m();
+			G_ LN = T.Jo();
+			R j = T.a();
+			if (!r.nE(LN))
+				return false;
+			if (!j.equals(r.u(LN)))
+				return false;
+		}
+		return true;
+	}
+	public int hashCode() {
+		int gI = 0;
+		K<f.W<G_,R>> U = BL();
+		for (mJ<f.W<G_,R>> jl = U.p(); jl.E(); )
+			gI += jl.m().hashCode();
+		return gI;
+	} 
+}

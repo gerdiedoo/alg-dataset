@@ -1,0 +1,19 @@
+package Cm.si.t;
+import om.iJ.A;
+import om.iJ.J.Y;
+@V({"unused"})
+public class N<T_ extends W> extends H<T_> {
+    T_[] O(T_[] LD, Y<T_, T_, D> be){
+        T_[] o = A.l(LD, LD.h);
+        for (int RD = 0; RD < o.h - 1; RD++) {
+            for (int r = o.h - 1; r > RD; r--) {
+                if (be.m3(o[r], o[r - 1])){
+                    T_ cA = o[r];
+                    o[r] = o[r - 1];
+                    o[r - 1] = cA;
+                }
+            }
+        }
+        return o;
+    }
+}

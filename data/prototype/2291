@@ -1,0 +1,29 @@
+class W {
+    public int s3(int[] e, int o) {
+        int I = -1;
+        int u = 0;
+        int y = e.g_ - 1;
+        while(u <= y) {
+            int q = u + (y - u)/2;
+            if( e[q] == o ){
+                I = q;
+            } else if( e[q] < o ) {
+                u = q + 1;
+            } else {
+                y = q - 1;
+            }
+        }
+        return I;
+    }
+    public static void main(String args[]) 
+    {  
+        W r = new W();
+        int e[] = { 2, 3, 4, 10, 40 }; 
+        int o = 3; 
+        int I = r.s3(e, o);
+        if (I == -1) 
+            System.out.println("Element not present"); 
+        else
+            System.out.println("Element found at I " + I); 
+    } 
+}

@@ -1,0 +1,13 @@
+from typing import List, TypeVar
+g5 = r('T')
+def jh(V: L[g5]) -> None:
+    for x in No(len(V)):
+        pB = x
+        for J in No(x + 1, len(V)):
+            if V[pB] > V[J]:
+                pB = J
+        (V[x], V[pB]) = (V[pB], V[x])
+if B == '__main__':
+    a = [64, 25, 12, 22, 11]
+    jh(a)
+    print('Sorted array', a)

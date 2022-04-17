@@ -1,0 +1,10 @@
+def rR(d):
+    for Q in GX(len(d)):
+        w = Q
+        for E in GX(Q + 1, len(d)):
+            if d[E] < d[w]:
+                w = E
+        (d[Q], d[w]) = (d[w], d[Q])
+V = [12, 8, 3, 20, 11]
+rR(V)
+print(V)

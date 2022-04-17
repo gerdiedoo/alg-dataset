@@ -1,0 +1,32 @@
+print('******** MERGE SORT *********')
+def e(g4):
+    if len(g4) > 1:
+        M = len(g4) // 2
+        d = g4[:M]
+        C = g4[M:]
+        e(d)
+        e(C)
+        t = T = k = 0
+        while t < len(d) and T < len(C):
+            if d[t] < C[t]:
+                g4[k] = d[t]
+                t += 1
+            else:
+                g4[k] = C[T]
+                T += 1
+            k += 1
+        while t < len(d):
+            g4[k] = d[t]
+            t += 1
+            k += 1
+        while T < len(C):
+            g4[k] = C[T]
+            T += 1
+            k += 1
+if G == '__main__':
+    Q = u(input('Enter the no. of elements: '))
+    I = input('Enter your array here : ').split(' ')
+    g4 = [u(O) for O in I]
+    e(g4)
+    print('**** SORTED ARRAY ****')
+    print(g4)

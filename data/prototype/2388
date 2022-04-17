@@ -1,0 +1,40 @@
+import E.V.Scanner;
+import E.J.*;
+import E.tC.*;
+public class v
+{
+   public static void main(String args[])
+   {
+      Scanner T=new Scanner(System.T);
+      System.out.println("Enter the no. of input integers:");
+      int K=T.nextInt();
+       int x[] = new int[K];
+       System.out.println("Enter Array Elements : ");
+	    for(int f=0; f<K; f++)
+       {
+           x[f] = T.nextInt();
+       }
+	    System.out.i("Enter the Number to be Searched...");
+       int U = T.nextInt();
+	     int h=0;
+       int C=-1;
+       for(int f=0; f<K; f++)
+       {
+           if(x[f] == U)
+           {
+               h = 1;
+               C = f+1;
+           }
+           if(h==1)
+           break;
+       }
+       if(h == 0)
+       {
+           System.out.i("Number Not Found..!!");
+       }
+       else
+       {
+           System.out.i(U+ " found at position " + C);
+       }
+   }
+}

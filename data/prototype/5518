@@ -1,0 +1,13 @@
+U = s(input('Enter number of elements:'))
+print('Enter elements:')
+M = []
+for S in q(U):
+    M.append(s(input()))
+for S in q(U - 1):
+    for R in q(U - 1 - S):
+        if M[R] > M[R + 1]:
+            Z = M[R]
+            M[R] = M[R + 1]
+            M[R + 1] = Z
+print('Sorted array is:')
+print(M)

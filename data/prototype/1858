@@ -1,0 +1,163 @@
+package X;  
+import OG.f.y.k.s;
+import OG.f.y.k.E8;
+import OG.f.y.If.g;
+public class J<B, V> {
+    int T, M;
+    K<ie<B, V>>[] l;
+    private final g Du = new g(0);
+    private final g R = new g(0);
+    private final s H = new E8();
+    protected long hz() {
+        return R.AX();
+    }
+    protected long P() {
+        return Du.AX();
+    }
+    protected K<ie<B,V>>[] N() {
+        return l;
+    }
+    private J(int T, int M, long Du, long R){
+        this(T, M);
+        this.Du.w(Du);
+        this.R.w(R);
+    }
+    public J(int T, int M){
+        this.T = T;
+        this.M = M;
+        l = new K[T];
+        for (int AD = 0; AD < T; AD++) {
+            l[AD] =  new K<ie<B, V>>();
+            l[AD].E(0, new ie<B, V>());
+        }
+        Du.w(1);
+        R.w(1);
+    }
+    public int lb(B tK){
+        if (tK == null)
+            return 0;
+        int F = tK.hashCode();
+        F += (F <<  15) ^ 0xffffcd7d;
+        F ^= (F >>> 10);
+        F += (F <<   3);
+        F ^= (F >>>  6);
+        F += (F <<   2) + (F << 14);
+        return D4.Cl((F ^ (F >>> 16)) % T);
+    }
+    public int lp(B tK){
+        if (tK == null)
+            return 0;
+        int F = tK.hashCode();
+        F += (F <<  15) ^ 0xffffcd4d;
+        F ^= (F >>> 10);
+        F += (F <<   3);
+        F ^= (F >>>  6);
+        F += (F <<   2) + (F << 14);
+        F ^= (F >>> 16);
+        return D4.Cl((F / 11) % T);
+    }
+    private void E(long q, ie H1, int Pr){
+        l[Pr].E(q, H1);
+    }
+    public void n(B tK, V Dr) throws t {
+        if(tK == null || Dr == null) throw new j();
+        try{
+            H.H();
+            long q = Du.S();
+            ie<B, V> D = new ie<B, V>(tK, Dr);
+            int[] G = new int[M];
+            for(int AD = 0; AD < M; AD++) {
+                int Pr = lb(D.tK);
+                ie jy = l[Pr].We();
+                if(jy.equals(new ie())){
+                    E(q, D, Pr);
+                    R.w(q);
+                    return;
+                }
+                Pr = lp(D.tK);
+                jy = l[Pr].We();
+                if(jy.equals(new ie())){
+                    E(q, D, Pr);
+                    R.w(q);
+                    return;
+                }
+                E(q, D, Pr);
+                G[AD] = Pr;
+                D = jy;
+            }
+            for(int AD=0; AD < M; AD++){
+                l[G[AD]].W(q);
+            }
+            throw new t("Key " + tK + " Could not be inserted due to tight table");
+        }finally{
+            H.p();
+        }
+    }
+    public V AX(B tK) {
+        long Y = R.AX();
+        int Pr = lb(tK);
+        ie<B, V> H1 = l[Pr].Q(Y);
+        if(H1.tK != null && H1.tK.equals(tK)) {
+            return H1.Dr;
+        }
+        Pr = lp(tK);
+        H1 = l[Pr].Q(Y);
+        if(H1.tK != null && H1.tK.equals(tK)){
+            return H1.Dr;
+        }
+        return null;
+    }
+    public boolean W(B tK){
+        try{
+            H.H();
+            long q = Du.S();
+            int Pr = lb(tK);
+            ie H1 = l[Pr].Q(R.AX());
+            if(H1.tK != null && H1.tK.equals(tK)){
+                E(q, new ie(), Pr);
+                R.w(q);
+                return true;
+            }
+            Pr = lp(tK);
+            H1 = l[Pr].Q(R.AX());
+            if(H1.tK != null && H1.tK.equals(tK)){
+                E(q, new ie(), Pr);
+                R.w(q);
+                return true;
+            }
+            return false;
+        }finally{
+            H.p();
+        }
+    }
+    private class ie<B, V> {
+        public B tK;
+        public V Dr;
+        public ie() {
+        }
+        public B U() {
+            return tK;
+        }
+        public V yH() {
+            return Dr;
+        }
+        public ie(B tK, V Dr) {
+            this.tK = tK;
+            this.Dr = Dr;
+        }
+        @h
+        public boolean equals(Z b) {
+            if (this == b) return true;
+            if (b == null || BG() != b.BG()) return false;
+            ie<?, ?> C = (ie<?, ?>) b;
+            if (tK != null ? !tK.equals(C.tK) : C.tK != null) return false;
+            return Dr != null ? Dr.equals(C.Dr) : C.Dr == null;
+        }
+        @h
+        public int hashCode() {
+            int a = tK != null ? tK.hashCode() : 0;
+            a = 31 * a + (Dr != null ? Dr.hashCode() : 0);
+            return a;
+        }
+    }
+}

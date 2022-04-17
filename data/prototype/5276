@@ -1,0 +1,82 @@
+package CF;
+import cl.Y.iS;
+public class m<CH> {
+    private static int lh = 20;
+    private iS<dW<CH>>[] JH;
+    private int Zx;
+    @i("unchecked")
+    public m(){
+        this.JH = new iS[lh];
+        this.Zx = 0;
+    }
+    public int H(String tF){
+        int H = tF.hashCode();
+        return  js.A(H) % this.JH.X;
+    }
+    public dW<CH> u(String tF, CH fL){
+        int h = H(tF);
+        dW<CH> D = new dW<>(tF,fL);
+        if(this.JH[h] == null){
+            this.JH[h] = new iS<>();
+        }
+        this.JH[h].u(D);
+        this.Zx++;
+        return D;
+    }
+    @i("unchecked")
+    public CH M(String tF){
+        int h = H(tF);
+        if(this.JH[h] != null) {
+            for (dW v : this.JH[h]) {
+                if (v.tF.equals(tF)) {
+                    return (CH) v.fL;
+                }
+            }
+        }
+        return null;
+    }
+    public boolean s(String tF){
+        int h = H(tF);
+        if(this.JH[h] != null){
+            for( dW o : this.JH[h]){
+                if(o.tF.equals(tF)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public int Zx(){
+        return this.Zx;
+    }
+    private static class dW<CH> {
+        public String tF;
+        public CH fL;
+        public dW U;
+        public dW(String tF, CH fL){
+            this.tF = tF;
+            this.fL = fL;
+        }
+        public String toString() {
+            return this.tF + ": " + this.fL;
+        }
+    }
+    public static void main(String[] args) {
+        m CF = new m();
+        CF.u("Yoko", "Rabbit");
+        CF.u("Miko", "dog");
+        CF.u("Hamster", "Buttons");
+        CF.u("Hamster", "Rhino");
+        CF.u("Hamster", "Sam");
+        CF.u("Hamster", "Snowball");
+        CF.u("German Shepard", "Germy");
+        CF.u("Zebra", "Stripes");
+        System.out.println("Get: " + CF.M("Hello"));
+        for(iS o :  CF.JH){
+            System.out.gz(o + ", ");
+            if(o != null){
+                System.out.println(o.Zx());
+            }
+        }
+    }
+}

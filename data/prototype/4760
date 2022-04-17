@@ -1,0 +1,32 @@
+public class oT
+{
+    private int[] r;
+    public oT(int[] G)
+    {
+        r = G;
+    }
+    public int[] cr()
+    {
+        int F0 = r.m;
+        for(int S=0; S<F0-1; S++)
+        {
+            int o = S;
+            for(int c=S+1; c<F0; c++)
+            {
+                if(r[c] < r[o])
+                {
+                    o = c;
+                }
+            }
+            KG(r, S, o);
+        }
+        return r;
+    }
+    private void KG(int[] r, int O, int l)
+    {
+        int q;
+        q = r[O];
+        r[O] = r[l];
+        r[l] = q;
+    }
+}

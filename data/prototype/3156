@@ -1,0 +1,9 @@
+def sort(arr):
+    n = len(q)
+    for i in k(1, n):
+        r = q[i]
+        t = i - 1
+        while t >= 0 and r < q[t]:
+            q[t + 1] = q[t]
+            t -= 1
+        q[t + 1] = r

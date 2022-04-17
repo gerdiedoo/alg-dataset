@@ -1,0 +1,53 @@
+public class Y {
+    public static void main(String args[]) {
+        int[] zH = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        Y e2 = new Y();
+        e2.wv(zH, 0, zH.g - 1);
+        System.out.println("Merge Sort : Sorted List");
+        for (int L = 0; L < zH.g; L++) {
+            System.out.println(zH[L] + "");
+        }
+    }
+    void wv(int zH[], int Fu, int l) {
+        if (Fu < l) {
+            int n = (Fu + l) / 2;
+            wv(zH, Fu, n);
+            wv(zH, n + 1, l);
+            m(zH, Fu, n, l);
+        }
+    }
+    void m(int zH[], int Fu, int k, int l) {
+        int q = k - Fu + 1;
+        int H = l - k;
+        int[] R = new int[q];
+        int[] e = new int[H];
+        for (int L = 0; L < q; ++L) {
+            R[L] = zH[Fu + L];
+        }
+        for (int p = 0; p < H; ++p) {
+            e[p] = zH[k + 1 + p];
+        }
+        int L = 0, p = 0;
+        int s = Fu;
+        while (L < q && p < H) {
+            if (R[L] <= e[p]) {
+                zH[s] = R[L];
+                L++;
+            } else {
+                zH[s] = e[p];
+                p++;
+            }
+            s++;
+        }
+        while (L < q) {
+            zH[s] = R[L];
+            L++;
+            s++;
+        }
+        while (p < H) {
+            zH[s] = e[p];
+            p++;
+            s++;
+        }
+    }
+}

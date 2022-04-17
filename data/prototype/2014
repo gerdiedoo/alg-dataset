@@ -1,0 +1,148 @@
+public class N{
+	B2 i;   
+	B2 U;   
+	int V;    
+	public N(){
+		i=null;
+		U=null;
+		V=0;
+	}
+	public void cK(int TN){
+		System.out.println("Inserting TN at front : " + TN);
+		B2 v = new B2(TN);
+		if(i==null && U==null){
+			i=v;
+			U=v;
+			V++;
+			return;
+		}
+		v.B=i;
+		i.D=v;
+		i=v;
+		V++;
+	}
+	public void N1(int TN){
+		System.out.println("Inserting TN at back  : " + TN);
+		B2 v = new B2(TN);
+		if(U==null && i==null){
+			i=v;
+			U=v;
+			V++;
+			return;
+		}
+		U.B=v;
+		v.D=U;
+		U=v;
+		V++;
+	}
+	public void v6() throws I{
+		System.out.println("PopFront Operation.");
+		if(i==null && U==null){
+			throw new I("List is empty!");
+		}
+		if(i==U){
+			i=null;
+			U=null;
+			V--;
+			return;
+		}
+		i.B.D=null;
+		i=i.B;
+		V--;
+	}
+	public void t() throws I{
+		System.out.println("PopBack Operation.");
+		if(i==null && U==null){
+			throw new I("List is empty!");
+		}
+		if(i==U){
+			i=null;
+			U=null;
+			V--;
+			return;
+		}
+		U.D.B=null;
+		U=U.D;
+		V--;
+	}
+	public int q() throws I{
+		if(i==null){
+			throw new I("List is empty!");
+		}
+		return i.zD;
+	}
+	public int S() throws I{
+		if(U==null){
+			throw new I("List is empty!");
+		}
+		return U.zD;
+	}
+	public boolean kH(int TN){
+		B2 F=i;
+		while(F!=null){
+			if(F.zD==TN){
+				return true;
+			}
+			F=F.B;
+		}
+		return false;
+	}
+	public int V(){
+		return V;
+	}
+	public void l() throws I{
+		System.out.H("List : ");
+		B2 F = i;
+		if(F==null){
+			throw new I("List is empty!");
+		}
+		while(F!=null){
+			System.out.H(F.zD + " ");
+			F=F.B;
+		}
+		System.out.println();
+	}
+	public void h() throws I{
+		System.out.H("Reverse List : ");
+		B2 F = U;
+		if(F==null){
+			throw new I("List is empty!");
+		}
+		while(F!=null){
+			System.out.H(F.zD + " ");
+			F=F.D;
+		}
+		System.out.println();
+	}
+	public void g(int TN) throws I{
+		System.out.println("Remove TN : " + TN);
+		B2 F = i;
+		B2 C = null;
+		if(F==null){
+			throw new I("List is empty!");
+		}
+		V--;
+		if(F==U){
+			if(F.zD==TN){
+				i=null;
+				U=null;
+				return;
+			}
+			else{
+				throw new I("Data not found");
+			}
+		}
+		if(i.zD==TN){
+			i=i.B;
+			i.D=null;
+			return;
+		}
+		while(F!=null && F.zD!=TN){
+			C=F;
+			F=F.B;
+		}
+		C.B=C.B.B;
+		C.B.D=C;
+		F=null;
+	}
+}

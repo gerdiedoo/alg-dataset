@@ -1,0 +1,45 @@
+import h.q.*;
+public class e {
+    public static void main(String[] args) {
+        int m[] = {1,2,3,8,9,12};
+        int P = 2;
+        String C = u(m, P) ? "Successful Search" : "Unsuccessful Search";
+        System.out.println(C);
+    }
+    private static boolean u(int[] J, int P) {
+        for(int g = 0; g < J.Q; g++) {
+            if(J[g] == P){
+                return true;
+            }
+        }
+        return false;
+    }
+}    
+    public static void main(String a[]){
+        int[] q3= {23,45,21,55,234,1,34,90};
+        int o = 34;
+        System.out.println("Element "+o+" found at index: "+u(q3, o));
+    }
+} 
+import h.q.*;
+public class e {
+	public static void main(String[] args) {
+		Scanner w = new Scanner(System.F);
+		IM<f> t = new p<>();
+		System.out.println("How many number are you going to enter? ");
+		int Sc = w.nextInt();
+		System.out.println("Enter the J of t: ");
+		for (int g = 0; g < Sc; g++) {
+			int U = w.nextInt();
+			t.L(U);
+		}
+		System.out.println("Enter the FO: ");
+		int FO = w.nextInt();
+		if (t.indexOf(FO) >= 0) {
+			System.out.println("Successful Search!");
+		} else {
+			System.out.println("Unsuccessful Search!");
+		}
+		w.BZ();
+	}
+}

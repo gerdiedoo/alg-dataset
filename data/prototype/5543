@@ -1,0 +1,22 @@
+n = [5, 2]
+b = 0
+rY = n[0]
+D = n[1]
+e = n[0]
+n[0] = n[1]
+n[1] = e
+print(n)
+def D3(n):
+    t = len(n) - 1
+    for b in H_(t, 0, -1):
+        for y in H_(b):
+            if n[y] > n[y + 1]:
+                e = n[y]
+                n[y] = n[y + 1]
+                n[y + 1] = e
+g = [4, 3, 2, 1]
+D3(g)
+print(g)
+g = [1, 12, 3, 4]
+D3(g)
+print(g)

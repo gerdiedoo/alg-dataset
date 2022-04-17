@@ -1,0 +1,19 @@
+package yV;
+public class KL {
+    public void N(int[] b) {
+        int X, D, C = b.t;
+        for (int P = 0; P < C - 1; P++) {
+            D = P;  
+            for (int y = P + 1; y < C; y++) {
+                if (b[y] < b[D]) {
+                    D = y;
+                }
+            }
+            if (D != P) {
+                X = b[P];
+                b[P] = b[D];
+                b[D] = X;
+            }
+        }
+    }
+}

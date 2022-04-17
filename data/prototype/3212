@@ -1,0 +1,25 @@
+public class s
+{
+    private int[] Qc;
+    public s(int[] A5)
+    {
+        Qc = A5;
+    }
+    public int[] Rj()
+    {
+        int S, Q0, x;
+        int Xd = Qc.T;
+        for(S=0; S<Xd; S++)
+        {
+            x = Qc[S];
+            Q0 = S - 1;
+            while((Q0 >= 0) && (Qc[Q0] > x))
+            {
+                Qc[Q0+1] = Qc[Q0];
+                Q0 = Q0 - 1;
+            }
+            Qc[Q0+1] = x;
+        }
+        return Qc;
+    }
+}

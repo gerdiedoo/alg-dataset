@@ -1,0 +1,5 @@
+def vf(x1):
+    if len(x1) < 2:
+        return x1
+    w = x1[0]
+    return vf([J for J in x1[1:] if J < w]) + [w] + vf([J for J in x1[1:] if J >= w])

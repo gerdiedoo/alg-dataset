@@ -1,0 +1,29 @@
+package C.q.v.wp.b;
+public class G extends pY {
+  @O
+  boolean a(int[] TW, int n, int D,
+                        boolean X) {
+    boolean k = false;
+    if (!X) {
+      for (int U = n; U < D - 1; U++) {
+        int e = TW[U];
+        int m = TW[U + 1];
+        if (e > m) {
+          TW[U + 1] = e;
+          TW[U] = m;
+          k = true;
+        }
+      }
+    }
+    else if (D < TW.L - 1) {
+      int e = TW[D - 1];
+      int m = TW[D];
+      if (e > m) {
+        TW[D] = e;
+        TW[D - 1] = m;
+        k = true;
+      }
+    }
+    return k;
+  }
+}

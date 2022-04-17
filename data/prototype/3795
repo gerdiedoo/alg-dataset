@@ -1,0 +1,26 @@
+def l(J):
+    if len(J) > 1:
+        w = len(J) // 2
+        DB = J[:w]
+        I = J[w:]
+        l(DB)
+        l(I)
+        Eb = 0
+        Jo = 0
+        U = 0
+        while Eb < len(DB) and Jo < len(I):
+            if DB[Eb] < I[Jo]:
+                J[U] = DB[Eb]
+                Eb += 1
+            else:
+                J[U] = I[Jo]
+                Jo += 1
+            U += 1
+        while Eb < len(DB):
+            J[U] = DB[Eb]
+            Eb += 1
+            U += 1
+        while Jo < len(I):
+            J[U] = I[Jo]
+            Jo += 1
+            U += 1

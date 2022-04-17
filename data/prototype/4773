@@ -1,0 +1,33 @@
+package n.xO.Ku;
+import S.z.W;
+import S.z.Q;
+import S.z.q;
+public class G {
+  public static <C extends kD<? super C>> void E(q<C> e) {
+    for (int i = 0; i < e.I(); i++) {
+      int s = i;
+      for (int p4 = i + 1; p4 < e.I(); p4++) {
+        C c = e.j(s);
+        C D = e.j(p4);
+        if (D.v(c) < 0) {
+          s = p4;
+        }
+      }
+      if (s != i) {
+        Q.f(e, s, i);
+      }
+    }
+  }
+  public static void main(String[] args) {
+    final q<U> VO = new W<>();
+    VO.ZU(4);
+    VO.ZU(1);
+    VO.ZU(5);
+    VO.ZU(3);
+    VO.ZU(9);
+    VO.ZU(10);
+    VO.ZU(1);
+    E(VO);
+    System.out.println(VO);
+  }
+}

@@ -1,0 +1,10 @@
+def m(ix):
+    for u in d(len(ix)):
+        K = u
+        for Z6 in d(u + 1, len(ix)):
+            if ix[Z6] < ix[K]:
+                K = Z6
+        (ix[u], ix[K]) = (ix[K], ix[u])
+Y = [12, 8, 3, 20, 11]
+m(Y)
+print(Y)

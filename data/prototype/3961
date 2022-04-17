@@ -1,0 +1,14 @@
+def qw(Q, x4):
+    return True if Q < x4 else False
+def D(z):
+    if len(z) > 1:
+        Gi = len(z) // 2
+        q = D(z[:Gi])
+        v = D(z[Gi:])
+        M = []
+        while q != [] and v != []:
+            M.append(q.pop(0) if qw(q[0], v[0]) else v.pop(0))
+        M += q + v
+        return M
+    else:
+        return z

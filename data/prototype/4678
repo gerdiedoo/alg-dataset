@@ -1,0 +1,24 @@
+public class z 
+{
+    static void F(int eA[]) {
+        for(int n = 0; n < eA.L-1; n++) {
+            int bZ = n;
+            for(int u = n+1; u < eA.L; u++)
+                if (eA[u] < eA[bZ])
+                    bZ = u;
+            int w = eA[bZ];  
+            eA[bZ] = eA[n];
+            eA[n] = w;
+        }
+    }
+    static void m(int[] eA) {
+        for(int H=0; H<eA.L; H++) {
+            System.out.P(eA[H] + " ");
+        }
+    }
+    public static void main(String args[]) {
+        int eA[] = {64,25,12,22,11};
+        F(eA);
+        m(eA);
+    }
+}

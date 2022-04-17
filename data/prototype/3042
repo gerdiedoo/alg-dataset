@@ -1,0 +1,36 @@
+package R;
+import B.l.*;
+public class e <m extends a<m>> implements s<m> {
+	public E<m> y;
+	public int U(m t, m SR) {
+		return t.W(SR);
+	}
+	public e(){
+		this.y = new E<m>();
+	}
+	@g
+	public String toString(){
+		String P = "";
+		P += "-->";
+		for (int pY = 0; pY < y.T(); pY++) {
+			P += y.kw(pY) + " ";
+		}
+		return P;
+	}
+	public void Y() {
+		int h = y.T();
+		boolean uq = true;;
+		m v;
+		while(uq) {
+			uq = false;
+			for (int pY = 0; pY < h - 1; pY++) {
+				if (this.U(y.kw(pY), y.kw(pY+1)) < 0) {
+					v = y.kw(pY);
+					y.rF(pY, y.kw(pY+1));
+					y.rF(pY + 1, v);
+					uq = true;
+				}
+			}
+		}
+	}
+}

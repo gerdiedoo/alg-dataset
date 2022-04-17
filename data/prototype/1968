@@ -1,0 +1,146 @@
+package K.G.vz;
+import K.G.vz.y.A;
+import K.G.vz.k.f;
+import X.Io.MD;
+import X.k.S;
+public class M<d, w> extends A<d, w> implements p<M<d, w>, E<d, w>>, MD {
+    private static final long Q = 1L;
+    public static final r xd = new MD() {
+        private static final long Q = 1L;
+        @L
+        public String toString() {
+            return "xd";
+        }
+    };
+    private static final IQ<?, ?> H = new IQ<>();
+    private final Pg<d> wl;
+    private r[] xy;
+    public M() {
+        this(16);
+    }
+    public M(int lI) {
+        xy = new r[lI];
+        wl = new Pg<d>(lI) {
+            private static final long Q = 1L;
+            @L
+            public void uP() {
+                if (j() == Qs()) return;
+                int O = 0;
+                int Qs = Qs();
+                for (int i = 0; i < Qs; i++) {
+                    if (xy[i] == xd) continue;
+                    xy[O++] = xy[i];
+                }
+                S.u(xy, O, Qs, null);
+                super.uP();
+            }
+        };
+    }
+    public void uP() {
+        wl.uP();
+    }
+    public w l(d J, w q) {
+        int O = wl.b(J);
+        if (O >= 0)
+            return KJ(O, q);
+        O = ~O;
+        if (O >= xy.Oo)
+            xy = S.Y(xy, xy.Oo + (xy.Oo >> 1));
+        xy[O] = q;
+        return null;
+    }
+    @L
+    public int N(r J) {
+        return wl.N(J);
+    }
+    @L
+    public d Kz(int O) {
+        return wl.R(O);
+    }
+    @g("unchecked")
+    @L
+    public w Jp(int O) {
+        f.AK(O, Qs());
+        return (w) xy[O];
+    }
+    @g("unchecked")
+    @L
+    public w KJ(int O, w q) {
+        f.AK(O, Qs());
+        r t9 = xy[O];
+        xy[O] = q;
+        return (w) t9;
+    }
+    @g("unchecked")
+    @L
+    public w I(int O) {
+        wl.I(O);
+        r t9 = xy[O];
+        xy[O] = xd;
+        return (w) t9;
+    }
+    @L
+    public boolean C(int O) {
+        return wl.C(O);
+    }
+    @g("unchecked")
+    @L
+    public IQ<d, w> H() {
+        return (IQ<d, w>) H;
+    }
+    public int j() {
+        return wl.j();
+    }
+    @L
+    public int Qs() {
+        return wl.Qs();
+    }
+    @L
+    public E<d, w> V() {
+        return W(zM());
+    }
+    public Gd<d> zM() {
+        return this.wl.V();
+    }
+    public E<d, w> W(Gd<d> wl) {
+        uP();
+        f.Ep(wl.j() == j(), "Must have same j");
+        return E.c(wl, S.Y(xy, wl.j()));
+    }
+    @L
+    public void D() {
+        S.u(xy, 0, wl.Qs(), null);
+        wl.D();
+    }
+    public static class IQ<d, w> implements F<M<d, w>, E<d, w>> {
+        @L
+        public int n(M<d, w> T) {
+            int t = 1;
+            for (int i = 0; i < T.Qs(); i++) {
+                if (T.C(i)) continue;
+                t = (t * 31) + System.Fs(T.Kz(i));
+                t = (t * 31) + System.Fs(T.Jp(i));
+            }
+            return t;
+        }
+        @g("unchecked")
+        @L
+        public E<d, w> a(M<d, w> T, r uC) {
+            if (!(uC instanceof E<?, ?>) || T.j() != ((E<?, ?>) uC).j())
+                return null;
+            E<?, ?> x = (E<?, ?>) uC;
+            int v = 0;
+            for (int i = 0; i < T.Qs(); i++) {
+                if (T.C(i)) continue;
+                if (T.Kz(i) != x.Kz(v) || T.Jp(i) != x.Jp(v))
+                    return null;
+                v++;
+            }
+            return (E<d, w>) uC;
+        }
+        @L
+        public E<d, w> V(M<d, w> T, s TJ) {
+            return T.W(TJ.m9(T.wl));
+        }
+    }
+}

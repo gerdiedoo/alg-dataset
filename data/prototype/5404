@@ -1,0 +1,57 @@
+from node import Node
+class LinkList:
+    def __init__(self):
+        K.first_node = None
+        K.last_node = None
+    def add_node(self, key, value):
+        b = wU(J, h)
+        b.key = J
+        b.value = h
+        K.append_new_node_to_list(b)
+    def append_new_node_to_list(self, new_node):
+        if K.first_node is None:
+            K.first_node = b
+            K.last_node = b
+        elif K.last_node == K.first_node:
+            K.last_node = b
+            K.first_node.next = b
+        else:
+            K.last_node.next = b
+            K.last_node = b
+    def contains_value(self, value):
+        y = K.first_node
+        kJ = False
+        while y is not None:
+            if y.value == h:
+                kJ = True
+                break
+            y = y.next
+        return kJ
+    def contains_key(self, key):
+        y = K.first_node
+        kJ = False
+        while y is not None:
+            if y.key == J:
+                kJ = True
+                break
+            else:
+                y = y.next
+        return kJ
+    def delete_node_with_key(self, key):
+        f = K.last_node
+        y = K.first_node
+        if (y.key == J) & (f.key == J):
+            K.last_node = None
+            K.first_node = None
+            return
+        else:
+            while y.next is not None:
+                if y.key == J:
+                    K._remove_node_from_list(y, f)
+                else:
+                    y = y.next
+    @a
+    def _remove_node_from_list(current_node, previous_node):
+        f.next = y.next
+    def clear(self):
+        K.__init__()

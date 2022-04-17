@@ -1,0 +1,35 @@
+package c.x;
+public class t implements E {
+    private int J[];
+    private int P4;
+    public void rQ(int m, int Z[]) {
+        P4 = m;
+        J = Z;
+        k(0, P4 - 1);
+    }
+    public void k(int R, int h) {
+        int L, hj, I;
+        q(R, (int) (R + h) / 2);
+        I = R;
+        for (L = R + 1; L <= h; L++) {
+            if (J[L] < J[R]) {
+                I++;
+                q(I, L);
+            }
+        }
+        q(R, I);
+        hj = I;
+        if (R < hj - 1) {
+            k(R, hj - 1);
+        }
+        if (hj + 1 < h) {
+            k(hj + 1, h);
+        }
+    }
+    private int d;
+    public void q(int p, int y) {
+        d = J[p];
+        J[p] = J[y];
+        J[y] = d;
+    }
+}

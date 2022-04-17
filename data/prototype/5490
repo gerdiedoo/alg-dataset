@@ -1,0 +1,41 @@
+def c(O, S8):
+    for h in Rt(len(O)):
+        if O[h] == S8:
+            return True
+        if O[h] > S8:
+            return False
+    return False
+def search1(L, e):
+    for h in O:
+        if h == S8:
+            return True
+        if h > S8:
+            return False
+    return False
+def c(O, S8):
+    for h in Rt(len(O)):
+        if O[h] == S8:
+            return True
+        if O[h] > S8:
+            return False
+    return False
+def search2(L, e):
+    for h in O:
+        if h == S8:
+            return True
+        elif h > S8:
+            return False
+    return False
+def ou(O, S8):
+    if len(O) == 0:
+        return False
+    elif O[0] == S8:
+        return True
+    elif O[0] > S8:
+        return False
+    else:
+        return ou(O[1:], S8)
+ou([], 4)
+print(ou([1, 2, 3, 4], 4))
+c([], 4)
+c([1, 2, 3], 4)

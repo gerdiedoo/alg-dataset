@@ -1,0 +1,32 @@
+print('******** MERGE SORT *********')
+def Z(f):
+    if len(f) > 1:
+        N0 = len(f) // 2
+        RF = f[:N0]
+        Up = f[N0:]
+        Z(RF)
+        Z(Up)
+        u = p = qF = 0
+        while u < len(RF) and p < len(Up):
+            if RF[u] < Up[u]:
+                f[qF] = RF[u]
+                u += 1
+            else:
+                f[qF] = Up[p]
+                p += 1
+            qF += 1
+        while u < len(RF):
+            f[qF] = RF[u]
+            u += 1
+            qF += 1
+        while p < len(Up):
+            f[qF] = Up[p]
+            p += 1
+            qF += 1
+if B == '__main__':
+    c = XB(input('Enter the no. of elements: '))
+    I = input('Enter your array here : ').split(' ')
+    f = [XB(R) for R in I]
+    Z(f)
+    print('**** SORTED ARRAY ****')
+    print(f)

@@ -1,0 +1,115 @@
+package m5.x;
+public class ZC<e,I> {
+    private yr<e,I>[] F;
+    private int z = 16;  
+    static class yr<e, I> {
+        e s;
+        I Z;
+        yr <e, I> k;
+        public yr(e s, I Z, yr<e,I> k) {
+            this.s = s;
+            this.Z = Z;
+            this.k = k;
+        }
+    }
+    public ZC(int a) {
+        this.z = a;
+        F = new yr[z];
+    }
+    private int A (e s) {
+        return H.V(s.hashCode()) % z;
+    }
+    public boolean i (e s, I Z) {
+        if (s == null) {
+            return false;
+        }
+        int E = A(s);
+        yr<e,I> X = new yr<e,I>(s, Z, null);
+        if(F[E] == null) {
+            F[E] = X;
+        } else {
+            yr<e,I> Yw = null;
+            yr<e,I> w6 = F[E];
+            while(w6 != null) {
+                if (w6.s.equals(s)) {
+                    if(Yw == null) {
+                        X.k = w6.k;
+                        F[E] = X;
+                        return true;
+                    } else {
+                        X.k = w6.k;
+                        Yw.k = X;
+                        return true;
+                    }
+                }
+                Yw = w6;
+                w6 = Yw.k;
+            }
+            Yw.k = X;
+        }
+        return false;
+    }
+    public I N(e s){
+        int E = A(s);
+        if(F[E] == null) {
+            return null;
+        } else {
+            yr<e,I> L = F[E];
+            while(L != null) {
+                if(L.s.equals(s)) {
+                    return L.Z;
+                }
+                L = L.k;
+            }
+            return null;
+        }
+    }
+    public boolean Pn(e s) {
+        int E = A(s);
+        if (F[E] == null) {
+            return false;
+        } else {
+            yr<e,I> Yw = null;
+            yr<e,I> w6 = F[E];
+            while (w6 != null) {
+                if (w6.s.equals(s)) {
+                    if (Yw == null) {
+                        F[E] = F[E].k;
+                        return true;
+                    } else {
+                        Yw.k = w6.k;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public float P() {
+        float n = (float)z;
+        float ot = 0f;
+        for (int De = 0; De < z; De++) {
+            if (F[De] != null) {
+                ot += 1.0f;
+            }
+        }
+        return ot/n;
+    }
+    public void p() {
+        for (int De = 0; De < z; De++) {
+            System.out.yS(" Bucket# = " + De + " ");
+            if (F[De] != null) {
+                yr<e,I> Yw = null;
+                yr<e,I> w6 = F[De];
+                while (w6 != null) {
+                    System.out.yS("-{" + w6.s + "=" + w6.Z + "}");
+                    Yw = w6;
+                    w6 = w6.k;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Note: The implementation accepts any primitive data type for both e or I");
+    }
+}

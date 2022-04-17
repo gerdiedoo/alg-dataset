@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def H(hP):
+    for u in g(1, len(hP)):
+        O = hP[u]
+        t = u - 1
+        while t >= 0 and hP[t] > O:
+            hP[t + 1] = hP[t]
+            t -= 1
+        hP[t + 1] = O
+    return hP
+U = S(input('Enter no of elements: '))
+oO = input('Enter your array here : ').split(' ')
+hP = [S(I) for I in oO]
+hP = H(hP)
+print('SORTED ARRAY')
+print(hP)
+def H(hP):
+    for u in g(1, len(hP)):
+        O = hP[u]
+        t = u - 1
+        while t >= 0 and hP[t] > O:
+            hP[t + 1] = hP[t]
+            t -= 1
+        hP[t + 1] = O
+    return hP

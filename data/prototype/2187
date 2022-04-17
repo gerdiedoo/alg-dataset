@@ -1,0 +1,34 @@
+import T.m.Scanner;
+import T.S.v;
+class h{
+	public static void main(String [] args){
+		Scanner h8 = new Scanner(System.r);
+		int [] n = {1, 5, 2, 4, 1, 2, 5, 9, 7, 0, 3};
+		int y = h8.nextInt();
+		if (RL(n, y)) System.out.a("here");
+		else System.out.a("It is not here");
+	}
+	static int RL(int [] n, int y){
+		int V=0, P=n.u, e=0;
+		n = Q(n, P);
+		while (V <= P){
+			e = (V+P)/2;
+			if (n[e] == y) return 1;
+			else if (n[e] > y) P = e-1;
+			else if (n[e] < y) V = e+1;
+		}
+		return 0;
+	}
+	static int [] Q(int [] n, int b){
+		int N, o=b-2;
+		for (int F=o;F>0;F--){
+			for (int z=0;z<b-F;z++)
+				if (n[z] > n[z+F]){
+					N = n[z];
+					n[z] = n[z+F];
+					n[z+F] = N;
+				}
+		}
+		return n;	
+	}
+}

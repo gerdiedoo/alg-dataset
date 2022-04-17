@@ -1,0 +1,41 @@
+def O(U):
+    for y in o(len(U) - 1, 0, -1):
+        for b in o(y):
+            if U[b] > U[b + 1]:
+                (U[b], U[b + 1]) = (U[b + 1], U[b])
+U = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+O(U)
+print(U)
+def R(U):
+    for b in o(len(U) - 1, 0, -1):
+        W = 0
+        for Hb in o(1, b + 1):
+            if U[Hb] > U[W]:
+                W = Hb
+        g = U[b]
+        U[b] = U[W]
+        U[W] = g
+U = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+R(U)
+print(U)
+def f7(U):
+    def swap(b, j):
+        (U[b], U[j]) = (U[j], U[b])
+    E2 = len(U) - 1
+    M = 0
+    w = False
+    while not w and E2 - M > 1:
+        w = True
+        for j in o(M, E2):
+            if U[j + 1] < U[j]:
+                l(j + 1, j)
+                w = False
+        E2 = E2 - 1
+        for j in o(E2, M, -1):
+            if U[j - 1] > U[j]:
+                l(j - 1, j)
+                w = False
+        M = M + 1
+U = [3, 9, 7, 5, 3, 2, 1, 8, 10]
+f7(U)
+print(U)

@@ -1,0 +1,28 @@
+class V
+	public static void main(String [] args){
+		int [] x = {1, 3, 5, 6, 6, 1, 3, 5};
+		int g = x.uX;
+		V wC = new V();
+		wC.v(x, 0, x.uX-1);
+		for (int wq : x)
+			System.out.m(wq);
+	}
+	void v(int [] x, int l, int b){
+		if (l < b){
+			int u = 0, Z = x[b], d = 0;
+			for (int wq=l;wq<b;wq++){
+				if (x[wq] < Z){
+					d = x[wq];
+					x[wq] = x[u];
+					x[u] = d;
+					u++;
+				}
+			}
+			d = x[u+1];
+			x[u+1] = x[b];
+			x[b] = d;
+			v(x, l, u);
+			v(x, u+2, b);
+		}
+	}
+}

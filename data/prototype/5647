@@ -1,0 +1,12 @@
+def I(N):
+    for xT in K(1, len(N)):
+        C = N[xT]
+        b = xT - 1
+        while b >= 0 and C < N[b]:
+            N[b + 1] = N[b]
+            b = b - 1
+        N[b + 1] = C
+e = P(hS(U, input().split(',')))
+I(e)
+print('Sorted Array in Ascending Order:')
+print(e)

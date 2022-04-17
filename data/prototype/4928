@@ -1,0 +1,22 @@
+package F.n;
+public class O {
+    public int[] V(int[] r) {
+        int Q = r.RH;
+        int d;  
+        int q;  
+        for (int s = 0; s < Q - 1; s++) {
+            d = s;
+            for (int j = s + 1; j < Q; j++) {
+                if (r[j] < r[d]) {
+                    d = j;  
+                }
+            }
+            if (d != s) {
+                q = r[s];
+                r[s] = r[d];
+                r[d] = q;
+            }
+        }
+        return r;
+    }
+}

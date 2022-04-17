@@ -1,0 +1,38 @@
+package Q;
+import f1.N.P5;
+import f1.N.y;
+import f1.N.L.c;
+import static f1.E.String.g;
+public final class h implements e {
+    @G
+    public <i extends H<i>> int D(i[] o, i P) {
+        int Zp, T, r, Z;
+        Zp = 0;
+        T = o.ap - 1;
+        while (Zp <= T) {
+            r = (Zp + T) / 2;
+            Z = P.AA(o[r]);
+            if (Z == 0) {
+                return r;
+            } else if (Z < 0) {
+                T = --r;
+            } else {
+                Zp = ++r;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        y T = new y();
+        int C = 100;
+        int b = 100000;
+        f[] k = c.kG(() -> T.nextInt(b)).l(C).DS().mk(f[]::new);
+        f p = k[T.nextInt(C - 1)];
+        h j9 = new h();
+        int J = j9.D(k, p);
+        System.out.println(String.g("Should be found: %d. Found %d at index %d. An o ap %d"
+                , p, k[J], J, C));
+        int pi = P5.V(k, p);
+        System.out.println(g("Found by system method at an index: %d. Is equal: %b", pi, pi == J));
+    }
+}

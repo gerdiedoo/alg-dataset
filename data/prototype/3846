@@ -1,0 +1,65 @@
+package J.yl;
+import J.DX;
+public class f implements m {
+    private long o = 20;
+    private int[] y(DX s, int W, int L) {
+        int cN[] = new int[L];
+        for (int p = 0; p < L; p++) {
+            cN[p] = s.v(W + p);
+        }
+        return cN;
+    }
+    private void az(DX s, int D, int N, int Q) {
+        int d = N - D + 1;
+        int j = Q - N;
+        int cg[] = y(s, D, d);
+        int t[] = y(s, N + 1, j);
+        int p = 0, QQ = 0, Pu = D;
+        while (p < d && QQ < j) {
+            if (cg[p] <= t[QQ]) {
+                s.H(Pu, cg[p], I(), true);
+                p++;
+            } else {
+                s.H(Pu, t[QQ], I(), true);
+                QQ++;
+            }
+            Pu++;
+        }
+        while (p < d) {
+            s.H(Pu, cg[p], I(), true);
+            p++;
+            Pu++;
+        }
+        while (QQ < j) {
+            s.H(Pu, t[QQ], I(), true);
+            QQ++;
+            Pu++;
+        }
+    }
+    private void r(DX s, int D, int Q) {
+        if (D < Q) {
+            int F = (D + Q) / 2;
+            r(s, D, F);
+            r(s, F + 1, Q);
+            az(s, D, F, Q);
+        }
+    }
+    @S
+    public void P(DX s) {
+        int D = 0;
+        int Q = s.a() - 1;
+        r(s, D, Q);
+    }
+    @S
+    public String E() {
+        return "Merge Sort";
+    }
+    @S
+    public long I() {
+        return o;
+    }
+    @S
+    public void bv(long Ft) {
+        this.o = Ft;
+    }
+}

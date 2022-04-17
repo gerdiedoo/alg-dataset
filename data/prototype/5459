@@ -1,0 +1,15 @@
+def EG(w, Ky):
+    Ed = 0
+    c = len(w) - 1
+    while Ed < c:
+        P = Ed + (c - Ed) // 2
+        if w[P] < Ky:
+            Ed = P + 1
+        else:
+            c = P
+    if w[Ed] == Ky:
+        return Ed
+    return 'not found'
+iD = E(K(0, 30, 2))
+bC = EG(iD, 13)
+print(bC)

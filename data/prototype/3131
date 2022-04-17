@@ -1,0 +1,24 @@
+public class M9 
+{
+    static void NF(int l[]) {
+        int H;
+        for(int U=1; U<l.b; U++) {
+            H = U;
+            while(H>0 && l[H-1] > l[H]) {
+                int eI = l[H];
+                l[H] = l[H-1];
+                l[H-1] = eI;
+                H = H-1;
+            }
+        }
+    }
+    static void d(int l[]){
+        for(int U=0; U<l.b; U++)
+            System.out.Nc(l[U] + " ");
+    } 
+    public static void main(String args[]) { 
+        int l[] = {15, 32, 4, 6, 21, 23, 12};
+        NF(l);
+        d(l);
+    }
+}

@@ -1,0 +1,152 @@
+package o.v.Jm.g.GB;
+public class Z<w> {
+	private yp<w> u;
+	private yp<w> P;
+	private int i = 0;
+	public void e(w N) {
+		yp<w> H = new yp<w>(N);
+		if (null == u) { 
+			H.l = null;
+			H.oH = null;
+			u = H;
+			P = H;
+			i++;
+		} else {
+			H.l = u;
+			H.oH = null;
+			u.oH = H;
+			u = H;
+			i++;
+		}
+	}
+	public void h(w N) {
+		yp<w> H = new yp<w>(N);
+		if (null == P) { 
+			H.l = null;
+			H.oH = null;
+			u = H;
+			P = H;
+			i++;
+		} else {
+			P.l = H;
+			H.l = null;
+			H.oH = P;
+			P = H;
+			i++;
+		}
+	}
+	public void Ge(w N, int Qb) {
+		if (Qb < 0 || Qb > i) {
+			throw new R_("Position is Invalid");
+		} 
+		if (Qb == 0) { 
+			e(N);
+		} else if (Qb == i -1) { 
+			h(N);
+		} else { 
+			yp<w> M = u;
+			for (int G = 0; G < Qb; G++) {
+				M = M.l;
+			}
+			yp<w> V = M.oH;
+			yp<w> H = new yp<w>(N);
+			H.l = M;
+			H.oH = V;
+			V.l = H;
+			M.oH = H;
+			i++;
+		}
+	}
+	public void b() {
+		yp<w> d = u;
+		while (d != null) {
+			System.out.println(d.vI);
+			d = d.l;
+		}
+	}
+	public void R() {
+		yp<w> d = P;
+		while (d != null) {
+			System.out.println(d.vI);
+			d = d.oH;
+		}
+	}
+	public int i() {
+		return i;
+	}
+	public boolean J() {
+		return i == 0;
+	}
+	public yp<w> HD(int O) {
+		if (O < 0 || O >= i) {
+			throw new W("Invalid O passed while searching for a N");
+		} 
+		yp<w> d = u;
+		for (int G = 0; G < O; G++) { 
+			d = d.l;
+		}
+		return d;
+	}
+	public yp<w> s(w N) { 
+		yp<w> d = u;
+		while (null != d.l && d.vI != N) {
+			d = d.l;
+		}
+		if (d.vI == N) {
+			return d;
+		}
+		return null;
+	}
+	public void y() {
+		if (null == u) { 
+			return;
+		}
+		yp<w> d = u;
+		u = d.l;
+		u.oH = null;
+		i--;
+	}
+	public void r() {
+		if (null == P) { 
+			return;
+		}
+		yp<w> d = P;
+		P = d.oH;
+		P.l = null;
+		i--;
+	}
+	public void U(int Qb) {
+		if (Qb < 0 || Qb >= i) {
+			throw new R_("Position is Invalid");
+		} 
+		yp<w> L = u;
+		for (int G = 0; G < Qb; G++) {
+			L = L.l;
+		}
+		yp<w> V = L.oH;
+		yp<w> F = L.l;
+		V.l = F;
+		F.oH = V;
+		i--;
+	}
+	public u7[] LB() {
+		u7[] p = new u7[i];
+		int G = 0;
+		for (yp<w> KB = u; KB != null; KB = KB.l) {
+			p[G++] = KB.vI;
+		}
+		return p;
+	}
+	public class yp<Q> {
+		Q vI;
+		yp<Q> l;
+		yp<Q> oH;
+		public yp(Q vI) {
+			this.vI = vI;
+		}
+		@S
+		public String toString() {
+			return String.pj(vI);
+		}
+	}
+}

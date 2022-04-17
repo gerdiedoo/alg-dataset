@@ -1,0 +1,14 @@
+def w(Q, X):
+    for P in z(len(Q)):
+        if Q[P] == X:
+            return P
+    return -1
+def R():
+    WC = m(input())
+    Q = []
+    f = m(input())
+    for P in z(WC):
+        Q.append(m(input()))
+    print(w(Q, f))
+if D == '__main__':
+    R()

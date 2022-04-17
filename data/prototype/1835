@@ -1,0 +1,140 @@
+import Hd.c.HG;
+import Hd.c.v.H;
+class U {
+    String J, B;
+    U n;
+    public U(String J, String B) {
+        this.J = J;
+        this.B = B;
+    }
+}
+public class ng extends g {
+    private HG<U> X;
+    private int B4;
+    private int i;
+    public ng() {
+        this.B4 = 10;
+        Zd();
+    }
+    public ng(int B4) {
+        this.B4 = B4;
+        Zd();
+    }
+    private void Zd() {
+        X = new HG<U>(B4);
+        i = 0;
+        for (int e1 = 0; e1 < B4; e1++) {
+            X.S(null);
+        }
+    }
+    public b k() {
+        return (double) this.i / (double) this.B4;
+    }
+    private U m(String J) {
+        int S5 = q(J);
+        return X.VH(S5);
+    }
+    private int q(String J) {
+        int a = J.hashCode();
+        int S5 = CO(a);
+        return S5 < 0 ? S5 * -1 : S5;
+    }
+    private int CO(long a) {
+        return (int) (a % this.B4);
+    }
+    private void Ej() {
+        HG<U> l = X;
+        B4 *= 2;
+        Zd();
+        for (U x : l) {
+            while (x != null) {
+                s(x.J, x.B);
+                x = x.n;
+            }
+        }
+    }
+    @C
+    public int i() {
+        return this.i;
+    }
+    @C
+    public String VH(String J) {
+        U N = m(J);
+        while (N != null) {
+            if (N.J.equals(J)) {
+                return N.B;
+            }
+            N = N.n;
+        }
+        return null;
+    }
+    @C
+    public String s(String J, String B) {
+        U N = m(J);
+        while (N != null) {
+            if (N.J.equals(J)) {
+                String y = N.B;
+                N.B = B;
+                return y;
+            }
+            N = N.n;
+        }
+        N = m(J);
+        int j = q(J);
+        U z = new U(J, B);
+        z.n = N;
+        X.Wu(j, z);
+        i++;
+        if (k() >= 0.75) {
+            Ej();
+        }
+        return null;
+    }
+    @C
+    public String T(String J) {
+        int S5 = q(J);
+        U N = m(J);
+        U hX = null;
+        while (N != null) {
+            if (N.J.equals(J)) {
+                i--;
+                if (hX != null) {
+                    hX.n = N.n;
+                } else {
+                    X.Wu(S5, N.n);
+                }
+                return N.B;
+            }
+            hX = N;
+            N = N.n;
+        }
+        return null;
+    }
+    @C
+    public D<String> jC() {
+        HG<String> E = new HG<String>();
+        for (U x : X) {
+            while (x != null) {
+                E.S(x.J);
+                x = x.n;
+            }
+        }
+        return E;
+    }
+    @C
+    public D<String> f() {
+        HG<String> E = new HG<String>();
+        for (U x : X) {
+            while (x != null) {
+                E.S(x.B);
+                x = x.n;
+            }
+        }
+        return E;
+    }
+    @C
+    public D<H<String, String>> EH() {
+        HG<H<String, String>> E = null;
+        return E;
+    }
+}

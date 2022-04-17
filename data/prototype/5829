@@ -1,0 +1,52 @@
+package td;
+import K.D;
+public class hy extends D {
+    public e[] K(e i[], int o, int x){
+        if(o<x){
+            int X = tv(i, o, x);
+            K(i, o, X-1);
+            K(i, X+1, x);
+        }
+        return i;
+    }
+    public int tv(e i[], int o, int x){
+        int X=o;
+        int z = i[x], M3;
+        for(int GG=o; GG<x; GG++){
+            if(i[GG]<=z){
+                M3 = i[X];
+                i[X] = i[GG];
+                i[GG] = M3;
+                X++;
+            }
+        }
+        M3 = i[X];
+        i[X] = i[x];
+        i[x] = M3;
+        return X;
+    }
+    public <p extends n<p>> p[] T(p[] i, int o, int x) {
+        if(o<x) {
+            int X = tv(i, o, x);
+            T(i, o, X-1);
+            T(i, X+1, x);
+        }
+        return i;
+    }
+    public <p extends n<p>> int tv(p[] i, int o, int x) {
+        int X = o;
+        p z = i[x], M3;
+        for(int GG=o; GG<x; GG++){
+            if(i[GG].l(z)<=0){
+                M3 = i[GG];
+                i[GG] = i[X];
+                i[X] = M3;
+                X++;
+            }
+        }
+        M3 = i[X];
+        i[X] = i[x];
+        i[x] = M3;
+        return X;
+    }
+}

@@ -1,0 +1,11 @@
+import sys
+l = [64, 25, 12, 22, 11]
+for O in W(len(l)):
+    VQ = O
+    for t in W(O + 1, len(l)):
+        if l[VQ] > l[t]:
+            VQ = t
+    (l[O], l[VQ]) = (l[VQ], l[O])
+print('Sorted array')
+for O in W(len(l)):
+    (print('%d' % l[O]),)

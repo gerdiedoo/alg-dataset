@@ -1,0 +1,38 @@
+package Jc.Vh.n.l;
+import j.lY.w2;
+public class U {
+    public static void Ch(D[] s) {
+        Ch(s, true);
+    }
+    public static void Ch(D[] s, boolean V) {
+        int g = s.F;
+        q(s, 0, g - 1, V);
+    }
+    private static void q(D[] s, int H, int BC, boolean V) {
+        if (H < BC) {
+            int k = H + (BC - H) / 2;
+            q(s, H, k, V);
+            q(s, k + 1, BC, V);
+            i(s, H, k, BC, V);
+        }
+    }
+    private static void i(D[] s, int H, int k, int BC, boolean V) {
+        D[] M = new D[s.F];
+        System.J(s, H, M, H, (BC - H) + 1);
+        int C = H;
+        int r = k + 1;
+        int Gd = H;
+        while (C <= k && r <= BC) {
+            if (V && M[C].v(M[r]) < 0 ||
+                    !V && M[C].v(M[r]) > 0) {
+                s[Gd] = M[C];
+                C++;
+            } else {
+                s[Gd] = M[r];
+                r++;
+            }
+            Gd++;
+        }
+        System.J(M, C, s, Gd, (k - C) + 1);
+    }
+}

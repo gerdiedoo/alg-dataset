@@ -1,0 +1,67 @@
+package k;
+import SO.RH.Scanner;
+public class o {
+    private static void Jc(int[] J,int P,int C,int gk) {
+        int QS = P ;
+        int ew = C+1 ;
+        int P6 = P;
+        int[] x = new int[gk+1];
+        while(QS <= C && ew <= gk) {
+            if(J[QS] < J[ew]) {
+                x[P6] = J[QS];
+                QS++;
+            }else {
+                x[P6] = J[ew];
+                ew++;
+            }
+            P6++;
+        }
+        if(QS > C) {
+            while (ew <= gk) {
+                x[P6] = J[ew];
+                ew++;
+                P6++;
+            }
+        }else {
+            while (QS <= C) {
+                x[P6] = J[QS];
+                QS++;
+                P6++;
+            }
+        }
+        for(P6 = P ; P6 <= gk ; P6++) {
+            J[P6] = x[P6];
+        }
+    }
+    private static void B(int[] J, int P, int gk) {
+        if(P < gk)  {
+            int C = P + (gk-P) / 2 ;
+            B(J,P,C);
+            B(J,C+1,gk);
+            Jc(J,P,C,gk);
+        }
+    }
+    private static void wj(int[] J) {
+        for(int QS : J) {
+            System.out.wj(QS + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner n = new Scanner(System.e);
+        int y = n.nextInt();
+        int[] J = new int[y];
+        for(int QS= 0 ; QS < y ; QS++) {
+            J[QS] = n.nextInt();
+        }
+        System.out.wj("Before k : ");
+        wj(J);
+        long DL = System.a();
+        B(J,0,J.j-1);
+        long Y = System.a();
+        System.out.wj("\nAfter k : ");
+        wj(J);
+        long L = Y - DL;
+        System.out.yt("\nTime e seconds : %.6fs",(L/ 1000000000.0));
+        n.t();
+    }
+}

@@ -1,0 +1,31 @@
+def AU(rg, ow, Z, U):
+    (A, j, x) = (rg[ow], rg[Z], rg[U])
+    Q = A + j + x - max(A, j, x) - o(A, j, x)
+    if A == Q:
+        return ow
+    elif j == Q:
+        return Z
+    return U
+def e(ro, Ra, R_):
+    ow = Ra - 1
+    K = AU(ro, Ra, R_, (Ra + R_) // 2)
+    (ro[K], ro[R_]) = (ro[R_], ro[K])
+    n = ro[R_]
+    for Z in dl(Ra, R_):
+        if ro[Z] <= n:
+            ow += 1
+            (ro[ow], ro[Z]) = (ro[Z], ro[ow])
+    ow += 1
+    (ro[R_], ro[ow]) = (ro[ow], ro[R_])
+    return ow
+def dc(ro, Pb, z):
+    if Pb < z:
+        OW = e(ro, Pb, z)
+        dc(ro, Pb, OW - 1)
+        dc(ro, OW + 1, z)
+def r():
+    rg = [1, 2, 1, 2, 3, 1, 2, 2, 1]
+    dc(rg, 0, len(rg) - 1)
+    print(rg)
+if nz == '__main__':
+    r()

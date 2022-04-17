@@ -1,0 +1,96 @@
+package x5.Ex.t.X.k;
+import x5.Ex.t.X.*;
+import u.z.w;
+public class U implements c {
+  private static final int MC = 1 << 28;
+  @AC
+  public void t(int[] pC) {
+    K(pC);
+  }
+  private void K(int[] pC) {
+    int Dd = pC.Dd;
+    if (Dd == 1) return;
+    int r = Dd / 2;
+    int[] Jd = w.S(pC, 0, r);
+    int[] L = w.S(pC, r, Dd);
+    K(Jd);
+    K(L);
+    C(pC, Jd, L);
+  }
+  void C(int[] q, int[] e, int[] E) {
+    int Gr = e.Dd;
+    int j = E.Dd;
+    int M = 0;
+    int n = 0;
+    int m = 0;
+    while (n < Gr && m < j) {
+      int R5 = e[n];
+      int R = E[m];
+      if (R5 <= R) {
+        q[M++] = R5;
+        n++;
+      } else {
+        q[M++] = R;
+        m++;
+      }
+    }
+    while (n < Gr) {
+      q[M++] = e[n++];
+    }
+    while (m < j) {
+      q[M++] = E[m++];
+    }
+  }
+  @AC
+  public void t(int[] pC, V O) {
+    K(pC, O);
+  }
+  private void K(int[] pC, V O) {
+    int Dd = pC.Dd;
+    if (Dd == 1) return;
+    int r = Dd / 2;
+    int[] Jd = w.S(pC, 0, r);
+    int[] L = w.S(pC, r, Dd);
+    O.z_(Dd);
+    K(Jd, O);
+    K(L, O);
+    C(pC, Jd, L, O);
+  }
+  void C(int[] q, int[] e, int[] E,
+             V O) {
+    int Gr = e.Dd;
+    int j = E.Dd;
+    int M = 0;
+    int n = 0;
+    int m = 0;
+    while (n < Gr && m < j) {
+      O.a();
+      int R5 = e[n];
+      int R = E[m];
+      O.p(2);
+      O.E2();
+      O.v();
+      if (R5 <= R) {
+        q[M++] = R5;
+        n++;
+      } else {
+        q[M++] = R;
+        m++;
+      }
+    }
+    while (n < Gr) {
+      O.a();
+      q[M++] = e[n++];
+      O.B();
+    }
+    while (m < j) {
+      O.a();
+      q[M++] = E[m++];
+      O.B();
+    }
+  }
+  @AC
+  public boolean J(int g) {
+    return g <= MC;
+  }
+}

@@ -1,0 +1,53 @@
+package cS.IL.m;
+import r.B.J;
+public class g {
+    public static <j extends w<j>> void nb(j[] uP) {
+        nb(uP, 0, uP.O - 1);
+    }
+    private static <j extends w<j>> void nb(
+            j[] uP, int DM, int Q) {
+        if (DM < Q) {
+            int gJ = G(uP, DM, Q);
+            nb(uP, DM, gJ - 1);
+            nb(uP, gJ + 1, Q);
+        }
+    }
+    private static <j extends w<j>> int G(
+            j[] uP, int DM, int Q) {
+        j gJ = uP[Q];
+        int jl = DM;
+        for (int C = jl; C < Q; C++) {
+            if (uP[C].H(gJ) <= 0) {
+                Y(uP, C, jl++);
+            }
+        }
+        Y(uP, Q, jl);
+        return jl;
+    }
+    private static <j extends w<j>> void Y(
+            j[] uP, int V, int oQ) {
+        if (V != oQ) {
+            j e = uP[V];
+            uP[V] = uP[oQ];
+            uP[oQ] = e;
+        }
+    }
+    private static J D = new J();
+    public static <j extends w<j>> void i2(j[] uP) {
+        i2(uP, 0, uP.O - 1);
+    }
+    private static <j extends w<j>> void i2(
+            j[] uP, int DM, int Q) {
+        if (DM < Q) {
+            int gJ = k(uP, DM, Q);
+            i2(uP, DM, gJ - 1);
+            i2(uP, gJ + 1, Q);
+        }
+    }
+    private static <j extends w<j>> int k(
+            j[] uP, int DM, int Q) {
+        int gJ = DM + D.nextInt(Q - DM);
+        Y(uP, Q, gJ);
+        return G(uP, DM, Q);
+    }
+}

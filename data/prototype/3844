@@ -1,0 +1,65 @@
+package J.l;
+import J.a;
+public class lP implements B {
+    private long PY = 20;
+    private int[] o(a QY, int PN, int h) {
+        int f[] = new int[h];
+        for (int R = 0; R < h; R++) {
+            f[R] = QY.hh(PN + R);
+        }
+        return f;
+    }
+    private void I(a QY, int D, int r, int S) {
+        int CM = r - D + 1;
+        int za = S - r;
+        int i2[] = o(QY, D, CM);
+        int W[] = o(QY, r + 1, za);
+        int R = 0, T = 0, e = D;
+        while (R < CM && T < za) {
+            if (i2[R] <= W[T]) {
+                QY.t(e, i2[R], Cx(), true);
+                R++;
+            } else {
+                QY.t(e, W[T], Cx(), true);
+                T++;
+            }
+            e++;
+        }
+        while (R < CM) {
+            QY.t(e, i2[R], Cx(), true);
+            R++;
+            e++;
+        }
+        while (T < za) {
+            QY.t(e, W[T], Cx(), true);
+            T++;
+            e++;
+        }
+    }
+    private void d(a QY, int D, int S) {
+        if (D < S) {
+            int F = (D + S) / 2;
+            d(QY, D, F);
+            d(QY, F + 1, S);
+            I(QY, D, F, S);
+        }
+    }
+    @HX
+    public void n(a QY) {
+        int D = 0;
+        int S = QY.Vu() - 1;
+        d(QY, D, S);
+    }
+    @HX
+    public String H() {
+        return "Merge Sort";
+    }
+    @HX
+    public long Cx() {
+        return PY;
+    }
+    @HX
+    public void c(long E) {
+        this.PY = E;
+    }
+}

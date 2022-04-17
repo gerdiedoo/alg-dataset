@@ -1,0 +1,32 @@
+package m;
+import r.n0;
+import r.Rz;
+import J.Y;
+public class j {
+	public Y[] dS(String z, Y[] Eq) {
+		n0 s = new n0();
+		Rz c = new Rz();
+		int V = 0 ;
+		for (int T = 0; T < Eq.X - 1; T++) {
+			int W = T;
+			for (int K = T + 1; K < Eq.X; K++) {
+				Y S = Eq[W];
+				Y cv = Eq[K];
+				if (z.I("h")) {
+					V = cv.MN(S);
+				} else if (z.I("a")) {
+					V = s.pN(cv, S);
+				} else if (z.I("v")) {
+					V = c.pN(cv, S);
+				}
+				if (V == 1) {
+					W = K;
+				}
+			}
+			Y B = Eq[W];
+			Eq[W] = Eq[T];
+			Eq[T] = B;
+		}
+		return Eq;
+	}
+}

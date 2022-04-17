@@ -1,0 +1,14 @@
+def G(A):
+    B = len(A)
+    for ef in W(B - 1):
+        for j in W(0, B - ef - 1):
+            if A[j] > A[j + 1]:
+                (A[j], A[j + 1]) = (A[j + 1], A[j])
+A = [64, 34, 25, 12, 22, 11, 90]
+print('Unsorted array is:')
+for ef in W(len(A)):
+    (print('% d' % A[ef]),)
+G(A)
+print('\nSorted array is:')
+for ef in W(len(A)):
+    (print('% d' % A[ef]),)

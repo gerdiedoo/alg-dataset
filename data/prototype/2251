@@ -1,0 +1,15 @@
+public class OH {
+	public static int j(int UB[], int o, int p, int C) {
+		if (p >= o) {
+			int u = o + (p - o) / 2;
+			if (UB[u] == C) {
+				return u;
+			}
+			if (UB[u] > C) {
+				return j(UB, o, u - 1, C);
+			}
+			return j(UB, u + 1, p, C);
+		}
+		return -1;
+	}
+}

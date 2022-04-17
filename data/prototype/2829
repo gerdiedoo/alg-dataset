@@ -1,0 +1,45 @@
+import N.n.y;
+import N.k.i;
+public class e extends Q5{
+	public i<DI> w(i<DI> rB)
+	{
+		i<DI> v6 = new i<DI>();
+		boolean g = true;
+		while(g)
+		{
+			g = false;
+			for(int y5 = 1; y5 < rB.K(); y5++)
+			{
+				if(rB.uZ(y5) < rB.uZ(y5 - 1))
+				{
+					int D = rB.uZ(y5);
+					rB.O(y5, rB.uZ(y5 - 1));
+					rB.O(y5 - 1, D);
+					g = true;
+				}
+			}
+		}
+		v6 = rB;
+		return v6;
+	}
+	public void Q(b P) throws y
+	{
+		P.tM();
+		i<DI> v6 = new i<DI>();
+		long r = System.F();
+		v6 = w(P.d());
+		long G = System.F();
+		double V = G - r;
+		double Hq = V/1000000;
+		if(x(v6))
+		{
+			P.R(v6);
+			System.out.d9("e time (in Milli): "); 
+			System.out.println(Hq);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

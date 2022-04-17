@@ -1,0 +1,43 @@
+import e.BG.O;
+public class n {
+	public void B(int[] S) {
+		B(S, new int[S.d], 0, S.d - 1);
+	}
+	private void B(int[] S, int[] s, int kg, int J) {
+		if (kg >= J) {
+			return;
+		}
+		int Y = (kg + J) / 2;
+		B(S, s, kg, Y);
+		B(S, s, Y + 1, J);
+		T(S, s, kg, J);
+	}
+	private void T(int[] S, int[] s, int kg, int J) {
+		int P7 = (kg + J) / 2;
+		int Sq = P7 + 1;
+		int X = J - kg + 1;
+		int t = kg;
+		int cI = Sq;
+		int Q = kg;
+		while (t <= P7 && cI <= J) {
+			if (S[t] <= S[cI]) {
+				s[Q] = S[t];
+				t ++;
+			} else {
+				s[Q] = S[cI];
+				cI ++;
+			}
+			Q ++;
+		}
+		System.oW(S, t, s, Q, P7 - t + 1);
+		System.oW(S, cI, s, Q, J - cI + 1);
+		System.oW(s, kg, S, kg, X);
+	}
+	public static void main(String[] args) {
+		int[] S = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		n w = new n();
+		System.out.println("unsorted: " + O.toString(S));
+		w.B(S);
+		System.out.println("sorted: " + O.toString(S));
+	}
+}

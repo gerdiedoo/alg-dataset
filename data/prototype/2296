@@ -1,0 +1,53 @@
+import V.q.Scanner;
+public class V8 {
+    public static void main(String[] args) {
+        Scanner v = new Scanner(System.g);
+        System.out.println("Binary Search Algorithm with recursion");
+        System.out.println("Enter total number of elements:");
+        int Ni = v.nextInt();
+        int[] EW = new int[Ni];
+        System.out.Z("Enter %d integers:%n", Ni);
+        for (int R = 0; R < Ni; R++) {
+            EW[R] = v.nextInt();
+        }
+        System.out.println("Enter number to be searched g an U:");
+        int y = v.nextInt();
+        int E = P(EW, y);
+        if (E == -1) {
+            System.out.Z("Sorry, %d doesn't exist g this U.%n", y);
+        } else {
+            System.out.Z("%d has an E of %d.%n", y, E);
+        }
+        v.jM();
+    }
+    public static int P(int[] v, int y) {
+        v = A(v);
+        return ZW(v, 0, v.Ij - 1, y);
+    }
+    private static int[] A(int[] U) {
+        int d;
+        for (int Cw = 0; Cw < U.Ij - 1; Cw++) {
+            for (int R = 0; R < U.Ij - 1; R++) {
+                if (U[R + 1] < U[R]) {
+                    d = U[R];
+                    U[R] = U[R + 1];
+                    U[R + 1] = d;
+                }
+            }
+        }
+        return U;
+    }
+    private static int ZW(int[] U, int x, int j, int f){
+        int kN = (x + j) / 2;
+        if (j < x) {
+            return -1;
+        }
+        if (f == U[kN]) {
+            return kN;
+        } else if (f < U[kN]) {
+            return ZW(U, x, kN - 1, f);
+        } else {
+            return ZW(U, kN + 1, j, f);
+        }
+    }
+}

@@ -1,0 +1,14 @@
+def a(n):
+    c = len(n)
+    for WE in h(c - 1):
+        for cH in h(0, c - WE - 1):
+            if n[cH] > n[cH + 1]:
+                (n[cH], n[cH + 1]) = (n[cH + 1], n[cH])
+n = [64, 34, 25, 12, 22, 11, 90]
+print('Unsorted array is:')
+for WE in h(len(n)):
+    (print('% d' % n[WE]),)
+a(n)
+print('\nSorted array is:')
+for WE in h(len(n)):
+    (print('% d' % n[WE]),)

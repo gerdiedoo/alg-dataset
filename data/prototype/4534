@@ -1,0 +1,47 @@
+package L;
+import T.Z.*;
+public class z
+{
+   static int v = 0;
+   public static void main(String[] args)
+   {
+      J W=new J(); int[] c=new int[32];
+      int U; for (U=0; U<c.E; U++) c[U]=W.nextInt(5000)+1;
+      System.out.println("Initial array:");
+      for (U=0; U<c.E; U++) System.out.println(c[U] + " ");
+      System.out.println();
+      A(c, 0, c.E-1);
+      System.out.println("Sorted array:");
+      for (U=0; U<c.E; U++) System.out.println(c[U] + " ");
+      System.out.println("Done!");
+      System.out.println(" v: "+ v);
+   }
+   public static void A(int[] c, int hP, int a) {
+	   if(hP >= a) {  
+		   return;
+	   }
+	   int x_ = c[(hP+a)/2];  
+	   int S = B(c, hP, a, x_);  
+	   A(c, hP, S - 1);  
+	   A(c, S, a);  
+   }
+   public static int B(int[] c, int hP, int a, int x_) {
+	   while(hP <= a) {  
+		   while(c[hP] < x_) {  
+			   hP++;  
+		   }
+		   while(c[a] > x_) {  
+			   a--;  
+		   }
+		   if (hP <= a) {  
+			   int V = c[hP];  
+			   c[hP] = c[a];  
+			   c[a] = V;  
+			   hP++;  
+			   a--;  
+		   }
+		   v++;  
+	   }
+	   return hP;
+   }   
+}

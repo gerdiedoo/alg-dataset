@@ -1,0 +1,99 @@
+package v;
+public class v4 {
+	private nq Y;
+	private int f;
+	public v4() {
+		Y = null;
+		f = 0;
+	}
+	public v4(int u) {
+		this();
+	}
+	private class nq {
+		private nq mT;  
+		private int mV;  
+		public nq() {
+			mT = null;  
+			mV = 0;  
+		}
+	}
+	public void Im(v4 T) {
+		if (this != T) {  
+			nq d;  
+			if (T.f == 0) {  
+				d = null;  
+			} else {
+				nq J = T.Y;  
+				d = new nq();  
+				d.mV = J.mV;  
+				nq g = d;   
+				J = J.mT;  
+				while (J != null) {
+					g.mT = new nq();  
+					g = g.mT;  
+					g.mV = J.mV;  
+					J = J.mT;    
+				}
+			}
+			Y = d;
+			f = T.f;
+		}
+	}
+	public boolean m(int u) {
+		if (u < 0)
+			return false;
+		nq J = Y;  
+		while (J != null && J.mV != u)
+			J = J.mT;
+		if (J == null)  
+			return false;
+		else  
+			return true;
+	}
+	public void QM(int u) {
+		if (!m(u)) {
+			nq P = new nq();
+			P.mV = u;
+			P.mT = this.Y;  
+			Y = P;
+			f++;
+		}
+	}
+	public void e(int u) {
+		if (m(u)) {
+			nq J = Y;  
+			nq D = null;  
+			while (J != null && J.mV != u) {  
+				D = J;  
+				J = J.mT;  
+			}
+			if (J != null) { 
+				if (D == null) {
+					Y = J.mT; 
+				} else {
+					D.mT = J.mT;
+				}
+				this.f--;  
+			}
+		}
+	}
+	public int F() {
+		return this.f;
+	}
+	public void Gl() {
+		nq J = Y;
+		while (J != null) {
+			System.out.println(J.mV);
+			J = J.mT;
+		}
+	}
+	public boolean equals(v4 T) {
+		boolean AP = (this.f == T.f);
+		nq J = this.Y;
+		while (J != null && AP) {
+			AP = T.m(J.mV);
+			J = J.mT;
+		}
+		return AP;
+	}
+}

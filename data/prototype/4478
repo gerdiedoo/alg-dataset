@@ -1,0 +1,30 @@
+def f(O, U, K):
+    assert 0 <= U <= K < len(O)
+    if U == K:
+        return
+    KH = O[U]
+    (O[U], O[K]) = (O[K], O[U])
+    e = U
+    g = U
+    while g < K:
+        if O[g] <= KH:
+            (O[e], O[g]) = (O[g], O[e])
+            e += 1
+        g += 1
+    (O[e], O[K]) = (O[K], O[e])
+    if e > U:
+        f(O, U, e - 1)
+    if K > e + 1:
+        f(O, e + 1, K)
+def S():
+    B = [4, 1, 2, 3, 9]
+    Y = [1]
+    Hc = [2, 2, 1, -1, 0, 4, 5, 2]
+    f(B, 0, 4)
+    assert B == [1, 2, 3, 4, 9]
+    f(Y, 0, 0)
+    assert Y == [1]
+    f(Hc, 0, 7)
+    assert Hc == [-1, 0, 1, 2, 2, 2, 4, 5]
+if o == '__main__':
+    S()

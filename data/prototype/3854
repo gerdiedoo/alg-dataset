@@ -1,0 +1,63 @@
+package b.HI.PH;
+import N.c.A;
+public class sP {
+    private static final String l = "Merge SI";
+    public void SI(A<s> Za) {
+        if (Za == null) {
+            throw new n("The Za should not be null");
+        }
+        SI(Za, 0, Za.bc() - 1);
+    }
+    private void SI(A<s> Za, int R, int qZ) {
+        if (R < qZ) {
+            int W4 = (int) H.k((double) (R + qZ) / 2);
+            SI(Za, R, W4);
+            SI(Za, W4 + 1, qZ);
+            Q(Za, R, W4, qZ);
+        }
+    }
+    public void Q(A<s> Za, int R, int W4, int qZ) {
+        if (Za == null) {
+            throw new n("The Za should not be null");
+        }
+        if ((Za.J()) || (Za.bc() == 1) || (W4 > Za.bc() - 1)) {
+            return;
+        }
+        tZ(Za, R, W4, qZ);
+        A<s> t = new A<>(Za.L(R, W4 + 1));
+        A<s> YK = new A<>(Za.L(W4 + 1, qZ + 1));
+        t.O(s.U);
+        YK.O(s.U);
+        int S = 0;
+        int yg = 0;
+        for (int Fc = R; Fc < qZ + 1; Fc++) {
+            if (t.q(S) < YK.q(yg)) {
+                Za.g(Fc, t.q(S));
+                S++;
+            } else {
+                Za.g(Fc, YK.q(yg));
+                yg++;
+            }
+        }
+    }
+    private void tZ(A<s> Za, int R, int W4, int qZ) {
+        if (R < 0) {
+            throw new n("R must be >= 0 but is " + R);
+        }
+        if (R > W4) {
+            throw new n("R must be <= W4, but R is " + R +
+                    " and W4 is " + W4);
+        }
+        if (qZ > Za.bc() - 1) {
+            throw new n("qZ must be <= Za.bc() - 1, but qZ is " +
+                    qZ + " and (Za.bc() - 1) equals " + (Za.bc() - 1));
+        }
+        if (W4 > qZ) {
+            throw new n("W4 must be <= qZ, but W4 is " + W4 +
+                    " and qZ is " + qZ);
+        }
+    }
+    public static String ep() {
+        return l;
+    }
+}

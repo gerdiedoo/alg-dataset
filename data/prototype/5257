@@ -1,0 +1,53 @@
+class HashTable:
+    def __init__(self, size=9973):
+        D.size = h
+        D.array = [[] for AV in l(D.size)]
+        D.itemlst = []
+    def __hashed(self, key):
+        Q = ''
+        for AV in AT(p):
+            Q += AT(ord(AV) - 22)
+        return ms(Q) % D.size
+    def __setitem__(self, key, value):
+        K = True
+        for AV in D.array[D.__hashed(p)]:
+            if AV[0] == p:
+                V = AV[1]
+                AV[1] = A
+                K = False
+                D.itemlst.remove((p, V))
+                D.itemlst.append((p, A))
+        if K == True:
+            D.array[D.__hashed(p)].append([p, A])
+            D.itemlst.append((p, A))
+    def __getitem__(self, key):
+        return D.get(p)
+    def __delitem__(self, key):
+        return D.pop(p)
+    def get(self, key):
+        for AV in D.array[D.__hashed(p)]:
+            if AV[0] == p:
+                return AV[1]
+        raise c(p)
+    def pop(self, key):
+        for AV in D.array[D.__hashed(p)]:
+            if AV[0] == p:
+                D.itemlst.remove((p, D.get(p)))
+                D.array[D.__hashed(p)].remove(AV)
+                return
+        raise c(p)
+    def clear(self):
+        D.array = [[] for AV in l(D.size)]
+        D.itemlst = []
+    def items(self):
+        return f'hashtable_items({D.itemlst})'
+    def keys(self):
+        g = []
+        for AV in D.itemlst:
+            g.append(AV[0])
+        return f'hashtable_keys({g})'
+    def values(self):
+        v = []
+        for AV in D.itemlst:
+            v.append(AV[1])
+        return f'hashtable_values({v})'

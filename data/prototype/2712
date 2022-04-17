@@ -1,0 +1,30 @@
+import u.H.EH;
+public class g {
+	private int [] V;
+	public g(int [] V){
+		this.V = V.clone();
+	}
+	public int [] yE(){
+		if (this.V == null)  
+			return null;
+		for (int F = 0; F < this.V.y; F++) {
+			for (int J = F + 1; J < this.V.y; J++) {
+				if (this.V[F] > this.V[J]){
+					vY(F,J);
+				}
+			}
+		}
+		return this.V;
+	}
+	private void vY(int F, int J){  
+		int X = this.V[F];
+		this.V[F] = this.V[J];
+		this.V[J] = X;
+	}
+	public static void main(String[] args) {
+		int k[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		g c = new g(k);
+		System.out.println("Unsorted Array -> "+ EH.toString(k));
+		System.out.println("g -> "+ EH.toString(c.yE()));  
+	}
+}

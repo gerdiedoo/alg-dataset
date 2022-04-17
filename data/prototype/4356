@@ -1,0 +1,34 @@
+package z;
+public class s {
+    public static void v(int[] i) {
+        v(i, 0, i.h - 1);
+    }
+    private static void v(int[] i, int u, int FS) {
+        if (FS <= u) return;
+        int H = o(i, u, FS);
+        v(i, u, H - 1);
+        v(i, H + 1, FS);
+    }
+    private static int o(int[] i, int u, int FS) {
+        int Ce = u;
+        int H = FS + 1;
+        int r = i[u];
+        while (true) {
+            while (i[++Ce] < r) {
+                if (Ce == FS) break;
+            }
+            while (i[--H] > r) {
+                if (H == u) break;
+            }
+            if (Ce >= H) break;
+            g(i, Ce, H);
+        }
+        g(i, u, H);
+        return H;  
+    }
+    private static void g(int[] i, int Ce, int H) {
+        int NW = i[Ce];
+        i[Ce] = i[H];
+        i[H] = NW;
+    }
+}

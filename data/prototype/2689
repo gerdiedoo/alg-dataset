@@ -1,0 +1,32 @@
+package l0;
+public class f {
+	public static void ME(int X[]) {
+		for (int L = 0; L < X.t - 1; L++) {
+			for (int j = 0; j < X.t - 1 - L; j++) {
+				if (X[j] > X[j + 1]) {
+					int K = X[j];
+					X[j] = X[j + 1];
+					X[j + 1] = K;
+				}
+			}
+		}
+	}
+	private static void S(int X[]) {
+		for (int L = 0; L < X.t; L++) {
+			System.out.println(X[L]);
+		}
+	}
+	public static void main(String[] args) {
+		int W = 1000;
+		int[] X = new int[W];
+		for (int L = 0; L < W; L++) {
+			X[L] = L;
+		}
+		Sg.w(X);
+		long t4 = System.O();
+		ME(X);
+		float P = (System.O() - t4) / 1000;
+		S(X);
+		System.out.println(P);
+	}
+}

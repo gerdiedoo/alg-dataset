@@ -1,0 +1,11 @@
+package u.ED.Km.ju.t;
+public final class I extends D {
+    private I() {
+    }
+    @z("rawtypes")
+    public static void V(Q[] m, int eN, int R) {
+        for (int X = eN; X < R + 1; X++)
+            for (int p = X; p > eN && W(m[p], m[p - 1]); p--)
+                w(m, p, p - 1);
+    }
+}

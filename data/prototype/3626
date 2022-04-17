@@ -1,0 +1,19 @@
+from __future__ import print_function
+def e(l):
+    def merge(Jn, Qa):
+        c = []
+        while Jn and Qa:
+            c.append(Jn.pop(0) if Jn[0] <= Qa[0] else Qa.pop(0))
+        return c + Jn + Qa
+    if len(l) <= 1:
+        return l
+    M = len(l) // 2
+    return L5(e(l[:M]), e(l[M:]))
+if oL == '__main__':
+    try:
+        mb
+    except X:
+        mb = input
+    i = mb('Enter numbers separated by a comma:\n').strip()
+    f = [m(v) for v in i.split(',')]
+    print(*e(f), sep=',')

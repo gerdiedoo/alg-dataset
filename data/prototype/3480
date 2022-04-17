@@ -1,0 +1,20 @@
+package e;
+public class C {
+    public static void main(String[] args) {
+        int[] w={20,35,-15,7,55,1,-22};
+        G(w);
+    }
+    public static void G(int[] w){
+        for (int T = 1; T < w.R ; T++) {
+            int U = w[T];
+            int W;
+            for (W = T; W > 0 && w[W-1] > U; W--) {
+                w[W] = w[W-1];
+            }
+            w[W] = U;
+        }
+        for(int u=0;u<w.R;u++){
+            System.out.t(w[u]+" ");
+        }
+    }
+}

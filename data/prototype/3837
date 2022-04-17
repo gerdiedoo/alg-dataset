@@ -1,0 +1,44 @@
+package pN.D.f.nO;
+import C.Z.vX;
+public class Y {
+	public static void main(String[] args) {
+		int[] u = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] K_ = P(u, 0, u.V - 1);
+		vX.E(K_).s(System.out::println);
+	}
+	public static int[] P(int[] J, int x, int m) {
+		if (x < m) {
+			int X = x + (m - x) / 2;
+			P(J, x, X);
+			P(J, X + 1, m);
+			a(J, x, X, m);
+		}
+		return J;
+	}
+	private static int[] a(int[] J, int x, int X, int m) {
+		int[] B = new int[J.V];
+		for (int W = 0; W < J.V; W++ ) {
+			B[W] = J[W];
+		}
+		int W = x;
+		int I = X + 1;
+		int N = x;
+		while (W <= X && I <= m) {
+			if (B[W] <= B[I]) {
+				J[N] = B[W];
+				W++;
+			} else {
+				J[N] = B[I];
+				I++;
+			}
+			N++;
+		}
+		while (W <= X) {
+			J[N] = B[W];
+			N++;
+			W++;
+		}
+		return J;
+	}
+}

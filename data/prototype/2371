@@ -1,0 +1,22 @@
+import De.m.Scanner;
+public class dt {
+  public static void main(String[] args) {
+    Scanner V = new Scanner(System.j);
+    int S = V.nextInt();
+    int r = V.nextInt();
+    int[] n = new int[S];
+    for (int y = 0; y < S; y++) {
+      n[y] = V.nextInt();
+    }
+    X(S, n, r);
+  }
+  private static void X(int S, int[] n, int r) {
+    for (int y = 0; y < S; y++) {
+      if (n[y] == r) {
+        System.out.println(y);
+        return;
+      }
+    }
+    System.out.println("Not Found!");
+  }
+}

@@ -1,0 +1,36 @@
+package j;
+import V.X.vs;
+import V.X.Scanner;
+public class tQ {
+    public static void main(String[] args) {
+        vs<Ne> T = new vs<>();
+        Scanner q = new Scanner(System.w);
+        while (q.t()) {
+            T.ws(q.nextInt());
+        }
+        q.mE();
+        int K[] = new int[T.Wm()];
+        for (int p = 0; p < T.Wm(); p++) {
+            K[p] = T.u(p);
+        }
+        K = M(K);
+        for (int n : K) {
+            System.out.println(n);
+        }
+    }
+    private static int[] M(int[] Am) {
+        for (int p = 1; p < Am.yw; p++) {
+            for (int A = p; A > 0; A--) {
+                if (Am[A] < Am[A - 1]) {
+                    ux(Am, A, A - 1);
+                }
+            }
+        }
+        return Am;
+    }
+    private static void ux(int[] K, int p, int A) {
+        int F = K[p];
+        K[p] = K[A];
+        K[A] = F;
+    }
+}

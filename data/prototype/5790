@@ -1,0 +1,30 @@
+def m(a):
+    l(a, 0, len(a) - 1)
+def l(a, k, G):
+    if k < G:
+        V = W5(a, k, G)
+        l(a, k, V - 1)
+        l(a, V + 1, G)
+def W5(O, k, G):
+    x = O[k]
+    YR = k + 1
+    A = G
+    Ow = False
+    while not Ow:
+        while YR <= A and O[YR] <= x:
+            YR = YR + 1
+        while O[A] >= x and A >= YR:
+            A = A - 1
+        if A < YR:
+            Ow = True
+        else:
+            wb = O[YR]
+            O[YR] = O[A]
+            O[A] = wb
+    wb = O[k]
+    O[k] = O[A]
+    O[A] = wb
+    return A
+O = [54, 26, 93, 17, 77, 31, 44, 55, 20, 1, 100, 200, 21]
+m(O)
+print(O)

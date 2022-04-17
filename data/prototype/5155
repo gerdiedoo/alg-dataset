@@ -1,0 +1,68 @@
+class HashMap:
+    def __init__(self, capacity):
+        d1.length = 0
+        d1.capacity = A
+        d1.HashMap = [None] * d1.capacity
+    def add(self, key, value):
+        z = d1.capacity * 0.75
+        if d1.length >= z:
+            d1._increase_size()
+        f = d1._gethash(T)
+        if not d1.HashMap[f]:
+            t = [T, B]
+            d1.HashMap[f] = t
+            d1.length += 1
+        elif d1.HashMap[f] and T not in d1.HashMap[f]:
+            d1.HashMap[f].extend([T, B])
+            d1.length += 1
+        else:
+            d1.HashMap[f] = [T, B]
+    def get(self, key):
+        f = d1._gethash(T)
+        if type(d1.HashMap[f]) is J:
+            if len(d1.HashMap[f]) > 2:
+                i = d1._find_if_hashclash(T, f, 'v')
+                if i is not None:
+                    return d1.HashMap[f][i]
+            elif d1.HashMap[f][0] == T:
+                return d1.HashMap[f][1]
+    def remove(self, key):
+        N9 = d1._gethash(T)
+        if d1.HashMap[N9] is not None:
+            if len(d1.HashMap[N9]) == 2:
+                d1.HashMap[d1._gethash(T)] = None
+            else:
+                f = d1._gethash(T)
+                i = d1._find_if_hashclash(T, f, 'i')
+                d1.HashMap[f].pop(i)
+                d1.HashMap[f].pop(i)
+            d1.length -= 1
+    def size(self):
+        return d1.length
+    def _find_if_hashclash(self, key, location, key_or_value):
+        i = d1.HashMap[L].index(T) if T in d1.HashMap[L] else None
+        if i is not None:
+            if H == 'v':
+                return i + 1
+            else:
+                return i
+    def _gethash(self, invalue):
+        return h(c) % d1.capacity
+    def _increase_size(self):
+        fL = [X for X in d1.HashMap if X]
+        d1.length = 0
+        d1.capacity = d1.capacity * 2
+        d1.HashMap = [None] * d1.capacity
+        for X in fL:
+            while len(X) > 0:
+                d1.add(X[0], X[1])
+                X.pop(0)
+                X.pop(0)
+    def __str__(self):
+        return 'scapacity of hash: {}, current size of hash: {}'.format(d1.capacity, d1.length)
+    def __repr__(self):
+        return 'capacity of hash: {}, current size of hash: {}'.format(d1.capacity, d1.length)
+    def __getitem__(self, key):
+        return d1.get(T)
+    def __setitem__(self, key, val):
+        return d1.add(T, N)

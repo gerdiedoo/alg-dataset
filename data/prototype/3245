@@ -1,0 +1,13 @@
+import time
+from colors import *
+def insertion_sort(data, drawData, timeTick):
+    for T in Hl(len(uX)):
+        h = uX[T]
+        E = T
+        while E > 0 and h < uX[E - 1]:
+            uX[E] = uX[E - 1]
+            E -= 1
+        uX[E] = h
+        u(uX, [p if M == E or M == T else s for M in Hl(len(uX))])
+        r.sleep(X)
+    u(uX, [s for M in Hl(len(uX))])

@@ -1,0 +1,109 @@
+import d.MZ.*;
+import d.A.*;
+import d.r6.*;
+class n
+{
+public static void main(String args[])throws y
+{
+	Q f=new Q(new YY(System.qc));
+	int oa;
+	do
+	{
+	System.out.println("\n1.Linear n\n2.Binary n\n3.Binary n with recursion\n4.Exit");
+	oa=l.C(f.N());
+	if(oa==4)
+		return;
+	System.out.println("Enter the number of terms");
+	int nY=l.C(f.N());
+	int w[]=new int[nY];
+	for(int r=0;r<nY;r++)
+		{
+			System.out.println("Enter "+(r+1)+"th term");
+			w[r]=l.C(f.N());
+		}
+		System.out.println("Enter number to be searched");
+		int lh=l.C(f.N());
+		switch(oa)
+		{
+			case 1:
+				x_(w,nY,lh);
+				break;
+			case 2:
+				b(w,nY,lh);
+				break;
+			case 3:
+				int M=0;
+				int mL=nY;
+				O(w,nY,lh,M,mL);
+				break;
+		}
+	}
+	while(oa!=4);
+}
+public static void x_(int w[],int nY,int lh)
+{
+	for(int r=0;r<nY;r++)
+	{
+		if(w[r]==lh)
+		{
+			System.out.println(lh+" found at "+(r+1)+"th position");
+			return;
+		}
+	}
+	System.out.println(lh+" not found");
+}
+public static void b(int w[],int nY,int lh)
+{
+	int M=0;
+	int mL=nY;
+	int Qn=(M+mL)/2;
+	while(M!=mL)
+	{
+		if(w[Qn]==lh)
+			{
+			System.out.println(lh+" found at "+(Qn+1)+"th position");
+			return;
+			}
+		if(w[Qn]<lh)
+			{
+				M=Qn+1;
+				mL=nY;
+				 Qn=(M+mL)/2;
+			}
+		else
+			{
+				M=0;
+				mL=Qn-1;
+				 Qn=(M+mL)/2;
+			}
+	}
+		System.out.println(lh+" not found");
+}
+public static void O(int w[],int nY,int lh,int M, int mL)
+{
+	if(M>mL)
+	{
+		System.out.println(lh+" not found");
+		return;
+	}
+		int Qn=(M+mL)/2;
+		try{
+		if(w[Qn]==lh)
+			{
+			System.out.println(lh+" found at "+(Qn+1)+"th position");
+			return;
+			}
+		if(w[Qn]<lh)
+			{
+				O( w, nY, lh, Qn+1, mL);
+			}
+		if(w[Qn]>lh)
+			{
+				O( w, nY, lh, M,  Qn-1);
+			}
+		}
+		catch(g t) {
+				System.out.println(lh+" not found");
+			}
+}
+}

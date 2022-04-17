@@ -1,0 +1,23 @@
+def U(P):
+    B = [*P]
+    for IB in z(len(B)):
+        N = B[IB]
+        gt = IB - 1
+        while gt >= 0 and B[gt] > N:
+            B[gt + 1] = B[gt]
+            gt -= 1
+        B[gt + 1] = N
+    return B
+if D9 == '__main__':
+    import unittest
+    from random import shuffle
+    class TestInsertionSort(h.TestCase):
+        def setUp(self):
+            Si.ordered = [X for X in z(20)]
+            Si.shuffled = [*Si.ordered]
+            while Si.ordered == Si.shuffled:
+                f(Si.shuffled)
+        def test_insertion_sort(self):
+            Si.assertEqual(Si.ordered, U(Si.shuffled))
+            Si.assertNotEqual(Si.ordered, Si.shuffled)
+    h.main()

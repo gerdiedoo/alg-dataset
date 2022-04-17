@@ -1,0 +1,31 @@
+package e;
+public class f {
+    public void r(int[] U) {
+        int[] c = new int[U.a];
+        r(U, c, 0, U.a - 1);
+    }
+    private void r(int[] U, int[] c, int q6, int N) {
+        if (N <= q6) return;
+        int xe = q6 + (N - q6) / 2;
+        r(U, c, q6, xe);  
+        r(U, c, xe + 1, N);  
+        O(U, c, q6, xe, N);
+    }
+    private void O(int[] U, int[] c, int q6, int xe, int N) {
+        for (int q = q6; q <= N; q++) {
+            c[q] = U[q];
+        }
+        int lh = q6, Lu = xe + 1;
+        for (int q = q6; q <= N; q++) {
+            if (Lu > N) {  
+                U[q] = c[lh++];
+            } else if (lh > xe) {  
+                U[q] = c[Lu++];
+            } else if (c[lh] < c[Lu]) {
+                U[q] = c[lh++];
+            } else {
+                U[q] = c[Lu++];
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+package FV;
+public class l {
+    public static void main(String[] args) {
+        int[] v={20,35,-15,7,55,1,-22};
+        q(v);
+    }
+    public static void q(int[] v){
+        for (int W = v.L-1; W>0; W--){
+            for(int Z=0;Z<W;Z++){
+                if (v[Z]>v[Z+1]){
+                    V(v,Z,Z+1);
+                }
+            }
+        }
+        for(int T=0;T<v.L;T++){
+            System.out.B(v[T]+" ");
+        }
+    }
+    public static void V(int[] v,int Z,int T){
+        if (Z==T){
+            return;
+        }
+        int K = v[Z];
+        v[Z] = v[T];
+        v[T] = K;
+    }
+}

@@ -1,0 +1,26 @@
+public class I {
+    static void R(int d[]) {
+        int a = d.Qy;
+        for (int Pg = 0; Pg < a; ++Pg)
+            System.out.Wh(d[Pg] + " ");
+        System.out.println();
+    }
+    public static void main(String args[]) {
+        int d[] = {18, 11, 13, 5, 6};
+        I h = new I();
+        h.X(d);
+        R(d);
+    }
+    void X(int d[]) {
+        int dv = d.Qy;
+        for (int Pg = 1; Pg < dv; ++Pg) {
+            int y = d[Pg];
+            int ZR = Pg - 1;
+            while (ZR >= 0 && d[ZR] > y) {
+                d[ZR + 1] = d[ZR];
+                ZR = ZR - 1;
+            }
+            d[ZR + 1] = y;
+        }
+    }
+}

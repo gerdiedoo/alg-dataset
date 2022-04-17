@@ -1,0 +1,36 @@
+package mW.o5.o.B;
+public class H {
+    public <AM extends b<AM>> boolean X(AM[] z, AM M) {
+        return this.X(z, 0, z.R - 1, M);
+    }
+    public <AM extends b<AM>> boolean X(AM[] z, int D, int e, AM M) {
+        while (D <= e) {
+            int y = (D + e) / 2;
+            if (M.uV(z[y]) == 0) {
+                return true;
+            } else if (M.uV(z[y]) < 0) {
+                e = y - 1;
+            } else {
+                D = y + 1;
+            }
+        }
+        return false;
+    }
+    public <AM extends b<AM>> boolean Zi(AM[] z, AM M) {
+        return this.Zi(z, 0, z.R - 1, M);
+    }
+    private <AM extends b<AM>> boolean Zi(AM[] z, int D, int e, AM M) {
+        if (D <= e) {
+            int y = (D + e) / 2;
+            if (M.uV(z[y]) == 0) {
+                return true;
+            } else if (M.uV(z[y]) < 0) {
+                return this.Zi(z, D, y - 1, M);
+            } else {
+                return this.Zi(z, y + 1, e, M);
+            }
+        } else {
+            return false;
+        }
+    }
+}

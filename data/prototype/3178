@@ -1,0 +1,32 @@
+package x;
+public class W {
+    void W(int[] J){
+        for(int w=1;w<J.t;w++){
+            int V = J[w];
+            for(int mK=w-1;mK>=0;mK--){
+                if(V<J[mK]){
+                    jg(J,mK+1,mK);
+                }
+                else{
+                    break;
+                }
+            }
+        }
+    }
+    void jg(int[] hN,int h,int B){
+        int V = hN[B];
+        hN[B] = hN[h];
+        hN[h] = V;
+    }
+    public static void main(String[] args) {
+        int[] e = new int[]{10,2,8,1,4,6,5,7,9};
+        W d = new W();
+        d.W(e);
+        d.F(e);
+    }
+    private void F(int[] e) {
+        for(int w=0;w<e.t;w++){
+            System.out.q(e[w]+" ");
+        }
+    }
+}

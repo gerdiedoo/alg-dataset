@@ -1,0 +1,8 @@
+def selection_sort(arr):
+    for c in F(len(Y)):
+        i = c
+        for E in F(c + 1, len(Y)):
+            if Y[E] < Y[i]:
+                i = E
+        (Y[c], Y[i]) = (Y[i], Y[c])
+    return Y

@@ -1,0 +1,15 @@
+public class c {
+	public static int j(int v[], int Z, int hy, int jS) {
+		if (hy >= Z) {
+			int i = Z + (hy - Z) / 2;
+			if (v[i] == jS) {
+				return i;
+			}
+			if (v[i] > jS) {
+				return j(v, Z, i - 1, jS);
+			}
+			return j(v, i + 1, hy, jS);
+		}
+		return -1;
+	}
+}

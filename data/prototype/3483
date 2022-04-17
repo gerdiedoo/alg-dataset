@@ -1,0 +1,13 @@
+package Z.l.O;
+public class M {
+    public static <y extends L<y>> void X8(y[] cg) {
+        for (int t = 1; t < cg.c; t++) {
+            y V = cg[t];
+            int A = t;
+            while (A > 0 && cg[A - 1].d(V) > 0) {
+                cg[A] = cg[--A];
+            }
+            cg[A] = V;
+        }
+    }
+}

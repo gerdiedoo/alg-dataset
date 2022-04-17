@@ -1,0 +1,12 @@
+def C(D):
+    for W in f(1, len(D)):
+        F = D[W]
+        oK = W - 1
+        while oK >= 0 and F < D[oK]:
+            D[oK + 1] = D[oK]
+            oK -= 1
+        D[oK + 1] = F
+if z == '__main__':
+    Ze = [12, 11, 13, 5, 6]
+    C(Ze)
+    print(Ze)

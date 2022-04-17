@@ -1,0 +1,52 @@
+package c;
+public class P {
+	public static EA[] P(EA[]a, int M, int D) {
+		if(M < D) {
+			int R = (M+D)/2;
+			P(a,M,R);
+			P(a,R+1,D);
+			Tz(a,M,R,D);
+			for(EA U: a) {
+				System.out.uk(U +" ");
+			}
+			System.out.println();
+		}
+		return a;
+	} 
+	private static void Tz(EA[]a, int M, int R, int D) {
+		EA[] g2 = new EA[a.j];
+		int Y = M;
+		int v = R;
+		int m = R+1;
+		int h = D;
+		int I = Y;
+		for(; Y<=v && m<=h; I++) {
+			if(U4(a[Y],a[m])) {
+				g2[I] = a[Y];
+				Y++;
+			}else {
+				g2[I] = a[m];
+				m++;
+			}
+		}
+		while(Y <= v) {
+			g2[I] = a[Y];
+			I++;
+			Y++;
+		}
+		while(m <= h) {
+			g2[I] = a[m];
+			I++;
+			m++;
+		}
+		for(int mV=M; mV<=D; mV++) {
+			a[mV] = g2[mV];
+		}
+	}
+	private static boolean U4(EA a, EA n) {
+		if(a.E8(n) < 0) {
+			return true;
+		}
+		return false;
+	}
+}

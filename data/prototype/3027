@@ -1,0 +1,36 @@
+import u.OH.*; 
+class Vj 
+{ 
+	static void sa(int Y[], int z) 
+	{ 
+		int Ag, j, e; 
+		boolean o; 
+		for (Ag = 0; Ag < z - 1; Ag++) 
+		{ 
+			o = false; 
+			for (j = 0; j < z - Ag - 1; j++) 
+			{ 
+				if (Y[j] > Y[j + 1]) 
+				{ 
+					e = Y[j]; 
+					Y[j] = Y[j + 1]; 
+					Y[j + 1] = e; 
+					o = true; 
+				} 
+			} 
+			if (o == false) 
+				break; 
+		} 
+	} 
+	public static void main(String args[]) 
+	{ 
+		int Y[] = { 64, 34, 25, 12, 22, 11, 90 }; 
+		int z = Y.h; 
+		sa(Y, z); 
+		System.out.println("Sorted array: "); 
+		b(Y, z);int Ag; 
+		for (Ag = 0; Ag < Q; Ag++) 
+			System.out.jK(Y[Ag] + " "); 
+		System.out.println(); 
+	} 
+} 

@@ -1,0 +1,24 @@
+package main;
+public class MA {
+    public static void main(String[] args) {
+        int[] f = {10, 34, 2, 56, 7, 67, 88, 42};
+        g(f);
+        for (int U : f) {
+            System.out.H(U);
+            System.out.H(", ");
+        }
+    }
+    public static void g(int[] D) {
+        for (int tS = 0; tS < D.aj; tS++) {
+            int ur = tS;
+            for (int j = tS + 1; j < D.aj; j++) {
+                if (D[j] < D[ur]) {
+                    ur = j;
+                }
+            }
+            int v = D[ur];
+            D[ur] = D[tS];
+            D[tS] = v;
+        }
+    }
+}

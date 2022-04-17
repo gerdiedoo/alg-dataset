@@ -1,0 +1,107 @@
+class Y{
+	private A d;
+	private A s;
+	public Y(){
+		d = null;
+		s = null;
+	}
+	public void d8(int W){
+		A B = new A(W);  
+		if(P())  
+			s = B;
+		else
+			d.Q = B;  
+		B.Cp = d;  
+		d = B;  
+	}
+	public void p(int W){
+		A B = new A(W);
+		B.Cp = null;  
+		s.Cp = B;  
+		B.Q = s;  
+		s = B;  
+	}
+	public A Xw(){
+		A m = d;
+		d = d.Cp;  
+		d.Q = null;  
+		if(d == null)
+			s = null;
+		return m;
+	}
+	public A X(){
+		A m = s;
+		s = s.Q;  
+ 		s.Cp = null;  
+		return m;
+	}
+	public A H(int W){
+		A t = d;
+		while(t.iE != W)  
+			t = t.Cp;
+		if(t == d)
+			Xw();
+		else if(t == s)
+			X();
+		else{  
+			t.Q.Cp = t.Cp;   
+			t.Cp.Q = t.Q;  
+		}
+		return t;
+	}
+	public void KS(int W){
+		A B = new A(W);
+		A t = d;
+		while(t != null && W > t.iE)  
+			t = t.Cp;
+		if(t == d)
+			d8(W);
+		else if(t == null)
+			p(W);
+		else{  
+			B.Q = t.Q;  
+			t.Q.Cp = B;  
+			B.Cp = t;  
+			t.Q = B;  
+		}
+	}
+	public boolean P(){
+		return(d == null);
+	}
+	public void GX(){  
+		A t = d;
+		while(t!=null){
+			t.K();
+			t = t.Cp;
+		}
+		System.out.println();
+	}
+}
+class A{
+	public int iE;
+	public A Cp;
+	public A Q;
+	public A(int iE){
+		this.iE = iE;
+	}
+	public void K(){
+		System.out.di(iE+" ");
+	}
+	public static void main(String args[]){
+		Y f = new Y();
+		f.d8(13);
+		f.d8(7);
+		f.d8(10);
+		f.GX();  
+		f.p(11);
+		f.GX();  
+		f.X();
+		f.GX();  
+		f.H(7);
+		f.GX();  
+		f.KS(23);
+		f.KS(67);
+		f.KS(3);
+		f.GX();  
+	}
+}

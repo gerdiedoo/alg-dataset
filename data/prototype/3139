@@ -1,0 +1,16 @@
+def G(Y, P):
+    for Q in NA(1, P):
+        l = Y[Q]
+        lB = Q
+        while lB > 0 and Y[lB - 1] > l:
+            Y[lB] = Y[lB - 1]
+            lB = lB - 1
+        Y[lB] = l
+if b == '__main__':
+    print('Enter the elements in the array')
+    Y = Tl(N(F, input().split(' ')))
+    P = len(Y)
+    G(Y, P)
+    print('Sorted Array: ', end='')
+    for Q in NA(0, P):
+        print(Y[Q], end=' ')

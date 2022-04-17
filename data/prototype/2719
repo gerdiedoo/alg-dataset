@@ -1,0 +1,33 @@
+package Qb.h.U.VL;
+public class j implements n_{
+	@Q
+	public void V(E[] y)
+    {
+		int n = y.L;
+		int w, ZD;
+		E k;
+		for(w=0;w<n;w++)
+			System.out.println(y[w]);
+        boolean t;
+        for (w = 0; w < n - 1; w++) 
+        {
+            t = false;
+            for (ZD = 0; ZD < n - w - 1; ZD++) 
+            {
+                if (XU(y[ZD],y[ZD + 1])==1) 
+                {
+                    k = y[ZD];
+                    y[ZD] = y[ZD + 1];
+                    y[ZD + 1] = k;
+                    t = true;
+                }
+            }
+            if (t == false)
+                break;
+        }        
+    }
+	 private int XU(E v, E Ao)
+	    {
+		    return v.x(Ao);
+	    }
+}

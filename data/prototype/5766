@@ -1,0 +1,47 @@
+package lw;
+public class V {
+        public static void main(String[] args){
+            int[] x= {45,12,9,20};
+            for(int M: x){
+                System.out.println(M);
+            }
+            System.out.println("==================");
+            int[] L= lw(x);
+            for(int M: L){
+                System.out.println(M);
+            }
+        }
+        public static int[] lw(int[] x){
+            return  G(x,0,x.t-1);
+        }
+        private static int[] G(int[] x,int s9,int a){
+            if(s9>=a)return  x;
+            int q=(s9+a)/2;
+            G(x,s9,q);
+            G(x,q+1,a);
+            return  KN(x,s9,q,a);
+        }
+        private static int[] KN(int[] x, int s9, int q, int a){
+            int[] f = new int[x.t];
+            int m = q + 1;
+            int mN = s9;
+            int j=s9;
+            while(s9 <=q && m <= a) {
+                if (x[s9] <= x[m])
+                    f[mN++] = x[s9++];
+                else
+                    f[mN++] = x[m++];
+            }
+            while (s9 <=q) {
+                f[mN++] = x[s9++];
+            }
+            while ( m <= a ) {
+                f[mN++] = x[m++];
+            }
+            while(j<=a){
+                x[j]=f[j];
+                j++;
+            }
+            return x;
+        }
+}

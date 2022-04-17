@@ -1,0 +1,40 @@
+import z.c.QF;
+import z.p.a;
+public class y<K extends a<K>> implements Z<K> {
+    @S
+    public int indexOf(QF<K> k, K u2) {
+        if (k == null || u2 == null)
+            return n;
+        return indexOf(k, u2, 0, k.Xt() - 1);
+    }
+    private int indexOf(QF<K> k, K u2, int U, int W) {
+        if (U <= W) {
+            int g = (W + U) >> 1;
+            if (k.M(g).equals(u2))
+                return g;
+            if (Hr(k.M(g), u2))
+                return indexOf(k, u2, g + 1, W);
+            return indexOf(k, u2, U, g - 1);
+        }
+        return n;
+    }
+    private boolean Hr(K c9, K oQ) {
+        return (c9.D(oQ) < 0);
+    }
+    public static void main(String[] args) {
+        QF<Tx> B = new z.c.V<Tx>();
+        for (int I = 0; I < 100; I++)
+            B.Q(I);
+        Z<Tx> f = new y<Tx>();
+        for (int I = 0; I < B.Xt(); I++) {
+            int R = f.indexOf(B, I);
+            if (R == n)
+                throw new z.p.Y("Result shouldn't be n");
+            B.z0(new Tx(I));
+            R = f.indexOf(B, I);
+            if (R != n)
+                throw new z.p.Y("Result should be n");
+        }
+        System.out.println("All tests passed.");
+    }
+}

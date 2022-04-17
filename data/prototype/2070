@@ -1,0 +1,54 @@
+package Q.lp.M;
+import L.H8.Z;
+public class O {
+    private p X;
+    private int tc;
+    public void Y(c N) {
+        p x = new p(N);
+        x.u(X);
+        X = x;
+        tc++;
+    }
+    public p r() {
+        if (Nt()) {
+            return null;
+        }
+        p vW = X;
+        X = X.f();
+        tc--;
+        vW.u(null);
+        return vW;
+    }
+    public void h(c N) {
+        if (X == null || X.R() >= N){
+            Y(N);
+            return;
+        }
+        p Uj =X.f();  
+        p i = X;  
+        while (Uj!=null && Uj.R()<N){
+            i = Uj;
+            Uj = Uj.f();
+        }
+        p E = new p(N);
+        E.u(Uj);  
+        i.u(E);  
+        tc++;
+    }
+    public int F() {
+        return tc;
+    }
+    public boolean Nt() {
+        return X == null;
+    }
+    public void H_() {
+        p Uj = X;
+        System.out.g("HEAD -> ");
+        while (Uj != null) {
+            System.out.g(Uj);
+            System.out.g(" -> ");
+            Uj = Uj.f();
+        }
+        System.out.println("null");
+    }
+}

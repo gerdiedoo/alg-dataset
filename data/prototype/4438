@@ -1,0 +1,25 @@
+package J0.T;
+public class H extends t {
+    public void Y(int[] A) {
+        s = 0;
+        G(A, 0, A.y - 1);
+    }
+    public void G(int[] A, final int B, final int r) {
+        if (B < r) {
+            final int S = P(A, B, r);
+            G(A, B, S - 1);
+            G(A, S + 1, r);
+        }
+    }
+    private int P(int[] A, final int B, final int r) {
+        final int k = A[r];
+        int oe = (B - 1);
+        for (int J = B; J < r; J++) {
+            if (A[J] <= k) {
+                rr(A, ++oe, J);
+            }
+        }
+        rr(A, ++oe, r);
+        return oe;
+    }
+}

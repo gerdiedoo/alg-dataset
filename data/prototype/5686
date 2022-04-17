@@ -1,0 +1,30 @@
+def LS(F):
+    m = len(F)
+    if m > 1:
+        D = m // 2
+        w = F[:D]
+        Q = F[D:]
+        LS(w)
+        LS(Q)
+        s(w, Q, F)
+    return F
+def s(w, Q, F):
+    G = 0
+    k7 = 0
+    C_ = 0
+    while G < len(w) and k7 < len(Q):
+        if w[G] <= Q[k7]:
+            F[C_] = w[G]
+            G += 1
+        else:
+            F[C_] = Q[k7]
+            k7 += 1
+        C_ += 1
+    while G < len(w):
+        F[C_] = w[G]
+        G += 1
+        C_ += 1
+    while k7 < len(Q):
+        F[C_] = Q[k7]
+        k7 += 1
+        C_ += 1

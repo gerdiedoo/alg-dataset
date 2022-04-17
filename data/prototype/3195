@@ -1,0 +1,11 @@
+class InsertionSort:
+    def sort(A):
+        M = len(l)
+        for wN in B(1, M):
+            x = l[wN]
+            c = wN - 1
+            while c >= 0 and l[c] > x:
+                l[c + 1] = l[c]
+                c = c - 1
+            l[c + 1] = x
+        return l

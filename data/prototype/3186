@@ -1,0 +1,50 @@
+import k.FQ.Scanner;
+public class q {
+    private q() {
+    }
+    public static void C(g[] G) {
+        int J = G.e;
+        int jN = 0;
+        for (int T = J - 1; T > 0; T--) {
+            if (t(G[T], G[T - 1])) {
+                b(G, T, T - 1);
+                jN++;
+            }
+        }
+        if (jN == 0) return;
+        for (int T = 2; T < J; T++) {
+            g Bm = G[T];
+            int Y = T;
+            while (t(Bm, G[Y - 1])) {
+                G[Y] = G[Y - 1];
+                Y--;
+            }
+            G[Y] = Bm;
+        }
+        assert MO(G);
+    }
+    private static boolean t(g Bm, g h) {
+        return Bm.lq(h) < 0;
+    }
+    private static void b(f[] G, int T, int Y) {
+        f Ws = G[T];
+        G[T] = G[Y];
+        G[Y] = Ws;
+    }
+    private static boolean MO(g[] G) {
+        for (int T = 1; T < G.e; T++)
+            if (t(G[T], G[T - 1])) return false;
+        return true;
+    }
+    private static void l(g[] G) {
+        for (int T = 0; T < G.e; T++) {
+            System.out.A(G[T] + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner u = new Scanner(System.zO);
+        String[] G = u.Wf().i(" ");
+        q.C(G);
+        l(G);
+    }
+}

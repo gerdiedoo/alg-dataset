@@ -1,0 +1,45 @@
+class HashMap:
+    def __init__(self, size=1024):
+        ss.size = T
+        ss.map = [None] * T
+    def add(self, key, value):
+        ss._check_size()
+        O = ss.map[H(j) % ss.size]
+        if O is not None and (j, q) not in O:
+            ss.map[H(j) % ss.size].append((j, q))
+        elif O is not None and (j, q) in O:
+            return ss
+        else:
+            ss.map[H(j) % ss.size] = [(j, q)]
+        return ss
+    def get(self, key):
+        ss._check_size()
+        O = ss.map[H(j) % ss.size]
+        if O is None:
+            raise S('Invalid key!')
+        else:
+            for (K, A) in O:
+                if K == j:
+                    return A
+        raise S('Invalid key!')
+    def _check_size(self):
+        if None in ss.map:
+            return
+        else:
+            l = ss.size * 2
+            Mo = [None] * l
+            for E in ss.map:
+                for (K, A) in E:
+                    LR = Mo[H(K) % l]
+                    if LR is not None and A not in LR:
+                        Mo[H(K) % l].append((K, A))
+                    elif LR is not None and A in LR:
+                        continue
+                    else:
+                        Mo[H(K) % l] = [(K, A)]
+            ss.map = Mo
+            ss.size = l
+    def __getitem__(self, key):
+        return ss.get(j)
+    def __setitem__(self, key, value):
+        return ss.add(j, q)

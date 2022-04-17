@@ -1,0 +1,220 @@
+import timeit
+from random import *
+from copy import copy
+import numpy as np
+import matplotlib.pyplot as plt
+def hN(XI):
+    for g in h8(len(XI)):
+        for s in h8(len(XI) - 1, g, -1):
+            if XI[s] < XI[s - 1]:
+                bp(XI, s, s - 1)
+    return XI
+def a(sH):
+    for g in h8(0, len(sH) - 1):
+        o = g
+        for X in h8(g + 1, len(sH) - 1):
+            if sH[X] < sH[o]:
+                o = X
+        M = sH[g]
+        sH[g] = sH[o]
+        sH[o] = M
+    return sH
+def N(Vl):
+    for g in h8(1, len(Vl)):
+        ET = Vl[g]
+        s = g
+        while s > 0 and ET < Vl[s - 1]:
+            Vl[s] = Vl[s - 1]
+            s -= 1
+        Vl[s] = ET
+def Ld(sH):
+    if len(sH) == 1:
+        return sH
+    m = []
+    TX = []
+    for g in h8(0, len(sH)):
+        if g < len(sH) / 2:
+            m.append(sH[g])
+        else:
+            TX.append(sH[g])
+    m = Ld(m)
+    TX = Ld(TX)
+    return NG(m, TX)
+def H(zd):
+    if len(zd) <= 1:
+        return zd
+    else:
+        q = J(zd)
+        return H([Ek for Ek in zd if Ek < q]) + [q] * zd.count(q) + H([Ek for Ek in zd if Ek > q])
+def NG(w, k):
+    IZ = []
+    F = 0
+    N3 = 0
+    while F != len(w) and N3 != len(k):
+        if w[F] > k[N3]:
+            IZ.append(k[N3])
+            N3 += 1
+        else:
+            IZ.append(w[F])
+            F += 1
+    while F != len(w):
+        IZ.append(w[F])
+        F += 1
+    while N3 != len(k):
+        IZ.append(k[N3])
+        N3 += 1
+    return IZ
+def Zf(Vl):
+    z = len(Vl) - 1
+    WG = z / 2
+    for g in h8(Z(WG), -1, -1):
+        Sn(Vl, g, z)
+    for g in h8(z, 0, -1):
+        if Vl[0] > Vl[g]:
+            bp(Vl, 0, g)
+            Sn(Vl, 0, g - 1)
+    return Vl
+def Sn(Vl, Y, Ww):
+    v = 2 * Y + 1
+    while v <= Ww:
+        if v < Ww and Vl[v] < Vl[v + 1]:
+            v += 1
+        if Vl[v] > Vl[Y]:
+            bp(Vl, v, Y)
+            Y = v
+            v = 2 * Y + 1
+        else:
+            return
+def bp(XI, QE, kL):
+    ET = XI[QE]
+    XI[QE] = XI[kL]
+    XI[kL] = ET
+def c(sH):
+    p0 = []
+    Kw = []
+    for g in h8(0, len(sH) - 1):
+        p0.append(0)
+        Kw.append(0)
+    for g in h8(0, len(sH) - 2):
+        for X in h8(g + 1, len(sH) - 1):
+            if sH[g] < sH[X]:
+                p0[X] += 1
+            else:
+                p0[g] += 1
+    for g in h8(0, len(sH) - 1):
+        p[p0[g]] = sH[g]
+    return p
+B = []
+p = []
+km = []
+u = []
+uz = 10000
+for h9 in h8(0, uz):
+    B.append(P(0, 100))
+    p.append(h9)
+    km.append(uz - h9)
+    u.append(P(0, 10) * 1000)
+def X5(ft, *e, **L):
+    def wrapped():
+        return ft(*e, **L)
+    return f
+def G5(sH):
+    return H(sH)
+def C(K, j, Tv, NG, E, I, p0, sH, z):
+    o9 = sH[:z]
+    U = X5(hN, b(o9))
+    K.append(S.timeit(U, number=1))
+    Q = X5(a, b(o9))
+    Tv.append(S.timeit(Q, number=1))
+    RM = X5(N, b(o9))
+    j.append(S.timeit(RM, number=1))
+    i = X5(Ld, b(o9))
+    NG.append(S.timeit(i, number=1))
+    n = X5(G5, b(o9))
+    E.append(S.timeit(n, number=1))
+    AH = X5(Zf, b(o9))
+    I.append(S.timeit(AH, number=1))
+    UY = X5(c, b(o9))
+    p0.append(S.timeit(UY, number=1))
+def R(K, j, Tv, NG, E, I, p0):
+    K[:] = []
+    j[:] = []
+    Tv[:] = []
+    NG[:] = []
+    E[:] = []
+    I[:] = []
+    p0[:] = []
+def D():
+    O = []
+    nE = []
+    A = []
+    t = []
+    Zt = []
+    V = []
+    t1 = []
+    W = []
+    C(O, nE, A, t, Zt, V, t1, B, 10)
+    C(O, nE, A, t, Zt, V, t1, p, 10)
+    C(O, nE, A, t, Zt, V, t1, km, 10)
+    C(O, nE, A, t, Zt, V, t1, u, 10)
+    W.append([b(O), b(nE), b(A), b(t), b(Zt), b(V), b(t1)])
+    R(O, nE, A, t, Zt, V, t1)
+    C(O, nE, A, t, Zt, V, t1, p, 20)
+    C(O, nE, A, t, Zt, V, t1, B, 20)
+    C(O, nE, A, t, Zt, V, t1, km, 20)
+    C(O, nE, A, t, Zt, V, t1, u, 20)
+    W.append([b(O), b(nE), b(A), b(t), b(Zt), b(V), b(t1)])
+    R(O, nE, A, t, Zt, V, t1)
+    C(O, nE, A, t, Zt, V, t1, p, 100)
+    C(O, nE, A, t, Zt, V, t1, B, 100)
+    C(O, nE, A, t, Zt, V, t1, km, 100)
+    C(O, nE, A, t, Zt, V, t1, u, 100)
+    W.append([b(O), b(nE), b(A), b(t), b(Zt), b(V), b(t1)])
+    R(O, nE, A, t, Zt, V, t1)
+    C(O, nE, A, t, Zt, V, t1, p, 1000)
+    C(O, nE, A, t, Zt, V, t1, B, 1000)
+    C(O, nE, A, t, Zt, V, t1, km, 1000)
+    C(O, nE, A, t, Zt, V, t1, u, 1000)
+    W.append([b(O), b(nE), b(A), b(t), b(Zt), b(V), b(t1)])
+    R(O, nE, A, t, Zt, V, t1)
+    C(O, nE, A, t, Zt, V, t1, p, 10000)
+    C(O, nE, A, t, Zt, V, t1, B, 10000)
+    C(O, nE, A, t, Zt, V, t1, km, 10000)
+    C(O, nE, A, t, Zt, V, t1, u, 10000)
+    W.append([b(O), b(nE), b(A), b(t), b(Zt), b(V), b(t1)])
+    R(O, nE, A, t, Zt, V, t1)
+def plotlogn(timeList):
+    Se = 4
+    (mI, Tq) = cU.subplots()
+    d = RR.arange(Se)
+    h = 0.25
+    vE = cU.bar(d + h * 3, l[3], h, color='orange', label='Merge')
+    va = cU.bar(d + h * 4, l[4], h, color='red', label='Quick')
+    y = cU.bar(d + h * 5, l[5], h, color='purple', label='Heap')
+    cU.xlabel('Sorting Algorithm')
+    cU.ylabel('Sorting Time')
+    cU.title('Comparison of Log(n) Sorting Algorithms')
+    cU.xticks(d + h * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    cU.legend()
+    cU.tight_layout()
+    cU.show()
+def populateChart(timeList):
+    Se = 4
+    (mI, Tq) = cU.subplots()
+    d = RR.arange(Se)
+    h = 0.125
+    x = cU.bar(d, l[0], h, color='g', label='Bubble')
+    G = cU.bar(d + h, l[1], h, color='b', label='Selection')
+    ke = cU.bar(d + h * 2, l[2], h, color='y', label='Insertion')
+    vE = cU.bar(d + h * 3, l[3], h, color='orange', label='Merge')
+    va = cU.bar(d + h * 4, l[4], h, color='red', label='Quick')
+    y = cU.bar(d + h * 5, l[5], h, color='purple', label='Heap')
+    r = cU.bar(d + h * 6, l[6], h, color='black', label='Count')
+    cU.xlabel('Sorting Algorithm')
+    cU.ylabel('Sorting Time')
+    cU.title('Comparison of Sorting Algorithms')
+    cU.xticks(d + h * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    cU.legend()
+    cU.tight_layout()
+    cU.show()
+D()

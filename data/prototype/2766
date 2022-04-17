@@ -1,0 +1,27 @@
+package g;
+import static g.J.*;
+class iA implements z {
+    @L
+    public  <r extends Db<r>> r[] p(r n[]) {
+        int n7 = n.T;
+        boolean k;
+        do {
+            k = false;
+            for (int W = 0; W < n7-1; W++) {
+                if (H(n[W], n[W + 1])) {
+                    k = k(n, W, W + 1);
+                }
+            }
+            n7--;
+        } while (k);
+        return n;
+    }
+    public static void main(String[] args) {
+        U[] e = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        iA V = new iA();
+        V.p(e);
+        a(e);
+        String[] S = {"c", "a", "e", "b","d"};
+        a(V.p(S));
+    }
+}

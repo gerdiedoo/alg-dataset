@@ -1,0 +1,13 @@
+n = L(input('Enter number of elements:'))
+print('Enter elements:')
+s = []
+for P in k(n):
+    s.append(L(input()))
+for P in k(n - 1):
+    for j in k(n - 1 - P):
+        if s[j] > s[j + 1]:
+            Z4 = s[j]
+            s[j] = s[j + 1]
+            s[j + 1] = Z4
+print('Sorted array is:')
+print(s)

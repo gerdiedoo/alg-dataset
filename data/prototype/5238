@@ -1,0 +1,187 @@
+package b;
+import e.f.l;
+public class Yx<M, Fz> implements D<M>
+{
+    private static class a<M, Fz>
+    {
+        private final M y;
+        private Fz       Y;
+        public a(M v, Fz U)
+        {
+            y = v;
+            Y = U;
+        }
+        public M LZ()
+        {
+            return y;
+        }
+        public Fz Gl()
+        {
+            return Y;
+        }
+        public void Z(Fz U)
+        {
+            this.Y = U;
+        }
+    }
+    private static class E<M, Fz> implements D<a<M, Fz>>
+    {
+        private final z<a<M, Fz>> B2 = new z<a<M, Fz>>();
+        public void Z(M y, Fz Y)
+        {
+            for (a<M, Fz> c : B2) {
+                if (c.LZ().equals(y)) {
+                    c.Z(Y);
+                    return;
+                }
+            }
+            B2.t(new a<M, Fz>(y, Y));
+        }
+        public Fz Gl(M y, Fz xY)
+        {
+            for (a<M, Fz> c : B2) {
+                if (c.LZ().equals(y)) {
+                    return c.Gl();
+                }
+            }
+            return xY;
+        }
+        public boolean q(M y)
+        {
+            for (a<M, Fz> c : B2) {
+                if (c.LZ().equals(y)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void X(M y)
+        {
+            l<a<M, Fz>> o = B2.O();
+            while (o.A()) {
+                if (o.s().LZ().equals(y)) {
+                    o.N();
+                    return;
+                }
+            }
+        }
+        @sB
+        public l<a<M, Fz>> O()
+        {
+            return B2.O();
+        }
+        public int K()
+        {
+            return B2.K();
+        }
+    }
+    private final E<M, Fz>[] j2;
+    @I("unchecked")
+    public Yx(int K)
+    {
+        j2 = new E[K];
+        for (int H = 0; H < K; H++) {
+            j2[H] = new E<M, Fz>();
+        }
+    }
+    private int W(M y)
+    {
+        return y.hashCode() % j2.d;
+    }
+    public void w(M y, Fz Y)
+    {
+        j2[W(y)].Z(y, Y);
+    }
+    public Fz k(M y, Fz xY)
+    {
+        return j2[W(y)].Gl(y, xY);
+    }
+    public Fz k(M y)
+    {
+        return k(y, null);
+    }
+    public boolean q(M y)
+    {
+        return j2[W(y)].q(y);
+    }
+    public void jM(M y)
+    {
+        j2[W(y)].X(y);
+    }
+    @sB
+    public l<M> O()
+    {
+        return new l<M>()
+        {
+            private int                     Q  = 0;
+            private l<a<M, Fz>> o     = null;
+            private l<a<M, Fz>> Sg = null;
+            private boolean T0()
+            {
+                for (; Q < j2.d; Q++) {
+                    if (j2[Q].K() > 0) {
+                        o = j2[Q].O();
+                        return true;
+                    }
+                }
+                o = null;
+                return false;
+            }
+            @sB
+            public boolean A()
+            {
+                if (o != null) {
+                    return o.A();
+                }
+                return T0();
+            }
+            @sB
+            public M s()
+            {
+                if (o == null) {
+                    if (!A()) {
+                        return null;
+                    }
+                }
+                a<M, Fz> J = o.s();
+                Sg = o;
+                if (!o.A()) {
+                    Q++;
+                    T0();
+                }
+                if (J == null) {
+                    return null;
+                }
+                return J.LZ();
+            }
+            @sB
+            public void N()
+            {
+                if (Sg != null) {
+                    Sg.N();
+                }
+            }
+        };
+    }
+    @sB
+    public String toString()
+    {
+        I7 p = new I7("{");
+        boolean h = true;
+        for (M y : this) {
+            if (h) {
+                h = false;
+            }
+            else {
+                p.R(", ");
+            }
+            p.R("(");
+            p.R(y);
+            p.R(", ");
+            p.R(k(y));
+            p.R(")");
+        }
+        p.R("}");
+        return p.toString();
+    }
+}

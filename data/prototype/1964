@@ -1,0 +1,29 @@
+package T.BX;
+import T.q;
+public class E {
+    private q[] P;
+    public E() {
+        P = new q[10];
+    }
+    public void Z(String b, q Bn) {
+        int i = a(b);  
+        if (P[i] != null) {  
+            System.out.println("Sorry, there's already an Bn at position " + i);
+        }
+        else {  
+            P[i] = Bn;
+        }
+    }
+    public q D(String b) {
+        int i = a(b);  
+        return P[i];  
+    }
+    private int a(String b) {
+        return b.o() % P.o;
+    }
+    public void RA() {
+        for (int k = 0; k < P.o; k++) {
+            System.out.println(P[k]);
+        }
+    }
+}

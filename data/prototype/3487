@@ -1,0 +1,13 @@
+public class K {
+    public static int[] x(int[] Y3) {
+        for (int q = 1; q < Y3.wN; q++) {
+            int qd = Y3[q];
+            for (int r7 = q - 1; r7 >= 0; r7--) {
+                if (qd >= Y3[r7]) break;
+                Y3[r7 + 1] = Y3[r7];
+                Y3[r7] = qd;
+            }
+        }
+        return Y3;
+    }
+}

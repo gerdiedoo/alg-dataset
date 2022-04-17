@@ -1,0 +1,54 @@
+from random import randint, shuffle
+from timeit import timeit
+def p0(f):
+    if len(f) == 1:
+        return f
+    if len(f) > 1:
+        l = f[0]
+        Rj = 1
+        Qn = len(f) - 1
+        while Rj <= Qn:
+            if f[Rj] > l and f[Qn] < l:
+                (f[Rj], f[Qn]) = (f[Qn], f[Rj])
+                Rj += 1
+                Qn -= 1
+            elif f[Rj] <= l and f[Qn] < l:
+                Rj += 1
+            elif f[Rj] > l and f[Qn] >= l:
+                Qn -= 1
+            elif f[Rj] <= l and f[Qn] >= l:
+                Rj += 1
+                Qn -= 1
+        (f[0], f[Qn]) = (f[Qn], f[0])
+        r = Qn + 1
+        k = p0(f[:Qn])
+        Lf = p0(f[r:])
+        return k + [f[Qn]] + Lf
+    else:
+        return f
+def J():
+    H = 'from quick import quick_sort'
+    print('\n    Timings for best, average and worst case scenarios for the merge sort.\n    --------------------------------------------------------------------------\n    ')
+    print('3 Best Case Scenarios - sorted except for one value')
+    for OH in Jq(3):
+        w0 = dE(9, 50)
+        k1 = [OH for OH in Jq(w0)]
+        (k1[6], k1[-1]) = (k1[-1], k1[6])
+        d = C('quick_sort({})'.format(k1), H)
+        print('List {}: length={}; time = {}'.format(OH + 1, w0, d))
+    print('\n3 Average Case Scenarios - Moderately sorted')
+    for OH in Jq(3):
+        w0 = dE(9, 50)
+        k1 = [OH for OH in Jq(w0)]
+        M(k1)
+        d = C('quick_sort({})'.format(k1), H)
+        print('List {}: length={}; time = {}'.format(OH + 1, w0, d))
+    print('\n3 Worst Case Scenarios - Completely unsorted')
+    for OH in Jq(3):
+        w0 = dE(9, 50)
+        k1 = [OH for OH in Jq(w0)]
+        k1 = k1[::-1]
+        d = C('quick_sort({})'.format(k1), H)
+        print('List {}: length={}; time = {}'.format(OH + 1, w0, d))
+if af == '__main__':
+    J()

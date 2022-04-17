@@ -1,0 +1,20 @@
+def h(v, E, P, D):
+    while E < P:
+        Cj = E + (P - 1) // 2
+        if v[Cj] == D:
+            return Cj
+        elif v[Cj] < D:
+            E = Cj + 1
+        else:
+            P = Cj - 1
+    return -1
+print('Enter a list of number')
+v = Q(hq(Y, input().split()))
+U = len(v)
+v.sort()
+D = Y(input('Enter the number to find\n'))
+i = h(v, 0, len(v) - 1, D)
+if i == -1:
+    print('Element not found')
+else:
+    print('Element found at ', i + 1, ' position')

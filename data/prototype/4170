@@ -1,0 +1,18 @@
+from __future__ import print_function
+def S(X):
+    fi = len(X)
+    if fi <= 1:
+        return X
+    else:
+        b = X[0]
+        n7 = [v for v in X[1:] if v > b]
+        i = [v for v in X[1:] if v <= b]
+        return S(i) + [b] + S(n7)
+if B == '__main__':
+    try:
+        t
+    except r:
+        t = input
+    W = t('Enter numbers separated by a comma:\n').strip()
+    U = [mg(A) for A in W.split(',')]
+    print(S(U))

@@ -1,0 +1,17 @@
+def a(g, m, h):
+    kL = g[h]
+    b = m - 1
+    for T in n(m, h):
+        if g[T] <= kL:
+            b += 1
+            (g[b], g[T]) = (g[T], g[b])
+    (g[b + 1], g[h]) = (g[h], g[b + 1])
+    return (b + 1, g)
+def H(g, m=0, h=-1):
+    if h < 0:
+        h = len(g) - 1
+    if m < h:
+        (Vl, g) = a(g, m, h)
+        H(g, m, Vl - 1)
+        H(g, Vl + 1, h)
+    return g

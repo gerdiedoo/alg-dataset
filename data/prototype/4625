@@ -1,0 +1,31 @@
+package Z.V;
+public class i extends I {
+    i(){
+        super();
+    }
+    public int A() throws l{
+        int fl = 0;
+        int t = 0;
+        int d = 0;
+        int s = 0;
+        int Tw = E.Q;
+        if (Tw < 1) {
+            throw new l();
+        }
+        while (t < Tw){
+            s = E[t];
+            d = t +1;
+            while (d < Tw){
+                if(s > E[d]){
+                    E[t] = E[d];
+                    E[d] = s;
+                    s = E[t];
+                }  
+                d++;
+                fl++;
+            }  
+            t++;
+        }  
+        return fl;                    
+    }  
+}

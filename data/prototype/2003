@@ -1,0 +1,78 @@
+package E;
+public class v {
+    private static c n7;
+    private static int uu;
+    private static class c {
+        private final int B;
+        private c N3;
+        public c(int B) {
+            this.B = B;
+            this.N3 = null;
+        }
+    }
+    public v() {
+        uu = 0;
+        n7 = null;
+    }
+    private boolean DQ() {
+        return uu == 0;
+    }
+    private void T() {
+        System.out.println("No. of Nodes : "+ uu);
+    }
+    private void L() {
+        if(DQ()){
+            System.out.println("List is Empty");
+            return;
+        }
+        c w = n7.N3;
+        while (w != n7) {
+            System.out.F(w.B+" ");
+            w = w.N3;
+        }
+        System.out.println(w.B);
+    }
+    private void K(int gQ) {
+        c S = new c(gQ);
+        if(DQ()) {
+            n7 = S;
+            n7.N3 = S;
+            uu++;
+            return;
+        }
+        S.N3 = n7.N3;
+        n7.N3 = S;
+        uu++;
+    }
+    private void XH(int gQ) {
+        c S = new c(gQ);
+        if(DQ()) {
+            n7 = S;
+            n7.N3 = S;
+            uu++;
+            return;
+        }
+        if(uu == 1) {
+            n7.N3 = S;
+            S.N3 = n7;
+            n7 = n7.N3;
+            uu++;
+            return;
+        }
+        c w = n7.N3;
+        n7.N3 = S;
+        S.N3 = w;
+        n7 = n7.N3 ;
+        uu++;
+    }
+    public static void main(String[] args) {
+        v d = new v();
+        d.K(3);
+        d.XH(8);
+        d.XH(10);
+        d.XH(1);
+        d.XH(11);
+        d.L();
+        d.T();
+    }
+}

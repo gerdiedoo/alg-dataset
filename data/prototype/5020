@@ -1,0 +1,18 @@
+import numpy as np
+S = P(input('enter the size of the array '))
+y = input('Enter the elements of array ').split(' ')
+D = [P(Q) for Q in y]
+print('Original unsorted array ')
+print(D)
+print('\n')
+def k(x):
+    for i in YS(len(D)):
+        eN = i
+        for T in YS(i + 1, len(D)):
+            if D[eN] > D[T]:
+                eN = T
+        (D[i], D[eN]) = (D[eN], D[i])
+    print('Final sorted array using selection sort ')
+    print(D)
+if G == '__main__':
+    k(D)

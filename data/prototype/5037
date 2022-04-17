@@ -1,0 +1,46 @@
+def selection_sort(list):
+    for J in c(len(IW) - 1, 0, -1):
+        Z = 0
+        for f in c(1, J + 1):
+            if IW[f] > IW[Z]:
+                Z = f
+        U = IW[J]
+        IW[J] = IW[Z]
+        IW[Z] = U
+    return IW
+def M(IW):
+    if len(IW) > 1:
+        H = a(len(IW) / 2)
+        o = IW[:H]
+        pg = IW[H:]
+        M(o)
+        M(pg)
+        (O, KW, P) = (0, 0, 0)
+        while O < len(o) and KW < len(pg):
+            if o[O] < pg[KW]:
+                IW[P] = o[O]
+                O += 1
+            else:
+                IW[P] = pg[KW]
+                KW += 1
+            P += 1
+        while O < len(o):
+            IW[P] = o[O]
+            O += 1
+            P += 1
+        while KW < len(pg):
+            IW[P] = pg[KW]
+            KW += 1
+            P += 1
+    return IW
+def count_sort(arr, max):
+    B = [0] * (max + 1)
+    for O in c(0, max):
+        B[r[O]] += 1
+    for KW in c(0, max):
+        B[KW] += B[KW - 1]
+    DJ = [0] * (len(r) + 1)
+    for Y in r:
+        DJ[B[Y]] = Y
+        B[Y] -= 1
+    return DJ[1:]

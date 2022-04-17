@@ -1,0 +1,43 @@
+from random import randint
+def Az(M, v):
+    X = 0
+    p = len(M) - 1
+    while X <= p:
+        z = (p + X) // 2
+        if M[z] == v:
+            return z
+        elif M[z] > v:
+            p = z - 1
+        else:
+            X = z + 1
+    return None
+def j(M, v, X=0, p=None):
+    p = len(M) - 1 if p is None else p
+    if p >= X:
+        z = (p + X) // 2
+        if M[z] == v:
+            return z
+        elif M[z] > v:
+            return j(M, v, X, z - 1)
+        else:
+            return j(M, v, z + 1, p)
+    else:
+        return None
+def n():
+    u = 100
+    F = 100
+    M = [1, 9, 11, 13, 5, 7, 8, 5, 17, 1156, 114]
+    M.sort()
+    v = 13
+    S = j(M, v)
+    if S is None:
+        print('Recursive Binary Search : Element not present in array')
+    else:
+        print('Recursive Binary Search : Element is present at index', S)
+    S = Az(M, v)
+    if S is None:
+        print('Iterative Binary Search : Element not present in array')
+    else:
+        print('Iterative Binary Search : Element is present at index', S)
+if Z == '__main__':
+    n()

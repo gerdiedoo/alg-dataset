@@ -1,0 +1,33 @@
+package U.zE.d;
+import O.j.a;
+import O.j.F;
+import O.j.X;
+public class UD {
+  public static <oO extends W<? super oO>> void t(X<oO> u) {
+    for (int L = 0; L < u.A(); L++) {
+      int o = L;
+      for (int K = L + 1; K < u.A(); K++) {
+        oO Un = u.gZ(o);
+        oO cm = u.gZ(K);
+        if (cm.D(Un) < 0) {
+          o = K;
+        }
+      }
+      if (o != L) {
+        F.m(u, o, L);
+      }
+    }
+  }
+  public static void main(String[] args) {
+    final X<f> J = new a<>();
+    J.E(4);
+    J.E(1);
+    J.E(5);
+    J.E(3);
+    J.E(9);
+    J.E(10);
+    J.E(1);
+    t(J);
+    System.out.println(J);
+  }
+}

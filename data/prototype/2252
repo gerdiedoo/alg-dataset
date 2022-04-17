@@ -1,0 +1,15 @@
+public class M {
+	public static int rh(int g[], int N, int gv, int r) {
+		if (gv >= N) {
+			int q = N + (gv - N) / 2;
+			if (g[q] == r) {
+				return q;
+			}
+			if (g[q] > r) {
+				return rh(g, N, q - 1, r);
+			}
+			return rh(g, q + 1, gv, r);
+		}
+		return -1;
+	}
+}

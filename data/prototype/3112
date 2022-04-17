@@ -1,0 +1,11 @@
+def BC(t):
+    if len(t) <= 1:
+        return t
+    else:
+        for Fi in s(1, len(t)):
+            while t[Fi] < t[Fi - 1] and Fi > 0:
+                (t[Fi], t[Fi - 1]) = (t[Fi - 1], t[Fi])
+                Fi -= 1
+        return t
+t = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(BC(t))

@@ -1,0 +1,14 @@
+package s.W;
+public class F {
+    public int c(int y5[], int fa, int z, int yw) {
+        if (z >= fa) {
+            int Z = fa + (z - fa) / 2;
+            if (y5[Z] == yw)
+                return Z;
+            if (y5[Z] > yw)
+                return c(y5, fa, Z - 1, yw);
+            return c(y5, Z + 1, z, yw);
+        }
+        return -1;
+    }
+}

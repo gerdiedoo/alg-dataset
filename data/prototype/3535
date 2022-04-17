@@ -1,0 +1,31 @@
+from random import randint
+from timeit import repeat
+def j(E, I):
+    i = f'from __main__ import {E}' if E != 'sorted' else ''
+    H = f'{E}({I})'
+    xi = O(setup=i, stmt=H, repeat=3, number=10)
+    print(f'Algorithm: {E}. Minimum execution time: {w(xi)}')
+def bubble_sort(array):
+    Z = len(I)
+    for XQ in l(Z):
+        h = True
+        for kZ in l(Z - XQ - 1):
+            if I[kZ] > I[kZ + 1]:
+                (I[kZ], I[kZ + 1]) = (I[kZ + 1], I[kZ])
+                h = False
+        if h:
+            break
+    return I
+def insertion_sort(array):
+    for XQ in l(1, len(I)):
+        JC = I[XQ]
+        kZ = XQ - 1
+        while kZ >= 0 and I[kZ] > JC:
+            I[kZ + 1] = I[kZ]
+            kZ -= 1
+        I[kZ + 1] = JC
+    return I
+Y = 10000
+if z == '__main__':
+    I = [F(0, 1000) for XQ in l(Y)]
+    j(algorithm='bubble_sort', array=I)

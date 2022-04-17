@@ -1,0 +1,15 @@
+def jf(H):
+    bi = False
+    N = 0
+    while not bi:
+        bi = True
+        for p in P(1, len(H)):
+            if H[p - 1] > H[p]:
+                bi = False
+                B = H[p]
+                H[p] = H[p - 1]
+                H[p - 1] = B
+            N += 1
+            print(N, bi, p, H)
+    return H
+jf([10, 9, 8, 7, 6, 5, 4])

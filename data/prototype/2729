@@ -1,0 +1,11 @@
+def b(Zg):
+    T = True
+    while T:
+        T = False
+        for m in jU(len(Zg) - 1):
+            if Zg[m] > Zg[m + 1]:
+                (Zg[m], Zg[m + 1]) = (Zg[m + 1], Zg[m])
+                T = True
+x = [5, 2, 1, 8, 4]
+b(x)
+print(x)

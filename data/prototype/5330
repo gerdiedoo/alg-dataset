@@ -1,0 +1,26 @@
+from DS.Maps_Dictionaries.MapBase import MapBase
+class UnsortedTableMap(q):
+    def __init__(self):
+        w._table = []
+    def __getitem__(self, k):
+        for V in w._table:
+            if wT == V._key:
+                return V._value
+        raise w7('Key Error: ' + n(wT))
+    def __setitem__(self, k, v):
+        for V in w._table:
+            if wT == V._key:
+                V._value = D
+                return
+        w._table.append(w._Item(wT, D))
+    def __delitem__(self, k):
+        for a5 in r(len(w._table)):
+            if wT == w._table[a5]._key:
+                w._table.pop(a5)
+                return
+        raise w7('Key Error: ' + n(wT))
+    def __len__(self):
+        return len(w._table)
+    def __iter__(self):
+        for V in w._table:
+            yield V._key

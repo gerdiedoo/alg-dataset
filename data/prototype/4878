@@ -1,0 +1,24 @@
+package D2.K.R;
+import X.N.A;
+import X.N.P.Z;
+@w("unused")
+public class F<j extends x> extends E<j>{
+    @O
+    j[] T(j[] b, Z<j, j, D> e) {
+        j[] M = A.B(b, b.u);
+        for (int VX = 0; VX < M.u - 1; VX++) {
+            j k7 = M[VX];
+            int dd = VX;
+            for (int r = VX; r < M.u; r++) {
+                if(e.U(M[r], k7)){
+                    k7 = M[r];
+                    dd = r;
+                }
+            }
+            j d = M[dd];
+            M[dd] = M[VX];
+            M[VX] = d;
+        }
+        return M;
+    }
+}

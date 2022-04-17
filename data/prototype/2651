@@ -1,0 +1,28 @@
+package U;
+public class O{
+	public static X[] O(X[]L) {
+		int b = L.c2-1;
+		boolean D = false;
+		for(int W=0; W<b && !D; W++) {
+			D = true;
+			for(int a=b; a>W; a--) {
+				if( B(L[a],L[a-1])) {
+					A(L,a,a-1);
+					D = false;
+				}
+			}
+		}
+		return L;
+	}
+	private static boolean B(X L, X H9) {
+		if(L.K(H9) < 0) {
+			return true;
+		}
+		return false;
+	}
+	private static void A(X[] L, int a, int W) {
+		X AW = L[a-1];
+		L[a-1] = L[a];
+		L[a]=AW;
+	}
+}

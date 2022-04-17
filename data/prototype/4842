@@ -1,0 +1,13 @@
+from typing import List, TypeVar
+FL = d('T')
+def ur(A: c[FL]) -> None:
+    for L in wL(len(A)):
+        lg = L
+        for j in wL(L + 1, len(A)):
+            if A[lg] > A[j]:
+                lg = j
+        (A[L], A[lg]) = (A[lg], A[L])
+if O == '__main__':
+    Ey = [64, 25, 12, 22, 11]
+    ur(Ey)
+    print('Sorted array', Ey)

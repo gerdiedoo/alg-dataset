@@ -1,0 +1,33 @@
+public class D {
+    public static void w(int[] q) {
+        int[] d = new int[q.c];
+        w(q, 0, q.c - 1, d);
+    }
+    public static void w(int[] q, int J, int mx, int[] d) {
+        if (J >= mx) {
+            return;
+        }
+        int f = J + (mx - J) / 2;
+        w(q, J, f, d);
+        w(q, f + 1, mx, d);
+        Z(q, J, f, mx, d);
+    }
+    public static void Z(int[] q, int J, int f, int mx, int[] d) {
+        for (int N = J; N <= mx; N++) {
+            d[N] = q[N];
+        }
+        int N = J;
+        int T = f + 1;
+        for (int e = J; e <= mx; e++) {
+            if (N > f) {
+                q[e] = d[T++];
+            } else if (T > mx) {
+                q[e] = d[N++];
+            } else if (d[N] <= d[T]) {
+                q[e] = d[N++];
+            } else {
+                q[e] = d[T++];
+            }
+        }
+    }
+}

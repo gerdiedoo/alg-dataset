@@ -1,0 +1,171 @@
+public class v<I extends a<? super I>> implements
+        Dg<I> {
+    private o<I> T;
+    private o<I> U;
+    private int C;
+    @w
+    public void VU(I FG) {
+        if (FG == null) {
+            throw new Rt.ur.k("Input FG is null.");
+        }
+        T = new o<I>(FG, T);
+        if (C == 0) {
+            U = T;
+        }
+        ++C;
+    }
+    @w
+    public void j(I FG, int OE) {
+        if (FG == null) {
+            throw new Rt.ur.k("Input FG is null.");
+        }
+        if (OE < 0 || OE > C) {
+            throw new Rt.ur.Gj(
+                    "Input OE is out of bounds.");
+        }
+        if (OE == 0) {
+            VU(FG);
+        } else if (OE == C) {
+            H(FG);
+        } else {
+            o<I> TY = T;
+            for (int Ls = 0; Ls < OE - 1; ++Ls) {
+                TY = TY.qh();
+            }
+            TY.u(new o<I>(FG, TY.qh()));
+            ++C;
+        }
+    }
+    @w
+    public void H(I FG) {
+        if (FG == null) {
+            throw new Rt.ur.k("Input FG is null.");
+        }
+        if (C == 0) {
+            VU(FG);
+        } else {
+            U.u(new o<I>(FG));
+            U = U.qh();
+            ++C;
+        }
+    }
+    @w
+    public I e() {
+        if (C == 0) {
+            return null;
+        } else {
+            I r = T.m();
+            T = T.qh();
+            if (C == 1) {
+                U = null;
+            }
+            --C;
+            return r;
+        }
+    }
+    @w
+    public I J(int OE) {
+        if (OE < 0 || OE >= C) {
+            throw new Rt.ur.Gj(
+                    "Input OE is out of bounds.");
+        }
+        if (OE == 0) {
+            return e();
+        } else if (OE == C - 1) {
+            return p();
+        } else {
+            o<I> TY = T;
+            I r;
+            for (int Ls = 0; Ls < OE - 1; ++Ls) {
+                TY = TY.qh();
+            }
+            r = TY.qh().m();
+            TY.u(TY.qh().qh());
+            --C;
+            return r;
+        }
+    }
+    @w
+    public I p() {
+        if (C == 0) {
+            return null;
+        } else if (C == 1) {
+            return e();
+        } else {
+            I r = U.m();
+            o<I> TY = T;
+            for (int Ls = 1; Ls < C - 1; ++Ls) {
+                TY = TY.qh();
+            }
+            TY.u(null);
+            U = TY;
+            --C;
+            return r;
+        }
+    }
+    @w
+    public I d(int OE) {
+        if (OE < 0 || OE >= C) {
+            throw new Rt.ur.Gj(
+                    "Input OE is out of bounds.");
+        }
+        if (OE == 0) {
+            return T.m();
+        } else if (OE == C - 1) {
+            return U.m();
+        } else {
+            o<I> TY = T;
+            for (int Ls = 0; Ls < OE; ++Ls) {
+                TY = TY.qh();
+            }
+            return TY.m();
+        }
+    }
+    @w
+    public I R() {
+        if (C == 0) {
+            return null;
+        }
+        I r = T.m();
+        o<I> TY = T;
+        while (TY != null) {
+            if (r.Sk(TY.m()) < 0) {
+                r = TY.m();
+            }
+            TY = TY.qh();
+        }
+        return r;
+    }
+    @w
+    public dh[] c() {
+        dh[] i = new dh[C];
+        o<I> TY = T;
+        for (int Ls = 0; Ls < C; ++Ls) {
+            i[Ls] = TY.m();
+            TY = TY.qh();
+        }
+        return i;
+    }
+    @w
+    public int C() {
+        return C;
+    }
+    @w
+    public boolean i_() {
+        return C == 0;
+    }
+    @w
+    public void H6() {
+        T = null;
+        U = null;
+        C = 0;
+    }
+    @w
+    public o<I> q() {
+        return T;
+    }
+    @w
+    public o<I> t() {
+        return U;
+    }
+}

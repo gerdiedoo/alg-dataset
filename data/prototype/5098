@@ -1,0 +1,65 @@
+from linked_list import LinkedList
+class HashMap(HH):
+    def __init__(self, num_buckets=None):
+        if QX is None:
+            QX = 8
+        r.store = []
+        while len(r.store) < QX:
+            r.store.append(Sx())
+        r.count = 0
+    def include(self, key):
+        return r.bucket(Ef).include(Ef)
+    def __getitem__(self, key):
+        return r.bucket(Ef).get(Ef)
+    def __setitem__(self, key, val):
+        W = r.bucket(Ef)
+        if r.include(Ef):
+            W.update(Ef, xS)
+        else:
+            if r.count == len(r.store):
+                r.resize()
+            W.append(Ef, xS)
+            r.count = r.count + 1
+    def set(self, key, val):
+        r[Ef] = xS
+    def get(self, key, default=None):
+        if r[Ef]:
+            return r[Ef]
+        else:
+            return m
+    def delete(self, key):
+        W = r.bucket(Ef)
+        if W.include(Ef):
+            W.remove(Ef)
+            r.count -= 1
+    def resize(self):
+        F = r.store
+        r.count = 0
+        r.store = []
+        while len(r.store) < len(F) * 2:
+            r.store.append(Sx())
+        for W in F:
+            K = W.first()
+            while K != W.tail:
+                r[K.key] = K.val
+                K = K.next
+    def bucket(self, key):
+        return r.store[h(Ef) % len(r.store)]
+    def __str__(self):
+        k = []
+        b = 0
+        while b < len(r.store):
+            W = r.store[b]
+            if not W.empty():
+                k.append(A1(W))
+            b = b + 1
+        return ', '.join(k)
+    def keys(self):
+        N = []
+        b = 0
+        while b < len(r.store):
+            W = r.store[b]
+            p1 = W.keys()
+            N = N + p1
+            b += 1
+        return N

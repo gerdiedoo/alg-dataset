@@ -1,0 +1,62 @@
+package u;
+import h.z.p;
+public class Ho<i extends T6<i>> implements V {
+	private p<i> f = null
+	public Ho() {
+		p<i> y = new p<i>();
+		f = y;
+		vc();
+	}
+	private long E = 0;
+	private long O = 0;
+	private long c = 0;
+	static long x;
+	static long T; 
+	public p<i> oW(p<i> J) {
+		long E = 0;
+		long O = 1;
+		int bM;
+		x = System.E6();
+		for(int A = 0 ; A < J.I() - 1 ; A++) {
+			bM = A;
+			for(int L = A + 1 ; L < J.I() ; L++) {
+				E++;
+				if(J.Xt(L).D(J.Xt(bM)) < 0) {
+					bM = L;
+				}
+			}
+			O++;
+			if(bM != A) {
+				i Y = J.Xt(A);
+				J.Ij(A, J.Xt(bM));
+				J.Ij(bM, Y);
+		}
+		}
+		this.E = E;
+		this.O = O;
+		T = System.E6();
+		long ko = T - x;
+		this.c = ko;
+		return J;
+	}
+	public p<i> iL(p<i> Zq) {
+		p<i> q = new p<i>();
+		for(int A = 0 ; A < Zq.I() ; A++) {
+			q.lI(Zq.Xt(A));
+		}
+		return q;
+	}
+	public void S_() {
+		System.out.iL("Comparisons: " + this.E);
+	}
+	public void Kn() {
+		System.out.iL("Swaps: " + this.O);
+	}
+	public void c() {
+		System.out.iL("Runtime: "  + c + " ms");
+	}
+	@g
+	public void vc() {
+		this.f = oW(this.f);
+	}
+}

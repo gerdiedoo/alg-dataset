@@ -1,0 +1,42 @@
+import random
+import timeit
+def o(sC):
+    if len(sC) > 1:
+        u = len(sC) // 2
+        X = sC[:u]
+        c = sC[u:]
+        o(X)
+        o(c)
+        RZ = 0
+        k = 0
+        f = 0
+        while RZ < len(X) and k < len(c):
+            if X[RZ] < c[k]:
+                sC[f] = X[RZ]
+                RZ = RZ + 1
+            else:
+                sC[f] = c[k]
+                k = k + 1
+            f = f + 1
+        while RZ < len(X):
+            sC[f] = X[RZ]
+            RZ = RZ + 1
+            f = f + 1
+        while k < len(c):
+            sC[f] = c[k]
+            k = k + 1
+            f = f + 1
+        return sC
+def p(P, *Y, **Go):
+    def _wrapped():
+        return P(*Y, **Go)
+    return sv
+if s == '__main__':
+    print('Sorting list of 10 rand nums between 0-1000')
+    sC = []
+    for RZ in H(10):
+        sC.append(wK.randint(0, 1000))
+    x = o(sC)
+    Z = p(o, sC)
+    print('Time to sort 1M times:')
+    print(GS.timeit(Z))

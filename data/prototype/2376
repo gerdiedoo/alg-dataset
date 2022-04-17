@@ -1,0 +1,17 @@
+import rv.O8.w;
+import rv.O8.c;
+import rv.O8.i;
+public class pm {
+    public Im T(c<Im> Pb, Im P ) {
+        Im V = null;
+        i<Im> v = Pb.G().R(b -> b.equals(P)).F();
+        if (v.ry()) {
+            V = v.r();
+        }
+        return V;
+    }
+    public static void main(String[] args) {
+        pm q = new pm();
+        System.out.println(q.T(w.X(1,2,3,4,5), 3));
+    }
+}

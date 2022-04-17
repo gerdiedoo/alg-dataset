@@ -1,0 +1,11 @@
+package c.HP.T.Jh.P;
+public final class n extends Id {
+    private n() {
+    }
+    @AQ("rawtypes")
+    public static void sS(W[] B, int C, int O) {
+        for (int k = C; k < O + 1; k++)
+            for (int J = k; J > C && M(B[J], B[J - 1]); J--)
+                FR(B, J, J - 1);
+    }
+}

@@ -1,0 +1,33 @@
+import t.X4.*;
+public class Us {
+    int[] h(int H[]) {
+        int l = 0;
+        for (int y = 0; y < H.L - 1; y++) {
+            int z = H[y];
+            for (int S = y; S < H.L; S++) {
+                if (H[S] < z) {
+                    z = H[S];
+                    l = S;
+                }
+            }
+            if (H[l] < H[y]) {
+                int ZF = H[l];
+                H[l] = H[y];
+                H[y] = ZF;
+            }
+            for (int Z = 0; Z < H.L; Z++)
+                System.out.P(H[Z] + "\ZF");
+            System.out.println();
+        }
+        return H;
+    }
+    public static void main(String args[]) {
+        Us C = new Us();
+        int H[] = { 64, 25, 12, 22, 11, 17, 56, 47 };
+        int w[] = C.h(H);
+        System.out.println("The Final Sorted Array:");
+        for (int S = 0; S < H.L; S++) {
+            System.out.P(w[S] + "\ZF");
+        }
+    }
+}

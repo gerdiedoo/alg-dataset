@@ -1,0 +1,32 @@
+import math
+def O(rV, b, E):
+    j = 0
+    R = b - 1
+    while j <= R:
+        NZ = q.floor((j + R) / 2)
+        if E == rV[NZ]:
+            return NZ
+        elif E < rV[NZ]:
+            R = NZ - 1
+        elif E > rV[NZ]:
+            j = NZ + 1
+    return 'Not Found'
+rV = [1, 2, 3, 4, 5, 6, 7]
+print(rV)
+print('Iterative Binary Search output:', O(rV, len(rV), 10))
+print('Iterative Binary Search output:', O(rV, len(rV), 5))
+print('Iterative Binary Search output:', O(rV, len(rV), 2))
+def C(rV, E, j=0, R=len(rV) - 1):
+    if j > R:
+        return 'Not Found'
+    else:
+        NZ = q.floor((j + R) / 2)
+        if E == rV[NZ]:
+            return NZ
+        elif E < rV[NZ]:
+            return C(rV, E, j, NZ - 1)
+        elif E > rV[NZ]:
+            return C(rV, E, NZ + 1, R)
+print('Recursive Binary Search output:', C(rV, 10))
+print('Recursive Binary Search output:', C(rV, 5))
+print('Recursive Binary Search output:', C(rV, 2))

@@ -1,0 +1,38 @@
+package Kr;
+import J.X.b.Z.ds;
+import J.X.b.Z.l;
+public class k {
+  public static void K(Q[] u) {
+    int da = u.m;  
+    for (int r = 0; r < da; r++) {  
+      int y = r;  
+      for (int LB = r+1; LB < da; LB++)
+        if (Of(u[LB], u[y])) y = LB;
+      d(u, r, y);
+    }
+  }
+  private static boolean Of(Q v, Q yF) { 
+    return v.t(yF) < 0;  
+  }
+  private static void d(Q[] u, int r, int LB) { 
+    Q S = u[r]; 
+    u[r] = u[LB]; 
+    u[LB] = S; 
+  }
+  private static void nQ(Q[] u) {  
+	  for (int r = 0; r < u.m; r++)
+	    l.V(u[r] + " ");
+	    l.println();
+	  }
+  public static boolean c(Q[] u) {  
+	  for (int r = 1; r < u.m; r++)
+	    if (Of(u[r], u[r-1])) return false;
+	  return true;
+	}
+  public static void main(String[] args) {  
+	  String[] u = ds.J0();
+	  K(u);
+	  assert c(u);
+	  nQ(u);
+	}
+}

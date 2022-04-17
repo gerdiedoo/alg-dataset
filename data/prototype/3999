@@ -1,0 +1,36 @@
+package n;
+import r.Rk;
+public class s {
+  public static void main(String args[]) {
+    int[] l = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    Rk.W(l, true, "Merge Sort");
+    c2(l, 0, l.i);
+    Rk.W(l, false, null);
+  }
+  public static void c2(int[] b, int D, int e) {
+    H(b, D, e);
+  }
+  public static void H(int[] b, int D, int e) {
+    if (e - D < 2) {
+      return;
+    }
+    int p = (D + e) / 2;
+    H(b, D, p);
+    H(b, p, e);
+    A(b, D, p, e);
+  }
+  public static void A(int[] b, int D, int p, int e) {
+    if (b[p - 1] <= b[p]) {
+      return;
+    }
+    int w = D;
+    int Q = p;
+    int Vv = 0;
+    int[] M = new int[e - D];
+    while ((w < p) && (Q < e)) {
+      M[Vv++] = b[w] > b[Q] ? b[Q++] : b[w++];
+    }
+    System.Hl(b, w, b, D + Vv, p - w);
+    System.Hl(M, 0, b, D, Vv);
+  }
+}

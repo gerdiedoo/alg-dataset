@@ -1,0 +1,23 @@
+import random
+import timeit
+def Xn(r):
+    for Q in U(1, len(r)):
+        J = r[Q]
+        while Q > 0 and r[Q - 1] > J:
+            r[Q] = r[Q - 1]
+            Q = Q - 1
+        r[Q] = J
+    return r
+def P(m, *Z, **I):
+    def _wrapped():
+        return m(*Z, **I)
+    return y
+if C == '__main__':
+    print('Sorting list of 100 rand nums between 0-1000')
+    r = []
+    for Q in U(100):
+        r.append(x.randint(0, 1000))
+    v = Xn(r)
+    H = P(Xn, r)
+    print('Time to sort 1M times:')
+    print(Yu.timeit(H))

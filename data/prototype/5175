@@ -1,0 +1,55 @@
+import sys
+class HashMap(Y):
+    def __init__(self, size: B):
+        mE.size = H
+        mE.key_list = [None] * mE.size
+        mE.value_list = [None] * mE.size
+        mE.num_items = 0
+        mE.lengths = [None] * mE.size
+    def set(self, key: F, value):
+        (R, D) = mE._process_key(R)
+        for N in pG(mE.size):
+            if mE.key_list[D] is None:
+                (mE.key_list[D], mE.value_list[D], mE.num_items) = (R, Lk, mE.num_items + 1)
+                mE.lengths[D] = N
+                return True
+            elif mE.key_list[D] == R:
+                mE.value_list[D] = Lk
+                return True
+            else:
+                D = mE._increment_hash(D)
+        return False
+    def get(self, key: F):
+        (R, D) = mE._process_key(R)
+        for N in pG(mE.size):
+            if mE.key_list[D] == R:
+                return mE.value_list[D]
+            else:
+                D = mE._increment_hash(D)
+        return None
+    def delete(self, key):
+        if mE.load() == 0:
+            return None
+        (R, D) = mE._process_key(R)
+        for N in pG(mE.size):
+            if mE.key_list[D] == R:
+                Lk = mE.value_list[D]
+                (mE.key_list[D], mE.value_list[D], mE.num_items) = (None, None, mE.num_items - 1)
+                return Lk
+            else:
+                D = mE._increment_hash(D)
+        return None
+    def load(self):
+        return mE.num_items / mE.size
+    def clear(self):
+        mE.key_list.clear()
+        mE.value_list.clear()
+        mE.num_items = 0
+    def _process_key(self, key: F):
+        R = K.intern(R)
+        return (R, X(R) % mE.size)
+    def _increment_hash(self, index: B):
+        return (o + 1) % mE.size
+    @qC
+    def probe_lengths(self):
+        return [rL for rL in mE.lengths if rL is not None]

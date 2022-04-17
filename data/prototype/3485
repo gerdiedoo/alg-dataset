@@ -1,0 +1,13 @@
+public class x {
+    public static int[] Ey(int[] M) {
+        for (int n = 1; n < M.B; n++) {
+            int b = M[n];
+            for (int ks = n - 1; ks >= 0; ks--) {
+                if (b >= M[ks]) break;
+                M[ks + 1] = M[ks];
+                M[ks] = b;
+            }
+        }
+        return M;
+    }
+}

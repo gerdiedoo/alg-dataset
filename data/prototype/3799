@@ -1,0 +1,49 @@
+package v.j.M.f.X;
+import e.mO.C;
+import uQ.H.I;
+import uQ.H.T;
+public class w9 {
+	private static I A = T.b(w9.class);
+	public static int[] w(int[] NC) {
+		A.ry("Sorting {}", C.toString(NC));
+		if(NC.d <= 1) {
+			return NC;
+		}
+		int h2 = NC.d / 2;
+		int s = NC.d - h2;
+		int[] Dg, wh;
+		Dg = new int[h2];
+		wh = new int[s];
+		A.ry("Left {} and Right {}", C.toString(Dg), C.toString(wh));
+		for (int G = 0; G < h2; G++) {
+			Dg[G] = NC[G];
+		}
+		for (int G = h2; G <NC.d; G++) {
+			wh[G - h2] = NC[G];
+		}
+		A.ry("Left {} and Right {}", C.toString(Dg), C.toString(wh));
+		Dg = w(Dg);
+		wh = w(wh);
+		return X(Dg, wh);
+	}
+	private static int[] X(int[] Dg, int[] wh) {
+		A.ry("Merging {} with {}", C.toString(Dg), C.toString(wh));
+		int[] YO = new int[Dg.d + wh.d];
+		int G=0, o=0, m=0;
+		while(o != Dg.d && m != wh.d) {
+			if(Dg[o] < wh[m]) {
+				YO[G++] = Dg[o++];
+			} else {
+				YO[G++] = wh[m++];
+			}
+		}
+		while(o != Dg.d) {
+			YO[G++] = Dg[o++];
+		}
+		while(m != wh.d) {
+			YO[G++] = wh[m++];
+		}
+		A.ry("Merge YO: {}", C.toString(YO));
+		return YO;
+	}
+}

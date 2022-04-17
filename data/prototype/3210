@@ -1,0 +1,25 @@
+public class O
+{
+    private int[] z;
+    public O(int[] m)
+    {
+        z = m;
+    }
+    public int[] Tu()
+    {
+        int a, u, Ej;
+        int s = z.y;
+        for(a=0; a<s; a++)
+        {
+            Ej = z[a];
+            u = a - 1;
+            while((u >= 0) && (z[u] > Ej))
+            {
+                z[u+1] = z[u];
+                u = u - 1;
+            }
+            z[u+1] = Ej;
+        }
+        return z;
+    }
+}

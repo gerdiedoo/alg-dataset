@@ -1,0 +1,105 @@
+public class JV {
+    public f[] jR;
+    private int m, uv, J;
+    private double Vh;
+    public int Z = 0;
+    public JV(int m, double J){
+        this.m = m;
+        this.Vh = J;
+        int v = (int) (m/J);
+        while(this.U(v) == false){
+            v++;
+        }
+        jR = new f[v];
+        this.uv = v;
+        this.J = 0;
+    }
+    public void g(int s){
+        int p = s % this.uv;
+        if((this.J +1) > this.m){
+            this.F();
+            this.g(s);
+        }
+        else{
+            J++;
+            while(this.jR[p] != null){
+                Z++;
+                if(this.jR[p] == s){
+                    return;
+                }
+                if(p < (this.uv-1)){
+                    p++;
+                }
+                else{
+                    p = 0;
+                }
+            }
+            this.jR[p] = s;
+        }
+    }
+    public void F(){
+        JV N;  
+        N = new JV((this.uv * 2), this.Vh);
+        for(int L9=0; L9<this.uv; L9++){
+            if(this.jR[L9] != null){
+                N.g(this.jR[L9]);
+            }
+        }
+        this.jR = N.jR;
+        this.m = N.m;
+        this.uv = N.uv;
+        this.J = N.J;
+    }
+    public boolean B(int s){
+        int p = s % this.uv;
+        while(this.jR[p] != null){
+            if(this.jR[p] == s){
+                return true;
+            }
+            if(p < (this.uv-1)){
+                p++;
+            }
+            else{
+                p = 0;
+            }
+        }
+        return false;
+    }
+    public void E(){
+        for(int L9=0; L9<this.uv; L9++){
+            if(this.jR[L9] != null){
+                System.out.println(this.jR[L9]);
+            }
+        }
+    }
+    public void e_(){
+        System.out.println("Key ==> Index");
+        for(int L9=0; L9<this.uv; L9++){
+            if(this.jR[L9] != null){
+                System.out.println(this.jR[L9] + " ==> " + L9);
+            }
+        }
+    }
+    public int I(){
+        return this.m;
+    }
+    public int o(){
+        return this.J;
+    }
+    public int T(){
+        return this.uv;
+    }
+    public double rA(){
+        return this.Vh;
+    }
+    private boolean U(int b){
+        int Pc = 0;
+        for(int L9=2; L9<(a.S(b)); L9++){
+            if(b%L9 == 0){
+                Pc++;
+            }
+        }
+        if(Pc == 0) return true;
+        else return false;
+    }
+}

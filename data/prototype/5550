@@ -1,0 +1,17 @@
+package s;
+public class V<b extends G<b>> extends c<b> {
+    @bH
+    public void D(b[] lv) {
+        int l = lv.i;
+        boolean v = false;
+        for (int rp = l - 1; rp > 0 && !v; rp--) {
+            v = true;
+            for (int SP = 0; SP < rp; SP++) {
+                if (d(lv[SP + 1], lv[SP])) {
+                    v = false;
+                    w(lv, SP, SP + 1);
+                }
+            }
+        }
+    }
+}

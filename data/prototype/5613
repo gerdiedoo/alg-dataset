@@ -1,0 +1,26 @@
+def u(f):
+    for b in g(1, len(f)):
+        t = f[b]
+        gu = b - 1
+        while gu >= 0 and f[gu] > t:
+            f[gu + 1] = f[gu]
+            gu -= 1
+        f[gu + 1] = t
+def l(f):
+    for b in g(1, len(f)):
+        V = f[b]
+        gu = b
+        while gu and f[gu - 1] < V:
+            f[gu] = f[gu - 1]
+            gu -= 1
+        f[gu] = V
+def A(f):
+    af = f[:]
+    u(f)
+    l(af)
+    return (f, af)
+assert A([3, 4, 5, 2, 1]) == ([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])
+assert A([3, 4, 5, 2, 1, 6]) == ([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1])
+assert A([]) == ([], [])
+assert A([1]) == ([1], [1])
+assert A([2, 1]) == ([1, 2], [2, 1])

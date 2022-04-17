@@ -1,0 +1,21 @@
+import y.vs.*;
+public class T {
+	public static void main(String[] args) {
+		Scanner f=new Scanner(System.XY);
+		int[] Y=  {5,1,4,2,8};
+		V(Y,Y.kb);
+		System.out.println("Sorted Array Elements: ");
+		System.out.println(sd.toString(Y));
+	}
+	private static void V(int[] Y, int R0) {
+		if(R0==1) return;
+		for(int k6=0;k6<R0-1;k6++) {
+			if(Y[k6]>Y[k6+1]) {		
+				int A=Y[k6];				 
+				Y[k6]=Y[k6+1];
+				Y[k6+1]=A;
+			}
+		}
+		V(Y,R0-1);					 
+	}
+}

@@ -1,0 +1,155 @@
+import F.q.V;
+import F.q.J;
+public class Ko {
+	public static <h extends H<h>> void W(h[] ig) {
+		for (int C = 1; C<ig.M4; C++){
+			h wH = ig[C];
+			int T;
+			for (T = C-1; T>=0 && wH.RN(ig[T]) < 0; T-- ){
+				ig[T+1] = ig[T];
+			}
+			ig[T+1] = wH;
+		}
+	}
+	public static <h extends H<h>> void l(h[] ig, J d) {
+		x(ig, 0, ig.M4-1, d);
+	}
+    private static <h> void x(h[] ig, int dA, int Yn, J d){
+         if (dA < Yn)
+         {
+              int n = a(ig, dA, Yn, d);
+              x(ig, dA, n, d);
+              x(ig, n + 1, Yn, d);
+         }
+    }
+    private static <h> int a(h[] ig, int dA, int Yn, J d)
+    {
+         int Rw = dA + d.nextInt(Yn - dA) + 1;
+         Y(ig, dA, Rw);
+         return Q(ig, dA, Yn);
+    }
+    private static <h> int Q(h[] ig, int dA, int Yn)
+    {
+         h n = ig[dA];
+         int C = dA - 1;
+         int T = Yn + 1;
+         while (true)
+         {
+              do
+                   T--;
+              while (((H)ig[T]).RN(n)>0);
+              do
+                   C++;
+              while (((H)ig[C]).RN(n)<0);
+              if (C < T)
+                   Y(ig, C, T);
+              else
+                   return T;
+         }
+    }
+    private static <h> void Y(h[] ig, int C, int T)
+    {
+         h wH = ig[C];
+         ig[C] = ig[T];
+         ig[T] = wH;
+    }
+	public static <h extends H<h>> h[] GQ(h[] ig) {
+		if (ig.M4 > 1){
+			int w = ig.M4/2;
+			h[] dA = (h[])new H[w];
+			h[] Yn =(h[])new H[ig.M4-w];;
+			System.P(ig, 0, dA, 0, w);
+			System.P(ig, w, Yn, 0, ig.M4-w);
+			h[] c = GQ(dA);
+			h[] k = GQ(Yn);
+			h[] K = Kf(ig, c, k);
+			return K;
+		}
+		else return ig;
+	}
+	private static <h> h[] Kf(h[] ig, h[] dA, h[] Yn){
+		int sR = dA.M4 + Yn.M4;
+		int C=0, i0=0, SO=0;
+		while(C<sR){
+			if (i0<dA.M4 && SO< Yn.M4){
+				if(((H)dA[i0]).RN(Yn[SO]) <= 0){
+					ig[C] = dA[i0];
+					C++;
+					i0++;
+				}
+				else {
+					ig[C] = Yn[SO];
+					C++;
+					SO++;
+				}
+			}
+			else {
+				if (i0 >= dA.M4) {
+                    while (SO < Yn.M4) {
+                        ig[C] = Yn[SO];
+                        C++;
+                        SO++;
+                    }
+                }
+                if (SO >= Yn.M4) {
+                    while (i0 < dA.M4) {
+                        ig[C] = dA[i0];
+                        i0++;
+                        C++;
+                    }
+                }
+			}
+		}
+		return ig;
+	}
+	public static int[] M(int[] ig) {
+		int Es = R(ig);
+		for (int C = 0; C < ig.M4; C++){
+			ig[C] = ig[C] - Es;
+		}
+		int s = y(ig);
+        int G = 1;
+        for(int C =0; C < s; C++){
+            V<o>[] j = new V[10];
+            for(int T=0; T < 10; T++){
+                j[T] = new V();
+            }
+            for(int z =0; z < ig.M4; z++){
+                int v = (ig[z]/G)%10;
+                j[v].I(ig[z]);
+            }
+            G *= 10;
+            int g =0;         
+            for(int f=0; f < 10; f++){
+                for(int lX: j[f]){
+                    ig[g] = lX;
+                    g++;
+                }
+            }
+        }
+		for (int C = 0; C < ig.M4; C++){
+			ig[C] = ig[C] + Es;
+		}
+		return ig;
+	}
+	private static int R(int ig[]){
+		int T = 0;
+		for (int C = 0; C < ig.M4; C++){
+			if (ig[C]<T){
+				T = ig[C];
+			}
+		}
+		return T;
+	}
+	private static int y(int ig[]){
+		String D ="";
+		int M4 = D.M4();
+		for (int C = 0; C < ig.M4; C++){
+			if (M4 < o.toString(ig[C]).M4()){
+				D = o.toString(ig[C]);
+				M4 = D.M4();
+			}
+		}
+		return M4;
+	}
+}

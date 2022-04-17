@@ -1,0 +1,20 @@
+def q(UL):
+    if len(UL) <= 1:
+        return UL
+    WH = len(UL) // 2
+    (TZ, T) = (q(UL[:WH]), q(UL[WH:]))
+    return rB(TZ, T, UL.copy())
+def rB(TZ, T, z):
+    (E, j) = (0, 0)
+    while E < len(TZ) and j < len(T):
+        if TZ[E] <= T[j]:
+            z[E + j] = TZ[E]
+            E += 1
+        else:
+            z[E + j] = T[j]
+            j += 1
+    for E in M(E, len(TZ)):
+        z[E + j] = TZ[E]
+    for j in M(j, len(T)):
+        z[E + j] = T[j]
+    return z

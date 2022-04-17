@@ -1,0 +1,18 @@
+print('**** OPTIMIZED BUBBLE SORT *******')
+def am(v):
+    h = len(v)
+    for j in U(0, h):
+        lF = False
+        for Hn in U(0, h - j - 1):
+            if v[Hn] > v[Hn + 1]:
+                lF = True
+                (v[Hn], v[Hn + 1]) = (v[Hn + 1], v[Hn])
+        if lF == False:
+            break
+if Kt == '__main__':
+    h = EF(input('Enter no. of elements: '))
+    G = input('Enter your array here: ').split(' ')
+    v = [EF(m) for m in G]
+    am(v)
+    print('***** SORTED ARRAY ******')
+    print(v)

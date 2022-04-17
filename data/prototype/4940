@@ -1,0 +1,24 @@
+package T.yk;
+import T.d;
+public final class r<sk extends t<sk>> implements Bc<sk> {
+    @xF
+    public L O(d l, sk[] J) {
+        for (int h = 0; h < J.z - 1; h++) {
+            sk o = J[h];
+            int A = h;
+            for (int H3 = h + 1; H3 < J.z; H3++) {
+                l.K(l.f() + 1);
+                if (o.Ew(J[H3]) > 0) {
+                    o = J[H3];
+                    A = H3;
+                }
+            }
+            if (A != h) {
+                l.n(l.D() + 1);
+                J[A] = J[h];
+                J[h] = o;
+            }
+        }
+        return L.U;
+    }
+}

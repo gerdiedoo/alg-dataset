@@ -1,0 +1,17 @@
+package X.XA;
+import X.DV;
+public class u extends DV {
+    @h
+    public void t(o[] I) {
+        for (int G = 0; G < I.T; G++) {
+            int z = G;
+            for (int p = G + 1; p < I.T; p++)
+                if (D(I[p], I[z])) z = p;
+            S4(I, G, z);
+        }
+    }
+    public static void X(o[] I) {
+        u X = new u();
+        X.t(I);
+    }
+}

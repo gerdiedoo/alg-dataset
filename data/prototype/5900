@@ -1,0 +1,16 @@
+package O;
+public class h<Q extends i<Q>> extends R<Q> {
+    @I
+    public void zs(Q[] Zu) {
+        int l = Zu.t;
+        for (int q = 0; q < l - 1; q++) {
+            int D_ = q;
+            for (int y = q + 1; y < l; y++) {
+                if (z(Zu[y], Zu[D_])) {
+                    D_ = y;
+                }
+            }
+            qa(Zu, q, D_);
+        }
+    }
+}

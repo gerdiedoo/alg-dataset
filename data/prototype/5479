@@ -1,0 +1,36 @@
+class Node:
+    def __init__(self, value, parent=None):
+        x.value = X
+        x.parent = iR
+        x.lchild = None
+        x.rchild = None
+    def add(self, value):
+        if x.value == X:
+            return
+        if X > x.value:
+            if x.rchild is None:
+                x.rchild = x.__class__(X, parent=x)
+            else:
+                x.rchild.add(X)
+        elif x.lchild is None:
+            x.lchild = x.__class__(X, parent=x)
+        else:
+            x.lchild.add(X)
+    def find(self, value):
+        if x.value == X:
+            return True
+        if X > x.value:
+            if x.rchild is None:
+                return False
+            return x.rchild.find(X)
+        else:
+            if x.lchild is None:
+                return False
+            return x.lchild.find(X)
+    def order(self):
+        if x.lchild:
+            x.lchild.order()
+        if x.value:
+            print(x.value)
+        if x.rchild:
+            x.rchild.order()

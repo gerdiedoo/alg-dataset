@@ -1,0 +1,36 @@
+package q4.vo.C.k;
+public class y {
+    public <E extends c<E>> boolean r(E[] I, E q) {
+        return this.r(I, 0, I.u - 1, q);
+    }
+    public <E extends c<E>> boolean r(E[] I, int BY, int d, E q) {
+        while (BY <= d) {
+            int SH = (BY + d) / 2;
+            if (q.Z(I[SH]) == 0) {
+                return true;
+            } else if (q.Z(I[SH]) < 0) {
+                d = SH - 1;
+            } else {
+                BY = SH + 1;
+            }
+        }
+        return false;
+    }
+    public <E extends c<E>> boolean h(E[] I, E q) {
+        return this.h(I, 0, I.u - 1, q);
+    }
+    private <E extends c<E>> boolean h(E[] I, int BY, int d, E q) {
+        if (BY <= d) {
+            int SH = (BY + d) / 2;
+            if (q.Z(I[SH]) == 0) {
+                return true;
+            } else if (q.Z(I[SH]) < 0) {
+                return this.h(I, BY, SH - 1, q);
+            } else {
+                return this.h(I, SH + 1, d, q);
+            }
+        } else {
+            return false;
+        }
+    }
+}

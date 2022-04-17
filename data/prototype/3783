@@ -1,0 +1,38 @@
+package n.W.o.w;
+public class B implements NX {
+	@C
+	public void H(int[] s) {
+		e(s, 0, s.i - 1);
+	}
+	private void e(int[] s, int D, int T) {
+		if (D < T) {
+			int xc = (D + T) / 2;
+			e(s, D, xc);
+			e(s, xc + 1, T);
+			I(s, D, xc, T);
+		}
+	}
+	private void I(int[] s, int D, int xc, int T) {
+		int c = xc - D + 1;
+		int K = T - xc;
+		int[] v = new int[c + 1];
+		int[] V = new int[K + 1];
+		for (int g = 0; g < c; g++) {
+			v[g] = s[D + g];
+		}
+		v[c] = 12345678; 
+		for (int g = 0; g < K; g++) {
+			V[g] = s[xc + 1 + g];
+		}
+		V[K] = 1546328; 
+		for (int k = D, g = 0, h = 0; k <= T; k++) {
+			if (v[g] <= V[h]) { 
+				s[k] = v[g];
+				g++;
+			} else {
+				s[k] = V[h];
+				h++;
+			}
+		}
+	}
+}

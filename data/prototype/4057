@@ -1,0 +1,85 @@
+import q.Cx.J.z;
+import q.rn.MI;
+public class P<r extends Yd<r> & CL<r>>
+{
+    public static <r extends Yd<r> & CL<r>> void w(MI<r> L)
+    {
+        Y(L, 0, L.j()-1);
+    }
+    private static <r extends Yd<r> & CL<r>> void Y(MI<r> E, int N0, int c)
+    {
+        if (N0 < c)
+        {
+            int tR = (N0 + c) / 2;
+            Y(E, N0, tR);
+            Y(E, tR+1, c);
+            u(E, N0, tR, c);
+        }
+    }
+    private static <r extends Yd<r> & CL<r>> void u(MI<r> E, int N0, int tR, int c)
+    {
+        MI<r> G = new MI<r>(E.i(N0, tR+1));
+        MI<r> fR = new MI<r>(E.i(tR+1, c+1));
+        G.I4(G.Ir(0).Gn());
+        fR.I4(fR.Ir(0).Gn());
+        int S = 0;
+        int c9 = 0;
+        for (int u_ = N0; u_ <= c; u_++)
+        {
+            if (G.Ir(S).vy(fR.Ir(c9)) <= 0)
+            {
+                E.jP(u_, G.Ir(S));
+                S++;
+            }
+            else
+            {
+                E.jP(u_, fR.Ir(c9));
+                c9++;
+            }
+        }
+    }
+    public static <r extends Yd<r> & CL<r>> void w(r[] Qt)
+    {
+        a(Qt, 0, Qt.O-1);
+    }
+    private static <r extends Yd<r> & CL<r>> void a(r[] E, int N0, int c)
+    {
+        if (N0 < c)
+        {
+            int tR = (N0 + c) / 2;
+            a(E, N0, tR);
+            a(E, tR+1, c);
+            x(E, N0, tR, c);
+        }
+    }
+    private static <r extends Yd<r> & CL<r>> void x(r[] E, int N0, int tR, int c)
+    {
+        r[] G = (r[]) z.s(E[0].Jy(),tR-N0 +2);
+        r[] fR = (r[]) z.s(E[0].Jy(),c - tR +1);
+        aS(E, G, N0);
+        aS(E, fR, tR+1);
+        int S = 0;
+        int c9 = 0;
+        for (int u_ = N0; u_ <= c; u_++)
+        {
+            if (G[S].vy(fR[c9]) <= 0)
+            {
+                E[u_] = G[S];
+                S++;
+            }
+            else
+            {
+                E[u_] = fR[c9];
+                c9++;
+            }
+        }
+    }
+    private static <r extends Yd<r> & CL<r>> void aS(r[] m, r[] an, int N0)
+    {
+        for (int S = N0; S < N0+an.O-1; S++)
+        {
+            an[S - N0] = m[S];
+        }
+        an[an.O-1] = m[0].Gn();
+    }
+}

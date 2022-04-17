@@ -1,0 +1,42 @@
+from typing import List
+def L(n: B[SK], W: SK, G: SK, d: SK) -> None:
+    f = G + 1
+    if n[G] <= n[f]:
+        return
+    while W <= G and f <= d:
+        if n[W] <= n[f]:
+            W += 1
+        else:
+            q = n[f]
+            nq = f
+            while nq != W:
+                n[nq] = n[nq - 1]
+                nq -= 1
+            n[W] = q
+            W += 1
+            G += 1
+            f += 1
+def K(n: B[SK], *N: B[SK]) -> None:
+    if len(N) == 2:
+        (sx, j) = N
+    else:
+        (sx, j) = (0, len(n) - 1)
+    if j > sx:
+        w = sx + (j - sx) // 2
+        K(n, sx, w)
+        K(n, w + 1, j)
+        L(n, sx, w, j)
+if o == '__main__':
+    try:
+        from utils import randomSequence
+    except r:
+        import os, sys
+        p = U.path.dirname(U.path.realpath(V))
+        X = U.path.abspath(U.path.join(p, U.pardir))
+        v.path.insert(0, X)
+        from utils import randomSequence
+    print('MERGE SORT')
+    P = [7, 3, 6, 9, 4, 8, 1, 0, 5, 2]
+    print(P, '\n')
+    K(P)
+    print(P)

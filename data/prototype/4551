@@ -1,0 +1,46 @@
+package Y.S.P.o;
+import Y.S.P.v.k;
+import Y.S.P.v.l;
+import Y.S.P.v.cP;
+public final class E extends k {
+	public static final l p = new E();
+	public void vo(cP s) {
+		vo(s, 0, s.IV());
+	}
+	private static void vo(cP s, int MR, int z) {
+		if (MR == z)
+			return;
+		s.y(MR, z, cP.w.A);
+		int g4 = MR;
+		int Q = z - 1;
+		int n = g4;   
+		while (g4 != Q) {
+			while (s.m(Q, n) >= 0 && g4 != Q) {
+				s.a(Q, cP.w.D);
+				Q--;
+			}
+			if (g4 != Q) {
+				s.Lo(g4, Q);
+				n = Q;
+				s.a(g4, cP.w.D);
+				g4++;
+			}
+			while (s.m(g4, n) <= 0 && g4 != Q) {
+				s.a(g4, cP.w.D);
+				g4++;
+			}
+			if (g4 != Q) {
+				s.Lo(Q, g4);
+				n = g4;
+				s.a(Q, cP.w.D);
+				Q--;
+			}
+		}
+		s.a(n, cP.w.e);
+		vo(s, MR, n);
+		vo(s, n + 1, z);
+	}
+	private E() {
+		super("Quick vo (double-ended)");
+	}
+}

@@ -1,0 +1,43 @@
+from random import randint
+def f(B, Y):
+    D = 0
+    Lk = len(B) - 1
+    while D <= Lk:
+        l = (Lk + D) // 2
+        if B[l] == Y:
+            return l
+        elif B[l] > Y:
+            Lk = l - 1
+        else:
+            D = l + 1
+    return None
+def J(B, Y, D=0, Lk=None):
+    Lk = len(B) - 1 if Lk is None else Lk
+    if Lk >= D:
+        l = (Lk + D) // 2
+        if B[l] == Y:
+            return l
+        elif B[l] > Y:
+            return J(B, Y, D, l - 1)
+        else:
+            return J(B, Y, l + 1, Lk)
+    else:
+        return None
+def s():
+    F = 100
+    O = 100
+    B = [1, 9, 11, 13, 5, 7, 8, 5, 17, 1156, 114]
+    B.sort()
+    Y = 13
+    X = J(B, Y)
+    if X is None:
+        print('Recursive Binary Search : Element not present in array')
+    else:
+        print('Recursive Binary Search : Element is present at index', X)
+    X = f(B, Y)
+    if X is None:
+        print('Iterative Binary Search : Element not present in array')
+    else:
+        print('Iterative Binary Search : Element is present at index', X)
+if o == '__main__':
+    s()

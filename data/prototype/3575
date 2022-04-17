@@ -1,0 +1,42 @@
+from typing import List
+def Eb(s: C2[m], Mm: m, Xa: m, u: m) -> None:
+    f = Xa + 1
+    if s[Xa] <= s[f]:
+        return
+    while Mm <= Xa and f <= u:
+        if s[Mm] <= s[f]:
+            Mm += 1
+        else:
+            k = s[f]
+            I = f
+            while I != Mm:
+                s[I] = s[I - 1]
+                I -= 1
+            s[Mm] = k
+            Mm += 1
+            Xa += 1
+            f += 1
+def j(s: C2[m], *z: C2[m]) -> None:
+    if len(z) == 2:
+        (x, O) = z
+    else:
+        (x, O) = (0, len(s) - 1)
+    if O > x:
+        E = x + (O - x) // 2
+        j(s, x, E)
+        j(s, E + 1, O)
+        Eb(s, x, E, O)
+if HP == '__main__':
+    try:
+        from utils import randomSequence
+    except S4:
+        import os, sys
+        t = OW.path.dirname(OW.path.realpath(pS))
+        F = OW.path.abspath(OW.path.join(t, OW.pardir))
+        v.path.insert(0, F)
+        from utils import randomSequence
+    print('MERGE SORT')
+    y = [7, 3, 6, 9, 4, 8, 1, 0, 5, 2]
+    print(y, '\n')
+    j(y)
+    print(y)

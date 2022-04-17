@@ -1,0 +1,151 @@
+public class mF<h> {
+    private int G;
+    private int ya;
+    private String[][] EH;
+    private h[][] z;
+    private int[] hS;  
+    @V("unchecked")
+    public mF(int G) {
+        this.EH = new String[G][];
+        this.z = (h[][]) (new Iy[G][]);
+        this.hS = new int[G];
+        for (int UO = 0; UO < G; UO++) {
+            this.EH[UO] = new String[1];
+            this.z[UO] = (h[]) (new Iy[1]);
+            hS[UO] = 0;
+        }
+        this.G = 0;
+        this.ya = G;
+    }
+    public int a(String P) {
+        try {
+            return P.hashCode() % this.ya;
+        } catch (O N) {
+            return -1;
+        }
+    }
+    @V("unchecked")
+    public boolean yw(String P, h d6) {
+        int a = this.a(P);
+        if (a == -1) return false;  
+        if (this.K(P) != null) {
+            try {
+                for (int UO = 0; UO < this.hS[a]; UO++)
+                    if (this.EH[a][UO].equals(P))
+                        this.z[a][UO] = d6;
+                return true;
+            } catch (O N) {
+                return false;  
+            }
+        } else if (this.y() == 1) {
+            try {
+                String[][] I = this.EH;
+                h[][] f = this.z;
+                int[] j = this.hS;
+                this.ya *= 2;
+                this.EH = new String[this.ya][];
+                this.z = (h[][]) (new Iy[this.ya][]);
+                this.hS = new int[this.ya];
+                this.G = 0;
+                for (int UO = 0; UO < this.ya; UO++) {
+                    this.EH[UO] = new String[1+j[UO/2]/2];
+                    this.z[UO] = (h[]) (new Iy[1+j[UO/2]/2]);
+                    this.hS[UO] = 0;
+                }
+                for (int UO = 0; UO < ya/2; UO++) {
+                    for (int Q = 0; Q < j[UO]; Q++) {
+                        String q = I[UO][Q];
+                        h w = f[UO][Q];
+                        this.yw(q, w);
+                    }
+                }
+                return this.yw(P, d6);
+            } catch (O N) {
+                return false;  
+            }
+        } else {
+            try {
+                if (this.EH[a].L == this.hS[a]) {
+                    String[] B = new String[this.hS[a]*2];
+                    @V("unchecked")
+                    h[] W = (h[]) (new Iy[this.hS[a]*2]);
+                    for (int UO = 0; UO < this.EH[a].L; UO++) {
+                        B[UO] = this.EH[a][UO];
+                        W[UO] = this.z[a][UO];
+                    }
+                    this.EH[a] = B;
+                    this.z[a] = W;
+                    return this.yw(P, d6);
+                }
+                this.EH[a][this.hS[a]] = P;
+                this.z[a][this.hS[a]] = d6;
+                this.hS[a]++;
+                this.G++;
+                return true;
+            } catch (O N) {
+                return false;  
+            }
+        }
+    }
+    public h K(String P) {
+        try {
+            int a = this.a(P);
+            if (a == -1) return null;  
+            for (int UO = 0; UO < this.hS[a]; UO++) {
+                if (this.EH[a][UO].equals(P)) {
+                    return this.z[a][UO];
+                }
+            }
+            return null;  
+        } catch (O N) {
+            return null;  
+        }
+    }
+    public h xR(String P) {
+        try {
+            int a = this.a(P);
+            if (a == -1) return null;  
+            for (int UO = 0; UO < this.hS[a]; UO++) {
+                if (EH[a][UO].equals(P)) {  
+                    h Ca = this.z[a][UO];
+                    for (int Q = UO; Q < this.hS[a]-1; Q++) {
+                        this.EH[a][Q] = this.EH[a][Q+1];
+                        this.z[a][Q] = this.z[a][Q+1];
+                    }
+                    this.hS[a]--;
+                    this.G--;
+                    int zn = this.EH[a].L;
+                    if (this.hS[a]*2 <= zn && this.hS[a] != 0) {
+                        String[] B = new String[zn/2];
+                        @V("unchecked")
+                        h[] W = (h[]) (new Iy[zn/2]);
+                        for (int q = 0; q < zn/2; q++) {
+                            B[q] = this.EH[a][q];
+                            W[q] = this.z[a][q];
+                        }
+                        this.EH[a] = B;
+                        this.z[a] = W;
+                    }
+                    return Ca;
+                }
+            }
+            return null;  
+        } catch (O N) {
+            return null;  
+        }
+    }
+    public float y() {
+        return (float)this.G/(float)this.ya;
+    }
+    public String toString() {
+        String we = "";
+        for (int UO = 0; UO < this.ya; UO++) {
+            we += "Row " + (UO+1) + ":\tSize " + this.hS[UO] + "/" + this.EH[UO].L + ":\t";
+            for (int Q = 0; Q < this.hS[UO]; Q++) {
+                we += this.EH[UO][Q] + " | " + this.z[UO][Q] + "\t\t";
+            }
+            we += ": \n";
+        }
+        return we;
+    }
+}

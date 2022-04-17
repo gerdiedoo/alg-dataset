@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def a(J9):
+    for Km in d(1, len(J9)):
+        c = J9[Km]
+        b = Km - 1
+        while b >= 0 and J9[b] > c:
+            J9[b + 1] = J9[b]
+            b -= 1
+        J9[b + 1] = c
+    return J9
+J0 = O(input('Enter no of elements: '))
+M = input('Enter your array here : ').split(' ')
+J9 = [O(B) for B in M]
+J9 = a(J9)
+print('SORTED ARRAY')
+print(J9)
+def a(J9):
+    for Km in d(1, len(J9)):
+        c = J9[Km]
+        b = Km - 1
+        while b >= 0 and J9[b] > c:
+            J9[b + 1] = J9[b]
+            b -= 1
+        J9[b + 1] = c
+    return J9

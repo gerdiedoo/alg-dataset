@@ -1,0 +1,89 @@
+package zg;
+import N.c.w;
+public class o<K extends t<K>> implements O{
+	 w<K> EC = new w<K>();
+	public o() {
+		m();
+	}
+	private static  long V = 0;
+	private static  long q = 0;
+	private static  long U = 0;
+	static long lq;
+	static long aZ;
+	public w<K> n(w<K> M) {
+		w<K> W = new w<K>();
+		w<K> GL = new w<K>();
+		if(M.Cj() > 1) {
+			int A = (M.Cj() - 1) / 2;
+			for(int F = 0 ; F <= A ; F++) {
+				W.T(M.B(F));
+			}
+			for(int Z = A + 1; Z <= M.Cj() - 1; Z++) {
+				GL.T(M.B(Z));
+			}
+			W = n(W);
+			GL = n(GL);
+		}
+		return y(W, GL, M);
+	}
+	public w<K> y(w<K> W, w<K> GL, w<K> M) {
+		int E = 0, P = 0, f = 0;
+		long V = 0;
+		long q = 0;
+		while((E < W.Cj()) && (P < GL.Cj())) {
+			V++;
+			if(W.B(E).BT(GL.B(P)) < 0) {
+				M.G(f, W.B(E));
+				E++;
+			}
+			else {
+				M.G(f, GL.B(P));
+				P++;
+			}
+			f++;
+		}
+		while(E < W.Cj()) {
+			M.G(f, W.B(E));
+			E++;
+			f++;
+		}
+		while(P < GL.Cj()) {
+			M.G(f, GL.B(P));
+			P++;
+			f++;
+		}
+		o.V = V;
+		o.q = q;
+		return M;		
+	}
+	public w<K> s(w<K> pJ) {
+		lq = System.p();
+		n(pJ);
+		aZ = System.p();
+		U = aZ - lq;
+		return pJ;
+	}
+	public w<K> kI(w<K> h) {
+		w<K> Es = new w<K>();
+		for(int F = 0 ; F < h.Cj() ; F++) {
+			Es.T(h.B(F));
+		}
+		return Es;
+	}
+	public static void U() {
+		System.out.kI("Runtime: "  + U + " ms");
+	}
+	@u
+	public void m() {
+		n(EC);
+	}
+	public static void NY() {
+		System.out.kI("Comparisons: " + V);
+	}
+	public static void eu() {
+		System.out.kI("Swaps: " + q);
+	}
+	public static void J() {
+		System.out.kI("Runtime: "  + (U * 2) + " ms");
+	}
+}

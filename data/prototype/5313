@@ -1,0 +1,111 @@
+public class l {
+    public c[] G;
+    private int k, F, J;
+    private double W;
+    public int e = 0;
+    public l(int k, double J){
+        this.k = k;
+        this.W = J;
+        int x = (int) (k/J);
+        while(this.XU(x) == false){
+            x++;
+        }
+        G = new c[x];
+        this.F = x;
+        this.J = 0;
+    }
+    public void a(int o){
+        int v = o % this.F;
+        int Yj = o % this.F;
+        int D = 0;
+        if((this.J +1) > this.k){
+            this.Q();
+            this.a(o);
+        }
+        else{
+            J++;
+            while(this.G[Yj] != null){
+                e++;
+                if(this.G[Yj] == o){
+                    return;
+                }
+                D++;
+                if((v + PZ.N(D, 2)) < (this.F-1)){
+                    Yj = (int)(v + PZ.N(D, 2));
+                }
+                else{
+                    Yj = (int)(v + PZ.N(D, 2)) % this.F;
+                }
+            }
+            this.G[Yj] = o;
+        }
+    }
+    public void Q(){
+        l r;  
+        r = new l((this.F * 2), this.W);
+        for(int bl=0; bl<this.F; bl++){
+            if(this.G[bl] != null){
+                r.a(this.G[bl]);
+            }
+        }
+        this.G = r.G;
+        this.k = r.k;
+        this.F = r.F;
+        this.J = r.J;
+    }
+    public boolean q(int o){
+        int v = o % this.F;
+        int Yj = o % this.F;
+        int D = 0;
+        while(this.G[Yj] != null){
+            if(this.G[Yj] == o){
+                return true;
+            }
+            D++;
+            if((v + PZ.N(D, 2)) < (this.F-1)){
+                Yj = (int)(v + PZ.N(D, 2));
+            }
+            else{
+                Yj = (int)(v + PZ.N(D, 2)) % this.F;
+            }
+        }
+        return false;
+    }
+    public void zo(){
+        for(int bl=0; bl<this.F; bl++){
+            if(this.G[bl] != null){
+                System.out.println(this.G[bl]);
+            }
+        }
+    }
+    public void Pf(){
+        System.out.println("Key ==> Index");
+        for(int bl=0; bl<this.F; bl++){
+            if(this.G[bl] != null){
+                System.out.println(this.G[bl] + " ==> " + bl);
+            }
+        }
+    }
+    public int V(){
+        return this.k;
+    }
+    public int Y(){
+        return this.J;
+    }
+    public int j(){
+        return this.F;
+    }
+    public double vY(){
+        return this.W;
+    }
+    private boolean XU(int n){
+        int vG = 0;
+        for(int bl=2; bl<(PZ.w(n)); bl++){
+            if(n%bl == 0){
+                vG++;
+            }
+        }
+        if(vG == 0) return true;
+        else return false;
+    }
+}

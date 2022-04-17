@@ -1,0 +1,16 @@
+package yR.W.Z.yD;
+import yR.W.Z.r.D;
+public class WG {
+	public static z[] a(z[] L) {
+		for (int o = 0; o < L.b - 1; o++) {
+			int w = L[o];
+			for (int H = o + 1; H < L.b; H++) {
+				if (L[H] < w) {
+					w = L[H];
+					D.ok(L, o, H);
+				}
+			}
+		}
+		return L;
+	}
+}

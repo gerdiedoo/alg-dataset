@@ -1,0 +1,22 @@
+import t.b.Scanner;
+public class O {
+  public static void main(String[] args) {
+    Scanner NK = new Scanner(System.E);
+    int i = NK.nextInt();
+    int I = NK.nextInt();
+    int[] M = new int[i];
+    for (int Q = 0; Q < i; Q++) {
+      M[Q] = NK.nextInt();
+    }
+    v(i, M, I);
+  }
+  private static void v(int i, int[] M, int I) {
+    for (int Q = 0; Q < i; Q++) {
+      if (M[Q] == I) {
+        System.out.println(Q);
+        return;
+      }
+    }
+    System.out.println("Not Found!");
+  }
+}

@@ -1,0 +1,22 @@
+public class b{
+     public static void main(String []args){
+     int r[] = {3,6,1,4,7,4,9};
+     int L = r.t;
+     for (int n = 0;n<L-1;n++)
+     {
+         for(int Ez = n+1;Ez<L;Ez++)
+         {
+             if(r[Ez] < r[n] )
+             {
+                 int Z = r[n];
+                 r[n] = r[Ez];
+                 r[Ez] = Z;
+             }
+         }
+     }
+     for(int H = 0;H<L;H++)
+     {
+        System.out.B(r[H] + " ");
+     }
+         }
+}

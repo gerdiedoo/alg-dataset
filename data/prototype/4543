@@ -1,0 +1,46 @@
+import z.E.t;
+import z.m.c;
+public class h<bZ extends t<bZ>> implements s<bZ> {
+    @j
+    public void zm(c<bZ> k) {
+        if (k == null)
+            return;
+        zm(k, 0, k.Ye() - 1); 
+    }
+    private void zm(c<bZ> k, int W, int r) {
+        if (W < r) {
+            int w = FJ(k, W, r);
+            zm(k, W, w-1);
+            zm(k, w+1, r);
+        }
+    }
+    private int FJ(c<bZ> k, int W, int r) {
+        bZ n = k.OQ(r);
+        int u = W - 1;
+        for (int wI = W; wI < r; wI++) {
+            if (O(k.OQ(wI), n)) {
+                bZ we = k.OQ(++u);
+                k.L(u, k.OQ(wI));
+                k.L(wI, we);
+            }
+        }
+        bZ Ky = k.OQ(u + 1);
+        k.L(u + 1, n);
+        k.L(r, Ky);
+        return u + 1;
+    }
+    private boolean O(bZ B, bZ b) {
+        return (B.D(b) < 0);
+    }
+    public static void main(String[] args) {
+        s<YI> ao = new HZ<YI>();
+        c<YI> v = z.m.zd.q(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        ao.zm(v);
+        for (int u = 0; u < v.Ye() - 1; u++) {
+            if (v.OQ(u).D(v.OQ(u+1)) > 0) {
+                throw new z.E.eb("Elems should be sorted.");
+            }
+        }
+        System.out.println("All tests passed.");
+    }
+}

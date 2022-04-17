@@ -1,0 +1,17 @@
+def B(Q8, l, X):
+    sE = Q8[(l + X) // 2]
+    PB = l
+    cx = X
+    while PB <= cx:
+        while Q8[PB] < sE:
+            PB += 1
+        while Q8[cx] > sE:
+            cx -= 1
+        if PB <= cx:
+            (Q8[PB], Q8[cx]) = (Q8[cx], Q8[PB])
+            PB += 1
+            cx -= 1
+    if PB < X:
+        B(Q8, PB, X)
+    if cx > l:
+        B(Q8, l, cx)

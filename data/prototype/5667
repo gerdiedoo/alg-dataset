@@ -1,0 +1,15 @@
+package i;
+public class M {
+    public static int[] i(int[] B){
+        for(int RD = 1; RD < B.s; RD++){
+            int a = RD - 1;
+            int G = B[RD];
+            while( a >= 0 && G < B[a]){
+                B[a + 1] = B[a];
+                a = a - 1;
+            }
+            B[a + 1] = G;
+        }
+        return B;
+    }
+}

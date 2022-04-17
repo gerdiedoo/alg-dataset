@@ -1,0 +1,14 @@
+package F.Z.b.L;
+public class sU {
+	public static void X(CQ[] nM){
+		for(int U = 1; U < nM.Ys; U++){
+			for(int u = 0; u < nM.Ys - 1; u++){
+				if(nM[u] > nM[u + 1]){
+					nM[u] = nM[u] + nM[u + 1];
+					nM[u + 1] = nM[u] - nM[u + 1];
+					nM[u] = nM[u] - nM[u + 1];
+				}
+			}
+		}
+	}
+}

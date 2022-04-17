@@ -1,0 +1,18 @@
+import copy
+import sort_tools
+def k(Il, E, R):
+    for Q in nU(E, R):
+        for AR in nU(E, R - E - 1):
+            if Il[AR] > Il[AR + 1]:
+                wb = Il[AR]
+                Il[AR] = Il[AR + 1]
+                Il[AR + 1] = wb
+@y.timeit('bubble')
+def X(Il):
+    k(Il, 0, len(Il))
+def P():
+    Il = y.build_data_set(5)
+    ao = sM.deepcopy(Il)
+    X(ao)
+if Mi == '__main__':
+    P()

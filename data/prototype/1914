@@ -1,0 +1,75 @@
+import am.R.K;
+import am.Z.NQ;
+class k<j7,a>
+{
+    int m;
+    j7 HK;
+    a Ru;
+    k gp;
+    public k(j7 J, a j) {
+        HK = J;
+        Ru = j;
+        gp=null;
+    }
+}
+public class M<j7,a> {
+    static int nr=16;
+    k Nv[]= new k[nr];
+    public void U(j7 J, a j)
+    {
+        int m= String.t(J).hashCode()%nr;
+        k oz=new k(J,j);
+        if(Nv[m]==null)
+        {
+            oz.m=m;
+            Nv[m]=oz;
+        }
+        else {
+            k Qq = Nv[m];
+            if(Qq.HK.equals(oz.HK))
+            {
+                Qq.Ru=j;
+                return;
+            }
+            while (Qq.gp != null) {
+                if(Qq.HK.equals(oz.HK))
+                {
+                    Qq.Ru=j;
+                    return;
+                }
+                Qq = Qq.gp;
+            }
+            Qq.gp = oz;
+        }
+    }
+    public void T(j7 J)
+    {
+        int m= String.t(J).hashCode()%nr;
+        if(Nv[m]==null)
+        {
+            System.out.println("Ru doesnot exist");
+        }
+        else
+        {
+            k Qq=Nv[m];
+            while(Qq!=null)
+            {
+                if(Qq.HK.equals(J))
+                {
+                    System.out.println(Qq.Ru+"----------");
+                    return;
+                }
+                Qq=Qq.gp;
+            }
+            System.out.println("This j doesnot exist");
+        }
+    }
+    public static void main(String[] args) {
+        M<String,String> o= new M<String, String>();
+        o.U("abac","1");
+        o.U("abbc","2");
+        o.U("abac","3");
+        o.T("abac");
+        o.T("wefh");
+    }
+}

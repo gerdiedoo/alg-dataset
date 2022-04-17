@@ -1,0 +1,11 @@
+def fz(F):
+    if len(F) <= 1:
+        return F
+    else:
+        for f in w(len(F) - 1):
+            for Jb in w(f, len(F)):
+                if F[Jb] < F[f]:
+                    (F[Jb], F[f]) = (F[f], F[Jb])
+        return F
+F = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(fz(F))

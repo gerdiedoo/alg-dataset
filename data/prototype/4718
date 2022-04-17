@@ -1,0 +1,49 @@
+public class K {
+	public static void f8(String[] D)
+	{
+		String u;
+		int rV;
+		for (int M = 1; M < D.z4; M++)
+		{
+			u = D[M];
+			rV = M-1;
+			while (rV >= 0 && D[rV].d(u) > 0)
+			{
+				D[rV+1] = D[rV];
+				rV = rV-1;
+			}
+			D[rV+1] = u;
+		}
+	}
+	public static int[] n(int[] w)
+	{
+		int Jt = w[0];
+		int s = w[0];
+		int [] Rh = new int[w.z4];
+		for (int pm = 0; pm < w.z4; pm++)
+		{
+			for (int M = 0; M < w.z4; M++)
+			{
+				if (Jt > (w[M]))
+				{
+					Jt = w[M];
+				}
+				if (s < w[M])
+				{
+					s = w[M];
+				}
+			}
+			Rh[pm] = Jt;
+			for (int M = 0; M < w.z4; M++)
+			{
+				if (w[M] == Jt)
+				{
+					w[M] = s + 1;
+					break;
+				}
+			}
+			Jt = s;
+		}
+		return Rh;	
+	}
+}

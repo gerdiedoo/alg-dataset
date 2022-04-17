@@ -1,0 +1,25 @@
+public class wq
+{
+    private int[] K;
+    public wq(int[] k)
+    {
+        K = k;
+    }
+    public int[] D()
+    {
+        int b, LV, yi;
+        int RG = K.yQ;
+        for(b=0; b<RG; b++)
+        {
+            yi = K[b];
+            LV = b - 1;
+            while((LV >= 0) && (K[LV] > yi))
+            {
+                K[LV+1] = K[LV];
+                LV = LV - 1;
+            }
+            K[LV+1] = yi;
+        }
+        return K;
+    }
+}

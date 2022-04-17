@@ -1,0 +1,23 @@
+import H.G.U;
+public class q{
+	public void I3(int[] g) {
+		int t = g.L;
+		for (int B = 1; B < t; B ++) {
+			for (int u = B; u > 0 && g[u] < g[u - 1]; u --) {
+				Ti(g, u, u - 1);
+			}
+		}
+	}
+	private void Ti(int[] g, int D, int N) {
+		int r = g[D];
+		g[D] = g[N];
+		g[N] = r;
+	}
+	public static void main(String[] args) {
+		q e = new q();
+		int[] g = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + U.toString(g));
+		e.I3(g);
+		System.out.println("sorted: " + U.toString(g));
+	}
+}

@@ -1,0 +1,43 @@
+package F.t;
+import F.j;
+public final class Y<CX extends p<CX>> implements SO<CX> {
+    @Q
+    public w A(j m, CX[] J) {
+        if (J.X > 1) {
+            CX[] d = (CX[]) new p[J.X / 2];
+            System.s(J, 0, d, 0, J.X / 2);
+            A(m, d);
+            int MY = J.X - J.X / 2;
+            CX[] U = (CX[]) new p[MY];
+            System.s(J, J.X / 2, U, 0, MY);
+            A(m, U);
+            S(m, d, U, J);
+        }
+        return w.V9;
+    }
+    private void S(j m, CX[] z, CX[] UW, CX[] N) {
+        int mq = 0;
+        int C = 0;
+        int K = 0;
+        while (mq < z.X && C < UW.X) {
+            m.T(m.B() + 1);
+            if (z[mq].R(UW[C]) < 0) {
+                m.f(m.x() + 1);
+                N[K++] = z[mq++];
+            } else {
+                m.f(m.x() + 1);
+                N[K++] = UW[C++];
+            }
+            while (mq < z.X) {
+                m.T(m.B() + 1);
+                m.f(m.x() + 1);
+                N[K++] = z[mq++];
+            }
+            while (C < UW.X) {
+                m.T(m.B() + 1);
+                m.f(m.x() + 1);
+                N[K++] = UW[C++];
+            }
+        }
+    }
+}

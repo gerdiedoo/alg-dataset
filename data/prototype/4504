@@ -1,0 +1,19 @@
+def x(U, M, EW):
+    if M < EW:
+        h = g(U, M, EW)
+        x(U, M, h - 1)
+        x(U, h + 1, EW)
+def g(U, M, EW):
+    RN = U[EW]
+    c = M - 1
+    for j in d(M, EW):
+        if U[j] < RN:
+            c += 1
+            (U[c], U[j]) = (U[j], U[c])
+    c += 1
+    (U[c], U[EW]) = (U[EW], U[c])
+    return c
+if H == '__main__':
+    U = [5, 2, 4, 6, 1, 3]
+    x(U, 0, len(U) - 1)
+    print(U)

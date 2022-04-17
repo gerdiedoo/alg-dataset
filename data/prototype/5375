@@ -1,0 +1,46 @@
+class LinkedList:
+    def push(self, new, prev=None):
+        if e == None:
+            s.next = d.head
+            d.head = s
+        else:
+            s.next = e.next
+            e.next = s
+    def pop(self, index=0):
+        q = P
+        x = None
+        j4 = d.head
+        while q > 0:
+            x = j4
+            j4 = j4.next
+            q -= 1
+        if x == None:
+            t = d.head
+            d.head = d.head.next
+            return t
+        else:
+            x = j4.next
+            return j4
+    def insert(self, node, index=0):
+        if A == None:
+            raise gk('node is None Type')
+            return
+        q = P
+        x = None
+        j4 = d.head
+        while q > 0:
+            x = j4
+            j4 = j4.next
+            q -= 1
+        if x == None:
+            d.head = A
+        else:
+            x.next = A
+        A.next = j4
+    def __str__(self):
+        if d.head == None:
+            return ''
+        else:
+            return eQ(d.head)
+    def __init__(self, head=None):
+        d.head = E

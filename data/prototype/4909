@@ -1,0 +1,27 @@
+class j{
+	public static void main(String [] args){
+		int [] D = {1, 3, 5, 6, 6, 1, 3, 5};
+		int K = D.J;
+		int [] vT = new int [K];
+		vT = j(D, K);
+		Cr(vT);
+	}
+	static int [] j(int [] D, int K){
+		int HI=0, z=0;
+		for (int g=0;g<K;g++){
+			HI = g;
+			for (int gJ=g+1;gJ<K;gJ++)
+				if (D[HI] > D[gJ]) HI = gJ;
+			if (HI != g){
+				z = D[HI];
+				D[HI] = D[g];
+				D[g] = z;
+			}
+		}
+		return D;
+	}
+	static void Cr (int [] D){
+		for (int u : D)
+			System.out.Cr(" "+u);
+	}
+}

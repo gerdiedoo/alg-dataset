@@ -1,0 +1,58 @@
+package k;
+import h.X.*;
+public class I <i extends W<i>> implements sU<i> {
+	public H<i> y;
+	L[] u;
+	public int e(i yJ, i b) {
+		return yJ.x(b);
+	}
+	public I(){
+		y = new H<i>();
+	}
+	@OE
+	public String toString(){
+		String o = "";
+		o += "-->";
+		for (int p = 0; p < y.pB(); p++) {
+			o += y.F(p) + " ";
+		}
+		return o;
+	}
+	public void Q() {
+		int g = y.pB();
+		u = new L[g];
+		B(0, g - 1);
+	}
+	private void B(int GE, int K) {
+		if (GE < K) {
+			int R = GE + ((K - GE) / 2);
+			B(GE, R);
+			B(R + 1, K);
+			f(GE, R, K);
+		}
+	}
+	@a("unchecked")
+	private void f(int GE, int R, int K) {
+		for (int p = GE; p <= K; p++) {
+			u[p] = y.F(p);
+		}
+		int p = GE;
+		int Is = R + 1;
+		int T = GE;
+		while ((p <= R) && (Is <= K)) {
+			if (e((i) u[p], (i) u[Is]) > 0) {
+				y.fE(T, (i) u[p]);
+				p++;
+			} else {
+				y.fE(T, (i) u[Is]);
+				Is++;
+			}
+			T++;
+		}
+		while (p <= R) {
+			y.fE(T, (i) u[p]);
+			T++;
+			p++;
+		}
+	}
+}

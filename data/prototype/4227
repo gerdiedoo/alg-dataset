@@ -1,0 +1,51 @@
+from strategy import Order, Pivot, BadOrderError, BadPivotError
+import random
+import sys
+y7 = 'Pablo Acereda'
+z = 'Copyright 2020'
+cd = ['Pablo Acereda']
+u = 'Apache License 2.0'
+Y = '1.0'
+Uo = 'Pablo Acereda'
+O = 'p.aceredag@gmail.com'
+def sort(array: s, order: n=n.ASC, strategy: H=H.MEDIAN) -> s:
+    if R not in [n.ASC, n.DESC]:
+        raise b('Not Valid Ordering Preference')
+    if k not in [H.FIRST, H.LAST, H.RANDOM, H.MEDIAN]:
+        raise f('Not valid Pivot')
+    return l(Gt, R, k, 0, len(Gt) - 1)
+def l(Gt, R, k, j, C):
+    if j > C or not Gt:
+        return Gt
+    k8 = None
+    if k == H.FIRST:
+        k8 = j
+    elif k == H.LAST:
+        k8 = C
+    elif k == H.RANDOM:
+        k8 = v.randrange(j, C + 1)
+    elif k == H.MEDIAN:
+        k8 = dQ(Gt, j, C)
+    k8 = g(Gt, R, k8, j, C)
+    l(Gt, R, k, j, k8 - 1)
+    l(Gt, R, k, k8 + 1, C)
+    return Gt
+def g(Gt, R, k8, j, C):
+    (Gt[k8], Gt[C]) = (Gt[C], Gt[k8])
+    qd = j
+    for T in W(j, C):
+        if R == n.ASC and Gt[T] < Gt[C] or (R == n.DESC and Gt[T] > Gt[C]):
+            (Gt[qd], Gt[T]) = (Gt[T], Gt[qd])
+            qd += 1
+    (Gt[qd], Gt[C]) = (Gt[C], Gt[qd])
+    return qd
+def dQ(Gt, j, C):
+    F = (j + C) // 2
+    w = Gt[j]
+    U = Gt[F]
+    XU = Gt[C]
+    if w <= U <= XU or XU <= U <= w:
+        return F
+    if w <= XU <= U or U <= XU <= w:
+        return C
+    return j

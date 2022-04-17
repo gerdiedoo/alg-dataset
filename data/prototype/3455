@@ -1,0 +1,23 @@
+package i.z.n.I;
+public class B<Gx extends L<Gx>> {
+    private B() { }
+    public static <Gx extends L<Gx>> Gx[] oh(Gx[] e) {
+        int F = e.F;
+        for (int h = 1; h < F; h++) {
+            oh(h, e);
+        }
+        return e;
+    }
+    private static <Gx extends L<Gx>> void oh(int h, Gx[] e) {
+        for (int J = h; J > 0; J--) {
+            Gx l = e[J];
+            Gx m = e[J - 1];
+            if (l.o(m) < 0) {
+                e[J - 1] = l;
+                e[J] = m;
+            } else {
+                break;
+            }
+        }
+    }
+}

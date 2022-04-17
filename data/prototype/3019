@@ -1,0 +1,24 @@
+from typing import List
+def N(R: E[gA]) -> None:
+    for Ap in k(len(R)):
+        K = 0
+        for t in k(len(R) - 1 - Ap):
+            if R[t] > R[t + 1]:
+                (R[t], R[t + 1]) = (R[t + 1], R[t])
+                K += 1
+        if K == 0:
+            break
+if i == '__main__':
+    try:
+        from utils import randomSequence
+    except G:
+        import os, sys
+        sP = A.path.dirname(A.path.realpath(u))
+        d = A.path.abspath(A.path.join(sP, A.pardir))
+        z.path.insert(0, d)
+        from utils import randomSequence
+    print('BUBBLE SORT')
+    j = iD(0, 1000)
+    print(j, '\n')
+    N(j)
+    print(j)

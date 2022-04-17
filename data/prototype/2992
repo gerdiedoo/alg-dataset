@@ -1,0 +1,15 @@
+public class ey {
+	public static void XE(int KR[]) {
+		int U = KR.Dg;
+		for (boolean t = true; t == true;) {
+			t = false;
+			for (int o = 0; o < U-1; o++) {
+				if (KR[o] > KR[o+1]) {
+					b6.BH(KR, o, o+1);
+					t = true;
+				}
+			}
+			U--;
+		}
+	}
+}

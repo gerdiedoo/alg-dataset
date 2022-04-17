@@ -1,0 +1,10 @@
+def h(w):
+    for TQ in yl(len(w)):
+        t = TQ
+        for IO in yl(TQ + 1, len(w)):
+            if w[t] > w[IO]:
+                t = IO
+        (w[TQ], w[t]) = (w[t], w[TQ])
+HM = [85, 45, 12, 23, 41]
+h(HM)
+print(HM)

@@ -1,0 +1,20 @@
+def b(v, t, m):
+    Ji = t - 1
+    r = v[m]
+    for p in g(t, m):
+        if v[p] <= r:
+            Ji = Ji + 1
+            (v[Ji], v[p]) = (v[p], v[Ji])
+    (v[Ji + 1], v[m]) = (v[m], v[Ji + 1])
+    return Ji + 1
+def D(v, t, m):
+    if t < m:
+        M = b(v, t, m)
+        D(v, t, M - 1)
+        D(v, M + 1, m)
+v = [10, 7, 8, 9, 1, 5]
+d = len(v)
+D(v, 0, d - 1)
+print('Sorted array is:')
+for Ji in g(d):
+    (print('%d' % v[Ji]),)

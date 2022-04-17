@@ -1,0 +1,17 @@
+package J.s.h3.n;
+public class jQ implements U
+{
+    public void RY(W[] q)
+    {
+	int d = q.L;
+	for (int R = 1; R < d; R++) {
+	    W LM = q[R];
+	    int vu = R-1;
+	    while (vu >= 0 && q[vu].kk(LM) > 0) {
+		q[vu+1] = q[vu];
+		vu--;
+	    }
+	    q[vu+1] = LM;
+	}
+    }
+}

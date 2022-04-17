@@ -1,0 +1,25 @@
+def r(V: Y0):
+    Y = V[:]
+    if len(Y) < 2:
+        return Y
+    Z = len(Y) // 2
+    d = Y[:Z]
+    F = Y[Z:]
+    return a(r(d), r(F))
+def a(V, HS):
+    Y = []
+    i = u = 0
+    while i < len(V) and u < len(HS):
+        if V[i] <= HS[u]:
+            Y.append(V[i])
+            i += 1
+        else:
+            Y.append(HS[u])
+            u += 1
+    while i < len(V):
+        Y.append(V[i])
+        i += 1
+    while u < len(HS):
+        Y.append(HS[u])
+        u += 1
+    return Y

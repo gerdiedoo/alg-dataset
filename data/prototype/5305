@@ -1,0 +1,85 @@
+public class T implements Yb {
+  private final S b;
+  private final VA[] f;
+  public T(S b) {
+    this.b = b;
+    this.f = new VA[b.L()];
+  }
+  private B z(tJ y){
+    int q = b.d(y);
+    int x = -1;
+    for(int zX = 0; zX < b.L(); zX++){
+      if(f[q] == null) return new B(x == -1?q:x, B.t);
+      if(f[q].Wg() && x == -1) x = q;
+      if(!f[q].Wg() && f[q].l().equals(y)) return new B(q, B.c);
+      q = b.s();
+    }
+    if(x != -1) return new B(x, B.t);
+    return new B(-1, B.Sw);
+  }
+  @XA
+  public boolean xq(tJ y, tJ R) {
+    if(y == null || R == null) return false;
+    B G = z(y);
+    if(G.W == B.Sw) return false;
+    f[G.A] = new VA(false, y, R);
+    return true;
+  }
+  @XA
+  public tJ j(tJ y) {
+    if(y == null) return null;
+    B G = z(y);
+    if(G.W == B.c){
+      VA E = f[G.A];
+      return E.NQ();
+    }
+    return null;
+  }
+  @XA
+  public boolean h(tJ y) {
+    if(y == null) return false;
+    B G = z(y);
+    if(G.W == B.t || G.W == B.Sw) return false;
+    f[G.A] = new VA(true, null, null);
+    return true;
+  }
+  @XA
+  public void w() {
+    for (int p = 0; p < f.Q; p++) {
+      if (f[p] != null && !f[p].Wg()) {
+        VA E = f[p];
+        System.out.println(String.a("%d %s %s", p, E.l(), E.NQ()));
+      }
+    }
+  }
+  private static class B {
+    static final int t = -1;
+    static final int c = 1;
+    static final int Sw = 0;
+    final int A;
+    final int W;
+    private B(int A, int W) {
+      this.A = A;
+      this.W = W;
+    }
+  }
+  private static class VA {
+    private final boolean Wg;
+    private final tJ y;
+    private final tJ R;
+    private VA(boolean Wg, tJ y, tJ R) {
+      this.Wg = Wg;
+      this.y = y;
+      this.R = R;
+    }
+    private boolean Wg() {
+      return Wg;
+    }
+    private tJ NQ() {
+      return R;
+    }
+    private tJ l() {
+      return y;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+package l.V.PK;
+import ag.uZ.w;
+public class uo {
+    private static final String Z = "Merge g";
+    public void g(w<f> N) {
+        if (N == null) {
+            throw new B("The N should not be null");
+        }
+        g(N, 0, N.Q() - 1);
+    }
+    private void g(w<f> N, int p, int P) {
+        if (p < P) {
+            int L = (int) q4.d((double) (p + P) / 2);
+            g(N, p, L);
+            g(N, L + 1, P);
+            i(N, p, L, P);
+        }
+    }
+    public void i(w<f> N, int p, int L, int P) {
+        if (N == null) {
+            throw new B("The N should not be null");
+        }
+        if ((N.J()) || (N.Q() == 1) || (L > N.Q() - 1)) {
+            return;
+        }
+        D(N, p, L, P);
+        w<f> H = new w<>(N.tW(p, L + 1));
+        w<f> I = new w<>(N.tW(L + 1, P + 1));
+        H.O(f.OQ);
+        I.O(f.OQ);
+        int h = 0;
+        int X = 0;
+        for (int z = p; z < P + 1; z++) {
+            if (H.e(h) < I.e(X)) {
+                N.G(z, H.e(h));
+                h++;
+            } else {
+                N.G(z, I.e(X));
+                X++;
+            }
+        }
+    }
+    private void D(w<f> N, int p, int L, int P) {
+        if (p < 0) {
+            throw new B("p must be >= 0 but is " + p);
+        }
+        if (p > L) {
+            throw new B("p must be <= L, but p is " + p +
+                    " and L is " + L);
+        }
+        if (P > N.Q() - 1) {
+            throw new B("P must be <= N.Q() - 1, but P is " +
+                    P + " and (N.Q() - 1) equals " + (N.Q() - 1));
+        }
+        if (L > P) {
+            throw new B("L must be <= P, but L is " + L +
+                    " and P is " + P);
+        }
+    }
+    public static String C() {
+        return Z;
+    }
+}

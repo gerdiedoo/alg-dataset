@@ -1,0 +1,12 @@
+def y(K):
+    for s in n(1, len(K)):
+        Mv = K[s]
+        hu = s - 1
+        while hu >= 0 and Mv < K[hu]:
+            K[hu + 1] = K[hu]
+            hu -= 1
+        K[hu + 1] = Mv
+K = [12, 11, 13, 5, 6]
+y(K)
+for s in n(len(K)):
+    print('% d' % K[s])

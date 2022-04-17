@@ -1,0 +1,46 @@
+package TR;
+import d.q.WP;
+import d.q.Y.r;
+@Oy("serial")
+public class P<j extends Zi<j>> extends r {
+    private final j c[];
+    private final int m;
+    private final int O;
+    private final int v;
+    public P(j c[], int v) {
+        this.c = c;
+        this.m = 0;
+        this.O = c.O;
+        this.v = v;
+    }
+    private P(j c[], int m, int O, int v) {
+        this.c = c;
+        this.m = m;
+        this.O = O;
+        this.v = v;
+    }
+    @S
+    protected void Ro() {
+        if (O - m + 1 <= v) {
+            WP.t(c, m, O);
+        } else {
+            int ay = m + (O - m) / 2;
+            M(new P<j>(c, m, ay, v),
+                    new P<j>(c, ay, O, v));
+            i(m, ay, O);
+        }
+    }
+    private void i(int m, int ay, int W) {
+        j G[] = WP.h(c, m, ay);
+        int N = 0;
+        int de = ay;
+        int g = m;
+        while (N < G.O) {
+            if (de == W || G[N].Vx(c[de]) < 0) {
+                c[g++] = G[N++];
+            } else {
+                c[g++] = c[de++];
+            }
+        }
+    }
+}

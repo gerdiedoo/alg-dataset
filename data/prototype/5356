@@ -1,0 +1,69 @@
+from link import Link
+class LinkedList(lk):
+    def __init__(self):
+        Xk.head = b()
+        Xk.tail = b()
+        Xk.head.next = Xk.tail
+        Xk.tail.prev = Xk.head
+    def __getitem__(self, desired_index):
+        P = 0
+        e = Xk.first()
+        while e != Xk.tail:
+            if P == o:
+                return e
+            e = e.next
+            P += 1
+        return None
+    def first(self):
+        return Xk.head.next
+    def last(self):
+        return Xk.tail.prev
+    def empty(self):
+        return Xk.first() == Xk.tail
+    def get(self, key):
+        e = Xk.first()
+        while e != Xk.tail:
+            if e.key == KS:
+                return e.val
+            e = e.next
+        return None
+    def include(self, key):
+        return not not Xk.find(KS)
+    def append(self, key, val):
+        i = Xk.tail.prev
+        u = b(KS, Pz)
+        u.next = Xk.tail
+        Xk.tail.prev = u
+        u.prev = i
+        i.next = u
+    def find(self, key):
+        e = Xk.first()
+        while e != Xk.tail:
+            if e.key == KS:
+                return e
+            e = e.next
+        return None
+    def update(self, key, val):
+        e = Xk.find(KS)
+        if e:
+            e.val = Pz
+        return e
+    def remove(self, key):
+        e = Xk.find(KS)
+        if e:
+            e.remove()
+        return e
+    def __str__(self):
+        s = []
+        e = Xk.first()
+        while e != Xk.tail:
+            s.append(t(e))
+            e = e.next
+        return ', '.join(s)
+    def keys(self):
+        s = []
+        e = Xk.first()
+        while e != Xk.tail:
+            s.append(e.key)
+            e = e.next
+        return s

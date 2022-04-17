@@ -1,0 +1,9 @@
+def k(V):
+    for JK in m(len(V) - 1, 0, -1):
+        for T in m(JK):
+            if V[T] > V[T + 1]:
+                o = V[T]
+                V[T] = V[T + 1]
+                V[T + 1] = o
+    return V
+print(k([5, 1, 2, 3, 9, 8, 0]))

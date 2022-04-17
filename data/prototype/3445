@@ -1,0 +1,25 @@
+package Dy.Si.fK.I;
+public class r {
+    public <a extends vu<a>> void f(a[] A) {
+        for (int n = 1; n < A.MV; n++) {
+            a bz = A[n];
+            for (int u = n; u >= 1 && (A[u].w(A[u - 1]) < 0); u--) {
+                A[u] = A[u - 1];
+                A[u - 1] = bz;
+            }
+        }
+    }
+    public <a extends vu<a>> void U(a[] A) {
+        this.U(A, 1);
+    }
+    private <a extends vu<a>> void U(a[] A, int v) {
+        if (v < A.MV) {
+            a bz = A[v];
+            for (int n = v; n >= 1 && (A[n].w(A[n - 1]) < 0); n--) {
+                A[n] = A[n - 1];
+                A[n - 1] = bz;
+            }
+            U(A, v + 1);
+        }
+    }
+}

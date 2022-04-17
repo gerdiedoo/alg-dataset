@@ -1,0 +1,52 @@
+package i;
+import lE.q;
+public class P extends q {
+    public UY[] lE(UY n[], int U, int zt){
+        if(U<zt){
+            int M_ = S(n, U, zt);
+            lE(n, U, M_-1);
+            lE(n, M_+1, zt);
+        }
+        return n;
+    }
+    public int S(UY n[], int U, int zt){
+        int M_=U;
+        int ke = n[zt], Da;
+        for(int W=U; W<zt; W++){
+            if(n[W]<=ke){
+                Da = n[M_];
+                n[M_] = n[W];
+                n[W] = Da;
+                M_++;
+            }
+        }
+        Da = n[M_];
+        n[M_] = n[zt];
+        n[zt] = Da;
+        return M_;
+    }
+    public <j extends o<j>> j[] H(j[] n, int U, int zt) {
+        if(U<zt) {
+            int M_ = S(n, U, zt);
+            H(n, U, M_-1);
+            H(n, M_+1, zt);
+        }
+        return n;
+    }
+    public <j extends o<j>> int S(j[] n, int U, int zt) {
+        int M_ = U;
+        j ke = n[zt], Da;
+        for(int W=U; W<zt; W++){
+            if(n[W].N(ke)<=0){
+                Da = n[W];
+                n[W] = n[M_];
+                n[M_] = Da;
+                M_++;
+            }
+        }
+        Da = n[M_];
+        n[M_] = n[zt];
+        n[zt] = Da;
+        return M_;
+    }
+}

@@ -1,0 +1,72 @@
+import d.Q7.nq;
+public class Rd {
+    int a[];
+    void ay(int uc)
+    {
+        a = new int [uc];
+        for(int X=0;X<uc;X++)
+        {
+            a[X]=X*X;
+        }
+    }
+    String E()
+    {
+        return "Array : "+ nq.toString(a);
+    }
+    String W(int uc)
+    {
+        int M=0;
+        String VQ;
+        long D=System.G();
+        for(int X=0;a.K-1>X;X++)
+        {
+            if(uc==a[X])
+            {
+                M=1;
+                break;
+            }
+        }
+        long k=System.G()-D;
+        if(M==1)
+        {
+            VQ="Number Found";
+        }
+        else
+        {
+            VQ="Number not Found";
+        }
+        return VQ+"\uc Time taken to complete this function :"+k+"nano seconds";       
+    }
+    String oe(int uc)
+    {
+        int M=0;
+        int nH,Ck,m;
+        String VQ;
+        nH=0;
+        Ck=a.K-1;
+        long D = System.G();
+        while(nH<=Ck)
+        {
+            m=(nH+Ck)/2;
+            if(a[m]==uc)
+            {
+                M=1;
+                nH=Ck+1;
+            }
+            else if(a[m]>uc)
+                Ck=m-1;
+            else
+                nH=m+1;           
+        }
+    long k=System.G()-D;
+    if(M==1)
+    {
+        VQ="The no. was found";
+    }
+    else
+    {
+        VQ="The no. not found";
+    }
+        return VQ+"\uc Time taken to complete this function :"+k+"nano seconds";
+  }
+}

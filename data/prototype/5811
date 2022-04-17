@@ -1,0 +1,49 @@
+package G.l;
+class v{
+int K(int p[],int Vi, int j)
+{
+    int aJ = p[j];
+    int i= (Vi-1);  
+    for(int m=Vi ; m<j ;m++)
+      {
+    	 if(p[m] < aJ)
+          {
+             i++;
+             int rH = p[i];
+	     p[i] = p[m];
+             p[m] = rH;
+           }
+       }
+int rH = p[i+1];
+p[i+1] = p[j];
+p[j] = rH;
+return i+1;
+}
+void P(int p[],int Vi,int j)
+{
+   if(Vi < j)
+     {
+            int A = K(p,Vi,j);
+            P(p,Vi,A-1);
+ 	    P(p,A+1,j);
+      }
+}
+static void n(int p[])
+{
+   int J = p.k;
+   for(int i=0;i<J;i++)
+   {
+        System.out.W(p[i]+" ");
+        System.out.W("\t");
+    }
+}
+public static void main(String args[])
+{
+    int p[] = {3,5,2,1,4};
+    int J = p.k;
+    v o = new v();
+    o.I(p,0,J-1);
+    System.out.println("Sorted Array ");
+    n(p);
+}
+}

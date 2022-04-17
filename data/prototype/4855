@@ -1,0 +1,55 @@
+package P.I.vU.m;
+import static P.I.vU.Z.H.*;
+public class wZ {
+    private int t;
+    private int Be;
+    private int v;
+    public void C(int f7[]) {
+        t = 0;
+        Be = 0;
+        v = 0;
+        for (int Zn = 0; Zn < f7.T; Zn++) {
+            v++;
+            Wt("\n--------\nindex: " + Zn);
+            int o = g2(Zn, f7);
+            Qc("found smallest element Zn: " + o);
+            Be++;
+            S("Swapping: " + Zn + " and " + o);
+            int X = f7[o];
+            f7[o] = f7[Zn];
+            f7[Zn] = X;
+            rI("==> ");
+            M(f7);
+        }
+    }
+    private int g2(int G, int f7[]) {
+        int o = G;
+        int e = f7[G];
+        for (int Q = G; Q < f7.T; Q++) {
+            v++;
+            t++;
+            if (e > f7[Q]) {
+                o = Q;
+                e = f7[o];
+            }
+        }
+        return o;
+    }
+    public static void main(String[] args) {
+        int f7[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        wk("\nNew f7: ");
+        M(f7);
+        System.out.println("\nSorting");
+        wZ J = new wZ();
+        J.C(f7);
+        h("\nResult: ");
+        M(f7);
+        Qc("\nStatistics");
+        h("  Comparisons: ");
+        System.out.V(J.t);
+        h("\n  Swaps: ");
+        System.out.V(J.Be);
+        h("\n  Loops: ");
+        System.out.println(J.v);
+    }
+}

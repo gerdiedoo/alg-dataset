@@ -1,0 +1,12 @@
+class A
+{
+    static int YQ(int e[], int h, int q)
+    {
+        for (int u = 0; u < h; u++)
+        {
+            if (e[u] == q)
+                return u;
+        }
+        return -1;
+    }
+} 

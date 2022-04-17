@@ -1,0 +1,23 @@
+import y.S.n;
+public class bz{
+	public void p(int[] V) {
+		int c = V.E;
+		for (int ZF = 1; ZF < c; ZF ++) {
+			for (int j = ZF; j > 0 && V[j] < V[j - 1]; j --) {
+				x(V, j, j - 1);
+			}
+		}
+	}
+	private void x(int[] V, int yb, int z) {
+		int W1 = V[yb];
+		V[yb] = V[z];
+		V[z] = W1;
+	}
+	public static void main(String[] args) {
+		bz qj = new bz();
+		int[] V = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + n.toString(V));
+		qj.p(V);
+		System.out.println("sorted: " + n.toString(V));
+	}
+}

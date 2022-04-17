@@ -1,0 +1,15 @@
+def G(z, a):
+    C = 0
+    wi = len(z) - 1
+    while C < wi:
+        T = C + (wi - C) // 2
+        if z[T] < a:
+            C = T + 1
+        else:
+            wi = T
+    if z[C] == a:
+        return C
+    return 'not found'
+g = p(Z(0, 30, 2))
+cY = G(g, 13)
+print(cY)

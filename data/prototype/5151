@@ -1,0 +1,115 @@
+package l.D;
+public class r6<q,Q> {
+    private a<q,Q>[] j;
+    private int DB = 16;  
+    static class a<q, Q> {
+        q fk;
+        Q k6;
+        a <q, Q> p6;
+        public a(q fk, Q k6, a<q,Q> p6) {
+            this.fk = fk;
+            this.k6 = k6;
+            this.p6 = p6;
+        }
+    }
+    public r6(int E) {
+        this.DB = E;
+        j = new a[DB];
+    }
+    private int S (q fk) {
+        return bm.G(fk.hashCode()) % DB;
+    }
+    public boolean O (q fk, Q k6) {
+        if (fk == null) {
+            return false;
+        }
+        int OP = S(fk);
+        a<q,Q> d = new a<q,Q>(fk, k6, null);
+        if(j[OP] == null) {
+            j[OP] = d;
+        } else {
+            a<q,Q> i = null;
+            a<q,Q> H = j[OP];
+            while(H != null) {
+                if (H.fk.equals(fk)) {
+                    if(i == null) {
+                        d.p6 = H.p6;
+                        j[OP] = d;
+                        return true;
+                    } else {
+                        d.p6 = H.p6;
+                        i.p6 = d;
+                        return true;
+                    }
+                }
+                i = H;
+                H = i.p6;
+            }
+            i.p6 = d;
+        }
+        return false;
+    }
+    public Q dp(q fk){
+        int OP = S(fk);
+        if(j[OP] == null) {
+            return null;
+        } else {
+            a<q,Q> F = j[OP];
+            while(F != null) {
+                if(F.fk.equals(fk)) {
+                    return F.k6;
+                }
+                F = F.p6;
+            }
+            return null;
+        }
+    }
+    public boolean R(q fk) {
+        int OP = S(fk);
+        if (j[OP] == null) {
+            return false;
+        } else {
+            a<q,Q> i = null;
+            a<q,Q> H = j[OP];
+            while (H != null) {
+                if (H.fk.equals(fk)) {
+                    if (i == null) {
+                        j[OP] = j[OP].p6;
+                        return true;
+                    } else {
+                        i.p6 = H.p6;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public float c4() {
+        float cu = (float)DB;
+        float C = 0f;
+        for (int r = 0; r < DB; r++) {
+            if (j[r] != null) {
+                C += 1.0f;
+            }
+        }
+        return C/cu;
+    }
+    public void g() {
+        for (int r = 0; r < DB; r++) {
+            System.out.p(" Bucket# = " + r + " ");
+            if (j[r] != null) {
+                a<q,Q> i = null;
+                a<q,Q> H = j[r];
+                while (H != null) {
+                    System.out.p("-{" + H.fk + "=" + H.k6 + "}");
+                    i = H;
+                    H = H.p6;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Note: The implementation accepts any primitive data type for both q or Q");
+    }
+}

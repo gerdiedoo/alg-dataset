@@ -1,0 +1,608 @@
+package f;
+import xU.r.B;
+import xU.r.cS.F;
+import s.O;
+import s.o;
+public class a {
+	final static int V = 1 << 13;
+	public static void p(byte[] W) {
+		new tc.S(W, 0, W.L - 1).t();
+	}
+	private static final class tc {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final byte[] W;
+			final int M;
+			final int Wk;
+			S(byte[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(byte[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(byte[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			byte GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(byte[] W, int G, int Tk) {
+			byte wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(char[] W) {
+		new s8.S(W, 0, W.L - 1).t();
+	}
+	private static final class s8 {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final char[] W;
+			final int M;
+			final int Wk;
+			S(char[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(char[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(char[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			char GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(char[] W, int G, int Tk) {
+			char wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(short[] W) {
+		new E.S(W, 0, W.L - 1).t();
+	}
+	private static final class E {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final short[] W;
+			final int M;
+			final int Wk;
+			S(short[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(short[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(short[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			short GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(short[] W, int G, int Tk) {
+			short wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(int[] W) {
+		new n.S(W, 0, W.L - 1).t();
+	}
+	private static final class n {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final int[] W;
+			final int M;
+			final int Wk;
+			S(int[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(int[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(int[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			int GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(int[] W, int G, int Tk) {
+			int wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(long[] W) {
+		new X.S(W, 0, W.L - 1).t();
+	}
+	private static final class X {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final long[] W;
+			final int M;
+			final int Wk;
+			S(long[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(long[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(long[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			long GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(long[] W, int G, int Tk) {
+			long wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(float[] W) {
+		new K.S(W, 0, W.L - 1).t();
+	}
+	private static final class K {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final float[] W;
+			final int M;
+			final int Wk;
+			S(float[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(float[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(float[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			float GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(float[] W, int G, int Tk) {
+			float wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(double[] W) {
+		new T.S(W, 0, W.L - 1).t();
+	}
+	private static final class T {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final double[] W;
+			final int M;
+			final int Wk;
+			S(double[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(double[] W, int M, int Wk) {	
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		private static int i(double[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			double GZ = W[U7];	
+			while(M < Wk) {
+				while(W[Wk] > GZ) --Wk;
+				while(W[M] <= GZ && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(double[] W, int G, int Tk) {
+			double wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static <u> void p(u[] W, B<? super u> q) {
+		if(q == null) {
+			p(W);
+		}
+		else {
+			new d.S<>(W, 0, W.L - 1, q).t();
+		}
+	}
+	public static void p(j[] W) {
+		new l.S(W, 0, W.L - 1).t();
+	}
+	private static final class l {	
+		private static final class S extends F {
+			private static final long Q = 1L;
+			final j[] W;
+			final int M;
+			final int Wk;
+			S(j[] W, int M, int Wk) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk);
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1);
+					Qi(W, GZ + 1, Wk);
+				}
+				else {
+					S U7 = new S(W, M, GZ - 1);
+					S Zw = new S(W, GZ + 1, Wk);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static void Qi(j[] W, int M, int Wk) {
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk);	
+			Qi(W, M, GZ - 1);
+			Qi(W, GZ + 1, Wk);
+		}
+		@g({ "rawtypes", "unchecked" })
+		private static int i(j[] W, int U7, int Zw) {
+			int M = U7;
+			int Wk = Zw;
+			uC GZ = ((uC) W[U7]);	
+			while(M < Wk) {
+				while(GZ.YK(W[Wk]) < 0) --Wk;
+				while(GZ.YK(W[M]) >= 0 && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static void lu(j[] W, int G, int Tk) {
+			j wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	private static final class d {
+		private static final class S<u> extends F {
+			private static final long Q = 1L;
+			final u[] W;
+			final int M;
+			final int Wk;
+			final B<? super u> q;
+			S(u[] W, int M, int Wk, B<? super u> q) {
+				this.W = W;
+				this.M = M;
+				this.Wk = Wk;
+				this.q = q;
+			}
+			public final void ax() {
+				if(M >= Wk) {
+					return;
+				}
+				int GZ = i(W, M, Wk, q);	
+				if(Wk - M < V) {
+					Qi(W, M, GZ - 1, q);
+					Qi(W, GZ + 1, Wk, q);
+				}
+				else {
+					S<u> U7 = new S<>(W, M, GZ - 1, q);
+					S<u> Zw = new S<>(W, GZ + 1, Wk, q);
+					U7.N();
+					Zw.ax();
+					U7.b();
+				}
+			}
+		}
+		private static <u> void Qi(u[] W, int M, int Wk, B<? super u> q) {
+			if(M >= Wk) {
+				return;
+			}
+			int GZ = i(W, M, Wk, q);	
+			Qi(W, M, GZ - 1, q);
+			Qi(W, GZ + 1, Wk, q);
+		}
+		private static <u> int i(u[] W, int U7, int Zw, B<? super u> q) {
+			int M = U7;
+			int Wk = Zw;
+			u GZ = W[U7];
+			while(M < Wk) {
+				while(q.rq(GZ, W[Wk]) < 0) --Wk;
+				while(q.rq(W[M], GZ) <= 0 && M < Wk) ++M;
+				lu(W, M, Wk);
+			}
+			lu(W, U7, M);
+			return M;
+		}
+		private static <u> void lu(u[] W, int G, int Tk) {
+			u wh = W[G];
+			W[G] = W[Tk];
+			W[Tk] = wh;
+		}
+	}
+	public static void p(byte[] W, boolean A) {
+		if(A) {
+			IK[] M7 = O.C(W);
+			p(M7, o.v1());
+			O.HU(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+	public static void p(char[] W, boolean A) {
+		if(A) {
+			Z[] M7 = O.J(W);
+			p(M7, o.v1());
+			O.D(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+	public static void p(short[] W, boolean A) {
+		if(A) {
+			HS[] M7 = O.e(W);
+			p(M7, o.v1());
+			O.hN(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+	public static void p(int[] W, boolean A) {
+		if(A) {
+			qK[] M7 = O.W3(W);
+			p(M7, o.v1());
+			O.gt(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+	public static void p(long[] W, boolean A) {
+		if(A) {
+			y[] M7 = O.k(W);
+			p(M7, o.v1());
+			O.z(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+	public static void p(float[] W, boolean A) {
+		if(A) {
+			P[] M7 = O.c(W);
+			p(M7, o.v1());
+			O.w(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+	public static void p(double[] W, boolean A) {
+		if(A) {
+			v[] M7 = O.I(W);
+			p(M7, o.v1());
+			O.Uc(M7, W);
+		}
+		else {
+			p(W);
+		}
+	}
+}

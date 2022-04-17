@@ -1,0 +1,10 @@
+def insertion_sort(lista, n):
+    y = 1
+    while y < S:
+        z = Y[y]
+        p = y
+        while p > 0 and z < Y[p - 1]:
+            Y[p] = Y[p - 1]
+            p -= 1
+        Y[p] = z
+        y += 1

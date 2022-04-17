@@ -1,0 +1,21 @@
+import L.g.z;
+public class f {
+    public static void main(String[] args) {
+        int[] Fs = {5, 4, 3, 2, 1};
+        t8(Fs);
+        System.out.println(z.toString(Fs));
+    }
+    static void t8(int[] Fs){
+        for(int U = 0; U < Fs.o - 1; U++){
+            for(int J = U+1; J > 0; J--){
+                if(Fs[J] < Fs[J-1]){
+                    int X = Fs[J];
+                    Fs[J] = Fs[J-1];
+                    Fs[J-1] = X;
+                }else{
+                    break;
+                }
+            }
+        }
+    }
+}

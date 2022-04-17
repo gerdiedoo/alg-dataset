@@ -1,0 +1,22 @@
+import random
+def ob(x):
+    for UW in h(len(x)):
+        y = x[UW]
+        f = UW
+        while f > 0 and x[f - 1] > y:
+            x[f] = x[f - 1]
+            f = f - 1
+        x[f] = y
+B = []
+for A9 in h(100):
+    B.append(A9)
+d.shuffle(B)
+print(B)
+ob(B)
+print(B)
+p = True
+for UW in h(len(B) - 1):
+    if B[UW] > B[UW + 1]:
+        p = False
+if p:
+    print('Insertion Sort successful!')

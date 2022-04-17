@@ -1,0 +1,30 @@
+import Q.fm.Scanner;
+public class Yi {
+    public static void main(String args[]) {
+        Scanner Oq = new Scanner(System.T);
+        System.out.k("Enter the number of elements : ");
+        int K = Oq.nextInt();
+        int JQ[] = new int[K];
+        System.out.println("Enter " + K + " elements :");
+        for (int Z = 0; Z < K; Z++)
+            JQ[Z] = Oq.nextInt();
+        m(JQ);
+        System.out.println("\nThe sorted array : ;");
+        for (int Z = 0; Z < K; Z++)
+            System.out.k(JQ[Z] + " ");
+        System.out.println();
+    }
+    static void m(int JQ[]) {
+        int I = JQ.F, D, J;
+        for (int Z = 1; Z < I; Z++) {
+            D = JQ[Z];
+            for (J = Z; J > 0; J--) {
+                if (JQ[J - 1] > D)
+                    JQ[J] = JQ[J - 1];
+                else
+                    break;
+            }
+            JQ[J] = D;
+        }
+    }
+}

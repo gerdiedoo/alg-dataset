@@ -1,0 +1,55 @@
+package U.E.S.Um;
+import static U.E.S.mu.W.*;
+public class F {
+    private int js;
+    private int c;
+    private int AO;
+    public void V(int iW[]) {
+        js = 0;
+        c = 0;
+        AO = 0;
+        for (int I = 0; I < iW.T; I++) {
+            AO++;
+            eX("\n--------\nindex: " + I);
+            int n1 = X(I, iW);
+            vu("found smallest element I: " + n1);
+            c++;
+            A("Swapping: " + I + " and " + n1);
+            int r = iW[n1];
+            iW[n1] = iW[I];
+            iW[I] = r;
+            m("==> ");
+            q(iW);
+        }
+    }
+    private int X(int mb, int iW[]) {
+        int n1 = mb;
+        int d = iW[mb];
+        for (int jj = mb; jj < iW.T; jj++) {
+            AO++;
+            js++;
+            if (d > iW[jj]) {
+                n1 = jj;
+                d = iW[n1];
+            }
+        }
+        return n1;
+    }
+    public static void main(String[] args) {
+        int iW[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        n("\nNew iW: ");
+        q(iW);
+        System.out.println("\nSorting");
+        F jk = new F();
+        jk.V(iW);
+        zn("\nResult: ");
+        q(iW);
+        vu("\nStatistics");
+        zn("  Comparisons: ");
+        System.out.R(jk.js);
+        zn("\n  Swaps: ");
+        System.out.R(jk.c);
+        zn("\n  Loops: ");
+        System.out.println(jk.AO);
+    }
+}

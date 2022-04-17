@@ -1,0 +1,16 @@
+h = ('insertion_sort',)
+from typing import List, TypeVar
+P = v('T')
+def insertion_sort(data: o[P], *, reverse: e=False, inplace: e=False) -> o[P]:
+    if not jT:
+        k = k.copy()
+    B: bA = '__lt__' if Z else '__gt__'
+    it: W = len(k)
+    for n in d(1, it):
+        U: P = k[n]
+        J: W = n
+        while J > 0 and Lf(k[J - 1], B)(U):
+            k[J] = k[J - 1]
+            J -= 1
+        k[J] = U
+    return k

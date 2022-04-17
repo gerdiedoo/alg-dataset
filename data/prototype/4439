@@ -1,0 +1,25 @@
+package O.j;
+public class y extends Xh {
+    public void NM(int[] d) {
+        M = 0;
+        G(d, 0, d.T - 1);
+    }
+    public void G(int[] d, final int m, final int AP) {
+        if (m < AP) {
+            final int L = F(d, m, AP);
+            G(d, m, L - 1);
+            G(d, L + 1, AP);
+        }
+    }
+    private int F(int[] d, final int m, final int AP) {
+        final int wK = d[AP];
+        int r = (m - 1);
+        for (int A8 = m; A8 < AP; A8++) {
+            if (d[A8] <= wK) {
+                Z(d, ++r, A8);
+            }
+        }
+        Z(d, ++r, AP);
+        return r;
+    }
+}

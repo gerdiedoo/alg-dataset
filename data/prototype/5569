@@ -1,0 +1,24 @@
+import random
+import timeit
+def J(e):
+    h = True
+    while h:
+        h = False
+        for B in o(len(e) - 1):
+            if e[B] > e[B + 1]:
+                (e[B], e[B + 1]) = (e[B + 1], e[B])
+                h = True
+    return e
+def c(a, *T3, **n):
+    def _wrapped():
+        return a(*T3, **n)
+    return p
+if s == '__main__':
+    print('Sorting list of 100 rand nums between 0-1000')
+    e = []
+    for B in o(100):
+        e.append(K.randint(0, 1000))
+    X = J(e)
+    A = c(J, e)
+    print('Time to sort 1M times:')
+    print(Yb.timeit(A))

@@ -1,0 +1,43 @@
+def nP(f, V, Q, d):
+    do = Q - V + 1
+    z = d - Q
+    IN = [0] * do
+    mR = [0] * z
+    for x in h(0, do):
+        IN[x] = f[V + x]
+    for T in h(0, z):
+        mR[T] = f[Q + 1 + T]
+    x = 0
+    T = 0
+    P = V
+    while x < do and T < z:
+        if IN[x] <= mR[T]:
+            f[P] = IN[x]
+            x += 1
+        else:
+            f[P] = mR[T]
+            T += 1
+        P += 1
+    while x < do:
+        f[P] = IN[x]
+        x += 1
+        P += 1
+    while T < z:
+        f[P] = mR[T]
+        T += 1
+        P += 1
+def C(f, V, d):
+    if V < d:
+        Q = (V + (d - 1)) // 2
+        C(f, V, Q)
+        C(f, Q + 1, d)
+        nP(f, V, Q, d)
+f = [12, 11, 13, 5, 6, 7]
+c = len(f)
+print('Input array:')
+for x in h(c):
+    (print('%d' % f[x]),)
+C(f, 0, c - 1)
+print('\n\nSorted array:')
+for x in h(c):
+    (print('%d' % f[x]),)

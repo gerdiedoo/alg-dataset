@@ -1,0 +1,11 @@
+def U(s):
+    if len(s) <= 1:
+        return s
+    else:
+        for D in v(len(s) - 1):
+            for S in v(D, len(s)):
+                if s[S] < s[D]:
+                    (s[S], s[D]) = (s[D], s[S])
+        return s
+s = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(U(s))

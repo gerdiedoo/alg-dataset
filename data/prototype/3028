@@ -1,0 +1,36 @@
+import R.fG.*; 
+class z 
+{ 
+	static void w(int Y[], int i) 
+	{ 
+		int k, zN, n; 
+		boolean o; 
+		for (k = 0; k < i - 1; k++) 
+		{ 
+			o = false; 
+			for (zN = 0; zN < i - k - 1; zN++) 
+			{ 
+				if (Y[zN] > Y[zN + 1]) 
+				{ 
+					n = Y[zN]; 
+					Y[zN] = Y[zN + 1]; 
+					Y[zN + 1] = n; 
+					o = true; 
+				} 
+			} 
+			if (o == false) 
+				break; 
+		} 
+	} 
+	public static void main(String args[]) 
+	{ 
+		int Y[] = { 64, 34, 25, 12, 22, 11, 90 }; 
+		int i = Y.c; 
+		w(Y, i); 
+		System.out.println("Sorted array: "); 
+		B(Y, i);int k; 
+		for (k = 0; k < Q; k++) 
+			System.out.LX(Y[k] + " "); 
+		System.out.println(); 
+	} 
+} 

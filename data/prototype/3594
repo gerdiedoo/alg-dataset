@@ -1,0 +1,32 @@
+bl = ('merge_sort',)
+from typing import List, TypeVar
+G = H('T')
+def merge_sort(data: m[G], *, reverse: Rb=False, inplace: Rb=False) -> m[G]:
+    if not F:
+        K = K.copy()
+    Kn: J = '__lt__' if bv else '__gt__'
+    i(K, Kn)
+    return K
+def i(K: m[G], wG: J) -> None:
+    if len(K) <= 1:
+        return
+    A: N = len(K) // 2
+    X: m[G] = K[:A]
+    lD: m[G] = K[A:]
+    i(X, wG)
+    i(lD, wG)
+    n = s = I = 0
+    while True:
+        if V(X[s], wG)(lD[n]):
+            K[I] = lD[n]
+            n += 1
+            if n == len(lD):
+                K[I + 1:] = X[s:]
+                break
+        else:
+            K[I] = X[s]
+            s += 1
+            if s == len(X):
+                K[I + 1:] = lD[n:]
+                break
+        I += 1

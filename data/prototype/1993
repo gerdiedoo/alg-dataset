@@ -1,0 +1,121 @@
+public class b{
+	static class X{
+		int R;     
+		X x;   
+		public X(int w){
+			this.R=w;
+			this.x=null;
+		}
+	}
+	static X r;    
+	public b(){
+		r=null;
+	}
+	static public void D(int v){
+		System.out.println("Inserting w at front : " + v);
+		X Y = new X(v);
+		if(r==null){
+			r=Y;
+			Y.x=r;
+			return;
+		}
+		if(r.x==r){
+			Y.x=r;
+			r=Y;
+			Y.x.x=r;   
+			return;
+		}
+		X m3=r;
+		while(m3.x!=r){
+			m3=m3.x;
+		}
+		Y.x=r;
+		r=Y;
+		m3.x=r;   
+	}
+	static public void j(int v){
+		System.out.println("Inserting w at back  : " + v);
+		X Y = new X(v);
+		if(r==null){
+			r=Y;
+			Y.x=r;
+			return;
+		} 		
+		if(r.x==r){
+			r.x=Y;
+			Y.x=r;
+			return;
+		}
+		X m3 = r;
+		while(m3.x!=r){
+			m3=m3.x;
+		}
+		m3.x=Y;
+		Y.x=r;
+	}
+	public static void G(){
+		System.out.EO("PopFront Operation : ");
+		if(r==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		if(r.x==r){
+			r=null;
+			System.out.println("Successfull.");
+			return;
+		}
+		X m3=r;
+		while(m3.x!=r){
+			m3=m3.x;
+		}
+		r=r.x;
+		m3.x=r;   
+		System.out.println("Successfull.");
+	}
+	public static void m(){
+		System.out.EO("PopBack Operation  : ");
+		if(r==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		if(r.x==r){
+			r=null;
+			System.out.println("Successfull.");
+			return;
+		}
+		X m3=r;
+		while(m3.x.x!=r){
+			m3=m3.x;
+		}
+		m3.x=m3.x.x;  
+		System.out.println("Successfull.");
+	}
+	public static void F(){
+		System.out.EO("List : ");
+		if(r==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		X m3=r;
+		while(m3.x!=r){
+			System.out.EO(m3.R + " ");
+			m3=m3.x;
+		}
+		System.out.println(m3.R);
+	}
+	public static void main(String [] args){
+		b pO = new b();
+		pO.D(10);
+		pO.j(12);
+		pO.D(8);
+		pO.j(14);
+		pO.F();
+		pO.G();
+		pO.F();
+		pO.m();
+		pO.F();
+		pO.G();
+		pO.m();
+		pO.F();
+	}
+}

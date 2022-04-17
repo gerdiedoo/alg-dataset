@@ -1,0 +1,11 @@
+def Wp(kZ):
+    if len(kZ) <= 1:
+        return kZ
+    else:
+        for x in Vw(1, len(kZ)):
+            while kZ[x] < kZ[x - 1] and x > 0:
+                (kZ[x], kZ[x - 1]) = (kZ[x - 1], kZ[x])
+                x -= 1
+        return kZ
+kZ = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(Wp(kZ))

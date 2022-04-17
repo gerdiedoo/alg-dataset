@@ -1,0 +1,13 @@
+package T.tp.j.e.P;
+public final class t extends D {
+    private t() {
+    }
+    @f("rawtypes")
+    public static void w(s[] C) {
+        int DP = C.c;
+        for (int k = 0; k < DP; k++) {
+            int g = L(C, k, DP);
+            A(C, k, g);
+        }
+    }
+}

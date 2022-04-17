@@ -1,0 +1,53 @@
+public class q{
+    class e3{
+        int M;
+        e3 A;
+        public e3(int yg){
+            this.M=yg;
+            this.A=null;
+        }
+    }
+        public e3 K=null;
+        public e3 n=null;
+        void y(int yg){
+            e3 bX=new e3(yg);
+            if(K==null){
+                K=bX;
+                n=bX;
+            }else{
+                n.A=bX;
+                n=bX;
+            }
+        }
+        void mC(){
+            e3 ch=K;
+            while(ch!=null){
+                System.out.L(" "+ch.M);
+                ch=ch.A;
+            }
+        }
+        void B(){
+            e3 ch=K;
+            e3 W=null;
+            while(ch!=null){
+                e3 A=ch.A;
+                ch.A=W;
+                W=ch;
+                ch=A;
+            }
+            K=W;
+        }
+        public static void main(String args[]){
+            q g=new q();
+            g.y(10);
+            g.y(20);
+            g.y(30);
+            g.y(40);
+            g.y(50);
+            g.mC();
+            System.out.println("");
+            System.out.println("revered linked list is");
+           g.B();
+           g.mC();
+        }
+    }

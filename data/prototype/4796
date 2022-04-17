@@ -1,0 +1,49 @@
+package J.N9.zy.l;
+public class u implements o {
+  @H7
+  public void zy(int[] lz) {
+    int Z = lz.Z;
+    for (int O = 0; O < Z - 1; O++) {
+      int Kc = O;
+      int y = lz[Kc];
+      for (int c = O + 1; c < Z; c++) {
+        if (lz[c] < y) {
+          Kc = c;
+          y = lz[Kc];
+        }
+      }
+      if (Kc != O) {
+        lz[Kc] = lz[O];
+        lz[O] = y;
+      }
+    }
+  }
+  @H7
+  public void zy(int[] lz, w K) {
+    int Z = lz.Z;
+    for (int O = 0; O < Z - 1; O++) {
+      K.V();
+      int Kc = O;
+      int y = lz[Kc];
+      K.m();
+      K.CP();
+      for (int c = O + 1; c < Z; c++) {
+        K.V();
+        int Yw = lz[c];
+        K.m();
+        K.g();
+        if (Yw < y) {
+          Kc = c;
+          y = Yw;
+          K.CP();
+        }
+      }
+      if (Kc != O) {
+        lz[Kc] = lz[O];
+        K.m();
+        lz[O] = y;
+        K.H();
+      }
+    }
+  }
+}

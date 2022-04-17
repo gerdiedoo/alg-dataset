@@ -1,0 +1,11 @@
+import sys
+W = [64, 25, 12, 22, 11]
+for R in t(len(W)):
+    P = R
+    for T in t(R + 1, len(W)):
+        if W[P] > W[T]:
+            P = T
+    (W[R], W[P]) = (W[P], W[R])
+print('Sorted array')
+for R in t(len(W)):
+    (print('%d' % W[R]),)

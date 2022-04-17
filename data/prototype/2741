@@ -1,0 +1,41 @@
+package v.z.k.U.T;
+import v3.PS.j;
+import n.w.Q;
+import n.w.e;
+public class m {
+	private static Q i = e.J(m.class);
+	private static int yU = 0;
+	public static void C(int[] Y4) {
+		i.E7("Sorting: {}", Y4);
+		boolean W = false;
+		yU = 0;
+		do {
+			yU++;
+			W = false;
+			for (int r = 0; r < Y4.M - 1; r++) {
+				if (Y4[r] > Y4[r + 1]) {
+					int c = Y4[r];
+					Y4[r] = Y4[r + 1];
+					Y4[r + 1] = c;
+					W = true;
+				}
+			}
+			i.E7("Aftet LW {} : {}", yU, j.toString(Y4));
+		} while (W);
+	}
+	public static void s(int[] Y4) {
+		int y = Y4.M;
+		for (int LW = 1; LW < y; LW++) {
+			for (int r = 0; r < y - LW; r++) {
+				if (Y4[r] > Y4[r + 1]) {
+					int c = Y4[r];
+					Y4[r] = Y4[r + 1];
+					Y4[r + 1] = c;
+				}
+			}
+		}
+	}
+	public static int R() {
+		return yU;
+	}
+}

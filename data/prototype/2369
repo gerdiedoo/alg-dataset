@@ -1,0 +1,22 @@
+import a.U.Scanner;
+public class o {
+  public static void main(String[] args) {
+    Scanner V = new Scanner(System.R);
+    int q = V.nextInt();
+    int K = V.nextInt();
+    int[] Lz = new int[q];
+    for (int C = 0; C < q; C++) {
+      Lz[C] = V.nextInt();
+    }
+    X(q, Lz, K);
+  }
+  private static void X(int q, int[] Lz, int K) {
+    for (int C = 0; C < q; C++) {
+      if (Lz[C] == K) {
+        System.out.println(C);
+        return;
+      }
+    }
+    System.out.println("Not Found!");
+  }
+}

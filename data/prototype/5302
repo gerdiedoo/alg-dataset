@@ -1,0 +1,104 @@
+public class C<d extends p<d>,V extends p<V>> implements td<d,V> {
+    private WM<d, V>[] A;
+    private static final int yj = 101;
+    private double lX = 0.75;
+    private int X;
+    private int nT;
+    private final WM<d, V> F = new WM<>(null, null);
+    public C() {
+        A = new WM[yj];
+    }
+    private int jn(Ng dK) {
+        int aw = dK.hashCode() % A.tM;
+        if (aw < 0)
+            aw += A.tM;  
+        while ((A[aw] != null)
+                && (!dK.equals(A[aw].LQ()))) {
+            aw++;
+            if (aw >= A.tM)
+                aw = 0;  
+        }
+        return aw;
+    }
+    @S
+    public V k(Ng dK) {
+        int aw = jn(dK);
+        if (A[aw] != null)
+            return A[aw].a();
+        else
+            return null;  
+    }
+    @S
+    public boolean J() {
+        return X == 0;
+    }
+    @S
+    public V xt(d dK, V Dp) {
+        int aw = jn(dK);
+        if (A[aw] == null) {
+            A[aw] = new WM<>(dK, Dp);
+            X++;
+            double XN =
+                    (double) (X + nT) / A.tM;
+            if (XN > lX)
+                L();
+            return null;
+        }
+        V T = A[aw].a();
+        A[aw].x(Dp);
+        return T;
+    }
+    private void L() {
+        WM<d, V>[] b = A;
+        A = new WM[2 * b.tM + 1];
+        X = 0;
+        nT = 0;
+        for (int G = 0; G < b.tM; G++) {
+            if ((b[G] != null) && (b[G] != F)) {
+                xt(b[G].LQ(), b[G].a());
+            }
+        }
+    }
+    @S
+    public V Q(Ng dK) {
+        int aw = jn(dK);
+        if(A[aw] == null){
+            return null;
+        }
+        V m = A[aw].a();
+        A[aw] = F;
+        nT++;
+        X--;
+        return m;
+    }
+    @S
+    public int i() {
+        return X;
+    }
+    static class WM<d extends p<d>,V extends p<V>> implements p<WM<d,V>>  {
+        private final d dK;
+        private V Dp;
+        public boolean I;
+        public boolean cr() {
+            return I;
+        }
+        public d LQ() {
+            return dK;
+        }
+        public V a() {
+            return Dp;
+        }
+        public void x(V Dp) {
+            this.Dp = Dp;
+        }
+        public WM(d dK , V Dp){
+            this.dK = dK;
+            this.Dp = Dp;
+            I = true;
+        }
+        @S
+        public int W(WM<d, V> FX) {
+            return this.dK.W(FX.LQ());
+        }
+    }
+}

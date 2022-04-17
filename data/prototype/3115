@@ -1,0 +1,11 @@
+def iA(m):
+    if len(m) <= 1:
+        return m
+    else:
+        for C in Py(1, len(m)):
+            while m[C] < m[C - 1] and C > 0:
+                (m[C], m[C - 1]) = (m[C - 1], m[C])
+                C -= 1
+        return m
+m = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(iA(m))

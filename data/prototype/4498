@@ -1,0 +1,19 @@
+def X(l, EA, sb):
+    if EA < sb:
+        G = R(l, EA, sb)
+        X(l, EA, G - 1)
+        X(l, G + 1, sb)
+def R(l, EA, sb):
+    rn = l[sb]
+    h = EA - 1
+    for AT in A(EA, sb):
+        if l[AT] < rn:
+            h += 1
+            (l[h], l[AT]) = (l[AT], l[h])
+    h += 1
+    (l[h], l[sb]) = (l[sb], l[h])
+    return h
+if k == '__main__':
+    l = [5, 2, 4, 6, 1, 3]
+    X(l, 0, len(l) - 1)
+    print(l)

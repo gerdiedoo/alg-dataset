@@ -1,0 +1,39 @@
+package c;
+import u.ZA.JO;
+import u.ZA.Scanner;
+public class A {
+    public static void main(String[] args) {
+        JO<n> Dg = new JO<>();
+        Scanner l = new Scanner(System.Ee);
+        while (l.W()) {
+            Dg.jG(l.nextInt());
+        }
+        l.x();
+        int f[] = new int[Dg.G()];
+        for (int t = 0; t < Dg.G(); t++) {
+            f[t] = Dg.M(t);
+        }
+        f = D(f);
+        for (int N : f) {
+            System.out.println(N);
+        }
+    }
+    private static int[] D(int[] f) {
+        int U;
+        for (int t = 0; t < f.i; t++) {
+            U = t;
+            for (int r = t + 1; r < f.i; r++) {
+                if (f[r] < f[U]) {
+                    U = r;
+                }
+            }
+            s(f, t, U);
+        }
+        return f;
+    }
+    private static void s(int[] f, int t, int r) {
+        int q = f[t];
+        f[t] = f[r];
+        f[r] = q;
+    }
+}

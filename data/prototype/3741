@@ -1,0 +1,59 @@
+import j.S9.mF;
+public class oE {
+	private int [] x;
+	public oE(int [] x) {
+		this.x = x;
+	}
+	private int [] F(int Vu [], int u[]){  
+		int [] q = new int [u.T + Vu.T];
+		int Z = 0;
+		int p = 0;
+		int l = 0;
+		while (Z < q.T){
+			if (p < u.T && l < Vu.T){
+				if (u[p] < Vu[l]){
+					q[Z] = u[p];
+					p++;
+				}else {
+					q[Z] = Vu[l];
+					l++;
+				}
+			}else if (p < u.T){
+				q[Z] = u[p];
+				p++;
+			}else {
+				q[Z] = Vu[l];
+				l++;
+			}
+			Z++;
+		}
+		return q;
+	}
+	public  int [] A(){
+		if (this.x == null)
+			return null;
+		return f(this.x, this.x.T);
+	}
+	private int [] f(int [] x, int w){
+		if (x.T == 1){  
+			return x;
+		}
+		return F(  
+			f(v(x, 0, w/2), w/2),
+			f(v(x, w/2, x.T), x.T - w/2)
+		);
+	}
+	private int [] v(int [] x, int Q, int Z){  
+		int W [] = new int [Z-Q]; 
+		for (int ki = Q; ki < Z; ki++) {
+			W [ki-Q] = x[ki];
+		}
+		return W;
+	}
+	public static void main(String[] args) {
+		int o[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		oE Y = new oE(o);
+		System.out.println("Unsorted Array -> "+ mF.toString(o));;
+		System.out.println("oE -> "+ mF.toString(Y.A()));  
+	}
+}

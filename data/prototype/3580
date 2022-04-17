@@ -1,0 +1,64 @@
+package lD.Q;
+public class Ra extends Z {
+    protected int G;
+    Ra(){
+        super();
+        G = 0;
+    }
+    public int i(){
+        G = 0;
+        T(S(Wk()));
+        return G;
+    }
+    public int[] S(int[] X2)throws Dn{
+        int sB = 0;
+        int l = 0;
+        if (X2.u == 1){
+            return X2;
+        }
+        if (X2.u%2 == 0){
+            sB = l = X2.u/2;
+        }
+        else{
+            sB = X2.u/2;
+            l = sB + 1;
+        }
+        int [] t = new int[sB];
+        int [] O = new int[l];
+        System.b(X2, 0, t, 0, sB);
+        System.b(X2, sB, O, 0, l);
+        t = S(t);
+        O = S(O);
+        return A(t,O);
+    }
+    public int[] A(int[] V, int[] y) throws Dn{
+        int nz = 0;
+        int R = 0;
+        int jz = 0;
+        int c = V.u;
+        int Os = y.u;
+        int ua = c + Os;
+        int [] E = new int [ua];
+        while (nz < ua){
+            if (R == c) {
+                System.b(y, jz, E, nz, 1);
+                jz++;
+            }
+            else if (jz == Os){
+                System.b(V, R, E, nz, 1);
+                R++;
+            }
+            else if (V[R] < y[jz]){
+                System.b(V, R, E, nz, 1);
+                R++;
+            }
+            else{
+                System.b(y, jz, E, nz, 1);
+                jz++;
+            }
+            nz++;       
+            this.G++;
+        }
+        return E;
+    }
+}

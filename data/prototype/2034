@@ -1,0 +1,152 @@
+package f.v.q.ZO.DS;
+public class Z<p> {
+	private B<p> u;
+	private B<p> n;
+	private int Q = 0;
+	public void K(p r) {
+		B<p> W = new B<p>(r);
+		if (null == u) { 
+			W.S9 = null;
+			W.Fb = null;
+			u = W;
+			n = W;
+			Q++;
+		} else {
+			W.S9 = u;
+			W.Fb = null;
+			u.Fb = W;
+			u = W;
+			Q++;
+		}
+	}
+	public void vh(p r) {
+		B<p> W = new B<p>(r);
+		if (null == n) { 
+			W.S9 = null;
+			W.Fb = null;
+			u = W;
+			n = W;
+			Q++;
+		} else {
+			n.S9 = W;
+			W.S9 = null;
+			W.Fb = n;
+			n = W;
+			Q++;
+		}
+	}
+	public void dE(p r, int c) {
+		if (c < 0 || c > Q) {
+			throw new k("Position is Invalid");
+		} 
+		if (c == 0) { 
+			K(r);
+		} else if (c == Q -1) { 
+			vh(r);
+		} else { 
+			B<p> M = u;
+			for (int A = 0; A < c; A++) {
+				M = M.S9;
+			}
+			B<p> E = M.Fb;
+			B<p> W = new B<p>(r);
+			W.S9 = M;
+			W.Fb = E;
+			E.S9 = W;
+			M.Fb = W;
+			Q++;
+		}
+	}
+	public void b() {
+		B<p> X = u;
+		while (X != null) {
+			System.out.println(X.D);
+			X = X.S9;
+		}
+	}
+	public void wK() {
+		B<p> X = n;
+		while (X != null) {
+			System.out.println(X.D);
+			X = X.Fb;
+		}
+	}
+	public int Q() {
+		return Q;
+	}
+	public boolean J() {
+		return Q == 0;
+	}
+	public B<p> z(int C) {
+		if (C < 0 || C >= Q) {
+			throw new q9("Invalid C passed while searching for a r");
+		} 
+		B<p> X = u;
+		for (int A = 0; A < C; A++) { 
+			X = X.S9;
+		}
+		return X;
+	}
+	public B<p> l(p r) { 
+		B<p> X = u;
+		while (null != X.S9 && X.D != r) {
+			X = X.S9;
+		}
+		if (X.D == r) {
+			return X;
+		}
+		return null;
+	}
+	public void y() {
+		if (null == u) { 
+			return;
+		}
+		B<p> X = u;
+		u = X.S9;
+		u.Fb = null;
+		Q--;
+	}
+	public void fU() {
+		if (null == n) { 
+			return;
+		}
+		B<p> X = n;
+		n = X.Fb;
+		n.S9 = null;
+		Q--;
+	}
+	public void ZE(int c) {
+		if (c < 0 || c >= Q) {
+			throw new k("Position is Invalid");
+		} 
+		B<p> h = u;
+		for (int A = 0; A < c; A++) {
+			h = h.S9;
+		}
+		B<p> E = h.Fb;
+		B<p> LW = h.S9;
+		E.S9 = LW;
+		LW.Fb = E;
+		Q--;
+	}
+	public T[] NY() {
+		T[] H = new T[Q];
+		int A = 0;
+		for (B<p> x = u; x != null; x = x.S9) {
+			H[A++] = x.D;
+		}
+		return H;
+	}
+	public class B<O> {
+		O D;
+		B<O> S9;
+		B<O> Fb;
+		public B(O D) {
+			this.D = D;
+		}
+		@S
+		public String toString() {
+			return String.V(D);
+		}
+	}
+}

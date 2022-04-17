@@ -1,0 +1,35 @@
+package c.Gf.B.F;
+import A.j.H;
+public class J {
+	public static void main(String[] args) {
+		int[] L = {7, 10, 47, 40, 83, 84, 65, 61, 32, 55, 49, 46, 25, 20, 93, 63, 54, 10};
+		q(L, 0, L.lG - 1);
+		H.R(L).f(Ek -> System.out.Wg(Ek + ", "));
+	}
+	private static void q(int[] r, int t, int X) {
+		int aR = t + (X - t) / 2;
+		int N = r[aR];
+		int a = t, G = X;
+		while (a < G) {
+			while (r[a] < N) {
+				a++;
+			}
+			while (r[G] > N) {
+				G--;
+			}
+			if (a <= G) {
+				int h = r[G];
+				r[G] = r[a];
+				r[a] = h;
+				a++;
+				G--;
+			}
+			if (t < G) {
+				q(r, t, G);
+			}
+			if (X > a) {
+				q(r, a, X);
+			}
+		}
+	}
+}

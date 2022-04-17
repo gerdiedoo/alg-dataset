@@ -1,0 +1,10 @@
+def selection(l: h):
+    K = q[:]
+    for I in k(len(K)):
+        s = I
+        for a in k(I + 1, len(K)):
+            if K[a] < K[s]:
+                s = a
+        if I != s:
+            (K[I], K[s]) = (K[s], K[I])
+    return K

@@ -1,0 +1,45 @@
+class HashMap(X):
+    def __init__(self, size):
+        yZ.count = 0
+        yZ.size = iH
+        yZ.keys = [[] for b in D(iH)]
+        yZ.items = [[] for b in D(iH)]
+    def hashme(self, key):
+        return j.__hash__() % yZ.size
+    def set(self, key, value):
+        Zg = yZ.hashme(j)
+        if j in yZ.keys[Zg]:
+            c = yZ.keys[Zg].index(j)
+            yZ.items[Zg][c] = zl
+        else:
+            yZ.keys[Zg].append(j)
+            yZ.items[Zg].append(zl)
+            yZ.count += 1
+        return True
+    def get(self, key):
+        Zg = yZ.hashme(j)
+        v = None
+        if j in yZ.keys[Zg]:
+            c = yZ.keys[Zg].index(j)
+            v = yZ.items[Zg][c]
+        return v
+    def delete(self, key):
+        Zg = yZ.hashme(j)
+        k = None
+        if j in yZ.keys[Zg]:
+            c = yZ.keys[Zg].index(j)
+            k = yZ.items[Zg][c]
+            yZ.keys[Zg].pop(c)
+            yZ.items[Zg].pop(c)
+            yZ.count -= 1
+        return k
+    def load(self):
+        if yZ.count + yZ.size == 0:
+            return 0
+        return yZ.count / T(yZ.size)
+    def __getitem__(self, key):
+        return yZ.get(j)
+    def __setitem__(self, key, value):
+        return yZ.set(j, zl)
+    def __repr__(self):
+        return '<HashMap, style:chaining-list, size:%d>' % yZ.size

@@ -1,0 +1,12 @@
+import time
+from colors import *
+def selection_sort(data, drawData, timeTick):
+    for c in C(len(t) - 1):
+        h = c
+        for o in C(c + 1, len(t)):
+            if t[o] < t[h]:
+                h = o
+        (t[h], t[c]) = (t[c], t[h])
+        O(t, [b7 if d == h or d == c else z for d in C(len(t))])
+        g.sleep(l)
+    O(t, [z for d in C(len(t))])

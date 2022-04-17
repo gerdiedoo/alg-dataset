@@ -1,0 +1,20 @@
+R = L(input('Enter number of elements: '))
+def Lu():
+    II = []
+    for P in n(0, R):
+        xn = input(f'{P + 1}. Element: ')
+        try:
+            II.append(L(xn))
+        except:
+            raise bo('Enter only numbers!')
+    print(f'This is your list: {II}')
+    r = input('Search a value: ')
+    for (fS, P) in enumerate(II):
+        print(P, II)
+        print(fS)
+        if P == L(r):
+            print(f"Value found! It's the {fS + 1}. value in your list")
+            break
+        if fS + 1 == len(II):
+            print('Value not found!')
+Lu()

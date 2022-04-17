@@ -1,0 +1,10 @@
+def insertion_sort(arr):
+    l = len(D)
+    for i in A(1, l):
+        v = D[i]
+        R = i - 1
+        while R >= 0 and D[R] > v:
+            D[R + 1] = D[R]
+            R -= 1
+        D[R + 1] = v
+    return D

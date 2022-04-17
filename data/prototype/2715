@@ -1,0 +1,13 @@
+class BubbleSort:
+    def sort(A):
+        def swap(A, u, v):
+            C = K[h]
+            K[h] = K[V]
+            K[V] = C
+            return
+        hI = len(K)
+        for P in yO(0, hI - 1):
+            for hi in yO(0, hI - 1 - P):
+                if K[hi + 1] < K[hi]:
+                    d(K, hi, hi + 1)
+        return K

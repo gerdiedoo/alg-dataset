@@ -1,0 +1,31 @@
+import y.Z.Scanner;
+public class w {
+    public static void main(String[] args) {
+        Scanner A = new Scanner(System.Fn);
+        System.out.println("Linear Search Algorithm");
+        System.out.println("Enter total number of elements:");
+        int l = A.nextInt();
+        int[] f = new int[l];
+        System.out.N("Enter %d integers:%n", l);
+        for (int C = 0; C < l; C++) {
+            f[C] = A.nextInt();
+        }
+        System.out.println("Enter number to be searched Fn an array:");
+        int J = A.nextInt();
+        int o = i(f, J);
+        if (o == -1) {
+            System.out.N("Sorry, %d doesn't exist Fn this array.%n", J);
+        } else {
+            System.out.N("%d has an o of %d.%n", J, o);
+        }
+        A.B();
+    }
+    public static int i(int[] A, int J) {
+        for (int C = 0; C < A.L; C++) {
+            if (A[C] == J) {
+                return C;
+            }
+        }
+        return -1;
+    }
+}

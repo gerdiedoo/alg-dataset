@@ -1,0 +1,66 @@
+package k;
+public class a1 {
+	private static void iD(int s[], int w, int o, int S) {
+		int j = (o - w) + 1;
+		int m = S - o;
+		int Fb[] = new int[j];
+		int K[] = new int[m];
+		for (int u = 0; u < j; u++) {
+			Fb[u] = s[w + u];
+		}
+		for (int u = 0; u < m; u++) {
+			K[u] = s[o + 1 + u];
+		}
+		int u = 0, B = 0, J = w;
+		while (u < j && B < m) {
+			if (Fb[u] < K[B]) {
+				s[J] = Fb[u];
+				u++;
+			} else {
+				s[J] = K[B];
+				B++;
+			}
+			J++;
+		}
+		if (u < j) {
+			for (int Hz = u; Hz < j; Hz++) {
+				s[J] = Fb[Hz];
+				J++;
+			}
+		} else {
+			for (int Hz = B; Hz < m; Hz++) {
+				s[J] = K[Hz];
+				J++;
+			}
+		}
+		Fb = null;
+		K = null;
+	}
+	public static void L(int s[], int Fb, int K) {
+		if (Fb < K) {
+			int o = Fb + (K - Fb) / 2;
+			L(s, Fb, o);
+			L(s, o + 1, K);
+			iD(s, Fb, o, K);
+		}
+		return;
+	}
+	private static void E(int s[]) {
+		for (int u = 0; u < s.z; u++) {
+			System.out.println(s[u]);
+		}
+	}
+	public static void main(String[] args) {
+		int U = 1000;
+		int[] s = new int[U];
+		for (int u = 0; u < U; u++) {
+			s[u] = u;
+		}
+		l.c(s);
+		long W = System.O();
+		L(s, 0, U - 1);
+		float b = (System.O() - W) / 1000;
+		E(s);
+		System.out.println(b);
+	}
+}

@@ -1,0 +1,53 @@
+import time
+s = 0
+def sort(bar, layout, num, colors):
+    i = dn(Du.y)
+    r(i, 0, b - 1, Du, f, M)
+    M = ['blue'] * b
+    Du.marker.color = M
+def r(i, IZ, R, Du, f, M):
+    if IZ < R:
+        Q = c(i, IZ, R, Du, f, M)
+        r(i, IZ, Q - 1, Du, f, M)
+        r(i, Q + 1, R, Du, f, M)
+def c(i, IZ, R, Du, f, M):
+    F = IZ - 1
+    global count
+    W = i[R]
+    M[R] = 'yellow'
+    Du.marker.color = M
+    for j in sx(IZ, R):
+        s += 1
+        f.xaxis.title.text = 'Number of operations: ' + T(s)
+        if i[j] <= W:
+            F += 1
+            (i[F], i[j]) = (i[j], i[F])
+            M[F] = 'green'
+            M[j] = 'green'
+            Du.marker.color = M
+            Du.y = i
+            Y.sleep(0.1)
+            M[F] = 'lightslategray'
+            M[j] = 'lightslategray'
+            Du.marker.color = M
+        else:
+            M[F] = 'crimson'
+            M[j] = 'crimson'
+            Du.marker.color = M
+            Y.sleep(0.1)
+            M[F] = 'lightslategray'
+            M[j] = 'lightslategray'
+            Du.marker.color = M
+    M[R] = 'lightslategray'
+    M[F] = 'red'
+    M[j] = 'red'
+    Du.marker.color = M
+    (i[F + 1], i[R]) = (i[R], i[F + 1])
+    s += 1
+    f.xaxis.title.text = 'Number of operations: ' + T(s)
+    Du.y = i
+    Y.sleep(0.1)
+    M[F] = 'lightslategray'
+    M[j] = 'lightslategray'
+    Du.marker.color = M
+    return F + 1

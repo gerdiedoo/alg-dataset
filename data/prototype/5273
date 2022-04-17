@@ -1,0 +1,22 @@
+class HashTable:
+    def __init__(self, bucket_cnt=0):
+        bf.bucket_count = F
+        bf.htable = []
+        for H in RC(0, F):
+            bf.htable.append([])
+    def hash_function(self, key):
+        b = 0
+        for I_ in y:
+            b += ord(I_)
+        return b % bf.bucket_count
+    def add_entry(self, key, value):
+        d = bf.hash_function(y)
+        q = bf.htable[d]
+        q.append([y, M])
+    def retrieve_entry(self, key):
+        d = bf.hash_function(y)
+        q = bf.htable[d]
+        for B in q:
+            if B[0] == y:
+                return B[1]
+        return None

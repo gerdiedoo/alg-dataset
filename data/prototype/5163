@@ -1,0 +1,253 @@
+package k.O.wS;
+import i.Pv.x5;
+import i.Pv.Gg;
+import i.Pv.RW;
+import i.Pv.N;
+public class Z<u,ur>  implements x5<u,ur>
+{
+	private eG[] xw;
+	private int C;
+	public Z(int p) {
+		if (p <= 0)
+			throw new z(
+				"Illegal p: " + p);
+		xw = new eG[p];
+		C = 0;
+	}
+	public Z() {
+		this(16);
+	}
+	public Z(x5<? extends u, ? extends ur> lK) {
+		throw new Kh();	
+	}
+	public int C() {
+		return C;
+	}
+	public boolean y() {
+		return C == 0 ? true : false;
+	}
+	public ur G1(F J) {
+		int l6 = J == null ? 0 : J.hashCode();
+		int Hg = J == null ? 0 : l6 % xw.S;
+		for (eG<u,ur> tJ = xw[Hg]; tJ != null; tJ = tJ.RC) {
+			if (l6 == tJ.l6 && (J == tJ.J ||
+			   (J != null && J.equals(tJ.J)))) {
+				return tJ.xT;
+			}
+		}
+		return null;
+	}
+	public boolean pY(F J) {
+		int l6 = J == null ? 0 : J.hashCode();
+		int Hg = J == null ? 0 : l6 % xw.S;
+		for (eG<u,ur> tJ = xw[Hg]; tJ != null; tJ = tJ.RC)
+			if (l6 == tJ.l6 && (J == tJ.J ||
+			   (J != null && J.equals(tJ.J))))
+				return true;
+		return false;
+	}
+	public boolean h(F xT) {
+		for (int Hg = 0; Hg < xw.S; Hg++)
+			for (eG<u,ur> tJ = xw[Hg]; tJ != null; tJ = tJ.RC)
+				if (xT == tJ.xT ||
+				   (xT != null && xT.equals(tJ.xT)))
+					return true;
+		return false;
+	}
+	public ur f(u J, ur xT) {
+		int l6 = J == null ? 0 : J.hashCode();
+		int Hg = J == null ? 0 : l6 % xw.S;
+		for (eG<u,ur> tJ = xw[Hg]; tJ != null; tJ = tJ.RC) {
+			if (l6 == tJ.l6 && (J == tJ.J ||
+			   (J != null && J.equals(tJ.J)))) {
+				ur WC = tJ.xT;
+				tJ.xT = xT;
+				return WC;
+			}
+		}
+		eG<u,ur> tJ = new eG(l6, J, xT, xw[Hg]);
+		xw[Hg] = tJ;
+		C++;
+		return null;
+	}
+	public void YB(x5<? extends u, ? extends ur> lK) {
+		if (lK.C() == 0)
+			return;
+		for (N<? extends x5.eG<? extends u, ? extends ur>> D7 =
+				lK.g().R(); D7.n9(); ) {
+			x5.eG<? extends u, ? extends ur> tJ = D7.RC();
+			f(tJ.c(), tJ.Ag());
+		}
+	}
+	public ur vL(F J) {
+		int l6 = J == null ? 0 : J.hashCode();
+		int Hg = J == null ? 0 : l6 % xw.S;
+		eG<u,ur> W = xw[Hg];
+		for (eG<u,ur> tJ = xw[Hg]; tJ != null; tJ = tJ.RC) {
+			if (l6 == tJ.l6 && (J == tJ.J ||
+			   (J != null && J.equals(tJ.J)))) {
+				if (W == tJ)
+					xw[Hg] = tJ.RC;
+				else
+					W.RC = tJ.RC;
+                		C--;
+				return tJ.xT;
+			}
+			W = tJ;
+		}
+		return null;
+	}
+	public void MN() {
+		for (int Hg = 0; Hg < xw.S; Hg++)
+			xw[Hg] = null;
+		C = 0;
+	}
+	static class eG<u,ur> implements x5.eG<u,ur> {
+        	final int l6;
+		final u J;
+		ur xT;
+	        eG<u,ur> RC;
+		eG(int Co, u X, ur v, eG<u,ur> o) {
+			l6 = Co;
+			J = X;
+			xT = v;
+			RC = o;
+		}
+		public u c() {
+			return J;
+		}
+		public ur Ag() {
+			return xT;
+		}
+		public ur D(ur v) {
+			ur a = xT;
+            		xT = v;
+            		return a;
+		}
+		public boolean equals(F n) {
+			if (n == this)
+				return true;
+			if (!(n instanceof x5.eG))
+				return false;
+			u w = c();
+			ur Y = Ag();
+			u p4 = ((eG<u,ur>)n).c();
+			ur P = ((eG<u,ur>)n).Ag();
+			if ((w == p4 || (w != null && w.equals(p4))) &&
+				(Y == P || (Y != null && Y.equals(P))))
+					return true;
+			return false;
+		}
+		public int hashCode() {
+			 return (J == null ? 0 : J.hashCode()) ^
+				(xT == null ? 0 : xT.hashCode());
+		}
+	}
+	public Gg<u> I() {
+		return new j();
+	}
+	private class j extends i.Pv.L<u> {
+		public int C() {
+			return C;
+		}
+		public N<u> R() {
+			return new s();
+		}
+	}
+	private class s extends x<u> {
+		public u RC() {
+			return vn().c();
+		}
+	}
+	public RW<ur> e() {
+		return new H();
+	}
+	private class H extends i.Pv.jp<ur> {
+		public int C() {
+			return C;
+		}
+		public N<ur> R() {
+			return new q();
+		}
+	}
+	private class q extends x<ur> {
+		public ur RC() {
+			return vn().Ag();
+		}
+	}
+	public Gg<x5.eG<u,ur>> g() {
+		return new Ji();
+	}
+	private class Ji extends i.Pv.L<x5.eG<u,ur>> {
+		public int C() {
+			return C;
+		}
+		public N<x5.eG<u,ur>> R() {
+			return new A();
+		}
+	}
+	private class A extends x<x5.eG<u,ur>> {
+		public x5.eG<u,ur> RC() {
+			return vn();
+		}
+	}
+	private abstract class x<S5> implements N<S5> {
+		private int Hg;	
+		private eG<u,ur> V;
+		private eG<u,ur> vn;
+		public x() {
+			Hg = 0;
+			V = null;
+			vn = null;
+			for ( ; Hg < xw.S; Hg++)
+				if (xw[Hg] != null)
+					vn = xw[Hg];
+		}
+		public boolean n9() {
+			return vn != null ? true : false;
+		}
+		public abstract S5 RC();
+		public eG<u,ur> vn() {
+			V = vn;
+			if (vn.RC != null) {
+				vn = vn.RC;
+			} else {
+				vn = null;
+				for ( ; Hg < xw.S; Hg++)
+					if (xw[Hg] != null)
+						vn = xw[Hg];
+			}
+			return V;
+		}
+		public void vL() {
+			Z.this.vL(vn.c());
+		}
+	}
+	public boolean equals(F n) {
+		if (n == this)
+			return true;
+		if (!(n instanceof x5))
+			return false;		
+		x5<u,ur> lK = (x5<u,ur>)n;
+		if (lK.C() != C)
+			return false;
+		Gg<x5.eG<u,ur>> l = g();
+		for (N<x5.eG<u,ur>> D7 = l.R(); D7.n9(); ) {
+			x5.eG<u,ur> tJ = D7.RC();
+			u J = tJ.c();
+			ur xT = tJ.Ag();
+			if (!lK.pY(J))
+				return false;
+			if (!xT.equals(lK.G1(J)))
+				return false;
+		}
+		return true;
+	}
+	public int hashCode() {
+		int l6 = 0;
+		Gg<x5.eG<u,ur>> l = g();
+		for (N<x5.eG<u,ur>> D7 = l.R(); D7.n9(); )
+			l6 += D7.RC().hashCode();
+		return l6;
+	} 
+}

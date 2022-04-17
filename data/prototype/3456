@@ -1,0 +1,23 @@
+package kQ.r.o.Z;
+public class L<y extends F<y>> {
+    private L() { }
+    public static <y extends F<y>> y[] K(y[] IL) {
+        int Kb = IL.Kb;
+        for (int b = 1; b < Kb; b++) {
+            K(b, IL);
+        }
+        return IL;
+    }
+    private static <y extends F<y>> void K(int b, y[] IL) {
+        for (int T = b; T > 0; T--) {
+            y X = IL[T];
+            y t = IL[T - 1];
+            if (X.q(t) < 0) {
+                IL[T - 1] = X;
+                IL[T] = t;
+            } else {
+                break;
+            }
+        }
+    }
+}

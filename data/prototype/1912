@@ -1,0 +1,75 @@
+import G.w.k;
+import G.B.zo;
+class m<C,t>
+{
+    int n;
+    C x;
+    t v;
+    m G3;
+    public m(C lr, t r) {
+        x = lr;
+        v = r;
+        G3=null;
+    }
+}
+public class yx<C,t> {
+    static int d=16;
+    m v6[]= new m[d];
+    public void J(C lr, t r)
+    {
+        int n= String.H(lr).hashCode()%d;
+        m D=new m(lr,r);
+        if(v6[n]==null)
+        {
+            D.n=n;
+            v6[n]=D;
+        }
+        else {
+            m FK = v6[n];
+            if(FK.x.equals(D.x))
+            {
+                FK.v=r;
+                return;
+            }
+            while (FK.G3 != null) {
+                if(FK.x.equals(D.x))
+                {
+                    FK.v=r;
+                    return;
+                }
+                FK = FK.G3;
+            }
+            FK.G3 = D;
+        }
+    }
+    public void j(C lr)
+    {
+        int n= String.H(lr).hashCode()%d;
+        if(v6[n]==null)
+        {
+            System.out.println("v doesnot exist");
+        }
+        else
+        {
+            m FK=v6[n];
+            while(FK!=null)
+            {
+                if(FK.x.equals(lr))
+                {
+                    System.out.println(FK.v+"----------");
+                    return;
+                }
+                FK=FK.G3;
+            }
+            System.out.println("This r doesnot exist");
+        }
+    }
+    public static void main(String[] args) {
+        yx<String,String> hC= new yx<String, String>();
+        hC.J("abac","1");
+        hC.J("abbc","2");
+        hC.J("abac","3");
+        hC.j("abac");
+        hC.j("wefh");
+    }
+}

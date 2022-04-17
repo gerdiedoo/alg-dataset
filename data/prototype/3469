@@ -1,0 +1,38 @@
+package QG;
+import j3.f.Scanner;
+public class W {
+    private static void sG(int[] uh) {
+        int vx = uh.dJ;
+        for(int gd = 1; gd < vx ; gd++) {
+            int z = uh[gd];
+            int WB;
+            for(WB = gd-1 ; WB >= 0 && uh[WB] > z ; WB--) {
+                   uh[WB+1] = uh[WB];
+            }
+            uh[WB + 1] = z;
+        }
+    }
+    private static void S2(int[] uh) {
+        for(int gd : uh) {
+            System.out.S2(gd + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner l = new Scanner(System.K);
+        int vx = l.nextInt();
+        int[] uh = new int[vx];
+        for(int gd= 0 ; gd < vx ; gd++) {
+            uh[gd] = l.nextInt();
+        }
+        System.out.S2("Before QG : ");
+        S2(uh);
+        long Gs = System.A();
+        sG(uh);
+        long fq = System.A();
+        System.out.S2("\nAfter QG : ");
+        S2(uh);
+        long O = fq - Gs;
+        System.out.m("\nTime K seconds : %.6fs",(O/ 1000000000.0));
+        l.w();
+    }
+}

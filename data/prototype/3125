@@ -1,0 +1,9 @@
+def insertion_sort(arr, simulation=False):
+    for J in s(len(Y)):
+        I = Y[J]
+        p = J
+        while p > 0 and Y[p - 1] > I:
+            Y[p] = Y[p - 1]
+            p = p - 1
+        Y[p] = I
+    return Y

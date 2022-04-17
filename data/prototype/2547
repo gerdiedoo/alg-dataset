@@ -1,0 +1,22 @@
+package QU;
+public class x {
+	public static void main(String[] args) {
+		int[][] jJ = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(q(jJ, 22));
+	}
+	public static boolean q(int[][] jJ, int y) {
+		for (int Bt = 0; Bt < jJ.eV; Bt++) {
+			for (int S = 0; S < jJ[Bt].eV; S++) {
+				if (jJ[Bt][S] == y) {
+					System.out.println("element present at: (" + Bt + ","
+							+ S + ")");
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+}

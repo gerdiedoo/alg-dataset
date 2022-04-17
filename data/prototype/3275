@@ -1,0 +1,14 @@
+package k.R.U.N;
+import k.R.U.e.w;
+public class U6 {
+	public static q[] u(q[] Kq) {
+		for (int Np = 1; Np < Kq.y; Np++) {
+			for (int J = Np; J > 0; J--) {
+				if (Kq[J] < Kq[J - 1]) {
+					w.f(Kq, J, J - 1);
+				}
+			}
+		}
+		return Kq;
+	}
+}

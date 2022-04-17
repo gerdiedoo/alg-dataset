@@ -1,0 +1,51 @@
+package b.fO;
+import u.m.lf;
+public class YN {
+	private YN() {
+	}
+	public static void qB(w[] hy) {
+		if(hy == null)
+			throw new T();
+		int F = hy.yN;
+		int P;
+		for (int O = 0; O < F; O++) {
+			P = O;
+			for (int j = O + 1; j < F; j++) {
+				if (TM(hy[j], hy[P]))
+					P = j;
+			}
+			i(hy, O, P);
+		}
+	}
+	public static void qB(yo[] hy, lf c) {
+		if(hy == null)
+			throw new T();
+		int F = hy.yN;
+		int P;
+		for (int O = 0; O < F; O++) {
+			P = O;
+			for (int j = O + 1; j < F; j++) {
+				if (TM(c, hy[j], hy[P]))
+					P = j;
+			}
+			i(hy, O, P);
+		}
+	}
+	private static boolean TM(w QD, w I) {
+		return QD.a(I) < 0;
+	}
+	private static boolean TM(lf c, yo QD, yo I) {
+		return c.Kc(QD, I) < 0;
+	}
+	private static void i(yo[] A, int O, int j) {
+		yo d = A[O];
+		A[O] = A[j];
+		A[j] = d;
+	}
+	public static void e(w[] hy) {
+		int y = hy.yN;
+		for (int O = 0; O < y; O++) {
+			System.out.V(hy[O] + ",");
+		}
+	}
+}

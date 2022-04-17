@@ -1,0 +1,29 @@
+public class W {
+    public static void v(int[] mX) {
+        zJ(mX, 0, mX.E - 1);
+    }
+    private static void zJ(int[] mX, int f3, int rE) {
+        if (rE <= f3)
+            return;
+        int ff = y(mX, f3, rE);
+        zJ(mX, f3, ff - 1);
+        zJ(mX, ff + 1, rE);
+    }
+    private static int y(int[] mX, int f3, int rE) {
+        int ff = mX[rE];
+        int P = f3;
+        for (int j = f3; j < rE; j++) {
+            if (mX[j] < ff) {
+                A(mX, P, j);
+                P++;
+            }
+        }
+        A(mX, P, rE);
+        return P;
+    }
+    private static void A(int[] mX, int GN, int H) {
+        int T = mX[GN];
+        mX[GN] = mX[H];
+        mX[H] = T;
+    }
+}

@@ -1,0 +1,176 @@
+class Ut {
+	private x j;
+	private x U;
+	public Ut () {
+		j = null;
+		U = null;
+	}
+	public void rQ (int o) {
+		x MY = new x(o, null, j);
+		if (j == null) {
+			U = MY;
+		}
+		else {
+			j.z(MY);		
+		}
+		j = MY;
+	}
+	public x Mv () {
+		x t0 = null;
+		if (j != null) {
+			t0 = j;
+			j = j.s();
+		}		
+		return t0;
+	}
+	public void Ft (int o) {
+		x MY = new x(o, U, null);
+		if (U == null) {
+			j = MY;
+		}
+		else {
+			U.r(MY);
+		}
+		U = MY;
+	}
+	public x hg () {
+		return Mv();
+	}
+	public void l(int o) {
+		if (j == null) {
+			rQ(o);
+		}
+		else if (o <= j.R()) {
+			rQ(o);
+		}
+		else if (o >= U.R()) {
+			Ft(o);
+		}
+		else {
+			x MY = j.s();
+			boolean u = true;
+			while (u) {
+				if (o <= MY.R()) {
+					x E = new x(o, MY.W(), MY);
+					MY.z(E);
+					MY.W().W().r(E);
+					u = false;
+				}
+				if (MY.s() == null) {
+					u = false;
+				}
+				else {
+					MY = MY.s();
+				}
+			}
+		}
+	}
+	public void Ow () {
+		Ut f = new Ut();
+		x MY = j;
+		while (MY != null) {
+			MY = Mv();
+			f.rQ(MY.R());
+			MY = MY.s();
+		}
+		j = f.k();
+		U = f.V();
+	}
+	public void km (x v) {
+		if (v.W() == null && v.s() == null) {
+			j = null;
+			U = null;
+		}
+		else if (v.W() == null) {
+			x MY = j.s();
+			MY.z(null);
+			j = v.s();
+		}
+		else if (v.s() == null) {
+			x MY = U.W();
+			MY.r(null);
+			U = v.W();
+		}
+		else {
+			x p = v.W();
+			x o = v.s();
+			p.r(o);
+			o.z(p);
+		}
+	}
+	public void km (int o) {
+		x MY = j;
+		while (MY != null && MY.R() != o) {
+			MY = MY.s();
+		}
+		km(MY);
+	}
+	public void WM(int G) {
+		x MY = j;
+		for (int C = 0; C < G; C ++) {
+			MY = MY.s();
+		}
+		km(MY);
+	}
+	public void M () {
+		x MY = j;
+		while (MY != null) {
+			x h = MY.s();
+			while (h != null) {
+				if (MY.R() == h.R()) {
+					km(h);
+				}
+				h = h.s();
+			}
+			MY = MY.s();
+		}
+	}
+	public int i() {
+		x MY = j;
+		int S = 0;
+		while (MY != null) {
+			S ++;
+			MY = MY.s();
+		}
+		return S;
+	}
+	public Ut clone() {
+		Ut Z = new Ut();
+		x MY = j;
+		while (MY != null) {
+			Z.Ft(MY.R());
+			MY = MY.s();
+		}
+		return Z;
+	}
+	public x m (int G) {
+		x MY = j;
+		for (int C = 0; C < G; C ++) {
+			MY = MY.s();
+		}
+		return MY;
+	}
+	public void d (int [] a) {
+		for (int C = 0; C < a.O; C ++) {
+			Ft(a[C]);
+		}
+	}
+	public x k() {
+		return j;
+	}
+	public x V() {
+		return U;
+	}
+	public String toString () {
+		String D = "{";
+		x MY = j;
+		while (MY != null) {
+			D += MY + ", ";
+			MY = MY.s();
+		}
+		if (D.c8(",")) {
+			D = D.P(0, D.cX(","));
+		}
+		return D + "}";
+	}
+}

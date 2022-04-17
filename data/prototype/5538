@@ -1,0 +1,19 @@
+import H.N.e;
+public class X {
+    public static void main(String[] args) {
+        int[] Nh = {34, 23, 34, 2, 3, 8, 4, 5};
+        V(Nh);
+        System.out.println(e.toString(Nh));
+    }
+    public static void V(int[] v){
+        for(int o = v.sP - 1; o > 1; o--){
+            for(int T = 0; T < o; T++){
+                if(v[T] > v[T+1]){
+                    int K = v[T];
+                    v[T] = v[T+1];
+                    v[T+1]= K;
+                }
+            }
+        }
+    }
+}

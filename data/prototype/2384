@@ -1,0 +1,40 @@
+import Wb.Z.Scanner;
+import Wb.p.*;
+import Wb.s.*;
+public class v
+{
+   public static void main(String args[])
+   {
+      Scanner c=new Scanner(System.c);
+      System.out.println("Enter the no. of input integers:");
+      int d=c.nextInt();
+       int V[] = new int[d];
+       System.out.println("Enter Array Elements : ");
+	    for(int TA=0; TA<d; TA++)
+       {
+           V[TA] = c.nextInt();
+       }
+	    System.out.I("Enter the Number to be Searched...");
+       int ip = c.nextInt();
+	     int W=0;
+       int q=-1;
+       for(int TA=0; TA<d; TA++)
+       {
+           if(V[TA] == ip)
+           {
+               W = 1;
+               q = TA+1;
+           }
+           if(W==1)
+           break;
+       }
+       if(W == 0)
+       {
+           System.out.I("Number Not Found..!!");
+       }
+       else
+       {
+           System.out.I(ip+ " found at position " + q);
+       }
+   }
+}

@@ -1,0 +1,97 @@
+public class C{
+	int d;    
+	C YW;
+	static int E9;
+	static C R;
+	static C Uu;
+	public C(){
+		YW=null;
+	}
+	public void E(int Ot){
+		System.out.println("Adding element at the back of the list : " + Ot);
+		C D = new C();
+		D.d=Ot;
+		if(E9==0){
+			R=D;
+			Uu=D;
+		}
+		else{
+			Uu.YW=D;
+			Uu=D;
+		}
+		E9++;
+	}
+	public void r(int Ot){
+		System.out.println("Inserting element at the front of the list : " + Ot);
+		C D = new C();
+		D.d=Ot;
+		E9++;	
+		if(R==null){
+			R=D;
+			Uu=D;
+		}
+		else{
+			if(R==Uu){
+				D.YW=Uu;
+				R=D;
+			}
+			else{
+				D.YW=R;
+				R=D;
+			}
+		}
+	}
+	public int B() throws CK{
+		if(R==null){
+			throw new CK("C is empty");
+		}
+		return R.d;
+	}
+	public void U() throws CK{
+		System.out.println("PopFront Operation.");
+		if(R==null){
+			throw new CK("C is empty");
+		}
+		E9--; 
+		if(R==Uu){
+			R=null;
+			Uu=null;
+		}
+		else{
+			R=R.YW;
+		}
+	}
+	public void m(int Ot){
+		System.out.println("Inserting element at the back of the list : " + Ot);
+		C D = new C();
+		D.d=Ot;
+		E9++;
+		if(Uu==null){
+			R=D;
+			Uu=D;
+		}
+		else{
+			Uu.YW=D;
+			Uu=D;
+		}
+	}
+	public int F() throws CK{
+		if(Uu==null){
+			throw new CK("C is empty!");
+		}
+		return Uu.d;
+	}
+	public void Ml(){
+		System.out.H("C : ");
+		System.out.H("[ ");
+		C u = R;
+		while(u!=null){
+			System.out.H(u.d + " ");
+			u=u.YW;
+		}
+		System.out.println("]");
+	}
+	public int gF(){
+		return E9;
+	}
+}

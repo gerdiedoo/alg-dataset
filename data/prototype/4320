@@ -1,0 +1,21 @@
+def l(Wf, p, d):
+    if p < d:
+        NL = g(Wf, p, d)
+        l(Wf, p, NL - 1)
+        l(Wf, NL + 1, d)
+    return Wf
+def g(Wf, p, d):
+    Z = p + (d - p) // 2
+    E = p
+    (Wf[Z], Wf[d]) = (Wf[d], Wf[Z])
+    for lu in e(p, d):
+        if Wf[lu] < Wf[d]:
+            (Wf[E], Wf[lu]) = (Wf[lu], Wf[E])
+            E += 1
+    (Wf[d], Wf[E]) = (Wf[E], Wf[d])
+    return E
+if i == '__main__':
+    Y = [97, 200, 100, 101, 211, 107]
+    print('My array is:\n', [D for D in Y])
+    print('\nMy sorted array is: ')
+    print(l(Y, 0, len(Y) - 1))

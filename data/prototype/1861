@@ -1,0 +1,92 @@
+package Fv.gE;
+import T.q.*;
+import T.q.u.l;
+import T.q.u.f;
+import static Fv.gE.qp.n;
+@hz({"WeakerAccess", "unused"})
+public class t<ec, Yo> implements vM<Y<ec, Yo>> {
+    private static int Xc = 64;
+    private z<ec, Yo>[] X;
+    private final d V = new d();
+    t(z<ec, Yo>[] X, int C) {
+        this.X = X;
+        Xc = C;
+    }
+    public t() {
+        m();
+    }
+    @hz("unchecked")
+    private void m() {
+        this.X = new z[Xc];
+        for (int S = 0; S < Xc; S++) {
+            this.X[S] = new z<>();
+        }
+    }
+    private int H9(ec bD) {
+        return H.E(bD.hashCode()) % Xc;
+    }
+    private z<ec, Yo> W(ec bD) {
+        int Q = H9(bD);
+        return this.X[Q];
+    }
+    private f<z<ec, Yo>> B() {
+        return F.u(this.X).R(G -> !G.y());
+    }
+    int rF(int Q) {
+        if (Q >= Xc)
+            return n;
+        int S = Q;
+        while (S < Xc && this.X[S].y())
+            S++;
+        return S == Xc ? n : S;
+    }
+    z<ec, Yo> Z5(int Q) {
+        return this.X[Q];
+    }
+    public void Gd(ec bD, Yo e) {
+        synchronized (V) {
+            z<ec, Yo> J = W(bD);
+            J.HZ(bD, e);
+        }
+    }
+    public Yo K(ec bD) throws j {
+        return W(bD).k(bD);
+    }
+    public Yo K(ec bD, Yo P) {
+        return W(bD).k(bD, P);
+    }
+    public Yo b(ec bD, Yo P) {
+        synchronized (V) {
+            return W(bD).k(bD, P);
+        }
+    }
+    public void Th(ec bD) throws j {
+        synchronized (V) {
+            z<ec, Yo> w = this.W(bD);
+            if (!w.o(bD))
+                throw new j(bD.toString());
+        }
+    }
+    public void s_() {
+        synchronized (V) {
+            m();
+            System.v();
+        }
+    }
+    public Z<ec> p() {
+        return B().np(z::L).O(l.I());
+    }
+    public M<Yo> Dp() {
+        return B().np(z::Cn).O(l.Ze());
+    }
+    public M<Y<ec, Yo>> r() {
+        return B().np(z::s).O(l.Ze());
+    }
+    public boolean D(ec bD) {
+        return !W(bD).y();
+    }
+    @i
+    public RC<Y<ec, Yo>> ej() {
+        return new qp<>(this, V);
+    }
+}

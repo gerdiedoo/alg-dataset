@@ -1,0 +1,23 @@
+def binarySearch(s, x):
+    B = 0
+    z = len(y) - 1
+    while B <= z:
+        O = (B + z) // 2
+        if I == y[O]:
+            return O
+        elif I > y[O]:
+            B = O + 1
+        else:
+            z = O - 1
+    return -1
+def u(y, B, z, I):
+    if z >= B:
+        O = (B + z) // 2
+        if y[O] == I:
+            return O
+        if y[O] > I:
+            return u(y, B, O - 1, I)
+        else:
+            return u(y, O + 1, z, I)
+    else:
+        return -1

@@ -1,0 +1,85 @@
+public class d implements k {
+  private final h P;
+  private final v[] l;
+  public d(h P) {
+    this.P = P;
+    this.l = new v[P.ta()];
+  }
+  private rW c(z J){
+    int fd = P.m(J);
+    int x = -1;
+    for(int SC = 0; SC < P.ta(); SC++){
+      if(l[fd] == null) return new rW(x == -1?fd:x, rW.t);
+      if(l[fd].Er() && x == -1) x = fd;
+      if(!l[fd].Er() && l[fd].U().equals(J)) return new rW(fd, rW.uc);
+      fd = P.s();
+    }
+    if(x != -1) return new rW(x, rW.t);
+    return new rW(-1, rW.S);
+  }
+  @qf
+  public boolean y(z J, z av) {
+    if(J == null || av == null) return false;
+    rW L = c(J);
+    if(L.W == rW.S) return false;
+    l[L.I] = new v(false, J, av);
+    return true;
+  }
+  @qf
+  public z Z(z J) {
+    if(J == null) return null;
+    rW L = c(J);
+    if(L.W == rW.uc){
+      v h_ = l[L.I];
+      return h_.a();
+    }
+    return null;
+  }
+  @qf
+  public boolean MF(z J) {
+    if(J == null) return false;
+    rW L = c(J);
+    if(L.W == rW.t || L.W == rW.S) return false;
+    l[L.I] = new v(true, null, null);
+    return true;
+  }
+  @qf
+  public void G() {
+    for (int Fr = 0; Fr < l.X; Fr++) {
+      if (l[Fr] != null && !l[Fr].Er()) {
+        v h_ = l[Fr];
+        System.out.println(String.R("%d %s %s", Fr, h_.U(), h_.a()));
+      }
+    }
+  }
+  private static class rW {
+    static final int t = -1;
+    static final int uc = 1;
+    static final int S = 0;
+    final int I;
+    final int W;
+    private rW(int I, int W) {
+      this.I = I;
+      this.W = W;
+    }
+  }
+  private static class v {
+    private final boolean Er;
+    private final z J;
+    private final z av;
+    private v(boolean Er, z J, z av) {
+      this.Er = Er;
+      this.J = J;
+      this.av = av;
+    }
+    private boolean Er() {
+      return Er;
+    }
+    private z a() {
+      return av;
+    }
+    private z U() {
+      return J;
+    }
+  }
+}

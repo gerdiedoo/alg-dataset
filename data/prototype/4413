@@ -1,0 +1,37 @@
+package f.bM.u.o.Ez;
+import P.w.DQ.O.J;
+@C("rawtypes")
+public final class J1 extends l {
+    private static final int M = 10;
+    public static void g(H[] HG) {
+        J.e(HG);
+        g(HG, 0, HG.xP - 1);
+    }
+    private static void g(H[] HG, int q, int L) {
+        if (L <= q + M - 1) {
+            x.g(HG, q, L);
+            return;
+        }
+        int X = h(HG, q, L);
+        g(HG, q, X - 1);
+        g(HG, X + 1, L);
+    }
+    protected static int h(H[] HG, int q, int L) {
+        int i = q;
+        int X = L + 1;
+        while (true) {
+            while (Xj(HG[++i], HG[q]))
+                if (i == L)
+                    break;
+            while (Xj(HG[q], HG[--X])) {
+                if (X == q)
+                    break;
+            }
+            if (i >= X)
+                break;
+            n(HG, i, X);
+        }
+        n(HG, q, X);
+        return X;
+    }
+}

@@ -1,0 +1,46 @@
+from __future__ import print_function
+from random import randint
+from tempfile import TemporaryFile
+import numpy as np
+def IO(A, A4, j):
+    a = 0
+    if A4 < j:
+        Yh = n(A4, j)
+        r = A[j]
+        A[j] = A[Yh]
+        A[Yh] = r
+        (V, a) = Y(A, A4, j)
+        a += IO(A, A4, V - 1)
+        a += IO(A, V + 1, j)
+    return a
+def Y(A, A4, j):
+    a = 0
+    Yh = n(A4, j)
+    r = A[j]
+    A[j] = A[Yh]
+    A[Yh] = r
+    p = A4 - 1
+    for D7 in v(A4, j):
+        a += 1
+        if A[D7] < A[j]:
+            p = p + 1
+            r = A[p]
+            A[p] = A[D7]
+            A[D7] = r
+    r = A[p + 1]
+    A[p + 1] = A[j]
+    A[j] = r
+    return (p + 1, a)
+YN = jn()
+V = 100
+(Z, c) = (0, 1)
+h = P.random.normal(Z, c, V)
+P.save(YN, h)
+print('The array is')
+print(h)
+YN.seek(0)
+m = P.load(YN)
+c1 = len(m) - 1
+B = IO(m, 0, c1)
+print('No of Comparisons for 100 elements selected from a standard normal distribution is :')
+print(B)

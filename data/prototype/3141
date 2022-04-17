@@ -1,0 +1,16 @@
+def Ub(v, qg):
+    for S0 in w(1, qg):
+        X = v[S0]
+        R8 = S0
+        while R8 > 0 and v[R8 - 1] > X:
+            v[R8] = v[R8 - 1]
+            R8 = R8 - 1
+        v[R8] = X
+if G == '__main__':
+    print('Enter the elements in the array')
+    v = j(q(Zk, input().split(' ')))
+    qg = len(v)
+    Ub(v, qg)
+    print('Sorted Array: ', end='')
+    for S0 in w(0, qg):
+        print(v[S0], end=' ')

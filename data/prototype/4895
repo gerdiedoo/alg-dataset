@@ -1,0 +1,32 @@
+package Z;
+import u.l;
+import u.M;
+import n.c;
+public class S {
+	public c[] s2(String X, c[] t) {
+		l q0 = new l();
+		M v7 = new M();
+		int JF = 0 ;
+		for (int tD = 0; tD < t.Q - 1; tD++) {
+			int lC = tD;
+			for (int tM = tD + 1; tM < t.Q; tM++) {
+				c R = t[lC];
+				c Y = t[tM];
+				if (X.H("h")) {
+					JF = Y.mN(R);
+				} else if (X.H("a")) {
+					JF = q0.f(Y, R);
+				} else if (X.H("v")) {
+					JF = v7.f(Y, R);
+				}
+				if (JF == 1) {
+					lC = tM;
+				}
+			}
+			c d = t[lC];
+			t[lC] = t[tD];
+			t[tD] = d;
+		}
+		return t;
+	}
+}

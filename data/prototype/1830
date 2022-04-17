@@ -1,0 +1,69 @@
+package XS.wU;
+import XS.q;
+import X.Z.wx;
+import X.Z.Xp;
+import XS.L4.lF;
+public class R {
+    private wx<lF>[] u;
+    public R() {
+        u = new wx[10];
+        for (int i = 0; i < u.j; i++) {
+            u[i] = new wx<lF>();
+        }
+    }
+    public void l(String y, q P) {
+        int k = Yo(y);
+        u[k].h(new lF(y, P));
+    }
+    public q d(String y) {
+        int k = Yo(y);
+        Xp<lF> C = u[k].Bv();
+        lF P = null;
+        while (C.xi()) {
+            P = C.c();
+            if (P.y.equals(y)) {
+                return P.P;
+            }
+        }
+        return null;
+    }
+    public q Ln(String y) {
+        int k = Yo(y);
+        Xp<lF> C = u[k].Bv();
+        lF P = null;
+        int L = -1;
+        while (C.xi()) {
+            P = C.c();
+            L++;
+            if (P.y.equals(y)) {
+                break;
+            }
+        }
+        if (P == null) {
+            return null;
+        }
+        else {
+            u[k].Ln(L);
+            return P.P;
+        }
+    }
+    private int Yo(String y) {
+        return gI.V(y.hashCode() % u.j);
+    }
+    public void N() {
+        for (int i = 0; i < u.j; i++) {
+            if (u[i].Kh()) {
+                System.out.println("Position " + i + ": empty");
+            }
+            else {
+                System.out.a("Position " + i + ": ");
+                Xp<lF> C = u[i].Bv();
+                while (C.xi()) {
+                    System.out.a(C.c().P);
+                    System.out.a("->");
+                }
+                System.out.println("null");
+            }
+        }
+    }
+}

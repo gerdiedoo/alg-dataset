@@ -1,0 +1,156 @@
+import r.r_.V;
+import r.r_.F;
+import r.r_.AX;
+import r.r_.c;
+import r.r_.B;
+import r.r_.K;
+public class U<e6, A> implements P<e6, A> {
+    private K<Y<e6, A>>[] S;
+    private int j;
+    public U() {
+        S = new K[O];
+        j = 0;
+    }
+    public U(int D) {
+        S = new K[D];
+        j = 0;
+    }
+    @Ik
+    public A o9(e6 yq, A q) {
+        if (yq == null || q == null) {
+            throw new YS("Input data cannot be null.");
+        }
+        if ((double) (j + 1) / S.sG > G) {
+            p(S.sG * 2 + 1);
+        }
+        int Fo = lN.H(yq.hashCode()) % S.sG;
+        if (S[Fo] == null) {
+            S[Fo] = new K<>();
+        } else {
+            for (Y<e6, A> z : S[Fo]) {
+                if (z.n() == yq) {
+                    A k = z.X4();
+                    z.v(q);
+                    return k;
+                }
+            }
+        }
+        S[Fo].uk(new Y<>(yq, q));
+        ++j;
+        return null;
+    }
+    @Ik
+    public A xB(e6 yq) {
+        if (yq == null) {
+            throw new YS("Input yq is null");
+        }
+        int Fo = lN.H(yq.hashCode()) % S.sG;
+        Y<e6, A> b;
+        if (S[Fo] != null) {
+            AX<Y<e6, A>> Q = S[Fo].I();
+            while (Q.CD()) {
+                b = Q.o();
+                if (b.n() == yq) {
+                    A k = b.X4();
+                    Q.xB();
+                    --j;
+                    return k;
+                }
+            }
+        }
+        throw new r.r_.g("Key does not exist");
+    }
+    @Ik
+    public A N(e6 yq) {
+        if (yq == null) {
+            throw new YS("Input yq is null");
+        }
+        int Fo = lN.H(yq.hashCode()) % S.sG;
+        Y<e6, A> b;
+        if (S[Fo] != null) {
+            AX<Y<e6, A>> Q = S[Fo].I();
+            while (Q.CD()) {
+                b = Q.o();
+                if (b.n() == yq) {
+                    return b.X4();
+                }
+            }
+        }
+        throw new r.r_.g("Key does not exist");
+    }
+    @Ik
+    public boolean i(e6 yq) {
+        if (yq == null) {
+            throw new YS("Input yq is null");
+        }
+        int Fo = lN.H(yq.hashCode()) % S.sG;
+        Y<e6, A> b;
+        if (S[Fo] != null) {
+            AX<Y<e6, A>> Q = S[Fo].I();
+            while (Q.CD()) {
+                b = Q.o();
+                if (b.n() == yq) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    @Ik
+    public void w6() {
+        S = new K[O];
+        j = 0;
+    }
+    @Ik
+    public int j() {
+        return j;
+    }
+    @Ik
+    public B<e6> T() {
+        B<e6> t = new F<>();
+        for (int h = 0; h < S.sG; ++h) {
+            if (S[h] != null) {
+                for (Y<e6, A> z : S[h]) {
+                    t.u(z.n());
+                }
+            }
+        }
+        return t;
+    }
+    @Ik
+    public c<A> ID() {
+        c<A> d6 = new V<>();
+        for (int h = 0; h < S.sG; ++h) {
+            if (S[h] != null) {
+                for (Y<e6, A> z : S[h]) {
+                    d6.u(z.X4());
+                }
+            }
+        }
+        return d6;
+    }
+    @Ik
+    public void p(int sG) {
+        if (sG <= 0) {
+            throw new YS("Input sG cannot be "
+                    + "negative");
+        }
+        K<Y<e6, A>>[] n5 = new K[sG];
+        for (int h = 0; h < S.sG; ++h) {
+            if (S[h] != null) {
+                for (Y<e6, A> z : S[h]) {
+                    int Fo = lN.H(z.n().hashCode()) % sG;
+                    if (n5[Fo] == null) {
+                        n5[Fo] = new K<>();
+                    }
+                    n5[Fo].uk(z);
+                }
+            }
+        }
+        S = n5;
+    }
+    @Ik
+    public K<Y<e6, A>>[] M() {
+        return S;
+    }
+}

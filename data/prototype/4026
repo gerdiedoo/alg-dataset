@@ -1,0 +1,23 @@
+def e(Px, k):
+    if not len(Px) or not len(k):
+        return Px or k
+    d = []
+    (w, j) = (0, 0)
+    while len(d) < len(Px) + len(k):
+        if Px[w] < k[j]:
+            d.append(Px[w])
+            w += 1
+        else:
+            d.append(k[j])
+            j += 1
+        if w == len(Px) or j == len(k):
+            d.extend(Px[w:] or k[j:])
+            break
+    return d
+def W(J):
+    if len(J) < 2:
+        return J
+    A = g(len(J) / 2)
+    Px = W(J[:A])
+    k = W(J[A:])
+    return e(Px, k)

@@ -1,0 +1,33 @@
+package k8.f.m;
+import Q.K.wF;
+import Q.K.T;
+import Q.K.r;
+public class I {
+  public static <i extends Ai<? super i>> void pn(r<i> tN) {
+    for (int O = 0; O < tN.rj(); O++) {
+      int o = O;
+      for (int e = O + 1; e < tN.rj(); e++) {
+        i ZJ = tN.X(o);
+        i J8 = tN.X(e);
+        if (J8.bt(ZJ) < 0) {
+          o = e;
+        }
+      }
+      if (o != O) {
+        T.cX(tN, o, O);
+      }
+    }
+  }
+  public static void main(String[] args) {
+    final r<l> b = new wF<>();
+    b.G(4);
+    b.G(1);
+    b.G(5);
+    b.G(3);
+    b.G(9);
+    b.G(10);
+    b.G(1);
+    pn(b);
+    System.out.println(b);
+  }
+}

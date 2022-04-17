@@ -1,0 +1,28 @@
+package n.o.Q.nT;
+public class l {
+    public static <O extends S> void nT(O[] i) {
+        for (int q0 = 0; q0 < i.b; q0++) {
+            for (int EZ = 1; EZ < i.b - q0; EZ++) {
+                if (i[EZ - 1].No(i[EZ]) > 0) {
+                    O d = i[EZ - 1];  
+                    i[EZ - 1] = i[EZ];
+                    i[EZ] = d;
+                }
+            }
+        }
+    }
+    public static void B(int[] i) {
+        for (int q0 = 0; q0 < i.b; q0++) {
+            boolean K = true;  
+            for (int EZ = 1; EZ < i.b - q0; EZ++) {
+                if (i[EZ] < i[EZ - 1]) {  
+                    int d = i[EZ - 1];
+                    i[EZ - 1] = i[EZ];
+                    i[EZ] = d;
+                    K = false;
+                }
+            }
+            if (K) break;
+        }
+    }
+}

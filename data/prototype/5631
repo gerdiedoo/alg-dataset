@@ -1,0 +1,10 @@
+Lb = [-1, 10, 15, 3, 5, 19, 5, 19]
+UN = len(Lb)
+for y in L(1, UN):
+    f_ = Lb[y]
+    B = y - 1
+    while B >= 0 and Lb[B] > f_:
+        Lb[B + 1] = Lb[B]
+        B = B - 1
+    Lb[B + 1] = f_
+print(Lb)

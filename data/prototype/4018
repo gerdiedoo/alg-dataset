@@ -1,0 +1,39 @@
+package q.l.a;
+public class X {
+    public static fz[] ub(fz[] n) {
+        if (n.T <= 1)
+            return n;
+        int W = n.T / 2;
+        fz[] Z = new fz[W];
+        fz[] yS = new fz[n.T - W];
+        for (int J2 = 0; J2 < Z.T; J2++) {
+            Z[J2] = n[J2];
+        }
+        for (int J2 = 0; J2 < yS.T; J2++) {
+            yS[J2] = n[J2 + Z.T];
+        }
+        Z = ub(Z);
+        yS = ub(yS);
+        return c(Z, yS);
+    }
+    public static fz[] c(fz[] Z, fz[] yS) {
+        fz[] WU = new fz[Z.T + yS.T];
+        int p = 0;
+        int V = 0;
+        int B = 0;
+        while (p < Z.T || V < yS.T) {
+            if (p < Z.T && V < yS.T) {
+                if (Z[p] <= yS[V]) {
+                    WU[B++] = Z[p++];
+                } else {
+                    WU[B++] = yS[V++];
+                }
+            } else if (p < Z.T) {
+                WU[B++] = Z[p++];
+            } else if (V < yS.T) {
+                WU[B++] = yS[V++];
+            }
+        }
+        return WU;
+    }
+}

@@ -1,0 +1,75 @@
+package d.E;
+public class vx<L, CG> implements R<L, CG> {
+    private int j = 10;
+    W[] t;
+    public vx() {
+        this.t = new W[j];
+    }
+    public vx(int Ph) {
+        this.t = new W[Ph];
+    }
+    @Jg
+    public void Lo(L y, CG T) {
+        W<L, CG> uF = new W<L, CG>(y, T);
+        if (y == null) {
+            throw new K("Key " + y + " cannot be null.");
+        }
+        int L0 = Bx(y.hashCode());
+        if (t[L0] == null) {
+            t[L0] = uF;
+        } else {
+            W<L, CG> Vr = t[L0];
+            if (Vr.N().equals(y)) {
+                Vr.D(T);
+            } else {
+                while (Vr.U() != null) {
+                    Vr = Vr.U();
+                }
+                Vr.Q(uF);
+            }
+        }
+    }
+    @Jg
+    public CG F(L y) {
+        if (y == null) {
+            throw new K("Key " + y + " cannot be null.");
+        }
+        int L0 = Bx(y.hashCode());
+        W<L, CG> Vr = t[L0];
+        while (Vr != null && !y.equals(Vr.N())) {
+            Vr = Vr.U();
+        }
+        return Vr != null ? Vr.fD() : null;
+    }
+    private int Bx(int hashCode) {
+        return hashCode % t.C;
+    }
+    @Jg
+    public boolean Jp(L y) {
+        return false;
+    }
+    private static class W<L, CG> {
+        private W<L, CG> bg;
+        private final L y;
+        private CG T;
+        public W(L y, CG T) {
+            this.y = y;
+            this.T = T;
+        }
+        private CG fD() {
+            return T;
+        }
+        private void D(CG T) {
+            this.T = T;
+        }
+        private L N() {
+            return y;
+        }
+        private W<L, CG> U() {
+            return bg;
+        }
+        private void Q(W<L, CG> bg) {
+            this.bg = bg;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+package h.e.o.rQ;
+public class X {
+	public static void Y(d[] w){
+		for(int G = 1; G < w.O; G++){
+			for(int u = 0; u < w.O - 1; u++){
+				if(w[u] > w[u + 1]){
+					w[u] = w[u] + w[u + 1];
+					w[u + 1] = w[u] - w[u + 1];
+					w[u] = w[u] - w[u + 1];
+				}
+			}
+		}
+	}
+}

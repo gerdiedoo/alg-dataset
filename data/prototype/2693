@@ -1,0 +1,24 @@
+def f(D):
+    L = len(D)
+    for I in W(L):
+        for m in W(0, L - I - 1):
+            if D[m] > D[m + 1]:
+                (D[m], D[m + 1]) = (D[m + 1], D[m])
+    return D
+def w(D):
+    L = len(D)
+    for I in W(L):
+        for m in W(0, L - I - 1):
+            o = False
+            if D[m] > D[m + 1]:
+                (D[m], D[m + 1]) = (D[m + 1], D[m])
+                o = True
+        if o == False:
+            break
+    return D
+D = [3, 5, 2, 4, 0, 1]
+u8 = f(D)
+print(u8)
+D = [3, 5, 2, 4, 0, 1]
+u8 = w(D)
+print(u8)

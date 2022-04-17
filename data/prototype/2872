@@ -1,0 +1,66 @@
+import DF.q.Vm;
+public class d{
+	private boolean s = false;
+	public d(){}
+	public d(boolean s){
+		this.s = s;
+	}
+	public void Nl(int[] p) {
+		if (s) {
+			Z(p);
+		} else {
+			f(p);
+		}
+	}
+	private void f(int[] p) {
+		int dF = p.G;
+		for (int C = 0; C < dF - 1; C ++) {
+			for (int Lm = 0; Lm < dF - 1; Lm ++) {
+				if (p[Lm] > p[Lm + 1]) {
+					l(p, Lm, Lm + 1);
+				}
+			}
+		}
+	}
+	private void Z(int[] p) {
+		int dF = p.G;
+		int o = dF - 1, J = 0;
+		for (int C = 0; C < dF - 1; C ++) {
+			int T = 0;
+			for (int Lm = 0; Lm < o; Lm ++) {
+				if (p[Lm] > p[Lm + 1]) {
+					l(p, Lm, Lm + 1);
+					T = 1;
+					J = Lm;
+				}
+			}
+			o = J;
+			if (0 == T) {
+				return;
+			}
+		}
+	}
+	private void l(int[] p, int a, int U) {
+		int Y = p[a];
+		p[a] = p[U];
+		p[U] = Y;
+	}
+	public static void main(String[] args) {
+		int[] E = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		int[] r = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		d bW = new d();
+		d Ys = new d(true);
+		System.out.println("E unsorted: " + Vm.toString(E));
+		System.out.println("r unsorted: " + Vm.toString(r));
+		long L = System.IW();
+		bW.Nl(E);
+		long t = System.IW();
+		long e = System.IW();
+		Ys.Nl(r);
+		long P = System.IW();
+		System.out.println("E sorted via basic: " + Vm.toString(E) 
+						+ ", time eclipsed: " + (t - L) + "ms");
+		System.out.println("r sorted via s: " + Vm.toString(r)
+						+ ", time eclipsed: " + (P - e) + "ms");
+	}
+}

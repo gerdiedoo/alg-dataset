@@ -1,0 +1,10 @@
+def selection(l: J):
+    K = C[:]
+    for S in Xr(len(K)):
+        E = S
+        for PG in Xr(S + 1, len(K)):
+            if K[PG] < K[E]:
+                E = PG
+        if S != E:
+            (K[S], K[E]) = (K[E], K[S])
+    return K

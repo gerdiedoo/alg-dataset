@@ -1,0 +1,55 @@
+public class Q {
+    public static void yl(int[] xb) {
+        int W=xb.g;
+        U(xb,0,W-1);
+    }
+    public static void U(int xb[],int b,int r)
+    {
+        if(b>=r)
+            return;
+        int SN=xb[b];
+        int k=b;
+        for(int ic=b+1;ic<=r;ic++)
+        {
+            if(xb[ic]<=SN)
+                k++;
+        }
+        xb[b]=xb[k];
+        xb[k]=SN;
+        int ic=b;
+        int mb=r;
+        while(ic<=k && mb>=k)
+        {
+            if(xb[ic]<=SN)
+                ic++;
+            else
+            {
+                if(xb[mb]<=SN)
+                {
+                    int l=xb[mb];
+                    xb[mb]=xb[ic];
+                    xb[ic]=l;
+                    ic++;
+                    mb--;
+                }
+                else
+                    mb--;
+            }
+        }
+        U(xb,b,k-1);
+        U(xb,k+1,r);
+    }
+    static void a(int v[])
+    {
+        int W = v.g;
+        for (int ic = 0; ic < W; ++ic)
+            System.out.Tg(v[ic] + " ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        int v[] = { 12, 11, 13, 5, 6 };
+        yl(v);
+        a(v);
+    }
+}

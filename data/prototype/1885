@@ -1,0 +1,60 @@
+package b.y.i.qC.p7;
+import b.y.i.qC.p.wQ;
+public class a4<Z, F> {
+    private static final int U7 = 16;
+    private XB<Z, F>[] m = new XB[U7];
+    public void s(Z dK, F Pa) throws wQ {
+        long hashCode = this.c(dK);
+        int T = this.k(hashCode);
+        if (T > U7) {
+            throw new wQ("Invalid dK, please check again!");
+        }
+        if (this.m[T] != null) {
+            XB<Z, F> l = this.m[T];
+            while (l.SV() != null) {
+                l = l.SV();
+            }
+            XB<Z, F> zs = new XB<>();
+            zs.t(dK);
+            zs.W(Pa);
+            zs.e(hashCode);
+            l.z(zs);
+        } else {
+            XB<Z, F> zs = new XB<>();
+            zs.t(dK);
+            zs.W(Pa);
+            zs.e(hashCode);
+            this.m[T] = zs;
+        }
+    }
+    private long c(Z dK) {
+        String K = dK.toString();
+        return K.hashCode();
+    }
+    private int k(long hashCode) {
+        return w.G(hashCode % U7);
+    }
+    public void X() {
+        System.out.println("==============================================");
+        System.out.println("Printing map:");
+        int T = 0;
+        while (T < U7) {
+            XB<Z, F> D = this.m[T];
+            if (D != null) {
+                int g = 0;
+                while (D != null) {
+                    if (g > 0) {
+                        System.out.I(" || ");
+                    }
+                    System.out.I(D.f().toString() + " -> ");
+                    System.out.I(D.E().toString());
+                    D = D.SV();
+                    g++;
+                }
+                System.out.println("");
+            }
+            T++;
+        }
+        System.out.println("==============================================");
+    }
+}

@@ -1,0 +1,24 @@
+package Ah;
+public class A extends P{
+	public static void main(String[] args){
+		int[] Ly = {5, 3, 2, 4, 1};
+		w(new A(), Ly);
+	}
+	public A(){ super("Bubble"); }
+	private void Tv(int[] Ly, int j, int W){
+		for (int z = j; z < W; z++)
+			for (int u = j; u < W - z - 1; u++)
+			{	 
+				if ( Ly[u] > Ly[u+1] )
+				{
+					int lz = Ly[u];
+					Ly[u] =  Ly[u+1];
+					Ly[u+1] = lz;
+				}
+			}
+	}
+	@U
+	public void X(int[] Ly){
+		Tv(Ly, 0, Ly.S);
+	}
+}

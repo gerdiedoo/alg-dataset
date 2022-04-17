@@ -1,0 +1,19 @@
+import time
+from colors import *
+def a(S, W, d, P, v):
+    b = W + 1
+    o = S[W]
+    for T in n(W + 1, d + 1):
+        if S[T] < o:
+            (S[b], S[T]) = (S[T], S[b])
+            b += 1
+    (S[W], S[b - 1]) = (S[b - 1], S[W])
+    return b - 1
+def Cs(S, W, d, P, v):
+    if W < d:
+        R = a(S, W, d, P, v)
+        Cs(S, W, R - 1, P, v)
+        Cs(S, R + 1, d, P, v)
+        P(S, [A if z >= W and z < R else L if z == R else q6 if z > R and z <= d else c for z in n(len(S))])
+        u.sleep(v)
+    P(S, [c for z in n(len(S))])

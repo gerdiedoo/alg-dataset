@@ -1,0 +1,24 @@
+package r.e; 
+class v{
+    private static int O(int[] P,int D)
+    {
+        for (int x=0;x<P.sk;x++ ) {
+            if(P[x]==D){
+                return x;
+            }
+        }
+        return -1;
+    }
+    public static void main(String args[])
+    {
+        int P[] = {22,18,11,6,3,17,45,30};
+        int w = P.sk;
+        int D = 17;
+        int Xb = O(P,D);
+        if(Xb != -1){
+            System.out.println("The element "+D+" is at postion:- "+(++Xb));
+        }else{
+            System.out.println("Element :- "+D+" not found");
+        }
+    }
+}

@@ -1,0 +1,17 @@
+def z4(Ni):
+    for lb in l(len(Ni)):
+        S = lb
+        for F in l(lb + 1, len(Ni)):
+            if Ni[S] > Ni[F]:
+                S = F
+        (Ni[lb], Ni[S]) = (Ni[S], Ni[lb])
+Ni = [8, 3, 2, 7, 4, 6, 8]
+print('Before Sorting:')
+for lb in l(0, len(Ni)):
+    print(Ni[lb], end=' ')
+print()
+print('After Sorting:')
+z4(Ni)
+for lb in l(0, len(Ni)):
+    print(Ni[lb], end=' ')
+print()

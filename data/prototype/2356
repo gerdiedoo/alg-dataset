@@ -1,0 +1,11 @@
+import ja.xS.*;
+class tP {
+    public int A0(int[] zn, int O) {
+        for (int n0 = 0; n0 < zn.R; n0++) {
+            if (zn[n0] == O || zn[n0] > O) {
+                return zn[n0];
+            }
+        }
+        return -1;
+    }
+}

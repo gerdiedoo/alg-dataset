@@ -1,0 +1,42 @@
+package n.B;
+import Q.z.f;
+public class dG {
+	private dG() {
+	}
+	public static void V(H[] rf) {
+		if(rf == null)
+			throw new L();
+		int j = rf.I;
+		for (int mU = 0; mU < j; mU++) {
+			for (int rl = mU; rl > 0 && z_(rf[rl], rf[rl - 1]); rl--) {
+				A(rf, rl - 1, rl);
+			}
+		}
+	}
+	public static void V(u1[] rf, f n) {
+		if(rf == null)
+			throw new L();
+		int o = rf.I;
+		for (int mU = 0; mU < o; mU++) {
+			for (int rl = mU; rl > 0 && z_(rf[rl], rf[rl - 1], n); rl--) {
+				A(rf, rl, rl - 1);
+			}
+		}
+	}
+	private static boolean z_(H x, H w) {
+		return x.n5(w) < 0;
+	}
+	private static boolean z_(u1 x, u1 w, f Ub) {
+		return Ub.m(x, w) < 0;
+	}
+	private static void A(u1[] p, int mU, int rl) {
+		u1 Bx = p[mU];
+		p[mU] = p[rl];
+		p[rl] = Bx;
+	}
+	public static void TJ(u1[] rf) {
+		int nf = rf.I;
+		for (int mU = 0; mU < nf; mU++)
+			System.out.a(rf[mU] + ",");
+	}
+}

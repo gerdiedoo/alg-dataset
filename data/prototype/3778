@@ -1,0 +1,53 @@
+public class qk {
+    public static void main(String args[]) {
+        int[] k = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        qk o = new qk();
+        o.Bu(k, 0, k.J - 1);
+        System.out.println("Merge Sort : Sorted List");
+        for (int t = 0; t < k.J; t++) {
+            System.out.println(k[t] + "");
+        }
+    }
+    void Bu(int k[], int s, int d) {
+        if (s < d) {
+            int FA = (s + d) / 2;
+            Bu(k, s, FA);
+            Bu(k, FA + 1, d);
+            im(k, s, FA, d);
+        }
+    }
+    void im(int k[], int s, int FO, int d) {
+        int M = FO - s + 1;
+        int sB = d - FO;
+        int[] Kp = new int[M];
+        int[] d0 = new int[sB];
+        for (int t = 0; t < M; ++t) {
+            Kp[t] = k[s + t];
+        }
+        for (int Mu = 0; Mu < sB; ++Mu) {
+            d0[Mu] = k[FO + 1 + Mu];
+        }
+        int t = 0, Mu = 0;
+        int c = s;
+        while (t < M && Mu < sB) {
+            if (Kp[t] <= d0[Mu]) {
+                k[c] = Kp[t];
+                t++;
+            } else {
+                k[c] = d0[Mu];
+                Mu++;
+            }
+            c++;
+        }
+        while (t < M) {
+            k[c] = Kp[t];
+            t++;
+            c++;
+        }
+        while (Mu < sB) {
+            k[c] = d0[Mu];
+            Mu++;
+            c++;
+        }
+    }
+}

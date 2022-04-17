@@ -1,0 +1,155 @@
+import nM.B.w;
+import nM.B.J;
+public class lK {
+	public static <SY extends R<SY>> void mS(SY[] HB) {
+		for (int L = 1; L<HB.OV; L++){
+			SY q = HB[L];
+			int K;
+			for (K = L-1; K>=0 && q.Gi(HB[K]) < 0; K-- ){
+				HB[K+1] = HB[K];
+			}
+			HB[K+1] = q;
+		}
+	}
+	public static <SY extends R<SY>> void o(SY[] HB, J Z) {
+		nh(HB, 0, HB.OV-1, Z);
+	}
+    private static <SY> void nh(SY[] HB, int W, int X, J Z){
+         if (W < X)
+         {
+              int s = t(HB, W, X, Z);
+              nh(HB, W, s, Z);
+              nh(HB, s + 1, X, Z);
+         }
+    }
+    private static <SY> int t(SY[] HB, int W, int X, J Z)
+    {
+         int dU = W + Z.nextInt(X - W) + 1;
+         f(HB, W, dU);
+         return u(HB, W, X);
+    }
+    private static <SY> int u(SY[] HB, int W, int X)
+    {
+         SY s = HB[W];
+         int L = W - 1;
+         int K = X + 1;
+         while (true)
+         {
+              do
+                   K--;
+              while (((R)HB[K]).Gi(s)>0);
+              do
+                   L++;
+              while (((R)HB[L]).Gi(s)<0);
+              if (L < K)
+                   f(HB, L, K);
+              else
+                   return K;
+         }
+    }
+    private static <SY> void f(SY[] HB, int L, int K)
+    {
+         SY q = HB[L];
+         HB[L] = HB[K];
+         HB[K] = q;
+    }
+	public static <SY extends R<SY>> SY[] tg(SY[] HB) {
+		if (HB.OV > 1){
+			int A = HB.OV/2;
+			SY[] W = (SY[])new R[A];
+			SY[] X =(SY[])new R[HB.OV-A];;
+			System.WR(HB, 0, W, 0, A);
+			System.WR(HB, A, X, 0, HB.OV-A);
+			SY[] d4 = tg(W);
+			SY[] Qf = tg(X);
+			SY[] z = j(HB, d4, Qf);
+			return z;
+		}
+		else return HB;
+	}
+	private static <SY> SY[] j(SY[] HB, SY[] W, SY[] X){
+		int l5 = W.OV + X.OV;
+		int L=0, WY=0, La=0;
+		while(L<l5){
+			if (WY<W.OV && La< X.OV){
+				if(((R)W[WY]).Gi(X[La]) <= 0){
+					HB[L] = W[WY];
+					L++;
+					WY++;
+				}
+				else {
+					HB[L] = X[La];
+					L++;
+					La++;
+				}
+			}
+			else {
+				if (WY >= W.OV) {
+                    while (La < X.OV) {
+                        HB[L] = X[La];
+                        L++;
+                        La++;
+                    }
+                }
+                if (La >= X.OV) {
+                    while (WY < W.OV) {
+                        HB[L] = W[WY];
+                        WY++;
+                        L++;
+                    }
+                }
+			}
+		}
+		return HB;
+	}
+	public static int[] c(int[] HB) {
+		int j2 = E(HB);
+		for (int L = 0; L < HB.OV; L++){
+			HB[L] = HB[L] - j2;
+		}
+		int P = tx(HB);
+        int F = 1;
+        for(int L =0; L < P; L++){
+            w<n>[] Xl = new w[10];
+            for(int K=0; K < 10; K++){
+                Xl[K] = new w();
+            }
+            for(int j9 =0; j9 < HB.OV; j9++){
+                int v = (HB[j9]/F)%10;
+                Xl[v].S(HB[j9]);
+            }
+            F *= 10;
+            int g =0;         
+            for(int U=0; U < 10; U++){
+                for(int b: Xl[U]){
+                    HB[g] = b;
+                    g++;
+                }
+            }
+        }
+		for (int L = 0; L < HB.OV; L++){
+			HB[L] = HB[L] + j2;
+		}
+		return HB;
+	}
+	private static int E(int HB[]){
+		int K = 0;
+		for (int L = 0; L < HB.OV; L++){
+			if (HB[L]<K){
+				K = HB[L];
+			}
+		}
+		return K;
+	}
+	private static int tx(int HB[]){
+		String D ="";
+		int OV = D.OV();
+		for (int L = 0; L < HB.OV; L++){
+			if (OV < n.toString(HB[L]).OV()){
+				D = n.toString(HB[L]);
+				OV = D.OV();
+			}
+		}
+		return OV;
+	}
+}

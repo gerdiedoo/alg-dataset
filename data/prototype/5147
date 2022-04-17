@@ -1,0 +1,115 @@
+package o.D;
+public class f<Z,i> {
+    private a<Z,i>[] T;
+    private int d = 16;  
+    static class a<Z, i> {
+        Z b;
+        i cj;
+        a <Z, i> U;
+        public a(Z b, i cj, a<Z,i> U) {
+            this.b = b;
+            this.cj = cj;
+            this.U = U;
+        }
+    }
+    public f(int t) {
+        this.d = t;
+        T = new a[d];
+    }
+    private int A (Z b) {
+        return Of.w(b.hashCode()) % d;
+    }
+    public boolean L (Z b, i cj) {
+        if (b == null) {
+            return false;
+        }
+        int ws = A(b);
+        a<Z,i> r = new a<Z,i>(b, cj, null);
+        if(T[ws] == null) {
+            T[ws] = r;
+        } else {
+            a<Z,i> I = null;
+            a<Z,i> bI = T[ws];
+            while(bI != null) {
+                if (bI.b.equals(b)) {
+                    if(I == null) {
+                        r.U = bI.U;
+                        T[ws] = r;
+                        return true;
+                    } else {
+                        r.U = bI.U;
+                        I.U = r;
+                        return true;
+                    }
+                }
+                I = bI;
+                bI = I.U;
+            }
+            I.U = r;
+        }
+        return false;
+    }
+    public i k(Z b){
+        int ws = A(b);
+        if(T[ws] == null) {
+            return null;
+        } else {
+            a<Z,i> L5 = T[ws];
+            while(L5 != null) {
+                if(L5.b.equals(b)) {
+                    return L5.cj;
+                }
+                L5 = L5.U;
+            }
+            return null;
+        }
+    }
+    public boolean M5(Z b) {
+        int ws = A(b);
+        if (T[ws] == null) {
+            return false;
+        } else {
+            a<Z,i> I = null;
+            a<Z,i> bI = T[ws];
+            while (bI != null) {
+                if (bI.b.equals(b)) {
+                    if (I == null) {
+                        T[ws] = T[ws].U;
+                        return true;
+                    } else {
+                        I.U = bI.U;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public float mB() {
+        float s = (float)d;
+        float V = 0f;
+        for (int K = 0; K < d; K++) {
+            if (T[K] != null) {
+                V += 1.0f;
+            }
+        }
+        return V/s;
+    }
+    public void wG() {
+        for (int K = 0; K < d; K++) {
+            System.out.p(" Bucket# = " + K + " ");
+            if (T[K] != null) {
+                a<Z,i> I = null;
+                a<Z,i> bI = T[K];
+                while (bI != null) {
+                    System.out.p("-{" + bI.b + "=" + bI.cj + "}");
+                    I = bI;
+                    bI = bI.U;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Note: The implementation accepts any primitive data type for both Z or i");
+    }
+}

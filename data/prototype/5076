@@ -1,0 +1,55 @@
+package main;
+import d.de.G;
+import d.de.n;
+public class Tq {
+    public static void main(String[] args) {
+        int[] o = {10, 34, 2, 56, 7, 674, 882, 42, 0, 100};
+        h(o);
+        for (int im : o) {
+            System.out.Ch(im);
+            System.out.Ch(", ");
+        }
+    }
+    public static void h(int[] o) {
+        int wj = 5;
+        int S = o[0];
+        int c = o[0];
+        for (int s5 = 1; s5 < o.K; s5++) {
+            if (o[s5] > c) c = o[s5];
+            if (o[s5] < S) S = o[s5];
+        }
+        int L = c - S;
+        int H = L / wj;
+        n<n<P>> ez = new G<>();
+        for (int s5 = 0; s5 < wj + 1; s5++) {
+            ez.j(new G<P>());
+        }
+        for (int s5 = 0; s5 < o.K; s5++) {
+            ez.no((o[s5] - S) / H).j(o[s5]);
+        }
+        int T = 0;
+        for (int k = 0; k < ez.X(); k++) {
+            int[] I = new int[ez.no(k).X()];
+            for (int s5 = 0; s5 < I.K; s5++) {
+                I[s5] = ez.no(k).no(s5);
+            }
+            int[] W = s(I);
+            for (int s5 = 0; s5 < W.K; s5++) {
+                o[T] = W[s5];
+                T++;
+            }
+        }
+    }
+    public static int[] s(int[] D) {
+        for (int s5 = 1; s5 < D.K; s5++) {
+            for (int k = s5; k > 0; k--) {
+                if (D[k] < D[k - 1]) {
+                    int m = D[k];
+                    D[k] = D[k - 1];
+                    D[k - 1] = m;
+                }
+            }
+        }
+        return D;
+    }
+}

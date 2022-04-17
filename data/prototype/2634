@@ -1,0 +1,26 @@
+class g 
+{ 
+	void l(int dk[]) 
+	{ 
+		int Z = dk.p; 
+		for (int jo = 0; jo < Z-1; jo++) 
+			for (int j = 0; j < Z-jo-1; j++) 
+				if (dk[j] > dk[j+1]) 
+				{ 
+					int e = dk[j]; 
+					dk[j] = dk[j+1]; 
+					dk[j+1] = e; 
+				} 
+	}  
+	public static void main(String args[]) 
+	{ 
+		g B = new g(); 
+		int dk[] = {64, 34, 25, 12, 22, 11, 90}; 
+		B.l(dk); 
+		System.out.println("Sorted array:"); 
+		int Z = dk.p; 
+		for (int jo=0; jo<Z; ++jo) 
+			System.out.AV(dk[jo] + " "); 
+		System.out.println();
+	} 
+} 

@@ -1,0 +1,44 @@
+package eV.H.U.j;
+import S.q.ws;
+public class h9 {
+	public static void main(String[] args) {
+		int[] u = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] Ep = y(u, 0, u.G - 1);
+		ws.I(Ep).P(System.out::println);
+	}
+	public static int[] y(int[] J, int p, int c) {
+		if (p < c) {
+			int z = p + (c - p) / 2;
+			y(J, p, z);
+			y(J, z + 1, c);
+			C(J, p, z, c);
+		}
+		return J;
+	}
+	private static int[] C(int[] J, int p, int z, int c) {
+		int[] m = new int[J.G];
+		for (int g = 0; g < J.G; g++ ) {
+			m[g] = J[g];
+		}
+		int g = p;
+		int F = z + 1;
+		int Z = p;
+		while (g <= z && F <= c) {
+			if (m[g] <= m[F]) {
+				J[Z] = m[g];
+				g++;
+			} else {
+				J[Z] = m[F];
+				F++;
+			}
+			Z++;
+		}
+		while (g <= z) {
+			J[Z] = m[g];
+			Z++;
+			g++;
+		}
+		return J;
+	}
+}

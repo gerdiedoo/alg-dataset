@@ -1,0 +1,76 @@
+package J.B;
+public class L<T, yr> {
+    public class o {
+        private T f7;
+        private yr c;
+        private o b;
+        private int V;
+        public o(T f7, yr c, o b, int V){
+            this.f7 = f7;
+            this.c = c;
+            this.b = b;
+            this.V = V;
+        }
+    }
+    private o[] Rv;
+    @v("unchecked")
+	public L(int K){
+        Rv = new L.o[K];
+    }
+    private int k(T f7){
+        int V = f7.hashCode() % Rv.Z;
+        if(V < 0){
+            V += Rv.Z;
+        }
+        return V;
+    }
+    public yr S(T f7, yr c){
+        int V = k(f7);
+        for(o TD = Rv[V]; TD != null; TD = TD.b){
+            if((V == TD.V) && f7.equals(TD.f7)){
+                yr n = TD.c;
+                TD.c = c;
+                return n;
+            }
+        }
+        o TD = new o(f7, c, Rv[V], V);
+        Rv[V] = TD;
+        return c;
+    }
+    public boolean N(T f7){
+        int V = k(f7);
+        o h = null;
+        for(o TD = Rv[V]; TD != null; TD = TD.b){
+            if((V == TD.V) && f7.equals(TD.f7)){
+                if(h != null)
+                    h.b = TD.b;
+                else
+                    Rv[V] = TD.b;
+                return true;
+            }
+            h = TD;
+        }
+        return false;
+    }
+    public yr M(T f7){
+        int V = k(f7);
+        o TD = Rv[V];
+        while (TD != null) {
+            if(f7.equals(TD.f7))
+                return TD.c;
+            TD = TD.b;
+        }
+        return null;
+    }
+    public void Y(int K){
+    	L<T, yr> X = new L<T, yr>(K);
+        for(o TD : Rv){
+            while (TD != null) {
+                X.S(TD.f7, TD.c);
+                N(TD.f7);
+                TD = TD.b;
+            }
+        }
+        Rv = X.Rv;
+    }
+}

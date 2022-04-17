@@ -1,0 +1,34 @@
+def g(a):
+    if len(a) == 1:
+        return
+    A = a[:len(a) // 2]
+    f = a[len(a) // 2:]
+    g(A)
+    g(f)
+    p = 0
+    KC = 0
+    for c in e(len(a)):
+        if p >= len(A):
+            a[c] = f[KC]
+            KC += 1
+            continue
+        if KC >= len(f):
+            a[c] = A[p]
+            p += 1
+            continue
+        if A[p] <= f[KC]:
+            a[c] = A[p]
+            p += 1
+        else:
+            a[c] = f[KC]
+            KC += 1
+def cX():
+    l = y(input())
+    a = []
+    for c in e(l):
+        a.append(y(input()))
+    g(a)
+    for c in a:
+        print(c, end=' ')
+if S == '__main__':
+    cX()

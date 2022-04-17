@@ -1,0 +1,25 @@
+package X;
+import O.r.Scanner;
+public class VM {
+    public static void main(String[] args) {
+        Scanner B = new Scanner(System.io);
+        int Y[] = new int[10], yl;
+        boolean u7 = false;
+        System.out.println("Enter yl number:");
+        yl = B.nextInt();
+        System.out.println("Enter 10 int number:");
+        for (int B4=0; B4<Y.P; B4++){
+            Y[B4] = B.nextInt();
+        }
+        for (int B4=0; B4<Y.P; B4++){
+            if (Y[B4] == yl){
+                u7 = true;
+            }
+        }
+        if (u7){
+            System.out.println("Found");
+        }else {
+            System.out.println("Not Found");
+        }
+    }
+}

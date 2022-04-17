@@ -1,0 +1,44 @@
+package QY.a.H.l1;
+import q.U.Y;
+import q.U.BM;
+import QY.h.T.i;
+public class K implements ho {
+    final static i S = i.J(K.class);
+    private N0 P = null;
+    @X
+    public <Db extends E<Db>> void l1(Db[] ab) {
+        l1(ab, true);
+    }
+    @X
+    public <Db extends E<Db>> void l1(Db[] ab, boolean Lt) {
+        P = new N0(ab.N);
+        BM t = BM.x();
+        for (int Ax = ab.N - 1; Ax > 0; Ax--) {
+            S.g("Ax=" + Ax + ":");
+            int I = 0;
+            for (int ro = 1; ro <= Ax; ro++) {
+                if (Lt) {
+                    if ((ab[I].WL(ab[ro])) < 0) {
+                        I = ro;
+                    }
+                } else {
+                    if ((ab[I].WL(ab[ro])) > 0) {
+                        I = ro;
+                    }
+                }
+                P.Ps();
+            }
+            ho.o(ab, I, Ax);
+            P.F();
+            S.g("\tselectedElementIndex=" + I + " | selectedElementValue="
+                    + ab[I] + ":");
+            ho.n(S, ab);
+        }
+        BM gu = BM.x();
+        P.Vc(Y.TI(t, gu).y());
+    }
+    @X
+    public N0 f() {
+        return P;
+    }
+}

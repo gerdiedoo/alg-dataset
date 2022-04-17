@@ -1,0 +1,115 @@
+package s.v;
+public class o<rH,h> {
+    private T6<rH,h>[] gj;
+    private int Oz = 16;  
+    static class T6<rH, h> {
+        rH Pg;
+        h JN;
+        T6 <rH, h> n;
+        public T6(rH Pg, h JN, T6<rH,h> n) {
+            this.Pg = Pg;
+            this.JN = JN;
+            this.n = n;
+        }
+    }
+    public o(int qd) {
+        this.Oz = qd;
+        gj = new T6[Oz];
+    }
+    private int jj (rH Pg) {
+        return R.c7(Pg.hashCode()) % Oz;
+    }
+    public boolean Q (rH Pg, h JN) {
+        if (Pg == null) {
+            return false;
+        }
+        int w = jj(Pg);
+        T6<rH,h> B = new T6<rH,h>(Pg, JN, null);
+        if(gj[w] == null) {
+            gj[w] = B;
+        } else {
+            T6<rH,h> I = null;
+            T6<rH,h> x = gj[w];
+            while(x != null) {
+                if (x.Pg.equals(Pg)) {
+                    if(I == null) {
+                        B.n = x.n;
+                        gj[w] = B;
+                        return true;
+                    } else {
+                        B.n = x.n;
+                        I.n = B;
+                        return true;
+                    }
+                }
+                I = x;
+                x = I.n;
+            }
+            I.n = B;
+        }
+        return false;
+    }
+    public h Y(rH Pg){
+        int w = jj(Pg);
+        if(gj[w] == null) {
+            return null;
+        } else {
+            T6<rH,h> L = gj[w];
+            while(L != null) {
+                if(L.Pg.equals(Pg)) {
+                    return L.JN;
+                }
+                L = L.n;
+            }
+            return null;
+        }
+    }
+    public boolean W(rH Pg) {
+        int w = jj(Pg);
+        if (gj[w] == null) {
+            return false;
+        } else {
+            T6<rH,h> I = null;
+            T6<rH,h> x = gj[w];
+            while (x != null) {
+                if (x.Pg.equals(Pg)) {
+                    if (I == null) {
+                        gj[w] = gj[w].n;
+                        return true;
+                    } else {
+                        I.n = x.n;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public float J() {
+        float ra = (float)Oz;
+        float g = 0f;
+        for (int Z = 0; Z < Oz; Z++) {
+            if (gj[Z] != null) {
+                g += 1.0f;
+            }
+        }
+        return g/ra;
+    }
+    public void VJ() {
+        for (int Z = 0; Z < Oz; Z++) {
+            System.out.p(" Bucket# = " + Z + " ");
+            if (gj[Z] != null) {
+                T6<rH,h> I = null;
+                T6<rH,h> x = gj[Z];
+                while (x != null) {
+                    System.out.p("-{" + x.Pg + "=" + x.JN + "}");
+                    I = x;
+                    x = x.n;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Note: The implementation accepts any primitive data type for both rH or h");
+    }
+}

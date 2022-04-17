@@ -1,0 +1,14 @@
+package y.m.Om.q;
+public class h {
+	public static void w(w2[] LY){
+		for(int c = 1; c < LY.T; c++){
+			int g = LY[c];
+			int Sv = c - 1;
+			while( (Sv >= 0) && (LY[Sv] > g) ){
+				LY[Sv+1] = LY[Sv];
+				Sv--;
+			}
+			LY[Sv+1] = g;
+		}
+	}
+}

@@ -1,0 +1,253 @@
+package M.h.f;
+import Q.K.e8;
+import Q.K.d;
+import Q.K.s;
+import Q.K.N;
+public class q<u,a>  implements e8<u,a>
+{
+	private F[] OC;
+	private int S;
+	public q(int ny) {
+		if (ny <= 0)
+			throw new Zg(
+				"Illegal ny: " + ny);
+		OC = new F[ny];
+		S = 0;
+	}
+	public q() {
+		this(16);
+	}
+	public q(e8<? extends u, ? extends a> e) {
+		throw new P();	
+	}
+	public int S() {
+		return S;
+	}
+	public boolean b() {
+		return S == 0 ? true : false;
+	}
+	public a T(hT J) {
+		int H = J == null ? 0 : J.hashCode();
+		int C = J == null ? 0 : H % OC.Gy;
+		for (F<u,a> j = OC[C]; j != null; j = j.OZ) {
+			if (H == j.H && (J == j.J ||
+			   (J != null && J.equals(j.J)))) {
+				return j.ML;
+			}
+		}
+		return null;
+	}
+	public boolean g(hT J) {
+		int H = J == null ? 0 : J.hashCode();
+		int C = J == null ? 0 : H % OC.Gy;
+		for (F<u,a> j = OC[C]; j != null; j = j.OZ)
+			if (H == j.H && (J == j.J ||
+			   (J != null && J.equals(j.J))))
+				return true;
+		return false;
+	}
+	public boolean Sl(hT ML) {
+		for (int C = 0; C < OC.Gy; C++)
+			for (F<u,a> j = OC[C]; j != null; j = j.OZ)
+				if (ML == j.ML ||
+				   (ML != null && ML.equals(j.ML)))
+					return true;
+		return false;
+	}
+	public a aF(u J, a ML) {
+		int H = J == null ? 0 : J.hashCode();
+		int C = J == null ? 0 : H % OC.Gy;
+		for (F<u,a> j = OC[C]; j != null; j = j.OZ) {
+			if (H == j.H && (J == j.J ||
+			   (J != null && J.equals(j.J)))) {
+				a k = j.ML;
+				j.ML = ML;
+				return k;
+			}
+		}
+		F<u,a> j = new F(H, J, ML, OC[C]);
+		OC[C] = j;
+		S++;
+		return null;
+	}
+	public void Y(e8<? extends u, ? extends a> e) {
+		if (e.S() == 0)
+			return;
+		for (N<? extends e8.F<? extends u, ? extends a>> Jf =
+				e.W7().bK(); Jf.E(); ) {
+			e8.F<? extends u, ? extends a> j = Jf.OZ();
+			aF(j.B(), j.W());
+		}
+	}
+	public a L(hT J) {
+		int H = J == null ? 0 : J.hashCode();
+		int C = J == null ? 0 : H % OC.Gy;
+		F<u,a> t = OC[C];
+		for (F<u,a> j = OC[C]; j != null; j = j.OZ) {
+			if (H == j.H && (J == j.J ||
+			   (J != null && J.equals(j.J)))) {
+				if (t == j)
+					OC[C] = j.OZ;
+				else
+					t.OZ = j.OZ;
+                		S--;
+				return j.ML;
+			}
+			t = j;
+		}
+		return null;
+	}
+	public void a7() {
+		for (int C = 0; C < OC.Gy; C++)
+			OC[C] = null;
+		S = 0;
+	}
+	static class F<u,a> implements e8.F<u,a> {
+        	final int H;
+		final u J;
+		a ML;
+	        F<u,a> OZ;
+		F(int ga, u nM, a v, F<u,a> U) {
+			H = ga;
+			J = nM;
+			ML = v;
+			OZ = U;
+		}
+		public u B() {
+			return J;
+		}
+		public a W() {
+			return ML;
+		}
+		public a D(a v) {
+			a V = ML;
+            		ML = v;
+            		return V;
+		}
+		public boolean equals(hT Sc) {
+			if (Sc == this)
+				return true;
+			if (!(Sc instanceof e8.F))
+				return false;
+			u G = B();
+			a c = W();
+			u a2 = ((F<u,a>)Sc).B();
+			a o = ((F<u,a>)Sc).W();
+			if ((G == a2 || (G != null && G.equals(a2))) &&
+				(c == o || (c != null && c.equals(o))))
+					return true;
+			return false;
+		}
+		public int hashCode() {
+			 return (J == null ? 0 : J.hashCode()) ^
+				(ML == null ? 0 : ML.hashCode());
+		}
+	}
+	public d<u> xM() {
+		return new V2();
+	}
+	private class V2 extends Q.K.f1<u> {
+		public int S() {
+			return S;
+		}
+		public N<u> bK() {
+			return new Xi();
+		}
+	}
+	private class Xi extends DH<u> {
+		public u OZ() {
+			return lI().B();
+		}
+	}
+	public s<a> z() {
+		return new WY();
+	}
+	private class WY extends Q.K.x<a> {
+		public int S() {
+			return S;
+		}
+		public N<a> bK() {
+			return new dp();
+		}
+	}
+	private class dp extends DH<a> {
+		public a OZ() {
+			return lI().W();
+		}
+	}
+	public d<e8.F<u,a>> W7() {
+		return new DD();
+	}
+	private class DD extends Q.K.f1<e8.F<u,a>> {
+		public int S() {
+			return S;
+		}
+		public N<e8.F<u,a>> bK() {
+			return new i();
+		}
+	}
+	private class i extends DH<e8.F<u,a>> {
+		public e8.F<u,a> OZ() {
+			return lI();
+		}
+	}
+	private abstract class DH<I> implements N<I> {
+		private int C;	
+		private F<u,a> EI;
+		private F<u,a> lI;
+		public DH() {
+			C = 0;
+			EI = null;
+			lI = null;
+			for ( ; C < OC.Gy; C++)
+				if (OC[C] != null)
+					lI = OC[C];
+		}
+		public boolean E() {
+			return lI != null ? true : false;
+		}
+		public abstract I OZ();
+		public F<u,a> lI() {
+			EI = lI;
+			if (lI.OZ != null) {
+				lI = lI.OZ;
+			} else {
+				lI = null;
+				for ( ; C < OC.Gy; C++)
+					if (OC[C] != null)
+						lI = OC[C];
+			}
+			return EI;
+		}
+		public void L() {
+			q.this.L(lI.B());
+		}
+	}
+	public boolean equals(hT Sc) {
+		if (Sc == this)
+			return true;
+		if (!(Sc instanceof e8))
+			return false;		
+		e8<u,a> e = (e8<u,a>)Sc;
+		if (e.S() != S)
+			return false;
+		d<e8.F<u,a>> jE = W7();
+		for (N<e8.F<u,a>> Jf = jE.bK(); Jf.E(); ) {
+			e8.F<u,a> j = Jf.OZ();
+			u J = j.B();
+			a ML = j.W();
+			if (!e.g(J))
+				return false;
+			if (!ML.equals(e.T(J)))
+				return false;
+		}
+		return true;
+	}
+	public int hashCode() {
+		int H = 0;
+		d<e8.F<u,a>> jE = W7();
+		for (N<e8.F<u,a>> Jf = jE.bK(); Jf.E(); )
+			H += Jf.OZ().hashCode();
+		return H;
+	} 
+}

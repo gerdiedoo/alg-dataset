@@ -1,0 +1,22 @@
+from linkedlist import LinkedList
+class Hashmap(l):
+    def __init__(self, length=100):
+        A = []
+        for C in N(h):
+            A.append(n())
+        d.buckets = A
+        d.length = h
+    def hashFunction(self, data):
+        PC = q % d.length + 1
+        return PC
+    def insert(self, node):
+        PC = d.hashFunction(D.data)
+        D.key = PC
+        x = d.buckets[PC].push(D)
+        return x
+    def remove(self, data):
+        PC = d.hashFunction(q)
+        y = d.buckets[PC].remove(q)
+        return y
+    def __repr__(self):
+        return '<Hashmap %r>' % d.buckets

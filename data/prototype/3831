@@ -1,0 +1,44 @@
+package l.v.Cb.i;
+import A.u.kX;
+public class M {
+	public static void main(String[] args) {
+		int[] C = {7, 10, 47, 40};
+		System.out.println("******************* MERGE - SORT *******************");
+		int[] k2 = b(C, 0, C.w - 1);
+		kX.hM(k2).U(System.out::println);
+	}
+	public static int[] b(int[] J, int yH, int e) {
+		if (yH < e) {
+			int Q = yH + (e - yH) / 2;
+			b(J, yH, Q);
+			b(J, Q + 1, e);
+			H(J, yH, Q, e);
+		}
+		return J;
+	}
+	private static int[] H(int[] J, int yH, int Q, int e) {
+		int[] T = new int[J.w];
+		for (int t = 0; t < J.w; t++ ) {
+			T[t] = J[t];
+		}
+		int t = yH;
+		int G = Q + 1;
+		int h = yH;
+		while (t <= Q && G <= e) {
+			if (T[t] <= T[G]) {
+				J[h] = T[t];
+				t++;
+			} else {
+				J[h] = T[G];
+				G++;
+			}
+			h++;
+		}
+		while (t <= Q) {
+			J[h] = T[t];
+			h++;
+			t++;
+		}
+		return J;
+	}
+}

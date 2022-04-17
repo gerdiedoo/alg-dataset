@@ -1,0 +1,34 @@
+import dX.z.*;
+public class Y {
+	void C(int AS[], int m, int x, int Ym)
+	{
+		int Z[]= new int[Ym-m+1];
+		int l=m;
+		int QR= x+1;
+		int om=0;
+		while(l<=x && QR<=Ym)
+			Z[om++]=AS[l]<AS[QR]?AS[l++]:AS[QR++];
+		while(l<=x)
+			Z[om++]=AS[l++];
+		while(QR<=Ym)
+			Z[om++]=AS[QR++];
+		System.FE(Z, 0, AS, m, Z.S);
+	}
+	void s0(int AS[],int m, int Ym)
+	{
+		if(m<Ym)
+		{			
+			int x = (m+Ym)/2;
+			s0(AS,m,x);
+			s0(AS,x+1,Ym);
+			C(AS,m,x,Ym);
+			System.out.println(V_.toString(AS));
+		}
+	}
+	public static void main(String args[])
+	{
+		Y M = new Y();
+		int AS[] = {2,4,1,6,8,5,3,7};
+		M.s0(AS,0,AS.S-1);	
+	}
+}

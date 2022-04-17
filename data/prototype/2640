@@ -1,0 +1,14 @@
+def EC(Ma, o):
+    for Wv in V(1, o):
+        for Uj in V(0, o - 1):
+            if Ma[Uj] > Ma[Uj + 1]:
+                (Ma[Uj], Ma[Uj + 1]) = (Ma[Uj + 1], Ma[Uj])
+if k == '__main__':
+    print('Enter the elements in the array: ')
+    Ma = []
+    Ma = u(f(H, input().split(' ')))
+    o = len(Ma)
+    EC(Ma, o)
+    print('Sorted Array: ', end='')
+    for Uj in V(0, o):
+        print(Ma[Uj], end=' ')

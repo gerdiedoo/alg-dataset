@@ -1,0 +1,46 @@
+package Cb.T.y.EJ;
+import Cb.T.y.W.Y;
+import Cb.T.y.W.f;
+import Cb.T.y.W.L;
+public final class mX extends Y {
+	public static final f I1 = new mX();
+	public void S(L b) {
+		S(b, 0, b.r());
+	}
+	private static void S(L b, int hH, int iE) {
+		if (hH == iE)
+			return;
+		b.J(hH, iE, L.C.I);
+		int E = hH;
+		int X = iE - 1;
+		int pk = E;   
+		while (E != X) {
+			while (b.O6(X, pk) >= 0 && E != X) {
+				b.w(X, L.C.H);
+				X--;
+			}
+			if (E != X) {
+				b.l(E, X);
+				pk = X;
+				b.w(E, L.C.H);
+				E++;
+			}
+			while (b.O6(E, pk) <= 0 && E != X) {
+				b.w(E, L.C.H);
+				E++;
+			}
+			if (E != X) {
+				b.l(X, E);
+				pk = E;
+				b.w(X, L.C.H);
+				X--;
+			}
+		}
+		b.w(pk, L.C.k);
+		S(b, hH, pk);
+		S(b, pk + 1, iE);
+	}
+	private mX() {
+		super("Quick S (double-ended)");
+	}
+}

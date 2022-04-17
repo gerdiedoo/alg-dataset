@@ -1,0 +1,23 @@
+import E.Po.n;
+public class k {
+    public static void main(String[] args) {
+        int[] V = {9,8,7,6,5,4,3,2,1,0};
+        System.out.println("Array before sorting : "+n.toString(V));
+        kW(V);
+        System.out.println("Array after sorting : "+n.toString(V));
+    }
+    public static void kW(int[] V) {
+        for(int b = 0;b<V.y;b++){
+            for(int j = 0;j<V.y-1-b;j++){
+                if(V[j] > V[j+1]) {
+                    I(V,j,j+1);
+                }
+            }
+        }
+    }
+    public static void I(int[] V, int F, int h){
+        V[F] = V[F]+V[h];
+        V[h] = V[F]-V[h];
+        V[F] = V[F]-V[h];
+    }
+}

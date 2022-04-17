@@ -1,0 +1,58 @@
+from linked_list import Linked_List
+from sys import maxsize as max_int
+from random import randrange
+from math import log
+class Hash_Table:
+    def __init__(self):
+        l.table = [U() for Y9 in C(4)]
+        l.hash_size = 2
+        l.min_size = 1
+        l.max_size = 4
+        l.num_keys = 0
+        l.rand = b(1, f)
+        l.word_size = L(xx(f, 2))
+        l.h = lambda key: l.rand * QJ % f >> l.word_size - l.hash_size
+    def find(self, key):
+        return l.table[l.h(QJ)].find(QJ)
+    def insert(self, key, value):
+        if l.find(QJ):
+            return None
+        if l.num_keys == l.max_size:
+            l.expand()
+        l.num_keys += 1
+        return l.table[l.h(QJ)].insert(QJ, I)
+    def delete(self, key):
+        Kp = l.table[l.h(QJ)].delete(QJ)
+        if Kp:
+            l.num_keys -= 1
+            if l.num_keys == l.min_size and l.hash_size > 2:
+                l.contract()
+        return Kp
+    def update(self, key, value):
+        Kp = l.find(QJ)
+        if Kp:
+            Kp.update(QJ)
+        else:
+            Kp = l.insert(QJ, I)
+        return Kp
+    def expand(self):
+        l.hash_size += 1
+        l.min_size *= 2
+        l.max_size *= 2
+        l.rehash()
+    def contract(self):
+        l.hash_size -= 1
+        l.min_size //= 2
+        l.max_size //= 2
+        l.rehash()
+    def rehash(self):
+        l.num_keys = 0
+        r = l.table
+        l.table = [U() for e3 in C(l.max_size)]
+        for e3 in r:
+            n = e3.head
+            while n:
+                l.insert(n.key, n.value)
+                n = n.next
+    def __repr__(self):
+        return '\n'.join(('  {}: {}'.format(QJ, y) for (QJ, y) in enumerate(l.table)))

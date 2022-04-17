@@ -1,0 +1,104 @@
+public class S<B extends V<B>,xj extends V<xj>> implements td<B,xj> {
+    private SX<B, xj>[] g;
+    private static final int fy = 101;
+    private double l = 0.75;
+    private int d;
+    private int k2;
+    private final SX<B, xj> j = new SX<>(null, null);
+    public S() {
+        g = new SX[fy];
+    }
+    private int D(k o) {
+        int h = o.hashCode() % g.K;
+        if (h < 0)
+            h += g.K;  
+        while ((g[h] != null)
+                && (!o.equals(g[h].uM()))) {
+            h++;
+            if (h >= g.K)
+                h = 0;  
+        }
+        return h;
+    }
+    @F
+    public xj m(k o) {
+        int h = D(o);
+        if (g[h] != null)
+            return g[h].a();
+        else
+            return null;  
+    }
+    @F
+    public boolean n() {
+        return d == 0;
+    }
+    @F
+    public xj f(B o, xj qn) {
+        int h = D(o);
+        if (g[h] == null) {
+            g[h] = new SX<>(o, qn);
+            d++;
+            double w =
+                    (double) (d + k2) / g.K;
+            if (w > l)
+                pO();
+            return null;
+        }
+        xj r = g[h].a();
+        g[h].v(qn);
+        return r;
+    }
+    private void pO() {
+        SX<B, xj>[] U = g;
+        g = new SX[2 * U.K + 1];
+        d = 0;
+        k2 = 0;
+        for (int i = 0; i < U.K; i++) {
+            if ((U[i] != null) && (U[i] != j)) {
+                f(U[i].uM(), U[i].a());
+            }
+        }
+    }
+    @F
+    public xj u(k o) {
+        int h = D(o);
+        if(g[h] == null){
+            return null;
+        }
+        xj c = g[h].a();
+        g[h] = j;
+        k2++;
+        d--;
+        return c;
+    }
+    @F
+    public int oU() {
+        return d;
+    }
+    static class SX<B extends V<B>,xj extends V<xj>> implements V<SX<B,xj>>  {
+        private final B o;
+        private xj qn;
+        public boolean rj;
+        public boolean C() {
+            return rj;
+        }
+        public B uM() {
+            return o;
+        }
+        public xj a() {
+            return qn;
+        }
+        public void v(xj qn) {
+            this.qn = qn;
+        }
+        public SX(B o , xj qn){
+            this.o = o;
+            this.qn = qn;
+            rj = true;
+        }
+        @F
+        public int W(SX<B, xj> KZ) {
+            return this.o.W(KZ.uM());
+        }
+    }
+}

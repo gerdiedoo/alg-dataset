@@ -1,0 +1,14 @@
+package n.h.S.HM;
+import n.h.S.w.h5;
+public class s {
+	public static r[] u(r[] H) {
+		for (int ln = 1; ln < H.m; ln++) {
+			for (int DD = ln; DD > 0; DD--) {
+				if (H[DD] < H[DD - 1]) {
+					h5.V(H, DD, DD - 1);
+				}
+			}
+		}
+		return H;
+	}
+}

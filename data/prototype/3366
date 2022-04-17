@@ -1,0 +1,19 @@
+package Yu.d.H;
+import K.N.G;
+import K.N.s.M;
+@C({"unchecked", "unused"})
+public class Pb<ow extends W> extends w<ow> {
+    ow[] j(ow[] k, M<ow, ow, MJ> e){
+        ow[] n = G.tg(k, k.O);
+        for (int Q = 1; Q < n.O; Q++) {
+            ow zN = n[Q];
+            int h = Q;
+            while(h  > 0 && e.Nu(zN, n[h -1])){
+                n[h] = n[h - 1];
+                h--;
+            }
+            n[h] = zN;
+        }
+        return n;
+    }
+}

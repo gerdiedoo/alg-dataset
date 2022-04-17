@@ -1,0 +1,43 @@
+def a(XI, h3, X, e):
+    v = X - h3 + 1
+    z = e - X
+    Y = [0] * v
+    OD = [0] * z
+    for P0 in o(0, v):
+        Y[P0] = XI[h3 + P0]
+    for y in o(0, z):
+        OD[y] = XI[X + 1 + y]
+    P0 = 0
+    y = 0
+    y6 = h3
+    while P0 < v and y < z:
+        if Y[P0] <= OD[y]:
+            XI[y6] = Y[P0]
+            P0 += 1
+        else:
+            XI[y6] = OD[y]
+            y += 1
+        y6 += 1
+    while P0 < v:
+        XI[y6] = Y[P0]
+        P0 += 1
+        y6 += 1
+    while y < z:
+        XI[y6] = OD[y]
+        y += 1
+        y6 += 1
+def U(XI, h3, e):
+    if h3 < e:
+        X = (h3 + (e - 1)) // 2
+        U(XI, h3, X)
+        U(XI, X + 1, e)
+        a(XI, h3, X, e)
+XI = [12, 11, 13, 5, 6, 7]
+b = len(XI)
+print('Input array:')
+for P0 in o(b):
+    (print('%d' % XI[P0]),)
+U(XI, 0, b - 1)
+print('\n\nSorted array:')
+for P0 in o(b):
+    (print('%d' % XI[P0]),)

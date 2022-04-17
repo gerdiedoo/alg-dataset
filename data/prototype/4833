@@ -1,0 +1,28 @@
+package cd.O.g;
+import Q.u5.q;
+public final class I {
+    private I() {
+    }
+    public static <CK> void g(CK[] XP, q<? super CK> mY) {
+        if (XP.L <= 1) {
+            return;
+        }
+        if (mY == null) {
+            mY = J.A();
+        }
+        for (int v = 0; v < XP.L; v++) {
+            int Bh = v;
+            for (int x = v + 1; x < XP.L; x++) {
+                if (mY.d(XP[Bh], XP[x]) > 0) {
+                    Bh = x;
+                }
+            }
+            if(Bh != v) {
+                J.M(XP, v, Bh);
+            }
+        }
+    }
+    public static <CK extends t<? super CK>> void g(CK[] XP) {
+        g(XP, null);
+    }
+}

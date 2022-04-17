@@ -1,0 +1,37 @@
+package jG.wp.XA.B;
+public class ur {
+    public <R extends W<R>> void M(R[] q) {
+        for (int k = 0; k < q.F - 1; k++) {
+            int oX = k;
+            for (int j = k + 1; j < q.F; j++) {
+                if (q[j].DB(q[oX]) < 0) {
+                    oX = j;
+                }
+            }
+            if (oX != k) {
+                R z = q[k];
+                q[k] = q[oX];
+                q[oX] = z;
+            }
+        }
+    }
+    public <R extends W<R>> void f(R[] q) {
+        this.f(q, 0);
+    }
+    private <R extends W<R>> void f(R[] q, int V) {
+        if (V < q.F - 1) {
+            int oX = V;
+            for (int k = V + 1; k < q.F; k++) {
+                if (q[k].DB(q[oX]) < 0) {
+                    oX = k;
+                }
+            }
+            if (oX != V) {
+                R z = q[V];
+                q[V] = q[oX];
+                q[oX] = z;
+            }
+            f(q, V + 1);
+        }
+    }
+}

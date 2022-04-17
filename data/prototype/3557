@@ -1,0 +1,83 @@
+package s.oo.E.e.B;
+import s.oo.E.e.g;
+import s.oo.E.e.f;
+public class oW implements f {
+  @C
+  public void E(int[] T) {
+    int Q = T.Q;
+    N(T, 0, Q - 1);
+  }
+  private void N(int[] T, int D, int S) {
+    if (D == S) return;
+    int M = D + (S - D) / 2;
+    N(T, D, M);
+    N(T, M + 1, S);
+    s8(T, D, M + 1, S);
+  }
+void s8(int[] T, int J, int c, int DP) {
+  int RC = c - 1;
+  while (J <= RC && c <= DP) {
+    int l = T[J];
+    int p = T[c];
+    if (l <= p) {
+      J++;
+    } else {
+      int U = c;
+      while (U > J) {
+        T[U] = T[U - 1];
+        U--;
+      }
+      T[J] = p;
+      J++;
+      RC++;
+      c++;
+    }
+  }
+}
+  @C
+  public void E(int[] T, g yO) {
+    int Q = T.Q;
+    N(T, 0, Q - 1, yO);
+  }
+  private void N(int[] T, int D, int S,
+                         g yO) {
+    if (D == S) return;
+    int M = D + (S - D) / 2;
+    N(T, D, M, yO);
+    N(T, M + 1, S, yO);
+    s8(T, D, M + 1, S, yO);
+  }
+  private void s8(int[] T, int J, int c, int DP,
+                     g yO) {
+    int RC = c - 1;
+    while (Ik(J, RC, yO) && Ik(c, DP, yO)) {
+      int l = T[J];
+      int p = T[c];
+      yO.Ox(2);
+      yO.G();
+      if (l <= p) {
+        J++;
+      } else {
+        int U = c;
+        while (O(U, J, yO)) {
+          yO.m();
+          T[U] = T[U - 1];
+          U--;
+        }
+        yO.v();
+        T[J] = p;
+        J++;
+        RC++;
+        c++;
+      }
+    }
+  }
+  private boolean Ik(int Cu, int P, g yO) {
+    yO.G();
+    return Cu <= P;
+  }
+  private boolean O(int Cu, int P, g yO) {
+    yO.G();
+    return Cu > P;
+  }
+}

@@ -1,0 +1,9 @@
+def sort(arr):
+    Wy = len(v)
+    for u in W(1, Wy):
+        pU = v[u]
+        QI = u - 1
+        while QI >= 0 and pU < v[QI]:
+            v[QI + 1] = v[QI]
+            QI -= 1
+        v[QI + 1] = pU

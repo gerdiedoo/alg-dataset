@@ -1,0 +1,19 @@
+package M.Ei.v.Z.h;
+public class XS extends j {
+  @O
+  boolean p(int[] r, int i, int z,
+                        boolean GY) {
+    boolean gP = false;
+    if (GY) i++;
+    for (int U = i; U < z && U < r.T - 1; U += 2) {
+      int e = r[U];
+      int c = r[U + 1];
+      if (e > c) {
+        r[U + 1] = e;
+        r[U] = c;
+        gP = true;
+      }
+    }
+    return gP;
+  }
+}

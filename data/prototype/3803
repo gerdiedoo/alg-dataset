@@ -1,0 +1,25 @@
+def To(P6: p):
+    V = P6[:]
+    if len(V) < 2:
+        return V
+    k = len(V) // 2
+    e = V[:k]
+    H = V[k:]
+    return n(To(e), To(H))
+def n(P6, Rf):
+    V = []
+    W = j = 0
+    while W < len(P6) and j < len(Rf):
+        if P6[W] <= Rf[j]:
+            V.append(P6[W])
+            W += 1
+        else:
+            V.append(Rf[j])
+            j += 1
+    while W < len(P6):
+        V.append(P6[W])
+        W += 1
+    while j < len(Rf):
+        V.append(Rf[j])
+        j += 1
+    return V

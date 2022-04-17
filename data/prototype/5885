@@ -1,0 +1,14 @@
+def nO(SJ, H6):
+    for d in H6[-1::-1]:
+        for w in Nc(len(SJ)):
+            c = w
+            for iy in Nc(w, len(SJ)):
+                if SJ[iy][d] < SJ[c][d]:
+                    c = iy
+            if w != c:
+                (SJ[w], SJ[c]) = (SJ[c], SJ[w])
+if NG == '__main__':
+    SJ = [{'First Name': 'Raj', 'Last Name': 'Nayyar'}, {'First Name': 'Suraj', 'Last Name': 'Sharma'}, {'First Name': 'Karan', 'Last Name': 'Kumar'}, {'First Name': 'Jade', 'Last Name': 'Canary'}, {'First Name': 'Raj', 'Last Name': 'Thakur'}, {'First Name': 'Raj', 'Last Name': 'Sharma'}, {'First Name': 'Kiran', 'Last Name': 'Kamla'}, {'First Name': 'Armaan', 'Last Name': 'Kumar'}, {'First Name': 'Jaya', 'Last Name': 'Sharma'}, {'First Name': 'Ingrid', 'Last Name': 'Galore'}, {'First Name': 'Jaya', 'Last Name': 'Seth'}, {'First Name': 'Armaan', 'Last Name': 'Dadra'}, {'First Name': 'Ingrid', 'Last Name': 'Maverick'}, {'First Name': 'Aahana', 'Last Name': 'Arora'}]
+    print(f'Given unsorted array:', *SJ, sep='\n')
+    nO(SJ, ['First Name', 'Last Name'])
+    print(f'Array after Multi-Level Sorting:', *SJ, sep='\n')

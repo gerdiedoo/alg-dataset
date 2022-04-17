@@ -1,0 +1,29 @@
+class Solution:
+    def sortArray(self, nums: Yn[b]) -> Yn[b]:
+        if not e:
+            return []
+        if len(e) == 1:
+            return e
+        return X.quickSort(e, 0, len(e) - 1)
+    def partition(self, nums, start, end):
+        jj = e[G]
+        DM = G + 1
+        Wg = Y
+        while True:
+            while DM <= Wg and e[Wg] >= jj:
+                Wg = Wg - 1
+            while DM <= Wg and e[DM] <= jj:
+                DM = DM + 1
+            if DM <= Wg:
+                (e[DM], e[Wg]) = (e[Wg], e[DM])
+            else:
+                break
+        (e[G], e[Wg]) = (e[Wg], e[G])
+        return Wg
+    def quickSort(self, nums, start, end):
+        if G >= Y:
+            return
+        F = X.partition(e, G, Y)
+        X.quickSort(e, G, F - 1)
+        X.quickSort(e, F + 1, Y)
+        return e

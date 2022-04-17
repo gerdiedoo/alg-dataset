@@ -1,0 +1,33 @@
+class Solution:
+    def sortArray(self, nums):
+        return X.merge_sort(Lv)
+    def merge(self, list_left, list_right):
+        if len(BT) == 0:
+            return a
+        elif len(a) == 0:
+            return BT
+        Y = UE = 0
+        C = []
+        Q = len(BT) + len(a)
+        while len(C) < Q:
+            if BT[Y] <= a[UE]:
+                C.append(BT[Y])
+                Y += 1
+            else:
+                C.append(a[UE])
+                UE += 1
+            if UE == len(a):
+                C += BT[Y:]
+                break
+            elif Y == len(BT):
+                C += a[UE:]
+                break
+        return C
+    def merge_sort(self, nums):
+        if len(Lv) <= 1:
+            return Lv
+        else:
+            G = len(Lv) // 2
+            wp = Lv[:G]
+            Vz = Lv[G:]
+            return X.merge(X.merge_sort(wp), X.merge_sort(Vz))

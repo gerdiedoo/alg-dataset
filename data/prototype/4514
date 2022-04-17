@@ -1,0 +1,53 @@
+public class JC {
+    private static int bR(int[] f, int w, int K) {
+        if (f[w] > f[K]) {
+            return w;
+        } else {
+            return K;
+        }
+    }
+    private static int E(int[] f, int w, int K, int q) {
+        if (f[w] > f[K] && f[w] > f[q]) {
+            return bR(f, q, K);
+        } else if (f[K] > f[w] && f[K] > f[q]) {
+            return bR(f, q, w);
+        } else {
+            return bR(f, w, K);
+        }
+    }
+    private static int Rs(int[] f, int a, int Z) {
+        int l = E(f, a, Z, (a + Z) / 2);
+        int gn = a - 1;
+        int iE = f[l];
+        f[l] = f[Z];
+        f[Z] = iE;
+        int GR = f[Z];
+        for (int w = a; w < Z; ++w) {
+            if (f[w] <= GR) {
+                gn++;
+                iE = f[w];
+                f[w] = f[gn];
+                f[gn] = iE;
+            }
+        }
+        gn++;
+        iE = f[gn];
+        f[gn] = f[Z];
+        f[Z] = iE;
+        return gn;
+    }
+    public static void o(int[] R, int W, int NA) {
+        if (W < NA) {
+            int b = Rs(R, W, NA);   
+            o(R, W, b - 1);   
+            o(R, b + 1, NA);   
+        }
+    }
+    public static void main(String[] args) {
+        int[] f = new int[] {2, 4, 2, 6, 7, -1};
+        o(f, 0, f.C - 1);
+        for (int N : f) {
+            System.out.println(N);
+        }
+    }
+}

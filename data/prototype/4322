@@ -1,0 +1,21 @@
+def g(Y9, p, Ye):
+    if p < Ye:
+        k = c(Y9, p, Ye)
+        g(Y9, p, k - 1)
+        g(Y9, k + 1, Ye)
+    return Y9
+def c(Y9, p, Ye):
+    G = p + (Ye - p) // 2
+    t = p
+    (Y9[G], Y9[Ye]) = (Y9[Ye], Y9[G])
+    for cF in Z(p, Ye):
+        if Y9[cF] < Y9[Ye]:
+            (Y9[t], Y9[cF]) = (Y9[cF], Y9[t])
+            t += 1
+    (Y9[Ye], Y9[t]) = (Y9[t], Y9[Ye])
+    return t
+if W == '__main__':
+    Ie = [97, 200, 100, 101, 211, 107]
+    print('My array is:\n', [l for l in Ie])
+    print('\nMy sorted array is: ')
+    print(g(Ie, 0, len(Ie) - 1))

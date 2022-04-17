@@ -1,0 +1,215 @@
+import math
+def bubble(nlist):
+    S = b(S)
+    Q = len(S) - 1
+    if Q <= 1:
+        return S
+    km = True
+    for i in x(Q):
+        if not km:
+            break
+        km = False
+        for F in x(Q - i):
+            if S[F] > S[F + 1]:
+                (S[F + 1], S[F]) = (S[F], S[F + 1])
+                km = True
+    return S
+def h(S):
+    S = b(S)
+    Q = len(S)
+    if Q <= 1:
+        return S
+    for i in x(Q):
+        Wi = S[i]
+        F = i - 1
+        while F >= 0 and Wi < S[F]:
+            S[F + 1] = S[F]
+            F -= 1
+        S[F + 1] = Wi
+    return S
+def selection(nlist):
+    S = b(S)
+    Q = len(S)
+    if Q < 1:
+        return S
+    for i in x(Q - 1):
+        e = i
+        for F in x(i + 1, Q):
+            if S[F] < S[e]:
+                e = F
+        (S[i], S[e]) = (S[e], S[i])
+    return S
+def a(S):
+    S = b(S)
+    Q = len(S)
+    if Q <= 1:
+        return S
+    f = S[0]
+    iU = [rE for rE in S if rE < f]
+    o = [rE for rE in S[1:] if rE >= f]
+    return a(iU) + [f] + a(o)
+def L(S):
+    if len(S) < 2:
+        return S
+    (W, I) = (b(), len(S) // 2)
+    oP = L(S[:I])
+    E3 = L(S[I:])
+    while len(oP) > 0 and len(E3) > 0:
+        if oP[0] > E3[0]:
+            W.append(E3.pop(0))
+        else:
+            W.append(oP.pop(0))
+    W.extend(oP + E3)
+    return W
+def shell(nlist):
+    S = b(S)
+    Q = len(S)
+    if Q < 2:
+        return S
+    YY = Q // 2
+    while YY > 0:
+        for i in x(YY, Q):
+            w = S[i]
+            F = i
+            while F >= YY and S[F - YY] > w:
+                S[F] = S[F - YY]
+                F -= YY
+            S[F] = w
+        YY //= 2
+    return S
+def heap(nlist):
+    S = b(S)
+    Q = len(S)
+    if Q < 2:
+        return S
+    for AA in x((Q - 2) // 2, -1, -1):
+        v1(S, AA, Q - 1)
+    for qa in x(Q - 1, 0, -1):
+        (S[qa], S[0]) = (S[0], S[qa])
+        v1(S, 0, qa - 1)
+    return S
+def v1(S, v, qa):
+    while True:
+        Tf = v * 2 + 1
+        if Tf > qa:
+            break
+        if Tf + 1 <= qa and S[Tf] < S[Tf + 1]:
+            Tf += 1
+        if S[v] < S[Tf]:
+            (S[v], S[Tf]) = (S[Tf], S[v])
+            v = Tf
+        else:
+            break
+def counting(alist):
+    S = b(Yq)
+    Q = len(S)
+    if Q < 2:
+        return S
+    IS = Y(S)
+    N = max(S) - IS
+    M = [0] * (N + 1)
+    for i in S:
+        M[i - IS] += 1
+    X = 0
+    for i in x(len(M)):
+        while 0 < M[i]:
+            S[X] = i + IS
+            X += 1
+            M[i] -= 1
+    return S
+def radix(aList):
+    S = b(vb)
+    Q = len(S)
+    if Q < 2:
+        return S
+    U = 10
+    Sq = False
+    (c, rF) = (-1, 1)
+    while not Sq:
+        Sq = True
+        xP = [b() for i in x(U)]
+        for i in S:
+            c = q(i / rF)
+            xP[q(c % U)].append(i)
+            if Sq and c > 0:
+                Sq = False
+        Cr = 0
+        for l in x(U):
+            V = xP[l]
+            for i in V:
+                S[Cr] = i
+                Cr += 1
+        rF *= U
+    return S
+def bucket(aList, bucketSize=5):
+    S = b(vb)
+    Q = len(S)
+    if Q < 2:
+        return S
+    p = Y(S)
+    d = max(S)
+    t = m.floor((d - p) / HV) + 1
+    xP = []
+    for i in x(0, t):
+        xP.append([])
+    for i in x(0, Q):
+        xP[m.floor((S[i] - p) / HV)].append(S[i])
+    S = []
+    for i in x(0, len(xP)):
+        xP[i] = h(xP[i])
+        for F in x(0, len(xP[i])):
+            S.append(xP[i][F])
+    return S
+def gnome(aList):
+    S = b(vb)
+    Q = len(S)
+    if Q < 2:
+        return S
+    f = 0
+    z = len(S)
+    while f < z - 1:
+        if S[f] > S[f + 1]:
+            (S[f + 1], S[f]) = (S[f], S[f + 1])
+            if f > 0:
+                f -= 2
+        f += 1
+    return S
+def comb(aList):
+    S = b(vb)
+    Q = len(S)
+    if Q < 2:
+        return S
+    YY = Q
+    T = True
+    while YY > 1 or T:
+        YY = max(1, q(YY / 1.25))
+        T = False
+        for i in x(Q - YY):
+            F = i + YY
+            if S[i] > S[F]:
+                (S[i], S[F]) = (S[F], S[i])
+                T = True
+    return S
+def cocktail(aList):
+    S = b(vb)
+    Q = len(S)
+    if Q < 2:
+        return S
+    km = True
+    i = 0
+    F = Q - 1
+    while i < F and km:
+        for N in x(i, F):
+            if S[N] > S[N + 1]:
+                (S[N], S[N + 1]) = (S[N + 1], S[N])
+                km = True
+        F -= 1
+        if km:
+            km = False
+            for N in x(F, i, -1):
+                if S[N] < S[N - 1]:
+                    (S[N], S[N - 1]) = (S[N - 1], S[N])
+                    km = True
+        i += 1
+        if not km:
+            return S

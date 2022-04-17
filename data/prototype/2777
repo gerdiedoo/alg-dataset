@@ -1,0 +1,28 @@
+package J.o;
+import J.p;
+public class q implements B {
+    private long w3 = 2;
+    @d
+    public void y(p b) {
+        int N = b.E();
+        for (int rj = 0; rj < N - 1; rj++) {
+            for (int Z = 0; Z < N - rj - 1; Z++) {
+                if (b.W(Z) > b.W(Z + 1)) {
+                    b.l(Z, Z + 1, r(), true);
+                }
+            }
+        }
+    }
+    @d
+    public String C() {
+        return "Bubble Sort";
+    }
+    @d
+    public long r() {
+        return w3;
+    }
+    @d
+    public void m(long X) {
+        this.w3 = X;
+    }
+}

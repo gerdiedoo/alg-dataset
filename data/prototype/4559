@@ -1,0 +1,36 @@
+package h;
+import K.q.K9;
+import K.q.k;
+public class yu<V> extends v<V> {
+	private K9<V> Q;
+	public void C(k<V> Vo, K9<V> Q) {
+		this.Q = Q;
+		s(Vo, 0, Vo.j() - 1);
+	}
+	private void s(k<V> Vo, int Hg, int m) {
+		if (Hg < m) {
+			int w = T(Vo, Hg, m);
+			s(Vo, Hg, w);
+			s(Vo, w + 1, m);
+		}
+	}
+	private int T(k<V> Vo, int Hg, int m) {
+		V yq = Vo.N((m + Hg) / 2);
+		int L = Hg - 1;
+		int d = m + 1;
+		while (true) {
+			do {
+				L++;
+			} while (Q.M(Vo.N(L), yq) < 0);
+			do {
+				d--;
+			} while (Q.M(Vo.N(d), yq) > 0);
+			if (L >= d)
+				return d;
+			l(Vo, L, d);
+		}
+	}
+	public String G() {
+		return "Quick Sort";
+	}
+}

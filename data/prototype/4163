@@ -1,0 +1,31 @@
+from timeit import default_timer as timer
+def I(n):
+    Q(n, 0, len(n) - 1)
+def Q(n, G, k):
+    if k - G > 0:
+        (B, g, h) = (n[G], G, k)
+        while g <= h:
+            while n[g] < B:
+                g += 1
+            while n[h] > B:
+                h -= 1
+            if g <= h:
+                (n[g], n[h]) = (n[h], n[g])
+                g += 1
+                h -= 1
+        Q(n, G, h)
+        Q(n, g, k)
+if Y == '__main__':
+    F = 0
+    v = r(input('Enter number of trials : '))
+    for l in aL(1, v + 1):
+        with N('data/random.txt', 'r') as CN:
+            O = y(ww(r, CN.readlines()))
+            G = i()
+            q = I(O)
+            tP = i() - G
+            print(f'Running test {l} : {tP:.2f} seconds')
+            F += tP
+    assert Fo(O) == q
+    F /= v
+    print(f'Quick sort: average time = {F:.2f} seconds')

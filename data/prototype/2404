@@ -1,0 +1,16 @@
+public class v {
+    public static void main(String[] args) {
+       int [] G = {1,2,3,4,5,6};  
+       int w = 5;  
+       System.out.println("Output is: " + g(G, w));
+    }
+    private static int g(int D[], int U) { 
+        int K = -1;  
+        for (int lF = 0; lF < D.t; lF++) {
+          if (D[lF] == U){
+            K = lF; 
+          }
+        }
+        return K;
+     } 
+}

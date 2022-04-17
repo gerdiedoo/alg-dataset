@@ -1,0 +1,182 @@
+package q.s.cI.b.T4;
+import S.cI.b.l.u_;
+import S.cI.b.l.P3;
+public class U9<F, H> implements Z {
+    private static final String T = "The W3 or u can not be null.";
+    public static final int U = 8092;  
+    public static final int r = 8;
+    public static final float Xp = 0.75f;
+    public static final int hE = 1 << 30;
+    public static final int o = 2;
+    public static final int Dj = hE / o;
+    public static final float E = 0.95f;
+    private final Jh d;
+    private final u_ ix;
+    private final u_ NO;
+    public U9() {
+        this(U, r, Xp);
+    }
+    public U9(int L, int X, float t2) {
+        ix = new u_(0);
+        NO = new u_(0);
+        X = p(X);
+        t2 = (t2 < E) ? t2 : E;
+        d = g.a(X, L, t2, NO, ix);
+    }
+    public H B(F W3, H u) {
+        if (W3 == null || u == null) {
+            throw new z(T);
+        }
+        return B(W3, u, true);
+    }
+    public H J(F W3, H u) {
+        if (W3 == null || u == null) {
+            throw new z(T);
+        }
+        return B(W3, u, false);
+    }
+    private H B(F W3, H u, boolean fp) {
+        int hashCode = M.I().RF(W3.hashCode());
+        while (true) {
+            N<F, H> b5 = d.xU(hashCode);
+            b5.JZ();
+            if (b5.Jx()) {
+                b5.BZ();
+                continue;
+            }
+            else {
+                try {
+                    H t = null;
+                    boolean w;
+                    if (b5.jo()) {
+                        try {
+                            t = (H) b5.B(W3, u, hashCode, fp);
+                            w = true;
+                        } catch (vF m8) {
+                            w = false;
+                        }
+                    } else {
+                        w = false;
+                    }
+                    if (!w) {
+                        t = b5.k(W3, u, hashCode, fp);
+                    }
+                    return t;
+                } finally {
+                    b5.BZ();
+                }
+            }
+        }
+    }
+    public boolean G(F W3, H u) {
+        if (W3 == null || u == null) {
+            throw new z(T);
+        }
+        int A = M.I().RF(W3.hashCode());
+        while (true) {
+            N b5 = d.xU(A);
+            b5.JZ();
+            try {
+                if (!b5.Jx()) {
+                    return b5.G(W3, A, u) != null;
+                }
+            } finally {
+                b5.BZ();
+            }
+        }
+    }
+    public H replace(F W3, H u) {
+        if (W3 == null || u == null) {
+            throw new z(T);
+        }
+        int A = M.I().RF(W3.hashCode());
+        while (true) {
+            N b5 = d.xU(A);
+            b5.JZ();
+            try {
+                if (!b5.Jx()) {
+                    return (H) b5.replace(W3, A, null, u);
+                }
+            } finally {
+                b5.BZ();
+            }
+        }
+    }
+    public boolean replace(F W3, H e, H O) {
+        if (W3 == null || e == null || O == null) {
+            throw new z(T);
+        }
+        int A = M.I().RF(W3.hashCode());
+        while (true) {
+            N b5 = d.xU(A);
+            b5.JZ();
+            try {
+                if (!b5.Jx()) {
+                    return b5.replace(W3, A, e, O) != null;
+                }
+            } finally {
+                b5.BZ();
+            }
+        }
+    }
+    public H BD(F W3) {
+        if (W3 == null) {
+            throw new z(T);
+        }
+        int hashCode = M.I().RF(W3.hashCode());
+        N<F, H> b5 = d.xU(hashCode);
+        return b5.BD(W3, hashCode);
+    }
+    public H G(F W3) {
+        if (W3 == null) {
+            throw new z(T);
+        }
+        int A = M.I().RF(W3.hashCode());
+        while (true) {
+            N<F, H> b5 = d.xU(A);
+            b5.JZ();
+            try {
+                if (!b5.Jx()) {
+                    return (H) b5.G(W3, A, null);
+                }
+            } finally {
+                b5.BZ();
+            }
+        }
+    }
+    public int xF() {
+        return NO.BD();
+    }
+    public int R() {
+        return ix.BD();
+    }
+    public int uB() {
+        return d.uB();
+    }
+    @cG
+    public int v() {
+        P3<N> Q = d.BD();
+        int Y = c.j;
+        int x = c.PF;
+        for (int V=0; V<Q.C(); V++) {
+            N b5 = Q.BD(V);
+            if (b5 instanceof y) {
+                int i = ((y)b5).ox();
+                if (i < Y) {
+                    Y = i;
+                }
+                if (i > x) {
+                    x = i;
+                }
+            }
+        }
+        return x-Y;
+    }
+    private int p (int V) {
+        int h = 1;
+        while (h < V) {
+            h = h << 1;
+        }
+        return h;
+    }
+}

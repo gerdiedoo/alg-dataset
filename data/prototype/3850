@@ -1,0 +1,31 @@
+import time
+from colors import *
+def GL(c, H, h, M, ZX, k):
+    C = H
+    B = h + 1
+    xV = []
+    for F in tl(H, M + 1):
+        if C > h:
+            xV.append(c[B])
+            B += 1
+        elif B > M:
+            xV.append(c[C])
+            C += 1
+        elif c[C] < c[B]:
+            xV.append(c[C])
+            C += 1
+        else:
+            xV.append(c[B])
+            B += 1
+    for C in tl(len(xV)):
+        c[H] = xV[C]
+        H += 1
+def y(c, H, M, ZX, k):
+    if H < M:
+        h = Y((H + M) / 2)
+        y(c, H, h, ZX, k)
+        y(c, h + 1, M, ZX, k)
+        GL(c, H, h, M, ZX, k)
+        ZX(c, [f if D >= H and D < h else j if D == h else x if D > h and D <= M else AG for D in tl(len(c))])
+        P.sleep(k)
+    ZX(c, [AG for D in tl(len(c))])

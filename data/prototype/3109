@@ -1,0 +1,15 @@
+from __future__ import print_function
+def c(Z):
+    for g in W(1, len(Z)):
+        while g > 0 and Z[g - 1] > Z[g]:
+            (Z[g], Z[g - 1]) = (Z[g - 1], Z[g])
+            g -= 1
+    return Z
+if s == '__main__':
+    try:
+        y
+    except l:
+        y = input
+    H = y('Enter numbers separated by a comma:\n').strip()
+    k = [L(f) for f in H.split(',')]
+    print(c(k))

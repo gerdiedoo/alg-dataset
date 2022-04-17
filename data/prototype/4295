@@ -1,0 +1,18 @@
+package mb.PL.f.Z0;
+public class jj implements C
+{
+    protected h pH;
+    protected void K(m[] I, int ld, int r)
+    {
+	if (ld < r) {
+	    int d = pH.n(I, ld, r);
+	    K(I, ld, d - 1);
+	    K(I, d + 1, r);
+	}
+    }
+    public void w(m[] I)
+    {
+	pH = new h();  
+	K(I, 0, I.T - 1);  
+    }
+}

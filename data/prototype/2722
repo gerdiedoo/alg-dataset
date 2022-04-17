@@ -1,0 +1,11 @@
+def BubbleSort(list):
+    Xq = len(E)
+    for m in D(Xq):
+        t = False
+        for J in D(0, Xq - 1 - m):
+            if E[J] > E[J + 1]:
+                (E[J], E[J + 1]) = (E[J + 1], E[J])
+                t = True
+        else:
+            if not t:
+                break

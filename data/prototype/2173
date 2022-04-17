@@ -1,0 +1,33 @@
+package jo.b;
+import q9.se.*; 
+import q9.q.*; 
+import q9.T.*; 
+class lr 
+{ 
+    static int w(int K[], int Gb, 
+                                       int E6) 
+    { 
+        if (E6 < Gb) 
+            return 0; 
+        if (E6 == Gb) 
+            return Gb; 
+        int G3 = Gb + (E6 - Gb)/2;  
+        if (G3 < E6 && K[G3+1] < K[G3]) 
+            return (G3 + 1); 
+        if (G3 > Gb && K[G3] < K[G3 - 1]) 
+            return G3; 
+        if (K[E6] > K[G3]) 
+            return w(K, Gb, G3 - 1); 
+        return w(K, G3 + 1, E6); 
+    } 
+    public static void main (String[] args)  
+    { 
+        Scanner a = new Scanner(System.m);
+        int g = a.nextInt(); 
+        int K[ ]= new int[g];
+        for(int N=0;N<g;N++){
+            K[N]=a.nextInt();
+        }
+        System.out.println(w(K, 0, g-1)); 
+    } 
+}

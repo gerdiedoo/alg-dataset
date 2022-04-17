@@ -1,0 +1,109 @@
+import Q.m.*;
+import Q.V8.*;
+import Q.q.*;
+class o
+{
+public static void main(String args[])throws b
+{
+	C c=new C(new k(System.h));
+	int le;
+	do
+	{
+	System.out.println("\n1.Linear o\n2.Binary o\n3.Binary o with recursion\n4.Exit");
+	le=u2.pr(c.F());
+	if(le==4)
+		return;
+	System.out.println("Enter the number of terms");
+	int Y=u2.pr(c.F());
+	int Mc[]=new int[Y];
+	for(int L=0;L<Y;L++)
+		{
+			System.out.println("Enter "+(L+1)+"th term");
+			Mc[L]=u2.pr(c.F());
+		}
+		System.out.println("Enter number to be searched");
+		int ri=u2.pr(c.F());
+		switch(le)
+		{
+			case 1:
+				u(Mc,Y,ri);
+				break;
+			case 2:
+				P(Mc,Y,ri);
+				break;
+			case 3:
+				int K=0;
+				int D=Y;
+				I(Mc,Y,ri,K,D);
+				break;
+		}
+	}
+	while(le!=4);
+}
+public static void u(int Mc[],int Y,int ri)
+{
+	for(int L=0;L<Y;L++)
+	{
+		if(Mc[L]==ri)
+		{
+			System.out.println(ri+" found at "+(L+1)+"th position");
+			return;
+		}
+	}
+	System.out.println(ri+" not found");
+}
+public static void P(int Mc[],int Y,int ri)
+{
+	int K=0;
+	int D=Y;
+	int S=(K+D)/2;
+	while(K!=D)
+	{
+		if(Mc[S]==ri)
+			{
+			System.out.println(ri+" found at "+(S+1)+"th position");
+			return;
+			}
+		if(Mc[S]<ri)
+			{
+				K=S+1;
+				D=Y;
+				 S=(K+D)/2;
+			}
+		else
+			{
+				K=0;
+				D=S-1;
+				 S=(K+D)/2;
+			}
+	}
+		System.out.println(ri+" not found");
+}
+public static void I(int Mc[],int Y,int ri,int K, int D)
+{
+	if(K>D)
+	{
+		System.out.println(ri+" not found");
+		return;
+	}
+		int S=(K+D)/2;
+		try{
+		if(Mc[S]==ri)
+			{
+			System.out.println(ri+" found at "+(S+1)+"th position");
+			return;
+			}
+		if(Mc[S]<ri)
+			{
+				I( Mc, Y, ri, S+1, D);
+			}
+		if(Mc[S]>ri)
+			{
+				I( Mc, Y, ri, K,  S-1);
+			}
+		}
+		catch(R v) {
+				System.out.println(ri+" not found");
+			}
+}
+}

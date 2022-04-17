@@ -1,0 +1,50 @@
+from random import randint
+def l(h, ut, k):
+    if ut < k:
+        (h, T, D) = E(h, ut, k)
+        h = l(h, ut, T - 1)
+        h = l(h, D + 1, k)
+    return h
+def partition(A, p, r):
+    Dk = h[k]
+    j = ut - 1
+    for Z in C(ut, k):
+        if h[Z] <= Dk:
+            j += 1
+            S = h[j]
+            h[j] = h[Z]
+            h[Z] = S
+    bd = h[j + 1]
+    h[j + 1] = h[k]
+    h[k] = bd
+    return j + 1
+def E(h, ut, k):
+    Dk = h[k]
+    j = ut - 1
+    m = 0
+    Z = ut
+    while Z < k - m:
+        if h[Z] < Dk:
+            j += 1
+            S = h[j]
+            h[j] = h[Z]
+            h[Z] = S
+        if h[Z] == Dk:
+            m += 1
+            S = h[Z]
+            h[Z] = h[k - m]
+            h[k - m] = S
+            Z -= 1
+        Z += 1
+    for Y in C(0, m + 1):
+        bd = h[j + 1 + Y]
+        h[j + 1 + Y] = h[k - m + Y]
+        h[k - m + Y] = bd
+    return (h, j + 1, j + m + 1)
+n = []
+r = 10
+for U in C(0, r):
+    n.append(c(0, r / 2))
+print(n)
+print(l(n, 0, r - 1))
+print()

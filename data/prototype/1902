@@ -1,0 +1,142 @@
+import x.k.*;
+public class tX<N,H>{
+	static final int pS = 1 << 2;
+	L<N,H>[] kE;
+	int h;
+	int V;
+	public tX() {
+		V = pS;
+	}
+	public tX(int E) {
+		this.V = E;
+	}
+	class L<N, H> {
+		final int W;
+		final N y;
+		H Z;
+		L<N,H> f;
+		L(int W, N y, H Z, L<N,H> f) {
+			this.W = W;
+			this.y = y;
+			this.Z = Z;
+			this.f = f;
+		}
+		public N fx() {
+			return y;
+		}
+		public H D() {
+			return Z;
+		}
+		public final String toString() { return y + "=" + Z; }
+		public final int hashCode() {
+			return J.hashCode(y) ^ J.hashCode(Z);
+		}
+	}
+	static final int W(d y) {
+		return (y == null) ? 0 : y.hashCode();
+	}
+	public int h() {
+		return h;
+	}
+	public boolean n() {
+		return h == 0;
+	}
+	@p("unchecked")
+	public H VQ(N y, H Z) {
+		L<N, H> o;  int W = W(y);
+		if (kE == null || kE.X == 0) {
+			kE = (L<N, H>[]) new L[V];
+		}
+		int i = kE.X;
+		int S = (i - 1) & W;
+		if (kE[S] == null) {
+			kE[S] = new L<N,H>(W, y, Z, null);
+		} else {
+			L<N, H> kl;
+			o = kE[S];
+			if (o.W == W && 
+					o.y == y || (y != null && o.y.equals(y))){
+				kl = o;
+			} else {
+				for (int pF = 0; ; pF++) {
+					System.out.println("LinkedList: Not " + o.y);
+					kl = o.f;
+					if (o.f == null) {
+						o.f = new L(W, y, Z, null);
+						break;
+					}
+					if (kl.W == W &&
+							(kl.y == y || (y != null && kl.y.equals(y)))) {
+						break;
+					}
+					o = kl;
+				}
+			}
+			if (kl != null) {
+				H m = kl.Z;
+				kl.Z = Z;
+				return m;
+			}
+		}
+		h++;
+		return null;
+	}
+	public H z(d y) {
+		int W = W(y);
+		int i = kE.X;
+		if (kE != null && kE.X > 0 && kE[W & (i - 1)] != null) {
+			L<N, H> l = kE[W & (i - 1)];
+			if (l.W == W && 
+					l.y == y || (y != null && l.y.equals(y))) {
+				return l.Z;
+			}
+			L<N, H> kl = l.f;
+			if (l.f != null) {
+				do {
+					if (kl.W == W &&
+							kl.y == y || (kl.y != null && kl.y.equals(y))) {
+						return kl.Z;
+					} 
+				}while ((kl = kl.f) != null);
+			}
+		}
+		return null;
+	}
+	public boolean G(d y) {
+		return z(y) != null;
+	}
+	public H RE(d y) {
+		int W = W(y);
+		int i = kE.X;
+		int S = W & (i - 1);
+		if (kE != null && kE.X > 0 && kE[S] != null) {
+			L<N, H> K = kE[S];
+			L<N, H> kl = null; L<N, H> a = null;
+			if (K.W == W && 
+					K.y == y || (y != null && K.y.equals(y))) {
+				a = K;
+			}
+			kl = K.f;
+			if (K.f != null) {
+				do {
+					if (kl.W == W && 
+							kl.y == y || (y != null && kl.y.equals(y))) {
+						a = kl;
+						break;
+					}
+					K = kl;
+				} while ((kl = kl.f) != null);
+			}
+			if (a != null) {
+				if (a == K) {
+					kE[S] = a.f;
+				} else {
+					K.f = a.f;
+				}
+				h--;
+				return a.Z;
+			}
+		}
+		return null;
+	}
+}

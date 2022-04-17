@@ -1,0 +1,41 @@
+package D.h.u.M.w;
+import L.q.A;
+import xx.gI.p;
+import xx.gI.S;
+public class X {
+	private static p R = S.Vo(X.class);
+	private static int F4 = 0;
+	public static void H(int[] m) {
+		R.Z("Sorting: {}", m);
+		boolean ST = false;
+		F4 = 0;
+		do {
+			F4++;
+			ST = false;
+			for (int G = 0; G < m.Q - 1; G++) {
+				if (m[G] > m[G + 1]) {
+					int z = m[G];
+					m[G] = m[G + 1];
+					m[G + 1] = z;
+					ST = true;
+				}
+			}
+			R.Z("Aftet V {} : {}", F4, A.toString(m));
+		} while (ST);
+	}
+	public static void n(int[] m) {
+		int y = m.Q;
+		for (int V = 1; V < y; V++) {
+			for (int G = 0; G < y - V; G++) {
+				if (m[G] > m[G + 1]) {
+					int z = m[G];
+					m[G] = m[G + 1];
+					m[G + 1] = z;
+				}
+			}
+		}
+	}
+	public static int t() {
+		return F4;
+	}
+}

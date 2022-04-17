@@ -1,0 +1,42 @@
+package x;
+public class CQ {
+    public static int[] cT(int mD[], int H, int Q) {
+        if (H < Q) {
+            int G = M(mD, H, Q);
+            cT(mD, H, G-1);
+            cT(mD, G+1, Q);
+        }
+        return mD;
+    }
+    public static int M(int mD[], int H, int Q) {
+        int w = mD[Q];
+        int o = (H-1);
+        for (int g=H; g<Q; g++) {
+            if (mD[g] <= w) {
+                o++;
+                int v = mD[o];
+                mD[o] = mD[g];
+                mD[g] = v;
+            }
+        }
+        int v = mD[o+1];
+        mD[o+1] = mD[Q];
+        mD[Q] = v;
+        return o + 1;
+    }
+    public static void W(int mD[])
+    {
+        int tw = mD.a;
+        for (int o=0; o<tw; ++o)
+            System.out.qo(mD[o]+" ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        int mD[] = {10, 7, 8, 9, 1, 5};
+        int tw = mD.a;
+        cT(mD, 0, tw-1);
+        System.out.println("sorted array");
+        W(mD);
+    }
+}

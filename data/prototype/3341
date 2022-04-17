@@ -1,0 +1,22 @@
+import random
+def GI(f):
+    for F in Z(len(f)):
+        a = f[F]
+        BO = F
+        while BO > 0 and f[BO - 1] > a:
+            f[BO] = f[BO - 1]
+            BO = BO - 1
+        f[BO] = a
+z = []
+for P in Z(100):
+    z.append(P)
+g.shuffle(z)
+print(z)
+GI(z)
+print(z)
+u = True
+for F in Z(len(z) - 1):
+    if z[F] > z[F + 1]:
+        u = False
+if u:
+    print('Insertion Sort successful!')

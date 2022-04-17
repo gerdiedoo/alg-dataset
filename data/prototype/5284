@@ -1,0 +1,107 @@
+import h.f.q;
+import h.M.u;
+public class dn<e extends p<e>, V extends p<V>> implements B<e, V> {
+    private u<r4<e, V>>[] w;
+    private int r;
+    private static final int tC = 400000;
+    private static final double Y = 3.0;
+    public dn() {
+        w = new u[tC];
+    }
+    @I
+    public V z(N J) {
+        int x4 = J.hashCode() % w.Q;
+        if (x4 < 0)
+            x4 += w.Q;
+        if (w[x4] == null)
+            return null;  
+        for (r4<e, V> ZJ : w[x4]) {
+            if (ZJ.m().equals(J))
+                return ZJ.qb();
+        }
+        return null;
+    }
+    @I
+    public boolean y() {
+        return S()==0;
+    }
+    @I
+    public V c(e J, V Z) {
+        int x4 = J.hashCode() % w.Q;
+        if (x4 < 0)
+            x4 += w.Q;
+        if (w[x4] == null) {
+            w[x4] = new u<>();
+        }
+        for (r4<e, V> ZJ : w[x4]) {
+            if (ZJ.m().equals(J)) {
+                V F = ZJ.qb();
+                ZJ.D(Z);
+                return F;
+            }
+        }
+        w[x4].ey(new r4<>(J, Z));
+        r++;
+        if (r > (Y * w.Q))
+            G();
+        return null;
+    }
+    private void G() {
+        u<r4<e, V>>[] ts = w;
+        w = new u[(tC *2) +1];
+        r = 0;
+        for (int Jp = 0; Jp < ts.Q; Jp++) {
+            if ((ts[Jp] != null)) {
+                w[Jp].QR(ts[Jp]);
+            }
+        }
+    }
+    @I
+    public V O(N J) {
+        int x4 = J.hashCode() % w.Q;
+        if(x4<0){
+            x4 += w.Q;
+        }
+        if (w[x4] == null){
+            return null;
+        }
+        for (r4<e, V> ZJ : w[x4]) {
+            if (ZJ.m().equals(J)) {
+                V F = ZJ.qb();
+                ZJ.D(null);
+                return F;
+            }
+        }
+        return null;
+    }
+    @I
+    public int S() {
+        return w.Q;
+    }
+    private static class r4<e extends p<e>,V extends p<V>> implements p<r4<e,V>>  {
+        private final e J;
+        private V Z;
+        public boolean vn;
+        public boolean g() {
+            return vn;
+        }
+        public e m() {
+            return J;
+        }
+        public V qb() {
+            return Z;
+        }
+        public void D(V Z) {
+            this.Z = Z;
+        }
+        public r4(e J , V Z){
+            this.J = J;
+            this.Z = Z;
+            vn = true;
+        }
+        @I
+        public int cR(r4<e, V> U) {
+            return this.J.cR(U.m());
+        }
+    }
+}

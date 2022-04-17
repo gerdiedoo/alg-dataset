@@ -1,0 +1,239 @@
+<<<<<<< N:w R/B/B.S
+import S.M.E;
+import S.M.y6;
+public class B<X,d2> {
+	public class y{  
+		X J;
+		d2 z;
+	}
+	private int A=0;  
+	private y6<y> T[];   
+	public B(){
+		T=new y6[4];  
+		for(int mP=0;mP<4;mP++)
+			T[mP]=new y6<>(); 
+	}
+	public void m(X J,d2 z) throws yQ{
+		int Gi=D(J);  
+		int b=v(Gi,J);  
+		if(b==-1){
+			y e=new y();  
+			e.J=J;
+			e.z=z;
+			T[Gi].q(e);
+			this.A++;
+		}else{
+			T[Gi].d(b).z=z; 
+		}
+		double F = (this.A*1.0)/this.T.dN;
+		if(F>2.0){
+			nb();   
+		}
+		return;
+	}
+	public d2 d(X J) throws yQ{
+		int Gi=D(J);
+		int b=v(Gi,J);
+		if(b==-1){
+			return null;
+		}else{
+			return T[Gi].d(b).z;
+		}
+	}
+	public d2 g(X J) throws yQ{
+		int Gi=D(J);
+		int b=v(Gi,J);
+		if(b==-1){
+			return null;
+		}else{
+			this.A--;
+			return T[Gi].g(b).z;
+		}
+	}
+	public boolean H(X J) throws yQ{
+		int Gi=D(J);
+		int b=v(Gi,J);
+		if(b==-1){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public int A(){
+		return this.A;
+	}
+	public boolean QU(){
+		return this.A==0;
+	}
+	public E<X> K() throws yQ{
+		E<X> xZ=new E<>();
+		for(int mP=0;mP<T.dN;mP++){
+			for(int Q=0;Q<T[mP].A();Q++){
+				xZ.MB(T[mP].d(Q).J);
+			}
+		}
+		return xZ;
+	}
+	public E<d2> V() throws yQ{
+		E<d2> xZ=new E<>();
+		for(int mP=0;mP<T.dN;mP++){
+			for(int Q=0;Q<T[mP].A();Q++){
+				xZ.MB(T[mP].d(Q).z);
+			}
+		}
+		return xZ;
+	}
+	public void bs() throws yQ{
+		for(int mP=0;mP<T.dN;mP++){
+			System.out.W("Bucket: "+mP+" ");
+			for(int Q=0;Q<T[mP].A();Q++){
+				y e=T[mP].d(Q);
+				System.out.W("["+e.J+"->"+e.z+"]");
+			}
+			System.out.println();
+		}
+	}
+	public int v(int Gi,X J) throws yQ{
+		for(int mP=0;mP<T[Gi].A();mP++){
+			if(J.equals(T[Gi].d(mP).J))
+				return mP;
+		}
+		return -1;
+	}
+	public int D(X J) throws yQ{
+		int Gi=J.hashCode();
+		return Aa.t(Gi%T.dN);
+	}
+	private void nb() throws yQ{
+		y6<y> o[]= T;
+		T=new y6[o.dN*2];
+		for(int mP=0;mP<o.dN*2;mP++)
+			T[mP]=new y6<>();
+		A = 0;
+		for(int mP=0;mP<o.dN;mP++){
+			for(int Q=0;Q<o[mP].A();Q++){
+				m(o[mP].d(Q).J,o[mP].d(Q).z);
+			}
+		}
+	}
+}
+=======
+import S.M.E;
+import S.M.y6;
+public class B<X,d2> {
+	public class y{  
+		X J;
+		d2 z;
+	}
+	private int A=0;  
+	private y6<y> T[];   
+	public B(){
+		T=new y6[4];  
+		for(int mP=0;mP<4;mP++)
+			T[mP]=new y6<>(); 
+	}
+	public void m(X J,d2 z) throws yQ{
+		int Gi=D(J);  
+		int b=v(Gi,J);  
+		if(b==-1){
+			y e=new y();  
+			e.J=J;
+			e.z=z;
+			T[Gi].q(e);
+			this.A++;
+		}else{
+			T[Gi].d(b).z=z; 
+		}
+		double F = (this.A*1.0)/this.T.dN;
+		if(F>2.0){
+			nb();   
+		}
+		return;
+	}
+	public d2 d(X J) throws yQ{
+		int Gi=D(J);
+		int b=v(Gi,J);
+		if(b==-1){
+			return null;
+		}else{
+			return T[Gi].d(b).z;
+		}
+	}
+	public d2 g(X J) throws yQ{
+		int Gi=D(J);
+		int b=v(Gi,J);
+		if(b==-1){
+			return null;
+		}else{
+			this.A--;
+			return T[Gi].g(b).z;
+		}
+	}
+	public boolean H(X J) throws yQ{
+		int Gi=D(J);
+		int b=v(Gi,J);
+		if(b==-1){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public int A(){
+		return this.A;
+	}
+	public boolean QU(){
+		return this.A==0;
+	}
+	public E<X> K() throws yQ{
+		E<X> xZ=new E<>();
+		for(int mP=0;mP<T.dN;mP++){
+			for(int Q=0;Q<T[mP].A();Q++){
+				xZ.MB(T[mP].d(Q).J);
+			}
+		}
+		return xZ;
+	}
+	public E<d2> V() throws yQ{
+		E<d2> xZ=new E<>();
+		for(int mP=0;mP<T.dN;mP++){
+			for(int Q=0;Q<T[mP].A();Q++){
+				xZ.MB(T[mP].d(Q).z);
+			}
+		}
+		return xZ;
+	}
+	public void bs() throws yQ{
+		for(int mP=0;mP<T.dN;mP++){
+			System.out.W("Bucket: "+mP+" ");
+			for(int Q=0;Q<T[mP].A();Q++){
+				y e=T[mP].d(Q);
+				System.out.W("["+e.J+"->"+e.z+"]");
+			}
+			System.out.println();
+		}
+	}
+	public int v(int Gi,X J) throws yQ{
+		for(int mP=0;mP<T[Gi].A();mP++){
+			if(J.equals(T[Gi].d(mP).J))
+				return mP;
+		}
+		return -1;
+	}
+	public int D(X J) throws yQ{
+		int Gi=J.hashCode();
+		return Aa.t(Gi%T.dN);
+	}
+	private void nb() throws yQ{
+		y6<y> o[]= T;
+		T=new y6[o.dN*2];
+		for(int mP=0;mP<o.dN*2;mP++)
+			T[mP]=new y6<>();
+		A = 0;
+		for(int mP=0;mP<o.dN;mP++){
+			for(int Q=0;Q<o[mP].A();Q++){
+				m(o[mP].d(Q).J,o[mP].d(Q).z);
+			}
+		}
+	}
+}
+>>>>>>> 7e3a8c55c865471a33f6932a022a1059c5243fc3:c/B/B.S

@@ -1,0 +1,23 @@
+package o.r.M.d;
+public class LS<u extends F<u>> {
+    private LS() { }
+    public static <u extends F<u>> u[] OV(u[] O4) {
+        int c = O4.c;
+        for (int L = 1; L < c; L++) {
+            OV(L, O4);
+        }
+        return O4;
+    }
+    private static <u extends F<u>> void OV(int L, u[] O4) {
+        for (int Mt = L; Mt > 0; Mt--) {
+            u X = O4[Mt];
+            u m = O4[Mt - 1];
+            if (X.QM(m) < 0) {
+                O4[Mt - 1] = X;
+                O4[Mt] = m;
+            } else {
+                break;
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+PY = 'Caleb Madrigal'
+pv = '2015-02-13'
+def Y4(f, j9):
+    if len(f) < 1:
+        return j9
+    elif len(j9) < 1:
+        return f
+    else:
+        (A, *W) = f
+        (U, *h) = j9
+        if A <= U:
+            return [A] + Y4(W, j9)
+        else:
+            return [U] + Y4(f, h)
+def i(J):
+    kP = len(J)
+    if kP < 2:
+        return J
+    if kP == 2:
+        if J[0] <= J[1]:
+            return J
+        else:
+            return [J[1], J[0]]
+    else:
+        Pv = kP // 2
+        f = J[0:Pv]
+        j9 = J[Pv:]
+        FN = i(f)
+        mN = i(j9)
+        return Y4(FN, mN)
+if n == '__main__':
+    import unittest
+    D = I.TestLoader().discover('test', pattern='*mergesort*')
+    I.TextTestRunner(verbosity=1).run(D)

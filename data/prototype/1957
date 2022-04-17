@@ -1,0 +1,299 @@
+package s_.l.hz;
+import s_.l.hz.Gp.yC;
+import s_.l.hz.Gp.dm;
+import s_.l.hz.mJ.FW;
+import j.o.*;
+import j.rX.T;
+import j.mJ.*;
+import j.mJ.B.I;
+import j.mJ.B.Z;
+public class nF<Um extends H, S extends H> implements X5<Um, S> {
+	protected static final int m = 1000000001;
+	protected static final T ma = new T("000000000");
+	protected static final int w = 4096;
+	protected D3<Um, S> EQ;
+	protected q<Um, S> z;
+	protected Gf<Um, S> cK;
+	protected p a;
+	protected p t;
+	protected p UV;
+	protected boolean Jj;
+	protected dm m0;
+	public nF(p a) {
+		this(a, true);
+	}
+	public nF(p a, boolean Jj) {
+		this(a, new yC(), Jj);
+	}
+	public nF(p a, dm m0, boolean Jj) {
+		this.a = a;
+		this.m0 = m0;
+		this.Jj = Jj;
+		if (!a.OV())
+			a.ot();
+		t = new p(a, "keys");
+		if (!t.OV())
+			t.ot();
+		UV = new p(a, "sn");
+		if (!UV.OV())
+			UV.ot();
+		EQ = new D3<Um, S>(this);
+		z = new q<Um, S>(this);
+		cK = new Gf<Um, S>(this);
+	}
+	public synchronized boolean B2(wv zP) {
+		try {
+			return e(zP, false) != null;
+		}
+		catch (nN g) {
+			return false;
+		}
+	}
+	public synchronized boolean eJ(wv v) {
+		n<S> sn = sn();
+		for (S lu : sn)
+			if (v.equals(lu))
+				return true;
+		return false;
+	}
+	@N("unchecked")
+	public synchronized S M(wv zP) {
+		try {
+			String jx = e(zP, false);
+			if (jx == null)
+				return null;
+			p u = new p(UV, jx);
+			return (S) m0.Y(u);
+		}
+		catch (nN g) {
+			return null;
+		}
+	}
+	@N("unchecked")
+	public synchronized S nK(Um zP, S lu) {
+		try {
+			S p7 = null;
+			String jx = e(zP, true);
+			p K = new p(t, jx);
+			p u = new p(UV, jx);
+			if (u.oT())
+				p7 = (S) m0.Y(u);
+			m0.Ug(K, zP, Jj);
+			m0.Ug(u, lu, Jj);
+			return p7;
+		}
+		catch (nN g) {
+			return null;
+		}
+	}
+	public synchronized void jS(X5<? extends Um, ? extends S> aK) {
+		for (X5.NJ<? extends Um, ? extends S> r : aK.EQ()) {
+			nK (r.b(), r.V());
+		}
+	}
+	@N("unchecked")
+	public synchronized S F(wv zP) {
+		try {
+			String jx = e(zP, false);
+			p K = new p(t, jx);
+			p u = new p(UV, jx);
+			S p7 = (S) m0.Y(u);
+			K.HI();
+			u.HI();
+			while(!K.R().equals(t)
+				&& K.R().f().d == 0) {
+					K.R().HI();
+					K = K.R();		
+			}
+			while(!u.R().equals(UV)
+				&& u.R().f().d == 0) {
+					u.R().HI();
+					u = u.R();
+			}
+			return p7;
+		}
+		catch (nN g) {
+			return null;
+		}
+	}
+	public synchronized boolean Zu() {
+		return t.f().d == 0;
+	}
+	public synchronized int fi() {
+		if (Zu())
+			return 0;
+		return OL(t);
+	}
+	public synchronized void l0() {
+		p[] Fi = a.f();
+        if (Fi != null) {
+            for (p J : Fi) {
+                FW.G(J);
+            }
+        }
+		t.ot();
+		UV.ot();
+	}
+	public synchronized n<S> sn() {
+		return cK;
+	}
+	public synchronized s<Um> z() {
+		return z;
+	}
+	public synchronized s<X5.NJ<Um, S>> EQ() {
+		return EQ;
+	}
+	public synchronized boolean c(p TV) {
+		try {
+			Hy k = new Hy(TV);
+			k.kt().Jj(Jj);
+			Z h = new Z(k);
+			kZ(a, h);
+			h.u4();
+			return true;
+		}
+		catch (nN g) {
+			return false;
+		}
+	}
+	protected void kZ(p W, Z h) throws nN {
+		p[] D = W.f();
+		for (p J : D) {
+			if (J.OV()) {
+				kZ(J, h);
+				continue;
+			}
+			h.X(new I(J.y()));
+			Be fM = new Be(new Ih(J), w);
+			byte[] gJ = new byte[w];
+			for (int bY;(bY = fM.A(gJ, 0, w)) != -1;)
+				h.B6(gJ, 0, bY);
+			fM.u4();
+		}
+	}
+	protected int OL(p W) {
+		if (!W.OV())
+			return 0;
+		int bY = 0;
+		p[] D = W.f();
+		for (p J : D) {
+			if (J.OV())
+				bY += OL(J);
+			else
+				bY++;
+		}
+		return bY;
+	}
+	@N("unchecked")
+	protected String e(wv zP, boolean M2) throws nN {
+		String jx = e(zP);
+		p K = null;
+		String le = jx.tk(0, 9);
+		p Av = new p(t, le);
+		p O = new p(UV, le);
+		if (M2) {
+			Av.x();
+			O.x();
+		}
+		else if (!Av.OV() || !O.OV())
+			return null;
+		String DM = null;
+		for (int XY = 0;true;XY++) {
+			DM = jx + XY;
+			K = new p(t, DM);
+			if (!K.oT()) {  
+				if (!M2)
+					return null;
+				else
+					break;
+			}
+			Um E = (Um) m0.Y(K);
+			if (zP.equals(E))  
+				break;
+		}
+		return DM;
+	}
+	protected String e(wv zP) {
+		String jx = ma.ma((zP.hashCode() & 0x7FFFFFFF) % m);
+		i gJ = new i(12);
+		gJ.C(jx.tk(7)).C(p.MM);	 
+		gJ.C(jx.tk(5,7)).C(p.MM);	 
+		gJ.C(jx.tk(3,5)).C(p.MM);	 
+		gJ.C(jx.tk(0,3));
+		return gJ.toString();
+	}
+	protected class io implements LP<p> {
+		private static final int QL = 4;
+		private static final int wk = -1;
+		protected p a;
+		protected p mV;
+		protected p[][] D;
+		protected int[] U8;
+		public io(p a) {
+			this.a = a;
+			D = new p[QL][];
+			U8 = new int[QL];
+			eU.L(U8, wk);
+			mV = null;
+		}
+		public boolean Zl() {
+			synchronized (nF.this) {
+				try {
+					return U(a, 0, false) != null;
+				} catch (nN r) {
+					return false;
+				}
+			}
+		}
+		public p UU() {
+			synchronized (nF.this) {
+				try {
+					mV = U(a, 0, true);
+					return mV;
+				}
+				catch (nN g) {
+					return null;
+				}
+			}
+		}
+		public void F() {
+			synchronized (nF.this) {
+				if (mV == null)
+					return;
+				mV.HI();
+			}
+		}
+		protected p U(p W, int ox, boolean kB) throws nN {
+			if (!W.oT())
+				return null;
+			if (U8[ox] == wk) {
+				U8[ox] = 0;
+				D[ox] = W.f();
+			}
+			if (U8[ox] >= D[ox].d){
+				U8[ox] = wk;
+				D[ox] = null;
+				return null;
+			}
+			p Q = D[ox][U8[ox]];
+			if (Q.OV()) {
+				p P = null;
+				while ((P = U(Q, ox + 1, kB)) == null) {
+					U8[ox]++;
+					if (U8[ox] >= D[ox].d) {
+						U8[ox] = wk;
+						D[ox] = null;
+						return null;
+					}
+					Q = D[ox][U8[ox]];
+				}
+				return P;
+			}
+			else {
+				if (kB)
+					U8[ox]++;
+				return Q;
+			}
+		}
+	}
+}

@@ -1,0 +1,98 @@
+public class M {
+    private Y[] d;
+    private static class Y<U> {
+        U m;
+        int J;
+        Y(int J, U m) {
+            this.m = m;
+            this.J = J;
+        }
+        U R() {
+            return m;
+        }
+        int Bl() {
+            return J;
+        }
+    }
+    public M(int S) {
+        this.d = new Y<?>[S];
+    }
+    private int j(String J) {
+        int xJ = J.hashCode();
+        if (xJ < 0) {
+            xJ = xJ * -1;
+        }
+        return xJ;
+    }
+    private int l(int c) {
+        int C = c % this.d.i;
+        do {
+            if (this.d[C] != null && this.d[C].Bl() == c) {
+                return C;
+            }
+            C = (C + 3) % this.d.i;
+        } while (d[C] == null);
+        return -1;
+    }
+    private int h(int c) {
+        c = c % this.d.i;
+        do {
+            if (this.d[c] == null) {
+                return c;
+            }
+            c = (c + 3) % this.d.i;
+        } while (d[c] != null);
+        return -1;
+    }
+    public boolean f(String J, N I7) {
+        int c = j(J);
+        int G = h(c);
+        if (G >= 0) {
+            this.d[G] = new Y<>(c, I7);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public N Z(String J) {
+        int G = l(j(J));
+        if (G >= 0) {
+            return this.d[G].R();
+        } else {
+            return null;
+        }
+    }
+    public boolean E(String J) {
+        int G = l(j(J));
+        if (G >= 0) {
+            this.d[G] = null;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean o(String J) {
+        int G = l(j(J));
+        return G >= 0;
+    }
+    public int z() {
+        int z = 0;
+        for (int C = 0; C < this.d.i; C++) {
+            if (this.d[C] != null) {
+                z++;
+            }
+        }
+        return z;
+    }
+    public boolean cS() {
+        return z() == 0;
+    }
+    public void W() {
+        for (int C = 0; C < this.d.i; C++) {
+            this.d[C] = null;
+        }
+    }
+    public int S() {
+        return this.d.i;
+    }
+}

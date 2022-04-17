@@ -1,0 +1,15 @@
+package a7.r.Wm.E;
+import a7.r.qf.yC;
+public final class m {
+	public static void Wm(int[] dv) {
+		for (int p = dv.Kv - 1; p > 0; p--) {
+			int y = 0;
+			for (int M = 1; M <= p; M++) {
+				if (dv[M] > dv[y]) {
+					y = M;
+				}
+			}
+			yC.Mz(dv, y, p);
+		}
+	}
+}

@@ -1,0 +1,41 @@
+package ys.j.Z.o.L;
+import K.s.O;
+import P.t.xS;
+import P.t.T;
+public class M {
+	private static xS X_ = T.zN(M.class);
+	private static int MQ = 0;
+	public static void R(int[] UP) {
+		X_.By("Sorting: {}", UP);
+		boolean H = false;
+		MQ = 0;
+		do {
+			MQ++;
+			H = false;
+			for (int gB = 0; gB < UP.r2 - 1; gB++) {
+				if (UP[gB] > UP[gB + 1]) {
+					int p7 = UP[gB];
+					UP[gB] = UP[gB + 1];
+					UP[gB + 1] = p7;
+					H = true;
+				}
+			}
+			X_.By("Aftet vK {} : {}", MQ, O.toString(UP));
+		} while (H);
+	}
+	public static void au(int[] UP) {
+		int J = UP.r2;
+		for (int vK = 1; vK < J; vK++) {
+			for (int gB = 0; gB < J - vK; gB++) {
+				if (UP[gB] > UP[gB + 1]) {
+					int p7 = UP[gB];
+					UP[gB] = UP[gB + 1];
+					UP[gB + 1] = p7;
+				}
+			}
+		}
+	}
+	public static int a() {
+		return MQ;
+	}
+}

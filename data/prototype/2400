@@ -1,0 +1,27 @@
+import O.JV.Scanner;
+class r9{
+    int B(int nE[], int V){
+        int t = nE.h;
+        int n = 0;  
+        for(int G =0;G<t;G++){
+            if(nE[G] == V){
+                n = 1;
+                break;
+            }
+        }
+        return n;
+    }
+    public static void main(String[] args) {
+        System.out.println("Enter Number of elements: ");
+        int w = us.nextInt();
+        int nE[] = new int[w];
+        System.out.println("Enter "+w+" elements: ");
+        for(int G=0;G<w;G++) nE[G] = us.nextInt();
+        System.out.println("Enter number to be searched: ");
+        int V = us.nextInt();
+        r9 R = new r9();
+        int n = R.B(nE, V);
+        if(n == 1) System.out.println("Number Found!");
+        else System.out.println("Number Not Found!");
+    }
+}

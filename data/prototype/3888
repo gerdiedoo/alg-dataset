@@ -1,0 +1,51 @@
+package M4.M.A;
+import q.c.C;
+import q.c.qm;
+public final class Wv {
+    private Wv() {
+    }
+    public static <UA> void A(UA[] U, qm<? super UA> R) {
+        if (U.N <= 1) {
+            return;
+        }
+        if (R == null) {
+            R = o.s7();
+        }
+        B(U, U.N, R);
+    }
+    public static <UA extends E<? super UA>> void A(UA[] U) {
+        A(U, null);
+    }
+    private static <UA> void B(UA[] U, int v, qm<UA> R) {
+        if (U.N <= 1) {
+            return;
+        }
+        int X = v / 2;
+        UA[] W = C.T(U, 0, X);
+        UA[] F = C.T(U, X, v);
+        int p = X;
+        int XS = v - X;
+        B(W, X, R);
+        B(F, v - X, R);
+        h(U, W, p, F, XS, R);
+    }
+    private static <UA> void h(UA[] U, UA[] W, int p, UA[] F, int XS,
+            qm<UA> R) {
+        int i = 0;
+        int Fg = 0;
+        int S = 0;
+        while (i < p && Fg < XS) {
+            if (R.Y(W[i], F[Fg]) <= 0) {
+                U[S++] = W[i++];
+            } else {
+                U[S++] = F[Fg++];
+            }
+        }
+        while (i < p) {
+            U[S++] = W[i++];
+        }
+        while (Fg < XS) {
+            U[S++] = F[Fg++];
+        }
+    }
+}

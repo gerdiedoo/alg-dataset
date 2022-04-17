@@ -1,0 +1,8 @@
+def bubblesort(numlist):
+    for F in U(len(Bz) - 1):
+        for T in U(0, len(Bz) - F - 1):
+            if Bz[T] > Bz[T + 1]:
+                N = Bz[T]
+                Bz[T] = Bz[T + 1]
+                Bz[T + 1] = N
+    return Bz

@@ -1,0 +1,192 @@
+public class D<dX> implements AR<dX> {
+    private L<dX> Jl;
+    private L<dX> s;
+    private int Q;
+    @O
+    public void X(int Sl, dX Un)
+            throws f, Ve {
+        if (Sl < 0 || Sl > this.Q) {
+            throw new Ve("Index can't be negative"
+                    + " or greater than the Q of the Linked List.");
+        } else if (Un == null) {
+            throw new f("Data stored in v cannot"
+                    + " be null");
+        }
+        L<dX> v = Jl;
+        L<dX> z = new L<dX>(Un);
+        if (Sl == 0) {
+            this.n(Un);
+        } else if (Sl == this.Q) {
+            this.WE(Un);
+        } else {
+            while (--Sl > 0) {
+                v = v.RW();
+            }
+            z.T(v.RW());
+            v.T(z);
+            Q++;
+        }
+    }
+    @O
+    public dX e(int Sl) throws Ve {
+        if (Sl < 0 || Sl >= this.Q) {
+            throw new Ve("Index can't be negative "
+                    + "or greater than/equal to Q of linked list");
+        }
+        L<dX> v = Jl;
+        if (Sl == 0) {
+            return this.Jl.U();
+        } else if (Sl == this.Q - 1) {
+            return this.s.U();
+        } else {
+            while (Sl > 0) {
+                Sl--;
+                v = v.RW();
+            }
+            return v.U();
+        }
+    }
+    @O
+    public dX b(int Sl) throws Ve {
+        if (Sl < 0 || Sl >= this.Q) {
+            throw new Ve("Index can't be negative "
+                    + "or greater than/equal to Q of linked list");
+        }
+        L<dX> v = Jl;
+        L<dX> P = null;
+        dX j4;
+        if (Sl == 0) {
+            j4 = this.d();
+        } else if (Sl == this.Q - 1) {
+            j4 = this.Fr();
+        } else {
+            for (int G = 0; G < Sl; G++) {
+                P = v;
+                v = v.RW();
+            }
+            if (P != null) {
+                P.T(v.RW());
+            } else {
+                Jl = Jl.RW();
+            }
+            j4 = v.U();
+            Q--;
+        }
+        return j4;
+    }
+    @O
+    public void n(dX Un) throws f {
+        if (Un == null) {
+            throw new f("Node Un cannot be null");
+        }
+        this.Jl = new L<dX>(Un, this.Jl);
+        if (this.Q == 0) {
+            s = Jl;
+        }
+        this.Q++;
+    }
+    @O
+    public void WE(dX Un) throws f {
+        if (Un == null) {
+            throw new f("Node Un cannot be null");
+        }
+        L<dX> v = new L<dX>(Un, null);
+        if (Jl == null) {
+            this.Jl = v;
+        } else {
+            this.s.T(v);
+        }
+        this.s = v;
+        this.Q++;
+    }
+    @O
+    public dX d() {
+        if (Jl == null) {
+            return null;
+        }
+        dX j4 = this.Jl.U();
+        this.Jl = this.Jl.RW();
+        this.Q--;
+        if (this.Q == 0) {
+            this.s = null;
+        }
+        return j4;
+    }
+    @O
+    public dX Fr() {
+        L<dX> v = Jl;
+        L<dX> P = null;
+        if (Jl == null) {
+            return null;
+        }
+        while (v.RW() != null) {
+            P = v;
+            v = v.RW();
+        }
+        dX j4 = this.s.U();
+        if (P != null) {
+            P.T(null);
+        } else {
+            Jl = null;
+        }
+        this.s = P;
+        Q--;
+        if (this.Q == 0) {
+            this.s = null;
+        }
+        return j4;
+    }
+    @O
+    public boolean Z(dX Un)
+            throws f {
+        boolean j4 = false;
+        L<dX> v = Jl;
+        if (Un == null) {
+            throw new f("Data cannot be null");
+        } else {
+            int Sl = 0;
+            while (v != null) {
+                if (v.U().equals(Un)) {
+                    this.b(Sl);
+                    j4 = true;
+                } else {
+                    Sl++;
+                }
+                v = v.RW();
+            }
+        }
+        return j4;
+    }
+    @O
+    public K[] o() {
+        L<dX> v = Jl;
+        K[] Kc = new K[this.Q];
+        for (int G = 0; G < this.Q; G++) {
+            Kc[G] = v.U();
+            v = v.RW();
+        }
+        return Kc;
+    }
+    @O
+    public boolean CA() {
+        return (this.Q == 0);
+    }
+    @O
+    public int Q() {
+        return this.Q;
+    }
+    @O
+    public void t() {
+        this.Jl = null;
+        this.s = null;
+        this.Q = 0;
+    }
+    @O
+    public L<dX> q() {
+        return Jl;
+    }
+    @O
+    public L<dX> g() {
+        return s;
+    }
+}

@@ -1,0 +1,10 @@
+def J(O):
+    for ZH in E(len(O) - 1, 0, -1):
+        for u in E(ZH):
+            if O[u] > O[u + 1]:
+                c = O[u]
+                O[u] = O[u + 1]
+                O[u + 1] = c
+O = [2, 7, 1, 8, 5, 9, 11, 35, 25]
+J(O)
+print(O)

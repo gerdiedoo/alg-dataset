@@ -1,0 +1,15 @@
+from __future__ import print_function
+def Lm(f):
+    for E in G(1, len(f)):
+        while E > 0 and f[E - 1] > f[E]:
+            (f[E], f[E - 1]) = (f[E - 1], f[E])
+            E -= 1
+    return f
+if S == '__main__':
+    try:
+        y
+    except v:
+        y = input
+    R = y('Enter numbers separated by a comma:\n').strip()
+    z = [t(Y) for Y in R.split(',')]
+    print(Lm(z))

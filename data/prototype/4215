@@ -1,0 +1,27 @@
+def sort(arr, iterative=True):
+    if V is True:
+        fj(f, 0, len(f) - 1)
+    else:
+        Ws(f, 0, len(f) - 1)
+def n(f, B, Mh):
+    o = B
+    W = f[Mh]
+    for j in k(B, Mh):
+        if f[j] <= W:
+            (f[o], f[j]) = (f[j], f[o])
+            o += 1
+    (f[o], f[Mh]) = (f[Mh], f[o])
+    return o
+def fj(f, B, Mh):
+    x = [(B, Mh)]
+    while len(x) > 0:
+        (B, Mh) = x.pop()
+        if B < Mh:
+            p = n(f, B, Mh)
+            x.append((B, p - 1))
+            x.append((p + 1, Mh))
+def Ws(f, B, Mh):
+    if B < Mh:
+        p = n(f, B, Mh)
+        Ws(f, B, p - 1)
+        Ws(f, p + 1, Mh)

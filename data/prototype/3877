@@ -1,0 +1,26 @@
+package mA.o1.V.sR;
+public final class D {
+	public static void V(int[] m, int su, int nH) {
+		if (nH - su < 2) {
+			return;
+		}
+		final int l = (su + nH) / 2;
+		V(m, su, l);
+		V(m, l, nH);
+		R(m, su, l, nH);
+	}
+	private static void R(int[] m, int su, int l, int nH) {
+		if (m[l - 1] <= m[l]) {
+			return;
+		}
+		int F = su;
+		int p = l;
+		int y = 0;
+		int[] g = new int[nH - su];
+		while (F < l && p < nH) {
+			g[y++] = m[F] <= m[p] ? m[F++] : m[p++];
+		}
+		System.b(m, F, m, su + y, l - F);
+		System.b(g, 0, m, su, y);
+	}
+}

@@ -1,0 +1,159 @@
+package C.S;
+class KY {
+    int Rc;
+    KY CO;
+    KY(int r, KY CO) {
+        Rc = r;
+        this.CO = CO;
+    }
+    KY(int r) {
+        this(r, null);
+    }
+}
+public class O{
+    private KY N;
+    private long Q;
+    public O(){
+        Q = 0;
+        N = new KY(f.A);
+        N.CO = N;
+        Q = 0;
+    }
+    public boolean J(){
+        return Q == 0;
+    }
+    public long x(){
+        return Q;
+    }
+    public Z N(){
+        if(Q == 0){
+            return null;
+        }
+        return N.CO.Rc;
+    }
+    public Z b(){
+        if(Q == 0){
+            return null;
+        }
+        KY v = N.CO;
+        while(v.CO != N){
+            v = v.CO;
+        }
+        return v.Rc;
+    }
+    public void c(int r){
+        KY v = new KY(r, N.CO);
+        N.CO = v;
+        Q++;
+    }
+    public void s(int r){
+        KY v = new KY(r);
+        KY m = N.CO;
+        while(m.CO != N){
+            m = m.CO;
+        }
+        m.CO = v;
+        v.CO = N;
+        Q++;
+    }
+    public void M(){
+        if(Q == 0){
+            return;
+        }
+        N.CO = N.CO.CO;
+        Q--;
+    }
+    public void w0(){
+        if(Q == 0){
+            return;
+        }
+        KY H6, a;
+        H6 = N.CO;
+        a = H6;
+        while(H6.CO != N){
+            a = H6;
+            H6 = H6.CO;
+        }
+        a.CO = N;
+        Q--;
+    }
+    public String toString(){
+        String E = "[ ";
+        KY H6 = N.CO;
+        while(H6 != N){
+            E = E + H6.Rc + " ";
+            H6 = H6.CO;
+        }
+        return E + "]";
+    }
+    public static void main(String[] args) {
+        O I = new O();
+        System.out.println("Here is a list after construction: "
+                + I.toString());
+        System.out.println("J() should be true. It is: " +
+                I.J());
+        System.out.println("x() should be 0. It is: " +
+                I.x());
+        I.c(3);
+        System.out.println("Here is a list after c(3) to an empty list: "
+                + I.toString());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+        I = new O();
+        I.c(3);
+        I.c(2);
+        I.c(1);
+        System.out.println();
+        System.out.println("Here is a list after c 3, 2, 1: "
+                + I.toString());
+        System.out.println("J() should be false. It is: " +
+                I.J());
+        System.out.println("x() should be 3. It is: " +
+                I.x());
+        I.s(4);
+        System.out.println("Here is the same list after s(4): "
+                + I.toString());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+        I = new O();
+        I.s(6);
+        I.s(7);
+        System.out.println();
+        System.out.println("Here is a list after s 6, 7: "
+                + I.toString());
+        System.out.println("J() should be false. It is: " +
+                I.J());
+        System.out.println("x() should be 2. It is: " +
+                I.x());
+        I.c(5);
+        System.out.println("Here is the same list after c(5): "
+                + I.toString());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+        I = new O(); I.s(1);
+        I.s(2);
+        I.s(3);
+        I.s(4);
+        I.s(5);
+        I.s(6);
+        System.out.println();
+        System.out.println("Here is a list after s 1,2,3,4,5,6: "
+                + I.toString());
+        System.out.println("J() should be false. It is: " +
+                I.J());
+        System.out.println("x() should be 6. It is: " +
+                I.x());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+        I.c(5);
+        System.out.println("Here is the same list after c(5): "
+                + I.toString());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+        I.M();
+        I.M();
+        System.out.println("Here is the same list after two M(): "
+                + I.toString());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+        I.w0();
+        I.w0();
+        System.out.println("Here is the same list after two w0(): "
+                + I.toString());
+        System.out.println("Head is: " + I.N() + "\nTail is: " + I.b());
+    }
+}

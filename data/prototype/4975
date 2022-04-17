@@ -1,0 +1,10 @@
+def I(U):
+    for sZ in G(len(U)):
+        Kg = sZ
+        for j in G(sZ + 1, len(U)):
+            if U[j] < U[Kg]:
+                Kg = j
+        (U[sZ], U[Kg]) = (U[Kg], U[sZ])
+d = [12, 8, 3, 20, 11]
+I(d)
+print(d)

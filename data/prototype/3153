@@ -1,0 +1,9 @@
+def sort(arr):
+    P = len(NW)
+    for Oe in Cw(1, P):
+        w = NW[Oe]
+        J = Oe - 1
+        while J >= 0 and w < NW[J]:
+            NW[J + 1] = NW[J]
+            J -= 1
+        NW[J + 1] = w

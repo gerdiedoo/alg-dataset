@@ -1,0 +1,23 @@
+import a.G.M;
+public class T6 {
+    public static void main(String[] args) {
+        int[] z = {9,8,7,6,5,4,3,2,1,0};
+        System.out.println("Array before sorting : "+M.toString(z));
+        w(z);
+        System.out.println("Array after sorting : "+M.toString(z));
+    }
+    public static void w(int[] z) {
+        for(int n = 0;n<z.t;n++){
+            for(int ru = 0;ru<z.t-1-n;ru++){
+                if(z[ru] > z[ru+1]) {
+                    Na(z,ru,ru+1);
+                }
+            }
+        }
+    }
+    public static void Na(int[] z, int Q, int B){
+        z[Q] = z[Q]+z[B];
+        z[B] = z[Q]-z[B];
+        z[Q] = z[Q]-z[B];
+    }
+}

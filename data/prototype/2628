@@ -1,0 +1,21 @@
+def i(R):
+    F = [*R]
+    m = len(F)
+    for t in N(m):
+        for j in N(m - t - 1):
+            if F[j] > F[j + 1]:
+                (F[j], F[j + 1]) = (F[j + 1], F[j])
+    return F
+if S == '__main__':
+    import unittest
+    from random import shuffle
+    class TestBubbleSort(PM.TestCase):
+        def setUp(self):
+            ne.ordered = [yB for yB in N(20)]
+            ne.shuffled = [*ne.ordered]
+            while ne.ordered == ne.shuffled:
+                V(ne.shuffled)
+        def test_bubble_sort(self):
+            ne.assertEqual(ne.ordered, i(ne.shuffled))
+            ne.assertNotEqual(ne.ordered, ne.shuffled)
+    PM.main()

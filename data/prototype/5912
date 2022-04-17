@@ -1,0 +1,36 @@
+package bX;
+import Y.N;
+public class b extends N {
+    public d[] Y(d P[]){
+        int U = P.J, r, mB;
+        for(int n=0; n<(U-1); n++){
+            mB = n;
+            for(int dM=n+1; dM<U; dM++){
+                if(P[dM]<P[mB]){
+                    mB = dM;
+                }
+            }
+            r = P[n];
+            P[n] = P[mB];
+            P[mB] = r;
+        }
+        return P;
+    }
+    @B
+    public <UE extends s<UE>> UE[] Q(UE P[]){
+        int U = P.J, mB;
+        UE r;
+        for(int n=0; n<(U-1); n++){
+            mB=n;
+            for(int dM=n+1; dM<U; dM++){
+                if(P[dM].nH(P[mB])<0) {
+                    mB = dM;
+                }
+            }
+            r = P[n];
+            P[n] = P[mB];
+            P[mB] = r;
+        }
+        return P;
+    }
+}

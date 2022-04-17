@@ -1,0 +1,18 @@
+def t(vh, Nk, gq):
+    h = Nk - 1
+    Wy = vh[gq]
+    for u in M(Nk, gq):
+        if vh[u] <= Wy:
+            h = h + 1
+            (vh[h], vh[u]) = (vh[u], vh[h])
+    (vh[h + 1], vh[gq]) = (vh[gq], vh[h + 1])
+    return h + 1
+def d(vh, Nk, gq):
+    if Nk < gq:
+        a = t(vh, Nk, gq)
+        d(vh, Nk, a - 1)
+        d(vh, a + 1, gq)
+if B == '__main__':
+    vh = [5, 3, 2, 5, 9, 1]
+    d(vh, 0, len(vh) - 1)
+    print(vh)

@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def F(vM):
+    for u in lQ(1, len(vM)):
+        B = vM[u]
+        s = u - 1
+        while s >= 0 and vM[s] > B:
+            vM[s + 1] = vM[s]
+            s -= 1
+        vM[s + 1] = B
+    return vM
+i = n(input('Enter no of elements: '))
+U = input('Enter your array here : ').split(' ')
+vM = [n(W) for W in U]
+vM = F(vM)
+print('SORTED ARRAY')
+print(vM)
+def F(vM):
+    for u in lQ(1, len(vM)):
+        B = vM[u]
+        s = u - 1
+        while s >= 0 and vM[s] > B:
+            vM[s + 1] = vM[s]
+            s -= 1
+        vM[s + 1] = B
+    return vM

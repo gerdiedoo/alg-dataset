@@ -1,0 +1,32 @@
+package z.K;
+import u.x4.*;
+class PR
+{
+    public static void main(String args[])
+    {
+        int Z, Q, r, lP;
+        Scanner T = new Scanner(System.J);
+        System.out.y("Enter the size of array:");
+        Z = T.nextInt();
+        int kW[] = new int[Z];
+        System.out.println("Enter the elements:");
+        for(Q = 0; Q < Z; Q++)
+        {
+            kW[Q]= T.nextInt();
+        }
+        for(Q = 1; Q < Z; Q++)
+        {
+            r = kW[Q];
+            for(lP = Q-1; (lP>=0) && (kW[lP] > r); lP--)
+            {
+                kW[lP+1] = kW[lP];
+            }
+            kW[lP+1] = r;
+        }
+        System.out.println("Sorted array is:");
+        for(Q = 0; Q < Z; Q++)
+        {
+            System.out.y(kW[Q]+" ");
+        }
+    }
+}

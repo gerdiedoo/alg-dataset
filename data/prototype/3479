@@ -1,0 +1,20 @@
+package o;
+public class h {
+    public static void main(String[] args) {
+        int[] A={20,35,-15,7,55,1,-22};
+        fF(A);
+    }
+    public static void fF(int[] A){
+        for (int sF = 1; sF < A.T ; sF++) {
+            int n = A[sF];
+            int E;
+            for (E = sF; E > 0 && A[E-1] > n; E--) {
+                A[E] = A[E-1];
+            }
+            A[E] = n;
+        }
+        for(int Xw=0;Xw<A.T;Xw++){
+            System.out.y(A[Xw]+" ");
+        }
+    }
+}

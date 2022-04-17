@@ -1,0 +1,48 @@
+package m.g.AE.f;
+import m.g.AE.v.Z;
+import m.g.AE.v.nj;
+import m.g.AE.v.w;
+import m.g.AE.v.w.H;
+public final class L extends Z {
+	public static final nj dA = new L();
+	public void xQ(w b) {
+		xQ(b, 0, b.i());
+		b.J(0, b.i(), H.T);
+	}
+	private static void xQ(w b, int O7, int K) {
+		if (!(0 <= O7 && O7 <= K && K <= b.i()))
+			throw new M();
+		if (K - O7 <= 1)
+			return;
+		b.J(O7, K, H.R);
+		int V = (O7 + K) / 2;
+		b.J(V, K, H.D);
+		xQ(b, O7, V);
+		b.J(O7, V, H.D);
+		xQ(b, V, K);
+		I(b, O7, V, K);
+	}
+	private static void I(w b, int O7, int V, int K) {
+		if (!(0 <= O7 && O7 <= V && V <= K && K <= b.i()))
+			throw new M();
+		if (O7 == V || V == K)
+			return;
+		b.J(O7, K, H.R);
+		int x = V - 1;
+		int C = V;
+		while (O7 <= x && C < K && b.q(x, C) > 0) {
+			x--;
+			C++;
+		}
+		int s = C - V;
+		for (int A = 0; A < s; A++)
+			b.AB(V - s + A, V + A);
+		b.J(V, K, H.D);
+		I(b, O7, x + 1, V);
+		b.J(O7, V, H.D);
+		I(b, V, C, K);
+	}
+	private L() {
+		super("Rotation I xQ");
+	}
+}

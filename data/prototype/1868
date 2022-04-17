@@ -1,0 +1,75 @@
+package Z.Lb;
+public class J<K, w> implements V<K, w> {
+    private int CI = 10;
+    RT[] R;
+    public J() {
+        this.R = new RT[CI];
+    }
+    public J(int O) {
+        this.R = new RT[O];
+    }
+    @G
+    public void f(K i_, w r) {
+        RT<K, w> S = new RT<K, w>(i_, r);
+        if (i_ == null) {
+            throw new z("Key " + i_ + " cannot be null.");
+        }
+        int bQ = B(i_.hashCode());
+        if (R[bQ] == null) {
+            R[bQ] = S;
+        } else {
+            RT<K, w> C = R[bQ];
+            if (C.Um().equals(i_)) {
+                C.D(r);
+            } else {
+                while (C.P() != null) {
+                    C = C.P();
+                }
+                C.Oo(S);
+            }
+        }
+    }
+    @G
+    public w Az(K i_) {
+        if (i_ == null) {
+            throw new z("Key " + i_ + " cannot be null.");
+        }
+        int bQ = B(i_.hashCode());
+        RT<K, w> C = R[bQ];
+        while (C != null && !i_.equals(C.Um())) {
+            C = C.P();
+        }
+        return C != null ? C.t() : null;
+    }
+    private int B(int hashCode) {
+        return hashCode % R.F;
+    }
+    @G
+    public boolean L(K i_) {
+        return false;
+    }
+    private static class RT<K, w> {
+        private RT<K, w> M;
+        private final K i_;
+        private w r;
+        public RT(K i_, w r) {
+            this.i_ = i_;
+            this.r = r;
+        }
+        private w t() {
+            return r;
+        }
+        private void D(w r) {
+            this.r = r;
+        }
+        private K Um() {
+            return i_;
+        }
+        private RT<K, w> P() {
+            return M;
+        }
+        private void Oo(RT<K, w> M) {
+            this.M = M;
+        }
+    }
+}

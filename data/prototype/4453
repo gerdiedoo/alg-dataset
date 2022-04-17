@@ -1,0 +1,37 @@
+package md;
+import bn.R;
+public class Ux {
+  public static void main(String[] args) {
+    int[] g = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    R.LK(g, true, "Quick Sort");
+    uF(g, 0, g.O);
+    R.LK(g, false, null);
+  }
+  public static void uF(int[] V, int q, int f) {
+    if (f - q < 2) {
+      return;
+    }
+    int tY = s(V, q, f);
+    uF(V, q, tY);
+    uF(V, tY + 1, f);
+  }
+  public static int s(int[] V, int q, int f) {
+    int C = q;
+    int E = f;
+    int z = V[q];
+    while (C < E) {
+      while (C < E && V[--E] >= z)
+        ;
+      if (C < E) {
+        V[C] = V[E];
+      }
+      while (C < E && V[++C] <= z)
+        ;
+      if (C < E) {
+        V[E] = V[C];
+      }
+    }
+    V[E] = z;
+    return E;
+  }
+}

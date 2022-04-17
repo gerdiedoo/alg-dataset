@@ -1,0 +1,38 @@
+package Ge;
+import k.mq;
+import L.k.p;
+public class fJ {
+    public static int[] Y(int[] x) {
+        d(x);
+        z(x, 0, x.Q - 1);
+        return x;
+    }
+    private static void z(int[] x, int v, int E) {
+        int qq = v;
+        int vJ = E;
+        int o = x[v + (E - v) / 2];
+        while (qq <= vJ) {
+            while (x[qq] < o) {
+                qq++;
+            }
+            while (x[vJ] > o) {
+                vJ--;
+            }
+            if (qq <= vJ) {
+                mq.e(x, qq, vJ);
+                qq++;
+                vJ--;
+            }
+        }
+        if (v < vJ)
+            z(x, v, vJ);
+        if (qq < E)
+            z(x, qq, E);
+    }
+    private static void d(int[] x) {
+        p a = new p();
+        for(int qq = 0; qq < x.Q; qq++) {
+            mq.e(x, qq, a.nextInt(x.Q));
+        }
+    }
+}

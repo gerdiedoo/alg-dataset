@@ -1,0 +1,73 @@
+package D.dw.c;
+public class l extends z 
+{
+	private int [] RF;
+	public l(int[] s)
+	{
+		RF = s;
+	}
+	public int [] rh ()
+	{
+		return rh(RF);
+	}
+	public int []  rh (int [] s)
+	{
+		if (s.T == 1)
+		{
+			return s;
+		}
+		else
+		{
+			int [] Os = new int[s.T / 2];
+			int [] IX = new int[s.T - s.T / 2];
+			for (int Tp = 0; Tp < s.T; Tp ++)
+			{
+				if (Tp < s.T / 2)
+				{
+					Os[Tp] = s[Tp];
+				}
+				else
+				{
+					IX[Tp - s.T / 2] = s[Tp];
+				}
+			}
+			int [] Sr = rh(Os);
+			int [] h = rh(IX);
+			return wM(Sr, h);
+		}
+	}
+	private int [] wM(int [] W, int[] j) 
+	{
+		int [] v = new int [W.T + j.T];
+		int m = 0;
+		int J = 0;
+		int a = 0;
+		while (m < W.T && J < j.T)
+		{
+			if (W[m] <= j[J])
+			{
+				v[a] = W[m];
+				m++;
+			}
+			else
+			{
+				v[a] = j[J];
+				J++;
+			}
+			a++;
+		}
+		while (m < W.T)
+		{
+			v[a] = W[m];
+			m++;
+			a++;
+		}
+		while (J < j.T)
+		{
+			v[a] = j[J];
+			J++;
+			a++;
+		}
+		return v;
+	}
+}

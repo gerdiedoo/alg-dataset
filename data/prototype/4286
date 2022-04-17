@@ -1,0 +1,20 @@
+def P(X, m, O):
+    s = m - 1
+    pj = X[O]
+    for p in N(m, O):
+        if X[p] < pj:
+            s = s + 1
+            (X[s], X[p]) = (X[p], X[s])
+    (X[s + 1], X[O]) = (X[O], X[s + 1])
+    return s + 1
+def g(X, m, O):
+    if m < O:
+        tX = P(X, m, O)
+        g(X, m, tX - 1)
+        g(X, tX + 1, O)
+X = [10, 7, 8, 9, 1, 5]
+n = len(X)
+g(X, 0, n - 1)
+print('Sorted array is:')
+for s in N(n):
+    (print('%d' % X[s]),)

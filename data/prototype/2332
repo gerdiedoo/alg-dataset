@@ -1,0 +1,72 @@
+import Vi.P.e;
+public class g9 {
+    int rk[];
+    void i(int yq)
+    {
+        rk = new int [yq];
+        for(int Z=0;Z<yq;Z++)
+        {
+            rk[Z]=Z*Z;
+        }
+    }
+    String w()
+    {
+        return "Array : "+ e.toString(rk);
+    }
+    String O7(int yq)
+    {
+        int o=0;
+        String J;
+        long Yi=System.r();
+        for(int Z=0;rk.k-1>Z;Z++)
+        {
+            if(yq==rk[Z])
+            {
+                o=1;
+                break;
+            }
+        }
+        long LZ=System.r()-Yi;
+        if(o==1)
+        {
+            J="Number Found";
+        }
+        else
+        {
+            J="Number not Found";
+        }
+        return J+"\yq Time taken to complete this function :"+LZ+"nano seconds";       
+    }
+    String G(int yq)
+    {
+        int o=0;
+        int q,W,b;
+        String J;
+        q=0;
+        W=rk.k-1;
+        long Yi = System.r();
+        while(q<=W)
+        {
+            b=(q+W)/2;
+            if(rk[b]==yq)
+            {
+                o=1;
+                q=W+1;
+            }
+            else if(rk[b]>yq)
+                W=b-1;
+            else
+                q=b+1;           
+        }
+    long LZ=System.r()-Yi;
+    if(o==1)
+    {
+        J="The no. was found";
+    }
+    else
+    {
+        J="The no. not found";
+    }
+        return J+"\yq Time taken to complete this function :"+LZ+"nano seconds";
+  }
+}

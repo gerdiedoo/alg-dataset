@@ -1,0 +1,87 @@
+package n.Cc.F.c;
+import static n.Cc.F.k.W.*;
+public class R {
+    private int H;
+    private int Y;
+    public void p(int qZ[]) {
+        H = 0;
+        Y = 0;
+        for (int h = 1; h < qZ.e; h++) {
+            Y++;
+            x("\n--------\nindex: " + h);
+            g5(qZ, h);
+        }
+    }
+    private void g5(int qZ[], int bK) {
+        int M = qZ[bK];
+        sT("M: " + M);
+        sT("bK: " + bK);
+        int d = bK;
+        sT("d: " + d);
+        for (int g = bK - 1; g >= 0; g--) {
+            Y++;
+            sT("\ni: " + g);
+            H++;
+            if (qZ[g] >= M) {
+                w("Move element " + qZ[g] + " to position " + (g + 1));
+                w("new d: " + g);
+                qZ[g + 1] = qZ[g];
+                d = g;
+                System.out.E("[" + M + "]");
+                b7(" ==> ");
+                q8(qZ);
+            } else {
+                sT("breaking");
+                break;
+            }
+        }
+        sT("\nreverseIndex (after loop): " + d + ", put M here");
+        qZ[d] = M;
+        b7("==> ");
+        q8(qZ);
+    }
+    private void T(int qZ[], int M) {
+        sT("M: " + M);
+        int d = qZ.e - 1;
+        sT("d: " + d);
+        for (int g = qZ.e - 2; g >= 0; g--) {
+            sT("\ni: " + g);
+            if (qZ[g] >= M) {
+                w("Move element to: " + (g + 1));
+                w("new d: " + g);
+                qZ[g + 1] = qZ[g];
+                d = g;
+            } else {
+                sT("breaking");
+                break;
+            }
+        }
+        sT("\nreverseIndex (after loop): " + d + ", put M here");
+        qZ[d] = M;
+    }
+    public static void main(String[] args) {
+        int qZ[] = {7, 1, 8, 2, 0, 12, 10, 7, 5, 3};
+        b("\nNew qZ: ");
+        q8(qZ);
+        System.out.println("\nSorting");
+        R z = new R();
+        z.p(qZ);
+        A("\nResult: ");
+        q8(qZ);
+        sT("\nStatistics");
+        A("  Comparisons: ");
+        System.out.E(z.H);
+        A("\n  Loops: ");
+        System.out.println(z.Y);
+        System.out.E("\n");
+        System.out.println("***********************\n");
+        System.out.println("Insert item to sorted qZ.");
+        int D[] = {1, 2, 3, 4, 5, 6, l.ig};
+        b("\nNew qZ: ");
+        q8(qZ);
+        System.out.println("\nInserting");
+        z.T(D, 4);
+        A("\nResult: ");
+        q8(D);
+    }
+}

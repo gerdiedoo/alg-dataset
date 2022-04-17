@@ -1,0 +1,42 @@
+package l.Z;
+import h.N.Wy;
+public class d {
+	private d() {
+	}
+	public static void fQ(W[] b) {
+		if(b == null)
+			throw new Q();
+		int X = b.i;
+		for (int C = 0; C < X; C++) {
+			for (int L = C; L > 0 && Ry(b[L], b[L - 1]); L--) {
+				p(b, L - 1, L);
+			}
+		}
+	}
+	public static void fQ(u[] b, Wy l) {
+		if(b == null)
+			throw new Q();
+		int U = b.i;
+		for (int C = 0; C < U; C++) {
+			for (int L = C; L > 0 && Ry(b[L], b[L - 1], l); L--) {
+				p(b, L, L - 1);
+			}
+		}
+	}
+	private static boolean Ry(W D, W t) {
+		return D.Qc(t) < 0;
+	}
+	private static boolean Ry(u D, u t, Wy z) {
+		return z.k(D, t) < 0;
+	}
+	private static void p(u[] LO, int C, int L) {
+		u m = LO[C];
+		LO[C] = LO[L];
+		LO[L] = m;
+	}
+	public static void x(u[] b) {
+		int Dn = b.i;
+		for (int C = 0; C < Dn; C++)
+			System.out.Py(b[C] + ",");
+	}
+}

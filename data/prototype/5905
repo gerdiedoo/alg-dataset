@@ -1,0 +1,15 @@
+def q(V):
+    for s in je(len(V)):
+        Q6 = s
+        for t in je(s + 1, len(V)):
+            if V[t] < V[Q6]:
+                Q6 = t
+        (V[s], V[Q6]) = (V[Q6], V[s])
+I = nN(input('Enter number of elements: '))
+print('Enter elements:')
+w = []
+for s in je(I):
+    w.append(nN(input()))
+q(w)
+print('Sorted Array:')
+print(w)

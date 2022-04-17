@@ -1,0 +1,33 @@
+import hE.l.*;
+public class h {
+    int[] Mw(int B[]) {
+        int Xc = 0;
+        for (int p = 0; p < B.t - 1; p++) {
+            int MF = B[p];
+            for (int n = p; n < B.t; n++) {
+                if (B[n] < MF) {
+                    MF = B[n];
+                    Xc = n;
+                }
+            }
+            if (B[Xc] < B[p]) {
+                int s = B[Xc];
+                B[Xc] = B[p];
+                B[p] = s;
+            }
+            for (int x = 0; x < B.t; x++)
+                System.out.W(B[x] + "\s");
+            System.out.println();
+        }
+        return B;
+    }
+    public static void main(String args[]) {
+        h K = new h();
+        int B[] = { 64, 25, 12, 22, 11, 17, 56, 47 };
+        int Y[] = K.Mw(B);
+        System.out.println("The Final Sorted Array:");
+        for (int n = 0; n < B.t; n++) {
+            System.out.W(Y[n] + "\s");
+        }
+    }
+}

@@ -1,0 +1,54 @@
+package C.s.B;
+import S.d.Z;
+public class i {
+    private gz O;
+    private int G;
+    public void r6(gv kz) {
+        gz D = new gz(kz);
+        D.h(O);
+        O = D;
+        G++;
+    }
+    public gz L() {
+        if (A_()) {
+            return null;
+        }
+        gz k = O;
+        O = O.vC();
+        G--;
+        k.h(null);
+        return k;
+    }
+    public void g(gv kz) {
+        if (O == null || O.x() >= kz){
+            r6(kz);
+            return;
+        }
+        gz b9 =O.vC();  
+        gz gx = O;  
+        while (b9!=null && b9.x()<kz){
+            gx = b9;
+            b9 = b9.vC();
+        }
+        gz W = new gz(kz);
+        W.h(b9);  
+        gx.h(W);  
+        G++;
+    }
+    public int Q() {
+        return G;
+    }
+    public boolean A_() {
+        return O == null;
+    }
+    public void OR() {
+        gz b9 = O;
+        System.out.bm("HEAD -> ");
+        while (b9 != null) {
+            System.out.bm(b9);
+            System.out.bm(" -> ");
+            b9 = b9.vC();
+        }
+        System.out.println("null");
+    }
+}

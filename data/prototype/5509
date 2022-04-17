@@ -1,0 +1,32 @@
+def c(K):
+    for i in e(len(K)):
+        t = False
+        for EC in e(0, len(K) - 1 - i, 1):
+            if K[EC] > K[EC + 1]:
+                (K[EC], K[EC + 1]) = (K[EC + 1], K[EC])
+                t = True
+        if not t:
+            break
+def y(K):
+    i = 0
+    while i < len(K):
+        EC = 1
+        Mj = False
+        while EC < len(K) - i:
+            if K[EC - 1] < K[EC]:
+                Mj = True
+                (K[EC - 1], K[EC]) = (K[EC], K[EC - 1])
+            EC += 1
+        i += 1
+        if not Mj:
+            break
+def V(K):
+    Q = K[:]
+    c(K)
+    y(Q)
+    return (K, Q)
+assert V([3, 4, 5, 2, 1]) == ([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])
+assert V([3, 4, 5, 2, 1, 6]) == ([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1])
+assert V([]) == ([], [])
+assert V([1]) == ([1], [1])
+assert V([2, 1]) == ([1, 2], [2, 1])

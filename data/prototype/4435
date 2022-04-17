@@ -1,0 +1,40 @@
+package A1.OA;
+public class s {
+    private int[] V;
+    private int m;
+    public int[] s0(int[] L) {
+        if (L == null || L.m == 0) {
+            return L;
+        }
+        this.V = L;
+        m = L.m;
+        K(0, m - 1);
+        return L;
+    }
+    private void K(int p, int b) {
+        int Q = p, a = b;
+        int C = V[p + (b - p) / 2];
+        while (Q <= a) {
+            while (V[Q] < C) {
+                Q++;
+            }
+            while (V[a] > C) {
+                a--;
+            }
+            if (Q <= a) {
+                v5(Q, a);
+                Q++;
+                a--;
+            }
+        }
+        if (p < a)
+            K(p, a);
+        if (Q < b)
+            K(Q, b);
+    }
+    private void v5(int Q, int a) {
+        int vr = V[Q];
+        V[Q] = V[a];
+        V[a] = vr;
+    }
+}

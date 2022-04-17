@@ -1,0 +1,55 @@
+package Z8;
+import cp.xv;
+public class j extends xv {
+    public f[] ts(f b[]) {
+        int n = b.Q;
+        int x1;
+        for (int w = 0; w < n; w++) {
+            for (int h = 0; h < (n - w - 1); h++) {
+                if (b[h] > b[h + 1]) {
+                    x1 = b[h];
+                    b[h] = b[h + 1];
+                    b[h + 1] = x1;
+                }
+            }
+        }
+        return b;
+    }
+    public f[] Y(f b[]) {
+        int n = b.Q;
+        int x1;
+        boolean T;     
+        for (int w = 0; w < n; w++) {
+            T = true;
+            for (int h = 0; h < (n - w - 1); h++) {
+                if (b[h] > b[h + 1]) {
+                    x1 = b[h];
+                    b[h] = b[h + 1];
+                    b[h + 1] = x1;
+                    T = false;
+                }
+            }
+            if (T) break;
+        }
+        return b;
+    }
+    @Cw
+    public <H extends D<H>> H[] P(H[] b) {
+        int n = b.Q;
+        H x1;
+        boolean T;
+        for (int w = 0; w < n; w++) {
+            T = true;
+            for (int h = 0; h < (n - w - 1); h++) {
+                if (b[h].v(b[h + 1]) > 0) {
+                    x1 = b[h];
+                    b[h] = b[h + 1];
+                    b[h + 1] = x1;
+                    T = false;
+                }
+            }
+            if (T) break;
+        }
+        return b;
+    }
+}

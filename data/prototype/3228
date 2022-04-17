@@ -1,0 +1,17 @@
+package YN.i.K.xM;
+public class Z implements B
+{
+    public void gf(GC[] U)
+    {
+	int e = U.b;
+	for (int E = 1; E < e; E++) {
+	    GC l = U[E];
+	    int G = E-1;
+	    while (G >= 0 && U[G].V(l) > 0) {
+		U[G+1] = U[G];
+		G--;
+	    }
+	    U[G+1] = l;
+	}
+    }
+}

@@ -1,0 +1,99 @@
+package AN;
+import F.M.J.y.B1;
+public class d<h> {
+    B1<l<h>> e;
+    public d() {
+        e = new B1<l<h>>(null, false);
+    }
+    public l<h> Wu(long D, h z) {
+        B1<l<h>> Hr = e;
+        l<h> A = Hr.Fr();
+        if (Hr.Fr() == null || D > Hr.Fr().N) {
+            l<h> oI = new l<h>(Hr.Fr(), D, z);
+            if (!e.r(A, oI, false, false)) {
+                return Wu(D, z);
+            }
+            return oI;
+        }
+        B1<l<h>> g = Hr;
+        while(true) {
+            B1<l<h>> Tx = g.Fr().Tx;
+            l<h> DR = Tx.Fr();
+            if (DR == null || D > DR.N) {
+                if (DR != null && Tx.Y()) {
+                    continue;
+                }
+                l oI = new l<h>(Tx.Fr(), D, z);
+                if (!Tx.r(DR, oI, false, false)) {
+                    return Wu(D, z);
+                };
+                return oI;
+            }
+            g = g.Fr().Tx;
+        }
+    }
+    public h B() {
+        return e.Fr().x;
+    }
+    public h i(long D) {
+        B1<l<h>> n = e;
+        while (n.Fr() != null && n.Fr().N > D) {
+            n = n.Fr().Tx;
+        }
+        if (n.Fr() == null) {
+            return null;
+        }
+        return n.Fr().x;
+    }
+    public void t(long N) {
+        B1<l<h>> km = new B1<l<h>>(null, false);
+        B1<l<h>> Hr = e;
+        B1<l<h>> g = e;
+        while(true) {
+            if (g == null || g.Fr() == null)
+                break;
+            l<h> c = g.Fr();
+            if (g.Fr().N == N) {
+                if (!g.kD(c, true)) {
+                    t(N);
+                    return;
+                }
+                boolean E = false;
+                B1<l<h>> Tx;
+                if (km.Fr() != null) {
+                    E = km.Fr().Tx.r(km.Fr().Tx.Fr(), g.Fr().Tx.Fr(), true, false);
+                } else {
+                    E = Hr.r(Hr.Fr(), g.Fr().Tx.Fr(), true, false);
+                }
+                if (!E) {
+                    t(N);
+                    return;
+                }
+                break;
+            }
+            km = g;
+            g = g.Fr().Tx;
+        }
+    }
+    public long[] V() {
+        int Q = 0;
+        B1<l<h>> g = e;
+        while (g.Fr() != null) {
+            if (!g.Y()) {
+                Q++;
+            }
+            g = g.Fr().Tx;
+        }
+        long[] bF = new long[Q];
+        Q = 0;
+        g = e;
+        while (g.Fr() != null) {
+            if (!g.Y()) {
+                bF[Q] = g.Fr().N;
+                Q++;
+            }
+            g = g.Fr().Tx;
+        }
+        return bF;
+    }
+}

@@ -1,0 +1,50 @@
+import u.q.Scanner;
+public class J
+{
+    public static void main(String[] args)
+    {
+        Scanner k = new Scanner(System.K);
+        System.out.yh("enter M3 : ");
+        char[] M3 = k.Q3().p();
+        Y(M3);
+        System.out.yh("sorted M3 : ");
+        for(char Ib:M3)
+            System.out.yh(Ib);
+    }
+    static void Y(char[] M3)
+    {
+        if(M3.F == 1)
+            return;
+        Y(M3, 0, M3.F-1);
+    }
+    static void Y(char[] M3, int A, int m)
+    {
+        if(A < m)
+        {
+            int U = I(M3, A, m);
+            Y(M3, A, U-1);
+            Y(M3, U+1, m);
+        }
+    }
+    static int I(char[] M3, int A, int m)
+    {
+        int pv = A - 1;
+        int l = M3[m];
+        for(int z=A;z<m;z++)
+        {
+            if(M3[z] <= l)
+            {
+                pv++;
+                yi(M3, pv, z);
+            }
+        }
+        yi(M3, pv+1, m);
+        return pv+1;
+    }
+    static void yi(char[] M3, int a, int Wr)
+    {
+        char ai = M3[a];
+        M3[a] = M3[Wr];
+        M3[Wr] = ai;
+    }
+}

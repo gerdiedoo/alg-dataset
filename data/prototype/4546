@@ -1,0 +1,46 @@
+package q.T.SV.l;
+import q.T.SV.xU.z;
+import q.T.SV.xU.M6;
+import q.T.SV.xU.BL;
+public final class R extends z {
+	public static final M6 V = new R();
+	public void vQ(BL P) {
+		vQ(P, 0, P.r());
+	}
+	private static void vQ(BL P, int H, int N) {
+		if (H == N)
+			return;
+		P.y(H, N, BL.Yo.G);
+		int W = H;
+		int u1 = N - 1;
+		int s = W;   
+		while (W != u1) {
+			while (P.Z(u1, s) >= 0 && W != u1) {
+				P.a(u1, BL.Yo.D);
+				u1--;
+			}
+			if (W != u1) {
+				P.m(W, u1);
+				s = u1;
+				P.a(W, BL.Yo.D);
+				W++;
+			}
+			while (P.Z(W, s) <= 0 && W != u1) {
+				P.a(W, BL.Yo.D);
+				W++;
+			}
+			if (W != u1) {
+				P.m(u1, W);
+				s = W;
+				P.a(u1, BL.Yo.D);
+				u1--;
+			}
+		}
+		P.a(s, BL.Yo.e);
+		vQ(P, H, s);
+		vQ(P, s + 1, N);
+	}
+	private R() {
+		super("Quick vQ (double-ended)");
+	}
+}

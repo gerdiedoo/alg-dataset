@@ -1,0 +1,35 @@
+from typing import List
+def h(cz: e[X], S: e[X], z: X, mP: X, u: X) -> None:
+    for v in x(z, u + 1):
+        S[v] = cz[v]
+    V = z
+    T = mP + 1
+    for j in x(z, u + 1):
+        if V > mP:
+            cz[j] = S[T]
+            T += 1
+        elif T > u:
+            cz[j] = S[V]
+            V += 1
+        elif S[T] < S[V]:
+            cz[j] = S[T]
+            T += 1
+        else:
+            cz[j] = S[V]
+            V += 1
+def k(cz: e[X], S: e[X], z: X, u: X) -> None:
+    if z >= u:
+        return
+    mP = z + (u - z) // 2
+    k(cz, S, z, mP)
+    k(cz, S, mP + 1, u)
+    h(cz, S, z, mP, u)
+def KQ(cz: e[X]) -> None:
+    S = [0 for s in x(len(cz))]
+    k(cz, S, 0, len(cz) - 1)
+def w():
+    W = [9, 8, 1, 3, 0, 7, 6, 4, 5, 2]
+    KQ(W)
+    print(W)
+if o == '__main__':
+    w()

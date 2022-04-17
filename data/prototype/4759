@@ -1,0 +1,10 @@
+def Q(o):
+    for O in s(len(o)):
+        d = O
+        for t in s(O + 1, len(o)):
+            if o[t] < o[d]:
+                d = t
+        (o[O], o[d]) = (o[d], o[O])
+A = [12, 8, 3, 20, 11]
+Q(A)
+print(A)

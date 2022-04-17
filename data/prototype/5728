@@ -1,0 +1,32 @@
+print('******** MERGE SORT *********')
+def r(V):
+    if len(V) > 1:
+        S = len(V) // 2
+        g = V[:S]
+        d = V[S:]
+        r(g)
+        r(d)
+        SP = J = i = 0
+        while SP < len(g) and J < len(d):
+            if g[SP] < d[SP]:
+                V[i] = g[SP]
+                SP += 1
+            else:
+                V[i] = d[J]
+                J += 1
+            i += 1
+        while SP < len(g):
+            V[i] = g[SP]
+            SP += 1
+            i += 1
+        while J < len(d):
+            V[i] = d[J]
+            J += 1
+            i += 1
+if P == '__main__':
+    b = N2(input('Enter the no. of elements: '))
+    C = input('Enter your array here : ').split(' ')
+    V = [N2(h) for h in C]
+    r(V)
+    print('**** SORTED ARRAY ****')
+    print(V)

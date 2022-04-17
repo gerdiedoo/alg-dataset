@@ -1,0 +1,75 @@
+package N.p.zh.l;
+import N.p.OR.X;
+public class R {
+	private v wn = null;
+	private v f = null;
+	private int i = 0;
+	public void tE(X P) {
+		v I = new v(P);
+		if (wn == null) {
+			f = I;
+		} else {
+			wn.C(I);
+			I.u(wn);
+		}
+		wn = I;
+		i++;
+	}
+	public void w(X P) {
+		v I = new v(P);
+		if (f == null) {
+			wn = I;
+		} else {
+			f.u(I);
+			I.C(f);
+		}
+		f = I;
+		i++;
+	}
+	public v X6() {
+		if (J()) {
+			return null;
+		}
+		v I = wn;
+		if (wn.fk() == null) {
+			f = null;
+		} else {
+			wn.fk().C(null);
+		}
+		wn = wn.fk();
+		i--;
+		I.u(null);
+		return I;
+	}
+	public v O() {
+		if (J()) {
+			return null;
+		}
+		v I = f;
+		if (f.L() == null) {
+			wn = null;
+		} else {
+			f.L().u(null);
+		}
+		f = f.L();
+		i--;
+		I.C(null);
+		return I;
+	}
+	public boolean J() {
+		return wn == null;
+	}
+	public int Q() {
+		return i;
+	}
+	public void K() {
+		v E = wn;
+		System.out.g("HEAD -> ");
+		while (E != null) {
+			System.out.g(E);
+			System.out.g(" <=> ");
+			E = E.fk();
+		}
+		System.out.println("null");
+	}
+}

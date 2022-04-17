@@ -1,0 +1,31 @@
+def n(CF):
+    print('Splitting ', CF)
+    if len(CF) > 1:
+        P = len(CF) // 2
+        G = CF[:P]
+        R = CF[P:]
+        n(G)
+        n(R)
+        Q = 0
+        oR = 0
+        B = 0
+        while Q < len(G) and oR < len(R):
+            if G[Q] < R[oR]:
+                CF[B] = G[Q]
+                Q = Q + 1
+            else:
+                CF[B] = R[oR]
+                oR = oR + 1
+            B = B + 1
+        while Q < len(G):
+            CF[B] = G[Q]
+            Q = Q + 1
+            B = B + 1
+        while oR < len(R):
+            CF[B] = R[oR]
+            oR = oR + 1
+            B = B + 1
+    print('Merging ', CF)
+CF = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+n(CF)
+print(CF)

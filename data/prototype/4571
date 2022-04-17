@@ -1,0 +1,95 @@
+package n.H.A.M.f;
+import n.H.A.M.*;
+import n.H.A.q.w;
+public class m implements vZ, F3 {
+  public void A(int[] k) {
+    f(k, 0, k.d - 1);
+  }
+  @Q
+  public boolean B(int X) {
+    return X <= 2 << 12;
+  }
+  private void f(int[] k, int W, int u) {
+    if (W >= u) return;
+    int p = S(k, W, u);
+    f(k, W, p - 1);
+    f(k, p + 1, u);
+  }
+  @Q
+  public int S(int[] k, int W, int u) {
+    int l = k[u];
+    int C = W;
+    int Pi = u - 1;
+    while (C < Pi) {
+      while (k[C] < l) {
+        C++;
+      }
+      while (Pi > W && k[Pi] >= l) {
+        Pi--;
+      }
+      if (C < Pi) {
+        w.Y(k, C, Pi);
+        C++;
+        Pi--;
+      }
+    }
+    if (C == Pi && k[C] < l) {
+      C++;
+    }
+    if (k[C] != l) {
+      w.Y(k, C, u);
+    }
+    return C;
+  }
+  @Q
+  public void A(int[] k, Jj K) {
+    f(k, 0, k.d - 1, K);
+  }
+  private void f(int[] k, int W, int u,
+                         Jj K) {
+    if (W >= u) return;
+    int p = S(k, W, u, K);
+    f(k, W, p - 1, K);
+    f(k, p + 1, u, K);
+  }
+  public int S(int[] k, int W, int u, Jj K) {
+    int l = k[u];
+    int C = W;
+    int Pi = u - 1;
+    while (C < Pi) {
+      K.V();
+      while (true) {
+        K.NP();
+        K.N();
+        if (!(k[C] < l)) break;
+        C++;
+      }
+      while (true) {
+        K.NP();
+        K.N();
+        if (!(Pi > W && k[Pi] >= l)) break;
+        Pi--;
+      }
+      if (C < Pi) {
+        w.Y(k, C, Pi);
+        K.TM(2);
+        C++;
+        Pi--;
+      }
+    }
+    if (C == Pi) {
+      K.N();
+      K.NP();
+      if (k[C] < l) {
+        C++;
+      }
+    }
+    K.N();
+    K.NP();
+    if (k[C] != l) {
+      w.Y(k, C, u);
+      K.TM(2);
+    }
+    return C;
+  }
+}

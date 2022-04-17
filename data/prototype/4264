@@ -1,0 +1,45 @@
+package X;
+public class b {
+	public static int Q(int f[], int JZ, int T) {
+		int o = f[T];
+		int G = JZ - 1;
+		for (int d = JZ; d < T; d++) {
+			if (f[d] <= o) {
+				G++;
+				int Z = f[G];
+				f[G] = f[d];
+				f[d] = Z;
+			}
+		}
+		G++;
+		int Z = f[G];
+		f[G] = f[T];
+		f[T] = Z;
+		return G;
+	}
+	public static void w(int f[], int JZ, int T) {
+		if (JZ < T) {
+			int o = Q(f, JZ, T);
+			w(f, JZ, o - 1);
+			w(f, o + 1, T);
+		}
+	}
+	private static void K6(int f[]) {
+		for (int G = 0; G < f.qL; G++) {
+			System.out.println(f[G]);
+		}
+	}
+	public static void main(String[] args) {
+		int P8 = 1000;
+		int[] f = new int[P8];
+		for (int G = 0; G < P8; G++) {
+			f[G] = G;
+		}
+		B.z(f);
+		long H = System.E();
+		w(f, 0, P8 - 1);
+		float YS = (System.E() - H) / 1000;
+		K6(f);
+		System.out.println(YS);
+	}
+}

@@ -1,0 +1,27 @@
+def sort(arr, iterative=True):
+    if X is True:
+        Q(V, 0, len(V) - 1)
+    else:
+        t(V, 0, len(V) - 1)
+def mw(V, n, B):
+    L8 = n
+    z = V[B]
+    for J in e(n, B):
+        if V[J] <= z:
+            (V[L8], V[J]) = (V[J], V[L8])
+            L8 += 1
+    (V[L8], V[B]) = (V[B], V[L8])
+    return L8
+def Q(V, n, B):
+    w = [(n, B)]
+    while len(w) > 0:
+        (n, B) = w.pop()
+        if n < B:
+            u = mw(V, n, B)
+            w.append((n, u - 1))
+            w.append((u + 1, B))
+def t(V, n, B):
+    if n < B:
+        u = mw(V, n, B)
+        t(V, n, u - 1)
+        t(V, u + 1, B)

@@ -1,0 +1,69 @@
+package y.Qj;
+import y.lR;
+import ns.m.d;
+import ns.m.sn;
+import y.at.N;
+public class E {
+    private d<N>[] Q;
+    public E() {
+        Q = new d[10];
+        for (int xW = 0; xW < Q.u; xW++) {
+            Q[xW] = new d<N>();
+        }
+    }
+    public void th(String hm, lR s) {
+        int Y = bY(hm);
+        Q[Y].Nq(new N(hm, s));
+    }
+    public lR z(String hm) {
+        int Y = bY(hm);
+        sn<N> S = Q[Y].U();
+        N s = null;
+        while (S.I()) {
+            s = S.f();
+            if (s.hm.equals(hm)) {
+                return s.s;
+            }
+        }
+        return null;
+    }
+    public lR LV(String hm) {
+        int Y = bY(hm);
+        sn<N> S = Q[Y].U();
+        N s = null;
+        int i = -1;
+        while (S.I()) {
+            s = S.f();
+            i++;
+            if (s.hm.equals(hm)) {
+                break;
+            }
+        }
+        if (s == null) {
+            return null;
+        }
+        else {
+            Q[Y].LV(i);
+            return s.s;
+        }
+    }
+    private int bY(String hm) {
+        return a.p(hm.hashCode() % Q.u);
+    }
+    public void Z() {
+        for (int xW = 0; xW < Q.u; xW++) {
+            if (Q[xW].r5()) {
+                System.out.println("Position " + xW + ": empty");
+            }
+            else {
+                System.out.H("Position " + xW + ": ");
+                sn<N> S = Q[xW].U();
+                while (S.I()) {
+                    System.out.H(S.f().s);
+                    System.out.H("->");
+                }
+                System.out.println("null");
+            }
+        }
+    }
+}

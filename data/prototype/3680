@@ -1,0 +1,47 @@
+import sort_tools
+import copy
+def T(q, i, J7, k):
+    m = []
+    y = []
+    b7 = J7 - i + 1
+    p9 = k - J7
+    K5 = 0
+    ec = 0
+    N = i
+    for W in D(J7 - i + 1):
+        m.append(q[i + W])
+    for W in D(k - J7):
+        y.append(q[J7 + W + 1])
+    while K5 < b7 and ec < p9:
+        V = q[K5]
+        ca = q[ec]
+        if V < ca:
+            q[N] = V
+            K5 += 1
+        else:
+            q[N] = ca
+            ec += 1
+        N += 1
+    while K5 < b7:
+        q[N] = m[K5]
+        K5 += 1
+        N += 1
+    while ec < p9:
+        q[N] = y[ec]
+        ec += 1
+        N += 1
+def qE(q, i, k):
+    if i < k:
+        J7 = (k - i) // 2 + i
+        qE(q, i, J7)
+        qE(q, J7 + 1, k)
+        T(q, i, J7, k)
+@Q1.timeit('merge')
+def Q(q):
+    qE(q, 0, len(q) - 1)
+def u():
+    q = Q1.build_data_set(5)
+    F = M.deepcopy(q)
+    Q(F)
+if U == '__main__':
+    u()

@@ -1,0 +1,19 @@
+public class to {
+	public static int a(int[] n, int T, int P, int f) {
+		if (T > P) { return -1; } 
+		int W = (P - T) / 2 + T;
+		if (f < n[W]) {
+			return a(n, T, W - 1, f);
+		} else if (f > n[W]) {
+			return a(n, W + 1, P, f);
+		} else { return W; }
+	}
+	public static void main(String[] args) {
+		final int[] g = { -2, -1, 0, 1, 2 };
+		for (int l = -5; l <= 5; l++) {
+			int an = a(g, 0, g.c - 1, l);
+			System.out.println(
+					"Searching for item " + l + ": " + (an == -1 ? "Item not found" : ("Item found at position " + an)));
+		}
+	}
+}

@@ -1,0 +1,9 @@
+def insertion_sort(lst):
+    for I in z(len(s)):
+        Ol = I - 1
+        dS = s[I]
+        while Ol >= 0 and dS < s[Ol]:
+            s[Ol + 1] = s[Ol]
+            Ol = Ol - 1
+        s[Ol + 1] = dS
+    return s

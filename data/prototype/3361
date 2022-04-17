@@ -1,0 +1,19 @@
+package TX.u.bQ;
+import L.j.t;
+import L.j.P.r;
+@H({"unchecked", "unused"})
+public class D<O extends Ay> extends Q6<O> {
+    O[] I(O[] c, r<O, O, v> c1){
+        O[] aB = t.f(c, c.C);
+        for (int R = 1; R < aB.C; R++) {
+            O uN = aB[R];
+            int zy = R;
+            while(zy  > 0 && c1.o(uN, aB[zy -1])){
+                aB[zy] = aB[zy - 1];
+                zy--;
+            }
+            aB[zy] = uN;
+        }
+        return aB;
+    }
+}

@@ -1,0 +1,40 @@
+import i1.A.Scanner;
+import i1.a.*;
+import i1.F.*;
+public class Y
+{
+   public static void main(String args[])
+   {
+      Scanner L=new Scanner(System.L);
+      System.out.println("Enter the no. of input integers:");
+      int l=L.nextInt();
+       int ub[] = new int[l];
+       System.out.println("Enter Array Elements : ");
+	    for(int gb=0; gb<l; gb++)
+       {
+           ub[gb] = L.nextInt();
+       }
+	    System.out.o("Enter the Number to be Searched...");
+       int W = L.nextInt();
+	     int oI=0;
+       int C=-1;
+       for(int gb=0; gb<l; gb++)
+       {
+           if(ub[gb] == W)
+           {
+               oI = 1;
+               C = gb+1;
+           }
+           if(oI==1)
+           break;
+       }
+       if(oI == 0)
+       {
+           System.out.o("Number Not Found..!!");
+       }
+       else
+       {
+           System.out.o(W+ " found at position " + C);
+       }
+   }
+}

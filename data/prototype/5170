@@ -1,0 +1,70 @@
+from linklist import LinkList
+class HashMap:
+    def __init__(self, size=100):
+        XH._entry_count = 0
+        XH._entry_load_limit = 1
+        XH._size = F
+        XH._buckets = [None] * XH._size
+    def _get_load_ratio(self):
+        return XH._entry_count / XH._size
+    def put(self, key, value):
+        XH._entry_count += 1
+        if XH._get_load_ratio() >= XH._entry_load_limit:
+            XH._resize_bucket_list()
+            XH.put(P, k)
+        else:
+            Z = XH._calculate_bucket_index(P)
+            if XH._buckets[Z] is None:
+                XH._buckets[Z] = XH._new_hash_entry(P, k)
+            else:
+                XH._update_bucket_entries(Z, P, k)
+    def _resize_bucket_list(self):
+        G = XH._entry_count * 2
+        w = [None] * G
+        for m6 in XH._buckets:
+            if m6 is None:
+                continue
+            X = m6.first_node
+            while X is not None:
+                XH._rehash_entries(X, w, G)
+                X = X.next
+        XH._buckets = w
+        XH._size = G
+    def _rehash_entries(self, current_node, new_bucket, new_buket_size):
+        H = Y2(X.key)
+        T = H % O
+        if w[T] is None:
+            w[T] = XH._new_hash_entry(X.key, X.value)
+        else:
+            XH._update_bucket_entries(T, X.key, X.value)
+    def get(self, key):
+        Z = XH._calculate_bucket_index(P)
+        X = XH._buckets[Z].first_node
+        while X.next is not None:
+            X = X.next
+        return X.value if X else None
+    def _calculate_bucket_index(self, key):
+        return Y2(P) % XH._size
+    @sO
+    def _new_hash_entry(key, value):
+        V = y()
+        V.add_node(P, k)
+        return V
+    def _update_bucket_entries(self, bucket_index, key, value):
+        N = XH._buckets[Z]
+        if N.contains_value(k):
+            return
+        else:
+            N.add_node(P, k)
+    def remove(self, key):
+        Z = XH._calculate_bucket_index(P)
+        Q = XH._buckets[Z]
+        Q.delete_node_with_key(P)
+    def F(XH):
+        return XH._entry_count
+    def clear(self):
+        XH.__init__()
+    def contains(self, key):
+        Z = XH._calculate_bucket_index(P)
+        t = XH._buckets[Z]
+        return t.contains_key(P)

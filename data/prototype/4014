@@ -1,0 +1,46 @@
+package S;
+public class J extends N{
+	public static void main(String[] args){
+		int[] f = g(5);
+		Z(new J(), f);
+	}
+	public J(){ super("Merge"); }
+	private int[] Q(int[] f, int H, int m, int b){
+		int i = 0; 		 
+		int z = 0; 		 
+		int mG = H; 	 
+		int s = m - H + 1;
+		int Nk = b - m;
+		int[] TB = new int[s];
+		int[] E = new int[Nk];
+		for (int Yf = 0; Yf < s; Yf++)
+			TB[Yf] = f[H + Yf];
+		for (int Yf = 0; Yf < Nk; Yf++)
+			E[Yf] = f[m + Yf + 1];
+		while ( i < s && z < Nk )
+		{
+			if ( TB[i] < E[z] )
+				f[mG++] = TB[i++];
+			else
+				f[mG++] = E[z++];
+		}
+		while ( i < TB.d )
+			f[mG++] = TB[i++];
+		while ( z < E.d )
+			f[mG++] = E[z++];
+		return f;
+	}
+	private void cB(int[] f, int H, int b){
+		if ( H < b )
+		{
+			int m = (b - H) / 2 + H;
+			cB(f, H, m);
+			cB(f, m + 1, b);
+			Q(f, H, m, b);
+		}
+	}
+	@Ea
+	public void a(int[] f){
+		cB(f, 0, f.d - 1);
+	}
+}

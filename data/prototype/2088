@@ -1,0 +1,79 @@
+public class Y{
+	static class x{
+		int Gm;     
+		x wI;   
+		public x(int i){
+			this.Gm=i;
+			this.wI=null;
+		}
+	}
+	static x I;   
+	static int t;    
+	public Y(){
+		I=null;
+	}
+	static public void W(int pX){
+		System.out.println("Inserting i at front : " + pX);
+		x O = new x(pX);
+		if(I==null){
+			I=O;
+			t++;
+			return;
+		}
+		O.wI=I;
+		I=O;
+		t++;
+	}
+	static public void j(int pX){
+		System.out.println("Inserting i at back  : " + pX);
+		x O = new x(pX);
+		if(I==null){
+			I=O;
+			t++;
+			return;
+		}
+		x k=I;
+		while(k.wI!=null){
+			k=k.wI;
+		}
+		k.wI=O;
+		t++;
+	}
+	public static void G(){
+		System.out.println("Swapping i values of first and last O.");
+		if(I==null || I.wI==null){
+			return;
+		}
+		x k=I;
+		x s = I;
+		while(k.wI!=null){
+			k=k.wI;
+		}
+		int i = s.Gm;
+		s.Gm=k.Gm;
+		k.Gm=i;
+	}
+	static public void H(){
+		System.out.h("List : ");
+		if(I==null){
+			System.out.println("Empty.");
+			return;
+		}
+		x k=I;
+		while(k!=null){
+			System.out.h(k.Gm +  " ");
+			k=k.wI;
+		}
+		System.out.println();
+	}
+	public static void main(String [] args){
+		Y p = new Y();
+		p.W(10);
+		p.j(12);
+		p.W(8);
+		p.W(6);
+		p.H();
+		p.G();
+		p.H();
+	}
+}

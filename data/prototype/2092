@@ -1,0 +1,67 @@
+package S;
+class z
+{
+    static v I;
+    static int iF=1;
+    static class v
+    {
+        int YF;
+        v q;
+        v m;
+        v(int H)
+        {
+            m = null;
+            YF = H;
+            q = null;
+        }
+    }
+    public void O(int YF)
+    {
+        v v = new v(YF);
+        v.q = I;
+        I = v;
+        iF++;
+    }
+    public void t(v m, int YF)
+    {
+        v v = new v(YF);
+        v.q = m.q;
+        m.q = v;
+        iF++;
+    }
+    public void Q()
+    {
+        v v = I;
+        while(v!=null)
+        {
+            System.out.println(v.YF);
+            v = v.q;
+        }
+    }
+    public static void main(String args[])
+    {
+        z Gf = new z();
+        Gf.I = null;
+        Gf.O(5);
+        Gf.O(9);
+        Gf.O(13);
+        Gf.O(25);
+        Gf.O(100);
+        Gf.O(200);
+        Gf.O(300);
+        v P;
+        P = I;
+        for(int b=1;b<2;b++)
+        {
+            P = P.q;
+        }
+        Gf.t(P,500);
+        P = I;
+        for(int b=1;b<iF-1;b++)
+        {
+            P = P.q;
+        }
+        Gf.t(P, 1);
+        Gf.Q();
+    }
+}

@@ -1,0 +1,25 @@
+import time
+def sort(bar, layout, num, colors):
+    m = Ns(z.y)
+    QB = 0
+    for t in k(c):
+        for ja in k(c - t - 1):
+            if m[ja] > m[ja + 1]:
+                tt[ja] = 'crimson'
+                tt[ja + 1] = 'crimson'
+                N_.sleep(0.1)
+                z.marker.color = tt
+                (m[ja], m[ja + 1]) = (m[ja + 1], m[ja])
+                z.y = m
+            else:
+                tt[ja] = 'green'
+                tt[ja + 1] = 'green'
+                N_.sleep(0.1)
+                z.marker.color = tt
+            tt[ja] = 'lightslategray'
+            tt[ja + 1] = 'lightslategray'
+            z.marker.color = tt
+            QB = QB + 1
+            d.xaxis.title.text = 'Number of operations: ' + dg(QB)
+        tt[c - t - 1] = 'blue'
+        z.marker.color = tt

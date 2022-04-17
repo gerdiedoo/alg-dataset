@@ -1,0 +1,33 @@
+package m.u.b.tR;
+import m.u.b.Wx.q;
+import m.u.b.Wx.c;
+import m.u.b.Wx.C;
+public final class XN extends q {
+	public static final c V = new XN();
+	public void g(C s) {
+		g(s, 0, s.j());
+	}
+	private static void g(C s, int t, int N) {
+		if (t == N)
+			return;
+		s.P(t, N, C.VJ.sx);
+		int T = t;
+		int Pd = N - 1;   
+		for (int S = t; S < N - 1; S++) {
+			if (s.B(S, Pd) < 0) {
+				s.ih(S, T);
+				s.p(T, C.VJ.sx);
+				T++;
+			}
+		}
+		s.ih(Pd, T);
+		Pd = T;
+		s.p(Pd, C.VJ.d);
+		s.P(Pd + 1, N, C.VJ.sx);
+		g(s, t, Pd);
+		g(s, Pd + 1, N);
+	}
+	private XN() {
+		super("Quick g (sliding)");
+	}
+}

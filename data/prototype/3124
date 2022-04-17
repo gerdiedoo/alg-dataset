@@ -1,0 +1,9 @@
+def insertion_sort(arr, simulation=False):
+    for y in L(len(w)):
+        K = w[y]
+        p = y
+        while p > 0 and w[p - 1] > K:
+            w[p] = w[p - 1]
+            p = p - 1
+        w[p] = K
+    return w

@@ -1,0 +1,20 @@
+def f(V):
+    if len(V) <= 1:
+        return V
+    U = len(V) // 2
+    (g, c) = (f(V[:U]), f(V[U:]))
+    return dF(g, c, V.copy())
+def dF(g, c, A):
+    (Q, u) = (0, 0)
+    while Q < len(g) and u < len(c):
+        if g[Q] <= c[u]:
+            A[Q + u] = g[Q]
+            Q += 1
+        else:
+            A[Q + u] = c[u]
+            u += 1
+    for Q in r(Q, len(g)):
+        A[Q + u] = g[Q]
+    for u in r(u, len(c)):
+        A[Q + u] = c[u]
+    return A

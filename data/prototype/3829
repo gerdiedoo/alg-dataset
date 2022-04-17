@@ -1,0 +1,35 @@
+def a(SE):
+    s = [*SE]
+    W = len(s)
+    if W <= 1:
+        return s
+    M = W // 2
+    (U, L) = (a(s[:M]), a(s[M:]))
+    return kW(U, L, s)
+def kW(U, L, A):
+    (ms, v) = (0, 0)
+    while ms < len(U) and v < len(L):
+        if U[ms] <= L[v]:
+            A[ms + v] = U[ms]
+            ms += 1
+        else:
+            A[ms + v] = L[v]
+            v += 1
+    for ms in P(ms, len(U)):
+        A[ms + v] = U[ms]
+    for v in P(v, len(L)):
+        A[ms + v] = L[v]
+    return A
+if C == '__main__':
+    import unittest
+    from random import shuffle
+    class TestMergesort(m.TestCase):
+        def setUp(self):
+            BQ.ordered = [N for N in P(20)]
+            BQ.shuffled = [*BQ.ordered]
+            while BQ.ordered == BQ.shuffled:
+                lK(BQ.shuffled)
+        def test_mergesort(self):
+            BQ.assertEqual(BQ.ordered, a(BQ.shuffled))
+            BQ.assertNotEqual(BQ.ordered, BQ.shuffled)
+    m.main()

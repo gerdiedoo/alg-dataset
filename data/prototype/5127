@@ -1,0 +1,142 @@
+import d.AV.*;
+public class B<z,p>{
+	static final int V = 1 << 2;
+	Qq<z,p>[] Tl;
+	int F;
+	int g6;
+	public B() {
+		g6 = V;
+	}
+	public B(int BE) {
+		this.g6 = BE;
+	}
+	class Qq<z, p> {
+		final int a;
+		final z b;
+		p k;
+		Qq<z,p> Y;
+		Qq(int a, z b, p k, Qq<z,p> Y) {
+			this.a = a;
+			this.b = b;
+			this.k = k;
+			this.Y = Y;
+		}
+		public z c() {
+			return b;
+		}
+		public p Qc() {
+			return k;
+		}
+		public final String toString() { return b + "=" + k; }
+		public final int hashCode() {
+			return Vz.hashCode(b) ^ Vz.hashCode(k);
+		}
+	}
+	static final int a(N b) {
+		return (b == null) ? 0 : b.hashCode();
+	}
+	public int F() {
+		return F;
+	}
+	public boolean U() {
+		return F == 0;
+	}
+	@yA("unchecked")
+	public p f(z b, p k) {
+		Qq<z, p> n;  int a = a(b);
+		if (Tl == null || Tl.X == 0) {
+			Tl = (Qq<z, p>[]) new Qq[g6];
+		}
+		int L = Tl.X;
+		int h = (L - 1) & a;
+		if (Tl[h] == null) {
+			Tl[h] = new Qq<z,p>(a, b, k, null);
+		} else {
+			Qq<z, p> m;
+			n = Tl[h];
+			if (n.a == a && 
+					n.b == b || (b != null && n.b.equals(b))){
+				m = n;
+			} else {
+				for (int yk = 0; ; yk++) {
+					System.out.println("LinkedList: Not " + n.b);
+					m = n.Y;
+					if (n.Y == null) {
+						n.Y = new Qq(a, b, k, null);
+						break;
+					}
+					if (m.a == a &&
+							(m.b == b || (b != null && m.b.equals(b)))) {
+						break;
+					}
+					n = m;
+				}
+			}
+			if (m != null) {
+				p wz = m.k;
+				m.k = k;
+				return wz;
+			}
+		}
+		F++;
+		return null;
+	}
+	public p M(N b) {
+		int a = a(b);
+		int L = Tl.X;
+		if (Tl != null && Tl.X > 0 && Tl[a & (L - 1)] != null) {
+			Qq<z, p> RY = Tl[a & (L - 1)];
+			if (RY.a == a && 
+					RY.b == b || (b != null && RY.b.equals(b))) {
+				return RY.k;
+			}
+			Qq<z, p> m = RY.Y;
+			if (RY.Y != null) {
+				do {
+					if (m.a == a &&
+							m.b == b || (m.b != null && m.b.equals(b))) {
+						return m.k;
+					} 
+				}while ((m = m.Y) != null);
+			}
+		}
+		return null;
+	}
+	public boolean G(N b) {
+		return M(b) != null;
+	}
+	public p j(N b) {
+		int a = a(b);
+		int L = Tl.X;
+		int h = a & (L - 1);
+		if (Tl != null && Tl.X > 0 && Tl[h] != null) {
+			Qq<z, p> r = Tl[h];
+			Qq<z, p> m = null; Qq<z, p> MT = null;
+			if (r.a == a && 
+					r.b == b || (b != null && r.b.equals(b))) {
+				MT = r;
+			}
+			m = r.Y;
+			if (r.Y != null) {
+				do {
+					if (m.a == a && 
+							m.b == b || (b != null && m.b.equals(b))) {
+						MT = m;
+						break;
+					}
+					r = m;
+				} while ((m = m.Y) != null);
+			}
+			if (MT != null) {
+				if (MT == r) {
+					Tl[h] = MT.Y;
+				} else {
+					r.Y = MT.Y;
+				}
+				F--;
+				return MT.k;
+			}
+		}
+		return null;
+	}
+}

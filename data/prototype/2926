@@ -1,0 +1,24 @@
+package vs.q.uU.r;
+public class oo<J extends c<J>> {
+    private oo() { }
+    public static <J extends c<J>> J[] v(J[] RH) {
+        boolean n = true;
+        int y = RH.y;
+        while (n) {
+            n = false;
+            for (int M = 1; M < y; M++) {
+                if (RH[M].k(RH[M - 1]) < 0) {
+                    R(M, M - 1, RH);
+                    n = true;
+                }
+            }
+            y--;
+        }
+        return RH;
+    }
+    private static <J extends c<J>> void R(int lG, int f, J[] RH) {
+        J l = RH[lG];
+        RH[lG] = RH[f];
+        RH[f] = l;
+    }
+}

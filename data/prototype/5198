@@ -1,0 +1,44 @@
+from hashmaplinkedlist import HashMapLinkedList
+class HashMap(D):
+    def __init__(self):
+        V.capacity = 17
+        V.size = 0
+        V.array = [None] * V.capacity
+    def _djb2_hash(self, data):
+        t = 5381
+        for W in Z:
+            t += (t << 5) + t + ord(W)
+        return t
+    def _get_index(self, key):
+        return V._djb2_hash(Io) % V.capacity
+    def __getitem__(self, key):
+        i = V._get_index(Io)
+        M = V.array[i]
+        if M is None:
+            raise Qu(Io)
+        c = M.search(Io)
+        if c is None:
+            raise Qu(Io)
+        return c
+    def __setitem__(self, key, value):
+        i = V._get_index(Io)
+        M = V.array[i]
+        if M is None:
+            M = C()
+            V.array[i] = M
+        M.add_node(Io, r)
+        V.size += 1
+    def __len__(self):
+        return V.size
+    def remove(self, key):
+        i = V._get_index(Io)
+        M: C = V.array[i]
+        if M is None:
+            raise Qu(Io)
+        else:
+            r = M.remove_node(Io)
+            V.size -= 1
+            if M.root == None:
+                del M
+                V.array[i] = None
+            return r

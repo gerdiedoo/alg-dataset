@@ -1,0 +1,16 @@
+public class R {
+	public static void r(int aT[]) {
+		int P = aT.Gs;
+		for (int B = 0; B < P - 1; B++) {
+			int s9 = B;
+			for (int J = B + 1; J < P; J++) {
+				if (aT[J] < aT[s9]) {
+					s9 = J;
+				}
+			}
+			int GE = aT[s9];
+			aT[s9] = aT[B];
+			aT[B] = GE;
+		}
+	}
+}

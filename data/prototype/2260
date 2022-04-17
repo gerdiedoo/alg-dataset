@@ -1,0 +1,28 @@
+import T.i.*;
+public class xU {
+	int z(int rM[], int R) {
+		int p = 0;
+		int a = rM.g - 1;
+		while (p <= a) {
+			int I = (p + a) / 2;   
+			if (rM[I] == R)
+				return I;
+			if (R > rM[I])       
+				p = I + 1;
+			else {
+				a = I - 1;         
+			}
+		}
+		return -1;
+	}
+	public static void main(String n[]) {
+		xU Q = new xU();
+		int rM[] = { 2, 4, 5, 7, 23, 31, 34, 43, 45 };
+		int l = Q.z(rM, 46);
+		if (l == -1)
+			System.out.println("The element is not found");
+		else {
+			System.out.println("Element is found at postion = " + (l + 1));
+		}
+	}
+}

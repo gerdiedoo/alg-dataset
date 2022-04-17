@@ -1,0 +1,33 @@
+import H.s.*;
+import H.h.*;
+import H.oV.*; 
+class Y
+{
+    static int F(int f[], int n, int Yw) 
+              { 
+        for (int B = 0; B < n; B++)
+        { 
+            if (f[B] == Yw) 
+                                       return B; 
+                         } 
+        return -1; 
+    } 
+     public static void main (String[] args) throws H.h.cU
+              {
+                         Scanner u=new Scanner(System.E);
+                         System.out.println("Enter array length");
+                         int n=u.nextInt();
+                         System.out.println("Enter array Elements");
+                         int B=0;
+                         int Dp[]=new int[n];
+  	       for(  ;B<n;B++)
+                         Dp[B]=u.nextInt();
+                         System.out.println("Enter number to be searched");
+                         int Yw=u.nextInt();
+                         int rU=F(Dp,n,Yw);
+                         if(rU!=-1)
+                                      System.out.println("Found on index "+rU);
+                        else
+                                      System.out.println("Not Found");
+                   } 
+}

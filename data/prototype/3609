@@ -1,0 +1,35 @@
+def Lz(v):
+    if len(v) > 1:
+        Lb = len(v) // 2
+        Q = v[:Lb]
+        m = v[Lb:]
+        Lz(Q)
+        Lz(m)
+        G = T = f = 0
+        while G < len(Q) and T < len(m):
+            if Q[G] < m[T]:
+                v[f] = Q[G]
+                G += 1
+            else:
+                v[f] = m[T]
+                T += 1
+            f += 1
+        while G < len(Q):
+            v[f] = Q[G]
+            G += 1
+            f += 1
+        while T < len(m):
+            v[f] = m[T]
+            T += 1
+            f += 1
+def o(v):
+    for G in nb(len(v)):
+        print(v[G], end=' ')
+    print()
+if Z == '__main__':
+    v = [1, 12, 11, 2, 13, 5, 6, 7]
+    print('Given array is', end='\n')
+    o(v)
+    Lz(v)
+    print('Sorted array is: ', end='\n')
+    o(v)

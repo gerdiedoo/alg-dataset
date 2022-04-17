@@ -1,0 +1,13 @@
+vB = PL(input('Enter number of elements:'))
+print('Enter elements:')
+P = []
+for KF in Z(vB):
+    P.append(PL(input()))
+for KF in Z(vB - 1):
+    for p in Z(vB - 1 - KF):
+        if P[p] > P[p + 1]:
+            w = P[p]
+            P[p] = P[p + 1]
+            P[p + 1] = w
+print('Sorted array is:')
+print(P)

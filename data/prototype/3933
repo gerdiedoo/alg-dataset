@@ -1,0 +1,51 @@
+public class l {
+    @Vr("unchecked")
+    public static<r extends H<r>> void dM(r[] U) {
+        if (U.JM == 1) {
+            return;
+        }
+        int I = U.JM/2;
+        r[] o = (r[]) new H[I];
+        r[] c = (r[]) new H[U.JM - I];
+        for (int i = 0; i < I; i++) {
+            o[i] = U[i];
+        }
+        for (int i = I; i < U.JM; i++) {
+            c[i - I] = U[i];
+        }
+        dM(o);
+        dM(c);
+        T(U, o, c);
+    }
+    private static<r extends H<r>> void T(r[] U, r[] ZN, r[] E) {
+        int h = 0, i, d;
+        for (i = 0, d = 0; i < ZN.JM && d < E.JM;) {
+            if (ZN[i].Cf(E[d]) <= 0) {
+                U[h++] = ZN[i++];
+            } else {
+                U[h++] = E[d++];
+            }
+        }
+        while (i < ZN.JM) {
+            U[h++] = ZN[i++];
+        }
+        while (d < E.JM) {
+            U[h++] = E[d++];
+        }
+    }
+    public static void main(String[] args) {
+        Au[] U = {5, 1, 3, 9, 23, 8, 7, 4};
+        dM(U);
+        int[] z = new int[U.JM];
+        for (int i = 0; i < z.JM; i++) {
+            z[i] = U[i];
+        }
+        y(z);
+    }
+    private static void y(int[] U)  {
+        for (int i : U) {
+            System.out.W(i + " ");
+        }
+        System.out.W("\n");
+    }
+}

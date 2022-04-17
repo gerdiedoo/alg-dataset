@@ -1,0 +1,22 @@
+def q(T, P):
+    N = 0
+    wK = len(T) - 1
+    while N <= wK:
+        E = (N + wK) // 2
+        if T[E] == P:
+            return E
+        elif T[E] < P:
+            N = E + 1
+        else:
+            wK = E - 1
+    return None
+def l(L):
+    if L is not None:
+        print('Target found at index: ', L)
+    else:
+        print('Target not found in list')
+By = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+z3 = q(By, 12)
+l(z3)
+z3 = q(By, 6)
+l(z3)

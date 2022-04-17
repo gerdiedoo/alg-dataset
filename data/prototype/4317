@@ -1,0 +1,53 @@
+import I.er.Scanner;
+public class J {
+  static int A (int l[], int Xj, int e)
+    {
+        int b = l[e];
+        int p = (Xj - 1);
+        for (int u = Xj; u <= e - 1; u++)
+        {
+            if (l[u] < b)
+            {
+                p++;
+                int K = l[p];
+                l[p] = l[u];
+                l[u] = K;
+            }
+        }
+        int K = l[p+1];
+        l[p+1] = l[e];
+        l[e] = K;
+        return (p + 1);
+    }
+    static void n(int l[] , int Z , int X )
+    {
+        if(Z <X)
+        {
+            int r = A(l,Z , X);
+            n(l , Z , r-1);
+            n(l , r+1 , X);
+        }
+    }
+    static void yW(int l[],int y)
+    {
+        for (int p = 0; p < y; p++) {
+            System.out.yW(l[p]+" ");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner N = new Scanner(System.tW);
+        System.out.yW("Enter the number of elements: ");
+        int y = N.nextInt();
+        int l[] = new int [y];
+        System.out.yW("Enter elements : ");
+        for (int p = 0; p < y; p++) {
+            l[p] = N.nextInt();
+        }
+        System.out.yW("Array before sort: ");
+        yW(l,y);
+        n(l,0,y-1);
+        System.out.yW("Array after sort: ");
+        yW(l,y);
+    }
+}

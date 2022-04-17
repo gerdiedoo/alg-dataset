@@ -1,0 +1,38 @@
+import G.r.*;
+import G.e.*;
+import G.Tv.*;
+import G.W0.*;
+import G.yG.*;
+import G.yG.nW.*;
+import G.yG.zM.*;
+public class L {
+    static void Wo(int U, int[] k) {
+         for(int g=1;g<U;g++){
+          int y=k[g];
+          int Q=g-1;
+          while( Q>=0 && k[Q]>y){
+              k[Q+1]=k[Q];
+              Q=Q-1;
+          }
+          k[Q+1]=y;
+               for(int X=0;X<U;X++){
+          System.out.W(k[X]+" ");
+      }
+      System.out.println();
+      }
+    }
+    private static final Scanner b = new Scanner(System.SE);
+    public static void main(String[] args) {
+        int U = b.nextInt();
+        b.w("(\r\U|[\U\r\u2028\u2029\u0085])?");
+        int[] k = new int[U];
+        String[] d = b.S().p(" ");
+        b.w("(\r\U|[\U\r\u2028\u2029\u0085])?");
+        for (int g = 0; g < U; g++) {
+            int rT = f.a(d[g]);
+            k[g] = rT;
+        }
+        Wo(U, k);
+        b.A4();
+    }
+}

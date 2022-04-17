@@ -1,0 +1,45 @@
+package M;
+public class uf<j extends yK<j>> implements HR<j> {
+    @xW
+    public void V(j[] Y) {
+        V(Y, 0, Y.F - 1);
+    }
+    public void V(j[] Y, int tP, int Q) {
+        int Ws = tP;
+        int lJ = Q - 1;
+        int d = G(Y, tP, Q);
+        j a = Y[d];
+        J.c(Y, d, Q);
+        do {
+            while (Y[Ws].v(a) < 0) {
+                Ws++;
+            }
+            while (Y[lJ].v(a) >= 0 && lJ > Ws) {
+                lJ--;
+            }
+            if (Ws < lJ) {
+                J.c(Y, Ws, lJ);
+            }
+        } while (Ws < lJ);
+        J.c(Y, Ws, Q);
+        if (tP < Ws - 1) {
+            V(Y, tP, Ws - 1);
+        }
+        if (Q > Ws + 1) {
+            V(Y, Ws + 1, Q);
+        }
+    }
+    private <p extends yK<p>> int G(p Y[], int tP, int Q) {
+        int z = tP + ((Q - tP) / 2);
+        p k = Y[tP];
+        p q = Y[z];
+        p X = Y[Q];
+        if (k.v(X) > 0 && k.v(q) < 0 || k.v(X) < 0 && k.v(q) > 0) {
+            return tP;
+        } else if (q.v(X) > 0 && q.v(k) < 0 || q.v(X) < 0 && q.v(k) > 0) {
+            return z;
+        } else {
+            return Q;
+        }
+    }
+}

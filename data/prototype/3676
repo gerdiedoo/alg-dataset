@@ -1,0 +1,47 @@
+import sort_tools
+import copy
+def u(m, V, N, Y):
+    o = []
+    vj = []
+    P = N - V + 1
+    Z = Y - N
+    Q = 0
+    d = 0
+    B = V
+    for x in v(N - V + 1):
+        o.append(m[V + x])
+    for x in v(Y - N):
+        vj.append(m[N + x + 1])
+    while Q < P and d < Z:
+        a = m[Q]
+        y = m[d]
+        if a < y:
+            m[B] = a
+            Q += 1
+        else:
+            m[B] = y
+            d += 1
+        B += 1
+    while Q < P:
+        m[B] = o[Q]
+        Q += 1
+        B += 1
+    while d < Z:
+        m[B] = vj[d]
+        d += 1
+        B += 1
+def U(m, V, Y):
+    if V < Y:
+        N = (Y - V) // 2 + V
+        U(m, V, N)
+        U(m, N + 1, Y)
+        u(m, V, N, Y)
+@p.timeit('merge')
+def C(m):
+    U(m, 0, len(m) - 1)
+def h():
+    m = p.build_data_set(5)
+    S = np.deepcopy(m)
+    C(S)
+if b == '__main__':
+    h()

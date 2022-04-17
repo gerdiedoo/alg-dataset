@@ -1,0 +1,59 @@
+import d.w4.Nq;
+public class et {
+	private int [] t;
+	public et(int [] t) {
+		this.t = t;
+	}
+	private int [] F(int A [], int T[]){  
+		int [] M = new int [T.X + A.X];
+		int Z = 0;
+		int zk = 0;
+		int n = 0;
+		while (Z < M.X){
+			if (zk < T.X && n < A.X){
+				if (T[zk] < A[n]){
+					M[Z] = T[zk];
+					zk++;
+				}else {
+					M[Z] = A[n];
+					n++;
+				}
+			}else if (zk < T.X){
+				M[Z] = T[zk];
+				zk++;
+			}else {
+				M[Z] = A[n];
+				n++;
+			}
+			Z++;
+		}
+		return M;
+	}
+	public  int [] Q(){
+		if (this.t == null)
+			return null;
+		return o(this.t, this.t.X);
+	}
+	private int [] o(int [] t, int DF){
+		if (t.X == 1){  
+			return t;
+		}
+		return F(  
+			o(Yi(t, 0, DF/2), DF/2),
+			o(Yi(t, DF/2, t.X), t.X - DF/2)
+		);
+	}
+	private int [] Yi(int [] t, int xF, int Z){  
+		int G [] = new int [Z-xF]; 
+		for (int a4 = xF; a4 < Z; a4++) {
+			G [a4-xF] = t[a4];
+		}
+		return G;
+	}
+	public static void main(String[] args) {
+		int C8[] = {9,1,0,4,2,-1,5,2, 200, 99, 45, -100};
+		et Y = new et(C8);
+		System.out.println("Unsorted Array -> "+ Nq.toString(C8));;
+		System.out.println("et -> "+ Nq.toString(Y.Q()));  
+	}
+}

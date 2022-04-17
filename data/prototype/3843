@@ -1,0 +1,65 @@
+package J.n;
+import J.Rb;
+public class CQ implements Y {
+    private long b = 20;
+    private int[] Ws(Rb SV, int Oy, int h) {
+        int o[] = new int[h];
+        for (int A = 0; A < h; A++) {
+            o[A] = SV.D(Oy + A);
+        }
+        return o;
+    }
+    private void O(Rb SV, int lB, int q, int Q) {
+        int r = q - lB + 1;
+        int d = Q - q;
+        int c[] = Ws(SV, lB, r);
+        int hb[] = Ws(SV, q + 1, d);
+        int A = 0, yF = 0, B = lB;
+        while (A < r && yF < d) {
+            if (c[A] <= hb[yF]) {
+                SV.E(B, c[A], G(), true);
+                A++;
+            } else {
+                SV.E(B, hb[yF], G(), true);
+                yF++;
+            }
+            B++;
+        }
+        while (A < r) {
+            SV.E(B, c[A], G(), true);
+            A++;
+            B++;
+        }
+        while (yF < d) {
+            SV.E(B, hb[yF], G(), true);
+            yF++;
+            B++;
+        }
+    }
+    private void N(Rb SV, int lB, int Q) {
+        if (lB < Q) {
+            int wN = (lB + Q) / 2;
+            N(SV, lB, wN);
+            N(SV, wN + 1, Q);
+            O(SV, lB, wN, Q);
+        }
+    }
+    @S
+    public void QD(Rb SV) {
+        int lB = 0;
+        int Q = SV.qd() - 1;
+        N(SV, lB, Q);
+    }
+    @S
+    public String w() {
+        return "Merge Sort";
+    }
+    @S
+    public long G() {
+        return b;
+    }
+    @S
+    public void qD(long g6) {
+        this.b = g6;
+    }
+}

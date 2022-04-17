@@ -1,0 +1,19 @@
+package o.p;
+import rl.W.h;
+public class M extends y2 {
+    public void Tf(int[] A) {
+        w = 0;
+        final int G = 1;
+        final int K = A.T;
+        for (int g = G; g < K; g++) {
+            int j = A[g];  
+            int uI = g - 1;
+            while ((uI >= 0) && (A[uI] > j)) {
+                A[uI + 1] = A[uI];
+                uI--;
+                w++;
+            }
+            A[uI + 1] = j;  
+        }
+    }
+}

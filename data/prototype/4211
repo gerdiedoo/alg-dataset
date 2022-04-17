@@ -1,0 +1,54 @@
+def q(V, hU, O):
+    if hU == O:
+        return
+    i = S(V, hU, O)
+    q(V, hU, i)
+    q(V, i + 1, O)
+def S(V, hU, O):
+    z = V[hU]
+    G = hU
+    dO = O
+    while G <= dO:
+        while True:
+            G += 1
+            if G >= len(V) or V[G] > z:
+                break
+        while True:
+            dO -= 1
+            if dO < 0 or V[dO] <= z:
+                break
+        if G < dO:
+            (V[G], V[dO]) = (V[dO], V[G])
+    (V[hU], V[dO]) = (V[dO], V[hU])
+    return dO
+def I():
+    n = [1000, 10, 16, 8, 12, 15, 6, 3, 9, 5, 1000000]
+    K = r(n)
+    q(n, 0, len(n))
+    assert n == K
+def Z_():
+    n = [1000, 5, 100, 8, 0, 1000000, 9]
+    K = r(n)
+    q(n, 0, len(n))
+    assert n == K
+def s():
+    n = [1000, 5, 100, 8, 0, 1, 4, 9]
+    K = r(n)
+    q(n, 0, len(n))
+    assert n == K
+def le():
+    n = [90, 5, 100]
+    K = r(n)
+    q(n, 0, len(n))
+    assert n == K
+def m():
+    n = [90, 100]
+    K = r(n)
+    q(n, 0, len(n))
+    assert n == K
+if ff == '__main__':
+    I()
+    Z_()
+    s()
+    le()
+    m()

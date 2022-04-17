@@ -1,0 +1,26 @@
+public class G {
+    private G() { }
+    public static void D(final c[] W4) {
+        int h = W4.p;
+        for (int L = 1; L < h; L++) {
+            c v = W4[L];
+            int u = 0, Gx = L;
+            while (u < Gx) {
+                int N = u + (Gx - u) / 2; 
+                if (a(v, W4[N])) Gx = N;
+                else                 u = N + 1;
+            }
+            for (int k2 = L; k2 > u; --k2)
+                W4[k2] = W4[k2-1];
+            W4[u] = v;
+        }
+    }
+    private static boolean a(final c v, final c lt) {
+        return v.Vx(lt) < 0;
+    }
+    private static void Z(c[] W4) {
+        for (int L = 0; L < W4.p; L++) {
+            System.out.println(W4[L]);
+        }
+    }
+}

@@ -1,0 +1,182 @@
+package BZ.Q;
+class d {
+    public int Cf;
+    public d x;
+    public d m;
+    d() {
+        Cf = 0;
+        x = null;
+        m = null;
+    }
+    d(int C) {
+        Cf = C;
+        x = null;
+        m = null;
+    }
+}
+public class S {
+    protected d Hb;
+    protected long O;
+    public S() {
+        Hb = new d();
+        Hb.Cf = c.W;
+        Hb.m = Hb;
+        Hb.x = Hb;
+        O = 0;
+    }
+    public S(int Mm) {
+        Hb = new d();
+        Hb.Cf = c.W;
+        Hb.m = new d();
+        Hb.m.Cf = Mm;
+        Hb.x = Hb.m;
+        Hb.m.x = Hb;
+        Hb.x.m = Hb;
+        O = 1;
+    }
+    public S(int Mm, int U) {
+        Hb = new d();
+        Hb.Cf = c.W;
+        Hb.m = new d();
+        Hb.m.Cf = Mm;
+        Hb.x = new d();
+        Hb.x.Cf = U;
+        Hb.m.x = Hb;
+        Hb.m.m = Hb.x;
+        Hb.x.m = Hb;
+        Hb.x.x = Hb.m;
+        O = 2;
+    }
+    public boolean n(){
+        return O == 0;
+    }
+    public long Zx(){
+        return O;
+    }
+    public Uw Hb(){
+        if(O == 0){
+            return null;
+        }
+        return Hb.m.Cf;
+    }
+    public Uw l(){
+        if(O == 0){
+            return null;
+        }
+        return Hb.x.Cf;
+    }
+    public void k(int C) {
+        d v = new d(C);
+        v.x = Hb;
+        v.m = Hb.m;
+        Hb.m.x = v;
+        Hb.m = v;
+        O++;
+    }
+    public void hr(int C){
+        d v = new d(C);
+        v.m = Hb;
+        v.x = Hb.x;
+        Hb.x.m = v;
+        Hb.x = v;
+        O++;
+    }
+    public void xX() {
+        if(O == 0){
+            return;
+        }
+        d v = Hb.m;
+        v.m.x = Hb;
+        Hb.m = v.m;
+        O--;
+    }
+    public void t(){
+        if(O == 0){
+            return;
+        }
+        d v = Hb.x;
+        v.x.m = Hb;
+        Hb.x = v.x;
+        O--;
+    }
+    public String toString() {
+        String oH = "[  ";
+        d B8 = Hb.m;
+        while (B8 != Hb) {
+            oH = oH + B8.Cf + "  ";
+            B8 = B8.m;
+        }
+        return oH + "]";
+    }
+    public static void main(String[] args) {
+        S I = new S();
+        System.out.println("Here is Mm list after construction: "
+                + I.toString());
+        System.out.println("n() should be true. It is: " +
+                I.n());
+        System.out.println("Zx() should be 0. It is: " +
+                I.Zx());
+        I.k(3);
+        System.out.println("Here is Mm list after k(3) to an empty list: "
+                + I.toString());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+        I = new S();
+        I.k(3);
+        I.k(2);
+        I.k(1);
+        System.out.println();
+        System.out.println("Here is Mm list after k 3, 2, 1: "
+                + I.toString());
+        System.out.println("n() should be false. It is: " +
+                I.n());
+        System.out.println("Zx() should be 3. It is: " +
+                I.Zx());
+        I.hr(4);
+        System.out.println("Here is the same list after hr(4): "
+                + I.toString());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+        I = new S();
+        I.hr(6);
+        I.hr(7);
+        System.out.println();
+        System.out.println("Here is Mm list after hr 6, 7: "
+                + I.toString());
+        System.out.println("n() should be false. It is: " +
+                I.n());
+        System.out.println("Zx() should be 2. It is: " +
+                I.Zx());
+        I.k(5);
+        System.out.println("Here is the same list after k(5): "
+                + I.toString());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+        I = new S();
+        I.hr(1);
+        I.hr(2);
+        I.hr(3);
+        I.hr(4);
+        I.hr(5);
+        I.hr(6);
+        System.out.println();
+        System.out.println("Here is Mm list after hr 1,2,3,4,5,6: "
+                + I.toString());
+        System.out.println("n() should be false. It is: " +
+                I.n());
+        System.out.println("Zx() should be 6. It is: " +
+                I.Zx());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+        I.k(5);
+        System.out.println("Here is the same list after k(5): "
+                + I.toString());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+        I.xX();
+        I.xX();
+        System.out.println("Here is the same list after two xX(): "
+                + I.toString());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+        I.t();
+        I.t();
+        System.out.println("Here is the same list after two t(): "
+                + I.toString());
+        System.out.println("Head is: " + I.Hb() + "\nTail is: " + I.l());
+    }
+}

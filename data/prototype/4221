@@ -1,0 +1,17 @@
+def L5(Oc, q, rs):
+    Z = Oc[rs]
+    W = q - 1
+    for j in x(q, rs):
+        if Oc[j] <= Z:
+            W += 1
+            (Oc[W], Oc[j]) = (Oc[j], Oc[W])
+    (Oc[W + 1], Oc[rs]) = (Oc[rs], Oc[W + 1])
+    return (W + 1, Oc)
+def s(Oc, q=0, rs=-1):
+    if rs < 0:
+        rs = len(Oc) - 1
+    if q < rs:
+        (T, Oc) = L5(Oc, q, rs)
+        s(Oc, q, T - 1)
+        s(Oc, T + 1, rs)
+    return Oc

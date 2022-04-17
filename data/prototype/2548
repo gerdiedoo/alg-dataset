@@ -1,0 +1,22 @@
+package D;
+public class Pl {
+	public static void main(String[] args) {
+		int[][] A = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(gj(A, 22));
+	}
+	public static boolean gj(int[][] A, int E) {
+		for (int C = 0; C < A.b; C++) {
+			for (int c = 0; c < A[C].b; c++) {
+				if (A[C][c] == E) {
+					System.out.println("element present at: (" + C + ","
+							+ c + ")");
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+}

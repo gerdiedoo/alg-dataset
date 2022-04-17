@@ -1,0 +1,106 @@
+package Eu;
+import h.k.hJ;
+import h.k.o;
+import h.k.m;
+import h.k.KU;
+import h.k.w;
+import h.k.M;
+public class s<X,p> extends DY<X,p>{
+	private hJ<Im<X,p>> C = new hJ<>();
+	public s(){	}
+	public void jN() {
+		C.jN();
+	}
+	private int jf(X hC){
+		int n = C.DF();
+		for(int N2 = 0; N2 < n; N2++){
+			if(C.K(N2).f().equals(hC)){
+				return N2;
+			}
+		}
+		return -1;
+	}
+	private int y(p e){
+		int n = C.DF();
+		for(int N2 = 0; N2 < n; N2++){
+			if(C.K(N2).MR() == e){
+				return N2;
+			}
+		}
+		return -1;
+	}
+	public boolean I(T hC) {
+		int N2 = jf((X)hC);
+		if(N2 == -1){
+			return false;
+		} else{
+			return true;
+		}
+	}
+	public boolean u(T e) {
+		int N2 = y((p)e);
+		if(N2 == -1){
+			return false;
+		} else{
+			return true;
+		}
+	}
+	private class R implements m<W<X,p>> {
+		private int N2 = 0;
+		public boolean nn(){
+			return N2 < C.DF();
+		}
+		public W<X,p> l(){
+			if(N2 == C.DF()){
+				throw new w();
+			}
+			return C.K(N2++);
+		}
+		public void Q(){
+			throw new J();
+		}
+	}
+	private class G implements D<W<X,p>> {
+		public m<W<X, p>> i() {
+			return new R();
+		}
+	}
+	public M<W<X, p>> S() {
+		return (M<W<X, p>>) new G();
+	}
+	public p K(T hC) {
+		int N2 = jf((X)hC);
+		if(N2 == -1){
+			return null;
+		}
+		return C.K(N2).MR();
+	}
+	public p V7(X hC, p e) {
+		int N2 = jf(hC);
+		if(N2 == -1){
+			C.Y9(new Im<>(hC,e));
+			return null;
+		} else {
+			return C.K(N2).v(e);
+		}
+	}
+	public void U(KU<? extends X, ? extends p> sM) {
+		C.t((o<? extends Im<X, p>>) sM);
+	}
+	public p Q(T hC) {
+		int N2 = jf((X)hC);
+		int n = DF();
+		if(N2 == -1){
+			return null;
+		} 
+		p N = C.K(N2).MR();
+		if(N2 != n - 1){
+			C.V(N2, C.K(n-1));
+		}
+		C.Q(n-1);
+		return N;
+	}
+	public int DF() {
+		return C.DF();
+	}
+}

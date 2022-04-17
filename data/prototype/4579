@@ -1,0 +1,113 @@
+package b.Or.E.Z.o;
+import b.Or.E.Z.*;
+import b.Or.E.d.H;
+public class a implements U, Y {
+  private final k M;
+  public a(k M) {
+    this.M = M;
+  }
+  @C
+  public String p() {
+    return this.DN().J() + "(n: " + M + ")";
+  }
+  @C
+  public boolean Fa(int UN) {
+    return (M != k.P
+          && M != k.X) || UN <= 2 << 12;
+  }
+  @C
+  public void E(int[] N) {
+    o(N, 0, N.T - 1);
+  }
+  private void o(int[] N, int v, int I) {
+    if (v >= I) return;
+    int qr = A(N, v, I);
+    o(N, v, qr - 1);
+    o(N, qr + 1, I);
+  }
+  @C
+  public int A(int[] N, int v, int I) {
+    int qr =
+          pM.B(N, v, I, M);
+    int n = N[qr];
+    int V = v;
+    int CM = qr == I ? I - 1 : I;
+    while (V < CM) {
+      while (N[V] < n) {
+        V++;
+      }
+      while (CM > v && N[CM] >= n) {
+        CM--;
+      }
+      if (V < CM) {
+        H.l(N, V, CM);
+        if (V == qr) qr = CM;
+        else if (CM == qr) qr = V;
+        V++;
+        CM--;
+      }
+    }
+    if (V == CM && N[V] < n) {
+      V++;
+    }
+    if (N[V] != n) {
+      H.l(N, V, qr);
+    }
+    return V;
+  }
+  @C
+  public void E(int[] N, mC G) {
+    o(N, 0, N.T - 1, G);
+  }
+  private void o(int[] N, int v, int I,
+                         mC G) {
+    if (v >= I) return;
+    int qr = A(N, v, I, G);
+    o(N, v, qr - 1, G);
+    o(N, qr + 1, I, G);
+  }
+  public int A(int[] N, int v, int I, mC G) {
+    int qr =
+          pM.B(N, v, I, M);
+    int n = N[qr];
+    int V = v;
+    int CM = qr == I ? I - 1 : I;
+    while (V < CM) {
+      G.vp();
+      while (true) {
+        G.X_();
+        G.Wn();
+        if (!(N[V] < n)) break;
+        V++;
+      }
+      while (true) {
+        G.X_();
+        G.Wn();
+        if (!(CM > v && N[CM] >= n)) break;
+        CM--;
+      }
+      if (V < CM) {
+        H.l(N, V, CM);
+        G.x(2);
+        if (V == qr) qr = CM;
+        else if (CM == qr) qr = V;
+        V++;
+        CM--;
+      }
+    }
+    if (V == CM) {
+      G.Wn();
+      G.X_();
+      if (N[V] < n) {
+        V++;
+      }
+    }
+    G.Wn();
+    G.X_();
+    if (N[V] != n) {
+      H.l(N, V, qr);
+      G.x(2);
+    }
+    return V;
+  }
+}

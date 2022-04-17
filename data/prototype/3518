@@ -1,0 +1,15 @@
+package i;
+import OL.L.Wu;
+import OL.L.m;
+public class O<E> extends Be<E> {
+	public void Y(m<E> T, Wu<E> n) {
+		for (int B = 1; B < T.F(); B++) {
+			for (int S = B; S > 0 && n.gg(T.N(S - 1), T.N(S)) > 0; S--) {
+				e0(T, S - 1, S);
+			}
+		}
+	}
+	public String a() {
+		return "Insertion Sort";
+	}
+}

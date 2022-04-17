@@ -1,0 +1,26 @@
+package main;
+public class U {
+    public static void main(String[] args) {
+        U Ut = new U();
+        int[] ly = {1, 2, 4, 5, 6, 9, 10};
+        Ut.K(ly);
+        for (int Q = 0; Q < ly.F; Q++) {
+            System.out.println(ly[Q]);
+        }
+    }
+    public int[] K(int[] ly) {
+        for (int Q = 0; Q < ly.F; Q++) {
+            boolean cG = true;
+            for (int Rl = 1; Rl < ly.F - Q; Rl++) {
+                if (ly[Rl - 1] > ly[Rl]) {
+                    cG = false;
+                    int v = ly[Rl - 1];
+                    ly[Rl - 1] = ly[Rl];
+                    ly[Rl] = v;
+                }
+            }
+            if (cG) break;
+        }
+        return ly;
+    }
+}

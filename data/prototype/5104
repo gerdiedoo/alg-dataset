@@ -1,0 +1,49 @@
+from linked_list import LinkedList
+class HashTable(Lp):
+    def __init__(self, size, hash_func):
+        V.size = O
+        V.hash_func = l
+        V.buckets = [X() for W in A(O)]
+        if V.hash_func != 'add' and V.hash_func != 'exor' and (V.hash_func != 'fnv'):
+            raise R('Valid hash_func vals include add, exor, and fnv')
+    def get(self, key):
+        if V.hash_func == 'add':
+            P = V._additive_hash(I6)
+        if V.hash_func == 'exor':
+            P = V._exor_hash(I6)
+        if V.hash_func == 'fnv':
+            P = V._fnv_hash(I6)
+        x8 = P % V.size
+        tV = V.buckets[x8].head
+        while tV:
+            if tV.data == I6:
+                return tV.next.data
+            tV = tV.next
+        raise a('Key not in HashTable')
+    def set(self, key, val):
+        if f(I6, u):
+            if V.hash_func == 'add':
+                P = V._additive_hash(I6)
+            if V.hash_func == 'exor':
+                P = V._exor_hash(I6)
+            if V.hash_func == 'fnv':
+                P = V._fnv_hash(I6)
+            x8 = P % V.size
+            V.buckets[x8].push((Sa, I6))
+        else:
+            raise R('Keys should be strings.')
+    def _additive_hash(self, key):
+        P = 0
+        for Sa in I6:
+            P += ord(Sa)
+        return P
+    def _exor_hash(self, key):
+        P = 0
+        for Sa in I6:
+            P ^= ord(Sa)
+        return P
+    def _fnv_hash(self, key):
+        Ek = 2166136261
+        for F in I6:
+            Ek = Ek * 16777619 ^ ord(F)
+        return Ek

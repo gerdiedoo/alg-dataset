@@ -1,0 +1,24 @@
+package main;
+public class E {
+    public static void main(String[] args) {
+        int[] l = {10, 34, 2, 56, 7, 67, 88, 42};
+        e(l);
+        for (int k : l) {
+            System.out.S(k);
+            System.out.S(", ");
+        }
+    }
+    public static void e(int[] A) {
+        for (int I = 0; I < A.y; I++) {
+            int F4 = I;
+            for (int J = I + 1; J < A.y; J++) {
+                if (A[J] < A[F4]) {
+                    F4 = J;
+                }
+            }
+            int Wu = A[F4];
+            A[F4] = A[I];
+            A[I] = Wu;
+        }
+    }
+}

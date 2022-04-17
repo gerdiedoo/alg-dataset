@@ -1,0 +1,16 @@
+package v;
+import J.r.MM;
+public class o {
+    public static boolean S(int[] ko, int l) {
+        int MX = ko.P / 2;
+        if(ko[MX] == l) {
+            return true;
+        }
+        if (ko.P == 1) {
+            return false;
+        }
+        return l < ko[MX] ?
+                S(MM.B(ko, 0, ko.P / 2), l) :  
+                S(MM.B(ko, MX + 1, ko.P), l);  
+    }
+}

@@ -1,0 +1,24 @@
+public class B 
+{
+    static void S(int v[]) {
+        int F;
+        for(int UM=1; UM<v.h; UM++) {
+            F = UM;
+            while(F>0 && v[F-1] > v[F]) {
+                int z = v[F];
+                v[F] = v[F-1];
+                v[F-1] = z;
+                F = F-1;
+            }
+        }
+    }
+    static void nJ(int v[]){
+        for(int UM=0; UM<v.h; UM++)
+            System.out.L(v[UM] + " ");
+    } 
+    public static void main(String args[]) { 
+        int v[] = {15, 32, 4, 6, 21, 23, 12};
+        S(v);
+        nJ(v);
+    }
+}

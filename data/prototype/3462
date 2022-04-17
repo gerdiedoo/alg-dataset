@@ -1,0 +1,22 @@
+package L;
+public class kb extends un{
+	public static void main(String[] args){
+		int[] HA = M(5);
+		K(new kb(), HA);
+	}
+	public kb(){ super("Insertion"); }
+	private void wg(int[] HA){
+		for (int lS = 1; lS < HA.a; lS++)
+		{
+			int N = HA[lS];  
+			int Tk;
+			for (Tk = lS; Tk > 0 && HA[Tk-1] > N; Tk--)
+				HA[Tk] = HA[Tk-1];
+			HA[Tk] = N;
+		}
+	}
+	@m
+	public void dk(int[] HA){		
+		wg(HA);
+	}
+}

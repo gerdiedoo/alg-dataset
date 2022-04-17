@@ -1,0 +1,52 @@
+package a;
+import i.q.DF;
+import i.q.B;
+public class fX {
+	private DF<f> M;
+	public fX() {
+		M = new DF<>();
+	}
+	public fX(int w) {
+		this();
+	}
+	public void k(fX j) {
+		if (this != j) {  
+			DF<f> K = new DF<>();
+			B<f> r9 = j.M.LY();
+			while (r9.rh()) {
+				K.Zl(r9.Fk());
+			}
+			M = K;
+		}
+	}
+	public boolean N(int w) {
+		if (w < 0)
+			return false;
+		return this.M.b(w);
+	}
+	public void t(int w) {
+	      f p=new f(w);
+	      if ((w>0)&&(!M.b(w)))  {  M.bJ(p); 
+		}
+	}
+	public void rA(int w) {
+		this.M.mf(new f(w));
+	}
+	public int E() {
+		return this.M.I();
+	}
+	public void Uy() {
+		B<f> r9 = this.M.LY();
+		while (r9.rh()) {
+			System.out.println(r9.Fk().R());
+		}
+	}
+	public boolean equals(fX j) {
+		boolean oo = (this.E() == j.E());
+		B<f> r9 = j.M.LY();
+		while (r9.rh() && oo) {
+			oo = this.N(r9.Fk());
+		}
+		return oo;
+	}
+}

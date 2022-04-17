@@ -1,0 +1,38 @@
+package X.V.n.Sc;
+import M.f.C;
+public class o {
+    public static void OK(D[] s) {
+        OK(s, true);
+    }
+    public static void OK(D[] s, boolean g) {
+        int GF = s.K;
+        wz(s, 0, GF - 1, g);
+    }
+    private static void wz(D[] s, int H, int b, boolean g) {
+        if (H < b) {
+            int FT = H + (b - H) / 2;
+            wz(s, H, FT, g);
+            wz(s, FT + 1, b, g);
+            u(s, H, FT, b, g);
+        }
+    }
+    private static void u(D[] s, int H, int FT, int b, boolean g) {
+        D[] c = new D[s.K];
+        System.C8(s, H, c, H, (b - H) + 1);
+        int h = H;
+        int B = FT + 1;
+        int iE = H;
+        while (h <= FT && B <= b) {
+            if (g && c[h].v(c[B]) < 0 ||
+                    !g && c[h].v(c[B]) > 0) {
+                s[iE] = c[h];
+                h++;
+            } else {
+                s[iE] = c[B];
+                B++;
+            }
+            iE++;
+        }
+        System.C8(c, h, s, iE, (FT - h) + 1);
+    }
+}

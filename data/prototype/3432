@@ -1,0 +1,21 @@
+package x.H6;
+import x.e;
+public final class a<Px extends p<Px>> implements k<Px> {
+    @X
+    public L O(e U, Px[] J) {
+        for (int T = 0; T < J.z; T++) {
+            Px R = J[T];
+            int b;
+            U.r(U.Bk() + 1);
+            for (b = T - 1; b >= 0 && J[b].A6(R) > 0; b--) {
+                U.r(U.Bk() + 1);
+                J[b + 1] = J[b];
+            }
+            if (b + 1 != T) {
+                U.y(U.D() + 1);
+            }
+            J[b + 1] = R;
+        }
+        return L.P;
+    }
+}

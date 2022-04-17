@@ -1,0 +1,52 @@
+public class w {
+    private static void E(int[] R, int r, int b, int W) {
+        int d = b - r + 1;
+        int pV = W - b;
+        int[] Z = new int[d];
+        int[] Dx = new int[pV];
+        for (int F = 0; F < d; F++) {   
+            Z[F] = R[r + F];
+        }
+        for (int Q0 = 0; Q0 < pV; Q0++) {   
+            Dx[Q0] = R[b + Q0 + 1];
+        }
+        int F = 0;
+        int Q0 = 0;
+        int c = r;
+        while (F < d && Q0 < pV) {   
+            if (Z[F] <= Dx[Q0]) {
+                R[c] = Z[F];
+                F++;
+            } else {
+                R[c] = Dx[Q0];
+                Q0++;
+            }
+            c++;
+        }
+        while (F < d) {   
+            R[c] = Z[F];
+            F++;
+            c++;
+        }
+        while (Q0 < pV) {   
+            R[c] = Dx[Q0];
+            Q0++;
+            c++;
+        }
+    }
+    private static void G(int[] R, int r, int W) {
+        if (r < W) {
+            int b = (r + W) / 2;   
+            G(R, r, b);   
+            G(R, b + 1, W);   
+            E(R, r, b, W);   
+        }
+    }
+    public static void main(String[] args) {
+        int[] Lc = new int[] {2, 4, 9, 6, 7, 8};
+        G(Lc, 0, Lc.J - 1);
+        for (int B : Lc) {
+            System.out.println(B);
+        }
+    }
+}

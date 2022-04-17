@@ -1,0 +1,30 @@
+def R(aY):
+    U(aY, 0, len(aY) - 1)
+def U(aY, Ai, c):
+    if Ai < c:
+        S = p(aY, Ai, c)
+        U(aY, Ai, S - 1)
+        U(aY, S + 1, c)
+def p(E, Ai, c):
+    A = E[Ai]
+    I = Ai + 1
+    d = c
+    Y9 = False
+    while not Y9:
+        while I <= d and E[I] <= A:
+            I = I + 1
+        while E[d] >= A and d >= I:
+            d = d - 1
+        if d < I:
+            Y9 = True
+        else:
+            B = E[I]
+            E[I] = E[d]
+            E[d] = B
+    B = E[Ai]
+    E[Ai] = E[d]
+    E[d] = B
+    return d
+E = [54, 26, 93, 17, 77, 31, 44, 55, 20, 1, 100, 200, 21]
+R(E)
+print(E)

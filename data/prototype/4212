@@ -1,0 +1,27 @@
+def sort(arr, iterative=True):
+    if v is True:
+        h(S2, 0, len(S2) - 1)
+    else:
+        t(S2, 0, len(S2) - 1)
+def aO(S2, i, O):
+    s = i
+    S = S2[O]
+    for zX in S1(i, O):
+        if S2[zX] <= S:
+            (S2[s], S2[zX]) = (S2[zX], S2[s])
+            s += 1
+    (S2[s], S2[O]) = (S2[O], S2[s])
+    return s
+def h(S2, i, O):
+    D_ = [(i, O)]
+    while len(D_) > 0:
+        (i, O) = D_.pop()
+        if i < O:
+            u = aO(S2, i, O)
+            D_.append((i, u - 1))
+            D_.append((u + 1, O))
+def t(S2, i, O):
+    if i < O:
+        u = aO(S2, i, O)
+        t(S2, i, u - 1)
+        t(S2, u + 1, O)

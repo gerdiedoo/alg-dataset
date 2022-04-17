@@ -1,0 +1,20 @@
+def C(Y, m, U, kk):
+    while m < U:
+        N = m + (U - 1) // 2
+        if Y[N] == kk:
+            return N
+        elif Y[N] < kk:
+            m = N + 1
+        else:
+            U = N - 1
+    return -1
+print('Enter a list of number')
+Y = M(K(Gi, input().split()))
+e = len(Y)
+Y.sort()
+kk = Gi(input('Enter the number to find\n'))
+e2 = C(Y, 0, len(Y) - 1, kk)
+if e2 == -1:
+    print('Element not found')
+else:
+    print('Element found at ', e2 + 1, ' position')

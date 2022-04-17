@@ -1,0 +1,48 @@
+package U.f.Y;
+import j.lF.w;
+import j.lF.rM;
+import j.lF.B;
+import j.lF.rs.P;
+public class o {
+  public static <Dc extends a<Dc>> void g(B<Dc> J) {
+    g(J, 0, J.F() - 1);
+  }
+  private static <Dc extends a<Dc>> void g(B<Dc> J, int mQ, int D) {
+    if (mQ < D) {
+      final int H = S(J, mQ, D);
+      g(J, mQ, H - 1);
+      g(J, H + 1, D);
+    }
+  }
+  private static <Dc extends a<Dc>> int S(B<Dc> J, int mQ, int D) {
+    final int z = P.v().nextInt(mQ, D + 1);
+    rM.be(J, z, D);
+    final Dc aa = J.K(D);
+    int c = mQ - 1;
+    for (int C = mQ; C < D; C++) {
+      final Dc mY = J.K(C);
+      if (mY.hI(aa) <= 0) {
+        c++;
+        if (c != C) {
+          rM.be(J, c, C);  
+        }
+      }
+    }
+    c++;  
+    rM.be(J, c, D);
+    return c;
+  }
+  public static void main(String[] args) {
+    final B<l> J = new w<>();
+    J.h(4);
+    J.h(1);
+    J.h(5);
+    J.h(3);
+    J.h(9);
+    J.h(10);
+    J.h(1);
+    g(J);
+    g(new w<l>());
+    System.out.println(J);
+  }
+}

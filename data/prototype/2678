@@ -1,0 +1,24 @@
+package y.s;
+import y.Y.BC;
+public class c<z> extends U<z> {
+	@T
+	@i("hiding")
+	public <z extends A<z>> z[] g(z[] a4, BC Ht) {		
+		int m = a4.N;
+		boolean p;
+		for (int u=0; u < m - 1; u++) {
+			p = false;
+			for(int k=0; k < m-u-1; k++) {
+				z v = a4[k];
+				z n    = a4[k+1];
+				if ((Ht == BC.hl  && v.H(n) > 0)  || 
+					(Ht == BC.D && v.H(n) < 0)) {
+					this.o(a4, k, k+1);
+					p = true;
+				}
+			}
+			if(!p) break;
+		}
+		return a4;
+	}
+}

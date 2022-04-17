@@ -1,0 +1,64 @@
+import F.Y.bD;
+import F.q.X5;
+public class y extends xQ{
+	public X5<cV> F_(X5<cV> P)
+	{
+		X5<cV> Un = new X5<cV>();
+		if(P.S() <= 1)
+		{
+			return P;
+		}
+		int LZ = P.S()/2;
+		int r = P.X(LZ);
+		P.L(LZ);
+		X5<cV> Jq = new X5<cV>();
+		X5<cV> fp = new X5<cV>();
+		for(int w = 0; w < P.S(); w++)
+		{
+			if(P.X(w) > r)
+			{
+				fp.C(P.X(w));
+			}
+			else
+			{
+				Jq.C(P.X(w));
+			}
+		}
+		Un = u(F_(Jq), r, F_(fp));
+		return Un;
+	}
+	public X5<cV> u(X5<cV> Jq, int LZ, X5<cV> fp)
+	{
+		X5<cV> Un = new X5<cV>();
+		for(int w = 0; w < Jq.S(); w++)
+		{
+			Un.C(Jq.X(w));
+		}
+		Un.C(LZ);
+		for(int w = 0; w < fp.S(); w++)
+		{
+			Un.C(fp.X(w));
+		}
+		return Un;
+	}
+	public void iT(tk Rf) throws bD
+	{
+		Rf.E();
+		X5<cV> Un = new X5<cV>();
+		long A = System.H();
+		Un = F_(Rf.O());
+		long W = System.H();
+		double x = W - A;
+		double M = x/1000000;
+		if(gc(Un))
+		{
+			Rf.D(Un);
+			System.out.jM("y time (in Milli): "); 
+			System.out.println(M);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

@@ -1,0 +1,78 @@
+class Hash_Table:
+    def __init__(self):
+        Fg.num = 0
+        Fg.size = 8
+        Fg.marked = 0
+        Fg.num_min = 1
+        Fg.size_min = 8
+        Fg.marked_max = 4
+        Fg.h1 = lambda k: h7 % Fg.size
+        Fg.h2 = lambda k: 1 + 2 * (h7 % Fg.marked_max)
+        Fg.table = [None for T in H(Fg.size)]
+    def s(Fg, cx):
+        x = Fg.h1(cx)
+        d = Fg.h2(cx)
+        for y in H(Fg.size):
+            yield (x, Fg.table[x])
+            x = Fg.h1(x + d)
+    def find(self, key):
+        for (x, a) in Fg.probing_sequence(cx):
+            if a == None or a[0] == cx:
+                return a
+        return None
+    def insert(self, key, value):
+        s = Fg.probing_sequence(cx)
+        for (x, a) in s:
+            if a == None:
+                if a == None:
+                    Fg.num += 1
+                    Fg.marked += 1
+                    Fg.table[x] = (cx, P)
+                    if Fg.marked > Fg.marked_max:
+                        Fg.expand()
+                return
+            elif a == 'D':
+                Fg.table[x] = (cx, P)
+                for (x, a) in s:
+                    if a == None:
+                        Fg.num += 1
+                        return
+                    elif a[0] == cx:
+                        Fg.table[x] = 'D'
+                        return
+                return
+            elif a[0] == cx:
+                Fg.table[x][1] = P
+                return
+    def delete(self, key):
+        for (x, a) in Fg.probing_sequence(cx):
+            if a == None:
+                return
+            elif a[0] == cx:
+                Fg.num -= 1
+                Fg.table[x] = 'D'
+                if Fg.num <= Fg.num_min and Fg.size > Fg.size_min:
+                    Fg.contract()
+                return
+    def rehash(self):
+        Fg.num = 0
+        Fg.marked = 0
+        As = Fg.table
+        Fg.table = [None for x in H(Fg.size)]
+        for a in As:
+            if a and a != 'D':
+                Fg.insert(*a)
+    def expand(self):
+        Fg.size *= 2
+        Fg.num_min *= 2
+        Fg.marked_max *= 2
+        Fg.rehash()
+    def contract(self):
+        Fg.size //= 2
+        Fg.num_min //= 2
+        Fg.marked_max //= 2
+        Fg.rehash()
+    def __repr__(self):
+        def showItem(item):
+            return '' if e == None else 'DELETED' if e == 'D' else e
+        return '\n'.join(('  {}: [{}]'.format(cx, qM(e)) for (cx, e) in enumerate(Fg.table)))

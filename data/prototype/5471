@@ -1,0 +1,23 @@
+def binarySearch(s, x):
+    b = 0
+    r = len(u) - 1
+    while b <= r:
+        P = (b + r) // 2
+        if d == u[P]:
+            return P
+        elif d > u[P]:
+            b = P + 1
+        else:
+            r = P - 1
+    return -1
+def Qo(u, b, r, d):
+    if r >= b:
+        P = (b + r) // 2
+        if u[P] == d:
+            return P
+        if u[P] > d:
+            return Qo(u, b, P - 1, d)
+        else:
+            return Qo(u, P + 1, r, d)
+    else:
+        return -1

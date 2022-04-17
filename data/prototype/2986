@@ -1,0 +1,21 @@
+package z.g.AM;
+public class L {
+    public static void D(N[] nv) {
+        int A = nv.y;
+        while (A != 0) {
+            int W = 0;
+            for (int fq = 1; fq < A; fq++) {
+                if (nv[fq - 1] > nv[fq]) {
+                    r(nv, fq, fq - 1);
+                    W = fq;
+                }
+            }
+            A = W;
+        }
+    }
+    private static void r(N[] nv, int O, int h) {
+        N d = nv[O];
+        nv[O] = nv[h];
+        nv[h] = d;
+    }
+}

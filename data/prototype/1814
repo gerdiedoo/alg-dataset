@@ -1,0 +1,187 @@
+import eJ.Y.G;
+public class  CH<c,C> extends R<c,C> {
+	private Vt<c,C>[] M;
+	public CH() { super(); }
+	public CH(int L, float Wm) {	super(L, Wm);}
+	@S("unchecked")
+	@kU
+	protected void nK() {
+		M = (Vt<c,C>[]) new Vt[this.L];
+	}
+	private int E(int ou, int b) {
+		int l1 = 0;
+		while(M[ou] != null) {
+			ou = (ou + b) % M.z;
+			l1 += 1;
+		}
+		return l1; 
+	}
+	@kU
+	protected C X(c xV) {
+		Vt<c,C> k = J(xV);
+		if(k == null) return null;
+		return k.a();
+	}
+	@kU
+	public int zU(c xV) {
+		int ou = j(xV);
+		if(J(xV) != null) {
+			while(M[ou] != null ) {
+				if(M[ou].ES().hashCode() == xV.hashCode())
+					return ou;
+				ou = (ou + b(xV)) % M.z;
+			} 
+		}
+		return -1;
+	}
+	public int w(c xV) {
+		Vt<c,C> k = J(xV);
+		if(k != null) return k.w();
+		return -1;
+	}
+	@kU
+	protected C f(c xV, C e5) {
+		Vt<c,C> Qw = new Vt<c,C>(xV, e5);
+		Vt<c,C> g = Qw;
+		int ou = j(Qw.ES());
+		int N = ou;
+		Vt<c,C> t = M[ou];
+		Vt<c,C> A = null;
+		int T = 0;
+		int Zn = 0; 
+		int zi = 0;
+		if(e5 == null) throw new G8("Given e5 can not be null");
+		else if(t == null) {
+			M[ou] = Qw;
+			this.r += 1;
+		}
+		else if((A = J(xV)) != null) {  
+			C A3 = A.a();
+			A.s();
+			return A3; 
+		}
+		else { 
+			Zn = E(ou, b(t.ES()));
+			zi = 0;
+			T = Zn + zi;
+			if(E(ou, b(Qw.ES())) <= T) {
+				zi = E(ou, b(Qw.ES()));
+				Zn = 0;
+				T = Zn + zi;
+			}
+			for(int q = 1 ; M[N] != null ; q++) {
+				N = (ou + q*b(Qw.ES())) % M.z;
+				if(M[N] != null) {
+					if(q + E(N, b(M[N].ES())) < T) {
+						Zn = E(N, b(M[N].ES()));
+						zi = q;
+						T = Zn + zi;
+					}
+				}
+			}
+			if(Zn == 0) {
+				M[ou] = t;
+				M[(ou + b(Qw.ES()) * zi) % M.z] = Qw;
+			}
+			else if(zi == 0) {
+				M[ou] = Qw;
+				M[(ou + b(t.ES()) * Zn) % M.z] = t;
+			}
+			else{
+				g = M[(ou + zi * b(Qw.ES())) % M.z];
+				M[(ou + zi * b(Qw.ES()) + Zn * b(g.ES())) % M.z] = g;
+		   	    M[(ou + zi * b(Qw.ES())) % M.z] = Qw;
+			}
+			this.r += 1;
+		}
+		if(r == x) 
+			lb();
+		return null;
+	}
+	public Vt<c,C> J(c xV) {
+		int ou = j(xV);
+		int b = b(xV);
+		int l = 0;
+		if(M[ou] != null) {
+			if(xV.equals(M[ou].ES())) {
+				return M[ou];
+			}
+			else {
+				while(M[ou] != null) {
+					if(M[ou].ES().hashCode() != xV.hashCode()) {
+						ou = (ou + b) % M.z;
+						l += 1;
+						if(l >= M.z) {
+						return null;
+						}
+					}
+					else {
+						return M[ou];	
+					}
+				}	
+			}	
+		}
+		return null;	
+	}
+	@kU
+	protected int j(c xV) {
+		int ou = (xV.hashCode() % M.z) ;
+		if(ou < 0)
+			ou += M.z;
+		return ou;
+	}
+	private int b(c xV) {
+		int b = (xV.hashCode() / M.z) % M.z;
+		if(b == 0)
+			b = 1; 
+		else if(b < 0)
+			b += M.z;
+		return b;
+	}
+	private void lb() {
+		int n = I();
+		Vt<c,C>[] A3 = M;
+		this.r = 0;
+		M = new Vt[n];
+		for(Vt<c,C> m : A3) {
+			if(m != null) {
+				f(m.ES(),m.a());
+			}
+		}
+	}
+	private int I() {
+		int p = M.z * 2;
+		boolean o = false; 
+		int l = 0;
+		do{
+			for(int q = 2 ; q < p ; q++) 
+				if(p % q == 0) 
+					l++;
+			if(l == 0) 
+				o = true;
+			else {
+				p += 1;
+				l = 0;
+			}
+		}while(!o);
+		x =(int)(Wm * p);
+		return p;
+	}
+	@kU
+	public D<W<c,C>> jd() {
+		G<W<c,C>> y = new G<>(this.L);
+		for(W<c,C> k : M)
+			y.u(k);
+		return y;
+	}
+	@kU
+	public C O(c xV, C e5) {
+		Vt<c,C> k = J(xV);
+		C A3 = null;
+		if(k != null) {
+			A3 = k.a();
+			k.v(e5);
+		}
+		return A3;
+	}
+}

@@ -1,0 +1,19 @@
+package sl.Y7.v0.K.c;
+public class R extends p {
+  @Q
+  boolean Mg(int[] iP, int P, int U,
+                        boolean X) {
+    boolean S = false;
+    if (X) P++;
+    for (int C = P; C < U && C < iP.hy - 1; C += 2) {
+      int D = iP[C];
+      int a = iP[C + 1];
+      if (D > a) {
+        iP[C + 1] = D;
+        iP[C] = a;
+        S = true;
+      }
+    }
+    return S;
+  }
+}

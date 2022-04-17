@@ -1,0 +1,27 @@
+package e;
+import static e.jy.N;
+import static e.jy.F;
+class g implements g4 {
+    @KA
+    public <O extends U<O>> O[] v(O[] uy) {
+        for (int j = 1; j < uy.b; j++) {
+            O a = uy[j];
+            int G = j - 1;
+            while (G >= 0 && N(a, uy[G])) {
+                uy[G + 1] = uy[G];
+                G--;
+            }
+            uy[G + 1] = a;
+        }
+        return uy;
+    }
+    public static void main(String[] args) {
+        V[] P = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        g v = new g();
+        v.v(P);
+        F(P);
+        String[] qs = {"c", "a", "e", "b","d"};
+        v.v(qs);
+        F(qs);
+    }
+}

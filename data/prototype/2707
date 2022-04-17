@@ -1,0 +1,30 @@
+public class Br
+{
+    private int[] ZO;
+    public Br(int[] C)
+    {
+        ZO = C;
+    }
+    public int[] w()
+    {
+        int W, Ko;
+        for(W=0; W<ZO.CY-1; W++)
+        {
+            for(Ko=0; Ko<ZO.CY-1-W; Ko++)
+            {
+                if(ZO[Ko+1] < ZO[Ko])
+                {
+                    l(ZO, Ko, Ko+1);
+                }
+            }
+        }
+        return ZO;
+    }
+    private void l(int[] ZO, int SM, int X)
+    {
+        int k;
+        k = ZO[SM];
+        ZO[SM] = ZO[X];
+        ZO[X] = k;
+    }
+}

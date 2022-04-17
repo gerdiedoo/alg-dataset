@@ -1,0 +1,20 @@
+E = R(input('Enter number of elements: '))
+def vY():
+    q = []
+    for t in hL(0, E):
+        rc = input(f'{t + 1}. Element: ')
+        try:
+            q.append(R(rc))
+        except:
+            raise X('Enter only numbers!')
+    print(f'This is your list: {q}')
+    t4 = input('Search a value: ')
+    for (I, t) in enumerate(q):
+        print(t, q)
+        print(I)
+        if t == R(t4):
+            print(f"Value found! It's the {I + 1}. value in your list")
+            break
+        if I + 1 == len(q):
+            print('Value not found!')
+vY()

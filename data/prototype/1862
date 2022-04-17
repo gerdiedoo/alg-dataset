@@ -1,0 +1,92 @@
+package U.a;
+import S.N.*;
+import S.N.I.f;
+import S.N.I.sp;
+import static U.a.Sr.yU;
+@k9({"WeakerAccess", "unused"})
+public class wV<O, E> implements D<IZ<O, E>> {
+    private static int sE = 64;
+    private zl<O, E>[] Q;
+    private final F9 p = new F9();
+    wV(zl<O, E>[] Q, int A) {
+        this.Q = Q;
+        sE = A;
+    }
+    public wV() {
+        M();
+    }
+    @k9("unchecked")
+    private void M() {
+        this.Q = new zl[sE];
+        for (int en = 0; en < sE; en++) {
+            this.Q[en] = new zl<>();
+        }
+    }
+    private int PN(O XP) {
+        return sz.Oq(XP.hashCode()) % sE;
+    }
+    private zl<O, E> QN(O XP) {
+        int Gk = PN(XP);
+        return this.Q[Gk];
+    }
+    private sp<zl<O, E>> k() {
+        return sf.I(this.Q).hR(GF -> !GF.y());
+    }
+    int t(int Gk) {
+        if (Gk >= sE)
+            return yU;
+        int en = Gk;
+        while (en < sE && this.Q[en].y())
+            en++;
+        return en == sE ? yU : en;
+    }
+    zl<O, E> Ft(int Gk) {
+        return this.Q[Gk];
+    }
+    public void XU(O XP, E X) {
+        synchronized (p) {
+            zl<O, E> J = QN(XP);
+            J.KX(XP, X);
+        }
+    }
+    public E o6(O XP) throws i {
+        return QN(XP).BH(XP);
+    }
+    public E o6(O XP, E s) {
+        return QN(XP).BH(XP, s);
+    }
+    public E P(O XP, E s) {
+        synchronized (p) {
+            return QN(XP).BH(XP, s);
+        }
+    }
+    public void C(O XP) throws i {
+        synchronized (p) {
+            zl<O, E> rp = this.QN(XP);
+            if (!rp.o(XP))
+                throw new i(XP.toString());
+        }
+    }
+    public void x() {
+        synchronized (p) {
+            M();
+            System.v();
+        }
+    }
+    public d<O> R() {
+        return k().B(zl::G).AQ(f.g());
+    }
+    public Z<E> Pz() {
+        return k().B(zl::Y).AQ(f.h());
+    }
+    public Z<IZ<O, E>> JM() {
+        return k().B(zl::n).AQ(f.h());
+    }
+    public boolean KU(O XP) {
+        return !QN(XP).y();
+    }
+    @Xo
+    public q<IZ<O, E>> V() {
+        return new Sr<>(this, p);
+    }
+}

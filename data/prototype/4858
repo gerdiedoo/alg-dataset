@@ -1,0 +1,62 @@
+package K;
+import sB.q.fN;
+public class Q<wN extends W<wN>> implements DG {
+	private fN<wN> o = null
+	public Q() {
+		fN<wN> nz = new fN<wN>();
+		o = nz;
+		Z();
+	}
+	private long E = 0;
+	private long j3 = 0;
+	private long rH = 0;
+	static long x;
+	static long e; 
+	public fN<wN> P(fN<wN> TK) {
+		long E = 0;
+		long j3 = 1;
+		int U6;
+		x = System.t();
+		for(int G = 0 ; G < TK.F() - 1 ; G++) {
+			U6 = G;
+			for(int wP = G + 1 ; wP < TK.F() ; wP++) {
+				E++;
+				if(TK.z(wP).Ww(TK.z(U6)) < 0) {
+					U6 = wP;
+				}
+			}
+			j3++;
+			if(U6 != G) {
+				wN l = TK.z(G);
+				TK.XN(G, TK.z(U6));
+				TK.XN(U6, l);
+		}
+		}
+		this.E = E;
+		this.j3 = j3;
+		e = System.t();
+		long D = e - x;
+		this.rH = D;
+		return TK;
+	}
+	public fN<wN> jN(fN<wN> g) {
+		fN<wN> M = new fN<wN>();
+		for(int G = 0 ; G < g.F() ; G++) {
+			M.Yn(g.z(G));
+		}
+		return M;
+	}
+	public void m() {
+		System.out.jN("Comparisons: " + this.E);
+	}
+	public void vV() {
+		System.out.jN("Swaps: " + this.j3);
+	}
+	public void rH() {
+		System.out.jN("Runtime: "  + rH + " ms");
+	}
+	@i
+	public void Z() {
+		this.o = P(this.o);
+	}
+}

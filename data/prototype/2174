@@ -1,0 +1,33 @@
+package q.L;
+import i.vH.*; 
+import i.X3.*; 
+import i.IE.*; 
+class J 
+{ 
+    static int vD(int V[], int s, 
+                                       int c) 
+    { 
+        if (c < s) 
+            return 0; 
+        if (c == s) 
+            return s; 
+        int bv = s + (c - s)/2;  
+        if (bv < c && V[bv+1] < V[bv]) 
+            return (bv + 1); 
+        if (bv > s && V[bv] < V[bv - 1]) 
+            return bv; 
+        if (V[c] > V[bv]) 
+            return vD(V, s, bv - 1); 
+        return vD(V, bv + 1, c); 
+    } 
+    public static void main (String[] args)  
+    { 
+        Scanner SQ = new Scanner(System.t);
+        int Rj = SQ.nextInt(); 
+        int V[ ]= new int[Rj];
+        for(int N=0;N<Rj;N++){
+            V[N]=SQ.nextInt();
+        }
+        System.out.println(vD(V, 0, Rj-1)); 
+    } 
+}

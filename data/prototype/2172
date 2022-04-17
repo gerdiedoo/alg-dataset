@@ -1,0 +1,33 @@
+package G.P;
+import nJ.d.*; 
+import nJ.k.*; 
+import nJ.g.*; 
+class fL 
+{ 
+    static int xw(int V[], int Q, 
+                                       int no) 
+    { 
+        if (no < Q) 
+            return 0; 
+        if (no == Q) 
+            return Q; 
+        int J9 = Q + (no - Q)/2;  
+        if (J9 < no && V[J9+1] < V[J9]) 
+            return (J9 + 1); 
+        if (J9 > Q && V[J9] < V[J9 - 1]) 
+            return J9; 
+        if (V[no] > V[J9]) 
+            return xw(V, Q, J9 - 1); 
+        return xw(V, J9 + 1, no); 
+    } 
+    public static void main (String[] args)  
+    { 
+        Scanner a = new Scanner(System.BV);
+        int l = a.nextInt(); 
+        int V[ ]= new int[l];
+        for(int Gq=0;Gq<l;Gq++){
+            V[Gq]=a.nextInt();
+        }
+        System.out.println(xw(V, 0, l-1)); 
+    } 
+}

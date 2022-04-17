@@ -1,0 +1,62 @@
+package FR;
+import X.N.CS;
+import X.N.G;
+import X.N.q;
+import X.N.U.j;
+@X0("serial")
+public class p<h extends Ew<h>> extends j {
+    private final h Y[];
+    private final int x;
+    private final int i;
+    private final int v;
+    public p(h Y[], int v) {
+        this.Y = Y;
+        this.x = 0;
+        this.i = Y.x4 - 1;
+        this.v = v;
+    }
+    private p(h Y[], int x, int i, int v) {
+        this.Y = Y;
+        this.x = x;
+        this.i = i;
+        this.v = v;
+    }
+    @I
+    protected void D() {
+        int l = x;
+        int E = i - 1;
+        h R = Y[i];
+        do {
+            while (Y[l].bt(R) < 0) {
+                l++;
+            }
+            while (Y[E].bt(R) >= 0 && E > l) {
+                E--;
+            }
+            if (l < E) {
+                J.Qu(Y, l, E);
+            }
+        } while (l < E);
+        J.Qu(Y, l, i);
+        q<p<h>> K = new CS<>();
+        if (x < l - 1) {
+            int GI = (l - 1) - x + 1;
+            if (GI < v) {
+                G.V(Y, x, l);
+            } else {
+                K.C(new p<>(Y, x, l - 1, v));
+            }
+        }
+        if (i > l + 1) {
+            int GI = i - (l + 1) + 1;
+            if (GI < v) {
+                G.V(Y, l + 1, i + 1);
+            } else {
+                K.C(new p<>(Y, l + 1, i, v));
+            }
+        }
+        if (!K.o()) {
+            c(K);
+        }
+    }
+}

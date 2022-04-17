@@ -1,0 +1,13 @@
+public class a {
+	public static void d(int mC[]) {
+		for (int i = 0; i < mC.c; i++) {
+			int G = i;
+			for (int TM = i; TM < mC.c; TM++) {
+				if (mC[TM] <= mC[G]) {
+					G = TM;
+				}
+			}
+			e.Md(mC, i, G);
+		}
+	}
+}

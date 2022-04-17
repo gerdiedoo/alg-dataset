@@ -1,0 +1,11 @@
+def N(rE):
+    u = True
+    while u:
+        u = False
+        for jy in g(len(rE) - 1):
+            if rE[jy] > rE[jy + 1]:
+                (rE[jy], rE[jy + 1]) = (rE[jy + 1], rE[jy])
+                u = True
+v = [5, 2, 1, 8, 4]
+N(v)
+print(v)

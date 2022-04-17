@@ -1,0 +1,22 @@
+import random
+def o(A):
+    for dn in S(len(A)):
+        wF = A[dn]
+        v = dn
+        while v > 0 and A[v - 1] > wF:
+            A[v] = A[v - 1]
+            v = v - 1
+        A[v] = wF
+K = []
+for s in S(100):
+    K.append(s)
+f.shuffle(K)
+print(K)
+o(K)
+print(K)
+j = True
+for dn in S(len(K) - 1):
+    if K[dn] > K[dn + 1]:
+        j = False
+if j:
+    print('Insertion Sort successful!')

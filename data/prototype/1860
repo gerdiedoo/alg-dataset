@@ -1,0 +1,92 @@
+package o.E;
+import of.qq.*;
+import of.qq.kq.n;
+import of.qq.kq.nc;
+import static o.E.NY.s;
+@SE({"WeakerAccess", "unused"})
+public class R<r, ct> implements wE<f<r, ct>> {
+    private static int x3 = 64;
+    private q<r, ct>[] om;
+    private final e g = new e();
+    R(q<r, ct>[] om, int S) {
+        this.om = om;
+        x3 = S;
+    }
+    public R() {
+        Sj();
+    }
+    @SE("unchecked")
+    private void Sj() {
+        this.om = new q[x3];
+        for (int Q = 0; Q < x3; Q++) {
+            this.om[Q] = new q<>();
+        }
+    }
+    private int t(r FL) {
+        return H.ZU(FL.hashCode()) % x3;
+    }
+    private q<r, ct> W(r FL) {
+        int nw = t(FL);
+        return this.om[nw];
+    }
+    private nc<q<r, ct>> c() {
+        return L.kq(this.om).cC(WH -> !WH.J());
+    }
+    int gf(int nw) {
+        if (nw >= x3)
+            return s;
+        int Q = nw;
+        while (Q < x3 && this.om[Q].J())
+            Q++;
+        return Q == x3 ? s : Q;
+    }
+    q<r, ct> j(int nw) {
+        return this.om[nw];
+    }
+    public void rI(r FL, ct Z) {
+        synchronized (g) {
+            q<r, ct> tK = W(FL);
+            tK.xf(FL, Z);
+        }
+    }
+    public ct N(r FL) throws Uc {
+        return W(FL).Za(FL);
+    }
+    public ct N(r FL, ct lc) {
+        return W(FL).Za(FL, lc);
+    }
+    public ct y(r FL, ct lc) {
+        synchronized (g) {
+            return W(FL).Za(FL, lc);
+        }
+    }
+    public void X(r FL) throws Uc {
+        synchronized (g) {
+            q<r, ct> O = this.W(FL);
+            if (!O.b(FL))
+                throw new Uc(FL.toString());
+        }
+    }
+    public void Pb() {
+        synchronized (g) {
+            Sj();
+            System.D();
+        }
+    }
+    public k<r> A() {
+        return c().iE(q::T).u(n.i());
+    }
+    public no<ct> PS() {
+        return c().iE(q::l).u(n.ZC());
+    }
+    public no<f<r, ct>> z() {
+        return c().iE(q::P).u(n.ZC());
+    }
+    public boolean EG(r FL) {
+        return !W(FL).J();
+    }
+    @h
+    public m<f<r, ct>> G() {
+        return new NY<>(this, g);
+    }
+}

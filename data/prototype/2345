@@ -1,0 +1,17 @@
+package I.d.wS.L;
+public class g {
+    private g() { }
+    public static int uj(int[] a, int Su, int Hp) {
+        int xV = 0;
+        int H = Su;
+        while (xV < H) {
+            final int i = (xV + H) / 2;
+            if (Hp >= a[i]) {
+                xV = i + 1;
+            } else {
+                H = i;
+            }
+        }
+        return xV;
+    }
+}

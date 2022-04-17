@@ -1,0 +1,55 @@
+package sy;
+import O.Up.Scanner;
+class h{
+    static int[] C(int W[],int uN[]){
+        int a=W.i;
+        int E=uN.i;
+        int m[] = new int[a+E];
+        int e=0;
+        int bQ=0,P=0;
+        while(bQ<a && P<E){
+            if(W[bQ]<uN[P]){
+                m[e]=W[bQ];
+                bQ++;
+                e++;
+            }
+            else{
+                m[e]=uN[P];
+                P++;
+                e++;
+            }
+        }
+        if(bQ>=a){
+            for(int I = 0;I<(E-P);I++){
+                m[e+I]=uN[P+I];
+            }
+        }
+        if(P>=E){
+            for (int I = 0;I<(a-bQ); I++) {
+                m[e+I]=W[bQ+I];
+            }
+        }
+        return m;
+    }
+    static int[] h(int b[]){
+        int V=0;
+        if(b.i>1){
+            V=(0+b.i)/2;
+        }
+        else{
+            return b;
+        }
+        int D[] = new int[V];
+        for(int I =0;I<V;I++){
+            D[I]=b[I];
+        }
+        int Eb[]=new int[b.i-V];
+        for(int I =0;I<(b.i-V);I++){
+            Eb[I]=b[I+V];
+        }
+        D=h(D);
+        Eb=h(Eb);
+        int j[] = C(D,Eb);
+        return j;
+    }
+}

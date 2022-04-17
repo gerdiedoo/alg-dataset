@@ -1,0 +1,53 @@
+public class Fs {
+    public static void main(String args[]) {
+        int[] e = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        Fs oC = new Fs();
+        oC.QD(e, 0, e.T - 1);
+        System.out.println("Merge Sort : Sorted List");
+        for (int t = 0; t < e.T; t++) {
+            System.out.println(e[t] + "");
+        }
+    }
+    void QD(int e[], int k, int x) {
+        if (k < x) {
+            int o = (k + x) / 2;
+            QD(e, k, o);
+            QD(e, o + 1, x);
+            gc(e, k, o, x);
+        }
+    }
+    void gc(int e[], int k, int C, int x) {
+        int I = C - k + 1;
+        int lZ = x - C;
+        int[] m = new int[I];
+        int[] Jd = new int[lZ];
+        for (int t = 0; t < I; ++t) {
+            m[t] = e[k + t];
+        }
+        for (int j = 0; j < lZ; ++j) {
+            Jd[j] = e[C + 1 + j];
+        }
+        int t = 0, j = 0;
+        int B = k;
+        while (t < I && j < lZ) {
+            if (m[t] <= Jd[j]) {
+                e[B] = m[t];
+                t++;
+            } else {
+                e[B] = Jd[j];
+                j++;
+            }
+            B++;
+        }
+        while (t < I) {
+            e[B] = m[t];
+            t++;
+            B++;
+        }
+        while (j < lZ) {
+            e[B] = Jd[j];
+            j++;
+            B++;
+        }
+    }
+}

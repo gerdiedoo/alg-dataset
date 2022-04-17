@@ -1,0 +1,17 @@
+def h(a, C, Y):
+    U = a[(C + Y) // 2]
+    iq = C
+    LW = Y
+    while iq <= LW:
+        while a[iq] < U:
+            iq += 1
+        while a[LW] > U:
+            LW -= 1
+        if iq <= LW:
+            (a[iq], a[LW]) = (a[LW], a[iq])
+            iq += 1
+            LW -= 1
+    if iq < Y:
+        h(a, iq, Y)
+    if LW > C:
+        h(a, C, LW)

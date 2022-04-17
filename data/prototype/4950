@@ -1,0 +1,16 @@
+package Pz;
+import a.O;
+public class u {
+    public static int[] py(int[] JT) {
+        for(int E = 0; E < JT.J; E++) {
+            int RW = E;
+            for(int mP = E; mP < JT.J; mP++) {
+                if(JT[mP] < JT[RW]) {
+                    RW = mP;
+                }
+            }
+            O.k(JT, E, RW);
+        }
+        return JT;
+    }
+}

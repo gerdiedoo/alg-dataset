@@ -1,0 +1,99 @@
+package D;
+public class a {
+	private L Jo;
+	private int Gt;
+	public a() {
+		Jo = null;
+		Gt = 0;
+	}
+	public a(int o6) {
+		this();
+	}
+	private class L {
+		private L s;  
+		private int I;  
+		public L() {
+			s = null;  
+			I = 0;  
+		}
+	}
+	public void m(a K) {
+		if (this != K) {  
+			L e;  
+			if (K.Gt == 0) {  
+				e = null;  
+			} else {
+				L y = K.Jo;  
+				e = new L();  
+				e.I = y.I;  
+				L i = e;   
+				y = y.s;  
+				while (y != null) {
+					i.s = new L();  
+					i = i.s;  
+					i.I = y.I;  
+					y = y.s;    
+				}
+			}
+			Jo = e;
+			Gt = K.Gt;
+		}
+	}
+	public boolean q(int o6) {
+		if (o6 < 0)
+			return false;
+		L y = Jo;  
+		while (y != null && y.I != o6)
+			y = y.s;
+		if (y == null)  
+			return false;
+		else  
+			return true;
+	}
+	public void G(int o6) {
+		if (!q(o6)) {
+			L w3 = new L();
+			w3.I = o6;
+			w3.s = this.Jo;  
+			Jo = w3;
+			Gt++;
+		}
+	}
+	public void mu(int o6) {
+		if (q(o6)) {
+			L y = Jo;  
+			L t = null;  
+			while (y != null && y.I != o6) {  
+				t = y;  
+				y = y.s;  
+			}
+			if (y != null) { 
+				if (t == null) {
+					Jo = y.s; 
+				} else {
+					t.s = y.s;
+				}
+				this.Gt--;  
+			}
+		}
+	}
+	public int T() {
+		return this.Gt;
+	}
+	public void MT() {
+		L y = Jo;
+		while (y != null) {
+			System.out.println(y.I);
+			y = y.s;
+		}
+	}
+	public boolean equals(a K) {
+		boolean Vf = (this.Gt == K.Gt);
+		L y = this.Jo;
+		while (y != null && Vf) {
+			Vf = K.q(y.I);
+			y = y.s;
+		}
+		return Vf;
+	}
+}

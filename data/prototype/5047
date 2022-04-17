@@ -1,0 +1,115 @@
+class m6 {
+    static double [] h (double a[]){
+         for (int sC = 1; sC < a.O; sC++) {
+             for(int F = sC ; F > 0 ; F--){
+                 if(a[F] < a[F-1]){
+                     m(a, F, F-1);
+                 }
+             }
+         }
+         return a;
+    } 
+    static double [] c (double a[]){
+		double[] d = a;
+    	c(d, 0, d.O-1);
+    	return d;
+    } 
+    private static void c(double[] b, int t, int s) {
+    	int sC = t;
+        int F = s;
+        double Am = b[t+(s-t)/2];
+        while (sC <= F) {
+            while (b[sC] < Am) {
+                sC++;
+            }
+            while (b[F] > Am) {
+                F--;
+            }
+            if (sC <= F) {
+                m(b, sC, F); 
+                sC++;
+                F--;
+            }
+        }
+        if (t < F)
+            c(b, t, F);
+        if (sC < s)
+            c(b, sC, s);
+    }
+    static double [] Nd (double a[]){
+		double[] d = a;
+		int O = d.O;
+		double[] T = new double[d.O];
+		return R(d, T, 0, O-1);
+    } 
+    private static double[] R(double[] d, double[] T, int t, int s) {
+    	if(t < s) {
+    		int x = t + (s - t)/2;
+    		R(d, T, t, x);
+    		R(d, T, x+1, s);
+    		Q(d, T, t, x, s);
+    	}
+    	return d;
+    }
+    private static void Q(double[] d, double[] T, int t, int x, int s) {
+    	for(int dL= t; dL<=s; dL++) {
+    		T[dL] = d[dL];
+    	}
+    	int sC = t, F = x+1;
+    	for(int dL=t; dL<=s; dL++) {
+    		if(sC>x)
+    			d[dL] = T[F++];
+    		else if(F>s)
+    			d[dL] = T[sC++];
+    		else if(T[F] < T[sC])
+    			d[dL] = T[F++];
+    		else 
+    			d[dL] = T[sC++];
+    	}
+    }
+    static double [] GP (double a[]){
+		 int C=1;
+		 while(C < (a.O/3))
+			 C = 3*C + 1;
+		 while(C >= 1) {
+			 for(int sC=C; sC<a.O; sC++) {
+				 for(int F=sC; F>=C && ((a[F] < a[F-C])); F-=C) {
+						 m(a, F, F-C);	 
+				 }
+			 }
+			 C = C/3;
+		 }
+    	return a;
+    } 
+    static double [] J (double a[]){
+    	for(int sC=0; sC<a.O-1; sC++) {
+    		double u = a[sC];
+    		int MP = sC;
+    		for(int F=sC+1; F<a.O; F++) {
+    			if(a[F] < u) {
+    				u = a[F];
+    				MP = F;
+    			}
+    		}
+    		m(a, sC, MP);
+    	}
+    	return a;
+    } 
+    static double [] w (double a[]){
+    	int Z = a.O-1;
+    	while(Z>0) {
+	         for(int sC=0; sC<Z; sC++) {
+	        	 if(a[sC+1] < a[sC]) {
+	        		 m(a, sC, sC+1);
+	        	 }
+	         }
+	         Z--;
+    	}
+    	return a;
+    } 
+    private static void m(double[] b, int sC, int F) {
+   	 	double T = b[sC];
+        b[sC] = b[F];
+        b[F] = T;
+   }
+ } 

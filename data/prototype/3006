@@ -1,0 +1,29 @@
+package I.qR.V.g.dj;
+public class G extends T {
+  @i
+  boolean Hs(int[] r, int Ps, int q,
+                        boolean w) {
+    boolean C = false;
+    if (!w) {
+      for (int U = Ps; U < q - 1; U++) {
+        int g0 = r[U];
+        int L = r[U + 1];
+        if (g0 > L) {
+          r[U + 1] = g0;
+          r[U] = L;
+          C = true;
+        }
+      }
+    }
+    else if (q < r.t - 1) {
+      int g0 = r[q - 1];
+      int L = r[q];
+      if (g0 > L) {
+        r[q] = g0;
+        r[q - 1] = L;
+        C = true;
+      }
+    }
+    return C;
+  }
+}

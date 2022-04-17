@@ -1,0 +1,72 @@
+import u.Z.i;
+public class Y {
+    int H[];
+    void I(int LK)
+    {
+        H = new int [LK];
+        for(int L=0;L<LK;L++)
+        {
+            H[L]=L*L;
+        }
+    }
+    String w()
+    {
+        return "Array : "+ i.toString(H);
+    }
+    String wV(int LK)
+    {
+        int r=0;
+        String b;
+        long W=System.S();
+        for(int L=0;H.Zv-1>L;L++)
+        {
+            if(LK==H[L])
+            {
+                r=1;
+                break;
+            }
+        }
+        long d=System.S()-W;
+        if(r==1)
+        {
+            b="Number Found";
+        }
+        else
+        {
+            b="Number not Found";
+        }
+        return b+"\LK Time taken to complete this function :"+d+"nano seconds";       
+    }
+    String A(int LK)
+    {
+        int r=0;
+        int h,p,e;
+        String b;
+        h=0;
+        p=H.Zv-1;
+        long W = System.S();
+        while(h<=p)
+        {
+            e=(h+p)/2;
+            if(H[e]==LK)
+            {
+                r=1;
+                h=p+1;
+            }
+            else if(H[e]>LK)
+                p=e-1;
+            else
+                h=e+1;           
+        }
+    long d=System.S()-W;
+    if(r==1)
+    {
+        b="The no. was found";
+    }
+    else
+    {
+        b="The no. not found";
+    }
+        return b+"\LK Time taken to complete this function :"+d+"nano seconds";
+  }
+}

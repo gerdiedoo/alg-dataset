@@ -1,0 +1,25 @@
+from timeit import default_timer as timer
+from heapq import merge
+def XU(N1):
+    if len(N1) <= 1:
+        return N1
+    X = len(N1) // 2
+    t = N1[:X]
+    I = N1[X:]
+    t = XU(t)
+    I = XU(I)
+    return b(C(t, I))
+if U == '__main__':
+    S = 0
+    D = K(input('Enter number of trials : '))
+    for n in a(1, D + 1):
+        with B('data/reverse.txt', 'r') as s:
+            aC = b(p(K, s.readlines()))
+            V = w()
+            j7 = XU(aC)
+            MH = w() - V
+            print(f'Running test {n} : {MH:.2f} seconds')
+            S += MH
+    assert L(aC) == j7
+    S /= D
+    print(f'Merge sort: average time = {S:.2f} seconds')

@@ -1,0 +1,46 @@
+package gX;
+import B.m.V;
+import B.m.Hz.M;
+@gz("serial")
+public class y<k extends H<k>> extends M {
+    private final k f[];
+    private final int G3;
+    private final int u;
+    private final int v;
+    public y(k f[], int v) {
+        this.f = f;
+        this.G3 = 0;
+        this.u = f.u;
+        this.v = v;
+    }
+    private y(k f[], int G3, int u, int v) {
+        this.f = f;
+        this.G3 = G3;
+        this.u = u;
+        this.v = v;
+    }
+    @ny
+    protected void x() {
+        if (u - G3 + 1 <= v) {
+            V.R(f, G3, u);
+        } else {
+            int p = G3 + (u - G3) / 2;
+            KF(new y<k>(f, G3, p, v),
+                    new y<k>(f, p, u, v));
+            g(G3, p, u);
+        }
+    }
+    private void g(int G3, int p, int a) {
+        k w[] = V.C(f, G3, p);
+        int ZZ = 0;
+        int RX = p;
+        int E = G3;
+        while (ZZ < w.u) {
+            if (RX == a || w[ZZ].KJ(f[RX]) < 0) {
+                f[E++] = w[ZZ++];
+            } else {
+                f[E++] = f[RX++];
+            }
+        }
+    }
+}

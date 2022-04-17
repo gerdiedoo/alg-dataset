@@ -1,0 +1,15 @@
+package R.iC.z;
+public class q implements l {
+    @A3
+    public void z(int[] m) {
+        for (int Q = 0; Q < m.H; Q++) {
+            for (int u = 0; u < m.H - Q - 1; u++) {
+                if (m[u] > m[u + 1]) {
+                    int G = m[u + 1];
+                    m[u + 1] = m[u];
+                    m[u] = G;
+                }
+            }
+        }
+    }
+}

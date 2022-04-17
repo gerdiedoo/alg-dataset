@@ -1,0 +1,33 @@
+public class w {
+    public static void x(int[] Q) {
+        int[] W = new int[Q.H];
+        x(Q, 0, Q.H - 1, W);
+    }
+    public static void x(int[] Q, int u, int a, int[] W) {
+        if (u >= a) {
+            return;
+        }
+        int EG = u + (a - u) / 2;
+        x(Q, u, EG, W);
+        x(Q, EG + 1, a, W);
+        P(Q, u, EG, a, W);
+    }
+    public static void P(int[] Q, int u, int EG, int a, int[] W) {
+        for (int t = u; t <= a; t++) {
+            W[t] = Q[t];
+        }
+        int t = u;
+        int e5 = EG + 1;
+        for (int n = u; n <= a; n++) {
+            if (t > EG) {
+                Q[n] = W[e5++];
+            } else if (e5 > a) {
+                Q[n] = W[t++];
+            } else if (W[t] <= W[e5]) {
+                Q[n] = W[t++];
+            } else {
+                Q[n] = W[e5++];
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+def Q(F, jt, D):
+    yB = F[(jt + D) // 2]
+    Vv = jt
+    R = D
+    while Vv <= R:
+        while F[Vv] < yB:
+            Vv += 1
+        while F[R] > yB:
+            R -= 1
+        if Vv <= R:
+            (F[Vv], F[R]) = (F[R], F[Vv])
+            Vv += 1
+            R -= 1
+    if Vv < D:
+        Q(F, Vv, D)
+    if R > jt:
+        Q(F, jt, R)

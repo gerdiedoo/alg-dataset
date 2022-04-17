@@ -1,0 +1,115 @@
+package s.D;
+public class U<IZ,u> {
+    private t<IZ,u>[] q;
+    private int m = 16;  
+    static class t<IZ, u> {
+        IZ J;
+        u l;
+        t <IZ, u> n;
+        public t(IZ J, u l, t<IZ,u> n) {
+            this.J = J;
+            this.l = l;
+            this.n = n;
+        }
+    }
+    public U(int RQ) {
+        this.m = RQ;
+        q = new t[m];
+    }
+    private int F (IZ J) {
+        return lO.UN(J.hashCode()) % m;
+    }
+    public boolean j (IZ J, u l) {
+        if (J == null) {
+            return false;
+        }
+        int w = F(J);
+        t<IZ,u> B = new t<IZ,u>(J, l, null);
+        if(q[w] == null) {
+            q[w] = B;
+        } else {
+            t<IZ,u> dJ = null;
+            t<IZ,u> W = q[w];
+            while(W != null) {
+                if (W.J.equals(J)) {
+                    if(dJ == null) {
+                        B.n = W.n;
+                        q[w] = B;
+                        return true;
+                    } else {
+                        B.n = W.n;
+                        dJ.n = B;
+                        return true;
+                    }
+                }
+                dJ = W;
+                W = dJ.n;
+            }
+            dJ.n = B;
+        }
+        return false;
+    }
+    public u f(IZ J){
+        int w = F(J);
+        if(q[w] == null) {
+            return null;
+        } else {
+            t<IZ,u> r = q[w];
+            while(r != null) {
+                if(r.J.equals(J)) {
+                    return r.l;
+                }
+                r = r.n;
+            }
+            return null;
+        }
+    }
+    public boolean a(IZ J) {
+        int w = F(J);
+        if (q[w] == null) {
+            return false;
+        } else {
+            t<IZ,u> dJ = null;
+            t<IZ,u> W = q[w];
+            while (W != null) {
+                if (W.J.equals(J)) {
+                    if (dJ == null) {
+                        q[w] = q[w].n;
+                        return true;
+                    } else {
+                        dJ.n = W.n;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public float Fn() {
+        float b = (float)m;
+        float Q = 0f;
+        for (int M = 0; M < m; M++) {
+            if (q[M] != null) {
+                Q += 1.0f;
+            }
+        }
+        return Q/b;
+    }
+    public void CW() {
+        for (int M = 0; M < m; M++) {
+            System.out.V(" Bucket# = " + M + " ");
+            if (q[M] != null) {
+                t<IZ,u> dJ = null;
+                t<IZ,u> W = q[M];
+                while (W != null) {
+                    System.out.V("-{" + W.J + "=" + W.l + "}");
+                    dJ = W;
+                    W = W.n;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Note: The implementation accepts any primitive data type for both IZ or u");
+    }
+}

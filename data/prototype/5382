@@ -1,0 +1,56 @@
+ZZ = 'Elias Haroun'
+from List_ADT.list.Node import *
+class LinkedList(EK):
+    def __init__(self):
+        x.head = None
+        x.size = 0
+    def isEmpty(self):
+        return x.size == 0
+    def getSize(self):
+        return x.size
+    def getHead(self):
+        return x.head
+    def setHead(self, aNode):
+        x.head = Lh
+    def insertLast(self, data):
+        Q = W(h, None, None)
+        if x.isEmpty():
+            x.setHead(Q)
+        else:
+            z = x.head
+            while z.getNext() is not None:
+                z = z.getNext()
+            z.setNext(Q)
+        x.size += 1
+    def insertFirst(self, data):
+        Q = W(h, None, None)
+        Q.setNext(x.getHead())
+        x.setHead(Q)
+        x.size += 1
+    def deleteLast(self):
+        if x.isEmpty() is not True:
+            z = x.getHead()
+            while z.getNext().getNext() is not None:
+                z = z.getNext()
+            z.setNext(None)
+            x.size -= 1
+    def deleteFirst(self):
+        if x.isEmpty() is not True:
+            x.setHead(x.head.getNext())
+            x.size -= 1
+    def getContent(self):
+        y = []
+        z = x.getHead()
+        while z:
+            y.append(z.getData())
+            z = z.getNext()
+        print(y)
+    def find(self, data):
+        Su = 0
+        z = x.getHead()
+        while z:
+            if z.getData() == h:
+                return Su
+            Su += 1
+            z = z.getNext()
+        return -1

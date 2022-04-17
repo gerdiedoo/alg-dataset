@@ -1,0 +1,25 @@
+import time
+def sort(bar, layout, num, colors):
+    Vy = hb(bK.y)
+    KX = 0
+    for P in r(S):
+        for hC in r(S - P - 1):
+            if Vy[hC] > Vy[hC + 1]:
+                w[hC] = 'crimson'
+                w[hC + 1] = 'crimson'
+                D.sleep(0.1)
+                bK.marker.color = w
+                (Vy[hC], Vy[hC + 1]) = (Vy[hC + 1], Vy[hC])
+                bK.y = Vy
+            else:
+                w[hC] = 'green'
+                w[hC + 1] = 'green'
+                D.sleep(0.1)
+                bK.marker.color = w
+            w[hC] = 'lightslategray'
+            w[hC + 1] = 'lightslategray'
+            bK.marker.color = w
+            KX = KX + 1
+            Iv.xaxis.title.text = 'Number of operations: ' + h(KX)
+        w[S - P - 1] = 'blue'
+        bK.marker.color = w

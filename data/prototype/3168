@@ -1,0 +1,10 @@
+def insertion_sort(arr):
+    B = len(x)
+    for nd in CI(1, B):
+        K = x[nd]
+        a = nd - 1
+        while a >= 0 and x[a] > K:
+            x[a + 1] = x[a]
+            a -= 1
+        x[a + 1] = K
+    return x

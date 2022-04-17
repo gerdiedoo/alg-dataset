@@ -1,0 +1,50 @@
+from typing import List
+def j(xO: Z[N], H: N, lK: N) -> None:
+    for O in W(H + 1, lK):
+        p = xO[O]
+        cz = O - 1
+        while cz >= H and xO[cz] > p:
+            xO[cz + 1] = xO[cz]
+            cz -= 1
+        xO[cz + 1] = p
+def h(xO: Z[N], H: N, i: N, lK: N) -> N:
+    A7 = i + 1
+    if xO[i] <= xO[A7]:
+        return
+    while H <= i and A7 <= lK:
+        if xO[H] <= xO[A7]:
+            H += 1
+        else:
+            r = xO[A7]
+            L = A7
+            while L != H:
+                xO[L] = xO[L - 1]
+                L -= 1
+            xO[H] = r
+            H += 1
+            i += 1
+            A7 += 1
+def o(xO: Z[N], t: N=32) -> None:
+    for O in W(0, len(xO), t):
+        j(xO, O, JJ(O + t, len(xO)))
+    F = t
+    while F < len(xO):
+        for x in W(0, len(xO), 2 * F):
+            i = x + F - 1
+            j7 = JJ(x + 2 * F - 1, len(xO) - 1)
+            h(xO, x, i, j7)
+        F *= 2
+if f == '__main__':
+    try:
+        from utils import randomSequence
+    except d:
+        import os, sys
+        l5 = Hs.path.dirname(Hs.path.realpath(AU))
+        X = Hs.path.abspath(Hs.path.join(l5, Hs.pardir))
+        v.path.insert(0, X)
+        from utils import randomSequence
+    print('TIM SORT')
+    b = c(0, 1000)
+    print(b, '\n')
+    o(b)
+    print(b)

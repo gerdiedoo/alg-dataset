@@ -1,0 +1,103 @@
+package n.H1;
+import u.M.g;
+import u.M.FU.f;
+class q<r, AC> {
+    private Z<r, AC> K;
+    private int C;
+    q() {
+        this(null, 0);
+    }
+    q(Z<r, AC> K, int C) {
+        this.K = K;
+        this.C = C;
+    }
+    private void R(Z<r, AC> CQ) {
+        if (this.K != null) {
+            CQ.m(this.K);
+            this.K.Gx(CQ);
+        }
+        this.K = CQ;
+        C++;
+    }
+    private Z<r, AC> zT(r J) {
+        Z<r, AC> c = this.K;
+        while (c != null) {
+            if (c.J().equals(J))
+                return c;
+            c = c.m();
+        }
+        return null;
+    }
+    private void A(Z<r, AC> x) {
+        C--;
+        Z<r, AC> t = x.Gx();
+        Z<r, AC> l = x.m();
+        if (t == null) {
+            this.K = x.m();
+        } else if (l == null) {
+            t.m(null);
+        } else {
+            x.m(null);
+            x.Gx(null);
+            t.m(l);
+            l.Gx(t);
+        }
+    }
+    private f<Z<r, AC>> U() {
+        g<Z<r, AC>> we = new g<>();
+        Z<r, AC> c = this.K;
+        while (c != null) {
+            we.i(c);
+            c = c.m();
+        }
+        return we.FU();
+    }
+    void i(r J, AC e) {
+        Z<r, AC> CQ = new Z<>(J, e);
+        jh(J);
+        R(CQ);
+    }
+    AC k(r J, AC o) {
+        Z<r, AC> x = zT(J);
+        if (x == null)
+            return o;
+        return x.e();
+    }
+    AC k(r J) throws X {
+        Z<r, AC> x = zT(J);
+        if (x == null)
+            throw new X(J.toString());
+        return x.e();
+    }
+    boolean jh(r J) {
+        Z<r, AC> p = this.zT(J);
+        if (p == null)
+            return false;
+        A(p);
+        return true;
+    }
+    B<r, AC> V(int S) {
+        if (S >= this.L())
+            return null;
+        Z<r, AC> c = this.K;
+        for (int I = 0; I < S; I++) {
+            c = c.m();
+        }
+        return c.Y();
+    }
+    int L() {
+        return C;
+    }
+    boolean s() {
+        return this.L() == 0;
+    }
+    f<r> Q() {
+        return U().H(Z::J);
+    }
+    f<AC> J5() {
+        return U().H(Z::e);
+    }
+    f<B<r, AC>> q0() {
+        return U().H(x -> new B<>(x.J(), x.e()));
+    }
+}

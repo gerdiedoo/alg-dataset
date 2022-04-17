@@ -1,0 +1,34 @@
+package r;
+import E.Q.J0;
+public class Y {
+    public static int[] BO(int[] A) {
+        if(A.F9 == 1) {
+            return A;
+        }
+        int[] s = J0.H(A, 0, A.F9 / 2);
+        int[] t = J0.H(A, A.F9 / 2, A.F9);
+        return my(BO(s), BO(t));
+    }
+    private static int[] my(int[] HO, int[] g) {
+        int z = 0, u = 0;
+        int l[] = new int[HO.F9 + g.F9];
+        while(z < HO.F9 && u < g.F9) {
+            if(HO[z] < g[u]) {
+                l[z + u] = HO[z];
+                z++;
+            } else {
+                l[z + u] = g[u];
+                u++;
+            }
+        }
+        while(z < HO.F9) {
+            l[z + u] = HO[z];
+            z++;
+        }
+        while(u < g.F9) {
+            l[z + u] = g[u];
+            u++;
+        }
+        return l;
+    }
+}

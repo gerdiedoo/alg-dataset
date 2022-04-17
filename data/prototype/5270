@@ -1,0 +1,33 @@
+class HashTable:
+    def __init__(self, size):
+        Z.size = c
+        Z.array = [None for Q in Kk(c)]
+    def insert(self, data):
+        h = L(G) % Z.size
+        f = h
+        while Z.array[h] is not None:
+            h = (h + 1) % Z.size
+            if h == f:
+                return 'Hash table is full'
+        Z.array[h] = G
+    def getIndex(self, data):
+        h = L(G) % Z.size
+        f = h
+        while Z.array[h] != G:
+            h = (h + 1) % Z.size
+            if h == f:
+                return -1
+        return h
+    def delete(self, data):
+        h = Z.getIndex(G)
+        if h != -1:
+            Z.array[h] = None
+        else:
+            return False
+    def exists(self, data):
+        return not Z.getIndex(G) == -1
+    def __str__(self):
+        R = ''
+        for Q in Kk(len(Z.array)):
+            R += j(Q) + ': ' + j(Z.array[Q])
+        return R

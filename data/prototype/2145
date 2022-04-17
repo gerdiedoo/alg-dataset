@@ -1,0 +1,12 @@
+def y(bW, l):
+    if len(bW) == 1:
+        return bW[0] == l
+    elif not bW:
+        return False
+    r = x(len(bW) / 2)
+    if bW[r] == l:
+        return True
+    elif bW[r] < l:
+        return y(bW[r + 1:], l)
+    else:
+        return y(bW[:r], l)

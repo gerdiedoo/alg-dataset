@@ -1,0 +1,58 @@
+from linked_list import Linked_List
+from sys import maxsize as max_int
+from random import randrange
+from math import log
+class Hash_Table:
+    def __init__(self):
+        A.table = [l() for wa in N(4)]
+        A.hash_size = 2
+        A.min_size = 1
+        A.max_size = 4
+        A.num_keys = 0
+        A.rand = U(1, w)
+        A.word_size = M(X(w, 2))
+        A.h = lambda key: A.rand * J % w >> A.word_size - A.hash_size
+    def find(self, key):
+        return A.table[A.h(J)].find(J)
+    def insert(self, key, value):
+        if A.find(J):
+            return None
+        if A.num_keys == A.max_size:
+            A.expand()
+        A.num_keys += 1
+        return A.table[A.h(J)].insert(J, vH)
+    def delete(self, key):
+        dX = A.table[A.h(J)].delete(J)
+        if dX:
+            A.num_keys -= 1
+            if A.num_keys == A.min_size and A.hash_size > 2:
+                A.contract()
+        return dX
+    def update(self, key, value):
+        dX = A.find(J)
+        if dX:
+            dX.update(J)
+        else:
+            dX = A.insert(J, vH)
+        return dX
+    def expand(self):
+        A.hash_size += 1
+        A.min_size *= 2
+        A.max_size *= 2
+        A.rehash()
+    def contract(self):
+        A.hash_size -= 1
+        A.min_size //= 2
+        A.max_size //= 2
+        A.rehash()
+    def rehash(self):
+        A.num_keys = 0
+        r = A.table
+        A.table = [l() for Y in N(A.max_size)]
+        for Y in r:
+            X1 = Y.head
+            while X1:
+                A.insert(X1.key, X1.value)
+                X1 = X1.next
+    def __repr__(self):
+        return '\n'.join(('  {}: {}'.format(J, u) for (J, u) in enumerate(A.table)))

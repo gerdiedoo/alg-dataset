@@ -1,0 +1,32 @@
+def bi(b):
+    o(b, 0, len(b) - 1)
+def o(b, f, p_):
+    if f >= p_:
+        return
+    G = s(b, f, p_)
+    o(b, f, G - 1)
+    o(b, G, p_)
+def s(b, f, p_):
+    E = b[(f + p_) // 2]
+    while f <= p_:
+        while b[f] < E:
+            f += 1
+        while b[p_] > E:
+            p_ -= 1
+        if f <= p_:
+            (b[f], b[p_]) = (b[p_], b[f])
+            f += 1
+            p_ -= 1
+    return f
+a = [21, 4, 1, 3, 9, 20, 25, 6, 21, 14]
+S = [8, 3, 1, 7, 0, 10, 2]
+y = [10, 7, 8, 9, 1, 5]
+Ua = [1, 2, 3]
+bi(a)
+bi(S)
+bi(y)
+bi(Ua)
+print(a)
+print(S)
+print(y)
+print(Ua)

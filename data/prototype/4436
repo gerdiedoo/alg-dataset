@@ -1,0 +1,25 @@
+package UP.bm;
+public class n7 extends t {
+    public void d(int[] FS) {
+        I = 0;
+        W(FS, 0, FS.R - 1);
+    }
+    public void W(int[] FS, final int m, final int nv) {
+        if (m < nv) {
+            final int B = P(FS, m, nv);
+            W(FS, m, B - 1);
+            W(FS, B + 1, nv);
+        }
+    }
+    private int P(int[] FS, final int m, final int nv) {
+        final int n = FS[nv];
+        int Kr = (m - 1);
+        for (int J = m; J < nv; J++) {
+            if (FS[J] <= n) {
+                Q(FS, ++Kr, J);
+            }
+        }
+        Q(FS, ++Kr, nv);
+        return Kr;
+    }
+}

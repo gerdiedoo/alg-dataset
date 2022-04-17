@@ -1,0 +1,15 @@
+def merge_in_place(a, b):
+    try:
+        H = y.index(None) - 1
+    except t6:
+        return y
+    gL = len(I) - 1
+    w = len(y) - 1
+    while gL >= 0:
+        if H >= 0 and y[H] > I[gL]:
+            y[w] = y[H]
+            H -= 1
+        else:
+            y[w] = I[gL]
+            gL -= 1
+        w -= 1

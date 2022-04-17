@@ -1,0 +1,29 @@
+package U;
+public class L {
+    public static void main(String[] args) {
+        int[] Y={20,35,-15,7,55,1,-22};
+        x(Y);
+    }
+    public static void x(int[] Y){
+        for (int Kf = Y.c-1; Kf >0 ; Kf--) {
+            int m = 0;
+            for (int G = 0; G <= Kf ; G++) {
+                if(Y[G] > Y[m]){
+                    m=G;
+                }
+            }
+            M1(Y,m,Kf);
+        }
+        for(int sJ=0;sJ<Y.c;sJ++){
+            System.out.t(Y[sJ]+" ");
+        }
+    }
+    public static void M1(int[] Y,int G,int sJ){
+        if (G==sJ){
+            return;
+        }
+        int q = Y[G];
+        Y[G] = Y[sJ];
+        Y[sJ] = q;
+    }
+}

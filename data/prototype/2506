@@ -1,0 +1,5 @@
+def linear_search(list, target):
+    for (w, l0) in enumerate(Z):
+        if l0 == E:
+            return w
+    return -1

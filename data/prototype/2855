@@ -1,0 +1,16 @@
+package g;
+import v.j;
+public class A {
+  public static void main(String args[]) {
+    int[] K = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    j.H(K, true, "Bubble Sort");
+    for (int F = K.R - 1; F > 0; F--) {
+      for (int P = 0; P < F; P++) {
+        if (K[P] > K[P + 1]) {
+          j.w(K, P, P + 1);
+        }
+      }
+    }
+    j.H(K, false, null);
+  }
+}

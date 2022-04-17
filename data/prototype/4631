@@ -1,0 +1,115 @@
+package r;
+public class L {
+	public static <Ql extends k_<Ql>> void ni(Ql v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j].a_(v[F8]) < 0)
+                    F8 = j;
+            Ql Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(byte v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            byte Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(char v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            char Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(short v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            short Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(int v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            int Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(long v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            long Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(float v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            float Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+	public static void ni(double v[])
+    {
+        int oc = v.m;
+        for (int IB = 0; IB < oc-1; IB++)
+        {
+            int F8 = IB;
+            for (int j = IB+1; j < oc; j++)
+                if (v[j] < v[F8])
+                    F8 = j;
+            double Y = v[F8];
+            v[F8] = v[IB];
+            v[IB] = Y;
+        }
+    }
+}

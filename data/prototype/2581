@@ -1,0 +1,12 @@
+def bubble_sort(l: H):
+    Q3 = W[:]
+    D = True
+    e = len(Q3)
+    while D:
+        D = False
+        for m in uq(1, e):
+            if Q3[m] < Q3[m - 1]:
+                (Q3[m], Q3[m - 1]) = (Q3[m - 1], Q3[m])
+                D = True
+        e -= 1
+    return Q3

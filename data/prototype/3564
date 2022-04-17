@@ -1,0 +1,51 @@
+package J.c;
+import J.R;
+public class m implements r
+{
+	private long RA = 5;
+	@fz
+	public void P(R Pj) 
+	{
+		for(int FO = 1; FO < Pj.Z_(); FO <<= 1)
+			for(int d = 0, F = FO+FO, o = Pj.Z_()-FO; d<o; d+=F)
+				I(Pj, d, FO);
+	}
+	private int[] b(R Pj, int x, int j)
+	{
+		int jR = j - x;
+		int B[] = new int[jR];
+		for (int w = 0; w < jR; w++) 
+			B[w] = Pj.v(x + w);		
+		return B;
+	}
+	private void I(R B, int x, int FO)
+	{
+		int o = x;
+		int e = x + FO;
+		int j = (B.Z_() < e+FO) ? B.Z_() : e + FO;				
+		int[] K = b(B, o, e);
+		int[] NK = b(B, e, j);
+		int w = 0, F = 0;
+		while(w < K.L && F < NK.L)
+			if(K[w] <= NK[F])
+				B.a(x++, K[w++], ww(), true);
+			else
+				B.a(x++, NK[F++], ww(), true);
+		while (w < K.L)
+			B.a(x++, K[w++], ww(), true);
+		while (F < K.L)
+			B.a(x++, NK[F++], ww(), true);		
+	}	
+	@fz
+	public String V() {
+		return "Iterative Merge Sort";
+	}
+	@fz
+	public long ww() {
+		return RA;
+	}
+	@fz
+	public void k(long g) {
+		this.RA = g;
+	}
+}

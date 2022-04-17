@@ -1,0 +1,142 @@
+import j.M.*;
+public class B<N,t>{
+	static final int H = 1 << 2;
+	LR<N,t>[] g;
+	int L;
+	int A;
+	public B() {
+		A = H;
+	}
+	public B(int a) {
+		this.A = a;
+	}
+	class LR<N, t> {
+		final int kH;
+		final N J;
+		t k;
+		LR<N,t> dU;
+		LR(int kH, N J, t k, LR<N,t> dU) {
+			this.kH = kH;
+			this.J = J;
+			this.k = k;
+			this.dU = dU;
+		}
+		public N c() {
+			return J;
+		}
+		public t v() {
+			return k;
+		}
+		public final String toString() { return J + "=" + k; }
+		public final int hashCode() {
+			return sv.hashCode(J) ^ sv.hashCode(k);
+		}
+	}
+	static final int kH(d J) {
+		return (J == null) ? 0 : J.hashCode();
+	}
+	public int L() {
+		return L;
+	}
+	public boolean s() {
+		return L == 0;
+	}
+	@E("unchecked")
+	public t o(N J, t k) {
+		LR<N, t> b;  int kH = kH(J);
+		if (g == null || g.ta == 0) {
+			g = (LR<N, t>[]) new LR[A];
+		}
+		int Lt = g.ta;
+		int I = (Lt - 1) & kH;
+		if (g[I] == null) {
+			g[I] = new LR<N,t>(kH, J, k, null);
+		} else {
+			LR<N, t> hY;
+			b = g[I];
+			if (b.kH == kH && 
+					b.J == J || (J != null && b.J.equals(J))){
+				hY = b;
+			} else {
+				for (int x = 0; ; x++) {
+					System.out.println("LinkedList: Not " + b.J);
+					hY = b.dU;
+					if (b.dU == null) {
+						b.dU = new LR(kH, J, k, null);
+						break;
+					}
+					if (hY.kH == kH &&
+							(hY.J == J || (J != null && hY.J.equals(J)))) {
+						break;
+					}
+					b = hY;
+				}
+			}
+			if (hY != null) {
+				t m = hY.k;
+				hY.k = k;
+				return m;
+			}
+		}
+		L++;
+		return null;
+	}
+	public t z(d J) {
+		int kH = kH(J);
+		int Lt = g.ta;
+		if (g != null && g.ta > 0 && g[kH & (Lt - 1)] != null) {
+			LR<N, t> Rp = g[kH & (Lt - 1)];
+			if (Rp.kH == kH && 
+					Rp.J == J || (J != null && Rp.J.equals(J))) {
+				return Rp.k;
+			}
+			LR<N, t> hY = Rp.dU;
+			if (Rp.dU != null) {
+				do {
+					if (hY.kH == kH &&
+							hY.J == J || (hY.J != null && hY.J.equals(J))) {
+						return hY.k;
+					} 
+				}while ((hY = hY.dU) != null);
+			}
+		}
+		return null;
+	}
+	public boolean Mi(d J) {
+		return z(J) != null;
+	}
+	public t T(d J) {
+		int kH = kH(J);
+		int Lt = g.ta;
+		int I = kH & (Lt - 1);
+		if (g != null && g.ta > 0 && g[I] != null) {
+			LR<N, t> za = g[I];
+			LR<N, t> hY = null; LR<N, t> W = null;
+			if (za.kH == kH && 
+					za.J == J || (J != null && za.J.equals(J))) {
+				W = za;
+			}
+			hY = za.dU;
+			if (za.dU != null) {
+				do {
+					if (hY.kH == kH && 
+							hY.J == J || (J != null && hY.J.equals(J))) {
+						W = hY;
+						break;
+					}
+					za = hY;
+				} while ((hY = hY.dU) != null);
+			}
+			if (W != null) {
+				if (W == za) {
+					g[I] = W.dU;
+				} else {
+					za.dU = W.dU;
+				}
+				L--;
+				return W.k;
+			}
+		}
+		return null;
+	}
+}

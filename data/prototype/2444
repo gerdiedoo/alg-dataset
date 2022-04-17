@@ -1,0 +1,15 @@
+def Y(g, cm):
+    dx = len(g)
+    for c in rR(dx):
+        if g[c] == cm:
+            return c
+    return None
+def u():
+    g = rR(100)
+    F = Y(g, 55)
+    if F is None:
+        print('Element not found in array')
+    else:
+        print('Element found at index %s' % F)
+if nc == '__main__':
+    u()

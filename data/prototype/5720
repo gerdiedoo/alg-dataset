@@ -1,0 +1,31 @@
+def K(ts):
+    if len(ts) <= 1:
+        return ts
+    U = len(ts) // 2
+    N = ts[:U]
+    y = ts[U:]
+    N = K(N)
+    y = K(y)
+    return gK(N, y)
+def gK(E, H):
+    Y = []
+    PY = len(E)
+    z = len(H)
+    B = CC = 0
+    while B < PY and CC < z:
+        if E[B] <= H[CC]:
+            Y.append(E[B])
+            B += 1
+        else:
+            Y.append(H[CC])
+            CC += 1
+    while B < PY:
+        Y.append(E[B])
+        B += 1
+    while CC < z:
+        Y.append(H[CC])
+        CC += 1
+    return Y
+if r == '__main__':
+    ts = [10, 3, 15, 7, 8, 23, 98, 29]
+    print(K(ts))

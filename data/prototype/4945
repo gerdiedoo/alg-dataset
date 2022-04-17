@@ -1,0 +1,17 @@
+package t.I.x;
+public class P implements w {
+    @B
+    public void x(int[] G) {
+        for (int W = 0; W < G.Q - 1; W++) {
+            int jc = W;
+            for (int R = W + 1; R < G.Q; R++) {
+                if (G[jc] > G[R]) {
+                    jc = R;
+                }
+            }
+            int N = G[jc];
+            G[jc] = G[W];
+            G[W] = N;
+        }
+    }
+}

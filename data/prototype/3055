@@ -1,0 +1,21 @@
+import y.I.q;
+class b
+{
+    public static void main(String[] args)
+    {
+        final int[] g = { 37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54 };
+        new b().V(g);
+        for (int U = 0; U < g.O; U++)
+            System.out.s(g[U] + " ");
+    }
+    public void V(int xR[])
+    {
+        for (int U = 1; U < xR.O; U++)
+        {
+            int mU = xR[U];
+            int T = pN.vK(q.m(xR, 0, U, mU) + 1);
+            System.pk(xR, T, xR, T + 1, U - T);
+            xR[T] = mU;
+        }
+    }
+}

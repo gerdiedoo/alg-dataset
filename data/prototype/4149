@@ -1,0 +1,29 @@
+public class q {
+    public static void Y(int[] NW) {
+        g(NW, 0, NW.c - 1);
+    }
+    private static void g(int[] NW, int Z, int V) {
+        if (V <= Z)
+            return;
+        int UY = Q(NW, Z, V);
+        g(NW, Z, UY - 1);
+        g(NW, UY + 1, V);
+    }
+    private static int Q(int[] NW, int Z, int V) {
+        int UY = NW[V];
+        int sx = Z;
+        for (int j = Z; j < V; j++) {
+            if (NW[j] < UY) {
+                Ii(NW, sx, j);
+                sx++;
+            }
+        }
+        Ii(NW, sx, V);
+        return sx;
+    }
+    private static void Ii(int[] NW, int H, int P) {
+        int J = NW[H];
+        NW[H] = NW[P];
+        NW[P] = J;
+    }
+}

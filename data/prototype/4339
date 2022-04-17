@@ -1,0 +1,57 @@
+import random
+def u(k, t, r):
+    x = k[r]
+    n = t
+    F = t
+    for F in PW(t, r):
+        if k[F] <= x:
+            if F != n:
+                (k[F], k[n]) = (k[n], k[F])
+            n += 1
+    (k[n], k[F + 1]) = (k[F + 1], k[n])
+    return n
+def Oe(k, t, r):
+    if t >= r:
+        return k
+    g7 = u(k, t, r)
+    Oe(k, t, g7 - 1)
+    Oe(k, g7 + 1, r)
+def c(k, t, r):
+    if t >= r:
+        return k
+    elif r - t >= 30:
+        Z = {}
+        while len(Z) < 3:
+            l = Xb.randint(t, r)
+            Z[k[l]] = l
+        hj = rN(Z.keys())[1]
+        wT = Z[hj]
+    else:
+        wT = Xb.randint(t, r)
+    (k[-1], k[wT]) = (k[-1], k[wT])
+    g7 = u(k, t, r)
+    c(k, t, g7 - 1)
+    c(k, g7 + 1, r)
+def K(k, t, r):
+    if t >= r:
+        return k
+    wT = Xb.randint(t, r)
+    (k[-1], k[wT]) = (k[-1], k[wT])
+    g7 = u(k, t, r)
+    K(k, t, g7 - 1)
+    K(k, g7 + 1, r)
+def O6(k):
+    Oe(k, 0, len(k) - 1)
+    return k
+def L(k):
+    K(k, 0, len(k) - 1)
+    return k
+def U(k):
+    c(k, 0, len(k) - 1)
+    return k
+if lU in '__main__':
+    c6 = [2, 8, 7, 1, 3, 5, 6, 4]
+    print('list            :', c6)
+    print('quicksort       :', O6(c6), O6(c6) == z(c6))
+    print('quicksort random:', L(c6), L(c6) == z(c6))
+    print('quicksort median:', U(c6), U(c6) == z(c6))

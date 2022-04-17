@@ -1,0 +1,99 @@
+import Mh.M.t_;
+import Mh.M.Sy;
+public class c<r,E> implements o<r, E> {
+	private int z;
+	private Sy<o.m<r, E>> sF;
+	private int Q=0;
+	c(int z)
+	{
+		sF=new t_<o.m<r, E>>();
+		o.m<r,E> iR;
+		for(int G=0;G<z;G++)
+			{
+				iR=new A();
+				sF.i(iR);
+			}
+		this.z=z;
+	}
+	@C
+	public E e(r J) {
+		int G=pG(J.hashCode(),z);
+		o.m<r,E> iR=sF.e(G);
+		for(o.cm<r, E> V:iR.Tv())
+		{
+			if(V.l().equals(J))
+				return V.x();
+		}
+		return null;
+	}
+	@C
+	public E s(r J, E Z) {
+		int G=pG(J.hashCode(),z);
+		o.m<r,E> iR=sF.e(G);
+		for(o.cm<r, E> V:iR.Tv())
+		{
+			if(V.l().equals(J))
+				{
+					E fv=((fr)V).D;
+					((A)iR).no.L(V);
+					((fr)V).D=Z;
+					((A)iR).no.i(V);
+					return fv;
+				}
+		}
+		o.cm<r, E> u=new fr();
+		((fr)u).k=J;
+		((fr)u).D=Z;
+		((A)iR).no.i(u);
+		Q++;
+		return null;
+	}
+	@C
+	public E L(r J) {
+		int G=pG(J.hashCode(),z);
+		o.m<r,E> iR=sF.e(G);
+		for(o.cm<r, E> V:iR.Tv())
+		{
+			if(V.l()==J)
+			{
+				E fv=((fr)V).D;
+				((A)iR).no.L(V);
+				Q--;
+				return fv;
+			}
+		}
+		return null;
+	}
+	@C
+	public int Q() {
+		return Q;
+	}
+	@C
+	public Sy<? extends o.m<r, E>> UM() {
+		return sF;
+	}
+	public int pG(int hashCode, int Q) {
+		return mN.a(hashCode) % Q;
+	}
+	public class fr implements o.cm<r, E>
+	{
+		r k;
+		E D;
+		@C
+		public r l() {
+			return k;
+		}
+		@C
+		public E x() {
+			return D;
+		}
+	}
+	public class A implements o.m<r, E>
+	{
+		private Sy<o.cm<r, E>> no=new t_<o.cm<r, E>>();
+		@C
+		public Sy<? extends o.cm<r, E>> Tv() {
+			return no;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+package Ax.Vn;
+import Ax.i;
+public class Ls implements B {
+    private long ov = 1;
+    @N
+    public void U(i QY) {
+        for (int h = 0; h < QY.w(); h++) {
+            int y = QY.W(h);
+            int k = h - 1;
+            while (k >= 0 && QY.W(k) > y) {
+                QY.C(k + 1, QY.W(k), 5, true);
+                k--;
+            }
+            QY.C(k + 1, y, Qn(), true);
+        }
+    }
+    @N
+    public String Rr() {
+        return "Insertion Sort";
+    }
+    @N
+    public long Qn() {
+        return ov;
+    }
+    @N
+    public void ZA(long u) {
+        this.ov = u;
+    }
+}

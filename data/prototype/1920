@@ -1,0 +1,108 @@
+class f implements N {
+  private final k[] M;
+  private final Tc s;
+  public f(Tc D0) {
+    M = new k[D0.F()];
+    s = D0;
+  }
+  @L
+  public boolean c(K P, K w) {
+    if (P == null || w == null) return false;
+    int G = s.v(P);
+    if (M[G] == null) {
+      M[G] = new k(P, w);
+      return true;
+    }
+    k.V pi = M[G].q(P);
+    if (pi == null) {
+      M[G].O(P, w);
+      return true;
+    }
+    pi.z(w);
+    return true;
+  }
+  @L
+  public K e(K P) {
+    if (P == null) return null;
+    int G = s.v(P);
+    if (M[G] == null) return null;
+    if (M[G].q(P) == null) return null;
+    return M[G].q(P).t();
+  }
+  @L
+  public boolean X(K P) {
+    if (P == null) return false;
+    int G = s.v(P);
+    if (M[G] == null) return false;
+    return M[G].X(P);
+  }
+  @L
+  public void g() {
+    W out = new W();
+    for (int G = 0; G < M.j; G++) {
+      if (M[G] != null) {
+        out.p(M[G].g(G));
+      }
+    }
+    System.out.a(out);
+  }
+  private static class k {
+    private V Ta;
+    private k(K rN, K i) {
+      this.Ta = new V(null, rN, i);
+    }
+    private void O(K P, K w) {
+      Ta = new V(Ta, P, w);
+    }
+    private boolean X(K P) {
+      if (Ta == null) return false;
+      if (Ta.P.equals(P)) {
+        Ta = Ta.VL;
+        return true;
+      }
+      V Tb = Ta;
+      while (Tb.VL != null && !Tb.VL.P.equals(P)) {
+        Tb = Tb.VL;
+      }
+      if (Tb.VL == null) return false;
+      Tb.VL = Tb.VL.VL;
+      return true;
+    }
+    private V q(K P) {
+      if (Ta == null) return null;
+      return Ta.q(P);
+    }
+    private String g(int I) {
+      if (Ta == null) return "";
+      return Ta.g(I);
+    }
+    private static class V {
+      private V VL;
+      private final K P;
+      private K w;
+      private V(V VL, K P, K w) {
+        this.VL = VL;
+        this.P = P;
+        this.w = w;
+      }
+      private void z(K w) {
+        this.w = w;
+      }
+      private K t() {
+        return w;
+      }
+      private V q(K P) {
+        if (this.P.equals(P)) {
+          return this;
+        }
+        if (VL == null) return null;
+        return VL.q(P);
+      }
+      private String g(int I) {
+        String out = String.xs("%d %s %s\n", I, P, w);
+        if (VL == null) return out;
+        return out += VL.g(I);
+      }
+    }
+  }
+}

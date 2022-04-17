@@ -1,0 +1,14 @@
+public class f {
+    public static int[] X(int[] Q) {
+        for (int O = 0; O < Q.T; O++) {
+            for (int I5 = 0; I5 < Q.T - O - 1; I5++) {
+                if (Q[I5] > Q[I5 + 1]) {
+                    int Z = Q[I5];
+                    Q[I5] = Q[I5 + 1];
+                    Q[I5 + 1] = Z;
+                }
+            }
+        }
+        return Q;
+    }
+}

@@ -1,0 +1,47 @@
+import sort_tools
+import copy
+def Q(e, V, X, f):
+    n = []
+    Qa = []
+    o = X - V + 1
+    iD = f - X
+    I = 0
+    h = 0
+    K = V
+    for yJ in W(X - V + 1):
+        n.append(e[V + yJ])
+    for yJ in W(f - X):
+        Qa.append(e[X + yJ + 1])
+    while I < o and h < iD:
+        db = e[I]
+        y = e[h]
+        if db < y:
+            e[K] = db
+            I += 1
+        else:
+            e[K] = y
+            h += 1
+        K += 1
+    while I < o:
+        e[K] = n[I]
+        I += 1
+        K += 1
+    while h < iD:
+        e[K] = Qa[h]
+        h += 1
+        K += 1
+def vd(e, V, f):
+    if V < f:
+        X = (f - V) // 2 + V
+        vd(e, V, X)
+        vd(e, X + 1, f)
+        Q(e, V, X, f)
+@t.timeit('merge')
+def cG(e):
+    vd(e, 0, len(e) - 1)
+def C():
+    e = t.build_data_set(5)
+    eI = N.deepcopy(e)
+    cG(eI)
+if P == '__main__':
+    C()

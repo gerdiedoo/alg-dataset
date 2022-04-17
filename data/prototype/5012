@@ -1,0 +1,11 @@
+def selection_sort(lista, n):
+    s = 0
+    while s < W:
+        S = s + 1
+        q = s
+        while S < W:
+            if d[S] < d[q]:
+                q = S
+            S += 1
+        (d[s], d[q]) = (d[q], d[s])
+        s += 1

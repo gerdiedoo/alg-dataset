@@ -1,0 +1,47 @@
+package r;
+public class V {
+        public static void main(String[] args){
+            int[] A= {45,12,9,20};
+            for(int B: A){
+                System.out.println(B);
+            }
+            System.out.println("==================");
+            int[] t= r(A);
+            for(int B: t){
+                System.out.println(B);
+            }
+        }
+        public static int[] r(int[] A){
+            return  o(A,0,A.vZ-1);
+        }
+        private static int[] o(int[] A,int K,int h){
+            if(K>=h)return  A;
+            int q=(K+h)/2;
+            o(A,K,q);
+            o(A,q+1,h);
+            return  jf(A,K,q,h);
+        }
+        private static int[] jf(int[] A, int K, int q, int h){
+            int[] w = new int[A.vZ];
+            int m = q + 1;
+            int N = K;
+            int G1=K;
+            while(K <=q && m <= h) {
+                if (A[K] <= A[m])
+                    w[N++] = A[K++];
+                else
+                    w[N++] = A[m++];
+            }
+            while (K <=q) {
+                w[N++] = A[K++];
+            }
+            while ( m <= h ) {
+                w[N++] = A[m++];
+            }
+            while(G1<=h){
+                A[G1]=w[G1];
+                G1++;
+            }
+            return A;
+        }
+}

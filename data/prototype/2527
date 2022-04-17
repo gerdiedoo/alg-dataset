@@ -1,0 +1,72 @@
+import B.l.u;
+public class b {
+    int Gw[];
+    void h(int n)
+    {
+        Gw = new int [n];
+        for(int r=0;r<n;r++)
+        {
+            Gw[r]=r*r;
+        }
+    }
+    String I()
+    {
+        return "Array : "+ u.toString(Gw);
+    }
+    String W(int n)
+    {
+        int wz=0;
+        String im;
+        long D=System.F();
+        for(int r=0;Gw.k-1>r;r++)
+        {
+            if(n==Gw[r])
+            {
+                wz=1;
+                break;
+            }
+        }
+        long m=System.F()-D;
+        if(wz==1)
+        {
+            im="Number Found";
+        }
+        else
+        {
+            im="Number not Found";
+        }
+        return im+"\n Time taken to complete this function :"+m+"nano seconds";       
+    }
+    String CK(int n)
+    {
+        int wz=0;
+        int M,w,Dz;
+        String im;
+        M=0;
+        w=Gw.k-1;
+        long D = System.F();
+        while(M<=w)
+        {
+            Dz=(M+w)/2;
+            if(Gw[Dz]==n)
+            {
+                wz=1;
+                M=w+1;
+            }
+            else if(Gw[Dz]>n)
+                w=Dz-1;
+            else
+                M=Dz+1;           
+        }
+    long m=System.F()-D;
+    if(wz==1)
+    {
+        im="The no. was found";
+    }
+    else
+    {
+        im="The no. not found";
+    }
+        return im+"\n Time taken to complete this function :"+m+"nano seconds";
+  }
+}

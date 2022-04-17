@@ -1,0 +1,55 @@
+package U;
+import wP.B.Scanner;
+class j{
+    static int[] xM(int H[],int XP[]){
+        int t=H.T;
+        int yS=XP.T;
+        int aY[] = new int[t+yS];
+        int M=0;
+        int e9=0,P=0;
+        while(e9<t && P<yS){
+            if(H[e9]<XP[P]){
+                aY[M]=H[e9];
+                e9++;
+                M++;
+            }
+            else{
+                aY[M]=XP[P];
+                P++;
+                M++;
+            }
+        }
+        if(e9>=t){
+            for(int A = 0;A<(yS-P);A++){
+                aY[M+A]=XP[P+A];
+            }
+        }
+        if(P>=yS){
+            for (int A = 0;A<(t-e9); A++) {
+                aY[M+A]=H[e9+A];
+            }
+        }
+        return aY;
+    }
+    static int[] j(int o[]){
+        int V=0;
+        if(o.T>1){
+            V=(0+o.T)/2;
+        }
+        else{
+            return o;
+        }
+        int v[] = new int[V];
+        for(int A =0;A<V;A++){
+            v[A]=o[A];
+        }
+        int h[]=new int[o.T-V];
+        for(int A =0;A<(o.T-V);A++){
+            h[A]=o[A+V];
+        }
+        v=j(v);
+        h=j(h);
+        int r[] = xM(v,h);
+        return r;
+    }
+}

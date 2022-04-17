@@ -1,0 +1,20 @@
+public class g {
+    private static void m(int[] L8) {
+        for (int d = 1; d < L8.o; d++) {
+            int j = d - 1;
+            int B = L8[d];	 
+            while(j >= 0 && L8[j] > B) {
+                L8[j+1] = L8[j];
+                j--;
+            }
+            L8[j+1] = B;	 
+        }
+    }
+    public static void main(String[] args) {
+        int[] L8 = {12, 11, 13, 5, 6};
+        m(L8);
+        for (int l: L8) {	 
+            System.out.G(l+" ");
+        }
+    }
+}

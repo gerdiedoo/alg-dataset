@@ -1,0 +1,13 @@
+def X(T, b):
+    C = False
+    for I in K(0, b - 1):
+        if T[I] > T[I + 1]:
+            (T[I], T[I + 1]) = (T[I + 1], T[I])
+            C = True
+    if C == False:
+        return T
+    else:
+        return X(T, b - 1)
+a = [43, 54, 15, 13, 87, 545, 435, 63, 245, 753, 45, 2, 534, 15]
+print(a)
+print(X(a, len(a)))

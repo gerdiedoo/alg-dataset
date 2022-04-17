@@ -1,0 +1,80 @@
+import math
+import sys
+import itertools
+def R(p):
+    F = len(p)
+    Yf = 0
+    M = F - 1
+    XV = z(e8.ceil((F - 1) / 2))
+    if M == XV:
+        return Yf
+    if p[M] >= p[XV]:
+        if p[XV] >= p[Yf]:
+            return XV
+        elif p[Yf] >= p[M]:
+            return M
+        else:
+            return Yf
+    elif p[XV] <= p[Yf]:
+        return XV
+    elif p[Yf] <= p[M]:
+        return M
+    else:
+        return Yf
+    return None
+def q(p):
+    F = len(p)
+    if F <= 1:
+        return p
+    DJ = R(p)
+    N = []
+    Bn = []
+    h = []
+    for y in p:
+        if y < p[DJ]:
+            N.append(y)
+        elif y == p[DJ]:
+            Bn.append(y)
+        else:
+            h.append(y)
+    N = q(N)
+    h = q(h)
+    return N + Bn + h
+def J(Q, d=0):
+    r = [[Q, d]]
+    H = []
+    while r:
+        (p, ig) = r.pop()
+        F = len(p)
+        if F <= 1:
+            if F == 1:
+                H += p
+            continue
+        N = []
+        Bn = []
+        h = []
+        Z = []
+        for mr in p:
+            if len(mr) <= ig:
+                H.append(mr)
+            else:
+                Z.append(mr)
+        if len(Z) == 0:
+            continue
+        X = Z[R(Z)]
+        W = X[ig]
+        for mr in Z:
+            if mr[ig] < W:
+                N.append(mr)
+            elif mr[ig] == W:
+                Bn.append(mr)
+            else:
+                h.append(mr)
+        r.append((h, ig))
+        r.append((Bn, ig + 1))
+        r.append((N, ig))
+    return H
+if n == '__main__':
+    U = ['abc', 'def', 'i', 'aaf', 'adsf1', 'gxxa', 'a']
+    print(q(U))
+    print(J(U))

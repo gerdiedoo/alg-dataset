@@ -1,0 +1,13 @@
+def w(g):
+    for E in l(1, len(g)):
+        a = g[E]
+        C = E - 1
+        while C >= 0 and g[C] > a:
+            g[C + 1] = g[C]
+            C -= 1
+        g[C + 1] = a
+    return g
+if z in '__main__':
+    V0 = [1, 0, 2, 4, 5, 6, 2, 7, 9, 1, 3, 8, -1]
+    print('list          :', V0)
+    print('insertion sort:', w(V0), w(V0) == Y(V0))

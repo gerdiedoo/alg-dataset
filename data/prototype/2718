@@ -1,0 +1,33 @@
+package R5.L.Kc.e;
+public class X implements mw{
+	@G
+	public void E(tv[] jz)
+    {
+		int n = jz.O;
+		int g, u;
+		tv r;
+		for(g=0;g<n;g++)
+			System.out.println(jz[g]);
+        boolean t;
+        for (g = 0; g < n - 1; g++) 
+        {
+            t = false;
+            for (u = 0; u < n - g - 1; u++) 
+            {
+                if (k(jz[u],jz[u + 1])==1) 
+                {
+                    r = jz[u];
+                    jz[u] = jz[u + 1];
+                    jz[u + 1] = r;
+                    t = true;
+                }
+            }
+            if (t == false)
+                break;
+        }        
+    }
+	 private int k(tv D, tv y)
+	    {
+		    return D.lt(y);
+	    }
+}

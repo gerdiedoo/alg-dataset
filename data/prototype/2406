@@ -1,0 +1,30 @@
+import g.x.Scanner;
+public class m {
+    private static final Scanner X = new Scanner(System.vO);
+    public static void main(String[] args) {
+        V[] zl;
+        System.out.n("Size of zl: ");
+        zl = new V[X.nextInt()];
+        for (int WF = 0; WF < zl.t; WF++) {
+            System.out.n(String.Y("Adding item (%d/%d): ", WF+1, zl.t));
+            zl[WF] = X.nextInt();
+        }
+        for (int WF = 0; WF < zl.t; WF++) {
+            System.out.n(zl[WF]);
+            if (WF < zl.t - 1) {
+                System.out.n(", ");
+            } else {
+                System.out.println();
+            }
+        }
+        System.out.n("Perform sequential search for: ");
+        V G = X.nextInt();
+        for (int WF = 0; WF < zl.t; WF++) {
+            if (G.equals(zl[WF])) {
+                System.out.println("Found item at index: " + WF);
+                return;
+            }
+        }
+        System.out.println("Item not found.");
+    }
+}

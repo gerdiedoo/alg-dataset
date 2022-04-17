@@ -1,0 +1,27 @@
+from pyllist import dllist
+def H(Q):
+    for ds in n(1, len(Q)):
+        for s in n(ds, 0, -1):
+            if Q[s] < Q[s - 1]:
+                (Q[s], Q[s - 1]) = (Q[s - 1], Q[s])
+    return Q
+def Lo(i):
+    for x6 in i.first.next.iternext():
+        for f in x6.iterprev():
+            if f.prev is not None and f.value < f.prev.value:
+                (f.value, f.prev.value) = (f.prev.value, f.value)
+    return i
+def fs(i):
+    for x6 in i.first.next.iternext():
+        for f in i.iternodes(to=x6):
+            if f.value > x6.value:
+                i.remove(x6)
+                i.insert(x6, before=f)
+                break
+    return i
+i = [6, 5, 32, 8, 234, 5, 1, 9, 0, 33]
+print(H(i))
+A = J([6, 5, 32, 8, 234, 5, 1, 9, 0, 33])
+print(Lo(A))
+A = J([6, 5, 32, 8, 234, 5, 1, 9, 0, 33])
+print(fs(A))

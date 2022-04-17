@@ -1,0 +1,73 @@
+package W8.o.Re;
+public class m extends X 
+{
+	private int [] H;
+	public m(int[] s)
+	{
+		H = s;
+	}
+	public int [] S ()
+	{
+		return S(H);
+	}
+	public int []  S (int [] s)
+	{
+		if (s.L == 1)
+		{
+			return s;
+		}
+		else
+		{
+			int [] E = new int[s.L / 2];
+			int [] Ek = new int[s.L - s.L / 2];
+			for (int h = 0; h < s.L; h ++)
+			{
+				if (h < s.L / 2)
+				{
+					E[h] = s[h];
+				}
+				else
+				{
+					Ek[h - s.L / 2] = s[h];
+				}
+			}
+			int [] k = S(E);
+			int [] Q = S(Ek);
+			return M(k, Q);
+		}
+	}
+	private int [] M(int [] p, int[] u) 
+	{
+		int [] v = new int [p.L + u.L];
+		int CM = 0;
+		int M0 = 0;
+		int Rt = 0;
+		while (CM < p.L && M0 < u.L)
+		{
+			if (p[CM] <= u[M0])
+			{
+				v[Rt] = p[CM];
+				CM++;
+			}
+			else
+			{
+				v[Rt] = u[M0];
+				M0++;
+			}
+			Rt++;
+		}
+		while (CM < p.L)
+		{
+			v[Rt] = p[CM];
+			CM++;
+			Rt++;
+		}
+		while (M0 < u.L)
+		{
+			v[Rt] = u[M0];
+			M0++;
+			Rt++;
+		}
+		return v;
+	}
+}

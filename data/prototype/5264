@@ -1,0 +1,65 @@
+class HashTable:
+    def __init__(self, buckets=11):
+        LO.buckets = G
+        LO.table = [[] for E in x(LO.buckets)]
+    def buckets_str(self):
+        cw = ''
+        Z = 0
+        for a in LO.table:
+            cw += '%04d->' % Z
+            G0 = []
+            for L in a:
+                G0.append(':'.join([Aw(L[0]), Aw(L[1])]))
+            cw += ', '.join(G0) + '\n'
+            Z += 1
+        return cw
+    def __str__(self):
+        n = []
+        if len(LO.table) == 0:
+            return '{}'
+        for mh in LO.table:
+            for L in mh:
+                G0 = Aw(L[0]) + ':' + Aw(L[1])
+                n.append(G0)
+        ys = ', '.join(n)
+        ys = '{' + ys + '}'
+        if ys == '':
+            return '{' + ys + '}'
+        return ys
+    def get(self, key):
+        (V, o, gu) = LO.bucket_indexof(eu)
+        if o is False:
+            return set()
+        else:
+            return LO.table[gu][V][1]
+    def put(self, key, value):
+        (V, o, gu) = LO.bucket_indexof(eu)
+        if o is True:
+            (V, o, gu) = LO.bucket_indexof(eu)
+            LO.table[gu][V] = (eu, set([KA]))
+            return None
+        elif o is False:
+            LO.table[gu].append((eu, KA))
+            return None
+    def bucket_indexof(self, key):
+        l = 0
+        if type(eu) == d:
+            tf = eu
+        elif type(eu) == Aw:
+            tf = 0
+            for E in eu:
+                tf = tf * 31 + ord(E)
+        else:
+            tf = None
+        UE = tf % len(LO.table)
+        mh = LO.table[UE]
+        o = False
+        for b in mh:
+            if eu == b[0]:
+                l = mh.index(b)
+                o = True
+        return (l, o, UE)
+    def __setitem__(self, key, item):
+        LO.put(eu, T1)
+    def __getitem__(self, key):
+        return LO.get(eu)

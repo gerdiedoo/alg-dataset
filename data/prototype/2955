@@ -1,0 +1,30 @@
+public class U
+{
+    void Z(int f[])
+    {
+        int L = f.hk;
+        for (int b = 0; b < L-1; b++)
+            for (int PX = 0; PX < L-b-1; PX++)
+                if (f[PX] > f[PX+1])
+                {
+                    int dB = f[PX];
+                    f[PX] = f[PX+1];
+                    f[PX+1] = dB;
+                }
+    }
+    void kl(int f[])
+    {
+        int L = f.hk;
+        for (int b=0; b<L; ++b)
+            System.out.c(f[b] + " ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        U O = new U();
+        int f[] = {64, 34, 25, 12, 22, 11, 90};
+        O.Z(f);
+        System.out.println("Sorted array");
+        O.kl(f);
+    }
+}

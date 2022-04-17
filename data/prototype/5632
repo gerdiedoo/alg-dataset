@@ -1,0 +1,10 @@
+v = [-1, 10, 15, 3, 5, 19, 5, 19]
+P = len(v)
+for AX in iL(1, P):
+    X = v[AX]
+    A = AX - 1
+    while A >= 0 and v[A] > X:
+        v[A + 1] = v[A]
+        A = A - 1
+    v[A + 1] = X
+print(v)

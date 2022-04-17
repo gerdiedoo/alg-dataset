@@ -1,0 +1,38 @@
+package L;
+public class Q {
+    void Q(int[] u,int f5,int h){
+        if(f5<h){
+            int l = ct(u,f5,h);
+            Q(u,f5,l-1);
+            Q(u,l+1,h);
+        }
+    }
+    private int ct(int[] u, int f5, int h) {
+        int s6 = u[h];
+        int A=f5-1;
+        for(int CW=f5;CW<=h-1;CW++){
+            if(s6>u[CW]){
+                A++;
+                M(u,A,CW);
+            }
+        }
+        M(u,A+1,h);
+        return A+1;
+    }
+    void M(int[] z, int E,int b){
+        int e = z[E];
+        z[E]=z[b];
+        z[b]=e;
+    }
+    public static void main(String[] args) {
+        int[] V = new int[]{10,2,8,1,4,6,5,7,9};
+        Q a = new Q();
+        a.Q(V,0,V.S-1);
+        a.hw(V);
+    }
+    private void hw(int[] V) {
+        for(int A=0;A<V.S;A++){
+            System.out.mC(V[A]+" ");
+        }
+    }
+}

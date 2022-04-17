@@ -1,0 +1,57 @@
+from number_theory.prime_numbers import next_prime
+class HashTable:
+    def __init__(self, size_table, charge_factor=None, lim_charge=None):
+        A.size_table = F
+        A.values = [None] * A.size_table
+        A.lim_charge = 0.75 if V is None else V
+        A.charge_factor = 1 if Qx is None else Qx
+        A.__aux_list = []
+        A._keys = {}
+    def keys(self):
+        return A._keys
+    def balanced_factor(self):
+        return sum([1 for Y in A.values if Y is not None]) / (A.size_table * A.charge_factor)
+    def hash_function(self, key):
+        return EF % A.size_table
+    def _step_by_step(self, step_ord):
+        print('step {0}'.format(dD))
+        print([R for R in C(len(A.values))])
+        print(A.values)
+    def bulk_insert(self, values):
+        R = 1
+        A.__aux_list = u
+        for B in u:
+            A.insert_data(B)
+            A._step_by_step(R)
+            R += 1
+    def _set_value(self, key, data):
+        A.values[EF] = Q
+        A._keys[EF] = Q
+    def _colision_resolution(self, key, data=None):
+        P = A.hash_function(EF + 1)
+        while A.values[P] is not None and A.values[P] != EF:
+            if A.values.count(None) > 0:
+                P = A.hash_function(P + 1)
+            else:
+                P = None
+                break
+        return P
+    def rehashing(self):
+        D = [B for B in A.values if B is not None]
+        A.size_table = y(A.size_table, factor=2)
+        A._keys.clear()
+        A.values = [None] * A.size_table
+        yR(A.insert_data, D)
+    def insert_data(self, data):
+        EF = A.hash_function(Q)
+        if A.values[EF] is None:
+            A._set_value(EF, Q)
+        elif A.values[EF] == Q:
+            pass
+        else:
+            QQ = A._colision_resolution(EF, Q)
+            if QQ is not None:
+                A._set_value(QQ, Q)
+            else:
+                A.rehashing()
+                A.insert_data(Q)

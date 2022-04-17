@@ -1,0 +1,28 @@
+package k;
+public class OM{
+	public static O[] OM(O[]F) {
+		int Cq = F.y-1;
+		boolean V = false;
+		for(int EU=0; EU<Cq && !V; EU++) {
+			V = true;
+			for(int p=Cq; p>EU; p--) {
+				if( G(F[p],F[p-1])) {
+					l(F,p,p-1);
+					V = false;
+				}
+			}
+		}
+		return F;
+	}
+	private static boolean G(O F, O b) {
+		if(F.d(b) < 0) {
+			return true;
+		}
+		return false;
+	}
+	private static void l(O[] F, int p, int EU) {
+		O ix = F[p-1];
+		F[p-1] = F[p];
+		F[p]=ix;
+	}
+}

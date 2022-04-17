@@ -1,0 +1,47 @@
+package v.A.O.c.o;
+import i.N.t;
+import rD.x.a;
+import rD.x.V;
+public class Z {
+	private static a H = V.P(Z.class);
+	public static void W(int[] f) {
+		W(f, 0, f.KC - 1);
+	}
+	private static void W(int f[], int z, int PQ) {
+		int oa, U, m7, T;
+		H.X("-- New W ---------");
+		H.X("z={}, high={}", z, PQ);		
+		H.X(t.toString(f));
+		if (z < PQ) {
+			U = z;
+			oa = PQ;
+			m7 = f[PQ];
+			System.out.println("m7 is " + m7);
+			do {
+				while ((U < oa) && (f[U] <= m7)) {
+					H.X("Increasing U to {}", U + 1);
+					U = U + 1;
+				}
+				while ((oa > U) && (f[oa] >= m7)) {
+					H.X("Reducing oa to {}", oa - 1);
+					oa = oa - 1;
+				}
+				if (U < oa) {
+					H.X("U={},oa={},Swapping {} and {}", new F[]{ U,oa, f[U], f[oa]});
+					T = f[U];
+					f[U] = f[oa];
+					f[oa] = T;					
+				}
+			} while (U < oa);
+			H.X("Values after loop {}", t.toString(f));
+			f[PQ] = f[U];
+			H.X("Values after loop b {}", t.toString(f));
+			f[U] = m7;
+			H.X("Values after loop c {}", t.toString(f));
+			W(f, z, U - 1);
+			W(f, U + 1, PQ);
+		} else {
+			H.X("Not entering loop!");
+		}
+	}
+}

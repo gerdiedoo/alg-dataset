@@ -1,0 +1,108 @@
+class Y4 implements e {
+  private final k[] m;
+  private final y b;
+  public Y4(y QF) {
+    m = new k[QF.L()];
+    b = QF;
+  }
+  @aw
+  public boolean l(X ht, X w) {
+    if (ht == null || w == null) return false;
+    int OD = b.a(ht);
+    if (m[OD] == null) {
+      m[OD] = new k(ht, w);
+      return true;
+    }
+    k.V P = m[OD].M(ht);
+    if (P == null) {
+      m[OD].Oi(ht, w);
+      return true;
+    }
+    P.kK(w);
+    return true;
+  }
+  @aw
+  public X K(X ht) {
+    if (ht == null) return null;
+    int OD = b.a(ht);
+    if (m[OD] == null) return null;
+    if (m[OD].M(ht) == null) return null;
+    return m[OD].M(ht).R();
+  }
+  @aw
+  public boolean j(X ht) {
+    if (ht == null) return false;
+    int OD = b.a(ht);
+    if (m[OD] == null) return false;
+    return m[OD].j(ht);
+  }
+  @aw
+  public void g() {
+    t out = new t();
+    for (int OD = 0; OD < m.T; OD++) {
+      if (m[OD] != null) {
+        out.E(m[OD].g(OD));
+      }
+    }
+    System.out.H(out);
+  }
+  private static class k {
+    private V Z;
+    private k(X s, X oA) {
+      this.Z = new V(null, s, oA);
+    }
+    private void Oi(X ht, X w) {
+      Z = new V(Z, ht, w);
+    }
+    private boolean j(X ht) {
+      if (Z == null) return false;
+      if (Z.ht.equals(ht)) {
+        Z = Z.c;
+        return true;
+      }
+      V xv = Z;
+      while (xv.c != null && !xv.c.ht.equals(ht)) {
+        xv = xv.c;
+      }
+      if (xv.c == null) return false;
+      xv.c = xv.c.c;
+      return true;
+    }
+    private V M(X ht) {
+      if (Z == null) return null;
+      return Z.M(ht);
+    }
+    private String g(int I) {
+      if (Z == null) return "";
+      return Z.g(I);
+    }
+    private static class V {
+      private V c;
+      private final X ht;
+      private X w;
+      private V(V c, X ht, X w) {
+        this.c = c;
+        this.ht = ht;
+        this.w = w;
+      }
+      private void kK(X w) {
+        this.w = w;
+      }
+      private X R() {
+        return w;
+      }
+      private V M(X ht) {
+        if (this.ht.equals(ht)) {
+          return this;
+        }
+        if (c == null) return null;
+        return c.M(ht);
+      }
+      private String g(int I) {
+        String out = String.p("%d %s %s\n", I, ht, w);
+        if (c == null) return out;
+        return out += c.g(I);
+      }
+    }
+  }
+}

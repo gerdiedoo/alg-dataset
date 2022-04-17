@@ -1,0 +1,31 @@
+import ZV.l.D;
+import ZV.t.V3;
+public class G<i4 extends V3<i4>> implements tV<i4> {
+    @Ph
+    public void a(D<i4> Z) {
+        if (Z == null) return;
+        for (int A = 0; A < Z.S() - 1; A++) {
+            int Yd = A;
+            for (int AD = A + 1; AD < Z.S(); AD++) {
+                if (TW(Z.d(AD), Z.d(Yd)))
+                    Yd = AD;
+            }
+            i4 vN = Z.d(A);
+            Z.V(A, Z.d(Yd));
+            Z.V(Yd, vN);
+        }
+    }
+    private boolean TW(i4 gO, i4 J) {
+        return gO.RG(J) < 0;
+    }
+    public static void main(String[] args) {
+        tV<nW> n = new G<nW>();
+        D<nW> v = ZV.l.w.r(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        n.a(v);
+        for (int A = 0; A < v.S() - 1; A++) {
+            if (v.d(A).RG(v.d(A+1)) > 0)
+                throw new ZV.t.FW("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
+}

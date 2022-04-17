@@ -1,0 +1,57 @@
+from number_theory.prime_numbers import next_prime
+class HashTable:
+    def __init__(self, size_table, charge_factor=None, lim_charge=None):
+        vC.size_table = P
+        vC.values = [None] * vC.size_table
+        vC.lim_charge = 0.75 if x is None else x
+        vC.charge_factor = 1 if GH is None else GH
+        vC.__aux_list = []
+        vC._keys = {}
+    def keys(self):
+        return vC._keys
+    def balanced_factor(self):
+        return sum([1 for cc in vC.values if cc is not None]) / (vC.size_table * vC.charge_factor)
+    def hash_function(self, key):
+        return p % vC.size_table
+    def _step_by_step(self, step_ord):
+        print('step {0}'.format(M9))
+        print([H for H in q(len(vC.values))])
+        print(vC.values)
+    def bulk_insert(self, values):
+        H = 1
+        vC.__aux_list = y
+        for k in y:
+            vC.insert_data(k)
+            vC._step_by_step(H)
+            H += 1
+    def _set_value(self, key, data):
+        vC.values[p] = s
+        vC._keys[p] = s
+    def _colision_resolution(self, key, data=None):
+        I = vC.hash_function(p + 1)
+        while vC.values[I] is not None and vC.values[I] != p:
+            if vC.values.count(None) > 0:
+                I = vC.hash_function(I + 1)
+            else:
+                I = None
+                break
+        return I
+    def rehashing(self):
+        A = [k for k in vC.values if k is not None]
+        vC.size_table = R(vC.size_table, factor=2)
+        vC._keys.clear()
+        vC.values = [None] * vC.size_table
+        Vf(vC.insert_data, A)
+    def insert_data(self, data):
+        p = vC.hash_function(s)
+        if vC.values[p] is None:
+            vC._set_value(p, s)
+        elif vC.values[p] == s:
+            pass
+        else:
+            F = vC._colision_resolution(p, s)
+            if F is not None:
+                vC._set_value(F, s)
+            else:
+                vC.rehashing()
+                vC.insert_data(s)

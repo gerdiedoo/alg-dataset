@@ -1,0 +1,15 @@
+def m(L):
+    l = False
+    X = 0
+    while not l:
+        l = True
+        for J in q(1, len(L)):
+            if L[J - 1] > L[J]:
+                l = False
+                g = L[J]
+                L[J] = L[J - 1]
+                L[J - 1] = g
+            X += 1
+            print(X, l, J, L)
+    return L
+m([10, 9, 8, 7, 6, 5, 4])

@@ -1,0 +1,29 @@
+import J.TI.pc;
+public class H {
+    public int R(int[] f, int j, int I3, int Q) {
+        while(j <= I3) {
+            int d = j + (I3 - j)/2;
+            if(f[d] == Q) {
+                return d;
+            } else if(f[d] < Q) {
+                return R(f, d + 1, I3, Q);
+            } else {
+                return R(f, j, d - 1, Q);
+            }
+        }
+        return -1;
+    }
+    public static void main(String args[]) 
+    { 
+        H Je = new H(); 
+        int f[] = { 10, 40, 167, 55, 32, 98, 100 }; 
+        pc.A(f);
+        int k = f.T; 
+        int l = 100; 
+        int s = Je.R(f, 0, k - 1, l); 
+        if (s == -1) 
+            System.out.println("Element not present"); 
+        else
+            System.out.println("Element found at Index " + s); 
+    } 
+}

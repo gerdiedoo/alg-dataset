@@ -1,0 +1,49 @@
+package EG.g.n;
+import N.m.Rg;
+public class w {
+    private static final String L2 = "Insertion w2";
+    public void w2(Rg<ue> c2) {
+        if (c2 == null) {
+            throw new U("The c2 should not be null");
+        }
+        if ((c2.s()) || (c2.K() == 1)) {
+            return;
+        }
+        w2(c2, 0, c2.K() - 1);
+    }
+    public void w2(Rg<ue> c2, int iR, int X) {
+        if (c2 == null) {
+            throw new U("The c2 should not be null");
+        }
+        if ((c2.s()) || (c2.K() == 1)) {
+            return;
+        }
+        fF(c2, iR, X);
+        for (int u = iR + 1; u < X + 1; u++) {
+            int y = c2.N7(u);
+            int q = u - 1;
+            while (q >= iR && c2.N7(q) > y) {
+                c2.I(q + 1, c2.N7(q));
+                q -= 1;
+            }
+            c2.I(q + 1, y);
+        }
+    }
+    private void fF(Rg<ue> c2, int iR, int X) {
+        if ((iR < 0) || (X < 0)) {
+            throw new U("Indices iR and X should be >= 0, but iR is " + iR +
+                    " and X is " + X);
+        }
+        if ((iR >= c2.K() - 1) && (iR != X)) {
+            throw new U("Index iR must be < c2.K() - 1, but iR is " + iR +
+                    ", (c2.K() - 1) equals " + (c2.K() - 1) + " and X is " + X);
+        }
+        if (X > c2.K() - 1) {
+            throw new U("Index X must be <= c2.K() - 1, but X is " + X +
+                    " and (c2.K() - 1) equals " + (c2.K() - 1));
+        }
+    }
+    public static String Q() {
+        return L2;
+    }
+}

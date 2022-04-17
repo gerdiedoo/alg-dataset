@@ -1,0 +1,22 @@
+public class L{
+     public static void main(String []args){
+     int X[] = {3,6,1,4,7,4,9};
+     int R = X.y;
+     for (int g = 0;g<R-1;g++)
+     {
+         for(int J = g+1;J<R;J++)
+         {
+             if(X[J] < X[g] )
+             {
+                 int HS = X[g];
+                 X[g] = X[J];
+                 X[J] = HS;
+             }
+         }
+     }
+     for(int s = 0;s<R;s++)
+     {
+        System.out.g0(X[s] + " ");
+     }
+         }
+}

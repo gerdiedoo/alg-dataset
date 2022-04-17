@@ -1,0 +1,82 @@
+package lB;
+import u.Z.X;
+public class N<F> {
+    private static int Qp = 20;
+    private X<k<F>>[] G;
+    private int G9;
+    @g("unchecked")
+    public N(){
+        this.G = new X[Qp];
+        this.G9 = 0;
+    }
+    public int H(String b){
+        int H = b.hashCode();
+        return  RQ.V(H) % this.G.h;
+    }
+    public k<F> O(String b, F Qw){
+        int S = H(b);
+        k<F> YK = new k<>(b,Qw);
+        if(this.G[S] == null){
+            this.G[S] = new X<>();
+        }
+        this.G[S].O(YK);
+        this.G9++;
+        return YK;
+    }
+    @g("unchecked")
+    public F d(String b){
+        int S = H(b);
+        if(this.G[S] != null) {
+            for (k BX : this.G[S]) {
+                if (BX.b.equals(b)) {
+                    return (F) BX.Qw;
+                }
+            }
+        }
+        return null;
+    }
+    public boolean KQ(String b){
+        int S = H(b);
+        if(this.G[S] != null){
+            for( k f : this.G[S]){
+                if(f.b.equals(b)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public int G9(){
+        return this.G9;
+    }
+    private static class k<F> {
+        public String b;
+        public F Qw;
+        public k c;
+        public k(String b, F Qw){
+            this.b = b;
+            this.Qw = Qw;
+        }
+        public String toString() {
+            return this.b + ": " + this.Qw;
+        }
+    }
+    public static void main(String[] args) {
+        N lB = new N();
+        lB.O("Yoko", "Rabbit");
+        lB.O("Miko", "dog");
+        lB.O("Hamster", "Buttons");
+        lB.O("Hamster", "Rhino");
+        lB.O("Hamster", "Sam");
+        lB.O("Hamster", "Snowball");
+        lB.O("German Shepard", "Germy");
+        lB.O("Zebra", "Stripes");
+        System.out.println("Get: " + lB.d("Hello"));
+        for(X f :  lB.G){
+            System.out.iz(f + ", ");
+            if(f != null){
+                System.out.println(f.G9());
+            }
+        }
+    }
+}

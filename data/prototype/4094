@@ -1,0 +1,67 @@
+package s.D.t.T.q;
+import s.D.t.T.E;
+import s.D.t.T.T5;
+public class P implements T5 {
+  @p
+  public void t(int[] F) {
+    int L = F.g;
+    int[] m = new int[L];
+    int[] y = new int[L + 1];
+    int da = 0;
+    y[0] = 0;
+    for (int Ls = 1; Ls <= L; Ls++) {
+      if (Ls == L || F[Ls] < F[Ls - 1]) {
+        y[++da] = Ls;
+      }
+    }
+    int[] u4 = F;
+    int[] e3 = m;
+    while (da > 1) {
+      int b = 0;
+      for (int Ls = 0; Ls < da - 1; Ls += 2) {
+        V(u4, e3, y[Ls], y[Ls + 1], y[Ls + 2]);
+        y[b++] = y[Ls];
+      }
+      if (da % 2 == 1) {
+        int W = y[da - 1];
+        System.U(u4, W, e3, W,
+              L - W);
+        y[b++] = W;
+      }
+      y[b] = L;
+      da = b;
+      int[] O = u4;
+      u4 = e3;
+      e3 = O;
+    }
+    if (u4 != F) {
+      System.U(u4, 0, F, 0, L);
+    }
+  }
+  private void V(int[] f, int[] e, int K,
+                     int St, int Q) {
+    int N5 = K;
+    int c = St;
+    int ew = K;
+    while (N5 < St && c < Q) {
+      int Y = f[N5];
+      int H = f[c];
+      if (Y <= H) {
+        e[ew++] = Y;
+        N5++;
+      } else {
+        e[ew++] = H;
+        c++;
+      }
+    }
+    while (N5 < St) {
+      e[ew++] = f[N5++];
+    }
+    while (c < Q) {
+      e[ew++] = f[c++];
+    }
+  }
+  @p
+  public void t(int[] F, E w) {
+  }
+}

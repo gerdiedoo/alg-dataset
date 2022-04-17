@@ -1,0 +1,45 @@
+import S.Z.*;
+public class u {
+    public static void main(String[] args) {
+        int M[] = {1,2,3,8,9,12};
+        int s = 2;
+        String g = AD(M, s) ? "Successful Search" : "Unsuccessful Search";
+        System.out.println(g);
+    }
+    private static boolean AD(int[] Q0, int s) {
+        for(int a = 0; a < Q0.G; a++) {
+            if(Q0[a] == s){
+                return true;
+            }
+        }
+        return false;
+    }
+}    
+    public static void main(String W[]){
+        int[] gv= {23,45,21,55,234,1,34,90};
+        int o = 34;
+        System.out.println("Element "+o+" found at index: "+AD(gv, o));
+    }
+} 
+import S.Z.*;
+public class u {
+	public static void main(String[] args) {
+		Scanner kI = new Scanner(System.i);
+		z<l> v = new QX<>();
+		System.out.println("How many number are you going to enter? ");
+		int Lq = kI.nextInt();
+		System.out.println("Enter the Q0 of v: ");
+		for (int a = 0; a < Lq; a++) {
+			int n = kI.nextInt();
+			v.C(n);
+		}
+		System.out.println("Enter the H8: ");
+		int H8 = kI.nextInt();
+		if (v.indexOf(H8) >= 0) {
+			System.out.println("Successful Search!");
+		} else {
+			System.out.println("Unsuccessful Search!");
+		}
+		kI.R1();
+	}
+}

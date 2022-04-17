@@ -1,0 +1,15 @@
+def n(z, L):
+    M = 0
+    R = len(z) - 1
+    while M < R:
+        g = M + (R - M) // 2
+        if z[g] < L:
+            M = g + 1
+        else:
+            R = g
+    if z[M] == L:
+        return M
+    return 'not found'
+l = oV(U(0, 30, 2))
+E = n(l, 13)
+print(E)

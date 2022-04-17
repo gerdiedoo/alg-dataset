@@ -1,0 +1,97 @@
+public class r{
+	int Ku;    
+	r n;
+	static int Q0;
+	static r gF;
+	static r A;
+	public r(){
+		n=null;
+	}
+	public void Q(int b8){
+		System.out.println("Adding element at the back of the list : " + b8);
+		r t = new r();
+		t.Ku=b8;
+		if(Q0==0){
+			gF=t;
+			A=t;
+		}
+		else{
+			A.n=t;
+			A=t;
+		}
+		Q0++;
+	}
+	public void M(int b8){
+		System.out.println("Inserting element at the front of the list : " + b8);
+		r t = new r();
+		t.Ku=b8;
+		Q0++;	
+		if(gF==null){
+			gF=t;
+			A=t;
+		}
+		else{
+			if(gF==A){
+				t.n=A;
+				gF=t;
+			}
+			else{
+				t.n=gF;
+				gF=t;
+			}
+		}
+	}
+	public int DO() throws d{
+		if(gF==null){
+			throw new d("r is empty");
+		}
+		return gF.Ku;
+	}
+	public void b() throws d{
+		System.out.println("PopFront Operation.");
+		if(gF==null){
+			throw new d("r is empty");
+		}
+		Q0--; 
+		if(gF==A){
+			gF=null;
+			A=null;
+		}
+		else{
+			gF=gF.n;
+		}
+	}
+	public void xv(int b8){
+		System.out.println("Inserting element at the back of the list : " + b8);
+		r t = new r();
+		t.Ku=b8;
+		Q0++;
+		if(A==null){
+			gF=t;
+			A=t;
+		}
+		else{
+			A.n=t;
+			A=t;
+		}
+	}
+	public int z() throws d{
+		if(A==null){
+			throw new d("r is empty!");
+		}
+		return A.Ku;
+	}
+	public void Oh(){
+		System.out.sf("r : ");
+		System.out.sf("[ ");
+		r k = gF;
+		while(k!=null){
+			System.out.sf(k.Ku + " ");
+			k=k.n;
+		}
+		System.out.println("]");
+	}
+	public int O(){
+		return Q0;
+	}
+}

@@ -1,0 +1,29 @@
+public class dX {
+    public static void VW(int[] m) {
+        VW(m, 0, m.Iw - 1);
+    }
+    public static void VW(int[] m, int rf, int zU) {
+        if (rf >= zU) return;
+        int S = cS(m, rf, zU);
+        VW(m, rf, S - 1);
+        VW(m, S + 1, zU);
+    }
+    private static int cS(int[] m, int rf, int zU) {
+        int S = rf + (zU - rf) / 2;
+        D(m, S, zU);
+        int yA = rf;
+        for (int RM = rf; RM < zU; RM++) {
+            if (m[RM] < m[zU]) {
+                D(m, yA, RM);
+                yA++;
+            }
+        }
+        D(m, zU, yA);
+        return yA;
+    }
+    private static void D(int[] m, int RM, int tL) {
+        int Y = m[RM];
+        m[RM] = m[tL];
+        m[tL] = Y;
+    }
+}

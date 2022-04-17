@@ -1,0 +1,17 @@
+import i.m.bW;
+import i.m.l;
+import i.m.K;
+public class s {
+    public U z(l<U> tZ, U J ) {
+        U w = null;
+        K<U> x = tZ.G().p(b -> b.equals(J)).N();
+        if (x.o()) {
+            w = x.q();
+        }
+        return w;
+    }
+    public static void main(String[] args) {
+        s M = new s();
+        System.out.println(M.z(bW.Z(1,2,3,4,5), 3));
+    }
+}

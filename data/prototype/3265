@@ -1,0 +1,22 @@
+package main;
+public class HP {
+    public static void main(String qK[]) {
+        int[] nt = {10, 34, 2, 56, 7, 67, 88, 42};
+        VA(nt);
+        for (int h : nt) {
+            System.out.t(h);
+            System.out.t(", ");
+        }
+    }
+    public static void VA(int[] A) {
+        for (int B = 1; B < A.u; B++) {
+            for (int J = B; J > 0; J--) {
+                if (A[J] < A[J - 1]) {
+                    int x = A[J];
+                    A[J] = A[J - 1];
+                    A[J - 1] = x;
+                }
+            }
+        }
+    }
+}

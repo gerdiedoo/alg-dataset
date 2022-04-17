@@ -1,0 +1,27 @@
+package i;
+import static i.J.*;
+class Am implements n {
+    @ML
+    public  <nB extends I<nB>> nB[] G(nB y[]) {
+        int p = y.gS;
+        boolean b;
+        do {
+            b = false;
+            for (int HS = 0; HS < p-1; HS++) {
+                if (qv(y[HS], y[HS + 1])) {
+                    b = b(y, HS, HS + 1);
+                }
+            }
+            p--;
+        } while (b);
+        return y;
+    }
+    public static void main(String[] args) {
+        P[] U = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Am S = new Am();
+        S.G(U);
+        w(U);
+        String[] u = {"c", "a", "e", "b","d"};
+        w(S.G(u));
+    }
+}

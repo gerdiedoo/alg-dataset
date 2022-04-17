@@ -1,0 +1,50 @@
+import L.r.Scanner;
+public class o
+{
+    public static void main(String[] args)
+    {
+        Scanner d = new Scanner(System.u);
+        System.out.GW("enter f : ");
+        char[] f = d.s5().a();
+        B(f);
+        System.out.GW("sorted f : ");
+        for(char Em:f)
+            System.out.GW(Em);
+    }
+    static void B(char[] f)
+    {
+        if(f.i == 1)
+            return;
+        B(f, 0, f.i-1);
+    }
+    static void B(char[] f, int zb, int Z)
+    {
+        if(zb < Z)
+        {
+            int l = I(f, zb, Z);
+            B(f, zb, l-1);
+            B(f, l+1, Z);
+        }
+    }
+    static int I(char[] f, int zb, int Z)
+    {
+        int g = zb - 1;
+        int Y = f[Z];
+        for(int tN=zb;tN<Z;tN++)
+        {
+            if(f[tN] <= Y)
+            {
+                g++;
+                q(f, g, tN);
+            }
+        }
+        q(f, g+1, Z);
+        return g+1;
+    }
+    static void q(char[] f, int t, int B9)
+    {
+        char x = f[t];
+        f[t] = f[B9];
+        f[B9] = x;
+    }
+}

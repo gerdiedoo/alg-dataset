@@ -1,0 +1,79 @@
+public class q<tr, V> {
+    private e<d<tr, V>>[] z;
+    private int L;
+    public q() {
+        this.z = new e[32];
+        this.L = 0;
+    }
+    public void Jp(tr s, V K) {
+        e<d<tr, V>> j = n(s);
+        int r0 = H(j, s);
+        if (r0 < 0) {
+            j.Jp(new d<>(s, K));
+            this.L++;
+        } else {
+            j.Kd(r0).k1(K);
+        }
+        if (1.0 * this.L / this.z.Q > 0.75) {
+            M();
+        }
+    }
+    public V Kd(tr s) {
+        int t = Ai.E(s.hashCode() % this.z.Q);
+        if (this.z[t] == null) {
+            return null;
+        }
+        e<d<tr, V>> yj = this.z[t];
+        for (int yZ = 0; yZ < yj.i(); yZ++) {
+            if (yj.Kd(yZ).f().equals(s)) {
+                return yj.Kd(yZ).x();
+            }
+        }
+        return null;
+    }
+    public V h(tr s) {
+        e<d<tr, V>> z = n(s);
+        if (z.i() == 0) {
+            return null;
+        }
+        int r0 = H(z, s);
+        if (r0 < 0) {
+            return null;
+        }
+        d<tr, V> o = z.Kd(r0);
+        z.h(o);
+        return o.x();
+    }
+    private void M() {
+        e<d<tr, V>>[] CH = new e[this.z.Q * 2];
+        for (int yZ = 0; yZ < this.z.Q; yZ++) {
+            H0(CH, yZ);
+        }
+        this.z = CH;
+    }
+    private void H0(e<d<tr, V>>[] CH, int U) {
+        for (int yZ = 0; yZ < this.z[U].i(); yZ++) {
+            d<tr, V> K = this.z[U].Kd(yZ);
+            int t = Ai.E(K.f().hashCode() % CH.Q);
+            if (CH[t] == null) {
+                CH[t] = new e<>();
+            }
+            CH[t].Jp(K);
+        }
+    }
+    private e<d<tr, V>> n(tr s) {
+        int t = Ai.E(s.hashCode() % this.z.Q);
+        if (this.z[t] == null) {
+            this.z[t] = new e<>();
+        }
+        return this.z[t];
+    }
+    private int H(e<d<tr, V>> oG, tr s) {
+        for (int yZ = 0; yZ < oG.i(); yZ++) {
+            if (oG.Kd(yZ).f().equals(s)) {
+                return yZ;
+            }
+        }
+        return -1;
+    }
+}

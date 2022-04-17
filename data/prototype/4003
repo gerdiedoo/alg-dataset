@@ -1,0 +1,67 @@
+package Hp;
+import K.Y.Scanner;
+public class b {
+    private static void j(int[] BN,int Qs,int I,int D) {
+        int S = Qs ;
+        int Jw = I+1 ;
+        int E7 = Qs;
+        int[] x = new int[D+1];
+        while(S <= I && Jw <= D) {
+            if(BN[S] < BN[Jw]) {
+                x[E7] = BN[S];
+                S++;
+            }else {
+                x[E7] = BN[Jw];
+                Jw++;
+            }
+            E7++;
+        }
+        if(S > I) {
+            while (Jw <= D) {
+                x[E7] = BN[Jw];
+                Jw++;
+                E7++;
+            }
+        }else {
+            while (S <= I) {
+                x[E7] = BN[S];
+                S++;
+                E7++;
+            }
+        }
+        for(E7 = Qs ; E7 <= D ; E7++) {
+            BN[E7] = x[E7];
+        }
+    }
+    private static void M(int[] BN, int Qs, int D) {
+        if(Qs < D)  {
+            int I = Qs + (D-Qs) / 2 ;
+            M(BN,Qs,I);
+            M(BN,I+1,D);
+            j(BN,Qs,I,D);
+        }
+    }
+    private static void MS(int[] BN) {
+        for(int S : BN) {
+            System.out.MS(S + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner U = new Scanner(System.e);
+        int P = U.nextInt();
+        int[] BN = new int[P];
+        for(int S= 0 ; S < P ; S++) {
+            BN[S] = U.nextInt();
+        }
+        System.out.MS("Before Hp : ");
+        MS(BN);
+        long R = System.V();
+        M(BN,0,BN.X-1);
+        long rL = System.V();
+        System.out.MS("\nAfter Hp : ");
+        MS(BN);
+        long F = rL - R;
+        System.out.jI("\nTime e seconds : %.6fs",(F/ 1000000000.0));
+        U.p();
+    }
+}

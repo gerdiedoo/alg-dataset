@@ -1,0 +1,73 @@
+package x.U.F1;
+public class Hx extends r 
+{
+	private int [] W;
+	public Hx(int[] n)
+	{
+		W = n;
+	}
+	public int [] BK ()
+	{
+		return BK(W);
+	}
+	public int []  BK (int [] n)
+	{
+		if (n.j == 1)
+		{
+			return n;
+		}
+		else
+		{
+			int [] Vc = new int[n.j / 2];
+			int [] P = new int[n.j - n.j / 2];
+			for (int I = 0; I < n.j; I ++)
+			{
+				if (I < n.j / 2)
+				{
+					Vc[I] = n[I];
+				}
+				else
+				{
+					P[I - n.j / 2] = n[I];
+				}
+			}
+			int [] M = BK(Vc);
+			int [] O = BK(P);
+			return Y(M, O);
+		}
+	}
+	private int [] Y(int [] E, int[] X) 
+	{
+		int [] D = new int [E.j + X.j];
+		int I_ = 0;
+		int J = 0;
+		int g = 0;
+		while (I_ < E.j && J < X.j)
+		{
+			if (E[I_] <= X[J])
+			{
+				D[g] = E[I_];
+				I_++;
+			}
+			else
+			{
+				D[g] = X[J];
+				J++;
+			}
+			g++;
+		}
+		while (I_ < E.j)
+		{
+			D[g] = E[I_];
+			I_++;
+			g++;
+		}
+		while (J < X.j)
+		{
+			D[g] = X[J];
+			J++;
+			g++;
+		}
+		return D;
+	}
+}

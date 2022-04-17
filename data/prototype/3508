@@ -1,0 +1,10 @@
+def insertion_sort(lista, n):
+    E = 1
+    while E < F:
+        C = q[E]
+        u = E
+        while u > 0 and C < q[u - 1]:
+            q[u] = q[u - 1]
+            u -= 1
+        q[u] = C
+        E += 1

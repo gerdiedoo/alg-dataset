@@ -1,0 +1,104 @@
+public class PT<m extends d8<m>,V extends d8<V>> implements OW<m,V> {
+    private KJ<m, V>[] w;
+    private static final int n9 = 101;
+    private double b = 0.75;
+    private int a0;
+    private int s;
+    private final KJ<m, V> HV = new KJ<>(null, null);
+    public PT() {
+        w = new KJ[n9];
+    }
+    private int D(M IU) {
+        int dQ = IU.hashCode() % w.N;
+        if (dQ < 0)
+            dQ += w.N;  
+        while ((w[dQ] != null)
+                && (!IU.equals(w[dQ].YI()))) {
+            dQ++;
+            if (dQ >= w.N)
+                dQ = 0;  
+        }
+        return dQ;
+    }
+    @h
+    public V c(M IU) {
+        int dQ = D(IU);
+        if (w[dQ] != null)
+            return w[dQ].a();
+        else
+            return null;  
+    }
+    @h
+    public boolean yq() {
+        return a0 == 0;
+    }
+    @h
+    public V lH(m IU, V l) {
+        int dQ = D(IU);
+        if (w[dQ] == null) {
+            w[dQ] = new KJ<>(IU, l);
+            a0++;
+            double O9 =
+                    (double) (a0 + s) / w.N;
+            if (O9 > b)
+                Ca();
+            return null;
+        }
+        V z = w[dQ].a();
+        w[dQ].v(l);
+        return z;
+    }
+    private void Ca() {
+        KJ<m, V>[] y = w;
+        w = new KJ[2 * y.N + 1];
+        a0 = 0;
+        s = 0;
+        for (int G = 0; G < y.N; G++) {
+            if ((y[G] != null) && (y[G] != HV)) {
+                lH(y[G].YI(), y[G].a());
+            }
+        }
+    }
+    @h
+    public V F(M IU) {
+        int dQ = D(IU);
+        if(w[dQ] == null){
+            return null;
+        }
+        V Y = w[dQ].a();
+        w[dQ] = HV;
+        s++;
+        a0--;
+        return Y;
+    }
+    @h
+    public int L() {
+        return a0;
+    }
+    static class KJ<m extends d8<m>,V extends d8<V>> implements d8<KJ<m,V>>  {
+        private final m IU;
+        private V l;
+        public boolean C;
+        public boolean mH() {
+            return C;
+        }
+        public m YI() {
+            return IU;
+        }
+        public V a() {
+            return l;
+        }
+        public void v(V l) {
+            this.l = l;
+        }
+        public KJ(m IU , V l){
+            this.IU = IU;
+            this.l = l;
+            C = true;
+        }
+        @h
+        public int W(KJ<m, V> JC) {
+            return this.IU.W(JC.YI());
+        }
+    }
+}

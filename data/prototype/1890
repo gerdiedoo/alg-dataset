@@ -1,0 +1,138 @@
+import N.c.w;
+import N.c.L;
+import N.c.Y;
+import N.c.I6;
+public class Vt<Fa, A> implements s<Fa, A> {
+    private l<Fa, A>[] C;
+    private int K;
+    public Vt() {
+        iY();
+    }
+    @F
+    public A T(Fa y, A B) {
+        if (y == null || B == null) {
+            throw new kt("Argument cannot be null.");
+        }
+        if (this.hj() > I) {
+            Ss();
+        }
+        int h = this.uE(y);
+        l<Fa, A> G = this.C[h];
+        A t = null;
+        if (G == null) {
+            this.C[h] = new l<Fa, A>(y, B);
+        } else if (G.DW().equals(y)) {
+            if (!G.i()) {
+                t = G.hR();
+            }
+            G.D(B);
+            G.z(false);
+        } else {
+            G.v(y);
+            G.D(B);
+            G.z(false);
+        }
+        if (t == null) {
+            K++;
+        }
+        return t;
+    }
+    @F
+    public A e(Fa y) {
+        if (y == null) {
+            throw new kt("Argument cannot be null.");
+        }
+        int h = this.uE(y);
+        l<Fa, A> G = this.C[h];
+        if (G != null && G.DW().equals(y) && !G.i()) {
+            G.z(true);
+            K--;
+            return G.hR();
+        }
+        return null;
+    }
+    @F
+    public A q(Fa y) {
+        if (y == null) {
+            throw new kt("Argument cannot be null.");
+        }
+        int h = this.uE(y);
+        l<Fa, A> G = this.C[h];
+        return (G != null && !G.i()
+                && G.DW().equals(y) ? G.hR() : null);
+    }
+    @F
+    public boolean b(Fa y) {
+        return q(y) != null;
+    }
+    @mF("unchecked")
+    @F
+    public void iY() {
+        this.C = (l<Fa, A>[]) new l[V];
+        this.K = 0;
+    }
+    @F
+    public int K() {
+        return this.K;
+    }
+    @F
+    public I6<Fa> d() {
+        L<Fa> t = new L<Fa>(K);
+        for (int O = 0; O < this.C.u; O++) {
+            l<Fa, A> G = this.C[O];
+            if (G != null && !G.i()) {
+                t.T(G.DW());
+            }
+        }
+        return t;
+    }
+    @F
+    public Y<A> f() {
+        w<A> t = new w<A>(K);
+        for (int O = 0; O < this.C.u; O++) {
+            l<Fa, A> G = this.C[O];
+            if (G != null && !G.i()) {
+                t.T(G.hR());
+            }
+        }
+        return t;
+    }
+    private double hj() {
+        return (double) (K + 1) / (double) this.C.u;
+    }
+    @mF("unchecked")
+    private void Ss() {
+        l<Fa, A>[] k = this.C;
+        this.C = (l<Fa, A>[]) new l[k.u * 2];
+        this.K = 0;
+        for (int O = 0; O < k.u; O++) {
+            l<Fa, A> G = k[O];
+            if (G != null && !G.i()) {
+                this.T(G.DW(), G.hR());
+            }
+        }
+    }
+    private int uE(Fa y) {
+        int h = W.R(y.hashCode()) % this.C.u;
+        l<Fa, A> x = this.C[h];
+        int JF = -1;
+        int Ga = h;
+        boolean M = false;
+        while (x != null && !x.DW().equals(y)
+                && (!M || Ga != h)) {
+            if (JF == -1 && x.i()) {
+                JF = h;
+            }
+            if (++Ga >= this.C.u) {
+                Ga = 0;
+                M = true;
+            }
+            x = this.C[Ga];
+        }
+        if (x != null && x.DW().equals(y)) {
+            return Ga;
+        } else {
+            return (JF == -1 ? Ga : JF);
+        }
+    }
+}

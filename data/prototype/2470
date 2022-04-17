@@ -1,0 +1,25 @@
+package z;
+import C.X.Vl;
+import C.X.I.zi;
+public class h implements r {
+    @p
+    public <Jn extends t<Jn>> int W(Jn[] U, Jn u) {
+        for (int CU = 0; CU < U.g ; CU++) {
+            if (U[CU].Ux(u) == 0) {
+                return CU;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        Vl F = new Vl();
+        int A = 200;
+        int s = 100;
+        Y[] M = zi.nw(() -> F.nextInt(s)).f(A).k(Y[]::new);
+        Y H = M[F.nextInt(A - 1)];
+        h z = new h();
+        int J = z.W(M, H);
+        System.out.println(String.E("Should be found: %d. Found %d at index %d. An U g %d"
+                , H, M[J], J, A));
+    }
+}

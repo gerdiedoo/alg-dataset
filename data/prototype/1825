@@ -1,0 +1,69 @@
+package y.dq;
+import y.LX;
+import e.k.N;
+import e.k.m;
+import y.t.Z;
+public class p {
+    private N<Z>[] Qn;
+    public p() {
+        Qn = new N[10];
+        for (int h = 0; h < Qn.K; h++) {
+            Qn[h] = new N<Z>();
+        }
+    }
+    public void l(String b, LX B9) {
+        int c = A(b);
+        Qn[c].j(new Z(b, B9));
+    }
+    public LX p1(String b) {
+        int c = A(b);
+        m<Z> b0 = Qn[c].bo();
+        Z B9 = null;
+        while (b0.G()) {
+            B9 = b0.XQ();
+            if (B9.b.equals(b)) {
+                return B9.B9;
+            }
+        }
+        return null;
+    }
+    public LX ML(String b) {
+        int c = A(b);
+        m<Z> b0 = Qn[c].bo();
+        Z B9 = null;
+        int F = -1;
+        while (b0.G()) {
+            B9 = b0.XQ();
+            F++;
+            if (B9.b.equals(b)) {
+                break;
+            }
+        }
+        if (B9 == null) {
+            return null;
+        }
+        else {
+            Qn[c].ML(F);
+            return B9.B9;
+        }
+    }
+    private int A(String b) {
+        return R.V(b.hashCode() % Qn.K);
+    }
+    public void ly() {
+        for (int h = 0; h < Qn.K; h++) {
+            if (Qn[h].s()) {
+                System.out.println("Position " + h + ": empty");
+            }
+            else {
+                System.out.E("Position " + h + ": ");
+                m<Z> b0 = Qn[h].bo();
+                while (b0.G()) {
+                    System.out.E(b0.XQ().B9);
+                    System.out.E("->");
+                }
+                System.out.println("null");
+            }
+        }
+    }
+}

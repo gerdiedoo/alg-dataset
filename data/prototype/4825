@@ -1,0 +1,21 @@
+package iC;
+public class Ku<h extends I<h>> implements i<h> {
+    @C
+    public void X(h[] K) {
+        for (int gj = 0; gj < K.rJ; gj++) {
+            int N = Y(K, gj, K.rJ - 1);
+            AX.s0(K, gj, N);
+        }
+    }
+    private int Y(h[] K, int c, int pX) {
+        h Y = K[c];
+        int WA = c;
+        for (int N = c; N <= pX; N++) {
+            if (K[N].A(Y) < 0) {
+                Y = K[N];
+                WA = N;
+            }
+        }
+        return WA;
+    }
+}

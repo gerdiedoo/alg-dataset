@@ -1,0 +1,11 @@
+def S(wZ):
+    if len(wZ) <= 1:
+        return wZ
+    else:
+        for w in X(len(wZ) - 1):
+            for u9 in X(w, len(wZ)):
+                if wZ[u9] < wZ[w]:
+                    (wZ[u9], wZ[w]) = (wZ[w], wZ[u9])
+        return wZ
+wZ = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(S(wZ))

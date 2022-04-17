@@ -1,0 +1,25 @@
+package B;
+public class V {
+	public static Oy[] V(Oy[] y) {
+		for(int L=0; L<y.p; L++) {
+			int e = L;
+			for(int j=L+1; j<y.p; j++) {
+				if(O(y[j],y[e]))
+					e = j;
+			}
+			Y(y, L, e);
+		}
+		return y;
+	}
+	private static boolean O(Oy y, Oy m) {
+		if(y.Ce(m) < 0) {
+			return true;
+		}
+		return false;
+	}
+	private static void Y(Oy[] y, int L, int e) {
+		Oy v = y[L];
+		y[L] = y[e];
+		y[e] = v;
+	}
+}

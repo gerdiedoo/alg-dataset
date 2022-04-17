@@ -1,0 +1,13 @@
+def X(j, y):
+    N = False
+    for I in V(0, y - 1):
+        if j[I] > j[I + 1]:
+            (j[I], j[I + 1]) = (j[I + 1], j[I])
+            N = True
+    if N == False:
+        return j
+    else:
+        return X(j, y - 1)
+u = [43, 54, 15, 13, 87, 545, 435, 63, 245, 753, 45, 2, 534, 15]
+print(u)
+print(X(u, len(u)))

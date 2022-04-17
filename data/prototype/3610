@@ -1,0 +1,35 @@
+def r(D):
+    if len(D) > 1:
+        U = len(D) // 2
+        t = D[:U]
+        E = D[U:]
+        r(t)
+        r(E)
+        H = xN = G = 0
+        while H < len(t) and xN < len(E):
+            if t[H] < E[xN]:
+                D[G] = t[H]
+                H += 1
+            else:
+                D[G] = E[xN]
+                xN += 1
+            G += 1
+        while H < len(t):
+            D[G] = t[H]
+            H += 1
+            G += 1
+        while xN < len(E):
+            D[G] = E[xN]
+            xN += 1
+            G += 1
+def m(D):
+    for H in d(len(D)):
+        print(D[H], end=' ')
+    print()
+if xM == '__main__':
+    D = [1, 12, 11, 2, 13, 5, 6, 7]
+    print('Given array is', end='\n')
+    m(D)
+    r(D)
+    print('Sorted array is: ', end='\n')
+    m(D)

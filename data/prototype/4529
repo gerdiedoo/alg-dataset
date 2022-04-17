@@ -1,0 +1,44 @@
+package F;
+import O.Z.Ou;
+import O.Z.Zj;
+import O.Z.m3;
+public class U {
+	private static int V(m3<ra> z, ra v, ra aw) {
+		ra P = z.d3(aw);
+		int t = v - 1;
+		for (int T = v; T < aw; T++) {
+			ra j = z.d3(T);
+			if (j <= P) {
+				t++;
+				ra W = z.d3(t);
+				z.QZ(t, j);
+				z.QZ(T, W);
+			}
+		}
+		t++;
+		ra j = z.d3(t);
+		ra W = z.d3(aw);
+		z.QZ(t, W);
+		z.QZ(aw, j);
+		return t;
+	}
+	public static void x(m3<ra> z, ra v, ra aw) {
+		if (v < aw) {
+			int P = V(z, v, aw);
+			x(z, v, P - 1);
+			x(z, P + 1, aw);
+		}
+	}
+	public static void main(String[] args) {
+		m3<ra> z = new Ou<ra>();
+		for (int t = 0; t < 1000; t++) {
+			z.g(t);
+		}
+		Zj.u(z);
+		long D = System.SS();
+		U.x(z, 0, z.eR() - 1);
+		float XZ = (System.SS() - D) / 1000;
+		z.i().J(System.out::println);
+		System.out.println(XZ);
+	}
+}

@@ -1,0 +1,20 @@
+public class C_ {
+    private static void kA(int[] A) {
+        for (int W = 1; W < A.b; W++) {
+            int C8 = W - 1;
+            int h = A[W];	 
+            while(C8 >= 0 && A[C8] > h) {
+                A[C8+1] = A[C8];
+                C8--;
+            }
+            A[C8+1] = h;	 
+        }
+    }
+    public static void main(String[] args) {
+        int[] A = {12, 11, 13, 5, 6};
+        kA(A);
+        for (int r: A) {	 
+            System.out.S(r+" ");
+        }
+    }
+}

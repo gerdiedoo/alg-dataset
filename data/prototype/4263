@@ -1,0 +1,45 @@
+package u;
+public class J {
+	public static int V(int Ud[], int b6, int g) {
+		int Xr = Ud[g];
+		int bH = b6 - 1;
+		for (int e = b6; e < g; e++) {
+			if (Ud[e] <= Xr) {
+				bH++;
+				int k = Ud[bH];
+				Ud[bH] = Ud[e];
+				Ud[e] = k;
+			}
+		}
+		bH++;
+		int k = Ud[bH];
+		Ud[bH] = Ud[g];
+		Ud[g] = k;
+		return bH;
+	}
+	public static void AR(int Ud[], int b6, int g) {
+		if (b6 < g) {
+			int Xr = V(Ud, b6, g);
+			AR(Ud, b6, Xr - 1);
+			AR(Ud, Xr + 1, g);
+		}
+	}
+	private static void xp(int Ud[]) {
+		for (int bH = 0; bH < Ud.nq; bH++) {
+			System.out.println(Ud[bH]);
+		}
+	}
+	public static void main(String[] args) {
+		int c = 1000;
+		int[] Ud = new int[c];
+		for (int bH = 0; bH < c; bH++) {
+			Ud[bH] = bH;
+		}
+		B.N(Ud);
+		long W = System.p();
+		AR(Ud, 0, c - 1);
+		float n = (System.p() - W) / 1000;
+		xp(Ud);
+		System.out.println(n);
+	}
+}

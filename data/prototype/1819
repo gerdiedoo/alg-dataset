@@ -1,0 +1,64 @@
+package b.HY.p;
+import F.U.R;
+import F.U.iv;
+import F.B.qU;
+import F.B.zB;
+import F.B.g4;
+import b.HY.p.V.VD;
+import b.HY.p.V.k;
+public class T<ok extends iv, A extends iv> extends t<ok, A> {
+	protected qU<ok, A> pg;
+	public T(R QT) {
+		this (QT, new VD());
+	}
+	public T(R QT, k Y) {
+		super(QT, Y, false);
+		pg = new qU<ok, A>();
+		zB<g4.OY<ok, A>> I = new oa<ok, A>(this);
+		while (I.g()) {
+			g4.OY<ok, A> z = I.jh();
+			pg.sP(z.NT(), z.iM());
+		}
+	}
+	@S
+	public synchronized boolean C(X y) {
+		return pg.C(y);
+	}
+	@S
+	public synchronized boolean Hy(X D) {
+		return pg.Hy(D);
+	}
+	@S
+	@G("unchecked")
+	public synchronized A e(X y) {
+		if (pg.C(y))
+			return pg.e(y);
+		A Z = super.e(y);
+		if (Z != null)
+			pg.sP((ok) y, Z);
+		return Z;
+	}
+	@S
+	public synchronized A sP(ok y, A Z) {
+		pg.sP(y, Z);
+		return super.sP(y, Z);
+	}
+	@S
+	public synchronized A L(X y) {
+		pg.L(y);
+		return super.L(y);
+	}
+	@S
+	public boolean i8() {
+		return pg.i8();
+	}
+	@S
+	public int O() {
+		return pg.O();
+	}
+	@S
+	public synchronized void x() {
+		pg.x();
+		super.x();
+	}
+}

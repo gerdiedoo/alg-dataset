@@ -1,0 +1,46 @@
+import h.R.H;
+import h.c.AB;
+public class A<O extends H<O>> implements n<O> {
+    @i
+    public void p(AB<O> e) {
+        if (e == null)
+            return;
+        p(e, 0, e.Q() - 1); 
+    }
+    private void p(AB<O> e, int iC, int ut) {
+        if (iC < ut) {
+            int AM = b0(e, iC, ut);
+            p(e, iC, AM-1);
+            p(e, AM+1, ut);
+        }
+    }
+    private int b0(AB<O> e, int iC, int ut) {
+        O o = e.d(ut);
+        int C = iC - 1;
+        for (int F = iC; F < ut; F++) {
+            if (V(e.d(F), o)) {
+                O M = e.d(++C);
+                e.ay(C, e.d(F));
+                e.ay(F, M);
+            }
+        }
+        O z = e.d(C + 1);
+        e.ay(C + 1, o);
+        e.ay(ut, z);
+        return C + 1;
+    }
+    private boolean V(O Z, O rf) {
+        return (Z.Jd(rf) < 0);
+    }
+    public static void main(String[] args) {
+        n<Rv> aO = new S<Rv>();
+        AB<Rv> v = h.c.G.X(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        aO.p(v);
+        for (int C = 0; C < v.Q() - 1; C++) {
+            if (v.d(C).Jd(v.d(C+1)) > 0) {
+                throw new h.R.f("Elems should be sorted.");
+            }
+        }
+        System.out.println("All tests passed.");
+    }
+}

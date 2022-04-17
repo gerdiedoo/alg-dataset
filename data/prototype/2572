@@ -1,0 +1,40 @@
+package q.E.m.Y;
+public class d<u> {
+    private static int xk = -1;
+    private u[] K;
+    private int Q;
+    @A("unchecked")
+    public d(int J) {
+        this.K = (u[])new OH[J];
+        this.Q = 0;
+    }
+    public int Q() {
+        return this.Q;
+    }
+    public void V(u N) {
+        this.K[this.Q++] = N;
+    }
+    public u NW(int S) {
+        return this.K[S];
+    }
+    public int e(u N) {
+        for (int fB = 0; fB < this.Q; fB++) {
+            if (this.K[fB].equals(N)) {
+                return fB;
+            }
+        }
+        return xk;
+    }
+    public boolean S6(u N) {
+        int fB = this.e(N);
+        if (fB > xk) {
+            for (; fB < this.Q - 1; fB++) {
+                this.K[fB] = this.K[fB + 1]; 
+            }
+            this.Q--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

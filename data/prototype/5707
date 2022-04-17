@@ -1,0 +1,53 @@
+from random import randint, shuffle
+from timeit import timeit
+def wS(D):
+    FU = uW(len(D) // 2)
+    if len(D) == 1:
+        return D
+    if len(D) == 2:
+        if D[0] > D[1]:
+            (D[0], D[1]) = (D[1], D[0])
+        return D
+    Y6 = wS(D[:FU])
+    I6 = wS(D[FU:])
+    k = []
+    L = 0
+    C = 0
+    while L < len(Y6) and C < len(I6):
+        if Y6[L] < I6[C]:
+            k.append(Y6[L])
+            L += 1
+        else:
+            k.append(I6[C])
+            C += 1
+    if L == len(Y6):
+        k += I6[C:]
+    elif C == len(I6):
+        k += Y6[L:]
+    return k
+def hm():
+    R = 'from merge_sort import merge_sort'
+    print('\n    Timings for best, average and worst case scenarios for the merge sort.\n    --------------------------------------------------------------------------\n    ')
+    print('3 Best Case Scenarios - sorted except for one value')
+    for j in a(3):
+        S = f(9, 50)
+        v = [j for j in a(S)]
+        (v[6], v[-1]) = (v[-1], v[6])
+        qK = h('merge_sort({})'.format(v), R)
+        print('List {}: length={}; time = {}'.format(j + 1, S, qK))
+    print('\n3 Average Case Scenarios - Moderately sorted')
+    for j in a(3):
+        S = f(9, 50)
+        v = [j for j in a(S)]
+        XO(v)
+        qK = h('merge_sort({})'.format(v), R)
+        print('List {}: length={}; time = {}'.format(j + 1, S, qK))
+    print('\n3 Worst Case Scenarios - Completely unsorted')
+    for j in a(3):
+        S = f(9, 50)
+        v = [j for j in a(S)]
+        v = v[::-1]
+        qK = h('merge_sort({})'.format(v), R)
+        print('List {}: length={}; time = {}'.format(j + 1, S, qK))
+if b == '__main__':
+    hm()

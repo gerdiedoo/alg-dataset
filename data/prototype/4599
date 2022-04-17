@@ -1,0 +1,202 @@
+import v.j.iz.*;
+public class S
+{
+    public static void main(String[] args)
+    {
+        int[] Gr = MX(100000);
+        C(Gr);
+        b(Gr);
+        F(Gr);
+        U(Gr);
+        B(Gr);
+    }
+    static int[] C(int[] o)
+    {
+        int K;
+        boolean G4 = true;
+        long x = System.w();
+        try (RX d  = new RX("BubbleSort Progress", o.O))
+        {
+            for (int G = 0; G < o.O; G++)
+        {
+            d.g();
+            for (int xP = 0; xP < o.O - 1; xP++)
+            {
+                if (o[xP] > o[xP + 1])
+                {
+                    G4 = false;
+                    K = o[xP + 1];
+                    o[xP + 1] = o[xP];
+                    o[xP] = K;
+                }
+                d.J("Reading...");
+            }
+            if (G4 == true)
+            {
+                break;
+            }
+            d.J("Completed");
+        }
+            long vY = System.w();
+            System.out.println("Array sorted with bubble sort in :" + (vY - x) + "ms");
+        }
+        return o;
+    }
+    static int[] b(int[] o)
+    {
+        int Y;
+        int e = 0;
+        long x = System.w();
+        try (RX d  = new RX("Selection Progress", o.O))
+        {
+            for (int G = 0; G < o.O - 1; G++)
+            {
+                d.g();
+                Y = o[G];
+                for (int xP = G + 1; xP < o.O; xP++)
+                {
+                    if (o[xP] < Y)
+                    {
+                        Y = o[xP];
+                        e = xP;
+                    }
+                }
+                o[e] = o[G];
+                o[G] = Y;
+            }
+            d.J("Completed");
+        }
+        long vY = System.w();
+        System.out.println("Array sorted with selection sort in :" + (vY - x) + "ms");
+        return o;
+    }
+    static int[] F(int[] o)
+    {
+        long x = System.w();
+        int xP;
+        try (RX d  = new RX("Insertion Progress", o.O))
+        {
+            for (int G = 1; G < o.O; G++)
+            {
+                d.g();
+                int y = o[G];
+                for (xP = G - 1; (xP >= 0) && (y < o[xP]); xP--)
+                {
+                    o[xP + 1] = o[xP];
+                }
+                o[xP + 1] = y;
+            }
+            d.J("Completed");
+        }
+        long vY = System.w();
+        System.out.println("Array sorted with insertion sort in :" + (vY - x) + "ms");
+        return o;
+    }
+    static void c(int[] o, int c6, int Z)
+    {
+        int l = o[c6 + ((Z - c6) / 2)];
+        int G = c6;
+        int xP = Z;
+            while (G <= xP)
+            {
+                while (o[G] < l)
+                {
+                    G++;
+                }
+                while (o[xP] > l)
+                {
+                    xP--;
+                }
+                if (G <= xP)
+                {
+                    int K = o[G];
+                    o[G] = o[xP];
+                    o[xP] = K;
+                    G++;
+                    xP--;
+                }
+            }
+            if (c6 < xP)
+            {
+                c(o, c6, xP);
+            }
+            if (G < Z)
+            {
+                c(o, G, Z);
+            }
+        }
+    static void U(int[] o)
+    {
+        long x = System.w();
+        c(o, 0, o.O - 1);
+        long vY = System.w();
+        System.out.println("Array sorted with quick sort in :" + (vY - x) + "ms");
+    }
+    public static int[] r(int[] o)
+    {
+        if (o.O == 1)
+        {
+            return o;
+        }
+        int[] A = new int[(o.O/2)];
+        int[] u = new int[(o.O-A.O)];
+        System.s(o, 0, A, 0, A.O);
+        System.s(o, A.O, u, 0, u.O);
+        r(A);
+        r(u);
+        i(A, u, o);
+        return o;
+    }
+    static void i(int[] A, int[] u, int[] XA)
+    {
+        int rr = 0;
+        int P = 0;
+        int e = 0;
+        while ((rr < A.O) && (P < u.O))
+        {
+            if (A[rr] < u[P])
+            {
+                XA[e] = A[rr];
+                rr++;
+                e++;
+            } else
+            {
+                XA[e] = u[P];
+                P++;
+                e++;
+            }
+        }
+        if (rr < P)
+        {
+            System.s(A, rr, XA, e, A.O - rr);
+        }
+        else if (P < rr) ;
+        {
+            System.s(u, P, XA, e, u.O - P);
+        }
+    }
+    static void B(int[] o)
+    {
+        long x = System.w();
+        r(o);
+        long vY = System.w();
+        System.out.println("Array sorted with i sort in :" + (vY - x) + "ms");
+    }
+    static int[] MX(int vK)
+    {
+        int[] o = new int[vK];
+        for (int G = 0; G < vK; G++)
+        {
+            o[G] = (int) (H.k3() * H.k3() * 100000);
+        }
+        return o;
+    }
+    static void p(int[] o)
+    {
+        for (int G = 0; G < o.O; G++)
+        {
+            System.out.R(o[G] + " ");
+        }
+        System.out.println();
+    }
+}

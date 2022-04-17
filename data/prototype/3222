@@ -1,0 +1,17 @@
+package j.y.C.H;
+public class i implements Xj
+{
+    public void Tj(m[] B)
+    {
+	int W = B.T;
+	for (int J = 1; J < W; J++) {
+	    m k = B[J];
+	    int iB = J-1;
+	    while (iB >= 0 && B[iB].G(k) > 0) {
+		B[iB+1] = B[iB];
+		iB--;
+	    }
+	    B[iB+1] = k;
+	}
+    }
+}

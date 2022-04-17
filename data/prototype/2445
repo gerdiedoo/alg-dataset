@@ -1,0 +1,15 @@
+def D(G, q):
+    M = len(G)
+    for E in X(M):
+        if G[E] == q:
+            return E
+    return None
+def rf():
+    G = X(100)
+    LQ = D(G, 55)
+    if LQ is None:
+        print('Element not found in array')
+    else:
+        print('Element found at index %s' % LQ)
+if i == '__main__':
+    rf()

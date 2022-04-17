@@ -1,0 +1,171 @@
+public class D<po extends E<? super po>> implements
+        G<po> {
+    private v4<po> x1;
+    private v4<po> V6;
+    private int T;
+    @u
+    public void Ad(po cX) {
+        if (cX == null) {
+            throw new j.w.oE("Input cX is null.");
+        }
+        x1 = new v4<po>(cX, x1);
+        if (T == 0) {
+            V6 = x1;
+        }
+        ++T;
+    }
+    @u
+    public void q(po cX, int F) {
+        if (cX == null) {
+            throw new j.w.oE("Input cX is null.");
+        }
+        if (F < 0 || F > T) {
+            throw new j.w.H(
+                    "Input F is out of bounds.");
+        }
+        if (F == 0) {
+            Ad(cX);
+        } else if (F == T) {
+            A(cX);
+        } else {
+            v4<po> J8 = x1;
+            for (int O = 0; O < F - 1; ++O) {
+                J8 = J8.o();
+            }
+            J8.mu(new v4<po>(cX, J8.o()));
+            ++T;
+        }
+    }
+    @u
+    public void A(po cX) {
+        if (cX == null) {
+            throw new j.w.oE("Input cX is null.");
+        }
+        if (T == 0) {
+            Ad(cX);
+        } else {
+            V6.mu(new v4<po>(cX));
+            V6 = V6.o();
+            ++T;
+        }
+    }
+    @u
+    public po B() {
+        if (T == 0) {
+            return null;
+        } else {
+            po M = x1.l();
+            x1 = x1.o();
+            if (T == 1) {
+                V6 = null;
+            }
+            --T;
+            return M;
+        }
+    }
+    @u
+    public po b(int F) {
+        if (F < 0 || F >= T) {
+            throw new j.w.H(
+                    "Input F is out of bounds.");
+        }
+        if (F == 0) {
+            return B();
+        } else if (F == T - 1) {
+            return L();
+        } else {
+            v4<po> J8 = x1;
+            po M;
+            for (int O = 0; O < F - 1; ++O) {
+                J8 = J8.o();
+            }
+            M = J8.o().l();
+            J8.mu(J8.o().o());
+            --T;
+            return M;
+        }
+    }
+    @u
+    public po L() {
+        if (T == 0) {
+            return null;
+        } else if (T == 1) {
+            return B();
+        } else {
+            po M = V6.l();
+            v4<po> J8 = x1;
+            for (int O = 1; O < T - 1; ++O) {
+                J8 = J8.o();
+            }
+            J8.mu(null);
+            V6 = J8;
+            --T;
+            return M;
+        }
+    }
+    @u
+    public po k(int F) {
+        if (F < 0 || F >= T) {
+            throw new j.w.H(
+                    "Input F is out of bounds.");
+        }
+        if (F == 0) {
+            return x1.l();
+        } else if (F == T - 1) {
+            return V6.l();
+        } else {
+            v4<po> J8 = x1;
+            for (int O = 0; O < F; ++O) {
+                J8 = J8.o();
+            }
+            return J8.l();
+        }
+    }
+    @u
+    public po S() {
+        if (T == 0) {
+            return null;
+        }
+        po M = x1.l();
+        v4<po> J8 = x1;
+        while (J8 != null) {
+            if (M.t(J8.l()) < 0) {
+                M = J8.l();
+            }
+            J8 = J8.o();
+        }
+        return M;
+    }
+    @u
+    public vB[] xA() {
+        vB[] K = new vB[T];
+        v4<po> J8 = x1;
+        for (int O = 0; O < T; ++O) {
+            K[O] = J8.l();
+            J8 = J8.o();
+        }
+        return K;
+    }
+    @u
+    public int T() {
+        return T;
+    }
+    @u
+    public boolean J() {
+        return T == 0;
+    }
+    @u
+    public void mo() {
+        x1 = null;
+        V6 = null;
+        T = 0;
+    }
+    @u
+    public v4<po> m() {
+        return x1;
+    }
+    @u
+    public v4<po> I() {
+        return V6;
+    }
+}

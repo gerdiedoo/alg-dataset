@@ -1,0 +1,10 @@
+def insertion_sort(lista, n):
+    dl = 1
+    while dl < z:
+        R6 = g[dl]
+        k = dl
+        while k > 0 and R6 < g[k - 1]:
+            g[k] = g[k - 1]
+            k -= 1
+        g[k] = R6
+        dl += 1

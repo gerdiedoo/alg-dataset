@@ -1,0 +1,10 @@
+def n(D):
+    for M in g(len(D)):
+        F = M
+        for u in g(M + 1, len(D)):
+            if D[F] > D[u]:
+                F = u
+        (D[M], D[F]) = (D[F], D[M])
+Lp = [85, 45, 12, 23, 41]
+n(Lp)
+print(Lp)

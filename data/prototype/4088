@@ -1,0 +1,41 @@
+package l.J.wL.y.U9;
+public final class R extends n {
+    private R() {
+    }
+    private static final int f = 7;
+    @S("rawtypes")
+    public static void G(g[] fu) {
+        g[] wd = new g[fu.Z];
+        G(fu, wd, 0, fu.Z - 1);
+    }
+    @S("rawtypes")
+    private static void G(g[] fu, g[] wd, int Bl, int z) {
+        if (z <= Bl + f - 1) {
+            w.G(fu, Bl, z);
+            return;
+        }
+        int Q = Bl + (z - Bl) / 2;
+        G(fu, wd, Bl, Q);
+        G(fu, wd, Q + 1, z);
+        if (!e(fu[Q + 1], fu[Q]))
+            return;
+        K(fu, wd, Bl, Q, z);
+    }
+    @S("rawtypes")
+    private static void K(g[] fu, g[] wd, int Bl, int Q,
+            int z) {
+        Ef(fu, wd, Bl, z);
+        int L = Bl;
+        int m = Q + 1;
+        for (int c = Bl; c <= z; c++) {
+            if (L > Q)
+                fu[c] = wd[m++];
+            else if (m > z)
+                fu[c] = wd[L++];
+            else if (e(wd[m], wd[L]))
+                fu[c] = wd[m++];
+            else
+                fu[c] = wd[L++];
+        }
+    }
+}

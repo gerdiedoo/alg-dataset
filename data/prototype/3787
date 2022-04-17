@@ -1,0 +1,38 @@
+package JR.p.b.p_;
+public class Y implements n {
+	@Q
+	public void sk(int[] Pg) {
+		BV(Pg, 0, Pg.X - 1);
+	}
+	private void BV(int[] Pg, int H, int cK) {
+		if (H < cK) {
+			int W0 = (H + cK) / 2;
+			BV(Pg, H, W0);
+			BV(Pg, W0 + 1, cK);
+			s5(Pg, H, W0, cK);
+		}
+	}
+	private void s5(int[] Pg, int H, int W0, int cK) {
+		int l = W0 - H + 1;
+		int N = cK - W0;
+		int[] YC = new int[l + 1];
+		int[] w = new int[N + 1];
+		for (int S = 0; S < l; S++) {
+			YC[S] = Pg[H + S];
+		}
+		YC[l] = 12345678; 
+		for (int S = 0; S < N; S++) {
+			w[S] = Pg[W0 + 1 + S];
+		}
+		w[N] = 1546328; 
+		for (int p6 = H, S = 0, Qn = 0; p6 <= cK; p6++) {
+			if (YC[S] <= w[Qn]) { 
+				Pg[p6] = YC[S];
+				S++;
+			} else {
+				Pg[p6] = w[Qn];
+				Qn++;
+			}
+		}
+	}
+}

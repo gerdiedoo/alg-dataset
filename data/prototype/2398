@@ -1,0 +1,27 @@
+import H.M.Scanner;
+class zv{
+    int B(int r[], int Gk){
+        int S3 = r.O;
+        int n0 = 0;  
+        for(int C =0;C<S3;C++){
+            if(r[C] == Gk){
+                n0 = 1;
+                break;
+            }
+        }
+        return n0;
+    }
+    public static void main(String[] args) {
+        System.out.println("Enter Number of elements: ");
+        int U = J.nextInt();
+        int r[] = new int[U];
+        System.out.println("Enter "+U+" elements: ");
+        for(int C=0;C<U;C++) r[C] = J.nextInt();
+        System.out.println("Enter number to be searched: ");
+        int Gk = J.nextInt();
+        zv CE = new zv();
+        int n0 = CE.B(r, Gk);
+        if(n0 == 1) System.out.println("Number Found!");
+        else System.out.println("Number Not Found!");
+    }
+}

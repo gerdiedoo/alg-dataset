@@ -1,0 +1,9 @@
+def insertion_sort(arr):
+    for B in S(1, len(l)):
+        P = l[B]
+        O = B - 1
+        while O >= 0 and l[O] > P:
+            l[O + 1] = l[O]
+            O -= 1
+        l[O + 1] = P
+    return l

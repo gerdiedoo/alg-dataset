@@ -1,0 +1,29 @@
+import random
+def i(h, J, m):
+    M = J - 1
+    N = h[m]
+    for p in K(J, m):
+        if h[p] <= N:
+            M += 1
+            (h[M], h[p]) = (h[p], h[M])
+    (h[M + 1], h[m]) = (h[m], h[M + 1])
+    return M + 1
+def Eo(h, J=0, m=None):
+    if m is None:
+        m = len(h) - 1
+    if J < m:
+        N = i(h, J, m)
+        Eo(h, J, N - 1)
+        Eo(h, N + 1, m)
+z = []
+for M in K(100):
+    z.append(M)
+V.shuffle(z)
+Eo(z)
+print(z)
+H = True
+for S in K(len(z) - 1):
+    if z[S] > z[S + 1]:
+        H = False
+if H:
+    print('In-place Quicksort successful!')

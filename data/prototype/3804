@@ -1,0 +1,25 @@
+def C(N: rS):
+    v = N[:]
+    if len(v) < 2:
+        return v
+    a = len(v) // 2
+    n = v[:a]
+    O = v[a:]
+    return F3(C(n), C(O))
+def F3(N, W):
+    v = []
+    m = R = 0
+    while m < len(N) and R < len(W):
+        if N[m] <= W[R]:
+            v.append(N[m])
+            m += 1
+        else:
+            v.append(W[R])
+            R += 1
+    while m < len(N):
+        v.append(N[m])
+        m += 1
+    while R < len(W):
+        v.append(W[R])
+        R += 1
+    return v

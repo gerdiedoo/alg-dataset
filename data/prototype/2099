@@ -1,0 +1,79 @@
+import Ei.U.L;
+public class OQ<z> {
+    private int i;
+    private P l, D4;
+    private class P {
+        private z CQ;
+        private P y;
+        public P(z CQ) {
+            this.CQ = CQ;
+        }
+    }
+    public boolean r(z c) {
+        P Gu = new P(c);
+        P x = D4;
+        D4 = Gu;
+        if (i == 0) {
+            l = D4;
+        } else {
+            x.y = D4;
+        }
+        i++;
+        return true;
+    }
+    public boolean Uw(z c) {
+        try {
+            return r(c);
+        } catch (f YQ) {
+            return false;
+        }
+    }
+    public z e() throws L {
+        if (i == 0) {
+            throw new L();
+        }
+        z c = l.CQ;
+        l = l.y;
+        i--;
+        if (i == 0) {
+            D4 = null;
+        }
+        return c;
+    }
+    public z o() {
+        try {
+            return e();
+        } catch (f YQ) {
+            return null;
+        }
+    }
+    public z c() throws L {
+        if (i == 0) {
+            throw new L();
+        }
+        return l.CQ;
+    }
+    public z n() {
+        return i == 0 ? null : l.CQ;
+    }
+    @u
+    public String toString() {
+        t w = new t();
+        P s = l;
+        while (s != null) {
+            w.U2(s.CQ).U2(", ");
+            s = s.y;
+        }
+        return w.toString();
+    }
+    public static void main(String[] args) {
+        OQ<ah> g = new OQ<>();
+        for (int F = 1; F <= 10; F++) {  
+            g.r(F);
+        }
+        System.out.println("OQ :");
+        while (g.n() != null) {
+            System.out.println(g.o());
+        }
+    }
+}

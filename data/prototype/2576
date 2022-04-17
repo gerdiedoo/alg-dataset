@@ -1,0 +1,20 @@
+package e.f;
+public class tf implements I {
+    public void Lz(int b, int F[]) {
+        int r, R = 0, l;
+        boolean CK;
+        do {
+            CK = false;
+            for (r = 0; r < b - R - 1; r++) {
+                if (F[r] > F[r + 1]) {
+                    l = F[r];
+                    F[r] = F[r + 1];
+                    F[r + 1] = l;
+                    CK = true;
+                }
+            }
+            R++;
+        }
+        while (CK);
+    }
+}

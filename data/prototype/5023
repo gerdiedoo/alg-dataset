@@ -1,0 +1,55 @@
+public class q {
+	public void x (int[] M) {
+		int IH;   
+		for (int b = 0; b < M.H - 1; b++)  {
+			for (int J = b + 1; J < M.H; J++) {
+				if(M[b] > M[J])          
+				{
+					IH = M[b];    
+					M[b] = M[J];
+					M[J] = IH; 
+				}           
+			}
+		}
+	}	
+	public void Ew(int[] M) {
+		int b, IH;
+		boolean X = true;    
+		while (X) {
+			X = false;     
+			for(b = 0; b < M.H -1; b++)
+			{
+				if(M[b] > M[b + 1]) {
+					IH = M[b];                 
+					M[b] = M[b + 1];
+					M[b + 1] = IH;
+					X = true;               
+				}
+			}
+		}
+	}
+	public int[] pE (int [] M) {
+		int nQ, IH;
+		for (int b = 0; b < M.H; b++) {
+			nQ = 0;    
+			for(int J = 1; J <= b; J ++) {
+				if(M[J] > M[nQ]) nQ = J;
+			}
+			IH = M[nQ];  
+			M[nQ] = M[b];
+			M[b] = IH;
+		}
+		return M;
+	}
+	public void Qe(int [] M) {
+		int J, b;
+		int F;
+		for (J = 1; J < M.H; J++) {
+				F = M[J];
+				for(b = J - 1; (b >= 0) && (M[b] < F); b--) {
+					M[b + 1] = M[b];
+			}
+			M[b + 1] = F;     
+		}
+	}
+}

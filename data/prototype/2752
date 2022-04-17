@@ -1,0 +1,43 @@
+package wR.TI.mH.M.H;
+import wR.TI.mH.M.*;
+public class B implements s {
+  @gZ
+  public void mH(int[] aO) {
+    int TZ = aO.K;
+    for (; ; ) {
+      boolean t = false;
+      for (int i = 0; i < TZ - 1; i++) {
+        int vy = aO[i];
+        int U5 = aO[i + 1];
+        if (vy > U5) {
+          aO[i + 1] = vy;
+          aO[i] = U5;
+          t = true;
+        }
+      }
+      if (!t) break;
+    }
+  }
+  @gZ
+  public void mH(int[] aO, G X) {
+    int TZ = aO.K;
+    for (; ; ) {
+      X.a();
+      boolean t = false;
+      for (int i = 0; i < TZ - 1; i++) {
+        X.a();
+        int vy = aO[i];
+        int U5 = aO[i + 1];
+        X.pj(2);
+        X.C();
+        if (vy > U5) {
+          aO[i + 1] = vy;
+          aO[i] = U5;
+          X.z(2);
+          t = true;
+        }
+      }
+      if (!t) break;
+    }
+  }
+}

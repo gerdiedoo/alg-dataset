@@ -1,0 +1,48 @@
+package Z;
+import z.f.Rt;
+import z.f.M;
+import z.f.cD;
+public class U {
+	private static cD<yC> j(cD<yC> Gl, cD<yC> r) {
+		cD<yC> J = new Rt<>();
+		int F = Gl.K();
+		int B = r.K();
+		int C = 0;
+		int q = 0;
+		while (C < F && q < B) {
+			if (Gl.c(C) < r.c(q)) {
+				J.u(Gl.c(C));
+				C++;
+			} else {
+				J.u(r.c(q));
+				q++;
+			}
+		}
+		if (C < F) {
+			J.w(Gl.G(C, Gl.K()));
+		} else {
+			J.w(r.G(q, r.K()));
+		}
+		return J;
+	}
+	public static cD<yC> h_(cD<yC> dr) {
+		int K = dr.K();
+		if (K == 1)
+			return dr;
+		int e3 = K / 2;
+		cD<yC> YM = h_(dr.G(0, e3));
+		cD<yC> t = h_(dr.G(e3, dr.K()));
+		return j(YM, t);
+	}
+	public static void main(String[] args) {
+		cD<yC> dr = new Rt<yC>();
+		for (int C = 0; C < 1000000; C++) {
+			dr.u(C);
+		}
+		M.IP(dr);
+		long KJ = System.aM();
+		cD<yC> n = U.h_(dr);
+		float l = (System.aM() - KJ) / 1000;
+		System.out.println(l);
+	}
+}

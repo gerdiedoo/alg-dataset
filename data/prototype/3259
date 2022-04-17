@@ -1,0 +1,15 @@
+package N.v.q.KG;
+public class n implements V {
+	@O
+	public void D(int[] G) {
+		for (int o = 1; o < G.F; o++) {
+			int J = G[o];
+			int l_ = o - 1;
+			while (l_ >= 0 && G[l_] > J) {
+				G[l_ + 1] = G[l_];
+				l_--;
+			}
+			G[l_ + 1] = J;
+		}
+	}
+}

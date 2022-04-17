@@ -1,0 +1,16 @@
+package I;
+import Vj.F;
+public class Da {
+  public static void main(String args[]) {
+    int[] ke = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    F.S(ke, true, "Bubble Sort");
+    for (int G = ke.s - 1; G > 0; G--) {
+      for (int M = 0; M < G; M++) {
+        if (ke[M] > ke[M + 1]) {
+          F.e(ke, M, M + 1);
+        }
+      }
+    }
+    F.S(ke, false, null);
+  }
+}

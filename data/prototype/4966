@@ -1,0 +1,18 @@
+package o;
+import h.dO;
+public class t {
+  public static void main(String e[]) {
+    int[] W = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    dO.H(W, true, "Selection Sort");
+    for (int L = W.nx - 1; L > 0; L--) {
+      int IT = 0;
+      for (int S = 1; S <= L; S++) {
+        if (W[S] > W[IT]) {
+          IT = S;
+        }
+      }
+      dO.K(W, IT, L);
+    }
+    dO.H(W, false, null);
+  }
+}

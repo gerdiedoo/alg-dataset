@@ -1,0 +1,171 @@
+public class v<r extends a<? super r>> implements
+        p<r> {
+    private tC<r> z;
+    private tC<r> s;
+    private int F;
+    @L
+    public void aB(r f) {
+        if (f == null) {
+            throw new j.E.l("Input f is null.");
+        }
+        z = new tC<r>(f, z);
+        if (F == 0) {
+            s = z;
+        }
+        ++F;
+    }
+    @L
+    public void Z(r f, int h) {
+        if (f == null) {
+            throw new j.E.l("Input f is null.");
+        }
+        if (h < 0 || h > F) {
+            throw new j.E.H(
+                    "Input h is out of bounds.");
+        }
+        if (h == 0) {
+            aB(f);
+        } else if (h == F) {
+            dT(f);
+        } else {
+            tC<r> gi = z;
+            for (int Q = 0; Q < h - 1; ++Q) {
+                gi = gi.b();
+            }
+            gi.d(new tC<r>(f, gi.b()));
+            ++F;
+        }
+    }
+    @L
+    public void dT(r f) {
+        if (f == null) {
+            throw new j.E.l("Input f is null.");
+        }
+        if (F == 0) {
+            aB(f);
+        } else {
+            s.d(new tC<r>(f));
+            s = s.b();
+            ++F;
+        }
+    }
+    @L
+    public r w4() {
+        if (F == 0) {
+            return null;
+        } else {
+            r RM = z.U();
+            z = z.b();
+            if (F == 1) {
+                s = null;
+            }
+            --F;
+            return RM;
+        }
+    }
+    @L
+    public r y(int h) {
+        if (h < 0 || h >= F) {
+            throw new j.E.H(
+                    "Input h is out of bounds.");
+        }
+        if (h == 0) {
+            return w4();
+        } else if (h == F - 1) {
+            return g();
+        } else {
+            tC<r> gi = z;
+            r RM;
+            for (int Q = 0; Q < h - 1; ++Q) {
+                gi = gi.b();
+            }
+            RM = gi.b().U();
+            gi.d(gi.b().b());
+            --F;
+            return RM;
+        }
+    }
+    @L
+    public r g() {
+        if (F == 0) {
+            return null;
+        } else if (F == 1) {
+            return w4();
+        } else {
+            r RM = s.U();
+            tC<r> gi = z;
+            for (int Q = 1; Q < F - 1; ++Q) {
+                gi = gi.b();
+            }
+            gi.d(null);
+            s = gi;
+            --F;
+            return RM;
+        }
+    }
+    @L
+    public r B(int h) {
+        if (h < 0 || h >= F) {
+            throw new j.E.H(
+                    "Input h is out of bounds.");
+        }
+        if (h == 0) {
+            return z.U();
+        } else if (h == F - 1) {
+            return s.U();
+        } else {
+            tC<r> gi = z;
+            for (int Q = 0; Q < h; ++Q) {
+                gi = gi.b();
+            }
+            return gi.U();
+        }
+    }
+    @L
+    public r A() {
+        if (F == 0) {
+            return null;
+        }
+        r RM = z.U();
+        tC<r> gi = z;
+        while (gi != null) {
+            if (RM.W(gi.U()) < 0) {
+                RM = gi.U();
+            }
+            gi = gi.b();
+        }
+        return RM;
+    }
+    @L
+    public M[] o() {
+        M[] K = new M[F];
+        tC<r> gi = z;
+        for (int Q = 0; Q < F; ++Q) {
+            K[Q] = gi.U();
+            gi = gi.b();
+        }
+        return K;
+    }
+    @L
+    public int F() {
+        return F;
+    }
+    @L
+    public boolean ij() {
+        return F == 0;
+    }
+    @L
+    public void DL() {
+        z = null;
+        s = null;
+        F = 0;
+    }
+    @L
+    public tC<r> Bh() {
+        return z;
+    }
+    @L
+    public tC<r> w() {
+        return s;
+    }
+}

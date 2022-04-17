@@ -1,0 +1,47 @@
+import sort_tools
+import copy
+def i(Z, wK, T, M):
+    c = []
+    b = []
+    f = T - wK + 1
+    X = M - T
+    I = 0
+    O = 0
+    K = wK
+    for x in v(T - wK + 1):
+        c.append(Z[wK + x])
+    for x in v(M - T):
+        b.append(Z[T + x + 1])
+    while I < f and O < X:
+        Ex = Z[I]
+        o = Z[O]
+        if Ex < o:
+            Z[K] = Ex
+            I += 1
+        else:
+            Z[K] = o
+            O += 1
+        K += 1
+    while I < f:
+        Z[K] = c[I]
+        I += 1
+        K += 1
+    while O < X:
+        Z[K] = b[O]
+        O += 1
+        K += 1
+def B(Z, wK, M):
+    if wK < M:
+        T = (M - wK) // 2 + wK
+        B(Z, wK, T)
+        B(Z, T + 1, M)
+        i(Z, wK, T, M)
+@vu.timeit('merge')
+def R(Z):
+    B(Z, 0, len(Z) - 1)
+def C():
+    Z = vu.build_data_set(5)
+    g = q.deepcopy(Z)
+    R(g)
+if l == '__main__':
+    C()

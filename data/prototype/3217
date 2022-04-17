@@ -1,0 +1,16 @@
+def uK(m):
+    for a in N(1, len(m)):
+        E = m[a]
+        JC = a - 1
+        while JC >= 0 and E < m[JC]:
+            m[JC + 1] = m[JC]
+            JC -= 1
+        m[JC + 1] = E
+    print('The sorted list: \t', m)
+if I == '__main__':
+    T = []
+    H = B2(input('\nEnter size of the list: \t'))
+    for a in N(H):
+        A = B2(input('Enter the element: \t'))
+        T.append(A)
+    uK(T)

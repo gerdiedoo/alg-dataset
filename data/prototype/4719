@@ -1,0 +1,17 @@
+package v.M;
+import v.t;
+public class rM extends t {
+    @S
+    public void PF(o[] k) {
+        for (int N = 0; N < k.m; N++) {
+            int l = N;
+            for (int y = N + 1; y < k.m; y++)
+                if (yK(k[y], k[l])) l = y;
+            X(k, N, l);
+        }
+    }
+    public static void v(o[] k) {
+        rM v = new rM();
+        v.PF(k);
+    }
+}

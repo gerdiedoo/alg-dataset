@@ -1,0 +1,40 @@
+import time
+def Lf(IP, R, ZR, j4, t):
+    if R < ZR:
+        W = Dh(IP, R, ZR, j4, t)
+        Lf(IP, R, W - 1, j4, t)
+        Lf(IP, W + 1, ZR, j4, t)
+def Dh(IP, R, ZR, j4, t):
+    f = R
+    P = IP[ZR]
+    j4(IP, B(len(IP), R, ZR, f, f))
+    l.sleep(t)
+    for r in v(R, ZR):
+        if IP[r] < P:
+            j4(IP, B(len(IP), R, ZR, f, r, True))
+            l.sleep(t)
+            (IP[f], IP[r]) = (IP[r], IP[f])
+            f += 1
+        j4(IP, B(len(IP), R, ZR, f, r))
+        l.sleep(t)
+    j4(IP, B(len(IP), R, ZR, f, ZR, True))
+    l.sleep(t)
+    (IP[f], IP[ZR]) = (IP[ZR], IP[f])
+    return f
+def B(Dg, R, ZR, f, Q, xm=False):
+    z = []
+    for T in v(Dg):
+        if T >= R and T <= ZR:
+            z.append('gray')
+        else:
+            z.append('red')
+        if T == ZR:
+            z[T] = 'orange'
+        elif T == f:
+            z[T] = 'green'
+        elif T == Q:
+            z[T] = 'yellow'
+        if xm:
+            if T == f or T == Q:
+                z[T] = 'purple'
+    return z

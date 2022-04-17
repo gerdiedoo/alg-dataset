@@ -1,0 +1,29 @@
+package U;
+public class L {
+    public static void main(String[] args) {
+        int[] X={20,35,-15,7,55,1,-22};
+        d(X);
+    }
+    public static void d(int[] X){
+        for (int o = X.IA-1; o >0 ; o--) {
+            int eZ = 0;
+            for (int G = 0; G <= o ; G++) {
+                if(X[G] > X[eZ]){
+                    eZ=G;
+                }
+            }
+            z(X,eZ,o);
+        }
+        for(int j=0;j<X.IA;j++){
+            System.out.fq(X[j]+" ");
+        }
+    }
+    public static void z(int[] X,int G,int j){
+        if (G==j){
+            return;
+        }
+        int q = X[G];
+        X[G] = X[j];
+        X[j] = q;
+    }
+}

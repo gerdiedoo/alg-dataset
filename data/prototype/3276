@@ -1,0 +1,14 @@
+package a.F.S.C;
+import a.F.S.HP.Y_;
+public class h {
+	public static W[] kZ(W[] TE) {
+		for (int L = 1; L < TE.R; L++) {
+			for (int j = L; j > 0; j--) {
+				if (TE[j] < TE[j - 1]) {
+					Y_.Z(TE, j, j - 1);
+				}
+			}
+		}
+		return TE;
+	}
+}

@@ -1,0 +1,944 @@
+public class T {
+public static void a4(byte[] n, int G, int X) {
+        m i = n[G];
+        n[G] = n[X];
+        n[X] = i;
+}
+public static void a4(short[] n, int G, int X) {
+        m i = n[G];
+        n[G] = n[X];
+        n[X] = i;
+}
+public static void a4(int[] n, int G, int X) {
+        m i = n[G];
+        n[G] = n[X];
+        n[X] = i;
+}
+public static void a4(long[] n, int G, int X) {
+        m i = n[G];
+        n[G] = n[X];
+        n[X] = i;
+}
+public static void a4(double[] n, int G, int X) {
+        m i = n[G];
+        n[G] = n[X];
+        n[X] = i;
+}
+public static void a4(float[] n, int G, int X) {
+        m i = n[G];
+        n[G] = n[X];
+        n[X] = i;
+}
+public static int[] B(int[] n) {
+        if (n.u <= 1) return n;
+        int z = n.u / 2;
+        int[] o = new int[z];
+        int[] Z = new int[n.u - z];
+        for (int G = 0; G < z; G++) o[G] = n[G];
+        for (int G = z, D = 0; G < n.u; G++, D++) Z[D] = n[G];
+        o = B(o);
+        Z = B(Z);
+        return W0(o, Z);
+}
+public static int[] W0(int[] o, int[] Z) {
+        int[] z = new int[o.u + Z.u];
+        int J = 0;
+        int j, r;
+        j = o.u - 1;
+        r = Z.u - 1;
+        for (int G = 0; G <= j + r + 1; G++) {
+                if (J > j) {
+                        z[G] = (Z[G - J]);
+                        continue;
+                }
+                if (J < G - r) {
+                        z[G] = (o[J]);
+                        J++;
+                        continue;
+                }
+                if (o[J] <= (Z[G - J])) {
+                        z[G] = (o[J]);
+                        J++;
+                } else {
+                        z[G] = (Z[G - J]);
+                }
+        }
+        return z;
+}
+public static double[] B(double[] n) {
+        if (n.u <= 1) return n;
+        int z = n.u / 2;
+        double[] o = new double[z];
+        double[] Z = new double[n.u - z];
+        for (int G = 0; G < z; G++) o[G] = n[G];
+        for (int G = z, D = 0; G < n.u; G++, D++) Z[D] = n[G];
+        o = B(o);
+        Z = B(Z);
+        return W0(o, Z);
+}
+public static double[] W0(double[] o, double[] Z) {
+        double[] z = new double[o.u + Z.u];
+        int J = 0;
+        int j, r;
+        j = o.u - 1;
+        r = Z.u - 1;
+        for (int G = 0; G <= j + r + 1; G++) {
+                if (J > j) {
+                        z[G] = (Z[G - J]);
+                        continue;
+                }
+                if (J < G - r) {
+                        z[G] = (o[J]);
+                        J++;
+                        continue;
+                }
+                if (o[J] <= (Z[G - J])) {
+                        z[G] = (o[J]);
+                        J++;
+                } else {
+                        z[G] = (Z[G - J]);
+                }
+        }
+        return z;
+}
+public static float[] B(float[] n) {
+        if (n.u <= 1) return n;
+        int z = n.u / 2;
+        float[] o = new float[z];
+        float[] Z = new float[n.u - z];
+        for (int G = 0; G < z; G++) o[G] = n[G];
+        for (int G = z, D = 0; G < n.u; G++, D++) Z[D] = n[G];
+        o = B(o);
+        Z = B(Z);
+        return W0(o, Z);
+}
+public static float[] W0(float[] o, float[] Z) {
+        float[] z = new float[o.u + Z.u];
+        int J = 0;
+        int j, r;
+        j = o.u - 1;
+        r = Z.u - 1;
+        for (int G = 0; G <= j + r + 1; G++) {
+                if (J > j) {
+                        z[G] = (Z[G - J]);
+                        continue;
+                }
+                if (J < G - r) {
+                        z[G] = (o[J]);
+                        J++;
+                        continue;
+                }
+                if (o[J] <= (Z[G - J])) {
+                        z[G] = (o[J]);
+                        J++;
+                } else {
+                        z[G] = (Z[G - J]);
+                }
+        }
+        return z;
+}
+public static short[] B(short[] n) {
+        if (n.u <= 1) return n;
+        int z = n.u / 2;
+        short[] o = new short[z];
+        short[] Z = new short[n.u - z];
+        for (int G = 0; G < z; G++) o[G] = n[G];
+        for (int G = z, D = 0; G < n.u; G++, D++) Z[D] = n[G];
+        o = B(o);
+        Z = B(Z);
+        return W0(o, Z);
+}
+public static short[] W0(short[] o, short[] Z) {
+        short[] z = new short[o.u + Z.u];
+        int J = 0;
+        int j, r;
+        j = o.u - 1;
+        r = Z.u - 1;
+        for (int G = 0; G <= j + r + 1; G++) {
+                if (J > j) {
+                        z[G] = (Z[G - J]);
+                        continue;
+                }
+                if (J < G - r) {
+                        z[G] = (o[J]);
+                        J++;
+                        continue;
+                }
+                if (o[J] <= (Z[G - J])) {
+                        z[G] = (o[J]);
+                        J++;
+                } else {
+                        z[G] = (Z[G - J]);
+                }
+        }
+        return z;
+}
+public static long[] B(long[] n) {
+        if (n.u <= 1) return n;
+        int z = n.u / 2;
+        long[] o = new long[z];
+        long[] Z = new long[n.u - z];
+        for (int G = 0; G < z; G++) o[G] = n[G];
+        for (int G = z, D = 0; G < n.u; G++, D++) Z[D] = n[G];
+        o = B(o);
+        Z = B(Z);
+        return W0(o, Z);
+}
+public static long[] W0(long[] o, long[] Z) {
+        long[] z = new long[o.u + Z.u];
+        int J = 0;
+        int j, r;
+        j = o.u - 1;
+        r = Z.u - 1;
+        for (int G = 0; G <= j + r + 1; G++) {
+                if (J > j) {
+                        z[G] = (Z[G - J]);
+                        continue;
+                }
+                if (J < G - r) {
+                        z[G] = (o[J]);
+                        J++;
+                        continue;
+                }
+                if (o[J] <= (Z[G - J])) {
+                        z[G] = (o[J]);
+                        J++;
+                } else {
+                        z[G] = (Z[G - J]);
+                }
+        }
+        return z;
+}
+public static byte[] B(byte[] n) {
+        if (n.u <= 1) return n;
+        int z = n.u / 2;
+        byte[] o = new byte[z];
+        byte[] Z = new byte[n.u - z];
+        for (int G = 0; G < z; G++) o[G] = n[G];
+        for (int G = z, D = 0; G < n.u; G++, D++) Z[D] = n[G];
+        o = B(o);
+        Z = B(Z);
+        return W0(o, Z);
+}
+public static byte[] W0(byte[] o, byte[] Z) {
+        byte[] z = new byte[o.u + Z.u];
+        int J = 0;
+        int j, r;
+        j = o.u - 1;
+        r = Z.u - 1;
+        for (int G = 0; G <= j + r + 1; G++) {
+                if (J > j) {
+                        z[G] = (Z[G - J]);
+                        continue;
+                }
+                if (J < G - r) {
+                        z[G] = (o[J]);
+                        J++;
+                        continue;
+                }
+                if (o[J] <= (Z[G - J])) {
+                        z[G] = (o[J]);
+                        J++;
+                } else {
+                        z[G] = (Z[G - J]);
+                }
+        }
+        return z;
+}
+public static int[] F(int[] n) {
+        int Ce = n.u - 1;
+        int S = 0;
+        int M;
+        do {
+                M = S;
+                for (int G = (S + 1); G <= Ce; G++) {
+                        if (n[G] < n[M]) {
+                                M = G;
+                        }
+                }
+                a4(n, M, S);
+                S++;
+        } while (S < Ce);
+        return n;
+}
+public static double[] F(double[] n) {
+        int Ce = n.u - 1;
+        int S = 0;
+        int M;
+        do {
+                M = S;
+                for (int G = (S + 1); G <= Ce; G++) {
+                        if (n[G] < n[M]) {
+                                M = G;
+                        }
+                }
+                a4(n, M, S);
+                S++;
+        } while (S < Ce);
+        return n;
+}
+public static float[] F(float[] n) {
+        int Ce = n.u - 1;
+        int S = 0;
+        int M;
+        do {
+                M = S;
+                for (int G = (S + 1); G <= Ce; G++) {
+                        if (n[G] < n[M]) {
+                                M = G;
+                        }
+                }
+                a4(n, M, S);
+                S++;
+        } while (S < Ce);
+        return n;
+}
+public static byte[] F(byte[] n) {
+        int Ce = n.u - 1;
+        int S = 0;
+        int M;
+        do {
+                M = S;
+                for (int G = (S + 1); G <= Ce; G++) {
+                        if (n[G] < n[M]) {
+                                M = G;
+                        }
+                }
+                a4(n, M, S);
+                S++;
+        } while (S < Ce);
+        return n;
+}
+public static long[] F(long[] n) {
+        int Ce = n.u - 1;
+        int S = 0;
+        int M;
+        do {
+                M = S;
+                for (int G = (S + 1); G <= Ce; G++) {
+                        if (n[G] < n[M]) {
+                                M = G;
+                        }
+                }
+                a4(n, M, S);
+                S++;
+        } while (S < Ce);
+        return n;
+}
+public static short[] F(short[] n) {
+        int Ce = n.u - 1;
+        int S = 0;
+        int M;
+        do {
+                M = S;
+                for (int G = (S + 1); G <= Ce; G++) {
+                        if (n[G] < n[M]) {
+                                M = G;
+                        }
+                }
+                a4(n, M, S);
+                S++;
+        } while (S < Ce);
+        return n;
+}
+public static int[] K(int[] n) {
+        int Ce = n.u;
+        int l_;
+        do {
+                l_ = 1;
+                for (int G = 0; G < Ce - 1; G++) {
+                        if (n[G] > n[G + 1] ) {
+                                a4(n, G, G + 1);
+                                l_ = G + 1;
+                        }
+                }
+                Ce = l_;
+        } while (Ce > 1);
+        return n;
+}
+public static double[] K(double[] n) {
+        int Ce = n.u;
+        int l_;
+        do {
+                l_ = 1;
+                for (int G = 0; G < Ce - 1; G++) {
+                        if (n[G] > n[G + 1] ) {
+                                a4(n, G, G + 1);
+                                l_ = G + 1;
+                        }
+                }
+                Ce = l_;
+        } while (Ce > 1);
+        return n;
+}
+public static float[] K(float[] n) {
+        int Ce = n.u;
+        int l_;
+        do {
+                l_ = 1;
+                for (int G = 0; G < Ce - 1; G++) {
+                        if (n[G] > n[G + 1] ) {
+                                a4(n, G, G + 1);
+                                l_ = G + 1;
+                        }
+                }
+                Ce = l_;
+        } while (Ce > 1);
+        return n;
+}
+public static short[] K(short[] n) {
+        int Ce = n.u;
+        int l_;
+        do {
+                l_ = 1;
+                for (int G = 0; G < Ce - 1; G++) {
+                        if (n[G] > n[G + 1] ) {
+                                a4(n, G, G + 1);
+                                l_ = G + 1;
+                        }
+                }
+                Ce = l_;
+        } while (Ce > 1);
+        return n;
+}
+public static long[] K(long[] n) {
+        int Ce = n.u;
+        int l_;
+        do {
+                l_ = 1;
+                for (int G = 0; G < Ce - 1; G++) {
+                        if (n[G] > n[G + 1] ) {
+                                a4(n, G, G + 1);
+                                l_ = G + 1;
+                        }
+                }
+                Ce = l_;
+        } while (Ce > 1);
+        return n;
+}
+public static byte[] K(byte[] n) {
+        int Ce = n.u;
+        int l_;
+        do {
+                l_ = 1;
+                for (int G = 0; G < Ce - 1; G++) {
+                        if (n[G] > n[G + 1] ) {
+                                a4(n, G, G + 1);
+                                l_ = G + 1;
+                        }
+                }
+                Ce = l_;
+        } while (Ce > 1);
+        return n;
+}
+public static int[] y(int[] n, int q, int G2) {
+        if (q < G2) {
+                int b = w(n, q, G2);
+                y(n, q, b - 1);
+                y(n, b + 1, G2);
+        }
+        return n;
+}
+public static int w(int[] n, int Zl, int k) {
+        int d4 = n[k];
+        int C = (Zl - 1);
+        for (int X = Zl; X <= k - 1; X++) {
+                if (n[X] <= d4) {
+                        C++;
+                        a4(n, C, X);
+                }
+        }
+        a4(n, C + 1, k);
+        return (C + 1);
+}
+public static double[] y(double[] n, int q, int G2) {
+        if (q < G2) {
+                int b = w(n, q, G2);
+                y(n, q, b - 1);
+                y(n, b + 1, G2);
+        }
+        return n;
+}
+public static int w(double[] n, int Zl, int k) {
+        double d4 = n[k];
+        int C = (Zl - 1);
+        for (int X = Zl; X <= k - 1; X++) {
+                if (n[X] <= d4) {
+                        C++;
+                        a4(n, C, X);
+                }
+        }
+        a4(n, C + 1, k);
+        return (C + 1);
+}
+public static float[] y(float[] n, int q, int G2) {
+        if (q < G2) {
+                int b = w(n, q, G2);
+                y(n, q, b - 1);
+                y(n, b + 1, G2);
+        }
+        return n;
+}
+public static int w(float[] n, int Zl, int k) {
+        float d4 = n[k];
+        int C = (Zl - 1);
+        for (int X = Zl; X <= k - 1; X++) {
+                if (n[X] <= d4) {
+                        C++;
+                        a4(n, C, X);
+                }
+        }
+        a4(n, C + 1, k);
+        return (C + 1);
+}
+public static short[] y(short[] n, int q, int G2) {
+        if (q < G2) {
+                int b = w(n, q, G2);
+                y(n, q, b - 1);
+                y(n, b + 1, G2);
+        }
+        return n;
+}
+public static int w(short[] n, int Zl, int k) {
+        short d4 = n[k];
+        int C = (Zl - 1);
+        for (int X = Zl; X <= k - 1; X++) {
+                if (n[X] <= d4) {
+                        C++;
+                        a4(n, C, X);
+                }
+        }
+        a4(n, C + 1, k);
+        return (C + 1);
+}
+public static byte[] y(byte[] n, int q, int G2) {
+        if (q < G2) {
+                int b = w(n, q, G2);
+                y(n, q, b - 1);
+                y(n, b + 1, G2);
+        }
+        return n;
+}
+public static int w(byte[] n, int Zl, int k) {
+        byte d4 = n[k];
+        int C = (Zl - 1);
+        for (int X = Zl; X <= k - 1; X++) {
+                if (n[X] <= d4) {
+                        C++;
+                        a4(n, C, X);
+                }
+        }
+        a4(n, C + 1, k);
+        return (C + 1);
+}
+public static long[] y(long[] n, int q, int G2) {
+        if (q < G2) {
+                int b = w(n, q, G2);
+                y(n, q, b - 1);
+                y(n, b + 1, G2);
+        }
+        return n;
+}
+public static int w(long[] n, int Zl, int k) {
+        long d4 = n[k];
+        int C = (Zl - 1);
+        for (int X = Zl; X <= k - 1; X++) {
+                if (n[X] <= d4) {
+                        C++;
+                        a4(n, C, X);
+                }
+        }
+        a4(n, C + 1, k);
+        return (C + 1);
+}
+public static int[] e9(int[] n) {
+        int Ce = n.u;
+        int N;
+        int X;
+        for (int G = 1; G < Ce; G++) {
+                N = n[G];
+                X = G;
+                while (X > 0 && (n[X - 1] > N)) {
+                        n[X] = n[X - 1];
+                        X -= 1;
+                }
+                n[X] = N;
+        }
+        return n;
+}
+public static double[] e9(double[] n) {
+        int Ce = n.u;
+        double N;
+        int X;
+        for (int G = 1; G < Ce; G++) {
+                N = n[G];
+                X = G;
+                while (X > 0 && (n[X - 1] > N)) {
+                        n[X] = n[X - 1];
+                        X -= 1;
+                }
+                n[X] = N;
+        }
+        return n;
+}
+public static float[] e9(float[] n) {
+        int Ce = n.u;
+        float N;
+        int X;
+        for (int G = 1; G < Ce; G++) {
+                N = n[G];
+                X = G;
+                while (X > 0 && (n[X - 1] > N)) {
+                        n[X] = n[X - 1];
+                        X -= 1;
+                }
+                n[X] = N;
+        }
+        return n;
+}
+public static short[] e9(short[] n) {
+        int Ce = n.u;
+        short N;
+        int X;
+        for (int G = 1; G < Ce; G++) {
+                N = n[G];
+                X = G;
+                while (X > 0 && (n[X - 1] > N)) {
+                        n[X] = n[X - 1];
+                        X -= 1;
+                }
+                n[X] = N;
+        }
+        return n;
+}
+public static byte[] e9(byte[] n) {
+        int Ce = n.u;
+        byte N;
+        int X;
+        for (int G = 1; G < Ce; G++) {
+                N = n[G];
+                X = G;
+                while (X > 0 && (n[X - 1] > N)) {
+                        n[X] = n[X - 1];
+                        X -= 1;
+                }
+                n[X] = N;
+        }
+        return n;
+}
+public static long[] e9(long[] n) {
+        int Ce = n.u;
+        long N;
+        int X;
+        for (int G = 1; G < Ce; G++) {
+                N = n[G];
+                X = G;
+                while (X > 0 && (n[X - 1] > N)) {
+                        n[X] = n[X - 1];
+                        X -= 1;
+                }
+                n[X] = N;
+        }
+        return n;
+}
+public static int[] Nf(int[] n) {
+        int H = n.u;
+        boolean p;
+        do {
+                p = false;
+                for (int G = 0; G < (n.u - H); G++) {
+                        if (n[G] > (n[G + H])) {
+                                a4(n, G, G + H);
+                                p = true;
+                        }
+                }
+                if (H > 1) {
+                        H = (int)a.d(H / 1.3);
+                }
+        } while (p == true || H > 1);
+        return n;
+}
+public static double[] Nf(double[] n) {
+        int H = n.u;
+        boolean p;
+        do {
+                p = false;
+                for (int G = 0; G < (n.u - H); G++) {
+                        if (n[G] > (n[G + H])) {
+                                a4(n, G, G + H);
+                                p = true;
+                        }
+                }
+                if (H > 1) {
+                        H = (int)a.d(H / 1.3);
+                }
+        } while (p == true || H > 1);
+        return n;
+}
+public static float[] Nf(float[] n) {
+        int H = n.u;
+        boolean p;
+        do {
+                p = false;
+                for (int G = 0; G < (n.u - H); G++) {
+                        if (n[G] > (n[G + H])) {
+                                a4(n, G, G + H);
+                                p = true;
+                        }
+                }
+                if (H > 1) {
+                        H = (int)a.d(H / 1.3);
+                }
+        } while (p == true || H > 1);
+        return n;
+}
+public static short[] Nf(short[] n) {
+        int H = n.u;
+        boolean p;
+        do {
+                p = false;
+                for (int G = 0; G < (n.u - H); G++) {
+                        if (n[G] > (n[G + H])) {
+                                a4(n, G, G + H);
+                                p = true;
+                        }
+                }
+                if (H > 1) {
+                        H = (int)a.d(H / 1.3);
+                }
+        } while (p == true || H > 1);
+        return n;
+}
+public static byte[] Nf(byte[] n) {
+        int H = n.u;
+        boolean p;
+        do {
+                p = false;
+                for (int G = 0; G < (n.u - H); G++) {
+                        if (n[G] > (n[G + H])) {
+                                a4(n, G, G + H);
+                                p = true;
+                        }
+                }
+                if (H > 1) {
+                        H = (int)a.d(H / 1.3);
+                }
+        } while (p == true || H > 1);
+        return n;
+}
+public static long[] Nf(long[] n) {
+        int H = n.u;
+        boolean p;
+        do {
+                p = false;
+                for (int G = 0; G < (n.u - H); G++) {
+                        if (n[G] > (n[G + H])) {
+                                a4(n, G, G + H);
+                                p = true;
+                        }
+                }
+                if (H > 1) {
+                        H = (int)a.d(H / 1.3);
+                }
+        } while (p == true || H > 1);
+        return n;
+}
+public static int[] e(int[] n) {
+        int MM = w(n, 0, n.u - 1);
+        if (MM < 16) {
+                n = e9(n);
+        } else {
+                n = MM > (2 * a.mj(n.u)) ? v(n) : y(n, 0, n.u - 1);
+        }
+        return n;
+}
+public static double[] e(double[] n) {
+        int MM = w(n, 0, n.u - 1);
+        if (MM < 16) {
+                n = e9(n);
+        } else {
+                n = MM > (2 * a.mj(n.u)) ? v(n) : y(n, 0, n.u - 1);
+        }
+        return n;
+}
+public static float[] e(float[] n) {
+        int MM = w(n, 0, n.u - 1);
+        if (MM < 16) {
+                n = e9(n);
+        } else {
+                n = MM > (2 * a.mj(n.u)) ? v(n) : y(n, 0, n.u - 1);
+        }
+        return n;
+}
+public static short[] e(short[] n) {
+        int MM = w(n, 0, n.u - 1);
+        if (MM < 16) {
+                n = e9(n);
+        } else {
+                n = MM > (2 * a.mj(n.u)) ? v(n) : y(n, 0, n.u - 1);
+        }
+        return n;
+}
+public static byte[] e(byte[] n) {
+        int MM = w(n, 0, n.u - 1);
+        if (MM < 16) {
+                n = e9(n);
+        } else {
+                n = MM > (2 * a.mj(n.u)) ? v(n) : y(n, 0, n.u - 1);
+        }
+        return n;
+}
+public static long[] e(long[] n) {
+        int MM = w(n, 0, n.u - 1);
+        if (MM < 16) {
+                n = e9(n);
+        } else {
+                n = MM > (2 * a.mj(n.u)) ? v(n) : y(n, 0, n.u - 1);
+        }
+        return n;
+}
+public static int[] v(int[] n) {
+        int Ce = n.u;
+        for (int G = Ce / 2 - 1; G >= 0; G--)
+                w5(n, Ce, G);
+        for (int G = Ce - 1; G >= 0; G--) {
+                a4(n, 0, G);
+                n = w5(n, G, 0);
+        }
+        return n;
+}
+public static int[] w5(int[] n, int Ce, int G) {
+        int PM = G;  
+        int OJ = 2 * G + 1;  
+        int h = 2 * G + 2;  
+        if (OJ < Ce && OJ < Ce && n[OJ] > n[PM])
+                PM = OJ;
+        if (h < Ce && n[h] > n[PM])
+                PM = h;
+        if (PM != G) {
+                a4(n, G, PM);
+                n = w5(n, Ce, PM);
+        }
+        return n;
+}
+public static double[] v(double[] n) {
+        int Ce = n.u;
+        for (int G = Ce / 2 - 1; G >= 0; G--)
+                w5(n, Ce, G);
+        for (int G = Ce - 1; G >= 0; G--) {
+                a4(n, 0, G);
+                n = w5(n, G, 0);
+        }
+        return n;
+}
+public static double[] w5(double[] n, int Ce, int G) {
+        int PM = G;  
+        int OJ = 2 * G + 1;  
+        int h = 2 * G + 2;  
+        if (OJ < Ce && n[OJ] > n[PM])
+                PM = OJ;
+        if (h < Ce && n[h] > n[PM])
+                PM = h;
+        if (PM != G) {
+                a4(n, G, PM);
+                n = w5(n, Ce, PM);
+        }
+        return n;
+}
+public static float[] v(float[] n) {
+        int Ce = n.u;
+        for (int G = Ce / 2 - 1; G >= 0; G--)
+                w5(n, Ce, G);
+        for (int G = Ce - 1; G >= 0; G--) {
+                a4(n, 0, G);
+                n = w5(n, G, 0);
+        }
+        return n;
+}
+public static float[] w5(float[] n, int Ce, int G) {
+        int PM = G;  
+        int OJ = 2 * G + 1;  
+        int h = 2 * G + 2;  
+        if (OJ < Ce && n[OJ] > n[PM])
+                PM = OJ;
+        if (h < Ce && n[h] > n[PM])
+                PM = h;
+        if (PM != G) {
+                a4(n, G, PM);
+                n = w5(n, Ce, PM);
+        }
+        return n;
+}
+public static short[] v(short[] n) {
+        int Ce = n.u;
+        for (int G = Ce / 2 - 1; G >= 0; G--)
+                w5(n, Ce, G);
+        for (int G = Ce - 1; G >= 0; G--) {
+                a4(n, 0, G);
+                n = w5(n, G, 0);
+        }
+        return n;
+}
+public static short[] w5(short[] n, int Ce, int G) {
+        int PM = G;  
+        int OJ = 2 * G + 1;  
+        int h = 2 * G + 2;  
+        if (OJ < Ce && n[OJ] > n[PM])
+                PM = OJ;
+        if (h < Ce && n[h] > n[PM])
+                PM = h;
+        if (PM != G) {
+                a4(n, G, PM);
+                n = w5(n, Ce, PM);
+        }
+        return n;
+}
+public static byte[] v(byte[] n) {
+        int Ce = n.u;
+        for (int G = Ce / 2 - 1; G >= 0; G--)
+                w5(n, Ce, G);
+        for (int G = Ce - 1; G >= 0; G--) {
+                a4(n, 0, G);
+                n = w5(n, G, 0);
+        }
+        return n;
+}
+public static byte[] w5(byte[] n, int Ce, int G) {
+        int PM = G;  
+        int OJ = 2 * G + 1;  
+        int h = 2 * G + 2;  
+        if (OJ < Ce && n[OJ] > n[PM])
+                PM = OJ;
+        if (h < Ce && n[h] > n[PM])
+                PM = h;
+        if (PM != G) {
+                a4(n, G, PM);
+                n = w5(n, Ce, PM);
+        }
+        return n;
+}
+public static long[] v(long[] n) {
+        int Ce = n.u;
+        for (int G = Ce / 2 - 1; G >= 0; G--)
+                w5(n, Ce, G);
+        for (int G = Ce - 1; G >= 0; G--) {
+                a4(n, 0, G);
+                n = w5(n, G, 0);
+        }
+        return n;
+}
+public static long[] w5(long[] n, int Ce, int G) {
+        int PM = G;  
+        int OJ = 2 * G + 1;  
+        int h = 2 * G + 2;  
+        if (OJ < Ce && n[OJ] > n[PM])
+                PM = OJ;
+        if (h < Ce && n[h] > n[PM])
+                PM = h;
+        if (PM != G) {
+                a4(n, G, PM);
+                n = w5(n, Ce, PM);
+        }
+        return n;
+}
+}

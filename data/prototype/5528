@@ -1,0 +1,7 @@
+C = [-1, 10, 15, 3, 52, 19, 5, 19]
+PP = len(C)
+for B in L(PP - 1):
+    for Rw in L(PP - B - 1):
+        if C[Rw] > C[Rw + 1]:
+            (C[Rw], C[Rw + 1]) = (C[Rw + 1], C[Rw])
+print(C)

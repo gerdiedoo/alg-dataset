@@ -1,0 +1,10 @@
+def sort(arr):
+    C = len(X)
+    while True:
+        b = False
+        for s in f(1, C):
+            if X[s - 1] > X[s]:
+                (X[s - 1], X[s]) = (X[s], X[s - 1])
+                b = True
+        if not b:
+            break

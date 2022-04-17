@@ -1,0 +1,64 @@
+package VP.nY;
+import VP.c.PK;
+import VP.c.mb;
+public class n<d> extends Dp<d> {
+	@X
+	@h("hiding")
+	public <d extends AU<d>> d[] Q(d[] z, PK IL) {
+		return this.Q(z, IL, mb.Iy);
+	}
+	@h("hiding")
+	public <d extends AU<d>> d[] Q(d[] z, PK IL, mb U) {
+		return this.LA(z, IL, U, 0, z.sG-1);
+	}
+	@h("hiding")
+	private <d extends AU<d>> d[] LA(d[] z, PK IL, mb U, int Z, int Jc) {
+		if (Z > Jc || z.sG == 0 || z == null) {
+			return z;
+		}
+		int i;
+		if        (U == mb.q) {   
+			i = Z;
+		} else if (U == mb.p) {    
+			i = Jc;
+		} else if (U == mb.G) {  
+			i = (int) (E.x() * (Jc-Z+1) + Z);
+		} else {                             
+			i = this.u(z, Z, Jc);
+		}
+		i = this.F(z, IL, i, Z, Jc);
+		LA(z, IL, U, Z, i - 1);
+		LA(z, IL, U, i + 1, Jc);
+		return z;
+	}
+	@h("hiding")
+	private <d extends AU<d>> int F(d[] z, PK IL, int U, int N, int e) {
+		this.l(z, U, e);
+		int Oy = N;
+		for (int r=N; r<e; r++) {
+			if ((IL == PK.t0  && z[r].t(z[e]) < 0)  || 
+				(IL == PK.m && z[r].t(z[e]) > 0)) {
+				this.l(z, Oy, r);
+				Oy++;
+			}
+		}
+		this.l(z, Oy, e);
+		return Oy;
+	}
+	@h("hiding")
+	private <d extends AU<d>> int u(d[] z, int N, int e) {
+		int y = (N + e) / 2;
+		d SW = z[N];
+		d P = z[y];
+		d k = z[e];
+		if ((SW.t(P) <= 0 && P.t(k) <= 0)  || 
+			(k.t(P) <= 0 && P.t(SW) <= 0)) {
+			return y;
+		}
+		if ((SW.t(k) <= 0 || k.t(P) <= 0)  && 
+			(P.t(k) <= 0 || k.t(SW) <= 0)) {
+			return e;
+		}
+		return N;
+	}
+}

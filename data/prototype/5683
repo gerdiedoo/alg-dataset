@@ -1,0 +1,30 @@
+def X(F):
+    H = len(F)
+    if H > 1:
+        tH = H // 2
+        oe = F[:tH]
+        az = F[tH:]
+        X(oe)
+        X(az)
+        d(oe, az, F)
+    return F
+def d(oe, az, F):
+    g = 0
+    j = 0
+    r = 0
+    while g < len(oe) and j < len(az):
+        if oe[g] <= az[j]:
+            F[r] = oe[g]
+            g += 1
+        else:
+            F[r] = az[j]
+            j += 1
+        r += 1
+    while g < len(oe):
+        F[r] = oe[g]
+        g += 1
+        r += 1
+    while j < len(az):
+        F[r] = az[j]
+        j += 1
+        r += 1

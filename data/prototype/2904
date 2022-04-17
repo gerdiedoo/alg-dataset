@@ -1,0 +1,42 @@
+package M;
+import s.WA;
+import F.z.p;
+import F.z.w;
+import bZ.K.v;
+import bZ.K.am;
+import bZ.K.y;
+import bZ.ke.gG.lv;
+public class r extends n {
+  private boolean L4;
+  private p<y> q;
+  public r() {
+    this.q = new p<>();
+  }
+  private p<y> e(WA[] pU, int E, int ru) {
+    p<y> q = new p<>();
+    q.G(P(pU, yr, E, ru));
+    if (pU[E].D() > pU[ru].D()) {
+      q.G(U(pU, E, ru));
+      L4 = true;
+    } 
+    q.G(P(pU, Vv, E, ru));
+    return q;
+  }
+  private void V(WA[] pU) {
+    for (int A = 0; A < pU.ap; A++) {
+      L4 = false;
+      for (int j = 0; j < pU.ap - 1 - A; j++) {
+        this.q.H(e(pU, j, j + 1));
+      }
+      if (!L4) {
+        break;
+      }
+    }
+  }
+  @xi
+  public p<y> sR(WA[] pU) {
+    V(pU);
+    this.q.G(P(w.X(pU), g));
+    return this.q;
+  }
+}

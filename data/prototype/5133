@@ -1,0 +1,138 @@
+import e.mk.w;
+import e.mk.O;
+import e.mk.nG;
+import e.mk.KL;
+public class wT<z, g> implements y<z, g> {
+    private Xz<z, g>[] rb;
+    private int T;
+    public wT() {
+        PB();
+    }
+    @h
+    public g u(z MD, g m) {
+        if (MD == null || m == null) {
+            throw new l("Argument cannot be null.");
+        }
+        if (this.q() > I1) {
+            Y();
+        }
+        int Q = this.qB(MD);
+        Xz<z, g> I = this.rb[Q];
+        g t = null;
+        if (I == null) {
+            this.rb[Q] = new Xz<z, g>(MD, m);
+        } else if (I.P().equals(MD)) {
+            if (!I.i0()) {
+                t = I.W();
+            }
+            I.QT(m);
+            I.N(false);
+        } else {
+            I.v(MD);
+            I.QT(m);
+            I.N(false);
+        }
+        if (t == null) {
+            T++;
+        }
+        return t;
+    }
+    @h
+    public g r(z MD) {
+        if (MD == null) {
+            throw new l("Argument cannot be null.");
+        }
+        int Q = this.qB(MD);
+        Xz<z, g> I = this.rb[Q];
+        if (I != null && I.P().equals(MD) && !I.i0()) {
+            I.N(true);
+            T--;
+            return I.W();
+        }
+        return null;
+    }
+    @h
+    public g Z(z MD) {
+        if (MD == null) {
+            throw new l("Argument cannot be null.");
+        }
+        int Q = this.qB(MD);
+        Xz<z, g> I = this.rb[Q];
+        return (I != null && !I.i0()
+                && I.P().equals(MD) ? I.W() : null);
+    }
+    @h
+    public boolean J(z MD) {
+        return Z(MD) != null;
+    }
+    @XA("unchecked")
+    @h
+    public void PB() {
+        this.rb = (Xz<z, g>[]) new Xz[p];
+        this.T = 0;
+    }
+    @h
+    public int T() {
+        return this.T;
+    }
+    @h
+    public KL<z> j() {
+        O<z> t = new O<z>(T);
+        for (int S = 0; S < this.rb.tM; S++) {
+            Xz<z, g> I = this.rb[S];
+            if (I != null && !I.i0()) {
+                t.u(I.P());
+            }
+        }
+        return t;
+    }
+    @h
+    public nG<g> Cv() {
+        w<g> t = new w<g>(T);
+        for (int S = 0; S < this.rb.tM; S++) {
+            Xz<z, g> I = this.rb[S];
+            if (I != null && !I.i0()) {
+                t.u(I.W());
+            }
+        }
+        return t;
+    }
+    private double q() {
+        return (double) (T + 1) / (double) this.rb.tM;
+    }
+    @XA("unchecked")
+    private void Y() {
+        Xz<z, g>[] M = this.rb;
+        this.rb = (Xz<z, g>[]) new Xz[M.tM * 2];
+        this.T = 0;
+        for (int S = 0; S < M.tM; S++) {
+            Xz<z, g> I = M[S];
+            if (I != null && !I.i0()) {
+                this.u(I.P(), I.W());
+            }
+        }
+    }
+    private int qB(z MD) {
+        int Q = H.R(MD.hashCode()) % this.rb.tM;
+        Xz<z, g> x = this.rb[Q];
+        int nA = -1;
+        int U6 = Q;
+        boolean B = false;
+        while (x != null && !x.P().equals(MD)
+                && (!B || U6 != Q)) {
+            if (nA == -1 && x.i0()) {
+                nA = Q;
+            }
+            if (++U6 >= this.rb.tM) {
+                U6 = 0;
+                B = true;
+            }
+            x = this.rb[U6];
+        }
+        if (x != null && x.P().equals(MD)) {
+            return U6;
+        } else {
+            return (nA == -1 ? U6 : nA);
+        }
+    }
+}

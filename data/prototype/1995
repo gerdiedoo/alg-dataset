@@ -1,0 +1,120 @@
+package l.uH;
+import r.ZA.IK;
+public class Q<v> implements D<v>{
+    k XW, R0;
+    int T;
+    public Q(){
+        XW = null;
+        R0 = null;
+        T = 0;
+    }
+    public int z(){
+        return T;
+    }
+    public boolean s(){
+        return T == 0;
+    }
+    public void h(v x){
+        k G = new k(x);
+        if(s()){
+            XW = G;
+            R0 = G;
+        }
+        else{
+            R0.Di = G;
+            R0 = G;
+        }
+        G.Di = XW;
+        T++;
+    }
+    public void h(v x, int S)throws a{
+        if(S < 0 || S > T - 1){
+            throw new a();
+        }
+        k G = new k(x);
+        if(S == T - 1){
+            h(x);
+        }
+        else if(S == 0){
+            G.Di = XW.Di;
+            XW = G;
+            T++;
+        }
+        else {
+            k V = XW;
+            while (S != 1) {
+                S--;
+                V = V.Di;
+            }
+            G.Di = V.Di;
+            V.Di = G;
+            T++;
+        }
+    }
+    public v m(int S) throws a{
+        if(S < 0 || S > T - 1){
+            throw new a();
+        }
+        if(S == 0){
+            return XW.x;
+        }
+        else if(S == T - 1){
+            return R0.x;
+        }
+        else{
+            k V = XW;
+            while (S != 0) {
+                S--;
+                V = V.Di;
+            }
+            return V.x;
+        }
+    }
+    public void j(int S) throws a{
+        if(S < 0 || S > T - 1){
+            throw new a();
+        }
+        if(S == 0){
+            XW = XW.Di;
+            R0.Di = XW;
+        }
+        else{
+            k V = XW;
+            int c = S;
+            while(c != 1){
+                c--;
+                V = V.Di;
+            }
+            V.Di = V.Di.Di;
+            if(S == T - 1){
+                R0 = V;
+            }
+            T--;
+        }
+    }
+    public IK<v> C(){
+        return new mV();
+    }
+    class mV implements IK<v> {
+        private k SM = XW;
+        public boolean A(){
+            return true;
+        }
+        public void j(){
+            throw new o();
+        }
+        public v Di(){
+            v x = SM.x;
+            SM = SM.Di;
+            return x;
+        }
+    }
+    class k{
+        v x;
+        k Di;
+        k(v x){
+            this.x = x;
+            Di = null;
+        }
+    }
+}

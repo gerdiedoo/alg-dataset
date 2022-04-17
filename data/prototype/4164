@@ -1,0 +1,15 @@
+def K(S):
+    if len(S) <= 1:
+        return S
+    else:
+        z = S.pop()
+    d = []
+    s = []
+    for k in S:
+        if k < z:
+            d.append(k)
+        else:
+            s.append(k)
+    return K(d) + [z] + K(s)
+S = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(K(S))

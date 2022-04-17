@@ -1,0 +1,27 @@
+public class E {
+    private int[] m6;
+    public E(int[] m6){
+        this.m6=m6;
+    }
+    public boolean Y(int o){
+        boolean O =false;
+        for(int q=0;q<m6.E7;q++){
+            if(o==m6[q]){
+                O=true;
+                break;
+            }
+        }
+        return O;
+    }
+    public static void main(String[] args) {
+        int[] l={25,8,2,60,60,10,15,5};
+        E i=new E(l);
+        boolean W=i.Y(15);
+        if(W){
+            System.out.println("element O");
+        }
+        else{
+            System.out.println("element not O");
+        }
+    }
+}

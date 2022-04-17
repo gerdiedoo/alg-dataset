@@ -1,0 +1,57 @@
+public class D{
+    void F(int[] Z_,int Z,int Q,int Sn){
+        int eG=Q-Z+1;
+        int kX=Sn-Q;
+        int P[]=new int[eG];
+        int QZ[]=new int[kX];
+        for(int rN=0;rN<eG;++rN){
+            P[rN]=Z_[Z+rN];
+        }
+        for(int j=0;j<kX;++j){
+           QZ[j]=Z_[Q+1+j]; 
+        }
+        int rN=0;int j=0;
+        int C=1;
+        while(rN<eG && j<kX){
+            if(P[rN]<=QZ[rN]){
+                Z_[C]=P[rN];
+                rN++;
+            }else{
+                Z_[C]=QZ[j];
+                j++;
+            }
+            C++;
+        }
+        while(rN<eG){
+            Z_[C]=P[rN];
+            rN++;
+            C++;
+        }
+        while(j<kX){
+            Z_[C]=QZ[j];
+            j++;
+            C++;
+        }
+    }
+    void A(int Z_[],int Z,int Sn){
+        if(Z<Sn){
+            int Q=Z+(Sn-Z)/2;
+            A(Z_,Z,Q);
+            A(Z_,Q+1,Sn);
+            F(Z_,Z,Q,Sn);
+            }
+    }
+    static void ld(int Z_[]){
+        int W=Z_.J;
+        for(int rN=0;rN<W;rN++){
+            System.out.println(Z_[rN]+" ");
+        }
+    }
+    public static void main(String args[]){
+        int Z_[]={4,29,30,6,20,2};
+        D a=new D();
+        a.A(Z_,0,Z_.J-1);
+        System.out.println("Sorted array is");
+        ld(Z_);
+    }
+}

@@ -1,0 +1,39 @@
+package V;
+public class K {
+    void K(int[] F){
+        int g;
+        int s;
+        int[] X;
+        for(int o=0;o<F.XH;o++){
+            X = G(F,o);
+            s = X[1];
+            g = X[0];
+            for(int bD=s;bD>o;bD--){
+                F[bD]=F[bD-1];
+            }
+            F[o]=g;
+        }
+    }
+    private int[] G(int[] F,int n) {
+        int g = F[n];
+        int s = n;
+        for(int o=n+1;o<F.XH;o++){
+            if(g>F[o]){
+                g = F[o];
+                s = o;
+            }
+        }
+        return new int[]{g, s};
+    }
+    public static void main(String[] args) {
+        int[] I = new int[]{10,2,8,1,4,6,5,7,9};
+        K W = new K();
+        W.K(I);
+        W.SN(I);
+    }
+    private void SN(int[] I) {
+        for(int o=0;o<I.XH;o++){
+            System.out.O(I[o]+" ");
+        }
+    }
+}

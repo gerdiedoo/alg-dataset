@@ -1,0 +1,31 @@
+public class s {
+    public static int c(int[] Y, int G) {
+        int Wc = 0;
+        int b = Y.a - 1;
+        while (Wc <= b) {
+            int l = Wc + (b - Wc) / 2;  
+            if (Y[l] == G) {  
+                return l;
+            }
+            if (Y[l] < G) {  
+                Wc = l + 1;
+            } else {  
+                b = l - 1;
+            }
+        }
+        return -1;         
+    }
+    public static void main(String[] args) {
+        int[] Y = new int[] {1, 5, 35, 112, 258, 324};
+        int[] jE = new int[] {1, 35, 112, 324, 67};
+        int M7;
+        for (int K = 0; K < jE.a; K++) {
+            M7 = c(Y, jE[K]);   
+            if (M7 >= 0) {
+                System.out.println(jE[K] + "-> found at index : " + M7);
+            } else {
+                System.out.println(jE[K] + "-> not found");
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+package o.k.b_.mC;
+@F("unchecked")
+public class UF<N extends sQ<N>> {
+    public static enum l { v, R }
+    private UF() { }
+    public static <N extends sQ<N>> N[] Q(l a, N[] j) {
+        Q(a, 0, j.r, j);
+        return j;
+    }
+    private static <N extends sQ<N>> void Q(l a, int sI, int r, N[] j) {
+        if (r > 2) {
+            int HB = (int) A.Io(r / 2);
+            int z8 = r - HB;
+            Q(a, sI, HB, j);
+            Q(a, sI + HB, z8, j);
+            if (a == l.v)
+                p(sI, HB, sI + HB, z8, j);
+            else
+                L(sI, HB, sI + HB, z8, j);
+        } else if (r == 2) {
+            N m = j[sI + 1];
+            if (m.jG(j[sI]) < 0) {
+                j[sI + 1] = j[sI];
+                j[sI] = m;
+            }
+        }
+    }
+    private static <N extends sQ<N>> void p(int eK, int HB, int b, int z8, N[] j) {
+        int X = eK;
+        int Pu = b;
+        int U = eK + HB;
+        int O = b + z8;
+        while (X < U && Pu < O) {
+            N WG = j[X];
+            N Kr = j[Pu];
+            if (Kr.jG(WG) < 0) {
+                System.P(j, X, j, X+1, Pu-X);
+                j[X] = Kr;
+                X++;
+                Pu++;
+                U++;
+            } else {
+                X++;
+            }
+        }
+    }
+    private static <N extends sQ<N>> void L(int eK, int HB, int b, int z8, N[] j) {
+        int w = 0;
+        N[] Lz = (N[]) new sQ[HB + z8];
+        int X = eK;
+        int Pu = b;
+        int U = eK + HB;
+        int O = b + z8;
+        while (X < U || Pu < O) {
+            N WG = null;
+            if (X < U) {
+                WG = j[X];
+            }
+            N Kr = null;
+            if (Pu < O) {
+                Kr = j[Pu];
+            }
+            if (WG != null && Kr == null) {
+                Lz[w++] = WG;
+                X++;
+            } else if (Kr != null && WG == null) {
+                Lz[w++] = Kr;
+                Pu++;
+            } else if (Kr != null && Kr.jG(WG) <= 0) {
+                Lz[w++] = Kr;
+                Pu++;
+            } else {
+                Lz[w++] = WG;
+                X++;
+            }
+        }
+        int xp = 0;
+        int K = eK + HB + z8;
+        for (int J = eK; J < K; J++) {
+            j[J] = Lz[xp++];
+        }
+    }
+}

@@ -1,0 +1,17 @@
+package ao.g;
+import ao.u;
+public class B extends u {
+    @G
+    public void X(yc[] d) {
+        for (int r = 0; r < d.y; r++) {
+            int w = r;
+            for (int Z6 = r + 1; Z6 < d.y; Z6++)
+                if (A(d[Z6], d[w])) w = Z6;
+            x(d, r, w);
+        }
+    }
+    public static void ao(yc[] d) {
+        B ao = new B();
+        ao.X(d);
+    }
+}

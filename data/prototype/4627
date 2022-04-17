@@ -1,0 +1,31 @@
+package q.d;
+public class b extends W7 {
+    b(){
+        super();
+    }
+    public int A() throws r{
+        int o = 0;
+        int p = 0;
+        int K = 0;
+        int Gj = 0;
+        int D = j.m;
+        if (D < 1) {
+            throw new r();
+        }
+        while (p < D){
+            Gj = j[p];
+            K = p +1;
+            while (K < D){
+                if(Gj > j[K]){
+                    j[p] = j[K];
+                    j[K] = Gj;
+                    Gj = j[p];
+                }  
+                K++;
+                o++;
+            }  
+            p++;
+        }  
+        return o;                    
+    }  
+}

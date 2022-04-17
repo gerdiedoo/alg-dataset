@@ -1,0 +1,23 @@
+def binarySearch(s, x):
+    Mf = 0
+    x = len(P) - 1
+    while Mf <= x:
+        i = (Mf + x) // 2
+        if z == P[i]:
+            return i
+        elif z > P[i]:
+            Mf = i + 1
+        else:
+            x = i - 1
+    return -1
+def m_(P, Mf, x, z):
+    if x >= Mf:
+        i = (Mf + x) // 2
+        if P[i] == z:
+            return i
+        if P[i] > z:
+            return m_(P, Mf, i - 1, z)
+        else:
+            return m_(P, i + 1, x, z)
+    else:
+        return -1

@@ -1,0 +1,48 @@
+package q.i.RO.Y;
+import q.i.RO.Bm.gH;
+import q.i.RO.Bm.k;
+import q.i.RO.Bm.G;
+import q.i.RO.Bm.G.HN;
+public final class T extends gH {
+	public static final k R = new T();
+	public void A(G s) {
+		A(s, 0, s.F());
+		s.y(0, s.F(), HN.X);
+	}
+	private static void A(G s, int t, int K) {
+		if (!(0 <= t && t <= K && K <= s.F()))
+			throw new z();
+		if (K - t <= 1)
+			return;
+		s.y(t, K, HN.w);
+		int C = (t + K) / 2;
+		s.y(C, K, HN.TY);
+		A(s, t, C);
+		s.y(t, C, HN.TY);
+		A(s, C, K);
+		Q(s, t, C, K);
+	}
+	private static void Q(G s, int t, int C, int K) {
+		if (!(0 <= t && t <= C && C <= K && K <= s.F()))
+			throw new z();
+		if (t == C || C == K)
+			return;
+		s.y(t, K, HN.w);
+		int W = C - 1;
+		int O = C;
+		while (t <= W && O < K && s.e(W, O) > 0) {
+			W--;
+			O++;
+		}
+		int l = O - C;
+		for (int ty = 0; ty < l; ty++)
+			s.c(C - l + ty, C + ty);
+		s.y(C, K, HN.TY);
+		Q(s, t, W + 1, C);
+		s.y(t, C, HN.TY);
+		Q(s, C, O, K);
+	}
+	private T() {
+		super("Rotation Q A");
+	}
+}

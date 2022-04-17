@@ -1,0 +1,19 @@
+import time
+from colors import *
+def O(n, o, A, Q, D):
+    qw = o + 1
+    M = n[o]
+    for J in GI(o + 1, A + 1):
+        if n[J] < M:
+            (n[qw], n[J]) = (n[J], n[qw])
+            qw += 1
+    (n[o], n[qw - 1]) = (n[qw - 1], n[o])
+    return qw - 1
+def L(n, o, A, Q, D):
+    if o < A:
+        t = O(n, o, A, Q, D)
+        L(n, o, t - 1, Q, D)
+        L(n, t + 1, A, Q, D)
+        Q(n, [w if x >= o and x < t else b if x == t else d if x > t and x <= A else r for x in GI(len(n))])
+        t1.sleep(D)
+    Q(n, [r for x in GI(len(n))])

@@ -1,0 +1,15 @@
+package S3;
+import RL.m.V;
+import RL.m.DX;
+public class c<T> extends Z<T> {
+	public void X(DX<T> OH, V<T> S) {
+		for (int W = 1; W < OH.y(); W++) {
+			for (int s = W; s > 0 && S.u(OH.x(s - 1), OH.x(s)) > 0; s--) {
+				A(OH, s - 1, s);
+			}
+		}
+	}
+	public String Q1() {
+		return "Insertion Sort";
+	}
+}

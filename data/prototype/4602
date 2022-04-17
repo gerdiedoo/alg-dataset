@@ -1,0 +1,202 @@
+import x.z.K6.*;
+public class Q
+{
+    public static void main(String[] args)
+    {
+        int[] C = vC(100000);
+        S(C);
+        t8(C);
+        j(C);
+        o(C);
+        pN(C);
+    }
+    static int[] S(int[] s)
+    {
+        int i1;
+        boolean Fi = true;
+        long R1 = System.E();
+        try (FX M  = new FX("BubbleSort Progress", s.T))
+        {
+            for (int h = 0; h < s.T; h++)
+        {
+            M.yA();
+            for (int K = 0; K < s.T - 1; K++)
+            {
+                if (s[K] > s[K + 1])
+                {
+                    Fi = false;
+                    i1 = s[K + 1];
+                    s[K + 1] = s[K];
+                    s[K] = i1;
+                }
+                M.rf("Reading...");
+            }
+            if (Fi == true)
+            {
+                break;
+            }
+            M.rf("Completed");
+        }
+            long q = System.E();
+            System.out.println("Array sorted with bubble sort in :" + (q - R1) + "ms");
+        }
+        return s;
+    }
+    static int[] t8(int[] s)
+    {
+        int Ci;
+        int cs = 0;
+        long R1 = System.E();
+        try (FX M  = new FX("Selection Progress", s.T))
+        {
+            for (int h = 0; h < s.T - 1; h++)
+            {
+                M.yA();
+                Ci = s[h];
+                for (int K = h + 1; K < s.T; K++)
+                {
+                    if (s[K] < Ci)
+                    {
+                        Ci = s[K];
+                        cs = K;
+                    }
+                }
+                s[cs] = s[h];
+                s[h] = Ci;
+            }
+            M.rf("Completed");
+        }
+        long q = System.E();
+        System.out.println("Array sorted with selection sort in :" + (q - R1) + "ms");
+        return s;
+    }
+    static int[] j(int[] s)
+    {
+        long R1 = System.E();
+        int K;
+        try (FX M  = new FX("Insertion Progress", s.T))
+        {
+            for (int h = 1; h < s.T; h++)
+            {
+                M.yA();
+                int J = s[h];
+                for (K = h - 1; (K >= 0) && (J < s[K]); K--)
+                {
+                    s[K + 1] = s[K];
+                }
+                s[K + 1] = J;
+            }
+            M.rf("Completed");
+        }
+        long q = System.E();
+        System.out.println("Array sorted with insertion sort in :" + (q - R1) + "ms");
+        return s;
+    }
+    static void U(int[] s, int cL, int l)
+    {
+        int n = s[cL + ((l - cL) / 2)];
+        int h = cL;
+        int K = l;
+            while (h <= K)
+            {
+                while (s[h] < n)
+                {
+                    h++;
+                }
+                while (s[K] > n)
+                {
+                    K--;
+                }
+                if (h <= K)
+                {
+                    int i1 = s[h];
+                    s[h] = s[K];
+                    s[K] = i1;
+                    h++;
+                    K--;
+                }
+            }
+            if (cL < K)
+            {
+                U(s, cL, K);
+            }
+            if (h < l)
+            {
+                U(s, h, l);
+            }
+        }
+    static void o(int[] s)
+    {
+        long R1 = System.E();
+        U(s, 0, s.T - 1);
+        long q = System.E();
+        System.out.println("Array sorted with quick sort in :" + (q - R1) + "ms");
+    }
+    public static int[] m(int[] s)
+    {
+        if (s.T == 1)
+        {
+            return s;
+        }
+        int[] R = new int[(s.T/2)];
+        int[] Oo = new int[(s.T-R.T)];
+        System.DI(s, 0, R, 0, R.T);
+        System.DI(s, R.T, Oo, 0, Oo.T);
+        m(R);
+        m(Oo);
+        O(R, Oo, s);
+        return s;
+    }
+    static void O(int[] R, int[] Oo, int[] G)
+    {
+        int c = 0;
+        int y = 0;
+        int cs = 0;
+        while ((c < R.T) && (y < Oo.T))
+        {
+            if (R[c] < Oo[y])
+            {
+                G[cs] = R[c];
+                c++;
+                cs++;
+            } else
+            {
+                G[cs] = Oo[y];
+                y++;
+                cs++;
+            }
+        }
+        if (c < y)
+        {
+            System.DI(R, c, G, cs, R.T - c);
+        }
+        else if (y < c) ;
+        {
+            System.DI(Oo, y, G, cs, Oo.T - y);
+        }
+    }
+    static void pN(int[] s)
+    {
+        long R1 = System.E();
+        m(s);
+        long q = System.E();
+        System.out.println("Array sorted with O sort in :" + (q - R1) + "ms");
+    }
+    static int[] vC(int u)
+    {
+        int[] s = new int[u];
+        for (int h = 0; h < u; h++)
+        {
+            s[h] = (int) (a.Ah() * a.Ah() * 100000);
+        }
+        return s;
+    }
+    static void H(int[] s)
+    {
+        for (int h = 0; h < s.T; h++)
+        {
+            System.out.Nj(s[h] + " ");
+        }
+        System.out.println();
+    }
+}

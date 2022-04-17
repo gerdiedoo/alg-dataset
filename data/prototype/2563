@@ -1,0 +1,28 @@
+package v;
+public class S {
+	public static void main(String[] args) {
+		int[][] D = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(N(D, 22));  
+		System.out.println(N(D, 10));  
+		System.out.println(N(D, 42));  
+		System.out.println(N(D, 23));  
+		System.out.println(N(D, 13));  
+		System.out.println(N(D, 2));  
+	}
+	public static boolean N(int[][] D, int E) {
+		int M1 = 0, H = D.s - 1;
+		while (M1 < D.s && H >= 0) {
+			if (D[M1][H] == E) {
+				return true;
+			} else if (E > D[M1][H]) {
+				M1++;
+			} else {
+				H--;
+			}
+		}
+		return false;
+	}
+}

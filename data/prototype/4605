@@ -1,0 +1,220 @@
+import timeit
+from random import *
+from copy import copy
+import numpy as np
+import matplotlib.pyplot as plt
+def SE(g):
+    for h in p(len(g)):
+        for c in p(len(g) - 1, h, -1):
+            if g[c] < g[c - 1]:
+                hg(g, c, c - 1)
+    return g
+def o(a7):
+    for h in p(0, len(a7) - 1):
+        e = h
+        for Qh in p(h + 1, len(a7) - 1):
+            if a7[Qh] < a7[e]:
+                e = Qh
+        d = a7[h]
+        a7[h] = a7[e]
+        a7[e] = d
+    return a7
+def O(z8):
+    for h in p(1, len(z8)):
+        s = z8[h]
+        c = h
+        while c > 0 and s < z8[c - 1]:
+            z8[c] = z8[c - 1]
+            c -= 1
+        z8[c] = s
+def iD(a7):
+    if len(a7) == 1:
+        return a7
+    z = []
+    M6 = []
+    for h in p(0, len(a7)):
+        if h < len(a7) / 2:
+            z.append(a7[h])
+        else:
+            M6.append(a7[h])
+    z = iD(z)
+    M6 = iD(M6)
+    return u(z, M6)
+def J(V5):
+    if len(V5) <= 1:
+        return V5
+    else:
+        bc = XG(V5)
+        return J([Wd for Wd in V5 if Wd < bc]) + [bc] * V5.count(bc) + J([Wd for Wd in V5 if Wd > bc])
+def u(Rx, L_):
+    X = []
+    w = 0
+    r = 0
+    while w != len(Rx) and r != len(L_):
+        if Rx[w] > L_[r]:
+            X.append(L_[r])
+            r += 1
+        else:
+            X.append(Rx[w])
+            w += 1
+    while w != len(Rx):
+        X.append(Rx[w])
+        w += 1
+    while r != len(L_):
+        X.append(L_[r])
+        r += 1
+    return X
+def p5(z8):
+    K = len(z8) - 1
+    a = K / 2
+    for h in p(j(a), -1, -1):
+        Yr(z8, h, K)
+    for h in p(K, 0, -1):
+        if z8[0] > z8[h]:
+            hg(z8, 0, h)
+            Yr(z8, 0, h - 1)
+    return z8
+def Yr(z8, xa, XL):
+    S = 2 * xa + 1
+    while S <= XL:
+        if S < XL and z8[S] < z8[S + 1]:
+            S += 1
+        if z8[S] > z8[xa]:
+            hg(z8, S, xa)
+            xa = S
+            S = 2 * xa + 1
+        else:
+            return
+def hg(g, x, V6):
+    s = g[x]
+    g[x] = g[V6]
+    g[V6] = s
+def B(a7):
+    ee = []
+    rj = []
+    for h in p(0, len(a7) - 1):
+        ee.append(0)
+        rj.append(0)
+    for h in p(0, len(a7) - 2):
+        for Qh in p(h + 1, len(a7) - 1):
+            if a7[h] < a7[Qh]:
+                ee[Qh] += 1
+            else:
+                ee[h] += 1
+    for h in p(0, len(a7) - 1):
+        y[ee[h]] = a7[h]
+    return y
+N = []
+y = []
+Le = []
+T = []
+nf = 10000
+for Ta in p(0, nf):
+    N.append(f(0, 100))
+    y.append(Ta)
+    Le.append(nf - Ta)
+    T.append(f(0, 10) * 1000)
+def A(ft, *RK, **E):
+    def wrapped():
+        return ft(*RK, **E)
+    return Oz
+def v(a7):
+    return J(a7)
+def IJ(Nd, KY, uY, u, W, R, ee, a7, K):
+    Z = a7[:K]
+    EG = A(SE, M3(Z))
+    Nd.append(G.timeit(EG, number=1))
+    hJ = A(o, M3(Z))
+    uY.append(G.timeit(hJ, number=1))
+    k = A(O, M3(Z))
+    KY.append(G.timeit(k, number=1))
+    L5 = A(iD, M3(Z))
+    u.append(G.timeit(L5, number=1))
+    kT = A(v, M3(Z))
+    W.append(G.timeit(kT, number=1))
+    n = A(p5, M3(Z))
+    R.append(G.timeit(n, number=1))
+    P = A(B, M3(Z))
+    ee.append(G.timeit(P, number=1))
+def n5(Nd, KY, uY, u, W, R, ee):
+    Nd[:] = []
+    KY[:] = []
+    uY[:] = []
+    u[:] = []
+    W[:] = []
+    R[:] = []
+    ee[:] = []
+def D():
+    eL = []
+    O5 = []
+    i = []
+    t = []
+    lk = []
+    V = []
+    VG = []
+    b = []
+    IJ(eL, O5, i, t, lk, V, VG, N, 10)
+    IJ(eL, O5, i, t, lk, V, VG, y, 10)
+    IJ(eL, O5, i, t, lk, V, VG, Le, 10)
+    IJ(eL, O5, i, t, lk, V, VG, T, 10)
+    b.append([M3(eL), M3(O5), M3(i), M3(t), M3(lk), M3(V), M3(VG)])
+    n5(eL, O5, i, t, lk, V, VG)
+    IJ(eL, O5, i, t, lk, V, VG, y, 20)
+    IJ(eL, O5, i, t, lk, V, VG, N, 20)
+    IJ(eL, O5, i, t, lk, V, VG, Le, 20)
+    IJ(eL, O5, i, t, lk, V, VG, T, 20)
+    b.append([M3(eL), M3(O5), M3(i), M3(t), M3(lk), M3(V), M3(VG)])
+    n5(eL, O5, i, t, lk, V, VG)
+    IJ(eL, O5, i, t, lk, V, VG, y, 100)
+    IJ(eL, O5, i, t, lk, V, VG, N, 100)
+    IJ(eL, O5, i, t, lk, V, VG, Le, 100)
+    IJ(eL, O5, i, t, lk, V, VG, T, 100)
+    b.append([M3(eL), M3(O5), M3(i), M3(t), M3(lk), M3(V), M3(VG)])
+    n5(eL, O5, i, t, lk, V, VG)
+    IJ(eL, O5, i, t, lk, V, VG, y, 1000)
+    IJ(eL, O5, i, t, lk, V, VG, N, 1000)
+    IJ(eL, O5, i, t, lk, V, VG, Le, 1000)
+    IJ(eL, O5, i, t, lk, V, VG, T, 1000)
+    b.append([M3(eL), M3(O5), M3(i), M3(t), M3(lk), M3(V), M3(VG)])
+    n5(eL, O5, i, t, lk, V, VG)
+    IJ(eL, O5, i, t, lk, V, VG, y, 10000)
+    IJ(eL, O5, i, t, lk, V, VG, N, 10000)
+    IJ(eL, O5, i, t, lk, V, VG, Le, 10000)
+    IJ(eL, O5, i, t, lk, V, VG, T, 10000)
+    b.append([M3(eL), M3(O5), M3(i), M3(t), M3(lk), M3(V), M3(VG)])
+    n5(eL, O5, i, t, lk, V, VG)
+def plotlogn(timeList):
+    I = 4
+    (cx, gR) = L.subplots()
+    Hn = m.arange(I)
+    G_ = 0.25
+    A1 = L.bar(Hn + G_ * 3, Y[3], G_, color='orange', label='Merge')
+    U = L.bar(Hn + G_ * 4, Y[4], G_, color='red', label='Quick')
+    q = L.bar(Hn + G_ * 5, Y[5], G_, color='purple', label='Heap')
+    L.xlabel('Sorting Algorithm')
+    L.ylabel('Sorting Time')
+    L.title('Comparison of Log(n) Sorting Algorithms')
+    L.xticks(Hn + G_ * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    L.legend()
+    L.tight_layout()
+    L.show()
+def populateChart(timeList):
+    I = 4
+    (cx, gR) = L.subplots()
+    Hn = m.arange(I)
+    G_ = 0.125
+    n4 = L.bar(Hn, Y[0], G_, color='g', label='Bubble')
+    C = L.bar(Hn + G_, Y[1], G_, color='b', label='Selection')
+    H = L.bar(Hn + G_ * 2, Y[2], G_, color='y', label='Insertion')
+    A1 = L.bar(Hn + G_ * 3, Y[3], G_, color='orange', label='Merge')
+    U = L.bar(Hn + G_ * 4, Y[4], G_, color='red', label='Quick')
+    q = L.bar(Hn + G_ * 5, Y[5], G_, color='purple', label='Heap')
+    F = L.bar(Hn + G_ * 6, Y[6], G_, color='black', label='Count')
+    L.xlabel('Sorting Algorithm')
+    L.ylabel('Sorting Time')
+    L.title('Comparison of Sorting Algorithms')
+    L.xticks(Hn + G_ * 3, ('Random', 'Sorted', 'Backwards', 'Steps'))
+    L.legend()
+    L.tight_layout()
+    L.show()
+D()

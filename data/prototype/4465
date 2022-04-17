@@ -1,0 +1,50 @@
+import X.q.Scanner;
+public class sF
+{
+    public static void main(String[] args)
+    {
+        Scanner m = new Scanner(System.d);
+        System.out.R("enter yC : ");
+        char[] yC = m.K().ws();
+        U(yC);
+        System.out.R("sorted yC : ");
+        for(char v:yC)
+            System.out.R(v);
+    }
+    static void U(char[] yC)
+    {
+        if(yC.j == 1)
+            return;
+        U(yC, 0, yC.j-1);
+    }
+    static void U(char[] yC, int w, int kl)
+    {
+        if(w < kl)
+        {
+            int y = Mi(yC, w, kl);
+            U(yC, w, y-1);
+            U(yC, y+1, kl);
+        }
+    }
+    static int Mi(char[] yC, int w, int kl)
+    {
+        int Tp = w - 1;
+        int n = yC[kl];
+        for(int X1=w;X1<kl;X1++)
+        {
+            if(yC[X1] <= n)
+            {
+                Tp++;
+                kB(yC, Tp, X1);
+            }
+        }
+        kB(yC, Tp+1, kl);
+        return Tp+1;
+    }
+    static void kB(char[] yC, int Er, int mM)
+    {
+        char hQ = yC[Er];
+        yC[Er] = yC[mM];
+        yC[mM] = hQ;
+    }
+}

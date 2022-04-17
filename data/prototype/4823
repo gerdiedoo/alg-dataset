@@ -1,0 +1,15 @@
+package N.x.D.l3;
+import N.x.Q.P;
+public final class h {
+	public static void D(int[] U) {
+		for (int sv = U.V4 - 1; sv > 0; sv--) {
+			int T = 0;
+			for (int m = 1; m <= sv; m++) {
+				if (U[m] > U[T]) {
+					T = m;
+				}
+			}
+			P.VM(U, T, sv);
+		}
+	}
+}

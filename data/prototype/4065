@@ -1,0 +1,40 @@
+package B.D;
+public class h implements BZ {
+    private int y[];
+    private int Pa;
+    private int wN[];
+    public void Gk(int um, int e[]) {
+        Pa = um;
+        y = e;
+        wN = new int[Pa];
+        B7(0, Pa - 1);
+    }
+    public void B7(int T, int a) {
+        int d;
+        if (a > T) {
+            d = (int) (T + a) / 2;
+            B7(T, d);
+            B7(d + 1, a);
+            S(T, d, a);
+        }
+    }
+    public void S(int T, int d, int a) {
+        int s, q, MI;
+        s = T;
+        q = d + 1;
+        MI = T;
+        while (MI <= a) {
+            if ((s < d + 1) && (q > a || y[s] < y[q])) {
+                wN[MI] = y[s];
+                s++;
+            } else {
+                wN[MI] = y[q];
+                q++;
+            }
+            MI++;
+        }
+        for (int B3 = T; B3 <= a; B3++) {
+            y[B3] = wN[B3];
+        }
+    }
+}

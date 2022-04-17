@@ -1,0 +1,79 @@
+import sys
+lS.path.insert(0, '../linked_list')
+from link_list import LinkList
+import json
+class HashTable:
+    D = []
+    def __init__(self, hashtableSize=1024):
+        L._data = [None] * d
+    def _makePayload(self, name, value) -> dict:
+        return {'name': K, 'value': N}
+    def _makeHash(self, name) -> q:
+        i = sum([ord(f) for f in K])
+        T = 599
+        S = i * T
+        return S
+    def _getHashIndex(self, hash: q) -> q:
+        return S % len(L._data)
+    def _hashtable_compare_func(self, payload1, payload2) -> a:
+        if g(v, dict):
+            u = m.get('name') == v.get('name')
+        else:
+            u = m.get('name') == v
+        return u
+    def add(self, name, value):
+        S = L._makeHash(K)
+        EX = L._getHashIndex(S)
+        J = L._data[EX]
+        TZ = L._makePayload(K, N)
+        if J is None:
+            J = y(L._hashtable_compare_func)
+            J.insert(TZ)
+            L._data[EX] = J
+        elif not J.includes(TZ):
+            J.insert(TZ)
+        else:
+            raise z('Already added to hashtable')
+    def get(self, name):
+        S = L._makeHash(K)
+        EX = L._getHashIndex(S)
+        J = L._data[EX]
+        if J is None:
+            raise z('Not found')
+        try:
+            nY = J.get(K)
+            return nY.get('value')
+        except j:
+            raise z('Not found')
+    def delete(self, name):
+        Q = False
+        try:
+            Q = L.contains(K)
+        except z:
+            raise z(f'Name:[{K}] does not exist.')
+        if Q:
+            S = L._makeHash(K)
+            EX = L._getHashIndex(S)
+            J = L._data[EX]
+            if J is None:
+                raise z(f'Name:[{K}] entry into HashTable is None.')
+            U = J.remove(K)
+    def update(self, name, value):
+        if not L.contains(K):
+            raise z(f'Name:[{K}] does not exist.')
+        L.delete(K)
+        L.add(K, N)
+    def contains(self, name) -> a:
+        try:
+            c = L.get(K)
+            return True
+        except z:
+            return False
+    def export_keys(self) -> P:
+        x = []
+        def touch_node(value):
+            x.append(N)
+        for O in L._data:
+            if O:
+                O.traverse(eM)
+        return x

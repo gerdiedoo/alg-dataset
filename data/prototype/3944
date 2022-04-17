@@ -1,0 +1,57 @@
+public class E8{
+    void E5(int[] fd,int l,int aV,int g){
+        int x=aV-l+1;
+        int r=g-aV;
+        int W[]=new int[x];
+        int n[]=new int[r];
+        for(int nD=0;nD<x;++nD){
+            W[nD]=fd[l+nD];
+        }
+        for(int j=0;j<r;++j){
+           n[j]=fd[aV+1+j]; 
+        }
+        int nD=0;int j=0;
+        int N=1;
+        while(nD<x && j<r){
+            if(W[nD]<=n[nD]){
+                fd[N]=W[nD];
+                nD++;
+            }else{
+                fd[N]=n[j];
+                j++;
+            }
+            N++;
+        }
+        while(nD<x){
+            fd[N]=W[nD];
+            nD++;
+            N++;
+        }
+        while(j<r){
+            fd[N]=n[j];
+            j++;
+            N++;
+        }
+    }
+    void D(int fd[],int l,int g){
+        if(l<g){
+            int aV=l+(g-l)/2;
+            D(fd,l,aV);
+            D(fd,aV+1,g);
+            E5(fd,l,aV,g);
+            }
+    }
+    static void E(int fd[]){
+        int d=fd.J;
+        for(int nD=0;nD<d;nD++){
+            System.out.println(fd[nD]+" ");
+        }
+    }
+    public static void main(String args[]){
+        int fd[]={4,29,30,6,20,2};
+        E8 P=new E8();
+        P.D(fd,0,fd.J-1);
+        System.out.println("Sorted array is");
+        E(fd);
+    }
+}

@@ -1,0 +1,28 @@
+package fC.m;
+import fC.R;
+public class K implements d {
+    private long c = 2;
+    @d3
+    public void n(R f) {
+        int X = f.Wh();
+        for (int A = 0; A < X - 1; A++) {
+            for (int om = 0; om < X - A - 1; om++) {
+                if (f.c_(om) > f.c_(om + 1)) {
+                    f.Z(om, om + 1, vU(), true);
+                }
+            }
+        }
+    }
+    @d3
+    public String V() {
+        return "Bubble Sort";
+    }
+    @d3
+    public long vU() {
+        return c;
+    }
+    @d3
+    public void z(long F0) {
+        this.c = F0;
+    }
+}

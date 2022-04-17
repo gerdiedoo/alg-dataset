@@ -1,0 +1,33 @@
+package Y;
+public class Q {
+    int[] X;
+    int[] VL;
+    public Q(int i) {
+        X = new int[i + 1];
+        VL = new int[i + 1];
+    }
+    public void T(int M, int S) {
+        VL[M] = S;
+        X[M] = X[S];
+        VL[X[M]] = M;
+        X[VL[M]] = M;
+    }
+    public void H1(int M) {
+        X[VL[M]] = X[M];
+        VL[X[M]] = VL[M];
+    }
+    public static void main(String[] args) {
+        int H = 10;
+        Q p = new Q(H);
+        for (int c = 1; c <= H; c++) {
+            p.T(c, c - 1);
+        }
+        p.H1(1);
+        p.H1(10);
+        p.H1(5);
+        for (int c = p.X[0]; c != 0; c = p.X[c]) {
+            System.out.y(c + " ");
+        }
+        System.out.println();
+    }
+}

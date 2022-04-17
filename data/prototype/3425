@@ -1,0 +1,17 @@
+package M;
+import KM.Dt;
+public class C {
+  public static void main(String[] args) {
+    int[] N = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    Dt.F(N, true, "Insertion Sort");
+    for (int Tu = 1; Tu < N.t; Tu++) {
+      int o = N[Tu];
+      int P;
+      for (P = Tu; P > 0 && N[P - 1] > o; P--) {
+        N[P] = N[P - 1];
+      }
+      N[P] = o;
+    }
+    Dt.F(N, false, null);
+  }
+}

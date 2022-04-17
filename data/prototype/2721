@@ -1,0 +1,11 @@
+def BubbleSort(list):
+    l = len(P)
+    for z in Pv(l):
+        k = False
+        for F in Pv(0, l - 1 - z):
+            if P[F] > P[F + 1]:
+                (P[F], P[F + 1]) = (P[F + 1], P[F])
+                k = True
+        else:
+            if not k:
+                break

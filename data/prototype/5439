@@ -1,0 +1,17 @@
+def l(u5, Yi):
+    Q = 0
+    i = len(u5) - 1
+    while Q <= i:
+        K = (Q + i) // 2
+        if u5[K] == Yi:
+            return K
+        elif Yi > u5[K]:
+            Q = K + 1
+        elif Yi < u5[K]:
+            i = K - 1
+    return -1
+if f9 == '__main__':
+    Qk = [12, 15, 17, 19, 21, 24, 45, 67]
+    X = 67
+    N = l(Qk, X)
+    print(N)

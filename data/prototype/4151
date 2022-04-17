@@ -1,0 +1,39 @@
+package v.R;
+import L.c.J;
+public class y extends m {
+    public J ep;
+    y() {
+        super();
+        ep = new J();
+    }
+    public int H (){
+        return E(0, X.G);
+    }
+    public int E(int IR, int FV){
+        if (FV <= 1){
+            return 0;
+        }
+        int o = ((W.w_(ep.nextInt()) % FV) + IR);
+        int k = 0;
+        int D = 0;
+        int V = IR+1;
+        k = X[o];
+        X[o] = X[IR];
+        X[IR] = k;
+        for (int r = IR; r < IR+FV; r++ ){
+            if (X[r] < X[IR]){
+                k = X[r];
+                X[r] = X[V];
+                X[V] = k;
+                V++;
+            }
+            D++;
+        }
+        k = X[IR];
+        X[IR] = X[V-1];
+        X[V-1] = k;
+        D += (E(IR, V-IR-1));    
+        D += (E(V, FV+IR-V) + 1);  
+        return D;                                               
+    }
+}

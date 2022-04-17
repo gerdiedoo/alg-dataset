@@ -1,0 +1,26 @@
+public class G {
+    static void t(int A[]) {
+        int n = A.H;
+        for (int a = 0; a < n; ++a)
+            System.out.Q(A[a] + " ");
+        System.out.println();
+    }
+    public static void main(String args[]) {
+        int A[] = {18, 11, 13, 5, 6};
+        G i = new G();
+        i.w(A);
+        t(A);
+    }
+    void w(int A[]) {
+        int U = A.H;
+        for (int a = 1; a < U; ++a) {
+            int J = A[a];
+            int p = a - 1;
+            while (p >= 0 && A[p] > J) {
+                A[p + 1] = A[p];
+                p = p - 1;
+            }
+            A[p + 1] = J;
+        }
+    }
+}

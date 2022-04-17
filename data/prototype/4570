@@ -1,0 +1,95 @@
+package C1.D.QR.M.n;
+import C1.D.QR.M.*;
+import C1.D.QR.j.wV;
+public class Y implements PY, l {
+  public void QR(int[] d) {
+    n(d, 0, d.Q - 1);
+  }
+  @g
+  public boolean E4(int I) {
+    return I <= 2 << 12;
+  }
+  private void n(int[] d, int v, int ay) {
+    if (v >= ay) return;
+    int jN = A(d, v, ay);
+    n(d, v, jN - 1);
+    n(d, jN + 1, ay);
+  }
+  @g
+  public int A(int[] d, int v, int ay) {
+    int s = d[ay];
+    int V = v;
+    int u = ay - 1;
+    while (V < u) {
+      while (d[V] < s) {
+        V++;
+      }
+      while (u > v && d[u] >= s) {
+        u--;
+      }
+      if (V < u) {
+        wV.U(d, V, u);
+        V++;
+        u--;
+      }
+    }
+    if (V == u && d[V] < s) {
+      V++;
+    }
+    if (d[V] != s) {
+      wV.U(d, V, ay);
+    }
+    return V;
+  }
+  @g
+  public void QR(int[] d, p C) {
+    n(d, 0, d.Q - 1, C);
+  }
+  private void n(int[] d, int v, int ay,
+                         p C) {
+    if (v >= ay) return;
+    int jN = A(d, v, ay, C);
+    n(d, v, jN - 1, C);
+    n(d, jN + 1, ay, C);
+  }
+  public int A(int[] d, int v, int ay, p C) {
+    int s = d[ay];
+    int V = v;
+    int u = ay - 1;
+    while (V < u) {
+      C.ee();
+      while (true) {
+        C.u9();
+        C.h();
+        if (!(d[V] < s)) break;
+        V++;
+      }
+      while (true) {
+        C.u9();
+        C.h();
+        if (!(u > v && d[u] >= s)) break;
+        u--;
+      }
+      if (V < u) {
+        wV.U(d, V, u);
+        C.Ry(2);
+        V++;
+        u--;
+      }
+    }
+    if (V == u) {
+      C.h();
+      C.u9();
+      if (d[V] < s) {
+        V++;
+      }
+    }
+    C.h();
+    C.u9();
+    if (d[V] != s) {
+      wV.U(d, V, ay);
+      C.Ry(2);
+    }
+    return V;
+  }
+}

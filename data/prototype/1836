@@ -1,0 +1,140 @@
+import Q.M.E;
+import Q.M.v.t;
+class f {
+    String y, q;
+    f l;
+    public f(String y, String q) {
+        this.y = y;
+        this.q = q;
+    }
+}
+public class H extends Tu {
+    private E<f> F;
+    private int A;
+    private int S;
+    public H() {
+        this.A = 10;
+        UG();
+    }
+    public H(int A) {
+        this.A = A;
+        UG();
+    }
+    private void UG() {
+        F = new E<f>(A);
+        S = 0;
+        for (int JB = 0; JB < A; JB++) {
+            F.G(null);
+        }
+    }
+    public th r() {
+        return (double) this.S / (double) this.A;
+    }
+    private f V9(String y) {
+        int Zl = d(y);
+        return F.N(Zl);
+    }
+    private int d(String y) {
+        int a = y.hashCode();
+        int Zl = B(a);
+        return Zl < 0 ? Zl * -1 : Zl;
+    }
+    private int B(long a) {
+        return (int) (a % this.A);
+    }
+    private void AP() {
+        E<f> Y = F;
+        A *= 2;
+        UG();
+        for (f Zu : Y) {
+            while (Zu != null) {
+                o(Zu.y, Zu.q);
+                Zu = Zu.l;
+            }
+        }
+    }
+    @C
+    public int S() {
+        return this.S;
+    }
+    @C
+    public String N(String y) {
+        f u = V9(y);
+        while (u != null) {
+            if (u.y.equals(y)) {
+                return u.q;
+            }
+            u = u.l;
+        }
+        return null;
+    }
+    @C
+    public String o(String y, String q) {
+        f u = V9(y);
+        while (u != null) {
+            if (u.y.equals(y)) {
+                String au = u.q;
+                u.q = q;
+                return au;
+            }
+            u = u.l;
+        }
+        u = V9(y);
+        int h = d(y);
+        f iZ = new f(y, q);
+        iZ.l = u;
+        F.p(h, iZ);
+        S++;
+        if (r() >= 0.75) {
+            AP();
+        }
+        return null;
+    }
+    @C
+    public String O(String y) {
+        int Zl = d(y);
+        f u = V9(y);
+        f W = null;
+        while (u != null) {
+            if (u.y.equals(y)) {
+                S--;
+                if (W != null) {
+                    W.l = u.l;
+                } else {
+                    F.p(Zl, u.l);
+                }
+                return u.q;
+            }
+            W = u;
+            u = u.l;
+        }
+        return null;
+    }
+    @C
+    public D<String> i() {
+        E<String> Su = new E<String>();
+        for (f Zu : F) {
+            while (Zu != null) {
+                Su.G(Zu.y);
+                Zu = Zu.l;
+            }
+        }
+        return Su;
+    }
+    @C
+    public D<String> c() {
+        E<String> Su = new E<String>();
+        for (f Zu : F) {
+            while (Zu != null) {
+                Su.G(Zu.q);
+                Zu = Zu.l;
+            }
+        }
+        return Su;
+    }
+    @C
+    public D<t<String, String>> I() {
+        E<t<String, String>> Su = null;
+        return Su;
+    }
+}

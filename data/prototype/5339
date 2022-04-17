@@ -1,0 +1,159 @@
+package S.F;
+class O {
+    int W;
+    O o;
+    O(int Z, O o) {
+        W = Z;
+        this.o = o;
+    }
+    O(int Z) {
+        this(Z, null);
+    }
+}
+public class X{
+    private O k;
+    private long j;
+    public X(){
+        j = 0;
+        k = new O(vG.g);
+        k.o = k;
+        j = 0;
+    }
+    public boolean gg(){
+        return j == 0;
+    }
+    public long r(){
+        return j;
+    }
+    public m k(){
+        if(j == 0){
+            return null;
+        }
+        return k.o.W;
+    }
+    public m s(){
+        if(j == 0){
+            return null;
+        }
+        O x = k.o;
+        while(x.o != k){
+            x = x.o;
+        }
+        return x.W;
+    }
+    public void f(int Z){
+        O x = new O(Z, k.o);
+        k.o = x;
+        j++;
+    }
+    public void n(int Z){
+        O x = new O(Z);
+        O de = k.o;
+        while(de.o != k){
+            de = de.o;
+        }
+        de.o = x;
+        x.o = k;
+        j++;
+    }
+    public void c(){
+        if(j == 0){
+            return;
+        }
+        k.o = k.o.o;
+        j--;
+    }
+    public void I(){
+        if(j == 0){
+            return;
+        }
+        O t, R;
+        t = k.o;
+        R = t;
+        while(t.o != k){
+            R = t;
+            t = t.o;
+        }
+        R.o = k;
+        j--;
+    }
+    public String toString(){
+        String w = "[ ";
+        O t = k.o;
+        while(t != k){
+            w = w + t.W + " ";
+            t = t.o;
+        }
+        return w + "]";
+    }
+    public static void main(String[] args) {
+        X Q = new X();
+        System.out.println("Here is a list after construction: "
+                + Q.toString());
+        System.out.println("gg() should be true. It is: " +
+                Q.gg());
+        System.out.println("r() should be 0. It is: " +
+                Q.r());
+        Q.f(3);
+        System.out.println("Here is a list after f(3) to an empty list: "
+                + Q.toString());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+        Q = new X();
+        Q.f(3);
+        Q.f(2);
+        Q.f(1);
+        System.out.println();
+        System.out.println("Here is a list after f 3, 2, 1: "
+                + Q.toString());
+        System.out.println("gg() should be false. It is: " +
+                Q.gg());
+        System.out.println("r() should be 3. It is: " +
+                Q.r());
+        Q.n(4);
+        System.out.println("Here is the same list after n(4): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+        Q = new X();
+        Q.n(6);
+        Q.n(7);
+        System.out.println();
+        System.out.println("Here is a list after n 6, 7: "
+                + Q.toString());
+        System.out.println("gg() should be false. It is: " +
+                Q.gg());
+        System.out.println("r() should be 2. It is: " +
+                Q.r());
+        Q.f(5);
+        System.out.println("Here is the same list after f(5): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+        Q = new X(); Q.n(1);
+        Q.n(2);
+        Q.n(3);
+        Q.n(4);
+        Q.n(5);
+        Q.n(6);
+        System.out.println();
+        System.out.println("Here is a list after n 1,2,3,4,5,6: "
+                + Q.toString());
+        System.out.println("gg() should be false. It is: " +
+                Q.gg());
+        System.out.println("r() should be 6. It is: " +
+                Q.r());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+        Q.f(5);
+        System.out.println("Here is the same list after f(5): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+        Q.c();
+        Q.c();
+        System.out.println("Here is the same list after two c(): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+        Q.I();
+        Q.I();
+        System.out.println("Here is the same list after two I(): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.k() + "\nTail is: " + Q.s());
+    }
+}

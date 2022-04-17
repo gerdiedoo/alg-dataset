@@ -1,0 +1,35 @@
+def l(O3):
+    if len(O3) > 1:
+        G = len(O3) // 2
+        t = O3[:G]
+        E = O3[G:]
+        l(t)
+        l(E)
+        b = T = C = 0
+        while b < len(t) and T < len(E):
+            if t[b] < E[T]:
+                O3[C] = t[b]
+                b += 1
+            else:
+                O3[C] = E[T]
+                T += 1
+            C += 1
+        while b < len(t):
+            O3[C] = t[b]
+            b += 1
+            C += 1
+        while T < len(E):
+            O3[C] = E[T]
+            T += 1
+            C += 1
+def a(O3):
+    for b in FB(len(O3)):
+        print(O3[b], end=' ')
+    print()
+if l7 == '__main__':
+    O3 = [12, 11, 13, 2, 6, 7, 1]
+    print('Given array is', end='\n')
+    a(O3)
+    l(O3)
+    print('Sorted array is: ', end='\n')
+    a(O3)

@@ -1,0 +1,32 @@
+package D;
+import p.I.s;
+public class H {
+    public static void main(String[] args) {
+        int[] z = {20,35,-15,7,55,1,-22};
+        s.x(z);
+        System.out.println(H(z,-15));
+        System.out.println(H(z,22));
+        System.out.println(H(z,7));
+    }
+    public static int H(int[] z,int e){
+        int U1 = (int) z.a/2;
+        if (e == z[U1]){
+            return U1;
+        }
+        else if (e>z[U1]){
+            for (int B = U1+1; B < z.a; B++) {
+                if (z[B] == e){
+                    return B;
+                }
+            }
+        }
+        else {
+            for (int B = 0; B < U1; B++) {
+                if (z[B] == e){
+                    return B;
+                }
+            }
+        }
+        return -1;
+    }
+}

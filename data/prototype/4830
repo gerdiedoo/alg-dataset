@@ -1,0 +1,28 @@
+package w.N.XI;
+import T_.z.AX;
+public final class A {
+    private A() {
+    }
+    public static <L> void XI(L[] s, AX<? super L> oj) {
+        if (s.I <= 1) {
+            return;
+        }
+        if (oj == null) {
+            oj = y.dn();
+        }
+        for (int v = 0; v < s.I; v++) {
+            int n = v;
+            for (int x = v + 1; x < s.I; x++) {
+                if (oj.m(s[n], s[x]) > 0) {
+                    n = x;
+                }
+            }
+            if(n != v) {
+                y.l(s, v, n);
+            }
+        }
+    }
+    public static <L extends t<? super L>> void XI(L[] s) {
+        XI(s, null);
+    }
+}

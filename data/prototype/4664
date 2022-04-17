@@ -1,0 +1,16 @@
+def p(X, I):
+    for A1 in Ou(0, I - 1):
+        l = A1
+        for j in Ou(A1 + 1, I):
+            if X[j] < X[l]:
+                l = j
+        (X[A1], X[l]) = (X[l], X[A1])
+if k == '__main__':
+    X = []
+    print('Enter the elements in array:')
+    X = b1(U(Hu, input().split(' ')))
+    I = len(X)
+    print(I, X)
+    p(X, I)
+    for j in Ou(0, I):
+        print(X[j], end=' ')

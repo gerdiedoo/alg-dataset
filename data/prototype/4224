@@ -1,0 +1,26 @@
+def oS(D, B, h):
+    if h > B:
+        K = D[B]
+        j = M(D, K, B, h)
+        T = j[0]
+        k = j[1]
+        oS(D, B, T)
+        oS(D, k, h)
+    return D
+def M(D, K, B, h):
+    if h - B <= 1:
+        if D[h] < D[B]:
+            (D[h], D[B]) = (D[B], D[h])
+        return (B, h)
+    N = B
+    while N <= h:
+        if D[N] < K:
+            (D[N], D[B]) = (D[B], D[N])
+            B += 1
+            N += 1
+        elif D[N] == K:
+            N += 1
+        else:
+            (D[N], D[h]) = (D[h], D[N])
+            h -= 1
+    return (B, N)

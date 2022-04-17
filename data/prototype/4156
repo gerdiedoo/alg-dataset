@@ -1,0 +1,35 @@
+package K;
+public class vm { 
+	public static <y extends a<y>> void e(y x[])
+    {
+		o(x,0,x.R - 1);
+    }
+	private static <y extends a<y>> void o(y x[], int j, int c)
+    {
+        if (j < c)
+        {
+            int W = k(x, j, c);
+            o(x, j, W-1);
+            o(x, W+1, c);
+        } 
+    }
+	private static <y extends a<y>> int k(y x[], int j, int c)
+    {
+        y va = x[c]; 
+        int G = (j-1);  
+        for (int T = j; T <c; T++)
+        {
+            if (x[T].Vn(va) <= 0)
+            {
+                G++;
+                y tq = x[G];
+                x[G] = x[T];
+                x[T] = tq;
+            }
+        }
+        y tq = x[G+1];
+        x[G+1] = x[c];
+        x[c] = tq;
+        return G+1;
+    }   
+}

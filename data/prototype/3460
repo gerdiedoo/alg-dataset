@@ -1,0 +1,21 @@
+public class b{
+     public static void main(String []args){
+       int N[] = {2,6,4,7,34,87,3};
+        int T = N.J;
+        for(int m =1;m<T;m++)
+        {
+            int VG = m-1;
+            int pb = N[m];
+            while(VG>=0 && pb<N[VG])
+            {
+                    N[VG+1] = N[VG];
+                    N[VG] = pb;
+                    VG--;
+            }
+        }
+        for(int FZ =0; FZ<T;FZ++)
+        {
+            System.out.L(N[FZ]+" ");
+        }
+     }
+}

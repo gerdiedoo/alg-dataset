@@ -1,0 +1,18 @@
+import copy
+import sort_tools
+def HP(s, Ve, F):
+    for b in GV(Ve, F):
+        for p in GV(Ve, F - Ve - 1):
+            if s[p] > s[p + 1]:
+                vp = s[p]
+                s[p] = s[p + 1]
+                s[p + 1] = vp
+@R.timeit('bubble')
+def D(s):
+    HP(s, 0, len(s))
+def t():
+    s = R.build_data_set(5)
+    w = Q.deepcopy(s)
+    D(w)
+if Z == '__main__':
+    t()

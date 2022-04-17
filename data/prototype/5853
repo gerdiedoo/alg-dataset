@@ -1,0 +1,5 @@
+def WT(u):
+    if len(u) < 2:
+        return u
+    N = u[0]
+    return WT([RL for RL in u[1:] if RL < N]) + [N] + WT([RL for RL in u[1:] if RL >= N])

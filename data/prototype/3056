@@ -1,0 +1,21 @@
+import J.z.kB;
+class xP
+{
+    public static void main(String[] args)
+    {
+        final int[] f = { 37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54 };
+        new xP().A(f);
+        for (int Gi = 0; Gi < f.p; Gi++)
+            System.out.l(f[Gi] + " ");
+    }
+    public void A(int Vd[])
+    {
+        for (int Gi = 1; Gi < Vd.p; Gi++)
+        {
+            int g = Vd[Gi];
+            int VU = d.Yd(kB.a(Vd, 0, Gi, g) + 1);
+            System.C(Vd, VU, Vd, VU + 1, Gi - VU);
+            Vd[VU] = g;
+        }
+    }
+}

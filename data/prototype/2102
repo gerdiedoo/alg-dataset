@@ -1,0 +1,53 @@
+public class I{
+    class Y{
+        int s;
+        Y g;
+        public Y(int Fe){
+            this.s=Fe;
+            this.g=null;
+        }
+    }
+        public Y r=null;
+        public Y IH=null;
+        void y(int Fe){
+            Y n=new Y(Fe);
+            if(r==null){
+                r=n;
+                IH=n;
+            }else{
+                IH.g=n;
+                IH=n;
+            }
+        }
+        void Qq(){
+            Y zE=r;
+            while(zE!=null){
+                System.out.c(" "+zE.s);
+                zE=zE.g;
+            }
+        }
+        void t(){
+            Y zE=r;
+            Y W=null;
+            while(zE!=null){
+                Y g=zE.g;
+                zE.g=W;
+                W=zE;
+                zE=g;
+            }
+            r=W;
+        }
+        public static void main(String args[]){
+            I ie=new I();
+            ie.y(10);
+            ie.y(20);
+            ie.y(30);
+            ie.y(40);
+            ie.y(50);
+            ie.Qq();
+            System.out.println("");
+            System.out.println("revered linked list is");
+           ie.t();
+           ie.Qq();
+        }
+    }

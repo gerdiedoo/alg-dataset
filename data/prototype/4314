@@ -1,0 +1,29 @@
+package o.D.n.lG;
+public class J implements M {
+	@I
+	public void KB(int[] y) {
+		l(y, 0, y.G - 1);
+	}
+	private void l(int[] y, int v, int Ik) {
+		if (v < Ik) {
+			int Y = Vv(y, v, Ik);
+			l(y, v, Y - 1);
+			l(y, Y + 1, Ik);
+		}
+	}
+	private int Vv(int[] y, int v, int Ik) {
+		int W7 = v - 1;
+		int Y = y[Ik];
+		for (int Q = v; Q < Ik; Q++) {
+			if (y[Q] <= Y) 
+				H(y, ++W7, Q);
+		}
+		return H(y, ++W7, Ik);
+	}
+	private int H(int[] y, int s, int z) {
+		int d = y[z];
+		y[z] = y[s];
+		y[s] = d;
+		return s;
+	}
+}

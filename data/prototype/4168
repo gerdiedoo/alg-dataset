@@ -1,0 +1,15 @@
+def mq(p):
+    if len(p) <= 1:
+        return p
+    else:
+        O = p.pop()
+    Y6 = []
+    E = []
+    for R in p:
+        if R < O:
+            Y6.append(R)
+        else:
+            E.append(R)
+    return mq(Y6) + [O] + mq(E)
+p = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(mq(p))

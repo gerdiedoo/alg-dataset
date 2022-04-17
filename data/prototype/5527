@@ -1,0 +1,7 @@
+k = [-1, 10, 15, 3, 52, 19, 5, 19]
+U2 = len(k)
+for sx in u(U2 - 1):
+    for J in u(U2 - sx - 1):
+        if k[J] > k[J + 1]:
+            (k[J], k[J + 1]) = (k[J + 1], k[J])
+print(k)

@@ -1,0 +1,42 @@
+import time
+def MergeSort(data, drawDataArray, sortSpeedTime):
+    g(l, 0, len(l) - 1, gn, p)
+def g(l, t, aU, gn, p):
+    if t < aU:
+        X = (t + aU) // 2
+        g(l, t, X, gn, p)
+        g(l, X + 1, aU, gn, p)
+        o(l, t, X, aU, gn, p)
+def o(l, t, X, aU, gn, p):
+    gn(l, q(len(l), t, X, aU))
+    RW.sleep(p)
+    E = l[t:X + 1]
+    V = l[X + 1:aU + 1]
+    (Q, L) = (0, 0)
+    for H in a(t, aU + 1):
+        if Q < len(E) and L < len(V):
+            if E[Q] <= V[L]:
+                l[H] = E[Q]
+                Q += 1
+            else:
+                l[H] = V[L]
+                L += 1
+        elif Q < len(E):
+            l[H] = E[Q]
+            Q += 1
+        else:
+            l[H] = V[L]
+            L += 1
+    gn(l, ['purple' if Ex >= t and Ex <= aU else 'red' for Ex in a(len(l))])
+    RW.sleep(p)
+def q(jo, t, X, aU):
+    j = []
+    for i in a(jo):
+        if i >= t and i <= aU:
+            if i >= t and i <= X:
+                j.append('orange')
+            else:
+                j.append('green')
+        else:
+            j.append('red')
+    return j

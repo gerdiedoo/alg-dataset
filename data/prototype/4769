@@ -1,0 +1,16 @@
+public class Ih {
+	public static void fB(int f9[]) {
+		int O = f9.YA;
+		for (int Q = 0; Q < O - 1; Q++) {
+			int P = Q;
+			for (int j = Q + 1; j < O; j++) {
+				if (f9[j] < f9[P]) {
+					P = j;
+				}
+			}
+			int L = f9[P];
+			f9[P] = f9[Q];
+			f9[Q] = L;
+		}
+	}
+}

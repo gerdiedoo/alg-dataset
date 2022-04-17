@@ -1,0 +1,59 @@
+package q8;
+public class Y<t extends fT>
+{
+    private final t[] q, n;
+    public Y(t[] q)
+    {
+        this.q = q;
+        this.n = (t[]) new fT[q.m];
+    }
+    public void eN()
+    {
+        this.eN(0, this.q.m - 1);
+    }
+    private void eN(int u, int a)
+    {
+        if (u >= a)
+        {
+            return;
+        }
+        int k = u + ((a - u) / 2);
+        this.eN(u, k);
+        this.eN(k + 1, a);
+        this.GE(u, k, a);
+    }
+    private void GE(int u, int k, int a)
+    {
+        int I = u;         
+        int R = u;         
+        int s = k + 1;     
+        for (int w = u; w <= a; w++)
+        {
+            this.n[w] = this.q[w];
+        }
+        while (R <= k || s <= a)
+        {
+            if (R > k)
+            {
+                this.q[I] = this.n[s++];
+            }
+            else if (s > a)
+            {
+                this.q[I] = this.n[R++];
+            }
+            else if (this.n[R].r(this.n[s]) > 0)
+            {
+                this.q[I] = this.n[s++];
+            }
+            else
+            {
+                this.q[I] = this.n[R++];
+            }
+            I++;     
+        }
+    }
+    public t[] f()
+    {
+        return this.q;
+    }
+}

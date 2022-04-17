@@ -1,0 +1,9 @@
+def Ok(r7):
+    if len(r7) <= 1:
+        return r7
+    wP = [N for N in r7[1:] if N < r7[0]]
+    gc = [N for N in r7[1:] if N >= r7[0]]
+    return Ok(wP) + [r7[0]] + Ok(gc)
+if S == '__main__':
+    r7 = [2, 4, 5, 1]
+    print(Ok(r7))

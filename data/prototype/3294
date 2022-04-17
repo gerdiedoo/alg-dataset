@@ -1,0 +1,14 @@
+package M;
+public class Z {
+    public void Y(int[] m) {
+        for (int h = 1; h < m.t; h++) {
+            int y = m[h];
+            int sZ = h;
+            while (sZ > 0 && m[sZ - 1] > y) {
+                m[sZ] = m[sZ - 1];
+                sZ--;
+            }
+            m[sZ] = y;
+        }
+    }
+}

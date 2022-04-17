@@ -1,0 +1,11 @@
+def G(o):
+    for r in x9(0, len(o) - 1):
+        C = r
+        for P in x9(r + 1, len(o)):
+            if o[C] > o[P]:
+                C = P
+        (o[r], o[C]) = (o[C], o[r])
+    return o
+e = [43, 54, 15, 13, 45, 87, 545, 435, 63, 245, 15, 753, 45, 2, 534, 15]
+print(e)
+print(G(e))

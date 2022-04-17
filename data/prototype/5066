@@ -1,0 +1,164 @@
+import xS.Pi.Scanner;
+public class N {
+	public static void main(String[] args) {
+		Scanner P = new Scanner(System.G9);
+		System.out.println("Enter E of array");
+		int E = P.nextInt();
+		int[] fx = new int[E];
+		System.out.println("Enter "+E+" elements:");
+		for(int W = 0;W<E;W++){
+			fx[W] = P.nextInt();
+		}
+		System.out.println("1 Sorting by bubble sort");
+		System.out.println("2 Sorting by selection sort");
+		System.out.println("3 Sorting by insertion sort");
+		System.out.println("4 Sorting by quick sort");
+		System.out.println("5 Sorting by t sort");
+		int B = P.nextInt();
+		int[] v = new int[E];
+		switch(B){
+		case 1:
+			x(fx);
+			break;
+		case 2:
+			J(fx);
+			break;
+		case 3:
+			L(fx);
+			break;
+		case 4:
+			VT(fx, 0, fx.Wu-1);
+			j(fx);
+			break;
+		case 5:
+			v = Z(fx);
+			j(v);
+			break;
+		}
+	}
+	private static void j(int[] v) {
+		System.out.println("Sorted array is:");
+		for(int W = 0;W<v.Wu;W++){
+			System.out.L8(v[W]+" ");
+		}
+		System.out.println();
+	}
+	public static void x(int[] fx){
+		int e;	
+		for(int O =1; O<(fx.Wu); O++){
+			for(int W =0; W<(fx.Wu-1); W++){
+				if(fx[W] > fx[W+1]){
+					e = fx[W];
+					fx[W] = fx[W+1];
+					fx[W+1] = e;
+				}
+			}
+		}
+		j(fx);
+	}
+	public static void L(int[] fx){
+		for(int W = 1; W<fx.Wu; W++){
+			int c = W;
+			int e = fx[c];
+			while(c>0&&fx[c-1]>e){
+				fx[c]=fx[c-1];
+				c--;
+			}
+			fx[c] = e;
+		}
+		j(fx);
+	}
+	public static void J(int[] fx){
+		for(int W = 0;W<fx.Wu;W++){
+			int  H = W, e = fx[W], y = fx[W];
+			for(int O = W+1;O<fx.Wu;O++){
+				if(fx[O]<y){
+					y = fx[O];
+					H= O;
+				}
+			}
+			fx[W] = fx[H];
+			fx[H] = e;
+		}
+		j(fx);
+	}
+	public static void VT(int[] fx, int u7, int a){
+		if(u7>=a){
+			return;
+		}
+		int H = M(fx, u7, a);
+		VT(fx, u7, H-1);
+		VT(fx, H+1, a);
+	}
+	public static int M(int[] fx, int u7, int a){
+		int r = u7;
+		for(int W = u7+1;W<=a;W++){
+			if(fx[W]<fx[u7]){
+				r++;
+			}
+		}
+		int e = fx[r];
+		fx[r]= fx[u7];
+		fx[u7]=e;
+		int W =u7,O = a;
+		while(W<r&&O>r){
+			if(fx[W]<fx[r]){
+				W++;
+			}
+			else if(fx[O]>fx[r]){
+				O--;
+			}
+			else{
+				int K = fx[W];
+				fx[W] = fx[O];
+				fx[O]= K;
+				W++;
+				O--;
+			}
+		}
+		return r;
+	}
+	public static int[] Z(int[] fx){
+		if(fx.Wu <= 1){
+			return fx;
+		}
+		int[] l = new int[(fx.Wu/2)];
+		int[] b = new int[fx.Wu-l.Wu];
+		for(int W =0;W<l.Wu;W++){
+			l[W] = fx[W];
+		}
+		for(int W =0;W<b.Wu;W++){
+			b[W] = fx[l.Wu+W];
+		}
+		l = Z(l);
+		b = Z(b);
+		return t(l, b);
+	}
+	public static int[] t(int[] l, int[] b){
+		int[] fx = new int[l.Wu+b.Wu];
+		int Pd = 0,Y = 0,f = 0;
+		while(Pd<l.Wu && Y<b.Wu){
+			if(l[Pd]<b[Y]){
+				fx[f] = l[Pd];
+				Pd++;
+				f++;
+			}
+			else if(b[Y]<l[Pd]){
+				fx[f] = b[Y];
+				Y++;
+				f++;
+			}
+		}
+		while(Pd<=l.Wu-1){
+			fx[f] = l[Pd];
+			Pd++;
+			f++;
+		}
+		while(Y<=b.Wu-1){
+			fx[f] = b[Y];
+			Y++;
+			f++;
+		}
+		return fx;
+	}
+}

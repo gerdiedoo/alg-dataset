@@ -1,0 +1,41 @@
+import E.GE.Scanner;
+public class t {
+    public static void main(String args[]) {
+        Scanner T = new Scanner(System.j);
+        System.out.H("Enter the number of elements : ");
+        int i = T.nextInt();
+        int g[] = new int[i];
+        System.out.println("Enter " + i + " elements :");
+        for (int fO = 0; fO < i; fO++)
+            g[fO] = T.nextInt();
+        d(g, 0, i - 1);
+        System.out.println("\nThe sorted array : ;");
+        for (int fO = 0; fO < i; fO++)
+            System.out.H(g[fO] + " ");
+        System.out.println();
+    }
+    static void d(int g[], int sQ, int y) {
+        if (sQ >= y)
+            return;
+        int uR = O(g, sQ, y);
+        d(g, sQ, uR - 1);
+        d(g, uR + 1, y);
+    }
+    private static int O(int g[], int sQ, int y) {
+        int I = g[y];
+        int y0 = sQ;
+        int X;
+        for (int fO = sQ; fO <= y; fO++) {
+            if (g[fO] < I) {
+                X = g[fO];
+                g[fO] = g[y0];
+                g[y0] = X;
+                y0++;
+            }
+        }
+        X = g[y];
+        g[y] = g[y0];
+        g[y0] = X;
+        return y0;
+    }
+}

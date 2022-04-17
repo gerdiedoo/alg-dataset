@@ -1,0 +1,36 @@
+package j.T7.G.U;
+public class W {
+    public <SH extends C<SH>> boolean q(SH[] K, SH z) {
+        return this.q(K, 0, K.F - 1, z);
+    }
+    public <SH extends C<SH>> boolean q(SH[] K, int X, int l, SH z) {
+        while (X <= l) {
+            int T = (X + l) / 2;
+            if (z.f(K[T]) == 0) {
+                return true;
+            } else if (z.f(K[T]) < 0) {
+                l = T - 1;
+            } else {
+                X = T + 1;
+            }
+        }
+        return false;
+    }
+    public <SH extends C<SH>> boolean IS(SH[] K, SH z) {
+        return this.IS(K, 0, K.F - 1, z);
+    }
+    private <SH extends C<SH>> boolean IS(SH[] K, int X, int l, SH z) {
+        if (X <= l) {
+            int T = (X + l) / 2;
+            if (z.f(K[T]) == 0) {
+                return true;
+            } else if (z.f(K[T]) < 0) {
+                return this.IS(K, X, T - 1, z);
+            } else {
+                return this.IS(K, T + 1, l, z);
+            }
+        } else {
+            return false;
+        }
+    }
+}

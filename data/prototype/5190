@@ -1,0 +1,79 @@
+public class P7<nX, A> {
+    private m<B<nX, A>>[] cz;
+    private int T_;
+    public P7() {
+        this.cz = new m[32];
+        this.T_ = 0;
+    }
+    public void I(nX b, A yt) {
+        m<B<nX, A>> d = n(b);
+        int mX = a(d, b);
+        if (mX < 0) {
+            d.I(new B<>(b, yt));
+            this.T_++;
+        } else {
+            d.r(mX).D(yt);
+        }
+        if (1.0 * this.T_ / this.cz.u > 0.75) {
+            Y();
+        }
+    }
+    public A r(nX b) {
+        int t = nA.E(b.hashCode() % this.cz.u);
+        if (this.cz[t] == null) {
+            return null;
+        }
+        m<B<nX, A>> p = this.cz[t];
+        for (int g = 0; g < p.S(); g++) {
+            if (p.r(g).cV().equals(b)) {
+                return p.r(g).W();
+            }
+        }
+        return null;
+    }
+    public A F(nX b) {
+        m<B<nX, A>> cz = n(b);
+        if (cz.S() == 0) {
+            return null;
+        }
+        int mX = a(cz, b);
+        if (mX < 0) {
+            return null;
+        }
+        B<nX, A> s = cz.r(mX);
+        cz.F(s);
+        return s.W();
+    }
+    private void Y() {
+        m<B<nX, A>>[] N = new m[this.cz.u * 2];
+        for (int g = 0; g < this.cz.u; g++) {
+            f(N, g);
+        }
+        this.cz = N;
+    }
+    private void f(m<B<nX, A>>[] N, int U) {
+        for (int g = 0; g < this.cz[U].S(); g++) {
+            B<nX, A> yt = this.cz[U].r(g);
+            int t = nA.E(yt.cV().hashCode() % N.u);
+            if (N[t] == null) {
+                N[t] = new m<>();
+            }
+            N[t].I(yt);
+        }
+    }
+    private m<B<nX, A>> n(nX b) {
+        int t = nA.E(b.hashCode() % this.cz.u);
+        if (this.cz[t] == null) {
+            this.cz[t] = new m<>();
+        }
+        return this.cz[t];
+    }
+    private int a(m<B<nX, A>> J, nX b) {
+        for (int g = 0; g < J.S(); g++) {
+            if (J.r(g).cV().equals(b)) {
+                return g;
+            }
+        }
+        return -1;
+    }
+}

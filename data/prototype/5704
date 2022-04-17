@@ -1,0 +1,33 @@
+import random
+def K(J5, pX):
+    q = len(J5)
+    o = len(pX)
+    Y = []
+    gM = j = 0
+    while gM < q and j < o:
+        if J5[gM] <= pX[j]:
+            Y.append(J5[gM])
+            gM += 1
+        else:
+            Y.append(pX[j])
+            j += 1
+    while gM < q:
+        Y.append(J5[gM])
+        gM += 1
+    while j < o:
+        Y.append(pX[j])
+        j += 1
+    return Y
+def O7(Vk):
+    if len(Vk) <= 1:
+        return Vk
+    L = len(Vk) // 2
+    (r, ME) = (Vk[:L], Vk[L:])
+    r = O7(r)
+    ME = O7(ME)
+    return K(r, ME)
+if F == '__main__':
+    A = [l.randint(0, 100) for gM in k(20)]
+    print(A)
+    X = O7(A)
+    print(X)

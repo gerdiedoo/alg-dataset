@@ -1,0 +1,15 @@
+package Jv.m1;
+public class A implements Dq {
+    public void V(int DP, int Q[]) {
+        int G, p, g;
+        for (p = 0; p < DP - 1; p++) {
+            for (G = 0; G < DP - p - 1; G++) {
+                if (Q[G] > Q[G + 1]) {
+                    g = Q[G];
+                    Q[G] = Q[G + 1];
+                    Q[G + 1] = g;
+                }
+            }
+        }
+    }
+}

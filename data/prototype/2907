@@ -1,0 +1,24 @@
+package e;
+public class U9 extends H{
+	public static void main(String[] args){
+		int[] f = {5, 3, 2, 4, 1};
+		r(new U9(), f);
+	}
+	public U9(){ super("Bubble"); }
+	private void kB(int[] f, int u, int Q){
+		for (int Cm = u; Cm < Q; Cm++)
+			for (int g = u; g < Q - Cm - 1; g++)
+			{	 
+				if ( f[g] > f[g+1] )
+				{
+					int SC = f[g];
+					f[g] =  f[g+1];
+					f[g+1] = SC;
+				}
+			}
+	}
+	@I
+	public void V(int[] f){
+		kB(f, 0, f.m);
+	}
+}

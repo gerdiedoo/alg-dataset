@@ -1,0 +1,26 @@
+package F.f.qL;
+import J.wf.g;
+public final class N {
+    private N() {
+    }
+    public static <ol> void qL(ol[] z, g<? super ol> C) {
+        if (z.T <= 1) {
+            return;
+        }
+        if (C == null) {
+            C = j.H();
+        }
+        for (int n = 1; n < z.T; n++) {
+            ol p = z[n];
+            int r = n - 1;
+            while (r >= 0 && C.RZ(z[r], p) > 0) {
+                z[r + 1] = z[r];
+                r--;
+            }
+            z[r + 1] = p;
+        }
+    }
+    public static <ol extends a<? super ol>> void qL(ol[] z) {
+        qL(z, null);
+    }
+}

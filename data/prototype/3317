@@ -1,0 +1,36 @@
+package m;
+import Q.KK.w;
+import Q.KK.Scanner;
+public class UY {
+    public static void main(String[] args) {
+        w<o> B = new w<>();
+        Scanner f = new Scanner(System.T);
+        while (f.uK()) {
+            B.S(f.nextInt());
+        }
+        f.OO();
+        int Y[] = new int[B.i()];
+        for (int C = 0; C < B.i(); C++) {
+            Y[C] = B.K(C);
+        }
+        Y = l(Y);
+        for (int P : Y) {
+            System.out.println(P);
+        }
+    }
+    private static int[] l(int[] s) {
+        for (int C = 1; C < s.Yg; C++) {
+            for (int y4 = C; y4 > 0; y4--) {
+                if (s[y4] < s[y4 - 1]) {
+                    y(s, y4, y4 - 1);
+                }
+            }
+        }
+        return s;
+    }
+    private static void y(int[] Y, int C, int y4) {
+        int j = Y[C];
+        Y[C] = Y[y4];
+        Y[y4] = j;
+    }
+}

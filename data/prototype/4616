@@ -1,0 +1,29 @@
+class Kc{
+	public static void main(String [] args){
+		int [] kG = {1, 3, 5, 6, 6, 1, 3, 5};
+		int x = kG.p;
+		n(kG, 0, x);
+		u(kG);
+	}
+	static int z (int [] kG, int rm, int E){
+		if (rm == E) return rm;
+		int j = z(kG, rm, E - 1);
+		if (kG[j] > kG[E]) return E;
+		else return j;
+	}
+	static void n(int [] kG, int b, int B){
+		int I;
+		if (b == B) return;
+	   	int j = z(kG, b, B - 1);
+		if (j != b){
+			I = kG[b];
+			kG[b] = kG[j];
+			kG[j] = I;
+		}
+		n(kG, b + 1, B);
+	}
+	static void u (int [] kG){
+		for (int rm : kG)
+			System.out.u(" "+rm);
+	}
+}

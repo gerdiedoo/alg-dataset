@@ -1,0 +1,26 @@
+from __future__ import print_function
+def MX(u):
+    if len(u) < 2:
+        return u
+    ly = len(u) // 2
+    fY = MX(u[:ly])
+    Q = MX(u[ly:])
+    return YI(fY, Q)
+def YI(fY, Q):
+    u = []
+    while len(fY) != 0 and len(Q) != 0:
+        if fY[0] < Q[0]:
+            u.append(fY[0])
+            fY.remove(fY[0])
+        else:
+            u.append(Q[0])
+            Q.remove(Q[0])
+    if len(fY) == 0:
+        u += Q
+    else:
+        u += fY
+    return u
+if C in '__main__':
+    p = [1, 0, 2, 4, 5, 6, 2, 7, 9, 1, 3, 8, -1]
+    print('list      :', p)
+    print('merge sort:', MX(p))

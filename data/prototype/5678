@@ -1,0 +1,31 @@
+def S(Vi):
+    print('splitting -> ', Vi)
+    if len(Vi) > 1:
+        b = len(Vi) // 2
+        u = Vi[:b]
+        d = Vi[b:]
+        S(u)
+        S(d)
+        R = 0
+        p = 0
+        Q = 0
+        while R < len(u) and p < len(d):
+            if u[R] < d[p]:
+                Vi[Q] = u[R]
+                R = R + 1
+            else:
+                Vi[Q] = d[p]
+                p = p + 1
+            Q = Q + 1
+        while R < len(u):
+            Vi[Q] = u[R]
+            R = R + 1
+            Q = Q + 1
+        while p < len(d):
+            Vi[Q] = d[p]
+            p = p + 1
+            Q = Q + 1
+    print('Merging ', Vi)
+g = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+S(g)
+print(g)

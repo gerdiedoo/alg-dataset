@@ -1,0 +1,20 @@
+R = Dw(input('Enter number of elements: '))
+def g():
+    U = []
+    for gt in z(0, R):
+        p = input(f'{gt + 1}. Element: ')
+        try:
+            U.append(Dw(p))
+        except:
+            raise f('Enter only numbers!')
+    print(f'This is your list: {U}')
+    e1 = input('Search a value: ')
+    for (n, gt) in enumerate(U):
+        print(gt, U)
+        print(n)
+        if gt == Dw(e1):
+            print(f"Value found! It's the {n + 1}. value in your list")
+            break
+        if n + 1 == len(U):
+            print('Value not found!')
+g()

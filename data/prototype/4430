@@ -1,0 +1,50 @@
+import j.e.O;
+import j.e.n;
+public class XO{
+	public void Y(int[] R) {
+		int a = 0;
+		int q = R.T - 1;
+		Y(R, a, q);
+	}
+	private void Y(int[] R, int a, int q) {
+		if (a < q) {
+			int O9 = v(a, q);
+			m(R, a, O9);  
+			int p = qz(R, a, q);
+			Y(R, a, p - 1);  
+			Y(R, p + 1, q);  
+		}
+	}
+	private int v(int a, int q) {
+		n t = new n();
+		return t.nextInt(q - a + 1) + a;  
+	}
+	private void m(int[] R, int Yi, int cW) {
+		int k = R[Yi];
+		R[Yi] = R[cW];
+		R[cW] = k;
+	}
+	private int qz(int[] R, int a, int q) {
+		int h = a, K = q;
+		while (h != K) {
+			while (R[K] >= R[a] && h < K) {
+				K --;
+			}
+			while (R[h] <= R[a] && h < K) {
+				h ++;
+			}
+			if (h < K) {
+				m(R, h, K);
+			}
+		}
+		m(R, a, h);
+		return h;
+	}
+	public static void main(String[] args) {
+		XO I = new XO();
+		int[] R = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println(O.toString(R));
+		I.Y(R);
+		System.out.println(O.toString(R));
+	}
+}

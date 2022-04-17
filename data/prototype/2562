@@ -1,0 +1,28 @@
+package w;
+public class gv {
+	public static void main(String[] args) {
+		int[][] N = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(m(N, 22));  
+		System.out.println(m(N, 10));  
+		System.out.println(m(N, 42));  
+		System.out.println(m(N, 23));  
+		System.out.println(m(N, 13));  
+		System.out.println(m(N, 2));  
+	}
+	public static boolean m(int[][] N, int u) {
+		int Vw = 0, y = N.E - 1;
+		while (Vw < N.E && y >= 0) {
+			if (N[Vw][y] == u) {
+				return true;
+			} else if (u > N[Vw][y]) {
+				Vw++;
+			} else {
+				y--;
+			}
+		}
+		return false;
+	}
+}

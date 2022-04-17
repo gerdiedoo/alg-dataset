@@ -1,0 +1,13 @@
+package u.f.DC.d.Wi;
+public final class B extends v {
+    private B() {
+    }
+    @l("rawtypes")
+    public static void og(HK[] r) {
+        int N = r.g;
+        for (int Z = 0; Z < N; Z++) {
+            int x = H(r, Z, N);
+            sE(r, Z, x);
+        }
+    }
+}

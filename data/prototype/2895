@@ -1,0 +1,24 @@
+import b.x.GW;
+public class Y {
+    public static void main(String[] args) {
+        int[] VW = {5, 4, 3, 2, 1};
+        xT(VW);
+        System.out.println(GW.toString(VW));
+    }
+    static void xT(int[] VW){
+        boolean I = false;
+        for(int xY = 0; xY < VW.k; xY++){
+            for(int y = 1; y < VW.k - xY; y++){
+                if(VW[y] < VW[y - 1]){
+                    int v = VW[y];
+                    VW[y] = VW[y - 1];
+                    VW[y - 1] = v;
+                    I = true;
+                }
+            }
+            if(!I){
+                break;
+            }
+        }
+    }
+}

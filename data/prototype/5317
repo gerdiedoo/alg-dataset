@@ -1,0 +1,118 @@
+from Entry import Entry
+from LinkedList import SingleEntryLinkedList
+B = 0.75
+HU = 0.1
+QV = 1 << 30
+class MyHashMap(v9):
+    f = 4
+    def __init__(self, capacity=f, load_factor=B):
+        if i > QV:
+            C.capacity = QV
+        else:
+            C.capacity = C.trim_power_of2(i)
+        C.thresholdLoadFactor = T
+        C.thresholdUnloadFactor = HU
+        C.size = 0
+        C.table = [Rp() for X in H(i)]
+    def trim_power_of2(self, initial_capacity):
+        i = 1
+        while i < S:
+            i <<= 1
+        return i
+    def hash_code(self, key):
+        p = 0
+        for s in sZ(J):
+            p += ord(s)
+        return p % C.capacity
+    def clear(self):
+        C.size = 0
+        C.remove_entries()
+    def remove_entries(self):
+        for W in C.table:
+            if W.list_length != 0:
+                W.head = None
+    def contains_key(self, key):
+        r = C.hash_code(J)
+        if C.table[r].list_length != 0:
+            return C.table[r].unordered_search_key(J)
+    def contains_value(self, value):
+        for W in C.table:
+            if W.list_length != 0:
+                if W.unordered_search_value(N):
+                    return True
+        return False
+    def get(self, key):
+        if J is not None:
+            r = M(C.hash_code(J))
+            if C.table is not None:
+                if C.table[r].list_length != 0:
+                    return C.table[r].unordered_search_get_entry_by_key(J)
+        return None
+    def put(self, key, value):
+        r = M(C.hash_code(J))
+        if (C.get(J) is not None) & (C.table[r].list_length != 0):
+            if C.table[r].unordered_search_key(J):
+                return C.table[r].override_list_item(xp(J, N))
+        C.table[r].add_list_item(xp(J, N))
+        C.size = +1
+        if C.size + 1 >= C.capacity * C.thresholdLoadFactor:
+            if C.capacity == QV:
+                F('Exceeding maximum capacity')
+            C.resize()
+        return None
+    def entry_set(self):
+        R = set()
+        for W in C.table:
+            K = W.head
+            while K is not None:
+                R.add(K.data)
+                K = K.next
+        return R
+    def resize(self):
+        z = False
+        if C.size / C.capacity > C.thresholdLoadFactor:
+            C.capacity = C.capacity * 2
+            C.thresholdLoadFactor = C.capacity * 0.75
+            z = True
+        if C.size / C.capacity < C.thresholdUnloadFactor:
+            C.capacity = C.capacity / 2
+            C.thresholdLoadFactor = C.capacity * 0.75
+            z = True
+        if z:
+            Wp = C.entry_set()
+            C.table = [Rp() for X in H(M(C.capacity))]
+            for j in Wp:
+                C.put(j.key, j.val)
+    def is_empty(self):
+        return C.size == 0
+    def key_set(self):
+        c = set()
+        for j in C.entry_set():
+            c.add(j.key)
+        return c
+    def map_copy(self, map_to_copy):
+        Zd = hK.entry_set()
+        for j in Zd:
+            C.put(j.key, j.val)
+    def remove(self, key):
+        r = C.hash_code(J)
+        g = C.table[r].head
+        while g.data.key != J:
+            g = g.next
+        Q = g.data.val
+        g.data = None
+        C.size -= 1
+        if C.size + 1 <= C.capacity * C.thresholdUnloadFactor:
+            C.resize()
+        return Q
+    def value_set(self):
+        d = set()
+        for j in C.entry_set():
+            d.add(j.val)
+        return d
+    def print_map(self):
+        for W in C.table:
+            W.output_list()
+    def generator(self):
+        for r in H(-1, len(C.table) - 1, 1):
+            yield C.table[r]

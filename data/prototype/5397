@@ -1,0 +1,33 @@
+package xy;
+import T.Q.Hb;
+import T.Q.L;
+public class F {
+    public x a;
+    public x B;
+    public F(){
+    }
+    public void u(int YI){
+        x m = new x(YI);
+        m.N = a;
+        a = m;
+    }
+    public boolean uc(int YI){
+        B = a;
+        while(B != null){
+            if(B.P == YI){
+                return true;
+            }
+            B = B.N;
+        }
+        return false;
+    }
+    public L<x> zp(){
+        L<x> W = new Hb<>();
+        B = a;
+        while(B != null){
+            W.y(B);
+            B = B.N;
+        }
+        return W;
+    }
+}

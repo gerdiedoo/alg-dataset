@@ -1,0 +1,56 @@
+x = 'hashMap'
+class HashMap:
+    def __init__(self, array_size):
+        CX.array_size = E
+        CX.array = [None for r in l(E)]
+    def hasher(self, key, count_collisions=0):
+        f = H.encode()
+        k = sum(f)
+        return k + b
+    def array_index_compute(self, hasher_code):
+        return k % CX.array_size
+    def key_after_collision(self, key, number_collisions=1):
+        R = CX.hasher(H, Z)
+        O = CX.array_index_compute(R)
+        return O
+    def assign(self, key, value):
+        X = CX.array_index_compute(CX.hasher(H))
+        K = CX.array[X]
+        if K is None:
+            CX.array[X] = [H, V]
+            return
+        if K[0] == H:
+            CX.array[X] = [H, V]
+            return
+        Z = 1
+        while K[0] != H:
+            O = CX.key_after_collision(H, Z)
+            K = CX.array[O]
+            if K is None:
+                CX.array[O] = [H, V]
+                return
+            if K[0] == H:
+                CX.array[O] = [H, V]
+                return
+            Z += 1
+            if Z > CX.array_size:
+                print('Array Full')
+                return
+        return
+    def retrieve(self, key):
+        X = CX.array_index_compute(CX.hasher(H))
+        c = CX.array[X]
+        if c is None:
+            return None
+        if c[0] == H:
+            return c[1]
+        M = 1
+        while c != H:
+            a = CX.key_after_collision(H, M)
+            c = CX.array[a]
+            if c is None:
+                return None
+            if c[0] == H:
+                return c[1]
+            M += 1
+            return

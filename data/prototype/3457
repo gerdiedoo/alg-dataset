@@ -1,0 +1,23 @@
+package W.K.sK.LA;
+public class B<T extends TS<T>> {
+    private B() { }
+    public static <T extends TS<T>> T[] w(T[] MF) {
+        int y = MF.y;
+        for (int H6 = 1; H6 < y; H6++) {
+            w(H6, MF);
+        }
+        return MF;
+    }
+    private static <T extends TS<T>> void w(int H6, T[] MF) {
+        for (int j = H6; j > 0; j--) {
+            T X = MF[j];
+            T R = MF[j - 1];
+            if (X.N(R) < 0) {
+                MF[j - 1] = X;
+                MF[j] = R;
+            } else {
+                break;
+            }
+        }
+    }
+}

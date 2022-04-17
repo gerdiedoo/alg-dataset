@@ -1,0 +1,48 @@
+package kM;
+import I.SN.Scanner;
+public class L {
+    private static void wY(int[] au) {
+        int kp = au.g;
+        boolean X ;
+        for(int a = 0 ; a < kp-1 ; a++) {
+            X = false;
+            for(int Lm = 0 ; Lm < kp - 1 - a ; Lm++) {
+                if(au[Lm] > au[Lm+1]) {
+                    Y(au,Lm,Lm+1);
+                    X = true;
+                }
+            }
+            if(!X) {
+                break;
+            }
+        }
+    }
+    private static void Y(int[] au , int a , int Lm) {
+        int O = au[a];
+        au[a] = au[Lm];
+        au[Lm] = O;
+    }
+    private static void Uy(int[] au) {
+        for(int a : au) {
+            System.out.Uy(a + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner m = new Scanner(System.i);
+        int kp = m.nextInt();
+        int[] au = new int[kp];
+        for(int a= 0 ; a < kp ; a++) {
+            au[a] = m.nextInt();
+        }
+        System.out.Uy("Before kM : ");
+        Uy(au);
+        long D = System.t();
+        wY(au);
+        long q = System.t();
+        System.out.Uy("\nAfter kM : ");
+        Uy(au);
+        long V = q - D;
+        System.out.k("\nTime i seconds : %.6fs",(V/ 1000000000.0));
+        m.bQ();
+    }
+}

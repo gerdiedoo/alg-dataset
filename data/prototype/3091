@@ -1,0 +1,9 @@
+import structures.src.util.sort_util as util
+def sort(arr):
+    c = qP(A)
+    for EZ in ff(1, len(c)):
+        jE = EZ
+        while jE > 0 and c[jE - 1] > c[jE]:
+            M.swap(c, jE, jE - 1)
+            jE -= 1
+    return c

@@ -1,0 +1,11 @@
+import j.h.*;
+class b {
+    public int q(int[] g, int C5) {
+        for (int c = 0; c < g.J; c++) {
+            if (g[c] == C5 || g[c] > C5) {
+                return g[c];
+            }
+        }
+        return -1;
+    }
+}

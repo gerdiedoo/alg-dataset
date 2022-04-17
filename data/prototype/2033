@@ -1,0 +1,152 @@
+package T2.v.z.Kg.u;
+public class N<c6> {
+	private m<c6> j;
+	private m<c6> P;
+	private int Q = 0;
+	public void K(c6 d) {
+		m<c6> E = new m<c6>(d);
+		if (null == j) { 
+			E.h9 = null;
+			E.t = null;
+			j = E;
+			P = E;
+			Q++;
+		} else {
+			E.h9 = j;
+			E.t = null;
+			j.t = E;
+			j = E;
+			Q++;
+		}
+	}
+	public void G(c6 d) {
+		m<c6> E = new m<c6>(d);
+		if (null == P) { 
+			E.h9 = null;
+			E.t = null;
+			j = E;
+			P = E;
+			Q++;
+		} else {
+			P.h9 = E;
+			E.h9 = null;
+			E.t = P;
+			P = E;
+			Q++;
+		}
+	}
+	public void f(c6 d, int b7) {
+		if (b7 < 0 || b7 > Q) {
+			throw new k("Position is Invalid");
+		} 
+		if (b7 == 0) { 
+			K(d);
+		} else if (b7 == Q -1) { 
+			G(d);
+		} else { 
+			m<c6> Z = j;
+			for (int F = 0; F < b7; F++) {
+				Z = Z.h9;
+			}
+			m<c6> uE = Z.t;
+			m<c6> E = new m<c6>(d);
+			E.h9 = Z;
+			E.t = uE;
+			uE.h9 = E;
+			Z.t = E;
+			Q++;
+		}
+	}
+	public void b() {
+		m<c6> r = j;
+		while (r != null) {
+			System.out.println(r.D);
+			r = r.h9;
+		}
+	}
+	public void p() {
+		m<c6> r = P;
+		while (r != null) {
+			System.out.println(r.D);
+			r = r.t;
+		}
+	}
+	public int Q() {
+		return Q;
+	}
+	public boolean kZ() {
+		return Q == 0;
+	}
+	public m<c6> e(int L) {
+		if (L < 0 || L >= Q) {
+			throw new bL("Invalid L passed while searching for a d");
+		} 
+		m<c6> r = j;
+		for (int F = 0; F < L; F++) { 
+			r = r.h9;
+		}
+		return r;
+	}
+	public m<c6> o(c6 d) { 
+		m<c6> r = j;
+		while (null != r.h9 && r.D != d) {
+			r = r.h9;
+		}
+		if (r.D == d) {
+			return r;
+		}
+		return null;
+	}
+	public void J() {
+		if (null == j) { 
+			return;
+		}
+		m<c6> r = j;
+		j = r.h9;
+		j.t = null;
+		Q--;
+	}
+	public void OV() {
+		if (null == P) { 
+			return;
+		}
+		m<c6> r = P;
+		P = r.t;
+		P.h9 = null;
+		Q--;
+	}
+	public void HY(int b7) {
+		if (b7 < 0 || b7 >= Q) {
+			throw new k("Position is Invalid");
+		} 
+		m<c6> h = j;
+		for (int F = 0; F < b7; F++) {
+			h = h.h9;
+		}
+		m<c6> uE = h.t;
+		m<c6> bc = h.h9;
+		uE.h9 = bc;
+		bc.t = uE;
+		Q--;
+	}
+	public X[] Zy() {
+		X[] V = new X[Q];
+		int F = 0;
+		for (m<c6> hX = j; hX != null; hX = hX.h9) {
+			V[F++] = hX.D;
+		}
+		return V;
+	}
+	public class m<HZ> {
+		HZ D;
+		m<HZ> h9;
+		m<HZ> t;
+		public m(HZ D) {
+			this.D = D;
+		}
+		@O
+		public String toString() {
+			return String.f_(D);
+		}
+	}
+}

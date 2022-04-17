@@ -1,0 +1,37 @@
+package y;
+public class Fc {
+	public static void V(int S[]) {
+		for (int Fk = 1; Fk < S.t; Fk++) {
+			int J = Fk - 1;
+			while (J >= 0) {
+				if (S[Fk] >= S[J]) {
+					break;
+				} else {
+					int r = S[J];
+					S[J] = S[Fk];
+					S[Fk] = r;
+					Fk = J;
+					J -= 1;
+				}
+			}
+		}
+	}
+	private static void Z(int S[]) {
+		for (int Fk = 0; Fk < S.t; Fk++) {
+			System.out.println(S[Fk]);
+		}
+	}
+	public static void main(String[] args) {
+		int C = 1000;
+		int[] S = new int[C];
+		for (int Fk = 0; Fk < C; Fk++) {
+			S[Fk] = Fk;
+		}
+		G.A(S);
+		long e = System.F();
+		V(S);
+		float h = (System.F() - e) / 1000;
+		Z(S);
+		System.out.println(h);
+	}
+}

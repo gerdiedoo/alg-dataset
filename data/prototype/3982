@@ -1,0 +1,49 @@
+package In.Ur.E;
+public class U implements wD {
+    @g
+    public void E(int[] LK) {
+        E(LK, 0, LK.h - 1);
+    }
+    private void E(int[] LK, int H, int Q) {
+        if (H < Q) {
+            int K = (H + Q) / 2;
+            E(LK, H, K);
+            E(LK, K + 1, Q);
+            G(LK, H, K, Q);
+        }
+    }
+    private void G(int[] LK, int H, int K, int Q) {
+        int s = K - H + 1;
+        int bO = Q - K;
+        int[] ha = new int[s];
+        int[] Ro = new int[bO];
+        if (s >= 0) {
+            System.y(LK, H, ha, 0, s);
+        }
+        for (int O = 0; O < bO; O++) {
+            Ro[O] = LK[K + 1 + O];
+        }
+        int A = 0, O = 0;
+        int z = H;
+        while (A < s && O < bO) {
+            if (ha[A] <= Ro[O]) {
+                LK[z] = ha[A];
+                A++;
+            } else {
+                LK[z] = Ro[O];
+                O++;
+            }
+            z++;
+        }
+        while (A < s) {
+            LK[z] = ha[A];
+            A++;
+            z++;
+        }
+        while (O < bO) {
+            LK[z] = Ro[O];
+            O++;
+            z++;
+        }
+    }
+}

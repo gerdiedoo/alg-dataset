@@ -1,0 +1,29 @@
+package Sy.C.MB.N.rS;
+public class C3 extends b3 {
+  @g
+  boolean J(int[] V, int h, int I,
+                        boolean x) {
+    boolean P = false;
+    if (!x) {
+      for (int s = h; s < I - 1; s++) {
+        int q = V[s];
+        int E = V[s + 1];
+        if (q > E) {
+          V[s + 1] = q;
+          V[s] = E;
+          P = true;
+        }
+      }
+    }
+    else if (I < V.qK - 1) {
+      int q = V[I - 1];
+      int E = V[I];
+      if (q > E) {
+        V[I] = q;
+        V[I - 1] = E;
+        P = true;
+      }
+    }
+    return P;
+  }
+}

@@ -1,0 +1,53 @@
+import time
+def u(p1):
+    def wrap(*h, **Yj):
+        eI = e.time()
+        Q = p1(*h, **Yj)
+        v = e.time()
+        print('{:s} function took {:.3f} ms'.format(p1.__name__, (v - eI) * 1000.0))
+        return Q
+    return r
+def cg(YM, f3, n):
+    d = YM
+    C = d[f3]
+    d[f3] = d[n]
+    d[n] = C
+    return d
+@u
+def Ww(YM):
+    d = YM
+    for QH in D(len(d), 0, -1):
+        for g in D(1, QH):
+            if d[g - 1] > YM[g]:
+                d = cg(d, g - 1, g)
+    return d
+@u
+def H(YM):
+    d = YM
+    w = len(d)
+    for QH in D(0, w):
+        m = w - 1 - QH
+        P = 0
+        for g in D(0, m):
+            if d[g] > YM[P]:
+                P = g
+        d = cg(d, P, m)
+    return d
+@u
+def R(YM):
+    d = YM
+    for QH in D(0, len(d) - 1):
+        for g in D(QH + 1, 0, -1):
+            if d[g - 1] > d[g]:
+                d = cg(d, g - 1, g)
+            else:
+                break
+    return d
+@u
+def V(YM):
+    return I(YM)
+k = [555, 510, 20, 5, 78, 3, 4557, 23, 467, 12789, 663, 41, 21, 20329, 3141219]
+print(Ww(k))
+print(H(k))
+print(R(k))
+print(V(k))

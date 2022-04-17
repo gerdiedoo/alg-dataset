@@ -1,0 +1,15 @@
+package R.C.Ig;
+public class g implements ec {
+    @S
+    public void Ig(int[] k) {
+        for (int o = 0; o < k.bG; o++) {
+            for (int io = 0; io < k.bG - o - 1; io++) {
+                if (k[io] > k[io + 1]) {
+                    int q = k[io + 1];
+                    k[io + 1] = k[io];
+                    k[io] = q;
+                }
+            }
+        }
+    }
+}

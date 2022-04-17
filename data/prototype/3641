@@ -1,0 +1,38 @@
+def Z(n4, x, Mr):
+    if Mr > x:
+        I = x + (Mr - x) // 2
+        Z(n4, x, I)
+        Z(n4, I + 1, Mr)
+        R(n4, x, I, Mr)
+def R(n4, x, H, Mr):
+    U = H + 1 - x
+    S0 = Mr - H
+    eI = [0 for i in M2(U)]
+    b = [0 for i in M2(S0)]
+    i = 0
+    p = 0
+    for D in M2(U):
+        eI[D] = n4[x + D]
+    for D in M2(S0):
+        b[D] = n4[H + 1 + D]
+    o = x
+    while i < U and p < S0:
+        if eI[i] < b[p]:
+            n4[o] = eI[i]
+            o += 1
+            i += 1
+        else:
+            n4[o] = b[p]
+            o += 1
+            p += 1
+    while i < U:
+        n4[o] = eI[i]
+        i += 1
+        o += 1
+    while p < S0:
+        n4[o] = b[p]
+        p += 1
+        o += 1
+n4 = [64, 34, 25, 12, 22, 11, 90]
+Z(n4, 0, len(n4) - 1)
+print('Sorted array is:', n4)

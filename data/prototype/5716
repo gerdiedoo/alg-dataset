@@ -1,0 +1,29 @@
+def G(k, u, I=False):
+    E = len(k)
+    if E == 1:
+        return k
+    o = G(k[0:E // 2], u, I)
+    P = G(k[E // 2:], u, I)
+    Y = O(o, P, u, I)
+    return Y
+def O(o, P, u, I=False):
+    Ib = []
+    if I:
+        while len(o) > 0 and len(P) > 0:
+            if o[0][u] >= P[0][u]:
+                Ib.append(o.pop(0))
+            else:
+                Ib.append(P.pop(0))
+    else:
+        while len(o) > 0 and len(P) > 0:
+            if o[0][u] <= P[0][u]:
+                Ib.append(o.pop(0))
+            else:
+                Ib.append(P.pop(0))
+    Ib.extend(o)
+    Ib.extend(P)
+    return Ib
+if B == '__main__':
+    k = [{'name': 'vedanth', 'age': 17, 'time_hours': 1}, {'name': 'rajab', 'age': 12, 'time_hours': 3}, {'name': 'vignesh', 'age': 21, 'time_hours': 2.5}, {'name': 'chinmay', 'age': 24, 'time_hours': 1.5}]
+    Y = G(k, key='time_hours', descending=True)
+    print(Y)

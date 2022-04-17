@@ -1,0 +1,40 @@
+import time
+def Zr(Z, w7, q, cO, zH):
+    if w7 < q:
+        V = Q(Z, w7, q, cO, zH)
+        Zr(Z, w7, V - 1, cO, zH)
+        Zr(Z, V + 1, q, cO, zH)
+def Q(Z, w7, q, cO, zH):
+    m = w7
+    n = Z[q]
+    cO(Z, d(len(Z), w7, q, m, m))
+    Y.sleep(zH)
+    for L in cR(w7, q):
+        if Z[L] < n:
+            cO(Z, d(len(Z), w7, q, m, L, True))
+            Y.sleep(zH)
+            (Z[m], Z[L]) = (Z[L], Z[m])
+            m += 1
+        cO(Z, d(len(Z), w7, q, m, L))
+        Y.sleep(zH)
+    cO(Z, d(len(Z), w7, q, m, q, True))
+    Y.sleep(zH)
+    (Z[m], Z[q]) = (Z[q], Z[m])
+    return m
+def d(w, w7, q, m, i, B=False):
+    F = []
+    for O in cR(w):
+        if O >= w7 and O <= q:
+            F.append('gray')
+        else:
+            F.append('red')
+        if O == q:
+            F[O] = 'orange'
+        elif O == m:
+            F[O] = 'green'
+        elif O == i:
+            F[O] = 'yellow'
+        if B:
+            if O == m or O == i:
+                F[O] = 'purple'
+    return F

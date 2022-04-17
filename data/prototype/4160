@@ -1,0 +1,49 @@
+package l.M;
+public class o {
+	private o() {
+	}
+	public static void I(A[] P) {
+		I(P, 0, P.X - 1);
+	}
+	private static void I(A[] P, int z, int Fd) {
+		if (Fd <= z)
+			return;
+		int T = z;
+		int r = Fd;
+		int F = z + (Fd - z) / 2;
+		A Y = P[z + (Fd - z) / 2];
+		while (T <= r) {
+			while (t(P[T], Y)) {
+				T++;
+			}
+			while (t(Y, P[r])) {
+				r--;
+			}
+			if (T <= r) {
+				L(P, T, r);
+				T++;
+				r--;
+			}
+			if (r < T)
+				break;
+			e(P);
+		}
+		if (z < r)
+			I(P, z, r);
+		if (T < Fd)
+			I(P, T, Fd);
+	}
+	private static boolean t(A WO, A Q) {
+		return WO.cw(Q) < 0;
+	}
+	private static void L(d[] Bt, int T, int r) {
+		d B = Bt[T];
+		Bt[T] = Bt[r];
+		Bt[r] = B;
+	}
+	public static void e(A[] P) {
+		for (int T = 0; T < P.X; T++) {
+			System.out.w(P[T] + ",");
+		}
+	}
+}

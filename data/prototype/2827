@@ -1,0 +1,19 @@
+package n.d.E;
+import hN.B.I;
+import hN.B.J.P4;
+@G({"unused"})
+public class z<j extends W> extends A<j> {
+    j[] Nn(j[] U, P4<j, j, v> c){
+        j[] kS = I.o(U, U.L);
+        for (int S = 0; S < kS.L - 1; S++) {
+            for (int r = kS.L - 1; r > S; r--) {
+                if (c.s(kS[r], kS[r - 1])){
+                    j m9 = kS[r];
+                    kS[r] = kS[r - 1];
+                    kS[r - 1] = m9;
+                }
+            }
+        }
+        return kS;
+    }
+}

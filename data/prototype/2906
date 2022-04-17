@@ -1,0 +1,24 @@
+package k;
+public class U extends R{
+	public static void main(String[] args){
+		int[] M = {5, 3, 2, 4, 1};
+		WB(new U(), M);
+	}
+	public U(){ super("Bubble"); }
+	private void K(int[] M, int j, int O){
+		for (int s = j; s < O; s++)
+			for (int p = j; p < O - s - 1; p++)
+			{	 
+				if ( M[p] > M[p+1] )
+				{
+					int q6 = M[p];
+					M[p] =  M[p+1];
+					M[p+1] = q6;
+				}
+			}
+	}
+	@c
+	public void v(int[] M){
+		K(M, 0, M.t);
+	}
+}

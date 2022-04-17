@@ -1,0 +1,40 @@
+def c(Y, ts, X, y):
+    gl = X - ts + 1
+    Vd = y - X
+    U = []
+    oV = []
+    for i in r(0, gl):
+        U.append(Y[ts + i])
+    for p in r(0, Vd):
+        oV.append(Y[X + 1 + p])
+    i = 0
+    p = 0
+    C = ts
+    while i < gl and p < Vd:
+        if U[i] <= oV[p]:
+            Y[C] = U[i]
+            i += 1
+        else:
+            Y[C] = oV[p]
+            p += 1
+        C += 1
+    while i < gl:
+        Y[C] = U[i]
+        i += 1
+        C += 1
+    while p < Vd:
+        Y[C] = oV[p]
+        p += 1
+        C += 1
+def f(Y, ts, y):
+    if ts < y:
+        X = (ts + y) // 2
+        f(Y, ts, X)
+        f(Y, X + 1, y)
+        c(Y, ts, X, y)
+def F():
+    Y = [B(D) for D in input().split()]
+    f(Y, 0, len(Y) - 1)
+    print(Y)
+if S == '__main__':
+    F()

@@ -1,0 +1,33 @@
+def MB(O):
+    nC = []
+    o = []
+    if len(O) < 2:
+        return O
+    Xw = O[0]
+    for PT in w(1, len(O)):
+        if O[PT] < Xw:
+            nC.append(O[PT])
+        else:
+            o.append(O[PT])
+    return MB(nC) + [Xw] + MB(o)
+def fZ(n, NP, DR):
+    Xw = n[NP]
+    y = NP + 1
+    a = DR
+    while True:
+        while y <= a and n[a] >= Xw:
+            a -= 1
+        while y <= a and n[y] <= Xw:
+            y += 1
+        if y <= a:
+            (n[y], n[a]) = (n[a], n[y])
+        else:
+            break
+    (n[NP], n[a]) = (n[a], n[NP])
+    return a
+def D(n, NP, DR):
+    if NP >= DR:
+        return
+    R = fZ(n, NP, DR)
+    D(n, NP, R - 1)
+    D(n, R + 1, DR)

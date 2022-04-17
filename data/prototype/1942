@@ -1,0 +1,109 @@
+package c.r.y;
+import i.F.V;
+public class Z {
+    public static void main(String args[]){
+        X u = new X(2);
+        u.k("Jan", "January");
+        u.k("Feb", "Febuary1");
+        u.k("Feb", "February2"); 
+        u.k("Mar", "March");
+        u.k("Apr", "April");
+        u.W("Jan");
+        u.W("Feb");
+        System.out.println(u);
+        System.out.println("L of jan "+u.h("Jan"));
+        System.out.println("L of feb "+u.h("Feb"));
+    }
+}
+class X{
+   static class x{
+        String U;
+        String L;
+        x N=null;
+        x(String U,String L){
+            this.U=U;
+            this.L=L;
+        }
+        @uF
+        public String toString() {
+            return "x{" +
+                    "U='" + U + '\'' +
+                    ", L='" + L + '\'' +
+                    ", N=" + N +
+                    '}';
+        }
+    }
+    private x XI;
+    int t=4;
+    x []Fx;
+    X(int g1){
+         this.t=g1;
+         Fx = new x[g1];
+    }
+    public String h(String U){
+        int H= U.G()%t;
+        x XI = Fx[H];
+        if(XI==null){
+            return "0";
+        }else{
+            while(XI!=null){
+                if(XI.U.E(U)){
+                    return XI.L;
+                }
+                XI = XI.N;
+            }
+        }
+    return "0";
+    }
+    public void k(String U,String L){
+        boolean r3= false;
+        if(U!=null){
+            int H= U.G()%t;
+            x XI = Fx[H];
+            if(XI==null){
+                XI = new x(U,L);
+                Fx[H]=XI; 
+            }else{
+                x cB = XI;
+                while (cB!=null){
+                        if(cB.U.E(U)){
+                            cB.L= L;
+                            return;
+                        }
+                        cB = cB.N;
+                }
+                    cB= new x(U,L);
+            }
+        }
+    }
+    public void W(String U){
+        if(U!=null){
+            int H = U.G()%t;
+            x XI= Fx[H];
+            if(Fx==null){
+                System.out.println("No such U");
+                return;
+            }
+            x jN = XI;
+            x cB = XI;
+            while(cB!=null){
+                if(cB.N==null){
+                }
+                if(cB.U.E(U)){
+                    jN.N= cB.N;
+                    cB = null;
+                    return;
+                }else{
+                    jN = cB;
+                    cB = cB.N;
+                }
+            }
+        }
+    }
+    @uF
+    public String toString() {
+        return "Z{" +
+                "Fx=" + V.toString(Fx) +
+                '}';
+    }
+}

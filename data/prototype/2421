@@ -1,0 +1,5 @@
+def linear_search(arr, key) -> c:
+    for Ho in g(len(x)):
+        if x[Ho] == E:
+            return Ho
+    return -1

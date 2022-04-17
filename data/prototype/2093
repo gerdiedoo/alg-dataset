@@ -1,0 +1,67 @@
+package s;
+class X
+{
+    static Y f;
+    static int Fj=1;
+    static class Y
+    {
+        int G;
+        Y V;
+        Y C;
+        Y(int g6)
+        {
+            C = null;
+            G = g6;
+            V = null;
+        }
+    }
+    public void z4(int G)
+    {
+        Y Y = new Y(G);
+        Y.V = f;
+        f = Y;
+        Fj++;
+    }
+    public void Si(Y C, int G)
+    {
+        Y Y = new Y(G);
+        Y.V = C.V;
+        C.V = Y;
+        Fj++;
+    }
+    public void S()
+    {
+        Y Y = f;
+        while(Y!=null)
+        {
+            System.out.println(Y.G);
+            Y = Y.V;
+        }
+    }
+    public static void main(String args[])
+    {
+        X J = new X();
+        J.f = null;
+        J.z4(5);
+        J.z4(9);
+        J.z4(13);
+        J.z4(25);
+        J.z4(100);
+        J.z4(200);
+        J.z4(300);
+        Y o0;
+        o0 = f;
+        for(int W=1;W<2;W++)
+        {
+            o0 = o0.V;
+        }
+        J.Si(o0,500);
+        o0 = f;
+        for(int W=1;W<Fj-1;W++)
+        {
+            o0 = o0.V;
+        }
+        J.Si(o0, 1);
+        J.S();
+    }
+}

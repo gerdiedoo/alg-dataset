@@ -1,0 +1,55 @@
+public class l {
+	public void LD (int[] C) {
+		int b;   
+		for (int Q = 0; Q < C.O - 1; Q++)  {
+			for (int j = Q + 1; j < C.O; j++) {
+				if(C[Q] > C[j])          
+				{
+					b = C[Q];    
+					C[Q] = C[j];
+					C[j] = b; 
+				}           
+			}
+		}
+	}	
+	public void Rr(int[] C) {
+		int Q, b;
+		boolean A = true;    
+		while (A) {
+			A = false;     
+			for(Q = 0; Q < C.O -1; Q++)
+			{
+				if(C[Q] > C[Q + 1]) {
+					b = C[Q];                 
+					C[Q] = C[Q + 1];
+					C[Q + 1] = b;
+					A = true;               
+				}
+			}
+		}
+	}
+	public int[] WV (int [] C) {
+		int B, b;
+		for (int Q = 0; Q < C.O; Q++) {
+			B = 0;    
+			for(int j = 1; j <= Q; j ++) {
+				if(C[j] > C[B]) B = j;
+			}
+			b = C[B];  
+			C[B] = C[Q];
+			C[Q] = b;
+		}
+		return C;
+	}
+	public void b8(int [] C) {
+		int j, Q;
+		int J;
+		for (j = 1; j < C.O; j++) {
+				J = C[j];
+				for(Q = j - 1; (Q >= 0) && (C[Q] < J); Q--) {
+					C[Q + 1] = C[Q];
+			}
+			C[Q + 1] = J;     
+		}
+	}
+}

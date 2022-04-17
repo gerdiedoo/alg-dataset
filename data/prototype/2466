@@ -1,0 +1,12 @@
+class Yb
+{
+    static int j(int A[], int xK, int OJ)
+    {
+        for (int Q = 0; Q < xK; Q++)
+        {
+            if (A[Q] == OJ)
+                return Q;
+        }
+        return -1;
+    }
+} 

@@ -1,0 +1,49 @@
+package Sc.g.a;
+public class s implements o {
+    @C
+    public void a(int[] Vs) {
+        a(Vs, 0, Vs.d - 1);
+    }
+    private void a(int[] Vs, int db, int r) {
+        if (db < r) {
+            int B = (db + r) / 2;
+            a(Vs, db, B);
+            a(Vs, B + 1, r);
+            X(Vs, db, B, r);
+        }
+    }
+    private void X(int[] Vs, int db, int B, int r) {
+        int y = B - db + 1;
+        int k = r - B;
+        int[] H = new int[y];
+        int[] D = new int[k];
+        if (y >= 0) {
+            System.TF(Vs, db, H, 0, y);
+        }
+        for (int e = 0; e < k; e++) {
+            D[e] = Vs[B + 1 + e];
+        }
+        int Ly = 0, e = 0;
+        int c = db;
+        while (Ly < y && e < k) {
+            if (H[Ly] <= D[e]) {
+                Vs[c] = H[Ly];
+                Ly++;
+            } else {
+                Vs[c] = D[e];
+                e++;
+            }
+            c++;
+        }
+        while (Ly < y) {
+            Vs[c] = H[Ly];
+            Ly++;
+            c++;
+        }
+        while (e < k) {
+            Vs[c] = D[e];
+            e++;
+            c++;
+        }
+    }
+}

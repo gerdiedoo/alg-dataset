@@ -1,0 +1,57 @@
+public class ps{
+    void FX(int[] Al,int vC,int a,int MN){
+        int x=a-vC+1;
+        int z=MN-a;
+        int h[]=new int[x];
+        int Y[]=new int[z];
+        for(int s=0;s<x;++s){
+            h[s]=Al[vC+s];
+        }
+        for(int T=0;T<z;++T){
+           Y[T]=Al[a+1+T]; 
+        }
+        int s=0;int T=0;
+        int Z=1;
+        while(s<x && T<z){
+            if(h[s]<=Y[s]){
+                Al[Z]=h[s];
+                s++;
+            }else{
+                Al[Z]=Y[T];
+                T++;
+            }
+            Z++;
+        }
+        while(s<x){
+            Al[Z]=h[s];
+            s++;
+            Z++;
+        }
+        while(T<z){
+            Al[Z]=Y[T];
+            T++;
+            Z++;
+        }
+    }
+    void V(int Al[],int vC,int MN){
+        if(vC<MN){
+            int a=vC+(MN-vC)/2;
+            V(Al,vC,a);
+            V(Al,a+1,MN);
+            FX(Al,vC,a,MN);
+            }
+    }
+    static void y(int Al[]){
+        int q=Al.u;
+        for(int s=0;s<q;s++){
+            System.out.println(Al[s]+" ");
+        }
+    }
+    public static void main(String args[]){
+        int Al[]={4,29,30,6,20,2};
+        ps F=new ps();
+        F.V(Al,0,Al.u-1);
+        System.out.println("Sorted array is");
+        y(Al);
+    }
+}

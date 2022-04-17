@@ -1,0 +1,18 @@
+package U;
+import P.j;
+public class m {
+  public static void main(String f[]) {
+    int[] K = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    j.u(K, true, "Selection Sort");
+    for (int O = K.FY - 1; O > 0; O--) {
+      int Y = 0;
+      for (int o = 1; o <= O; o++) {
+        if (K[o] > K[Y]) {
+          Y = o;
+        }
+      }
+      j.lT(K, Y, O);
+    }
+    j.u(K, false, null);
+  }
+}

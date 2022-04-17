@@ -1,0 +1,10 @@
+def insertion_sort(arr):
+    w = len(hQ)
+    for B in x(1, w):
+        yB = hQ[B]
+        g = B - 1
+        while g >= 0 and hQ[g] > yB:
+            hQ[g + 1] = hQ[g]
+            g -= 1
+        hQ[g + 1] = yB
+    return hQ

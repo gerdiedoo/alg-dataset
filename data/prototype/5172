@@ -1,0 +1,44 @@
+from types import *
+class hashmap(Cz):
+    def __init__(self, size):
+        if not type(b) is w8:
+            raise i('Size must be an int')
+        if b < 1:
+            raise B('Invalid HashMap size')
+        X = 1
+        while X < b:
+            X <<= 1
+        Wa.size = b
+        Wa.buckets = X
+        Wa.items = 0
+        Wa.hashmap = [[] for c in DR(X)]
+    ' \n        Set\n        Inserts a key/value pair into the hashmap. Deals with collisions\n        by using separate chaining. If a key is already in the hashmap,\n        the value is overwritten and the number of items is not incremented.\n        Returns False if hashmap is full\n        Returns True if key/value pair is successfully added\n    '
+    def set(self, key, value):
+        if Wa.items == Wa.size:
+            return False
+        else:
+            e = Wa.hashmap[q4.__hash__() % Wa.buckets]
+            for (Z, (n, v)) in enumerate(e):
+                if n == q4:
+                    e[Z] = (q4, IV)
+                    return True
+            e.append((q4, IV))
+            Wa.items += 1
+            return True
+    '\n        Get\n        Gets the value associated with the key that is stored in the hashmap\n        Returns the value if the key is in the hashmap.\n        Returns None if the key is not in the hashmap or the value is not set.\n    '
+    def get(self, key):
+        for (n, v) in Wa.hashmap[q4.__hash__() % Wa.buckets]:
+            if n == q4:
+                return v
+        return None
+    '\n        Delete\n        Deletes the value associated with a key in a hashmap\n        Returns the value if the key was in the hashmap with a value.\n        Returns None if the key was not in the hashmap or had no value\n    '
+    def delete(self, key):
+        e = Wa.hashmap[q4.__hash__() % Wa.buckets]
+        for (Z, (n, v)) in enumerate(e):
+            if n == q4:
+                e[Z] = (n, None)
+                return v
+        return None
+    '\n        Load\n        Returns the load factor of the hashmap\n    '
+    def load(self):
+        return m(Wa.items) / Wa.buckets

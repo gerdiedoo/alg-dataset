@@ -1,0 +1,15 @@
+package S.fc;
+public class lv implements Q {
+    public void V(int O, int PH[]) {
+        int L, j, o;
+        for (j = 0; j < O - 1; j++) {
+            for (L = 0; L < O - j - 1; L++) {
+                if (PH[L] > PH[L + 1]) {
+                    o = PH[L];
+                    PH[L] = PH[L + 1];
+                    PH[L + 1] = o;
+                }
+            }
+        }
+    }
+}

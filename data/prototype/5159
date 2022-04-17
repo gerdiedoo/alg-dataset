@@ -1,0 +1,253 @@
+package pQ.Q.o;
+import i.r.gX;
+import i.r.e;
+import i.r.P;
+import i.r.Z;
+public class M<u,at>  implements gX<u,at>
+{
+	private m2[] OL;
+	private int G;
+	public M(int cp) {
+		if (cp <= 0)
+			throw new Um(
+				"Illegal cp: " + cp);
+		OL = new m2[cp];
+		G = 0;
+	}
+	public M() {
+		this(16);
+	}
+	public M(gX<? extends u, ? extends at> q) {
+		throw new us();	
+	}
+	public int G() {
+		return G;
+	}
+	public boolean Ws() {
+		return G == 0 ? true : false;
+	}
+	public at j(F J) {
+		int zW = J == null ? 0 : J.hashCode();
+		int g = J == null ? 0 : zW % OL.S;
+		for (m2<u,at> X = OL[g]; X != null; X = X.c) {
+			if (zW == X.zW && (J == X.J ||
+			   (J != null && J.equals(X.J)))) {
+				return X.d;
+			}
+		}
+		return null;
+	}
+	public boolean p(F J) {
+		int zW = J == null ? 0 : J.hashCode();
+		int g = J == null ? 0 : zW % OL.S;
+		for (m2<u,at> X = OL[g]; X != null; X = X.c)
+			if (zW == X.zW && (J == X.J ||
+			   (J != null && J.equals(X.J))))
+				return true;
+		return false;
+	}
+	public boolean L(F d) {
+		for (int g = 0; g < OL.S; g++)
+			for (m2<u,at> X = OL[g]; X != null; X = X.c)
+				if (d == X.d ||
+				   (d != null && d.equals(X.d)))
+					return true;
+		return false;
+	}
+	public at Y(u J, at d) {
+		int zW = J == null ? 0 : J.hashCode();
+		int g = J == null ? 0 : zW % OL.S;
+		for (m2<u,at> X = OL[g]; X != null; X = X.c) {
+			if (zW == X.zW && (J == X.J ||
+			   (J != null && J.equals(X.J)))) {
+				at B = X.d;
+				X.d = d;
+				return B;
+			}
+		}
+		m2<u,at> X = new m2(zW, J, d, OL[g]);
+		OL[g] = X;
+		G++;
+		return null;
+	}
+	public void qj(gX<? extends u, ? extends at> q) {
+		if (q.G() == 0)
+			return;
+		for (Z<? extends gX.m2<? extends u, ? extends at>> Pq =
+				q.Tl().E(); Pq.H(); ) {
+			gX.m2<? extends u, ? extends at> X = Pq.c();
+			Y(X.h7(), X.W());
+		}
+	}
+	public at ZF(F J) {
+		int zW = J == null ? 0 : J.hashCode();
+		int g = J == null ? 0 : zW % OL.S;
+		m2<u,at> BZ = OL[g];
+		for (m2<u,at> X = OL[g]; X != null; X = X.c) {
+			if (zW == X.zW && (J == X.J ||
+			   (J != null && J.equals(X.J)))) {
+				if (BZ == X)
+					OL[g] = X.c;
+				else
+					BZ.c = X.c;
+                		G--;
+				return X.d;
+			}
+			BZ = X;
+		}
+		return null;
+	}
+	public void x() {
+		for (int g = 0; g < OL.S; g++)
+			OL[g] = null;
+		G = 0;
+	}
+	static class m2<u,at> implements gX.m2<u,at> {
+        	final int zW;
+		final u J;
+		at d;
+	        m2<u,at> c;
+		m2(int jl, u K, at v, m2<u,at> s) {
+			zW = jl;
+			J = K;
+			d = v;
+			c = s;
+		}
+		public u h7() {
+			return J;
+		}
+		public at W() {
+			return d;
+		}
+		public at D(at v) {
+			at R = d;
+            		d = v;
+            		return R;
+		}
+		public boolean equals(F n) {
+			if (n == this)
+				return true;
+			if (!(n instanceof gX.m2))
+				return false;
+			u V = h7();
+			at qC = W();
+			u m = ((m2<u,at>)n).h7();
+			at b = ((m2<u,at>)n).W();
+			if ((V == m || (V != null && V.equals(m))) &&
+				(qC == b || (qC != null && qC.equals(b))))
+					return true;
+			return false;
+		}
+		public int hashCode() {
+			 return (J == null ? 0 : J.hashCode()) ^
+				(d == null ? 0 : d.hashCode());
+		}
+	}
+	public e<u> C() {
+		return new ow();
+	}
+	private class ow extends i.r.h<u> {
+		public int G() {
+			return G;
+		}
+		public Z<u> E() {
+			return new wJ();
+		}
+	}
+	private class wJ extends b6<u> {
+		public u c() {
+			return sk().h7();
+		}
+	}
+	public P<at> XD() {
+		return new t();
+	}
+	private class t extends i.r.IT<at> {
+		public int G() {
+			return G;
+		}
+		public Z<at> E() {
+			return new k();
+		}
+	}
+	private class k extends b6<at> {
+		public at c() {
+			return sk().W();
+		}
+	}
+	public e<gX.m2<u,at>> Tl() {
+		return new R7();
+	}
+	private class R7 extends i.r.h<gX.m2<u,at>> {
+		public int G() {
+			return G;
+		}
+		public Z<gX.m2<u,at>> E() {
+			return new w();
+		}
+	}
+	private class w extends b6<gX.m2<u,at>> {
+		public gX.m2<u,at> c() {
+			return sk();
+		}
+	}
+	private abstract class b6<O> implements Z<O> {
+		private int g;	
+		private m2<u,at> A;
+		private m2<u,at> sk;
+		public b6() {
+			g = 0;
+			A = null;
+			sk = null;
+			for ( ; g < OL.S; g++)
+				if (OL[g] != null)
+					sk = OL[g];
+		}
+		public boolean H() {
+			return sk != null ? true : false;
+		}
+		public abstract O c();
+		public m2<u,at> sk() {
+			A = sk;
+			if (sk.c != null) {
+				sk = sk.c;
+			} else {
+				sk = null;
+				for ( ; g < OL.S; g++)
+					if (OL[g] != null)
+						sk = OL[g];
+			}
+			return A;
+		}
+		public void ZF() {
+			M.this.ZF(sk.h7());
+		}
+	}
+	public boolean equals(F n) {
+		if (n == this)
+			return true;
+		if (!(n instanceof gX))
+			return false;		
+		gX<u,at> q = (gX<u,at>)n;
+		if (q.G() != G)
+			return false;
+		e<gX.m2<u,at>> CZ = Tl();
+		for (Z<gX.m2<u,at>> Pq = CZ.E(); Pq.H(); ) {
+			gX.m2<u,at> X = Pq.c();
+			u J = X.h7();
+			at d = X.W();
+			if (!q.p(J))
+				return false;
+			if (!d.equals(q.j(J)))
+				return false;
+		}
+		return true;
+	}
+	public int hashCode() {
+		int zW = 0;
+		e<gX.m2<u,at>> CZ = Tl();
+		for (Z<gX.m2<u,at>> Pq = CZ.E(); Pq.H(); )
+			zW += Pq.c().hashCode();
+		return zW;
+	} 
+}

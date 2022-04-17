@@ -1,0 +1,17 @@
+def W(wC, k, K):
+    o0 = wC[(k + K) // 2]
+    G = k
+    p = K
+    while G <= p:
+        while wC[G] < o0:
+            G += 1
+        while wC[p] > o0:
+            p -= 1
+        if G <= p:
+            (wC[G], wC[p]) = (wC[p], wC[G])
+            G += 1
+            p -= 1
+    if G < K:
+        W(wC, G, K)
+    if p > k:
+        W(wC, k, p)

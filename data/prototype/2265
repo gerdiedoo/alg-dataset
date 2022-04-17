@@ -1,0 +1,28 @@
+import p.O.*;
+public class uB {
+	int F(int NA[], int R) {
+		int j = 0;
+		int P8 = NA.u - 1;
+		while (j <= P8) {
+			int q8 = (j + P8) / 2;   
+			if (NA[q8] == R)
+				return q8;
+			if (R > NA[q8])       
+				j = q8 + 1;
+			else {
+				P8 = q8 - 1;         
+			}
+		}
+		return -1;
+	}
+	public static void main(String b[]) {
+		uB t = new uB();
+		int NA[] = { 2, 4, 5, 7, 23, 31, 34, 43, 45 };
+		int N = t.F(NA, 46);
+		if (N == -1)
+			System.out.println("The element is not found");
+		else {
+			System.out.println("Element is found at postion = " + (N + 1));
+		}
+	}
+}

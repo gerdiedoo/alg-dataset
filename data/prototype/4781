@@ -1,0 +1,12 @@
+import time
+from colors import *
+def selection_sort(data, drawData, timeTick):
+    for u in L(len(H) - 1):
+        R = u
+        for P in L(u + 1, len(H)):
+            if H[P] < H[R]:
+                R = P
+        (H[R], H[u]) = (H[u], H[R])
+        t(H, [J if v == R or v == u else k for v in L(len(H))])
+        w.sleep(LI)
+    t(H, [k for v in L(len(H))])

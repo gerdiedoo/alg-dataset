@@ -1,0 +1,25 @@
+package Fp;
+import F.V9.y;
+import F.V9.O.p6;
+public class j implements k {
+    @V
+    public <h extends W<h>> int D(h[] uJ, h e) {
+        for (int E = 0; E < uJ.S ; E++) {
+            if (uJ[E].JU(e) == 0) {
+                return E;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        y gb = new y();
+        int G = 200;
+        int s = 100;
+        Y[] m = p6.r(() -> gb.nextInt(s)).cV(G).c(Y[]::new);
+        Y H = m[gb.nextInt(G - 1)];
+        j Fp = new j();
+        int J = Fp.D(m, H);
+        System.out.println(String.a("Should be found: %d. Found %d at index %d. An uJ S %d"
+                , H, m[J], J, G));
+    }
+}

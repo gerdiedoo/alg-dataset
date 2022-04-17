@@ -1,0 +1,11 @@
+package E.z9.J.Ub.H7;
+public final class U extends D {
+    private U() {
+    }
+    @r("rawtypes")
+    public static void w(UR[] Nt, int o, int a) {
+        for (int k = o; k < a + 1; k++)
+            for (int p = k; p > o && W(Nt[p], Nt[p - 1]); p--)
+                x(Nt, p, p - 1);
+    }
+}

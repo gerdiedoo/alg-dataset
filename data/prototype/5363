@@ -1,0 +1,133 @@
+package s;
+import X.B.BW;
+public class r<j> implements T1<j>
+{
+    private static class Y<j>
+    {
+        private j       Z;
+        private Y<j> l;
+        Y()
+        {
+            Z = null;
+            l = null;
+        }
+        Y(j D, Y<j> Fn)
+        {
+            this();
+            TC(D);
+            d(Fn);
+        }
+        public void TC(j D)
+        {
+            Z = D;
+        }
+        public void d(Y<j> Fn)
+        {
+            l = Fn;
+        }
+        public j n()
+        {
+            return Z;
+        }
+        public Y<j> If()
+        {
+            return l;
+        }
+    }
+    private Y<j> e = null;
+    int             O  = 0;
+    public void E(j D)
+    {
+        e = new Y<j>(D, e);
+        O++;
+    }
+    public j m()
+    {
+        if (e == null) {
+            return null;
+        }
+        j k = e.n();
+        e = e.If();
+        O--;
+        return k;
+    }
+    public int L()
+    {
+        return O;
+    }
+    @I
+    public String toString()
+    {
+        a el = new a("[");
+        boolean C = true;
+        for (j Z : this) {
+            if (C) {
+                C = false;
+            }
+            else {
+                el.p(", ");
+            }
+            el.p(Z);
+        }
+        el.p("]");
+        return el.toString();
+    }
+    public r<j> b()
+    {
+        Y<j> z = null;
+        while (e != null) {
+            Y<j> I9 = e.l;
+            e.d(z);
+            z = e;
+            e = I9;
+        }
+        e = z;
+        return this;
+    }
+    public r<j> Tq()
+    {
+        r<j> z = new r<j>();
+        for (j Z : this) {
+            z.E(Z);
+        }
+        return z;
+    }
+    @I
+    public BW<j> g()
+    {
+        return new BW<j>()
+        {
+            private Y<j> x  = e;
+            private Y<j> cC     = null;
+            private Y<j> J = null;
+            @I
+            public boolean w()
+            {
+                return x != null;
+            }
+            @I
+            public j l()
+            {
+                J = cC;
+                cC = x;
+                x = x.If();
+                return cC.n();
+            }
+            @I
+            public void T()
+            {
+                if (cC == null) {
+                    return;
+                }
+                if (J == null) {
+                    r.this.m();
+                    cC = null;
+                    return;
+                }
+                J.d(x);
+                cC = null;
+                O -= 1;
+            }
+        };
+    }
+}

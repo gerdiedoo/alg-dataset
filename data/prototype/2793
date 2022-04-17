@@ -1,0 +1,64 @@
+package G.aw;
+import G.*;
+public class B implements jK{
+	private mz[] ea;
+	private s Um;
+	private boolean A;
+	public B(mz[] ea, s Um, boolean A) {
+		this.ea = ea;
+		this.Um = Um;
+		this.A = A;
+	}
+	public void R() {
+		if (A) {
+			k();
+		} else {
+			C();
+		}
+		w.P=false;
+	}
+	public void k() {
+		int f = 0;
+		boolean H = false;
+		for(int i = 0; i<ea.L5-1; i++){
+			H = false;
+			for(int N = 1; N<ea.L5-i; N++){
+				if (ea[N-1]> ea[N]){
+					f = ea[N-1];
+					ea[N-1] = ea[N];
+					ea[N]= f;
+					H = true;
+				}
+			}
+			Um.o(ea);
+			try {
+				D.aP(w.aP);
+			} catch (sT Nw) {
+				Nw.W();
+			}
+			if (!H) break;
+		}
+	}
+	public void C() {
+		int f = 0;
+		boolean H = false;
+		for(int i = 0; i<ea.L5-1; i++){
+			H = false;
+			for(int N = 1; N<ea.L5-i; N++){
+				if (ea[N-1]> ea[N]){
+					f = ea[N-1];
+					ea[N-1] = ea[N];
+					ea[N]= f;
+					H = true;
+				}
+				Um.o(ea, N, N+1);
+				try {
+					D.aP(w.aP);
+				} catch (sT Nw) {
+					Nw.W();
+				}
+			}
+			if (!H) break;
+		}
+	}
+}

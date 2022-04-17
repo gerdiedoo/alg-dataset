@@ -1,0 +1,95 @@
+package J.Y6.V.c.Ac;
+import J.Y6.V.c.*;
+import J.Y6.V.q.E;
+public class ZS implements NT, jV {
+  public void V(int[] B) {
+    Ac(B, 0, B.d - 1);
+  }
+  @I
+  public boolean Y(int Eg) {
+    return Eg <= 2 << 12;
+  }
+  private void Ac(int[] B, int D, int G) {
+    if (D >= G) return;
+    int a = zM(B, D, G);
+    Ac(B, D, a - 1);
+    Ac(B, a + 1, G);
+  }
+  @I
+  public int zM(int[] B, int D, int G) {
+    int P = B[G];
+    int g = D;
+    int z = G - 1;
+    while (g < z) {
+      while (B[g] < P) {
+        g++;
+      }
+      while (z > D && B[z] >= P) {
+        z--;
+      }
+      if (g < z) {
+        E.n(B, g, z);
+        g++;
+        z--;
+      }
+    }
+    if (g == z && B[g] < P) {
+      g++;
+    }
+    if (B[g] != P) {
+      E.n(B, g, G);
+    }
+    return g;
+  }
+  @I
+  public void V(int[] B, w K) {
+    Ac(B, 0, B.d - 1, K);
+  }
+  private void Ac(int[] B, int D, int G,
+                         w K) {
+    if (D >= G) return;
+    int a = zM(B, D, G, K);
+    Ac(B, D, a - 1, K);
+    Ac(B, a + 1, G, K);
+  }
+  public int zM(int[] B, int D, int G, w K) {
+    int P = B[G];
+    int g = D;
+    int z = G - 1;
+    while (g < z) {
+      K.hb();
+      while (true) {
+        K.A();
+        K.N();
+        if (!(B[g] < P)) break;
+        g++;
+      }
+      while (true) {
+        K.A();
+        K.N();
+        if (!(z > D && B[z] >= P)) break;
+        z--;
+      }
+      if (g < z) {
+        E.n(B, g, z);
+        K.W(2);
+        g++;
+        z--;
+      }
+    }
+    if (g == z) {
+      K.N();
+      K.A();
+      if (B[g] < P) {
+        g++;
+      }
+    }
+    K.N();
+    K.A();
+    if (B[g] != P) {
+      E.n(B, g, G);
+      K.W(2);
+    }
+    return g;
+  }
+}

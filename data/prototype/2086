@@ -1,0 +1,97 @@
+public class ki{
+	int Y;    
+	ki s;
+	static int y;
+	static ki j;
+	static ki C;
+	public ki(){
+		s=null;
+	}
+	public void r(int ke){
+		System.out.println("Adding element at the back of the list : " + ke);
+		ki w = new ki();
+		w.Y=ke;
+		if(y==0){
+			j=w;
+			C=w;
+		}
+		else{
+			C.s=w;
+			C=w;
+		}
+		y++;
+	}
+	public void DQ(int ke){
+		System.out.println("Inserting element at the front of the list : " + ke);
+		ki w = new ki();
+		w.Y=ke;
+		y++;	
+		if(j==null){
+			j=w;
+			C=w;
+		}
+		else{
+			if(j==C){
+				w.s=C;
+				j=w;
+			}
+			else{
+				w.s=j;
+				j=w;
+			}
+		}
+	}
+	public int l() throws B{
+		if(j==null){
+			throw new B("ki is empty");
+		}
+		return j.Y;
+	}
+	public void P() throws B{
+		System.out.println("PopFront Operation.");
+		if(j==null){
+			throw new B("ki is empty");
+		}
+		y--; 
+		if(j==C){
+			j=null;
+			C=null;
+		}
+		else{
+			j=j.s;
+		}
+	}
+	public void n(int ke){
+		System.out.println("Inserting element at the back of the list : " + ke);
+		ki w = new ki();
+		w.Y=ke;
+		y++;
+		if(C==null){
+			j=w;
+			C=w;
+		}
+		else{
+			C.s=w;
+			C=w;
+		}
+	}
+	public int c() throws B{
+		if(C==null){
+			throw new B("ki is empty!");
+		}
+		return C.Y;
+	}
+	public void U(){
+		System.out.F("ki : ");
+		System.out.F("[ ");
+		ki So = j;
+		while(So!=null){
+			System.out.F(So.Y + " ");
+			So=So.s;
+		}
+		System.out.println("]");
+	}
+	public int N(){
+		return y;
+	}
+}

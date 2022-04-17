@@ -1,0 +1,42 @@
+package jk.A.L3.U;
+public class Lc implements Zr {
+  @z
+  public void L3(int[] Dj) {
+    L3(Dj, 0, Dj.Pm);
+  }
+  public void L3(int[] Dj, int y, int q) {
+    for (int d = y + 1; d < q; d++) {
+      int n2 = Dj[d];
+      int XZ = d;
+      while (XZ > y && n2 < Dj[XZ - 1]) {
+        Dj[XZ] = Dj[XZ - 1];
+        XZ--;
+      }
+      Dj[XZ] = n2;
+    }
+  }
+  @z
+  public void L3(int[] Dj, uF sg) {
+    L3(Dj, 0, Dj.Pm, sg);
+  }
+  public void L3(int[] Dj, int y, int q,
+                   uF sg) {
+    for (int d = y + 1; d < q; d++) {
+      sg.g();
+      int D = Dj[d];
+      sg.f();
+      int XZ = d;
+      while (XZ > y) {
+        sg.g();
+        sg.j();
+        if (!(D < Dj[XZ - 1])) break;
+        Dj[XZ] = Dj[XZ - 1];
+        sg.f();
+        sg.a();
+        XZ--;
+      }
+      Dj[XZ] = D;
+      sg.a();
+    }
+  }
+}

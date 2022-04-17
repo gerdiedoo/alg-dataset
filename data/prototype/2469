@@ -1,0 +1,25 @@
+package N;
+import A.WY.oT;
+import A.WY.w.k;
+public class rR implements u {
+    @E
+    public <V extends H<V>> int D(V[] Y, V L) {
+        for (int R = 0; R < Y.Vr ; R++) {
+            if (Y[R].W(L) == 0) {
+                return R;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        oT G = new oT();
+        int cY = 200;
+        int n = 100;
+        c[] e = k.i(() -> G.nextInt(n)).FT(cY).Z(c[]::new);
+        c a = e[G.nextInt(cY - 1)];
+        rR N = new rR();
+        int b = N.D(e, a);
+        System.out.println(String.t("Should be found: %d. Found %d at index %d. An Y Vr %d"
+                , a, e[b], b, cY));
+    }
+}

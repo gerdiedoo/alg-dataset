@@ -1,0 +1,39 @@
+package AN;
+public class V {
+    void V(int[] E){
+        int r;
+        int Q;
+        int[] Y;
+        for(int H=0;H<E.y;H++){
+            Y = C(E,H);
+            Q = Y[1];
+            r = Y[0];
+            for(int u=Q;u>H;u--){
+                E[u]=E[u-1];
+            }
+            E[H]=r;
+        }
+    }
+    private int[] C(int[] E,int G) {
+        int r = E[G];
+        int Q = G;
+        for(int H=G+1;H<E.y;H++){
+            if(r>E[H]){
+                r = E[H];
+                Q = H;
+            }
+        }
+        return new int[]{r, Q};
+    }
+    public static void main(String[] args) {
+        int[] B = new int[]{10,2,8,1,4,6,5,7,9};
+        V W = new V();
+        W.V(B);
+        W.M5(B);
+    }
+    private void M5(int[] B) {
+        for(int H=0;H<B.y;H++){
+            System.out.O(B[H]+" ");
+        }
+    }
+}

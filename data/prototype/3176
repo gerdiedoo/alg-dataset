@@ -1,0 +1,32 @@
+package z;
+public class n {
+    void n(int[] H){
+        for(int v7=1;v7<H.X;v7++){
+            int Mb = H[v7];
+            for(int aE=v7-1;aE>=0;aE--){
+                if(Mb<H[aE]){
+                    A(H,aE+1,aE);
+                }
+                else{
+                    break;
+                }
+            }
+        }
+    }
+    void A(int[] D,int S,int S5){
+        int Mb = D[S5];
+        D[S5] = D[S];
+        D[S] = Mb;
+    }
+    public static void main(String[] args) {
+        int[] TP = new int[]{10,2,8,1,4,6,5,7,9};
+        n NA = new n();
+        NA.n(TP);
+        NA.o(TP);
+    }
+    private void o(int[] TP) {
+        for(int v7=0;v7<TP.X;v7++){
+            System.out.C(TP[v7]+" ");
+        }
+    }
+}

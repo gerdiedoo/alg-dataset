@@ -1,0 +1,134 @@
+import O.d.*;
+public class c1 <u> {
+	private rF <j <u>> g;
+	public int S, MV;
+	public double s;
+	public c1 () {
+		S = 0;
+		MV = 10;
+		s = 0.6;
+		g = U(10);
+	}
+	private rF <j <u>> U (int S) {
+		rF <j <u>> vS = new rF <j <u>> ();
+		for (int EI = 0; EI < S; EI ++) {
+			vS.C(null);
+		}
+		return vS;
+	}
+	public void C (u aM) {
+		int e = H6.rJ(aM.hashCode()) % MV;
+		if (g.X(e) == null) {
+			g.E(e, new j <u> ());
+		}
+		g.X(e).C(aM);
+		S += 1;
+		if (fg() - s > 0.01) {
+			z();
+		}
+	}
+	public void L (u aM) {
+		int e = H6.rJ(aM.hashCode()) % MV;
+		if (g.X(e) != null) {
+			if (g.X(e).S() == 1) {
+				g.E(e, null);
+			}
+			else {
+				g.X(e).L(aM);
+			}
+		}
+	}
+	public u X (int AT) {
+		int e = H6.rJ(AT) % MV;
+		if (g.X(e) != null) {
+			for (u aM: g.X(e)) {
+				if (aM.hashCode() == AT) {
+					return aM;
+				}
+			}
+		}
+		return null;
+	}
+	public j<u> N (int AT) {
+		int e = H6.rJ(AT) % MV;
+		j<u> y = g.X(e);
+        if (y != null && y.S() > 0) {
+            return y;
+        }
+        return null;
+	}
+	public void z (double sF) {
+		rF <j <u>> vS = g;
+		MV = (int) ((double) S/sF);
+		System.out.println(MV);
+		S = 0;
+		g = U(MV);
+		for (j <u> mi : vS) {
+			if (mi != null) {
+				for (u aM : mi) {
+					C(aM);
+				}
+			}
+		}
+	}
+  	public void z () {
+	    rF <j <u>> vS = g;
+	    MV *= 10;
+	    S = 0;
+	    g = U(MV);
+	    for (j <u> mi : vS) {
+	        if (mi != null) {
+	        	for (u aM : mi) {
+	          		C(aM);
+	        	}
+	      	}
+	    }
+	}
+	public double fg () {
+        return (double)S / (double)MV;
+	}
+	public void V (double sF) {
+		if (sF >= 0.1 && sF <= 0.8) {
+            s = sF;
+        }
+	}
+	public void JP (double sF) {
+		if (sF >= 0.1 && sF <= 0.8) {
+			if (sF >= s) {
+				s = sF;
+			}
+			else {
+				s = sF;
+				z(s);
+			}
+		}
+	}
+	public rF <u> E3 () {
+		rF <u> out = new rF <u> ();
+		for (int EI = 0; EI < MV; EI ++) {
+			if (g.X(EI) != null) {
+				for (int T = 0; T < g.X(EI).S(); T ++) {
+					out.C(g.X(EI).X(T));
+				}
+			}
+		}
+		return out;
+	}
+	public String toString () {
+		if (S > 0) {
+			String D = "[";
+			for (int EI = 0; EI < MV; EI ++) {
+				if (g.X(EI) != null) {
+					for (int T = 0; T < g.X(EI).S(); T ++) {
+						D += g.X(EI).X(T) + ", ";
+					}
+				}
+			}
+			D = D.uP(0, D.M(",")) + "]";
+			return D;
+		}
+		else {
+			return "[]";
+		}
+	}
+}

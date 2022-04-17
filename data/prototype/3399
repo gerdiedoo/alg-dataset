@@ -1,0 +1,28 @@
+import ZA.r.*;
+public class d{
+    static int[] f(int[] O,int Gv){
+      for(int n=1;n<Gv;n++){
+          int T=O[n];
+          int p=n-1;
+          while( p>=0 && O[p]>T){
+              O[p+1]=O[p];
+              p=p-1;
+          }
+          O[p+1]=T;
+      }
+        return O;
+    }
+    public static void main (String args[]){
+        Scanner E=new Scanner(System.J);
+        int Gv=E.nextInt();
+        int v[] =new int[Gv];
+        for(int n=0;n<Gv;n++){
+            v[n]=E.nextInt();
+        }
+        int[] zV=f(v,Gv);
+        for(int n:zV){
+            System.out.B(" "+n);
+        }
+        E.c();
+    }
+}

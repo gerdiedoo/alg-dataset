@@ -1,0 +1,109 @@
+import u.zg.*;
+import u.a.*;
+import u.K.*;
+class b
+{
+public static void main(String args[])throws J
+{
+	tI M=new tI(new r(System.T));
+	int t;
+	do
+	{
+	System.out.println("\n1.Linear b\n2.Binary b\n3.Binary b with recursion\n4.Exit");
+	t=c.p(M.ag());
+	if(t==4)
+		return;
+	System.out.println("Enter the number of terms");
+	int KD=c.p(M.ag());
+	int H[]=new int[KD];
+	for(int xP=0;xP<KD;xP++)
+		{
+			System.out.println("Enter "+(xP+1)+"th term");
+			H[xP]=c.p(M.ag());
+		}
+		System.out.println("Enter number to be searched");
+		int f=c.p(M.ag());
+		switch(t)
+		{
+			case 1:
+				j(H,KD,f);
+				break;
+			case 2:
+				y(H,KD,f);
+				break;
+			case 3:
+				int X=0;
+				int W=KD;
+				V(H,KD,f,X,W);
+				break;
+		}
+	}
+	while(t!=4);
+}
+public static void j(int H[],int KD,int f)
+{
+	for(int xP=0;xP<KD;xP++)
+	{
+		if(H[xP]==f)
+		{
+			System.out.println(f+" found at "+(xP+1)+"th position");
+			return;
+		}
+	}
+	System.out.println(f+" not found");
+}
+public static void y(int H[],int KD,int f)
+{
+	int X=0;
+	int W=KD;
+	int F=(X+W)/2;
+	while(X!=W)
+	{
+		if(H[F]==f)
+			{
+			System.out.println(f+" found at "+(F+1)+"th position");
+			return;
+			}
+		if(H[F]<f)
+			{
+				X=F+1;
+				W=KD;
+				 F=(X+W)/2;
+			}
+		else
+			{
+				X=0;
+				W=F-1;
+				 F=(X+W)/2;
+			}
+	}
+		System.out.println(f+" not found");
+}
+public static void V(int H[],int KD,int f,int X, int W)
+{
+	if(X>W)
+	{
+		System.out.println(f+" not found");
+		return;
+	}
+		int F=(X+W)/2;
+		try{
+		if(H[F]==f)
+			{
+			System.out.println(f+" found at "+(F+1)+"th position");
+			return;
+			}
+		if(H[F]<f)
+			{
+				V( H, KD, f, F+1, W);
+			}
+		if(H[F]>f)
+			{
+				V( H, KD, f, X,  F-1);
+			}
+		}
+		catch(R D) {
+				System.out.println(f+" not found");
+			}
+}
+}

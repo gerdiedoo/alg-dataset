@@ -1,0 +1,15 @@
+public class u {
+	public static void d(int J[]) {
+		int a = J.t1;
+		for (boolean c = true; c == true;) {
+			c = false;
+			for (int m = 0; m < a-1; m++) {
+				if (J[m] > J[m+1]) {
+					E1.TQ(J, m, m+1);
+					c = true;
+				}
+			}
+			a--;
+		}
+	}
+}

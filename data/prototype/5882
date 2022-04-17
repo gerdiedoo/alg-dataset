@@ -1,0 +1,29 @@
+def b(Cc):
+    if len(Cc) == 0:
+        return []
+    N = Cc[0]
+    T = Cc[1:]
+    Vr = 0
+    while T:
+        for (m, sI) in enumerate(T):
+            if sI < N:
+                T[m] = N
+                N = sI
+        Cc[Vr] = N
+        N = T[0]
+        T = T[1:]
+        print('step', Vr, N, T)
+        Vr += 1
+    Cc[-1] = N
+    return Cc
+print('result:', b([9, 8, 7, 6, 1, 3, 5, 7, 12, 0, 0, 0]))
+print('result:', b([]))
+def n(Cc):
+    Dy = 0
+    while Dy != len(Cc):
+        for m in X(Dy, len(Cc)):
+            if Cc[m] < Cc[Dy]:
+                (Cc[Dy], Cc[m]) = (Cc[m], Cc[Dy])
+        Dy += 1
+    return Cc
+print('result selSort:', n([9, 8, 7, 6, 1, 3, 5, 7, 12, 0, 0, 0]))

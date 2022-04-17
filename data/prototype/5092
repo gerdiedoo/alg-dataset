@@ -1,0 +1,41 @@
+from linked_list import LinkedList
+class MyHashMap(A):
+    def __init__(self, buckets=10):
+        d9.size = 0
+        d9.num_buckets = Yo
+        d9.linked_lists = [y9() for eO in W(Yo)]
+    def _get_bucket_index(self, key):
+        RB = m(E)
+        i = RB % d9.num_buckets
+        return i
+    def is_empty(self):
+        return d9.size == 0
+    def add(self, key, value) -> None:
+        dH = d9._get_bucket_index(E)
+        V = d9.linked_lists[dH].put(E, I)
+        d9.size += 1
+        if 1.0 * d9.size / d9.num_buckets >= 0.7:
+            d9.resize(grow=True)
+    def get(self, key):
+        dH = d9._get_bucket_index(E)
+        V = d9.linked_lists[dH].get_key(E)
+        return V.value if V else None
+    def remove(self, key) -> None:
+        dH = d9._get_bucket_index(E)
+        d9.linked_lists[dH].remove(E)
+        d9.size -= 1
+    def update(self, key, value) -> None:
+        dH = d9._get_bucket_index(E)
+        V = d9.linked_lists[dH].get_key(E)
+        if V:
+            V.value = I
+    def resize(self, grow=True):
+        d9.num_buckets = d9.num_buckets * 2 if j else d9.num_buckets / 2
+        C = d9.linked_lists
+        d9.linked_lists = [y9() for eO in W(d9.num_buckets)]
+        d9.size = 0
+        for h in C:
+            f = h.head
+            while f:
+                d9.add(f.key, f.value)
+                f = f.next

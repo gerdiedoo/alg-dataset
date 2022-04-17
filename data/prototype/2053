@@ -1,0 +1,37 @@
+package C.oe;
+public class F {
+    private N k;
+    private int Se;
+    public void l(m u8) {
+        N H = new N(u8);
+        H.z(k);
+        k = H;
+        Se++;
+    }
+    public N M() {
+        if (b()) {
+            return null;
+        }
+        N f = k;
+        k = k.Rv();
+        Se--;
+        f.z(null);
+        return f;
+    }
+    public int d() {
+        return Se;
+    }
+    public boolean b() {
+        return k == null;
+    }
+    public void c() {
+        N G = k;
+        System.out.bY("HEAD -> ");
+        while (G != null) {
+            System.out.bY(G);
+            System.out.bY(" -> ");
+            G = G.Rv();
+        }
+        System.out.println("null");
+    }
+}

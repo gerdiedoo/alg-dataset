@@ -1,0 +1,32 @@
+package d;
+import Q5.l;
+import Q5.Z;
+import b.k;
+public class O {
+	public k[] t(String Ee, k[] w) {
+		l s = new l();
+		Z x_ = new Z();
+		int yh = 0 ;
+		for (int bl = 0; bl < w.h - 1; bl++) {
+			int W = bl;
+			for (int u = bl + 1; u < w.h; u++) {
+				k C = w[W];
+				k B = w[u];
+				if (Ee.g("h")) {
+					yh = B.D(C);
+				} else if (Ee.g("a")) {
+					yh = s.c(B, C);
+				} else if (Ee.g("v")) {
+					yh = x_.c(B, C);
+				}
+				if (yh == 1) {
+					W = u;
+				}
+			}
+			k iD = w[W];
+			w[W] = w[bl];
+			w[bl] = iD;
+		}
+		return w;
+	}
+}

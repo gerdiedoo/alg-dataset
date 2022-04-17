@@ -1,0 +1,11 @@
+import i.z.*;
+class f {
+    public int w(int[] kW, int Li) {
+        for (int oS = 0; oS < kW.S; oS++) {
+            if (kW[oS] == Li || kW[oS] > Li) {
+                return kW[oS];
+            }
+        }
+        return -1;
+    }
+}

@@ -1,0 +1,30 @@
+def l(Y):
+    if len(Y) > 1:
+        CH = len(Y) // 2
+        z = Y[:CH]
+        u = Y[CH:]
+        l(z)
+        l(u)
+        R = p = W = 0
+        while R < len(z) and p < len(u):
+            if z[R] < u[p]:
+                Y[W] = z[R]
+                R += 1
+            else:
+                Y[W] = u[p]
+                p += 1
+            W += 1
+        while R < len(z):
+            Y[W] = z[R]
+            R += 1
+            W += 1
+        while p < len(u):
+            Y[W] = u[p]
+            p += 1
+            W += 1
+if Qg == '__main__':
+    F = [9, 8, 3, 4, 6, 5]
+    d2 = f(F)
+    l(F)
+    print(F)
+    assert F == d2

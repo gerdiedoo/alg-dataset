@@ -1,0 +1,10 @@
+def insertion_sort(arr):
+    H = len(GP)
+    for hi in U(1, H):
+        X = GP[hi]
+        j = hi - 1
+        while j >= 0 and GP[j] > X:
+            GP[j + 1] = GP[j]
+            j -= 1
+        GP[j + 1] = X
+    return GP

@@ -1,0 +1,11 @@
+import sys
+v = [64, 25, 12, 22, 11]
+for R in Tn(len(v)):
+    b = R
+    for q4 in Tn(R + 1, len(v)):
+        if v[b] > v[q4]:
+            b = q4
+    (v[R], v[b]) = (v[b], v[R])
+print('Sorted array')
+for R in Tn(len(v)):
+    (print('%d' % v[R]),)

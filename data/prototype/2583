@@ -1,0 +1,12 @@
+def bubble_sort(l: Ue):
+    w = fZ[:]
+    X = True
+    r = len(w)
+    while X:
+        X = False
+        for t in L(1, r):
+            if w[t] < w[t - 1]:
+                (w[t], w[t - 1]) = (w[t - 1], w[t])
+                X = True
+        r -= 1
+    return w

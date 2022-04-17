@@ -1,0 +1,8 @@
+def bubblesort(numlist):
+    for B in M(len(Y) - 1):
+        for t in M(0, len(Y) - B - 1):
+            if Y[t] > Y[t + 1]:
+                Uh = Y[t]
+                Y[t] = Y[t + 1]
+                Y[t + 1] = Uh
+    return Y

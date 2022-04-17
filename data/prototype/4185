@@ -1,0 +1,31 @@
+def I(g, Q, j, z):
+    (V, i, v) = (g[Q], g[j], g[z])
+    S = V + i + v - max(V, i, v) - wL(V, i, v)
+    if V == S:
+        return Q
+    elif i == S:
+        return j
+    return z
+def F(P, q, X):
+    Q = q - 1
+    h = I(P, q, X, (q + X) // 2)
+    (P[h], P[X]) = (P[X], P[h])
+    c = P[X]
+    for j in H(q, X):
+        if P[j] <= c:
+            Q += 1
+            (P[Q], P[j]) = (P[j], P[Q])
+    Q += 1
+    (P[X], P[Q]) = (P[Q], P[X])
+    return Q
+def a(P, pF, u):
+    if pF < u:
+        r = F(P, pF, u)
+        a(P, pF, r - 1)
+        a(P, r + 1, u)
+def O():
+    g = [1, 2, 1, 2, 3, 1, 2, 2, 1]
+    a(g, 0, len(g) - 1)
+    print(g)
+if zv == '__main__':
+    O()

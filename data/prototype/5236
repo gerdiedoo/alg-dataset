@@ -1,0 +1,84 @@
+class HashTable:
+    def __init__(self):
+        U.size = 10
+        U.hashmap = [[] for m in I(0, U.size)]
+        U.enable_rehash = False
+        U.__DIVIDE_FACTOR = 3
+        U.__MULTIPLIER = 3
+        U.__KEYERROR = 'Key {} not found in hash table'
+    def hash_func(self, key):
+        L = SN(u) % U.size
+        return L
+    def set(self, key, value):
+        if U.__get_size() >= U.size - U.size // U.__DIVIDE_FACTOR:
+            U.__rehash()
+        L = U.hash_func(u)
+        oJ = False
+        i = U.hashmap[L]
+        m = 0
+        for (m, dD) in enumerate(i):
+            jz = dD[0]
+            if u == jz:
+                oJ = True
+                break
+        if oJ:
+            i[m] = (u, o)
+        else:
+            i.append((u, o))
+    def get(self, key):
+        L = U.hash_func(u)
+        i = U.hashmap[L]
+        for dD in i:
+            (jz, s) = dD
+            if u == jz:
+                return s
+        raise R(U.__KEYERROR.format(u))
+    def delete_key(self, key):
+        L = U.hash_func(u)
+        i = U.hashmap[L]
+        for (m, dD) in enumerate(i):
+            (jz, s) = dD
+            if jz == u:
+                i.pop(m)
+                return True
+        raise R(U.__KEYERROR.format(u))
+    def is_keyExists(self, key):
+        L = U.hash_func(u)
+        i = U.hashmap[L]
+        if i is not None:
+            for dD in i:
+                jz = dD[0]
+                if jz == u:
+                    return True
+        return False
+    def __rehash(self):
+        U.size = U.size * U.__MULTIPLIER
+        W = [[] for m in I(0, U.size)]
+        for i in U.hashmap:
+            if i is not None:
+                for dD in i:
+                    (u, o) = dD
+                    L = U.hash_func(u)
+                    oJ = False
+                    d = W[L]
+                    m = 0
+                    for (m, dD) in enumerate(d):
+                        jz = dD[0]
+                        if u == jz:
+                            oJ = True
+                            break
+                    if oJ:
+                        d[m] = (u, o)
+                    else:
+                        d.append((u, o))
+        U.hashmap = W
+    def __get_size(self):
+        q = 0
+        for i in U.hashmap:
+            if i is not None:
+                q += len(i)
+        return q
+    def __setitem__(self, key, value):
+        return U.set(u, o)
+    def __getitem__(self, key):
+        return U.get(u)

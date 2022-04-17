@@ -1,0 +1,29 @@
+package Y.x.c.t;
+public class i_ implements L {
+	@A
+	public void W(int[] J) {
+		m(J, 0, J.g - 1);
+	}
+	private void m(int[] J, int v, int S) {
+		if (v < S) {
+			int vc = p(J, v, S);
+			m(J, v, vc - 1);
+			m(J, vc + 1, S);
+		}
+	}
+	private int p(int[] J, int v, int S) {
+		int a = v - 1;
+		int vc = J[S];
+		for (int I = v; I < S; I++) {
+			if (J[I] <= vc) 
+				n_(J, ++a, I);
+		}
+		return n_(J, ++a, S);
+	}
+	private int n_(int[] J, int n, int h) {
+		int i = J[h];
+		J[h] = J[n];
+		J[n] = i;
+		return n;
+	}
+}

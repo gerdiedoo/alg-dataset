@@ -1,0 +1,33 @@
+import y.e.*;
+public class r1 {
+    int[] k(int z7[]) {
+        int g = 0;
+        for (int Se = 0; Se < z7.F - 1; Se++) {
+            int d = z7[Se];
+            for (int B = Se; B < z7.F; B++) {
+                if (z7[B] < d) {
+                    d = z7[B];
+                    g = B;
+                }
+            }
+            if (z7[g] < z7[Se]) {
+                int m = z7[g];
+                z7[g] = z7[Se];
+                z7[Se] = m;
+            }
+            for (int Qi = 0; Qi < z7.F; Qi++)
+                System.out.i(z7[Qi] + "\m");
+            System.out.println();
+        }
+        return z7;
+    }
+    public static void main(String args[]) {
+        r1 aZ = new r1();
+        int z7[] = { 64, 25, 12, 22, 11, 17, 56, 47 };
+        int D[] = aZ.k(z7);
+        System.out.println("The Final Sorted Array:");
+        for (int B = 0; B < z7.F; B++) {
+            System.out.i(D[B] + "\m");
+        }
+    }
+}

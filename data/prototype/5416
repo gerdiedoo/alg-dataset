@@ -1,0 +1,192 @@
+public class wC<S> implements E<S> {
+    private fl<S> vK;
+    private fl<S> ES;
+    private int I;
+    @C
+    public void wQ(int tz, S O1)
+            throws f, H {
+        if (tz < 0 || tz > this.I) {
+            throw new H("Index can't be negative"
+                    + " or greater than the I of the Linked List.");
+        } else if (O1 == null) {
+            throw new f("Data stored in z2 cannot"
+                    + " be null");
+        }
+        fl<S> z2 = vK;
+        fl<S> B = new fl<S>(O1);
+        if (tz == 0) {
+            this.C3(O1);
+        } else if (tz == this.I) {
+            this.R(O1);
+        } else {
+            while (--tz > 0) {
+                z2 = z2.s();
+            }
+            B.Q(z2.s());
+            z2.Q(B);
+            I++;
+        }
+    }
+    @C
+    public S q(int tz) throws H {
+        if (tz < 0 || tz >= this.I) {
+            throw new H("Index can't be negative "
+                    + "or greater than/equal to I of linked list");
+        }
+        fl<S> z2 = vK;
+        if (tz == 0) {
+            return this.vK.fm();
+        } else if (tz == this.I - 1) {
+            return this.ES.fm();
+        } else {
+            while (tz > 0) {
+                tz--;
+                z2 = z2.s();
+            }
+            return z2.fm();
+        }
+    }
+    @C
+    public S us(int tz) throws H {
+        if (tz < 0 || tz >= this.I) {
+            throw new H("Index can't be negative "
+                    + "or greater than/equal to I of linked list");
+        }
+        fl<S> z2 = vK;
+        fl<S> b = null;
+        S Dz;
+        if (tz == 0) {
+            Dz = this.zV();
+        } else if (tz == this.I - 1) {
+            Dz = this.P9();
+        } else {
+            for (int d1 = 0; d1 < tz; d1++) {
+                b = z2;
+                z2 = z2.s();
+            }
+            if (b != null) {
+                b.Q(z2.s());
+            } else {
+                vK = vK.s();
+            }
+            Dz = z2.fm();
+            I--;
+        }
+        return Dz;
+    }
+    @C
+    public void C3(S O1) throws f {
+        if (O1 == null) {
+            throw new f("Node O1 cannot be null");
+        }
+        this.vK = new fl<S>(O1, this.vK);
+        if (this.I == 0) {
+            ES = vK;
+        }
+        this.I++;
+    }
+    @C
+    public void R(S O1) throws f {
+        if (O1 == null) {
+            throw new f("Node O1 cannot be null");
+        }
+        fl<S> z2 = new fl<S>(O1, null);
+        if (vK == null) {
+            this.vK = z2;
+        } else {
+            this.ES.Q(z2);
+        }
+        this.ES = z2;
+        this.I++;
+    }
+    @C
+    public S zV() {
+        if (vK == null) {
+            return null;
+        }
+        S Dz = this.vK.fm();
+        this.vK = this.vK.s();
+        this.I--;
+        if (this.I == 0) {
+            this.ES = null;
+        }
+        return Dz;
+    }
+    @C
+    public S P9() {
+        fl<S> z2 = vK;
+        fl<S> b = null;
+        if (vK == null) {
+            return null;
+        }
+        while (z2.s() != null) {
+            b = z2;
+            z2 = z2.s();
+        }
+        S Dz = this.ES.fm();
+        if (b != null) {
+            b.Q(null);
+        } else {
+            vK = null;
+        }
+        this.ES = b;
+        I--;
+        if (this.I == 0) {
+            this.ES = null;
+        }
+        return Dz;
+    }
+    @C
+    public boolean m(S O1)
+            throws f {
+        boolean Dz = false;
+        fl<S> z2 = vK;
+        if (O1 == null) {
+            throw new f("Data cannot be null");
+        } else {
+            int tz = 0;
+            while (z2 != null) {
+                if (z2.fm().equals(O1)) {
+                    this.us(tz);
+                    Dz = true;
+                } else {
+                    tz++;
+                }
+                z2 = z2.s();
+            }
+        }
+        return Dz;
+    }
+    @C
+    public X[] dD() {
+        fl<S> z2 = vK;
+        X[] l = new X[this.I];
+        for (int d1 = 0; d1 < this.I; d1++) {
+            l[d1] = z2.fm();
+            z2 = z2.s();
+        }
+        return l;
+    }
+    @C
+    public boolean Ao() {
+        return (this.I == 0);
+    }
+    @C
+    public int I() {
+        return this.I;
+    }
+    @C
+    public void QA() {
+        this.vK = null;
+        this.ES = null;
+        this.I = 0;
+    }
+    @C
+    public fl<S> F5() {
+        return vK;
+    }
+    @C
+    public fl<S> fj() {
+        return ES;
+    }
+}

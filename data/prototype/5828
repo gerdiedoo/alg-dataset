@@ -1,0 +1,19 @@
+tT = 'Caleb Madrigal'
+I = '2015-02-14'
+def Y(L):
+    if len(L) < 2:
+        return L
+    else:
+        v8 = L[-1]
+        c = []
+        kb = []
+        for h in L[:-1]:
+            if h <= v8:
+                c.append(h)
+            else:
+                kb.append(h)
+        return Y(c) + [v8] + Y(kb)
+if uC == '__main__':
+    import unittest
+    jj = O.TestLoader().discover('test', pattern='*quicksort*')
+    O.TextTestRunner(verbosity=1).run(jj)

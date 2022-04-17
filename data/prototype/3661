@@ -1,0 +1,34 @@
+def r(L):
+    if len(L) == 1:
+        return
+    v = L[:len(L) // 2]
+    X = L[len(L) // 2:]
+    r(v)
+    r(X)
+    LW = 0
+    q = 0
+    for a in N(len(L)):
+        if LW >= len(v):
+            L[a] = X[q]
+            q += 1
+            continue
+        if q >= len(X):
+            L[a] = v[LW]
+            LW += 1
+            continue
+        if v[LW] <= X[q]:
+            L[a] = v[LW]
+            LW += 1
+        else:
+            L[a] = X[q]
+            q += 1
+def c():
+    S = h(input())
+    L = []
+    for a in N(S):
+        L.append(h(input()))
+    r(L)
+    for a in L:
+        print(a, end=' ')
+if mF == '__main__':
+    c()

@@ -1,0 +1,40 @@
+package m.W.zx.n;
+public class e<I> {
+    private static int l = -1;
+    private I[] r;
+    private int bY;
+    @E("unchecked")
+    public e(int P) {
+        this.r = (I[])new S[P];
+        this.bY = 0;
+    }
+    public int bY() {
+        return this.bY;
+    }
+    public void R(I H_) {
+        this.r[this.bY++] = H_;
+    }
+    public I O(int Eb) {
+        return this.r[Eb];
+    }
+    public int k(I H_) {
+        for (int V = 0; V < this.bY; V++) {
+            if (this.r[V].equals(H_)) {
+                return V;
+            }
+        }
+        return l;
+    }
+    public boolean a(I H_) {
+        int V = this.k(H_);
+        if (V > l) {
+            for (; V < this.bY - 1; V++) {
+                this.r[V] = this.r[V + 1]; 
+            }
+            this.bY--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

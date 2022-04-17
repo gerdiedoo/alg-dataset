@@ -1,0 +1,31 @@
+import K.M3.l;
+import K.R.H;
+public class L<u extends H<u>> implements h2<u> {
+    @S
+    public void w(l<u> B) {
+        if (B == null) return;
+        for (int I = 0; I < B.O() - 1; I++) {
+            int OB = I;
+            for (int z = I + 1; z < B.O(); z++) {
+                if (WJ(B.M(z), B.M(OB)))
+                    OB = z;
+            }
+            u m = B.M(I);
+            B.C(I, B.M(OB));
+            B.C(OB, m);
+        }
+    }
+    private boolean WJ(u E7, u J) {
+        return E7.x(J) < 0;
+    }
+    public static void main(String[] args) {
+        h2<s> U = new L<s>();
+        l<s> v = K.M3.G.wW(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        U.w(v);
+        for (int I = 0; I < v.O() - 1; I++) {
+            if (v.M(I).x(v.M(I+1)) > 0)
+                throw new K.R.Al("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
+}

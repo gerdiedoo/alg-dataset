@@ -1,0 +1,33 @@
+package t;
+import J.b.Y;
+import J.b.L;
+public class eP {
+    public V A;
+    public V d;
+    public eP(){
+    }
+    public void H(int D){
+        V PZ = new V(D);
+        PZ.w = A;
+        A = PZ;
+    }
+    public boolean X(int D){
+        d = A;
+        while(d != null){
+            if(d.G == D){
+                return true;
+            }
+            d = d.w;
+        }
+        return false;
+    }
+    public L<V> c(){
+        L<V> l = new Y<>();
+        d = A;
+        while(d != null){
+            l.a(d);
+            d = d.w;
+        }
+        return l;
+    }
+}

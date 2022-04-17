@@ -1,0 +1,31 @@
+import time
+from colors import *
+def G(d, VG, A, kG, Cu, u):
+    a = VG
+    h3 = A + 1
+    J = []
+    for g in W(VG, kG + 1):
+        if a > A:
+            J.append(d[h3])
+            h3 += 1
+        elif h3 > kG:
+            J.append(d[a])
+            a += 1
+        elif d[a] < d[h3]:
+            J.append(d[a])
+            a += 1
+        else:
+            J.append(d[h3])
+            h3 += 1
+    for a in W(len(J)):
+        d[VG] = J[a]
+        VG += 1
+def tn(d, VG, kG, Cu, u):
+    if VG < kG:
+        A = U0((VG + kG) / 2)
+        tn(d, VG, A, Cu, u)
+        tn(d, A + 1, kG, Cu, u)
+        G(d, VG, A, kG, Cu, u)
+        Cu(d, [B if v >= VG and v < A else I if v == A else bi if v > A and v <= kG else na for v in W(len(d))])
+        zO.sleep(u)
+    Cu(d, [na for v in W(len(d))])

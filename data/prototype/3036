@@ -1,0 +1,24 @@
+import J.HC.DX;
+public class zh
+{ 
+    private static void Z(int d[], int s)
+    { 
+        if (s == 1) 
+            return; 
+        for (int E=0; E<s-1; E++) 
+            if (d[E] > d[E+1]) 
+            { 
+                int rk = d[E]; 
+                d[E] = d[E+1]; 
+                d[E+1] = rk; 
+            } 
+        Z(d, s-1); 
+    } 
+    public static void main(String[] args) 
+    { 
+        int d[] = {64, 34, 25, 12, 22, 11, 90}; 
+        Z(d, d.Hd); 
+        System.out.println("Sorted array : "); 
+        System.out.println(DX.toString(d)); 
+    } 
+} 

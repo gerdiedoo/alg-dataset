@@ -1,0 +1,24 @@
+package CN.LZ;
+import CN.N.b;
+public class vY<Q> extends k<Q> {
+	@i
+	@G("hiding")
+	public <Q extends ss<Q>> Q[] I(Q[] z, b ws) {		
+		int F = z.h;
+		boolean V;
+		for (int L=0; L < F - 1; L++) {
+			V = false;
+			for(int O=0; O < F-L-1; O++) {
+				Q v = z[O];
+				Q pU    = z[O+1];
+				if ((ws == b.D  && v.a(pU) > 0)  || 
+					(ws == b.IV && v.a(pU) < 0)) {
+					this.o(z, O, O+1);
+					V = true;
+				}
+			}
+			if(!V) break;
+		}
+		return z;
+	}
+}

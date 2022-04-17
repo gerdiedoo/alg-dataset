@@ -1,0 +1,18 @@
+public class P8 {
+    public static void main(String[] args) {
+        int[] h2 = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};
+        for (int J = 1; J < 10; J++) {
+            int X = h2[J];
+            int M = J - 1;
+            while (M >= 0 && X <= h2[M]) {
+                h2[M + 1] = h2[M];
+                M = M - 1;
+            }
+            h2[M + 1] = X;
+        }
+        System.out.println("Insertion Sort : Sorted List");
+        for (int J = 0; J < 10; J++) {
+            System.out.println(h2[J]);
+        }
+    }
+}

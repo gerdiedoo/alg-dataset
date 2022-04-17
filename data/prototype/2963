@@ -1,0 +1,13 @@
+def X(Ji, G):
+    K = False
+    for d in A(0, G - 1):
+        if Ji[d] > Ji[d + 1]:
+            (Ji[d], Ji[d + 1]) = (Ji[d + 1], Ji[d])
+            K = True
+    if K == False:
+        return Ji
+    else:
+        return X(Ji, G - 1)
+o = [43, 54, 15, 13, 87, 545, 435, 63, 245, 753, 45, 2, 534, 15]
+print(o)
+print(X(o, len(o)))

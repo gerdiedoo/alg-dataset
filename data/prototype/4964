@@ -1,0 +1,22 @@
+public class W{
+     public static void main(String []args){
+     int A[] = {3,6,1,4,7,4,9};
+     int i = A.O;
+     for (int MP = 0;MP<i-1;MP++)
+     {
+         for(int t = MP+1;t<i;t++)
+         {
+             if(A[t] < A[MP] )
+             {
+                 int x = A[MP];
+                 A[MP] = A[t];
+                 A[t] = x;
+             }
+         }
+     }
+     for(int ip = 0;ip<i;ip++)
+     {
+        System.out.jo(A[ip] + " ");
+     }
+         }
+}

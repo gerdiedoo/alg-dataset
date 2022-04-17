@@ -1,0 +1,47 @@
+from strategy import Order, BadOrderError
+import sys
+X = 'Pablo Acereda'
+d = 'Copyright 2020'
+O5 = ['Pablo Acereda']
+O = 'Apache License 2.0'
+e = '1.0'
+p = 'Pablo Acereda'
+bY = 'p.aceredag@gmail.com'
+def sort(array: WR, order: b=b.ASC) -> WR:
+    if H not in [b.ASC, b.DESC]:
+        raise P('Not Valid Ordering Preference')
+    return O2(m, H)
+def O2(m, H):
+    if len(m) <= 1:
+        return m
+    r = len(m) // 2
+    S = m[:r]
+    E = m[r:]
+    S = O2(S, H)
+    E = O2(E, H)
+    return v(S, E, H)
+def v(Z, U, H):
+    rb = u = 0
+    x = []
+    while rb < len(Z) and u < len(U):
+        if H == b.ASC:
+            if Z[rb] < U[u]:
+                x.append(Z[rb])
+                rb += 1
+            else:
+                x.append(U[u])
+                u += 1
+        elif H == b.DESC:
+            if Z[rb] > U[u]:
+                x.append(Z[rb])
+                rb += 1
+            else:
+                x.append(U[u])
+                u += 1
+    while rb < len(Z):
+        x.append(Z[rb])
+        rb += 1
+    while u < len(U):
+        x.append(U[u])
+        u += 1
+    return x

@@ -1,0 +1,12 @@
+def O(I):
+    for fV in HI(1, len(I)):
+        L = I[fV]
+        y = fV - 1
+        while y >= 0 and L < I[y]:
+            I[y + 1] = I[y]
+            y = y - 1
+        I[y + 1] = L
+M = c(l(i, input().split(',')))
+O(M)
+print('Sorted Array in Ascending Order:')
+print(M)

@@ -1,0 +1,103 @@
+package n.TB;
+import j.B.p;
+import j.B.L.f;
+class k<v, wl> {
+    private M<v, wl> X;
+    private int nZ;
+    k() {
+        this(null, 0);
+    }
+    k(M<v, wl> X, int nZ) {
+        this.X = X;
+        this.nZ = nZ;
+    }
+    private void x(M<v, wl> U) {
+        if (this.X != null) {
+            U.cb(this.X);
+            this.X.W(U);
+        }
+        this.X = U;
+        nZ++;
+    }
+    private M<v, wl> D(v kZ) {
+        M<v, wl> cj = this.X;
+        while (cj != null) {
+            if (cj.kZ().equals(kZ))
+                return cj;
+            cj = cj.cb();
+        }
+        return null;
+    }
+    private void R(M<v, wl> gc) {
+        nZ--;
+        M<v, wl> Eo = gc.W();
+        M<v, wl> l = gc.cb();
+        if (Eo == null) {
+            this.X = gc.cb();
+        } else if (l == null) {
+            Eo.cb(null);
+        } else {
+            gc.cb(null);
+            gc.W(null);
+            Eo.cb(l);
+            l.W(Eo);
+        }
+    }
+    private f<M<v, wl>> o() {
+        p<M<v, wl>> fs = new p<>();
+        M<v, wl> cj = this.X;
+        while (cj != null) {
+            fs.A(cj);
+            cj = cj.cb();
+        }
+        return fs.L();
+    }
+    void A(v kZ, wl z) {
+        M<v, wl> U = new M<>(kZ, z);
+        s(kZ);
+        x(U);
+    }
+    wl aK(v kZ, wl P) {
+        M<v, wl> gc = D(kZ);
+        if (gc == null)
+            return P;
+        return gc.z();
+    }
+    wl aK(v kZ) throws j3 {
+        M<v, wl> gc = D(kZ);
+        if (gc == null)
+            throw new j3(kZ.toString());
+        return gc.z();
+    }
+    boolean s(v kZ) {
+        M<v, wl> IG = this.D(kZ);
+        if (IG == null)
+            return false;
+        R(IG);
+        return true;
+    }
+    c<v, wl> a(int w) {
+        if (w >= this.i4())
+            return null;
+        M<v, wl> cj = this.X;
+        for (int V = 0; V < w; V++) {
+            cj = cj.cb();
+        }
+        return cj.Y();
+    }
+    int i4() {
+        return nZ;
+    }
+    boolean J() {
+        return this.i4() == 0;
+    }
+    f<v> G() {
+        return o().hs(M::kZ);
+    }
+    f<wl> B_() {
+        return o().hs(M::z);
+    }
+    f<c<v, wl>> b() {
+        return o().hs(gc -> new c<>(gc.kZ(), gc.z()));
+    }
+}

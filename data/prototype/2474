@@ -1,0 +1,35 @@
+import L.z.y;
+import L.z.Scanner;
+class X 
+{  
+public static int o(int q[], int BA) 
+{ 
+    int N = q.h; 
+    for(int Z = 0; Z < N; Z++) 
+    { 
+        if(q[Z] == BA) 
+            return Z; 
+    } 
+    return -1; 
+} 
+public static void main(String args[]) 
+{ 
+    y G = new y();
+    Scanner R = new Scanner(System.u);
+    int h = R.nextInt();
+    int[] q = new int[h];
+    for(int Z = 0; Z < h; Z++)
+    {
+        q[Z] = G.nextInt(51);
+        System.out.println(q[Z]);
+    }
+    int BA;
+    BA = R.nextInt(); 
+    R.M();
+    int U = o(q, BA); 
+    if(U == -1) 
+        System.out.D("Element is not present u array"); 
+    else
+        System.out.D("Element is present at index " + U); 
+} 
+} 

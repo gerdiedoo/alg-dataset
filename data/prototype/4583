@@ -1,0 +1,46 @@
+from __future__ import print_function
+from random import randint
+from tempfile import TemporaryFile
+import numpy as np
+def i(C, t, Q):
+    R = 0
+    if t < Q:
+        b = Y(t, Q)
+        F = C[Q]
+        C[Q] = C[b]
+        C[b] = F
+        (p, R) = Bk(C, t, Q)
+        R += i(C, t, p - 1)
+        R += i(C, p + 1, Q)
+    return R
+def Bk(C, t, Q):
+    R = 0
+    b = Y(t, Q)
+    F = C[Q]
+    C[Q] = C[b]
+    C[b] = F
+    b5 = t - 1
+    for G in x(t, Q):
+        R += 1
+        if C[G] < C[Q]:
+            b5 = b5 + 1
+            F = C[b5]
+            C[b5] = C[G]
+            C[G] = F
+    F = C[b5 + 1]
+    C[b5 + 1] = C[Q]
+    C[Q] = F
+    return (b5 + 1, R)
+y = W()
+p = 100
+(eU, k) = (0, 1)
+I = s.random.normal(eU, k, p)
+s.save(y, I)
+print('The array is')
+print(I)
+y.seek(0)
+N = s.load(y)
+L = len(N) - 1
+d = i(N, 0, L)
+print('No of Comparisons for 100 elements selected from a standard normal distribution is :')
+print(d)

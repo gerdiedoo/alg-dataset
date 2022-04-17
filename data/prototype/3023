@@ -1,0 +1,81 @@
+import r.m.J;
+import r.k.Km;
+public class Y extends G{
+	public Km<s> kN(Km<s> y)
+	{
+		if(y.X() <= 1)
+		{
+			return y;
+		}
+		Km<s> sg = new Km<s>();
+		Km<s> t = new Km<s>();
+		Km<s> he = new Km<s>();
+		int z = y.X()/2;
+		for(int C = 0; C < y.X(); C++)
+		{
+			if(C < z)
+			{
+				t.F(y.N(C));
+			}
+			else
+			{
+				he.F(y.N(C));
+			}
+		}
+		t = kN(t); 
+		he = kN(he);
+		sg = L(t, he);
+		return sg;
+	}
+	public Km<s> L(Km<s> t, Km<s> he)
+	{
+		Km<s> px = new Km<s>();
+		while(t.X() > 0 || he.X() > 0)
+		{
+			if(t.X() > 0 && he.X() > 0)
+			{
+				if(t.N(0) < he.N(0))
+				{
+					px.F(t.N(0));
+					t.WX(0);
+				}
+				else
+				{
+					px.F(he.N(0));
+					he.WX(0);
+				}
+			}
+			else if(t.X() > 0)
+			{
+				px.F(t.N(0));
+				t.WX(0);
+			}
+			else if(he.X() > 0)
+			{
+				px.F(he.N(0));
+				he.WX(0);
+			}
+		}
+		return px;
+	}
+	public void e(P xd) throws J
+	{
+		xd.mq();
+		Km<s> sg = new Km<s>();
+		long Q = System.qT();
+		sg = kN(xd.d());
+		long eQ = System.qT();
+		double H = eQ - Q;
+		double M = H/1000000;
+		if(D(sg))
+		{
+			xd.iP(sg);
+			System.out.aW("Y time (in Milli): "); 
+			System.out.println(M);
+		}
+		else
+		{
+			System.out.println("Not sorted!");
+		}
+	}
+}

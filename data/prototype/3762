@@ -1,0 +1,29 @@
+def F(E, V, P, g):
+    e = E[V:P + 1]
+    xh = E[P + 1:g + 1]
+    print(e, xh)
+    Q = 0
+    i_ = 0
+    m = V
+    while Q < len(e) and i_ < len(xh):
+        if e[Q] < xh[i_]:
+            E[m] = e[Q]
+            Q += 1
+        else:
+            E[m] = xh[i_]
+            i_ += 1
+        m += 1
+    while Q < len(e):
+        E[m] = E[Q]
+        m += 1
+        Q += 1
+    while i_ < len(xh):
+        E[m] = E[i_]
+        m += 1
+        i_ += 1
+def J5(E, V, g):
+    if V == g:
+        return
+    J5(E, V, (V + g) // 2)
+    J5(E, (V + g) // 2 + 1, g)
+    F(E, V, (g + V) // 2, g)

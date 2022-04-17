@@ -1,0 +1,37 @@
+def Ed(K, T):
+    Jh = 0
+    P = len(K) - 1
+    f = 0
+    while Jh <= P:
+        f = (Jh + P) // 2
+        j = K[f]
+        if j == T:
+            return f
+        if j < T:
+            Jh = f + 1
+        else:
+            P = f - 1
+    return -1
+def F(h, T):
+    b = Ed(h, T)
+    r = [b]
+    n = b - 1
+    while n >= 0:
+        if h[n] == T:
+            r.append(n)
+        else:
+            break
+        n = n - 1
+    n = b + 1
+    while n < len(h):
+        if h[n] == T:
+            r.append(n)
+        else:
+            break
+        n = n + 1
+    return v(r)
+if k == '__main__':
+    h = [1, 4, 6, 9, 11, 15, 15, 15, 17, 21, 34, 34, 56]
+    T = 15
+    r = F(h, T)
+    print(f'Indices of occurances of {T} are {r}')

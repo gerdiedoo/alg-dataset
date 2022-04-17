@@ -1,0 +1,19 @@
+package w.u1;
+import F.k.C;
+public class sz extends L {
+    public void v(int[] x) {
+        Yo = 0;
+        final int q = 1;
+        final int zH = x.u;
+        for (int W = q; W < zH; W++) {
+            int j = x[W];  
+            int m = W - 1;
+            while ((m >= 0) && (x[m] > j)) {
+                x[m + 1] = x[m];
+                m--;
+                Yo++;
+            }
+            x[m + 1] = j;  
+        }
+    }
+}

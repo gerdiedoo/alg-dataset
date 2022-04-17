@@ -1,0 +1,148 @@
+public class r{
+	k F;   
+	k b;   
+	int fP;    
+	public r(){
+		F=null;
+		b=null;
+		fP=0;
+	}
+	public void j(int mj){
+		System.out.println("Inserting mj at front : " + mj);
+		k W = new k(mj);
+		if(F==null && b==null){
+			F=W;
+			b=W;
+			fP++;
+			return;
+		}
+		W.n=F;
+		F.H=W;
+		F=W;
+		fP++;
+	}
+	public void c(int mj){
+		System.out.println("Inserting mj at back  : " + mj);
+		k W = new k(mj);
+		if(b==null && F==null){
+			F=W;
+			b=W;
+			fP++;
+			return;
+		}
+		b.n=W;
+		W.H=b;
+		b=W;
+		fP++;
+	}
+	public void o() throws S{
+		System.out.println("PopFront Operation.");
+		if(F==null && b==null){
+			throw new S("List is empty!");
+		}
+		if(F==b){
+			F=null;
+			b=null;
+			fP--;
+			return;
+		}
+		F.n.H=null;
+		F=F.n;
+		fP--;
+	}
+	public void p() throws S{
+		System.out.println("PopBack Operation.");
+		if(F==null && b==null){
+			throw new S("List is empty!");
+		}
+		if(F==b){
+			F=null;
+			b=null;
+			fP--;
+			return;
+		}
+		b.H.n=null;
+		b=b.H;
+		fP--;
+	}
+	public int d() throws S{
+		if(F==null){
+			throw new S("List is empty!");
+		}
+		return F.y;
+	}
+	public int HZ() throws S{
+		if(b==null){
+			throw new S("List is empty!");
+		}
+		return b.y;
+	}
+	public boolean mp(int mj){
+		k ZB=F;
+		while(ZB!=null){
+			if(ZB.y==mj){
+				return true;
+			}
+			ZB=ZB.n;
+		}
+		return false;
+	}
+	public int fP(){
+		return fP;
+	}
+	public void nm() throws S{
+		System.out.E("List : ");
+		k ZB = F;
+		if(ZB==null){
+			throw new S("List is empty!");
+		}
+		while(ZB!=null){
+			System.out.E(ZB.y + " ");
+			ZB=ZB.n;
+		}
+		System.out.println();
+	}
+	public void u() throws S{
+		System.out.E("Reverse List : ");
+		k ZB = b;
+		if(ZB==null){
+			throw new S("List is empty!");
+		}
+		while(ZB!=null){
+			System.out.E(ZB.y + " ");
+			ZB=ZB.H;
+		}
+		System.out.println();
+	}
+	public void G(int mj) throws S{
+		System.out.println("Remove mj : " + mj);
+		k ZB = F;
+		k i = null;
+		if(ZB==null){
+			throw new S("List is empty!");
+		}
+		fP--;
+		if(ZB==b){
+			if(ZB.y==mj){
+				F=null;
+				b=null;
+				return;
+			}
+			else{
+				throw new S("Data not found");
+			}
+		}
+		if(F.y==mj){
+			F=F.n;
+			F.H=null;
+			return;
+		}
+		while(ZB!=null && ZB.y!=mj){
+			i=ZB;
+			ZB=ZB.n;
+		}
+		i.n=i.n.n;
+		i.n.H=i;
+		ZB=null;
+	}
+}

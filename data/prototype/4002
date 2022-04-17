@@ -1,0 +1,83 @@
+package Y3.e.f.R;
+@L("unchecked")
+public class ZR<d extends C<d>> {
+    public static enum M { D, H }
+    private ZR() { }
+    public static <d extends C<d>> d[] qs(M a, d[] Hy) {
+        qs(a, 0, Hy.K, Hy);
+        return Hy;
+    }
+    private static <d extends C<d>> void qs(M a, int w, int K, d[] Hy) {
+        if (K > 2) {
+            int q = (int) g.Pi(K / 2);
+            int k = K - q;
+            qs(a, w, q, Hy);
+            qs(a, w + q, k, Hy);
+            if (a == M.D)
+                V(w, q, w + q, k, Hy);
+            else
+                S(w, q, w + q, k, Hy);
+        } else if (K == 2) {
+            d N = Hy[w + 1];
+            if (N.E(Hy[w]) < 0) {
+                Hy[w + 1] = Hy[w];
+                Hy[w] = N;
+            }
+        }
+    }
+    private static <d extends C<d>> void V(int x, int q, int XR, int k, d[] Hy) {
+        int T = x;
+        int r = XR;
+        int Y = x + q;
+        int XC = XR + k;
+        while (T < Y && r < XC) {
+            d dF = Hy[T];
+            d U = Hy[r];
+            if (U.E(dF) < 0) {
+                System.Yz(Hy, T, Hy, T+1, r-T);
+                Hy[T] = U;
+                T++;
+                r++;
+                Y++;
+            } else {
+                T++;
+            }
+        }
+    }
+    private static <d extends C<d>> void S(int x, int q, int XR, int k, d[] Hy) {
+        int A = 0;
+        d[] oV = (d[]) new C[q + k];
+        int T = x;
+        int r = XR;
+        int Y = x + q;
+        int XC = XR + k;
+        while (T < Y || r < XC) {
+            d dF = null;
+            if (T < Y) {
+                dF = Hy[T];
+            }
+            d U = null;
+            if (r < XC) {
+                U = Hy[r];
+            }
+            if (dF != null && U == null) {
+                oV[A++] = dF;
+                T++;
+            } else if (U != null && dF == null) {
+                oV[A++] = U;
+                r++;
+            } else if (U != null && U.E(dF) <= 0) {
+                oV[A++] = U;
+                r++;
+            } else {
+                oV[A++] = dF;
+                T++;
+            }
+        }
+        int W = 0;
+        int X = x + q + k;
+        for (int y = x; y < X; y++) {
+            Hy[y] = oV[W++];
+        }
+    }
+}

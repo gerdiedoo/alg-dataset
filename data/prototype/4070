@@ -1,0 +1,37 @@
+package T;
+import q.zv.SJ;
+import q.zv.ZG;
+import q.zv.U;
+public class B<V> extends v<V> {
+	public void C(U<V> J, ZG<V> F) {
+		int Fj = J.r();
+		if (Fj <= 1)
+			return;
+		int i = Fj / 2;
+		U<V> R = new SJ<>(J.L(0, i));
+		U<V> X = new SJ<>(J.L(i, Fj));
+		C(R, F);
+		C(X, F);
+		j(R, X, J, F);
+	}
+	private void j(U<V> R, U<V> X, U<V> J, ZG<V> F) {
+		int Z = 0;
+		int m = 0;
+		int p = 0;
+		V t;
+		while (Z < R.r() && m < X.r()) {
+			t = F.s(R.fL(Z), X.fL(m)) <= 0 
+					? R.fL(Z++) : X.fL(m++);
+			J.G(p++, t);
+		}
+		while (Z < R.r()) {
+			J.G(p++, R.fL(Z++));
+		}
+		while (m < X.r()) {
+			J.G(p++, X.fL(m++));
+		}
+	}
+	public String S() {
+		return "Merge Sort";
+	}
+}

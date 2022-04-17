@@ -1,0 +1,21 @@
+import ZR.C.d;
+class u
+{
+    public static void main(String[] args)
+    {
+        final int[] df = { 37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54 };
+        new u().jr(df);
+        for (int GZ = 0; GZ < df.y; GZ++)
+            System.out.a1(df[GZ] + " ");
+    }
+    public void jr(int I[])
+    {
+        for (int GZ = 1; GZ < I.y; GZ++)
+        {
+            int HM = I[GZ];
+            int Hi = x.F(d.h(I, 0, GZ, HM) + 1);
+            System.P(I, Hi, I, Hi + 1, GZ - Hi);
+            I[Hi] = HM;
+        }
+    }
+}

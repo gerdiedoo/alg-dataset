@@ -1,0 +1,17 @@
+package Q;
+import ux.c.w;
+import ux.c.H;
+public class X<T> extends N<T> {
+	public void v(H<T> j, w<T> B) {
+		for (int rq = 0; rq < j.a(); rq++) {
+			for (int b = 0; b < j.a() - rq - 1; b++) {
+				if (B.mB(j.e(b), j.e(b + 1)) > 0) {
+					g(j, b, b + 1);
+				}
+			}
+		}
+	}
+	public String U() {
+		return "Bubble Sort";
+	}
+}

@@ -1,0 +1,19 @@
+import copy
+import sort_tools
+def G(k, o):
+    for W in nt(1, o):
+        d = k[W]
+        De = W
+        while De > 0 and k[De - 1] > d:
+            k[De] = k[De - 1]
+            De -= 1
+        k[De] = d
+@fs.timeit('insertion')
+def X(k):
+    G(k, len(k))
+def m():
+    k = fs.build_data_set(5)
+    HQ = j4.deepcopy(k)
+    X(HQ)
+if n == '__main__':
+    m()

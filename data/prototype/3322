@@ -1,0 +1,22 @@
+package E.D.vt.Yd;
+public class W {
+    public static void Y(a[] d) {
+        Y(d, true);
+    }
+    public static void Y(a[] d, boolean RP) {
+        a p;
+        int J;
+        for (int L = 1; L < d.T; L++) {
+            p = d[L];
+            J = L;
+            while(--J >= 0){
+                if((RP && d[J].K(p) > 0)
+                        || (!RP && d[J].K(p) < 0))
+                    d[J + 1] = d[J];
+                else
+                    break;
+            }
+            d[J + 1] = p;
+        }
+    }
+}

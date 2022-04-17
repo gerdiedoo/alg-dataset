@@ -1,0 +1,32 @@
+import unittest
+def O(Iz, t, H, y):
+    if t > H:
+        return -1
+    x = t + H >> 1
+    if y == Iz[x]:
+        return x
+    if y < Iz[x]:
+        return O(Iz, t, x - 1, y)
+    else:
+        return O(Iz, x + 1, H, y)
+class BinarySearchTest(E.TestCase):
+    def test_basic(self):
+        Iz = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for (k, xo) in enumerate(Iz):
+            X.assertEquals(O(Iz, 0, len(Iz) - 1, xo), k)
+    def test_missing(self):
+        Iz = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        X.assertEquals(O(Iz, 0, len(Iz) - 1, 19), -1)
+    def test_odd(self):
+        Iz = [2, 4, 6, 8, 10, 12, 14]
+        for (k, xo) in enumerate(Iz):
+            X.assertEquals(O(Iz, 0, len(Iz) - 1, xo), k)
+    def test_even(self):
+        Iz = [1, 3, 5, 7, 9, 11, 13, 17]
+        for (k, xo) in enumerate(Iz):
+            X.assertEquals(O(Iz, 0, len(Iz) - 1, xo), k)
+    def test_empty(self):
+        Iz = []
+        X.assertEquals(O(Iz, 0, len(Iz) - 1, 19), -1)
+if N == '__main__':
+    E.main()

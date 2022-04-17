@@ -1,0 +1,76 @@
+package n.g.m.Z;
+class eF<A extends kb<A>> {
+    class K<h> {
+        h u;
+        K<h> D, k;
+        K(h F) {
+            u = F;
+        }
+    }
+    K<A> I;  
+    void w(A y) {
+        K<A> Xc = new K<>(y);
+        Xc.k = I;
+        Xc.D = null;
+        if (I != null)
+            I.D = Xc;
+        I = Xc;
+    }
+    void Dy(K H, A y) {
+        if (H == null) {
+            System.out.println("The given previous node cannot be NULL ");
+            return;
+        }
+        K Xc = new K<>(y);
+        Xc.k = H.k;
+        H.k = Xc;
+        Xc.D = H;
+        if (Xc.k != null) {
+            Xc.k.D = Xc;
+        }
+    }
+    void mP(K H, A y) {
+        if (H == I) {
+            w(y);
+        } else {
+            Dy(H.D, y);
+        }
+    }
+    void E(A y) {
+        K<A> Xc = new K<>(y);
+        K<A> W = I;
+        Xc.k = null;
+        if (I == null) {
+            Xc.D = null;
+            I = Xc;
+            return;
+        }
+        while (W.k != null) {
+            W = W.k;
+        }
+        W.k = Xc;
+        Xc.D = W;
+    }
+    void GL() {
+        K<A> Fo = I;
+        while (Fo != null) {
+            System.out.a(Fo.u + " ");
+            Fo = Fo.k;
+        }
+        System.out.println();
+    }
+}
+class Dp {
+    public static void main(String[] args) {
+        eF<c> pe = new eF<>();
+        pe.E(6);
+        pe.w(7);
+        pe.w(1);
+        pe.E(4);
+        pe.GL();
+        pe.Dy(pe.I.k, 8);
+        pe.GL();
+        pe.mP(pe.I, 9);
+        pe.GL();
+    }
+}

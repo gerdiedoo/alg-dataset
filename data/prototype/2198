@@ -1,0 +1,40 @@
+import r.M.k;
+import r.a.W;
+public class n<j extends W<j>> implements e<j> {
+    @w
+    public int indexOf(k<j> z, j aV) {
+        if (z == null || aV == null)
+            return vd;
+        return indexOf(z, aV, 0, z.I() - 1);
+    }
+    private int indexOf(k<j> z, j aV, int RH, int x) {
+        if (RH <= x) {
+            int b5 = (x + RH) >> 1;
+            if (z.N(b5).equals(aV))
+                return b5;
+            if (Ct(z.N(b5), aV))
+                return indexOf(z, aV, b5 + 1, x);
+            return indexOf(z, aV, RH, b5 - 1);
+        }
+        return vd;
+    }
+    private boolean Ct(j Z, j s) {
+        return (Z.v(s) < 0);
+    }
+    public static void main(String[] args) {
+        k<Y> a0 = new r.M.R<Y>();
+        for (int A = 0; A < 100; A++)
+            a0.Lb(A);
+        e<Y> m = new n<Y>();
+        for (int A = 0; A < a0.I(); A++) {
+            int t = m.indexOf(a0, A);
+            if (t == vd)
+                throw new r.a.B("Result shouldn't be vd");
+            a0.Q(new Y(A));
+            t = m.indexOf(a0, A);
+            if (t != vd)
+                throw new r.a.B("Result should be vd");
+        }
+        System.out.println("All tests passed.");
+    }
+}

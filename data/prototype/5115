@@ -1,0 +1,78 @@
+class Hash_Table:
+    def __init__(self):
+        g.num = 0
+        g.size = 8
+        g.marked = 0
+        g.num_min = 1
+        g.size_min = 8
+        g.marked_max = 4
+        g.h1 = lambda k: m % g.size
+        g.h2 = lambda k: 1 + 2 * (m % g.marked_max)
+        g.table = [None for F in s(g.size)]
+    def Z(g, T):
+        V = g.h1(T)
+        A = g.h2(T)
+        for P in s(g.size):
+            yield (V, g.table[V])
+            V = g.h1(V + A)
+    def find(self, key):
+        for (V, B) in g.probing_sequence(T):
+            if B == None or B[0] == T:
+                return B
+        return None
+    def insert(self, key, value):
+        Z = g.probing_sequence(T)
+        for (V, B) in Z:
+            if B == None:
+                if B == None:
+                    g.num += 1
+                    g.marked += 1
+                    g.table[V] = (T, o)
+                    if g.marked > g.marked_max:
+                        g.expand()
+                return
+            elif B == 'D':
+                g.table[V] = (T, o)
+                for (V, B) in Z:
+                    if B == None:
+                        g.num += 1
+                        return
+                    elif B[0] == T:
+                        g.table[V] = 'D'
+                        return
+                return
+            elif B[0] == T:
+                g.table[V][1] = o
+                return
+    def delete(self, key):
+        for (V, B) in g.probing_sequence(T):
+            if B == None:
+                return
+            elif B[0] == T:
+                g.num -= 1
+                g.table[V] = 'D'
+                if g.num <= g.num_min and g.size > g.size_min:
+                    g.contract()
+                return
+    def rehash(self):
+        g.num = 0
+        g.marked = 0
+        Vi = g.table
+        g.table = [None for V in s(g.size)]
+        for B in Vi:
+            if B and B != 'D':
+                g.insert(*B)
+    def expand(self):
+        g.size *= 2
+        g.num_min *= 2
+        g.marked_max *= 2
+        g.rehash()
+    def contract(self):
+        g.size //= 2
+        g.num_min //= 2
+        g.marked_max //= 2
+        g.rehash()
+    def __repr__(self):
+        def showItem(item):
+            return '' if f == None else 'DELETED' if f == 'D' else f
+        return '\n'.join(('  {}: [{}]'.format(T, R(f)) for (T, f) in enumerate(g.table)))

@@ -1,0 +1,89 @@
+package m;
+import z.J5.p;
+public class o<e extends dj<e>> implements A{
+	 p<e> u = new p<e>();
+	public o() {
+		Kp();
+	}
+	private static  long Pf = 0;
+	private static  long k = 0;
+	private static  long f = 0;
+	static long x;
+	static long EX;
+	public p<e> U(p<e> Hm) {
+		p<e> D = new p<e>();
+		p<e> K = new p<e>();
+		if(Hm.v() > 1) {
+			int pf = (Hm.v() - 1) / 2;
+			for(int rj = 0 ; rj <= pf ; rj++) {
+				D.O(Hm.c(rj));
+			}
+			for(int q = pf + 1; q <= Hm.v() - 1; q++) {
+				K.O(Hm.c(q));
+			}
+			D = U(D);
+			K = U(K);
+		}
+		return ht(D, K, Hm);
+	}
+	public p<e> ht(p<e> D, p<e> K, p<e> Hm) {
+		int Gw = 0, g3 = 0, Y = 0;
+		long Pf = 0;
+		long k = 0;
+		while((Gw < D.v()) && (g3 < K.v())) {
+			Pf++;
+			if(D.c(Gw).TD(K.c(g3)) < 0) {
+				Hm.w(Y, D.c(Gw));
+				Gw++;
+			}
+			else {
+				Hm.w(Y, K.c(g3));
+				g3++;
+			}
+			Y++;
+		}
+		while(Gw < D.v()) {
+			Hm.w(Y, D.c(Gw));
+			Gw++;
+			Y++;
+		}
+		while(g3 < K.v()) {
+			Hm.w(Y, K.c(g3));
+			g3++;
+			Y++;
+		}
+		o.Pf = Pf;
+		o.k = k;
+		return Hm;		
+	}
+	public p<e> FQ(p<e> i) {
+		x = System.E();
+		U(i);
+		EX = System.E();
+		f = EX - x;
+		return i;
+	}
+	public p<e> W(p<e> Dm) {
+		p<e> o8 = new p<e>();
+		for(int rj = 0 ; rj < Dm.v() ; rj++) {
+			o8.O(Dm.c(rj));
+		}
+		return o8;
+	}
+	public static void f() {
+		System.out.W("Runtime: "  + f + " ms");
+	}
+	@h
+	public void Kp() {
+		U(u);
+	}
+	public static void K_() {
+		System.out.W("Comparisons: " + Pf);
+	}
+	public static void b() {
+		System.out.W("Swaps: " + k);
+	}
+	public static void CA() {
+		System.out.W("Runtime: "  + (f * 2) + " ms");
+	}
+}

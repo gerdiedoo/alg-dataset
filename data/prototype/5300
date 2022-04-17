@@ -1,0 +1,104 @@
+public class V<Hd extends H<Hd>,FY extends H<FY>> implements V9<Hd,FY> {
+    private qb<Hd, FY>[] mb;
+    private static final int a = 101;
+    private double Ad = 0.75;
+    private int T;
+    private int Y;
+    private final qb<Hd, FY> h = new qb<>(null, null);
+    public V() {
+        mb = new qb[a];
+    }
+    private int jB(Qo y) {
+        int iO = y.hashCode() % mb.L;
+        if (iO < 0)
+            iO += mb.L;  
+        while ((mb[iO] != null)
+                && (!y.equals(mb[iO].f()))) {
+            iO++;
+            if (iO >= mb.L)
+                iO = 0;  
+        }
+        return iO;
+    }
+    @I
+    public FY X(Qo y) {
+        int iO = jB(y);
+        if (mb[iO] != null)
+            return mb[iO].W();
+        else
+            return null;  
+    }
+    @I
+    public boolean P() {
+        return T == 0;
+    }
+    @I
+    public FY Hx(Hd y, FY q) {
+        int iO = jB(y);
+        if (mb[iO] == null) {
+            mb[iO] = new qb<>(y, q);
+            T++;
+            double rh =
+                    (double) (T + Y) / mb.L;
+            if (rh > Ad)
+                Yc();
+            return null;
+        }
+        FY wQ = mb[iO].W();
+        mb[iO].x(q);
+        return wQ;
+    }
+    private void Yc() {
+        qb<Hd, FY>[] n = mb;
+        mb = new qb[2 * n.L + 1];
+        T = 0;
+        Y = 0;
+        for (int A = 0; A < n.L; A++) {
+            if ((n[A] != null) && (n[A] != h)) {
+                Hx(n[A].f(), n[A].W());
+            }
+        }
+    }
+    @I
+    public FY S(Qo y) {
+        int iO = jB(y);
+        if(mb[iO] == null){
+            return null;
+        }
+        FY e = mb[iO].W();
+        mb[iO] = h;
+        Y++;
+        T--;
+        return e;
+    }
+    @I
+    public int G() {
+        return T;
+    }
+    static class qb<Hd extends H<Hd>,FY extends H<FY>> implements H<qb<Hd,FY>>  {
+        private final Hd y;
+        private FY q;
+        public boolean l5;
+        public boolean w() {
+            return l5;
+        }
+        public Hd f() {
+            return y;
+        }
+        public FY W() {
+            return q;
+        }
+        public void x(FY q) {
+            this.q = q;
+        }
+        public qb(Hd y , FY q){
+            this.y = y;
+            this.q = q;
+            l5 = true;
+        }
+        @I
+        public int GW(qb<Hd, FY> s) {
+            return this.y.GW(s.f());
+        }
+    }
+}

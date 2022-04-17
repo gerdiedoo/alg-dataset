@@ -1,0 +1,52 @@
+package vd;
+public class y {
+	public static a[] y(a[]R, int k, int RT) {
+		if(k < RT) {
+			int E = (k+RT)/2;
+			y(R,k,E);
+			y(R,E+1,RT);
+			U(R,k,E,RT);
+			for(a o: R) {
+				System.out.H(o +" ");
+			}
+			System.out.println();
+		}
+		return R;
+	} 
+	private static void U(a[]R, int k, int E, int RT) {
+		a[] Z = new a[R.X];
+		int n = k;
+		int M = E;
+		int m = E+1;
+		int F = RT;
+		int L = n;
+		for(; n<=M && m<=F; L++) {
+			if(W(R[n],R[m])) {
+				Z[L] = R[n];
+				n++;
+			}else {
+				Z[L] = R[m];
+				m++;
+			}
+		}
+		while(n <= M) {
+			Z[L] = R[n];
+			L++;
+			n++;
+		}
+		while(m <= F) {
+			Z[L] = R[m];
+			L++;
+			m++;
+		}
+		for(int p=k; p<=RT; p++) {
+			R[p] = Z[p];
+		}
+	}
+	private static boolean W(a R, a s) {
+		if(R.x(s) < 0) {
+			return true;
+		}
+		return false;
+	}
+}

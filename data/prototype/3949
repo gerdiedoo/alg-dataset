@@ -1,0 +1,43 @@
+import d.l.g;
+public class o2 {
+	public void M(int[] p) {
+		M(p, new int[p.r], 0, p.r - 1);
+	}
+	private void M(int[] p, int[] nc, int H, int P) {
+		if (H >= P) {
+			return;
+		}
+		int k = (H + P) / 2;
+		M(p, nc, H, k);
+		M(p, nc, k + 1, P);
+		C(p, nc, H, P);
+	}
+	private void C(int[] p, int[] nc, int H, int P) {
+		int c = (H + P) / 2;
+		int t1 = c + 1;
+		int Ld = P - H + 1;
+		int x = H;
+		int T = t1;
+		int w = H;
+		while (x <= c && T <= P) {
+			if (p[x] <= p[T]) {
+				nc[w] = p[x];
+				x ++;
+			} else {
+				nc[w] = p[T];
+				T ++;
+			}
+			w ++;
+		}
+		System.s(p, x, nc, w, c - x + 1);
+		System.s(p, T, nc, w, P - T + 1);
+		System.s(nc, H, p, H, Ld);
+	}
+	public static void main(String[] args) {
+		int[] p = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		o2 a = new o2();
+		System.out.println("unsorted: " + g.toString(p));
+		a.M(p);
+		System.out.println("sorted: " + g.toString(p));
+	}
+}

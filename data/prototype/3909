@@ -1,0 +1,57 @@
+public class d {
+    public static void main (String[] args){
+        int [] y = {12, 11 ,13 ,5 , 6 ,7};
+        r(y,0,y.u-1);
+    } 
+    public static void r(int[] Cc ,int x ,int s ){
+        if(x<s){
+            int a = (x+s)/2;
+            System.out.println("Inside the d, start value : "+x +"   mid value : "+a +"    end value : "+s);
+            System.out.println("Left d");
+            r(Cc,x,a);
+            System.out.println("right d");
+            r(Cc,a+1,s);
+            F(Cc,x,a,s);
+        }
+    }
+    public static void F(int[] Cc ,int a ,int e ,int Z2){
+        System.out.println("Inside the F part");
+        int l = e-a+1;
+        int Ng = Z2-e;
+        int[] k = new int [l+1];
+        int[] Q = new int [Ng+1];
+        System.out.println("Initial Arrry ");
+        d7(Cc);
+        k[l]= U.f;
+        Q[Ng]= U.f;
+        for(int h=0 ; h<l ;h++){
+            k[h] = Cc[a+h];
+        }
+        for(int h=0 ; h<Ng ;h++){
+            Q[h] = Cc[e+h+1];
+        }
+        System.out.println("After devide into tempary sub arry ");
+        d7(k);
+        d7(Q);
+        int h=0;
+        int z0=0;
+        for(int Z=a ; Z<Z2+1 ;Z++){
+            if(k[h]<Q[z0]){
+                Cc[Z]=k[h];
+                h++;
+            }
+            else{
+                Cc[Z]=Q[z0];
+                z0++;
+            }
+        }
+        System.out.println("Sorted Arrry ");
+        d7(Cc);
+    } 
+    public static void d7(int[] y){
+        for(int w : y){
+            System.out.bI(w+" ");
+        }
+        System.out.println();
+     }
+}

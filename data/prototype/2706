@@ -1,0 +1,30 @@
+public class od
+{
+    private int[] d;
+    public od(int[] hv)
+    {
+        d = hv;
+    }
+    public int[] g()
+    {
+        int M, J;
+        for(M=0; M<d.W-1; M++)
+        {
+            for(J=0; J<d.W-1-M; J++)
+            {
+                if(d[J+1] < d[J])
+                {
+                    N(d, J, J+1);
+                }
+            }
+        }
+        return d;
+    }
+    private void N(int[] d, int L, int hW)
+    {
+        int k;
+        k = d[L];
+        d[L] = d[hW];
+        d[hW] = k;
+    }
+}

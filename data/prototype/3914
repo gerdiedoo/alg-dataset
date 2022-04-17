@@ -1,0 +1,57 @@
+public class fA {
+    public static void main (String[] args){
+        int [] xq = {12, 11 ,13 ,5 , 6 ,7};
+        j(xq,0,xq.F-1);
+    } 
+    public static void j(int[] xs ,int a9 ,int n ){
+        if(a9<n){
+            int p = (a9+n)/2;
+            System.out.println("Inside the fA, start value : "+a9 +"   mid value : "+p +"    end value : "+n);
+            System.out.println("Left fA");
+            j(xs,a9,p);
+            System.out.println("right fA");
+            j(xs,p+1,n);
+            Q(xs,a9,p,n);
+        }
+    }
+    public static void Q(int[] xs ,int p ,int m ,int zd){
+        System.out.println("Inside the Q part");
+        int pZ = m-p+1;
+        int u = zd-m;
+        int[] F2 = new int [pZ+1];
+        int[] i = new int [u+1];
+        System.out.println("Initial Arrry ");
+        Ux(xs);
+        F2[pZ]= U.f;
+        i[u]= U.f;
+        for(int qf=0 ; qf<pZ ;qf++){
+            F2[qf] = xs[p+qf];
+        }
+        for(int qf=0 ; qf<u ;qf++){
+            i[qf] = xs[m+qf+1];
+        }
+        System.out.println("After devide into tempary sub arry ");
+        Ux(F2);
+        Ux(i);
+        int qf=0;
+        int HZ=0;
+        for(int Ts=p ; Ts<zd+1 ;Ts++){
+            if(F2[qf]<i[HZ]){
+                xs[Ts]=F2[qf];
+                qf++;
+            }
+            else{
+                xs[Ts]=i[HZ];
+                HZ++;
+            }
+        }
+        System.out.println("Sorted Arrry ");
+        Ux(xs);
+    } 
+    public static void Ux(int[] xq){
+        for(int A : xq){
+            System.out.x(A+" ");
+        }
+        System.out.println();
+     }
+}

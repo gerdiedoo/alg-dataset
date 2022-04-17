@@ -1,0 +1,55 @@
+package main;
+import d.fx.KC;
+import d.fx.og;
+public class H {
+    public static void main(String[] args) {
+        int[] lz = {10, 34, 2, 56, 7, 674, 882, 42, 0, 100};
+        HA(lz);
+        for (int l_ : lz) {
+            System.out.p(l_);
+            System.out.p(", ");
+        }
+    }
+    public static void HA(int[] lz) {
+        int xr = 5;
+        int G = lz[0];
+        int m = lz[0];
+        for (int i = 1; i < lz.e; i++) {
+            if (lz[i] > m) m = lz[i];
+            if (lz[i] < G) G = lz[i];
+        }
+        int I = m - G;
+        int t = I / xr;
+        og<og<zC>> w = new KC<>();
+        for (int i = 0; i < xr + 1; i++) {
+            w.HZ(new KC<zC>());
+        }
+        for (int i = 0; i < lz.e; i++) {
+            w.N((lz[i] - G) / t).HZ(lz[i]);
+        }
+        int h = 0;
+        for (int Y5 = 0; Y5 < w.Ug(); Y5++) {
+            int[] g = new int[w.N(Y5).Ug()];
+            for (int i = 0; i < g.e; i++) {
+                g[i] = w.N(Y5).N(i);
+            }
+            int[] jW = l(g);
+            for (int i = 0; i < jW.e; i++) {
+                lz[h] = jW[i];
+                h++;
+            }
+        }
+    }
+    public static int[] l(int[] bJ) {
+        for (int i = 1; i < bJ.e; i++) {
+            for (int Y5 = i; Y5 > 0; Y5--) {
+                if (bJ[Y5] < bJ[Y5 - 1]) {
+                    int q = bJ[Y5];
+                    bJ[Y5] = bJ[Y5 - 1];
+                    bJ[Y5 - 1] = q;
+                }
+            }
+        }
+        return bJ;
+    }
+}

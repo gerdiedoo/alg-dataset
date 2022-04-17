@@ -1,0 +1,43 @@
+import N.qE.dF;
+public class Y {
+	public void Z(int[] w) {
+		Z(w, new int[w.cc], 0, w.cc - 1);
+	}
+	private void Z(int[] w, int[] f, int W, int n) {
+		if (W >= n) {
+			return;
+		}
+		int k = (W + n) / 2;
+		Z(w, f, W, k);
+		Z(w, f, k + 1, n);
+		S(w, f, W, n);
+	}
+	private void S(int[] w, int[] f, int W, int n) {
+		int VH = (W + n) / 2;
+		int E = VH + 1;
+		int j = n - W + 1;
+		int tY = W;
+		int L = E;
+		int Vg = W;
+		while (tY <= VH && L <= n) {
+			if (w[tY] <= w[L]) {
+				f[Vg] = w[tY];
+				tY ++;
+			} else {
+				f[Vg] = w[L];
+				L ++;
+			}
+			Vg ++;
+		}
+		System.o(w, tY, f, Vg, VH - tY + 1);
+		System.o(w, L, f, Vg, n - L + 1);
+		System.o(f, W, w, W, j);
+	}
+	public static void main(String[] args) {
+		int[] w = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		Y H = new Y();
+		System.out.println("unsorted: " + dF.toString(w));
+		H.Z(w);
+		System.out.println("sorted: " + dF.toString(w));
+	}
+}

@@ -1,0 +1,103 @@
+public class v{
+    class h{
+        int S;
+        h u;
+        public h(int S){
+            this.S=S;
+            this.u=null;
+        }
+    }
+     public h sf=null;
+     public h N=null;
+    void C(int Gk){
+        h E=new h(Gk);
+        if(sf==null){
+            sf=E;
+            N=E;
+        }else{
+            N.u=E;
+            N=E;
+        }
+    }
+    void c9(int Gk){
+        h E=new h(Gk);
+        if(sf==null){
+            sf=E;
+            N=E;
+        }else{
+            E.u=sf;
+            sf=E;
+        }
+    }
+    void Z(){
+        if(sf==null){
+            System.out.println("List is empty");
+        }else{
+            sf=sf.u;
+        }
+    }
+    void W(){
+        if(sf==null){
+            System.out.println("List is empty");
+        }else{
+            h DJ=sf;
+            while(DJ.u.u!=null){
+                DJ=DJ.u;
+            }
+            DJ.u=null;
+            N=DJ;
+        }
+    }
+    void G(int z){
+        if(sf==null){
+            System.out.println("List is empty");
+        }else{
+            h DJ=sf;
+            h R=sf;
+            for(int g=0;g<z;g++){
+                R=DJ;
+                DJ=DJ.u;
+            }
+            R.u=DJ.u;
+        }
+    }
+    void H(int Gk,int z){
+        h E=new h(Gk);
+        if(sf==null){
+            System.out.println("List is empty");
+        }else{
+            h DJ=sf;
+            h R=sf;
+            for(int g=0;g<z;g++){
+                R=DJ;
+                DJ=DJ.u;
+            }
+           E.u=DJ;
+           R.u=E;
+        }
+    }
+    void L9(){
+           h  DJ=sf;
+           while(DJ!=null){
+               System.out.t("  "+DJ.S);
+               DJ=DJ.u;
+           }
+    }
+    public static void main(String args[]){
+        v bl=new v();
+        bl.C(10);
+        bl.C(20);
+        bl.C(30);
+        bl.C(40);
+        bl.C(50);
+        bl.c9(5);
+        bl.c9(7);
+        bl.L9();
+        System.out.println("");
+        bl.Z();
+        bl.W();
+        bl.G(3);
+        bl.H(25,2);
+        bl.L9();
+    }
+}

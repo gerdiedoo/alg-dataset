@@ -1,0 +1,77 @@
+package p;
+public class Y<q4> {
+    private q4 o;
+    private Y<q4> N;
+    private boolean C;
+    public Y() { C = true; }
+    private Y(q4 o) {
+        this.C = false;
+        this.o = o;
+    }
+    public int Dd() {
+        if(C) {
+            return 0;
+        } else if(N == null) {
+            return 1;
+        } else {
+            return 1 + N.Dd();
+        }
+    }
+    public boolean h() {
+        return C;
+    }
+    public q4 L4(int i) {
+        if(i < 0 || i > this.Dd() - 1) {
+            throw new v();
+        } else if(i == 0) {
+            return this.o;
+        } else {
+            return N.L4(i - 1);
+        }
+    }
+    public void m(q4 o) {
+        if(C) {
+            this.o = o;
+            C = false;
+        } else if(N == null) {
+            N = new Y<>(o);
+        } else {
+            N.m(o);
+        }
+    }
+    public void m(q4 o, int i) {
+        if(i < 0 || i > this.Dd()) {
+            throw new v();
+        } else if(i == 0){
+            this.o = o;
+            C = false;  
+        } else if(i == 1) {
+            Y<q4> w = N;
+            N = new Y<>(o);
+            N.N = w;
+        } else {
+            N.m(o, i - 1);
+        }
+    }
+    public void z(q4 o, int i) {
+        if(i < 0 || i > this.Dd() - 1) {
+            throw new v();
+        } else if(i == 0) {
+            this.o = o;
+        } else {
+            N.z(o, i - 1);
+        }
+    }
+    public int indexOf(q4 VD) {
+        if(!this.Q(VD)) {
+            return -1;
+        } else if(this.o.equals(VD)) {
+            return 0;
+        } else {
+            return N.indexOf(VD) + 1;
+        }
+    }
+    public boolean Q(q4 VD) {
+        return this.o.equals(VD) || (this.N != null && this.N.Q(VD));
+    }
+}

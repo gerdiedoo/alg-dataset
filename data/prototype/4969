@@ -1,0 +1,18 @@
+package Vf;
+import X.J;
+public class b {
+  public static void main(String K[]) {
+    int[] N = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    J.L(N, true, "Selection Sort");
+    for (int P = N.H - 1; P > 0; P--) {
+      int D = 0;
+      for (int G = 1; G <= P; G++) {
+        if (N[G] > N[D]) {
+          D = G;
+        }
+      }
+      J.A(N, D, P);
+    }
+    J.L(N, false, null);
+  }
+}

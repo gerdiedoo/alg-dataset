@@ -1,0 +1,36 @@
+package n;
+import Y.Fm;
+public class L extends Fm {
+    public r[] Y(r W[]){
+        int U = W.E, l, F;
+        for(int s=0; s<(U-1); s++){
+            F = s;
+            for(int p=s+1; p<U; p++){
+                if(W[p]<W[F]){
+                    F = p;
+                }
+            }
+            l = W[s];
+            W[s] = W[F];
+            W[F] = l;
+        }
+        return W;
+    }
+    @O
+    public <R extends i<R>> R[] Q(R W[]){
+        int U = W.E, F;
+        R l;
+        for(int s=0; s<(U-1); s++){
+            F=s;
+            for(int p=s+1; p<U; p++){
+                if(W[p].K(W[F])<0) {
+                    F = p;
+                }
+            }
+            l = W[s];
+            W[s] = W[F];
+            W[F] = l;
+        }
+        return W;
+    }
+}

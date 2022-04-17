@@ -1,0 +1,142 @@
+import L.Z.*;
+public class q<j,t>{
+	static final int E = 1 << 2;
+	C<j,t>[] V;
+	int I;
+	int B0;
+	public q() {
+		B0 = E;
+	}
+	public q(int p) {
+		this.B0 = p;
+	}
+	class C<j, t> {
+		final int W;
+		final j II;
+		t e;
+		C<j,t> m;
+		C(int W, j II, t e, C<j,t> m) {
+			this.W = W;
+			this.II = II;
+			this.e = e;
+			this.m = m;
+		}
+		public j B() {
+			return II;
+		}
+		public t v() {
+			return e;
+		}
+		public final String toString() { return II + "=" + e; }
+		public final int hashCode() {
+			return gg.hashCode(II) ^ gg.hashCode(e);
+		}
+	}
+	static final int W(T II) {
+		return (II == null) ? 0 : II.hashCode();
+	}
+	public int I() {
+		return I;
+	}
+	public boolean FV() {
+		return I == 0;
+	}
+	@hM("unchecked")
+	public t l(j II, t e) {
+		C<j, t> n;  int W = W(II);
+		if (V == null || V.i == 0) {
+			V = (C<j, t>[]) new C[B0];
+		}
+		int xS = V.i;
+		int A = (xS - 1) & W;
+		if (V[A] == null) {
+			V[A] = new C<j,t>(W, II, e, null);
+		} else {
+			C<j, t> VL;
+			n = V[A];
+			if (n.W == W && 
+					n.II == II || (II != null && n.II.equals(II))){
+				VL = n;
+			} else {
+				for (int x = 0; ; x++) {
+					System.out.println("LinkedList: Not " + n.II);
+					VL = n.m;
+					if (n.m == null) {
+						n.m = new C(W, II, e, null);
+						break;
+					}
+					if (VL.W == W &&
+							(VL.II == II || (II != null && VL.II.equals(II)))) {
+						break;
+					}
+					n = VL;
+				}
+			}
+			if (VL != null) {
+				t M = VL.e;
+				VL.e = e;
+				return M;
+			}
+		}
+		I++;
+		return null;
+	}
+	public t p5(T II) {
+		int W = W(II);
+		int xS = V.i;
+		if (V != null && V.i > 0 && V[W & (xS - 1)] != null) {
+			C<j, t> f = V[W & (xS - 1)];
+			if (f.W == W && 
+					f.II == II || (II != null && f.II.equals(II))) {
+				return f.e;
+			}
+			C<j, t> VL = f.m;
+			if (f.m != null) {
+				do {
+					if (VL.W == W &&
+							VL.II == II || (VL.II != null && VL.II.equals(II))) {
+						return VL.e;
+					} 
+				}while ((VL = VL.m) != null);
+			}
+		}
+		return null;
+	}
+	public boolean w(T II) {
+		return p5(II) != null;
+	}
+	public t S(T II) {
+		int W = W(II);
+		int xS = V.i;
+		int A = W & (xS - 1);
+		if (V != null && V.i > 0 && V[A] != null) {
+			C<j, t> F = V[A];
+			C<j, t> VL = null; C<j, t> A1 = null;
+			if (F.W == W && 
+					F.II == II || (II != null && F.II.equals(II))) {
+				A1 = F;
+			}
+			VL = F.m;
+			if (F.m != null) {
+				do {
+					if (VL.W == W && 
+							VL.II == II || (II != null && VL.II.equals(II))) {
+						A1 = VL;
+						break;
+					}
+					F = VL;
+				} while ((VL = VL.m) != null);
+			}
+			if (A1 != null) {
+				if (A1 == F) {
+					V[A] = A1.m;
+				} else {
+					F.m = A1.m;
+				}
+				I--;
+				return A1.e;
+			}
+		}
+		return null;
+	}
+}

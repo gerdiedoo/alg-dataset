@@ -1,0 +1,39 @@
+package D.g6;
+import O.VL.y;
+public class Dv extends k {
+    public y Wl;
+    Dv() {
+        super();
+        Wl = new y();
+    }
+    public int g (){
+        return en(0, F.h);
+    }
+    public int en(int nZ, int m){
+        if (m <= 1){
+            return 0;
+        }
+        int VM = ((a.E(Wl.nextInt()) % m) + nZ);
+        int q = 0;
+        int rt = 0;
+        int rQ = nZ+1;
+        q = F[VM];
+        F[VM] = F[nZ];
+        F[nZ] = q;
+        for (int e = nZ; e < nZ+m; e++ ){
+            if (F[e] < F[nZ]){
+                q = F[e];
+                F[e] = F[rQ];
+                F[rQ] = q;
+                rQ++;
+            }
+            rt++;
+        }
+        q = F[nZ];
+        F[nZ] = F[rQ-1];
+        F[rQ-1] = q;
+        rt += (en(nZ, rQ-nZ-1));    
+        rt += (en(rQ, m+nZ-rQ) + 1);  
+        return rt;                                               
+    }
+}

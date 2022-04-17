@@ -1,0 +1,48 @@
+package sn.k.d;
+import i.u.V;
+import i.u.Q;
+import i.u.Vb;
+import i.u.n.s;
+public class l {
+  public static <zm extends E<zm>> void EH(Vb<zm> P) {
+    EH(P, 0, P.S() - 1);
+  }
+  private static <zm extends E<zm>> void EH(Vb<zm> P, int p, int t) {
+    if (p < t) {
+      final int a = G(P, p, t);
+      EH(P, p, a - 1);
+      EH(P, a + 1, t);
+    }
+  }
+  private static <zm extends E<zm>> int G(Vb<zm> P, int p, int t) {
+    final int Lr = s.GP().nextInt(p, t + 1);
+    Q.M(P, Lr, t);
+    final zm QG = P.uX(t);
+    int j = p - 1;
+    for (int mF = p; mF < t; mF++) {
+      final zm R = P.uX(mF);
+      if (R.H(QG) <= 0) {
+        j++;
+        if (j != mF) {
+          Q.M(P, j, mF);  
+        }
+      }
+    }
+    j++;  
+    Q.M(P, j, t);
+    return j;
+  }
+  public static void main(String[] args) {
+    final Vb<B> P = new V<>();
+    P.C(4);
+    P.C(1);
+    P.C(5);
+    P.C(3);
+    P.C(9);
+    P.C(10);
+    P.C(1);
+    EH(P);
+    EH(new V<B>());
+    System.out.println(P);
+  }
+}

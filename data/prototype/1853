@@ -1,0 +1,163 @@
+package T;  
+import HZ.M8.gr.Z.n;
+import HZ.M8.gr.Z.qV;
+import HZ.M8.gr.uL.uf;
+public class y<M, w> {
+    int O, IM;
+    j<Q<M, w>>[] m5;
+    private final uf Rv = new uf(0);
+    private final uf Q9 = new uf(0);
+    private final n a = new qV();
+    protected long g() {
+        return Q9.k();
+    }
+    protected long s() {
+        return Rv.k();
+    }
+    protected j<Q<M,w>>[] Pv() {
+        return m5;
+    }
+    private y(int O, int IM, long Rv, long Q9){
+        this(O, IM);
+        this.Rv.A(Rv);
+        this.Q9.A(Q9);
+    }
+    public y(int O, int IM){
+        this.O = O;
+        this.IM = IM;
+        m5 = new j[O];
+        for (int L = 0; L < O; L++) {
+            m5[L] =  new j<Q<M, w>>();
+            m5[L].p(0, new Q<M, w>());
+        }
+        Rv.A(1);
+        Q9.A(1);
+    }
+    public int uT(M J){
+        if (J == null)
+            return 0;
+        int F = J.hashCode();
+        F += (F <<  15) ^ 0xffffcd7d;
+        F ^= (F >>> 10);
+        F += (F <<   3);
+        F ^= (F >>>  6);
+        F += (F <<   2) + (F << 14);
+        return R.el((F ^ (F >>> 16)) % O);
+    }
+    public int pd(M J){
+        if (J == null)
+            return 0;
+        int F = J.hashCode();
+        F += (F <<  15) ^ 0xffffcd4d;
+        F ^= (F >>> 10);
+        F += (F <<   3);
+        F ^= (F >>>  6);
+        F += (F <<   2) + (F << 14);
+        F ^= (F >>> 16);
+        return R.el((F / 11) % O);
+    }
+    private void p(long N, Q wl, int Cy){
+        m5[Cy].p(N, wl);
+    }
+    public void Ad(M J, w B) throws E {
+        if(J == null || B == null) throw new u();
+        try{
+            a.a();
+            long N = Rv.I();
+            Q<M, w> cm = new Q<M, w>(J, B);
+            int[] C = new int[IM];
+            for(int L = 0; L < IM; L++) {
+                int Cy = uT(cm.J);
+                Q l4 = m5[Cy].Y();
+                if(l4.equals(new Q())){
+                    p(N, cm, Cy);
+                    Q9.A(N);
+                    return;
+                }
+                Cy = pd(cm.J);
+                l4 = m5[Cy].Y();
+                if(l4.equals(new Q())){
+                    p(N, cm, Cy);
+                    Q9.A(N);
+                    return;
+                }
+                p(N, cm, Cy);
+                C[L] = Cy;
+                cm = l4;
+            }
+            for(int L=0; L < IM; L++){
+                m5[C[L]].cw(N);
+            }
+            throw new E("Key " + J + " Could not be inserted due to tight table");
+        }finally{
+            a.mt();
+        }
+    }
+    public w k(M J) {
+        long c = Q9.k();
+        int Cy = uT(J);
+        Q<M, w> wl = m5[Cy].S(c);
+        if(wl.J != null && wl.J.equals(J)) {
+            return wl.B;
+        }
+        Cy = pd(J);
+        wl = m5[Cy].S(c);
+        if(wl.J != null && wl.J.equals(J)){
+            return wl.B;
+        }
+        return null;
+    }
+    public boolean cw(M J){
+        try{
+            a.a();
+            long N = Rv.I();
+            int Cy = uT(J);
+            Q wl = m5[Cy].S(Q9.k());
+            if(wl.J != null && wl.J.equals(J)){
+                p(N, new Q(), Cy);
+                Q9.A(N);
+                return true;
+            }
+            Cy = pd(J);
+            wl = m5[Cy].S(Q9.k());
+            if(wl.J != null && wl.J.equals(J)){
+                p(N, new Q(), Cy);
+                Q9.A(N);
+                return true;
+            }
+            return false;
+        }finally{
+            a.mt();
+        }
+    }
+    private class Q<M, w> {
+        public M J;
+        public w B;
+        public Q() {
+        }
+        public M l() {
+            return J;
+        }
+        public w x() {
+            return B;
+        }
+        public Q(M J, w B) {
+            this.J = J;
+            this.B = B;
+        }
+        @i
+        public boolean equals(K o) {
+            if (this == o) return true;
+            if (o == null || f() != o.f()) return false;
+            Q<?, ?> Ly = (Q<?, ?>) o;
+            if (J != null ? !J.equals(Ly.J) : Ly.J != null) return false;
+            return B != null ? B.equals(Ly.B) : Ly.B == null;
+        }
+        @i
+        public int hashCode() {
+            int Ch = J != null ? J.hashCode() : 0;
+            Ch = 31 * Ch + (B != null ? B.hashCode() : 0);
+            return Ch;
+        }
+    }
+}

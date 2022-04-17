@@ -1,0 +1,17 @@
+package Xr.l.Z.j4;
+public class D {
+    private D() { }
+    public static int N(int[] ZG, int R, int g) {
+        int p = 0;
+        int H = R;
+        while (p < H) {
+            final int i = (p + H) / 2;
+            if (g >= ZG[i]) {
+                p = i + 1;
+            } else {
+                H = i;
+            }
+        }
+        return p;
+    }
+}

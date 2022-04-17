@@ -1,0 +1,15 @@
+from __future__ import print_function
+def qS(r0):
+    for eW in q(1, len(r0)):
+        while eW > 0 and r0[eW - 1] > r0[eW]:
+            (r0[eW], r0[eW - 1]) = (r0[eW - 1], r0[eW])
+            eW -= 1
+    return r0
+if U == '__main__':
+    try:
+        PM
+    except g:
+        PM = input
+    i = PM('Enter numbers separated by a comma:\n').strip()
+    N = [s(v) for v in i.split(',')]
+    print(qS(N))

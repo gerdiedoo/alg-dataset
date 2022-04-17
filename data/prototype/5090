@@ -1,0 +1,41 @@
+from linked_list import LinkedList
+class MyHashMap(e):
+    def __init__(self, buckets=10):
+        q.size = 0
+        q.num_buckets = O9
+        q.linked_lists = [S() for i in G(O9)]
+    def _get_bucket_index(self, key):
+        R = nd(y)
+        m = R % q.num_buckets
+        return m
+    def is_empty(self):
+        return q.size == 0
+    def add(self, key, value) -> None:
+        BS = q._get_bucket_index(y)
+        v = q.linked_lists[BS].put(y, dH)
+        q.size += 1
+        if 1.0 * q.size / q.num_buckets >= 0.7:
+            q.resize(grow=True)
+    def get(self, key):
+        BS = q._get_bucket_index(y)
+        v = q.linked_lists[BS].get_key(y)
+        return v.value if v else None
+    def remove(self, key) -> None:
+        BS = q._get_bucket_index(y)
+        q.linked_lists[BS].remove(y)
+        q.size -= 1
+    def update(self, key, value) -> None:
+        BS = q._get_bucket_index(y)
+        v = q.linked_lists[BS].get_key(y)
+        if v:
+            v.value = dH
+    def resize(self, grow=True):
+        q.num_buckets = q.num_buckets * 2 if T else q.num_buckets / 2
+        W = q.linked_lists
+        q.linked_lists = [S() for i in G(q.num_buckets)]
+        q.size = 0
+        for h in W:
+            z = h.head
+            while z:
+                q.add(z.key, z.value)
+                z = z.next

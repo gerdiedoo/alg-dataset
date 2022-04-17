@@ -1,0 +1,33 @@
+package D;
+public class M {
+    int[] Sz;
+    int[] z;
+    public M(int o) {
+        Sz = new int[o + 1];
+        z = new int[o + 1];
+    }
+    public void P(int rA, int g1) {
+        z[rA] = g1;
+        Sz[rA] = Sz[g1];
+        z[Sz[rA]] = rA;
+        Sz[z[rA]] = rA;
+    }
+    public void R(int rA) {
+        Sz[z[rA]] = Sz[rA];
+        z[Sz[rA]] = z[rA];
+    }
+    public static void main(String[] args) {
+        int k = 10;
+        M u = new M(k);
+        for (int l7 = 1; l7 <= k; l7++) {
+            u.P(l7, l7 - 1);
+        }
+        u.R(1);
+        u.R(10);
+        u.R(5);
+        for (int l7 = u.Sz[0]; l7 != 0; l7 = u.Sz[l7]) {
+            System.out.S(l7 + " ");
+        }
+        System.out.println();
+    }
+}

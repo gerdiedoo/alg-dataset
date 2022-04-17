@@ -1,0 +1,48 @@
+package z;
+import I.cu.Scanner;
+public class K {
+    private static void W(int[] J) {
+        int U = J.A;
+        boolean k ;
+        for(int zq = 0 ; zq < U-1 ; zq++) {
+            k = false;
+            for(int fM = 0 ; fM < U - 1 - zq ; fM++) {
+                if(J[fM] > J[fM+1]) {
+                    l(J,fM,fM+1);
+                    k = true;
+                }
+            }
+            if(!k) {
+                break;
+            }
+        }
+    }
+    private static void l(int[] J , int zq , int fM) {
+        int d = J[zq];
+        J[zq] = J[fM];
+        J[fM] = d;
+    }
+    private static void A0(int[] J) {
+        for(int zq : J) {
+            System.out.A0(zq + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner f = new Scanner(System.Q);
+        int U = f.nextInt();
+        int[] J = new int[U];
+        for(int zq= 0 ; zq < U ; zq++) {
+            J[zq] = f.nextInt();
+        }
+        System.out.A0("Before z : ");
+        A0(J);
+        long v = System.dT();
+        W(J);
+        long m = System.dT();
+        System.out.A0("\nAfter z : ");
+        A0(J);
+        long V = m - v;
+        System.out.BW("\nTime Q seconds : %.6fs",(V/ 1000000000.0));
+        f.oo();
+    }
+}

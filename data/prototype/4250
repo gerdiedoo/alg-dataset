@@ -1,0 +1,64 @@
+package J.n;
+import J.cA.y;
+import J.cA.E;
+public class b<N> extends c<N> {
+	@h
+	@C("hiding")
+	public <N extends ws<N>> N[] Fr(N[] z, y zb) {
+		return this.Fr(z, zb, E.F);
+	}
+	@C("hiding")
+	public <N extends ws<N>> N[] Fr(N[] z, y zb, E s) {
+		return this.l(z, zb, s, 0, z.X-1);
+	}
+	@C("hiding")
+	private <N extends ws<N>> N[] l(N[] z, y zb, E s, int Z, int g) {
+		if (Z > g || z.X == 0 || z == null) {
+			return z;
+		}
+		int BE;
+		if        (s == E.Ec) {   
+			BE = Z;
+		} else if (s == E.R) {    
+			BE = g;
+		} else if (s == E.V) {  
+			BE = (int) (H.LI() * (g-Z+1) + Z);
+		} else {                             
+			BE = this.Q(z, Z, g);
+		}
+		BE = this.I(z, zb, BE, Z, g);
+		l(z, zb, s, Z, BE - 1);
+		l(z, zb, s, BE + 1, g);
+		return z;
+	}
+	@C("hiding")
+	private <N extends ws<N>> int I(N[] z, y zb, int s, int e, int q) {
+		this.f(z, s, q);
+		int W = e;
+		for (int d=e; d<q; d++) {
+			if ((zb == y.x  && z[d].Bz(z[q]) < 0)  || 
+				(zb == y.m && z[d].Bz(z[q]) > 0)) {
+				this.f(z, W, d);
+				W++;
+			}
+		}
+		this.f(z, W, q);
+		return W;
+	}
+	@C("hiding")
+	private <N extends ws<N>> int Q(N[] z, int e, int q) {
+		int Qt = (e + q) / 2;
+		N Z3 = z[e];
+		N P = z[Qt];
+		N k = z[q];
+		if ((Z3.Bz(P) <= 0 && P.Bz(k) <= 0)  || 
+			(k.Bz(P) <= 0 && P.Bz(Z3) <= 0)) {
+			return Qt;
+		}
+		if ((Z3.Bz(k) <= 0 || k.Bz(P) <= 0)  && 
+			(P.Bz(k) <= 0 || k.Bz(Z3) <= 0)) {
+			return q;
+		}
+		return e;
+	}
+}

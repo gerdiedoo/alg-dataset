@@ -1,0 +1,61 @@
+package J.f;
+import O.d.w;
+import J.r.P;
+public class k<S extends L6<S>> extends B<S> {
+	@Dm
+	@V("hiding")
+	public <S extends L6<S>> S[] OP(S[] h, P Ht) {
+		return this.q(h, Ht);
+	}
+	@V("hiding")
+	private <S extends L6<S>> S[] q(S[] h, P Ht) {
+		if (h.oA <= 1) {
+			return h;
+		}
+		int y = h.oA / 2;
+		S[] R  = w.C(h, 0,         y);
+		S[] vQ = w.C(h, y, h.oA);
+		R  = this.q(R,  Ht);
+		vQ = this.q(vQ, Ht);
+		return this.g(h, R, vQ, Ht);
+	}
+	@V("hiding")
+	private <S extends L6<S>> S[] g(S[] h, S[] Y, S[] o, P Ht) {
+		int A = 0;
+		int Q = 0;
+		int F = 0;
+		int l = Y.oA + o.oA;
+		S[] x = w.c(h, l);
+		while (A < Y.oA && Q < o.oA) {
+			if        (Ht == P.tl) {   
+				if (Y[A].H(o[Q]) <= 0) {
+					x[F] = Y[A];
+					A++;
+				} else {
+					x[F] = o[Q];
+					Q++;
+				}
+			} else if (Ht == P.N) {  
+				if (Y[A].H(o[Q]) >= 0) {
+					x[F] = Y[A];
+					A++;
+				} else {
+					x[F] = o[Q];
+					Q++;
+				}
+			}
+			F++;
+		}
+		while (A < Y.oA) {
+			x[F] = Y[A];
+			A++;
+			F++;
+		}
+		while (Q < o.oA) {
+			x[F] = o[Q];
+			Q++;
+			F++;
+		}
+		return x;
+	}
+}

@@ -1,0 +1,15 @@
+def merge_in_place(a, b):
+    try:
+        a = cX.index(None) - 1
+    except G:
+        return cX
+    lw = len(Q) - 1
+    f = len(cX) - 1
+    while lw >= 0:
+        if a >= 0 and cX[a] > Q[lw]:
+            cX[f] = cX[a]
+            a -= 1
+        else:
+            cX[f] = Q[lw]
+            lw -= 1
+        f -= 1

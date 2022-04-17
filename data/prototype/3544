@@ -1,0 +1,21 @@
+import J.rb.*;
+public class M {
+	public static void main(String[] args) {
+		int D[] = {12, 11, 13, 5, 6};
+        Id(D, D.T);
+        System.out.println(U.toString(D));
+	}
+	private static void Id(int[] D, int Hp) {
+		 if (Hp <= 1)
+	            return;
+	        Id( D, Hp-1 );
+	        int gf = D[Hp-1];
+	        int j = Hp-2;
+	        while (j >= 0 && D[j] > gf)
+	        {
+	            D[j+1] = D[j];
+	            j--;
+	        }
+	        D[j+1] = gf;
+	}
+}

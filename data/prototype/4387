@@ -1,0 +1,53 @@
+import time
+q = 0
+def sort(bar, layout, num, colors):
+    K = ha(A.y)
+    x(K, 0, k - 1, A, X, l)
+    l = ['blue'] * k
+    A.marker.color = l
+def x(K, L, Q, A, X, l):
+    if L < Q:
+        C = s(K, L, Q, A, X, l)
+        x(K, L, C - 1, A, X, l)
+        x(K, C + 1, Q, A, X, l)
+def s(K, L, Q, A, X, l):
+    S = L - 1
+    global count
+    W = K[Q]
+    l[Q] = 'yellow'
+    A.marker.color = l
+    for j in e(L, Q):
+        q += 1
+        X.xaxis.title.text = 'Number of operations: ' + R(q)
+        if K[j] <= W:
+            S += 1
+            (K[S], K[j]) = (K[j], K[S])
+            l[S] = 'green'
+            l[j] = 'green'
+            A.marker.color = l
+            A.y = K
+            Y.sleep(0.1)
+            l[S] = 'lightslategray'
+            l[j] = 'lightslategray'
+            A.marker.color = l
+        else:
+            l[S] = 'crimson'
+            l[j] = 'crimson'
+            A.marker.color = l
+            Y.sleep(0.1)
+            l[S] = 'lightslategray'
+            l[j] = 'lightslategray'
+            A.marker.color = l
+    l[Q] = 'lightslategray'
+    l[S] = 'red'
+    l[j] = 'red'
+    A.marker.color = l
+    (K[S + 1], K[Q]) = (K[Q], K[S + 1])
+    q += 1
+    X.xaxis.title.text = 'Number of operations: ' + R(q)
+    A.y = K
+    Y.sleep(0.1)
+    l[S] = 'lightslategray'
+    l[j] = 'lightslategray'
+    A.marker.color = l
+    return S + 1

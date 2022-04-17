@@ -1,0 +1,33 @@
+package f.R.M;
+public class iI {
+    public static void x(Y[] VQ) {
+        Y[] Tv = new Y[VQ.S];
+        int h = 1;
+        while (h < VQ.S) {
+            int p = 0;
+            while (p < VQ.S - h) {
+                g(VQ, p, h, Tv);
+                p += h * 2;
+            }
+            h *= 2;
+        }
+    }
+    public static void g(Y[] VQ, int Jy, int h, Y[] Tv) {
+        int Rm = Jy + h;
+        int GQ = Em.ja(Jy + h * 2 - 1, VQ.S - 1);
+        int i = Jy;
+        int K = Rm;
+        for (int p = 0; p <= GQ - Jy; p++) {
+            if (i < Rm &&
+                    (K > GQ ||
+                    VQ[i] <= VQ[K])) {
+                Tv[p] = VQ[i++];
+            } else {
+                Tv[p] = VQ[K++];
+            }
+        }
+        for (int p = Jy; p <= GQ; p++) {
+            VQ[p] = Tv[p - Jy];
+        }
+    }
+}

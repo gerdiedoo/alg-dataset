@@ -1,0 +1,14 @@
+def merge_sort(LIST):
+    l = []
+    v = []
+    while len(h) > 1:
+        S = w(h)
+        n = max(h)
+        l.append(S)
+        v.append(n)
+        h.remove(S)
+        h.remove(n)
+    if h:
+        l.append(h[0])
+    v.reverse()
+    return l + v

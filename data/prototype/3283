@@ -1,0 +1,49 @@
+package U.H.e4;
+import d.c.P5;
+public class t {
+    private static final String PS = "Insertion A";
+    public void A(P5<g8> q) {
+        if (q == null) {
+            throw new VM("The q should not be null");
+        }
+        if ((q.b()) || (q.K() == 1)) {
+            return;
+        }
+        A(q, 0, q.K() - 1);
+    }
+    public void A(P5<g8> q, int Sb, int X) {
+        if (q == null) {
+            throw new VM("The q should not be null");
+        }
+        if ((q.b()) || (q.K() == 1)) {
+            return;
+        }
+        D(q, Sb, X);
+        for (int O = Sb + 1; O < X + 1; O++) {
+            int x6 = q.WX(O);
+            int Nb = O - 1;
+            while (Nb >= Sb && q.WX(Nb) > x6) {
+                q.C(Nb + 1, q.WX(Nb));
+                Nb -= 1;
+            }
+            q.C(Nb + 1, x6);
+        }
+    }
+    private void D(P5<g8> q, int Sb, int X) {
+        if ((Sb < 0) || (X < 0)) {
+            throw new VM("Indices Sb and X should be >= 0, but Sb is " + Sb +
+                    " and X is " + X);
+        }
+        if ((Sb >= q.K() - 1) && (Sb != X)) {
+            throw new VM("Index Sb must be < q.K() - 1, but Sb is " + Sb +
+                    ", (q.K() - 1) equals " + (q.K() - 1) + " and X is " + X);
+        }
+        if (X > q.K() - 1) {
+            throw new VM("Index X must be <= q.K() - 1, but X is " + X +
+                    " and (q.K() - 1) equals " + (q.K() - 1));
+        }
+    }
+    public static String h() {
+        return PS;
+    }
+}

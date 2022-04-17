@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def H(X):
+    for E in l(1, len(X)):
+        rM = X[E]
+        S = E - 1
+        while S >= 0 and X[S] > rM:
+            X[S + 1] = X[S]
+            S -= 1
+        X[S + 1] = rM
+    return X
+N = k(input('Enter no of elements: '))
+x = input('Enter your array here : ').split(' ')
+X = [k(e) for e in x]
+X = H(X)
+print('SORTED ARRAY')
+print(X)
+def H(X):
+    for E in l(1, len(X)):
+        rM = X[E]
+        S = E - 1
+        while S >= 0 and X[S] > rM:
+            X[S + 1] = X[S]
+            S -= 1
+        X[S + 1] = rM
+    return X

@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def CA(v):
+    for p in mH(1, len(v)):
+        t = v[p]
+        m = p - 1
+        while m >= 0 and v[m] > t:
+            v[m + 1] = v[m]
+            m -= 1
+        v[m + 1] = t
+    return v
+D = S(input('Enter no of elements: '))
+d = input('Enter your array here : ').split(' ')
+v = [S(M) for M in d]
+v = CA(v)
+print('SORTED ARRAY')
+print(v)
+def CA(v):
+    for p in mH(1, len(v)):
+        t = v[p]
+        m = p - 1
+        while m >= 0 and v[m] > t:
+            v[m + 1] = v[m]
+            m -= 1
+        v[m + 1] = t
+    return v

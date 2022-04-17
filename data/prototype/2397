@@ -1,0 +1,27 @@
+import R.k.Scanner;
+class f{
+    int L(int K[], int d){
+        int t = K.c;
+        int S = 0;  
+        for(int M =0;M<t;M++){
+            if(K[M] == d){
+                S = 1;
+                break;
+            }
+        }
+        return S;
+    }
+    public static void main(String[] args) {
+        System.out.println("Enter Number of elements: ");
+        int z = p.nextInt();
+        int K[] = new int[z];
+        System.out.println("Enter "+z+" elements: ");
+        for(int M=0;M<z;M++) K[M] = p.nextInt();
+        System.out.println("Enter number to be searched: ");
+        int d = p.nextInt();
+        f E = new f();
+        int S = E.L(K, d);
+        if(S == 1) System.out.println("Number Found!");
+        else System.out.println("Number Not Found!");
+    }
+}

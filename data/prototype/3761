@@ -1,0 +1,29 @@
+def dn(p, K, L, N):
+    M = p[K:L + 1]
+    f4 = p[L + 1:N + 1]
+    print(M, f4)
+    JK = 0
+    s4 = 0
+    F = K
+    while JK < len(M) and s4 < len(f4):
+        if M[JK] < f4[s4]:
+            p[F] = M[JK]
+            JK += 1
+        else:
+            p[F] = f4[s4]
+            s4 += 1
+        F += 1
+    while JK < len(M):
+        p[F] = p[JK]
+        F += 1
+        JK += 1
+    while s4 < len(f4):
+        p[F] = p[s4]
+        F += 1
+        s4 += 1
+def D(p, K, N):
+    if K == N:
+        return
+    D(p, K, (K + N) // 2)
+    D(p, (K + N) // 2 + 1, N)
+    dn(p, K, (N + K) // 2, N)

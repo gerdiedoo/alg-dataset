@@ -1,0 +1,37 @@
+from __future__ import print_function
+def W(dx):
+    Q = len(dx)
+    if Q > 1:
+        R = Q // 2
+        i = W(dx[:R])
+        t3 = W(dx[R:])
+        S = 0
+        j = 0
+        vs = 0
+        c = len(i)
+        E = len(t3)
+        while S < c and j < E:
+            if i[S] < t3[j]:
+                dx[vs] = i[S]
+                S += 1
+            else:
+                dx[vs] = t3[j]
+                j += 1
+            vs += 1
+        while S < c:
+            dx[vs] = i[S]
+            S += 1
+            vs += 1
+        while j < E:
+            dx[vs] = t3[j]
+            j += 1
+            vs += 1
+    return dx
+if o == '__main__':
+    try:
+        h
+    except d:
+        h = input
+    sP = h('Enter numbers separated by a comma:\n').strip()
+    Z = [b(A) for A in sP.split(',')]
+    print(W(Z))

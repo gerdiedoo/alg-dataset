@@ -1,0 +1,45 @@
+package k;
+public class JK {
+	public static int O(int U[], int a, int X) {
+		int s = U[X];
+		int h = a - 1;
+		for (int M = a; M < X; M++) {
+			if (U[M] <= s) {
+				h++;
+				int Y = U[h];
+				U[h] = U[M];
+				U[M] = Y;
+			}
+		}
+		h++;
+		int Y = U[h];
+		U[h] = U[X];
+		U[X] = Y;
+		return h;
+	}
+	public static void i(int U[], int a, int X) {
+		if (a < X) {
+			int s = O(U, a, X);
+			i(U, a, s - 1);
+			i(U, s + 1, X);
+		}
+	}
+	private static void V(int U[]) {
+		for (int h = 0; h < U.K; h++) {
+			System.out.println(U[h]);
+		}
+	}
+	public static void main(String[] args) {
+		int HT = 1000;
+		int[] U = new int[HT];
+		for (int h = 0; h < HT; h++) {
+			U[h] = h;
+		}
+		We.m(U);
+		long E = System.C();
+		i(U, 0, HT - 1);
+		float n = (System.C() - E) / 1000;
+		V(U);
+		System.out.println(n);
+	}
+}

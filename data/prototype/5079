@@ -1,0 +1,59 @@
+import u.vZ.b;
+import u.z.t;
+public class W extends A{
+	LE yo = new LE();
+	public t<U> V(t<U> s)
+	{
+		t<U> k = new t<U>();
+		t<t<U>> nr = new t<t<U>>();
+		for(int I = 0; I < 10; I++)
+		{
+			nr.S(new t<U>());
+		}
+		for(int I = 0; I < s.i(); I++)
+		{
+			int Q = 10;
+			int f = 0;
+			boolean e = true;
+			while(e)
+			{
+				if(s.r(I) > Q)
+				{
+					Q = Q * 10;
+					f++;
+				}
+				else
+				{
+					nr.r(f).S(s.r(I));
+					e = false;
+				}
+			}
+		}
+		for(int I = 0; I < nr.i(); I++)
+		{
+			k.LH(yo.j(nr.r(I)));
+		}
+		return k;
+	}
+	public void d(n l) throws b
+	{
+		l.E();
+		t<U> k = new t<U>();
+		long yO = System.R();
+		k = V(l.NZ());
+		long H = System.R();
+		double C9 = H - yO;
+		double q = C9/1000000;
+		if(v(k))
+		{
+			l.x(k);
+			System.out.ur("W time (in Milli): "); 
+			System.out.println(q);
+		}
+		else
+		{
+			l.x(k);
+			System.out.println("Not sorted!");
+		}
+	}
+}

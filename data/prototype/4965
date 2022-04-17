@@ -1,0 +1,18 @@
+package n;
+import xh.vJ;
+public class m {
+  public static void main(String a7[]) {
+    int[] C = { 10, -80, 5, 76, 92, 100, 52, 1, -10 };
+    vJ.E(C, true, "Selection Sort");
+    for (int y = C.NX - 1; y > 0; y--) {
+      int w = 0;
+      for (int i1 = 1; i1 <= y; i1++) {
+        if (C[i1] > C[w]) {
+          w = i1;
+        }
+      }
+      vJ.x(C, w, y);
+    }
+    vJ.E(C, false, null);
+  }
+}

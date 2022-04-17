@@ -1,0 +1,19 @@
+package o.r.H;
+import j.h1.A;
+import j.h1.y.f;
+@zL({"unchecked", "unused"})
+public class bQ<u extends W> extends R<u> {
+    u[] F(u[] l, f<u, u, D> Y){
+        u[] P = A.U(l, l.Q);
+        for (int I = 1; I < P.Q; I++) {
+            u I2 = P[I];
+            int jf = I;
+            while(jf  > 0 && Y.s(I2, P[jf -1])){
+                P[jf] = P[jf - 1];
+                jf--;
+            }
+            P[jf] = I2;
+        }
+        return P;
+    }
+}

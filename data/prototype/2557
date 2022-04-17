@@ -1,0 +1,44 @@
+package ko;
+public class m1 {
+	public static void main(String[] args) {
+		int[][] D = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(Z(D, 22));  
+		System.out.println(Z(D, 10));  
+		System.out.println(Z(D, 42));  
+		System.out.println(Z(D, 23));  
+		System.out.println(Z(D, 13));  
+		System.out.println(Z(D, 2));  
+	}
+	public static boolean Z(int[][] D, int ja) {
+		int GD = 0, V = D.c - 1;
+		int sN = (GD + V) / 2;
+		if (D[0][sN] == ja || D[sN][0] == ja) {
+			return true;
+		}
+		int l = 0;
+		int P = D.c - 1;
+		if (ja < D[0][sN]) {
+			P = sN;
+		} else {
+			l = sN;
+		}
+		int h = 0;
+		int O = D.c - 1;
+		if (ja < D[sN][0]) {
+			O = sN;
+		} else {
+			h = sN;
+		}
+		for (int Q = h; Q <= O; Q++) {
+			for (int R = l; R <= P; R++) {
+				if (D[Q][R] == ja) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+}

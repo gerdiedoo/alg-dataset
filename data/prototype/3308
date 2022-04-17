@@ -1,0 +1,26 @@
+package n.D.v;
+import a.e.VZ;
+public final class f {
+    private f() {
+    }
+    public static <b> void v(b[] d, VZ<? super b> dB) {
+        if (d.m <= 1) {
+            return;
+        }
+        if (dB == null) {
+            dB = JJ.B();
+        }
+        for (int o = 1; o < d.m; o++) {
+            b W6 = d[o];
+            int A = o - 1;
+            while (A >= 0 && dB.c(d[A], W6) > 0) {
+                d[A + 1] = d[A];
+                A--;
+            }
+            d[A + 1] = W6;
+        }
+    }
+    public static <b extends X<? super b>> void v(b[] d) {
+        v(d, null);
+    }
+}

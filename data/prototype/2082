@@ -1,0 +1,97 @@
+public class e{
+	int k;    
+	e o;
+	static int J;
+	static e Yb;
+	static e G;
+	public e(){
+		o=null;
+	}
+	public void K(int HI){
+		System.out.println("Adding element at the back of the list : " + HI);
+		e O7 = new e();
+		O7.k=HI;
+		if(J==0){
+			Yb=O7;
+			G=O7;
+		}
+		else{
+			G.o=O7;
+			G=O7;
+		}
+		J++;
+	}
+	public void FH(int HI){
+		System.out.println("Inserting element at the front of the list : " + HI);
+		e O7 = new e();
+		O7.k=HI;
+		J++;	
+		if(Yb==null){
+			Yb=O7;
+			G=O7;
+		}
+		else{
+			if(Yb==G){
+				O7.o=G;
+				Yb=O7;
+			}
+			else{
+				O7.o=Yb;
+				Yb=O7;
+			}
+		}
+	}
+	public int c() throws z{
+		if(Yb==null){
+			throw new z("e is empty");
+		}
+		return Yb.k;
+	}
+	public void b() throws z{
+		System.out.println("PopFront Operation.");
+		if(Yb==null){
+			throw new z("e is empty");
+		}
+		J--; 
+		if(Yb==G){
+			Yb=null;
+			G=null;
+		}
+		else{
+			Yb=Yb.o;
+		}
+	}
+	public void l(int HI){
+		System.out.println("Inserting element at the back of the list : " + HI);
+		e O7 = new e();
+		O7.k=HI;
+		J++;
+		if(G==null){
+			Yb=O7;
+			G=O7;
+		}
+		else{
+			G.o=O7;
+			G=O7;
+		}
+	}
+	public int Jw() throws z{
+		if(G==null){
+			throw new z("e is empty!");
+		}
+		return G.k;
+	}
+	public void Bu(){
+		System.out.F("e : ");
+		System.out.F("[ ");
+		e Z = Yb;
+		while(Z!=null){
+			System.out.F(Z.k + " ");
+			Z=Z.o;
+		}
+		System.out.println("]");
+	}
+	public int d(){
+		return J;
+	}
+}

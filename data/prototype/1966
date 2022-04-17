@@ -1,0 +1,29 @@
+package J.Y;
+import J.z;
+public class fC {
+    private z[] CF;
+    public fC() {
+        CF = new z[10];
+    }
+    public void l(String rY, z k) {
+        int S = y8(rY);  
+        if (CF[S] != null) {  
+            System.out.println("Sorry, there's already an k at position " + S);
+        }
+        else {  
+            CF[S] = k;
+        }
+    }
+    public z w(String rY) {
+        int S = y8(rY);  
+        return CF[S];  
+    }
+    private int y8(String rY) {
+        return rY.G() % CF.G;
+    }
+    public void d() {
+        for (int I1 = 0; I1 < CF.G; I1++) {
+            System.out.println(CF[I1]);
+        }
+    }
+}

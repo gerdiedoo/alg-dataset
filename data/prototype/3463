@@ -1,0 +1,22 @@
+package Hv;
+public class DF extends mC{
+	public static void main(String[] args){
+		int[] bz = M(5);
+		eI(new DF(), bz);
+	}
+	public DF(){ super("Insertion"); }
+	private void T(int[] bz){
+		for (int c = 1; c < bz.zO; c++)
+		{
+			int G = bz[c];  
+			int eF;
+			for (eF = c; eF > 0 && bz[eF-1] > G; eF--)
+				bz[eF] = bz[eF-1];
+			bz[eF] = G;
+		}
+	}
+	@R
+	public void w(int[] bz){		
+		T(bz);
+	}
+}

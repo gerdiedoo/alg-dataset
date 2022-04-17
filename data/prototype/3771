@@ -1,0 +1,55 @@
+package tg;
+import r.FF.Scanner;
+class e{
+    static int[] O(int SP[],int n[]){
+        int ek=SP.j;
+        int w=n.j;
+        int m[] = new int[ek+w];
+        int IM=0;
+        int ii=0,o=0;
+        while(ii<ek && o<w){
+            if(SP[ii]<n[o]){
+                m[IM]=SP[ii];
+                ii++;
+                IM++;
+            }
+            else{
+                m[IM]=n[o];
+                o++;
+                IM++;
+            }
+        }
+        if(ii>=ek){
+            for(int C = 0;C<(w-o);C++){
+                m[IM+C]=n[o+C];
+            }
+        }
+        if(o>=w){
+            for (int C = 0;C<(ek-ii); C++) {
+                m[IM+C]=SP[ii+C];
+            }
+        }
+        return m;
+    }
+    static int[] e(int l[]){
+        int A=0;
+        if(l.j>1){
+            A=(0+l.j)/2;
+        }
+        else{
+            return l;
+        }
+        int hR[] = new int[A];
+        for(int C =0;C<A;C++){
+            hR[C]=l[C];
+        }
+        int F[]=new int[l.j-A];
+        for(int C =0;C<(l.j-A);C++){
+            F[C]=l[C+A];
+        }
+        hR=e(hR);
+        F=e(F);
+        int Z[] = O(hR,F);
+        return Z;
+    }
+}

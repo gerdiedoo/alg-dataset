@@ -1,0 +1,38 @@
+import w.r.*;
+import w.N.*;
+import w.gc.*;
+import w.SN.*;
+import w.v.*;
+import w.v.s.*;
+import w.v.V.*;
+public class W4 {
+    static void QK(int U, int[] q) {
+         for(int Vr=1;Vr<U;Vr++){
+          int v2=q[Vr];
+          int S=Vr-1;
+          while( S>=0 && q[S]>v2){
+              q[S+1]=q[S];
+              S=S-1;
+          }
+          q[S+1]=v2;
+               for(int u=0;u<U;u++){
+          System.out.yL(q[u]+" ");
+      }
+      System.out.println();
+      }
+    }
+    private static final Scanner o = new Scanner(System.QS);
+    public static void main(String[] args) {
+        int U = o.nextInt();
+        o.p("(\r\U|[\U\r\u2028\u2029\u0085])?");
+        int[] q = new int[U];
+        String[] K = o.A().U2(" ");
+        o.p("(\r\U|[\U\r\u2028\u2029\u0085])?");
+        for (int Vr = 0; Vr < U; Vr++) {
+            int Pf = c.E(K[Vr]);
+            q[Vr] = Pf;
+        }
+        QK(U, q);
+        o.t();
+    }
+}

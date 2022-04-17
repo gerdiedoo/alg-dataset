@@ -1,0 +1,416 @@
+package q;
+import C.Q.M;
+import U.Gr;
+import U.l;
+public class q {
+	@Gs("rawtypes")
+	private static zW[] G;
+	private static byte[] CL;
+	private static char[] p3;
+	private static short[] i;
+	private static int[] h1;
+	private static long[] y;
+	private static float[] J;
+	private static double[] AK;
+	public static void SB(byte[] R) {
+		CL = new byte[R.S];
+		SB(R, 0, R.S - 1);
+		CL = null;
+	}
+	private static void SB(byte[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(byte[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				CL[F++] = R[k++];
+			}
+			else {
+				CL[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				CL[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				CL[F++] = R[k++];
+			}
+		}
+		System.f(CL, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(char[] R) {
+		p3 = new char[R.S];
+		SB(R, 0, R.S - 1);
+		p3 = null;
+	}
+	private static void SB(char[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(char[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				p3[F++] = R[k++];
+			}
+			else {
+				p3[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				p3[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				p3[F++] = R[k++];
+			}
+		}
+		System.f(p3, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(short[] R) {
+		i = new short[R.S];
+		SB(R, 0, R.S - 1);
+		i = null;
+	}
+	private static void SB(short[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(short[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				i[F++] = R[k++];
+			}
+			else {
+				i[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				i[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				i[F++] = R[k++];
+			}
+		}
+		System.f(i, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(int[] R) {
+		h1 = new int[R.S];
+		SB(R, 0, R.S - 1);
+		h1 = null;
+	}
+	private static void SB(int[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(int[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				h1[F++] = R[k++];
+			}
+			else {
+				h1[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				h1[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				h1[F++] = R[k++];
+			}
+		}
+		System.f(h1, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(long[] R) {
+		y = new long[R.S];
+		SB(R, 0, R.S - 1);
+		y = null;
+	}
+	private static void SB(long[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(long[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				y[F++] = R[k++];
+			}
+			else {
+				y[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				y[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				y[F++] = R[k++];
+			}
+		}
+		System.f(y, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(float[] R) {
+		J = new float[R.S];
+		SB(R, 0, R.S - 1);
+		J = null;
+	}
+	private static void SB(float[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(float[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				J[F++] = R[k++];
+			}
+			else {
+				J[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				J[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				J[F++] = R[k++];
+			}
+		}
+		System.f(J, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(double[] R) {
+		AK = new double[R.S];
+		SB(R, 0, R.S - 1);
+		AK = null;
+	}
+	private static void SB(double[] R, int Jq, int A) {
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH);
+			}
+		}
+	}
+	private static void V(double[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k] <= R[nu]) {
+				AK[F++] = R[k++];
+			}
+			else {
+				AK[F++] = R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				AK[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				AK[F++] = R[k++];
+			}
+		}
+		System.f(AK, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(I[] R) {
+		SB(R, 0, R.S - 1);
+	}
+	private static void SB(I[] R, int Jq, int A) {
+		G = new zW[R.S];
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V((zW[])R, k, k + w - 1, gH);
+			}
+		}
+		G = null;
+	}
+	@Gs({ "unchecked", "rawtypes" })
+	private static void V(zW[] R, int Jq, int p, int A) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (R[k].Pw(R[nu]) <= 0) {
+				G[F++] = R[k++];
+			}
+			else {
+				G[F++] =  R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				G[F++] = R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				G[F++] = R[k++];
+			}
+		}
+		System.f(G, Jq, R, Jq, A - Jq + 1);
+	}
+	public static <di> void SB(di[] R, M<? super di> j) {
+		if(j == null) {
+			SB(R, 0, R.S - 1);
+		}
+		else {
+			SB(R, 0, R.S - 1, j);
+		}
+	}
+	private static <di> void SB(di[] R, int Jq, int A, M<? super di> j) {
+		G = new zW[R.S];
+		for (int w = 1; w <= A; w += w) {
+			for (int k = 0; k <= A - w; k += (2 * w)) {
+				int gH = H.dM(k + (2 * w) - 1, A);
+				V(R, k, k + w - 1, gH, j);
+			}
+		}
+		G = null;
+	}
+	@Gs({ "rawtypes" })
+	private static <di> void V(di[] R, int Jq, int p, int A , M<? super di> j) {
+		int k = Jq;
+		int nu = p + 1;
+		int F = Jq;
+		while (k <= p && nu <= A) {
+			if (j.X(R[k], R[nu]) <= 0) {
+				G[F++] =  (zW) R[k++];
+			}
+			else {
+				G[F++] =  (zW) R[nu++];
+			}
+		}
+		if (k > p) {
+			while (nu <= A) {
+				G[F++] = (zW) R[nu++];
+			}
+		} else {
+			while (k <= p) {
+				G[F++] = (zW) R[k++];
+			}
+		}
+		System.f(G, Jq, R, Jq, A - Jq + 1);
+	}
+	public static void SB(byte[] R, boolean gz) {
+		if(gz) {
+			sY[] tR = Gr.vw(R);
+			SB(tR, l.fW());
+			Gr.z(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+	public static void SB(char[] R, boolean gz) {
+		if(gz) {
+			T[] tR = Gr.yq(R);
+			SB(tR, l.fW());
+			Gr.D(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+	public static void SB(short[] R, boolean gz) {
+		if(gz) {
+			x[] tR = Gr.SE(R);
+			SB(tR, l.fW());
+			Gr.h(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+	public static void SB(int[] R, boolean gz) {
+		if(gz) {
+			c[] tR = Gr.P(R);
+			SB(tR, l.fW());
+			Gr.b(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+	public static void SB(long[] R, boolean gz) {
+		if(gz) {
+			o[] tR = Gr.u(R);
+			SB(tR, l.fW());
+			Gr.tr(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+	public static void SB(float[] R, boolean gz) {
+		if(gz) {
+			q0[] tR = Gr.Ef(R);
+			SB(tR, l.fW());
+			Gr.t(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+	public static void SB(double[] R, boolean gz) {
+		if(gz) {
+			v[] tR = Gr.U3(R);
+			SB(tR, l.fW());
+			Gr.O(tR, R);
+		}
+		else {
+			SB(R);
+		}
+	}
+}

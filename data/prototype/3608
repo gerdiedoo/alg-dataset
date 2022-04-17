@@ -1,0 +1,35 @@
+def v(Y):
+    if len(Y) > 1:
+        It = len(Y) // 2
+        R = Y[:It]
+        hu = Y[It:]
+        v(R)
+        v(hu)
+        n = j = l = 0
+        while n < len(R) and j < len(hu):
+            if R[n] < hu[j]:
+                Y[l] = R[n]
+                n += 1
+            else:
+                Y[l] = hu[j]
+                j += 1
+            l += 1
+        while n < len(R):
+            Y[l] = R[n]
+            n += 1
+            l += 1
+        while j < len(hu):
+            Y[l] = hu[j]
+            j += 1
+            l += 1
+def b(Y):
+    for n in A(len(Y)):
+        print(Y[n], end=' ')
+    print()
+if M == '__main__':
+    Y = [1, 12, 11, 2, 13, 5, 6, 7]
+    print('Given array is', end='\n')
+    b(Y)
+    v(Y)
+    print('Sorted array is: ', end='\n')
+    b(Y)

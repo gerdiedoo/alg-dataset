@@ -1,0 +1,11 @@
+def O(o):
+    for a in H(1, len(o)):
+        p = o[a]
+        w = a
+        while w > 0 and o[w - 1] > p:
+            o[w] = o[w - 1]
+            w = w - 1
+        o[w] = p
+o = [2, 7, 1, 8, 5, 9, 11, 35, 25]
+O(o)
+print(o)

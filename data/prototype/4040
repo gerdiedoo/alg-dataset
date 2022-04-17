@@ -1,0 +1,26 @@
+def x(K):
+    if len(K) > 1:
+        I = len(K) / 2
+        WX = K[:I]
+        R = K[I:]
+        x(WX)
+        x(R)
+        H = 0
+        y = 0
+        k = 0
+        while H < len(WX) and y < len(R):
+            if WX[H] < R[y]:
+                K[k] = WX[H]
+                H += 1
+            else:
+                K[k] = R[y]
+                y += 1
+            k += 1
+        while H < len(WX):
+            K[k] = WX[H]
+            H += 1
+            k += 1
+        while y < len(R):
+            K[k] = R[y]
+            y += 1
+            k += 1

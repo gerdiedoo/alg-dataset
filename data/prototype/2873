@@ -1,0 +1,66 @@
+import L.k.V;
+public class r{
+	private boolean Be = false;
+	public r(){}
+	public r(boolean Be){
+		this.Be = Be;
+	}
+	public void EF(int[] hZ) {
+		if (Be) {
+			q(hZ);
+		} else {
+			bd(hZ);
+		}
+	}
+	private void bd(int[] hZ) {
+		int I = hZ.ye;
+		for (int g = 0; g < I - 1; g ++) {
+			for (int F = 0; F < I - 1; F ++) {
+				if (hZ[F] > hZ[F + 1]) {
+					m(hZ, F, F + 1);
+				}
+			}
+		}
+	}
+	private void q(int[] hZ) {
+		int I = hZ.ye;
+		int ym = I - 1, J = 0;
+		for (int g = 0; g < I - 1; g ++) {
+			int X = 0;
+			for (int F = 0; F < ym; F ++) {
+				if (hZ[F] > hZ[F + 1]) {
+					m(hZ, F, F + 1);
+					X = 1;
+					J = F;
+				}
+			}
+			ym = J;
+			if (0 == X) {
+				return;
+			}
+		}
+	}
+	private void m(int[] hZ, int D, int c) {
+		int B = hZ[D];
+		hZ[D] = hZ[c];
+		hZ[c] = B;
+	}
+	public static void main(String[] args) {
+		int[] a = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		int[] K = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		r S2 = new r();
+		r M = new r(true);
+		System.out.println("a unsorted: " + V.toString(a));
+		System.out.println("K unsorted: " + V.toString(K));
+		long tM = System.R();
+		S2.EF(a);
+		long t = System.R();
+		long z = System.R();
+		M.EF(K);
+		long b = System.R();
+		System.out.println("a sorted via basic: " + V.toString(a) 
+						+ ", time eclipsed: " + (t - tM) + "ms");
+		System.out.println("K sorted via Be: " + V.toString(K)
+						+ ", time eclipsed: " + (b - z) + "ms");
+	}
+}

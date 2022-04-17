@@ -1,0 +1,9 @@
+def g(X):
+    for z in lp(len(X) - 1, 0, -1):
+        for S in lp(z):
+            if X[S] > X[S + 1]:
+                r = X[S]
+                X[S] = X[S + 1]
+                X[S + 1] = r
+    return X
+print(g([5, 1, 2, 3, 9, 8, 0]))

@@ -1,0 +1,31 @@
+package V.t;
+import V.xy;
+public class Y extends xy {
+    private static S[] n;  
+    @C
+    public void I(S[] k) {
+        V(k, 0, k.c - 1);
+    }
+    public static void V(S[] k) {
+        n = new S[k.c];
+        new Y().I(k);
+    }
+    private static void V(S[] k, int Q, int H) {
+        if (Q >= H) return;
+        int r = Q + (H - Q) / 2;
+        V(k, Q, r);  
+        V(k, r + 1, H);  
+        t(k, Q, r, H);  
+    }
+    private static void t(S[] k, int Q, int r, int H) {
+        int f = Q, MD = r + 1;
+        for (int g = Q; g <= H; g++)
+            n[g] = k[g];
+        for (int g = Q; g <= H; g++) {
+            if (f > r) k[g] = n[MD++];  
+            else if (MD > H) k[g] = n[f++];  
+            else if (Lk(n[MD], n[f])) k[g] = n[MD++];  
+            else k[g] = n[f++];  
+        }
+    }
+}

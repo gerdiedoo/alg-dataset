@@ -1,0 +1,17 @@
+package PS.W.K;
+public class R implements v {
+    @Kx
+    public void K(int[] i) {
+        for (int P = 0; P < i.Z5 - 1; P++) {
+            int I = P;
+            for (int j = P + 1; j < i.Z5; j++) {
+                if (i[I] > i[j]) {
+                    I = j;
+                }
+            }
+            int ys = i[I];
+            i[I] = i[P];
+            i[P] = ys;
+        }
+    }
+}

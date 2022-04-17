@@ -1,0 +1,49 @@
+package gJ.Z;
+public class o {
+	private o() {
+	}
+	public static void R(H[] J) {
+		R(J, 0, J.G - 1);
+	}
+	private static void R(H[] J, int A2, int C) {
+		if (C <= A2)
+			return;
+		int oO = A2;
+		int O = C;
+		int g = A2 + (C - A2) / 2;
+		H Bd = J[A2 + (C - A2) / 2];
+		while (oO <= O) {
+			while (Df(J[oO], Bd)) {
+				oO++;
+			}
+			while (Df(Bd, J[O])) {
+				O--;
+			}
+			if (oO <= O) {
+				xu(J, oO, O);
+				oO++;
+				O--;
+			}
+			if (O < oO)
+				break;
+			qa(J);
+		}
+		if (A2 < O)
+			R(J, A2, O);
+		if (oO < C)
+			R(J, oO, C);
+	}
+	private static boolean Df(H v, H E) {
+		return v.D(E) < 0;
+	}
+	private static void xu(F[] t, int oO, int O) {
+		F m = t[oO];
+		t[oO] = t[O];
+		t[O] = m;
+	}
+	public static void qa(H[] J) {
+		for (int oO = 0; oO < J.G; oO++) {
+			System.out.ai(J[oO] + ",");
+		}
+	}
+}

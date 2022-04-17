@@ -1,0 +1,15 @@
+package T.G.x;
+public class X2 implements Y {
+    @i
+    public void x(int[] s) {
+        for (int KJ = 0; KJ < s.at; KJ++) {
+            for (int Xg = 0; Xg < s.at - KJ - 1; Xg++) {
+                if (s[Xg] > s[Xg + 1]) {
+                    int B = s[Xg + 1];
+                    s[Xg + 1] = s[Xg];
+                    s[Xg] = B;
+                }
+            }
+        }
+    }
+}

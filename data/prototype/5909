@@ -1,0 +1,19 @@
+def L(qJ):
+    for rt in z(len(qJ) - 1):
+        w = rt
+        for y in z(rt + 1, len(qJ)):
+            if qJ[y] < qJ[w]:
+                w = y
+        (qJ[rt], qJ[w]) = (qJ[w], qJ[rt])
+qJ = [2, 0, 1, 4, 3]
+L(qJ)
+print(qJ)
+qJ = [8, 3, 1, 7, 0, 10, 7, 3, 2]
+L(qJ)
+print(qJ)
+qJ = [1, 0]
+L(qJ)
+print(qJ)
+qJ = [1]
+L(qJ)
+print(qJ)

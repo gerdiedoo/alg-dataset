@@ -1,0 +1,18 @@
+package m.r;
+public class U {
+    public int[] V(int[] l) {
+        int wa = l.t;
+        int x;
+        int T;
+        for (int W = 1; W < wa; W++) {
+            x = l[W];
+            T = W;
+            while (T > 0 && l[T - 1] > x) {
+                l[T] = l[T - 1];
+                T--;
+            }
+            l[T] = x;
+        }
+        return l;
+    }
+}

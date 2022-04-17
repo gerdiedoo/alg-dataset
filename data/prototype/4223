@@ -1,0 +1,17 @@
+def Q(UL, l, b):
+    r = UL[b]
+    z = l - 1
+    for T in K(l, b):
+        if UL[T] <= r:
+            z += 1
+            (UL[z], UL[T]) = (UL[T], UL[z])
+    (UL[z + 1], UL[b]) = (UL[b], UL[z + 1])
+    return (z + 1, UL)
+def d(UL, l=0, b=-1):
+    if b < 0:
+        b = len(UL) - 1
+    if l < b:
+        (R, UL) = Q(UL, l, b)
+        d(UL, l, R - 1)
+        d(UL, R + 1, b)
+    return UL

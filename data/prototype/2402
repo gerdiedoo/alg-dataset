@@ -1,0 +1,27 @@
+import zX.M.Scanner;
+class wc{
+    int c(int A[], int x){
+        int t = A.Nw;
+        int rQ = 0;  
+        for(int n =0;n<t;n++){
+            if(A[n] == x){
+                rQ = 1;
+                break;
+            }
+        }
+        return rQ;
+    }
+    public static void main(String[] args) {
+        System.out.println("Enter Number of elements: ");
+        int K2 = p.nextInt();
+        int A[] = new int[K2];
+        System.out.println("Enter "+K2+" elements: ");
+        for(int n=0;n<K2;n++) A[n] = p.nextInt();
+        System.out.println("Enter number to be searched: ");
+        int x = p.nextInt();
+        wc J = new wc();
+        int rQ = J.c(A, x);
+        if(rQ == 1) System.out.println("Number Found!");
+        else System.out.println("Number Not Found!");
+    }
+}

@@ -1,0 +1,29 @@
+def m(Cy, T, o=False):
+    Zj = len(Cy)
+    if Zj == 1:
+        return Cy
+    Q = m(Cy[0:Zj // 2], T, o)
+    c = m(Cy[Zj // 2:], T, o)
+    A = Nk(Q, c, T, o)
+    return A
+def Nk(Q, c, T, o=False):
+    l = []
+    if o:
+        while len(Q) > 0 and len(c) > 0:
+            if Q[0][T] >= c[0][T]:
+                l.append(Q.pop(0))
+            else:
+                l.append(c.pop(0))
+    else:
+        while len(Q) > 0 and len(c) > 0:
+            if Q[0][T] <= c[0][T]:
+                l.append(Q.pop(0))
+            else:
+                l.append(c.pop(0))
+    l.extend(Q)
+    l.extend(c)
+    return l
+if ob == '__main__':
+    Cy = [{'name': 'vedanth', 'age': 17, 'time_hours': 1}, {'name': 'rajab', 'age': 12, 'time_hours': 3}, {'name': 'vignesh', 'age': 21, 'time_hours': 2.5}, {'name': 'chinmay', 'age': 24, 'time_hours': 1.5}]
+    A = m(Cy, key='time_hours', descending=True)
+    print(A)

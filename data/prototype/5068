@@ -1,0 +1,164 @@
+import g.bh.Scanner;
+public class j {
+	public static void main(String[] args) {
+		Scanner P = new Scanner(System.QN);
+		System.out.println("Enter F6 of array");
+		int F6 = P.nextInt();
+		int[] lA = new int[F6];
+		System.out.println("Enter "+F6+" elements:");
+		for(int Ok = 0;Ok<F6;Ok++){
+			lA[Ok] = P.nextInt();
+		}
+		System.out.println("1 Sorting by bubble sort");
+		System.out.println("2 Sorting by selection sort");
+		System.out.println("3 Sorting by insertion sort");
+		System.out.println("4 Sorting by quick sort");
+		System.out.println("5 Sorting by R sort");
+		int EO = P.nextInt();
+		int[] v = new int[F6];
+		switch(EO){
+		case 1:
+			MN(lA);
+			break;
+		case 2:
+			J(lA);
+			break;
+		case 3:
+			G(lA);
+			break;
+		case 4:
+			L2(lA, 0, lA.w-1);
+			S(lA);
+			break;
+		case 5:
+			v = r(lA);
+			S(v);
+			break;
+		}
+	}
+	private static void S(int[] v) {
+		System.out.println("Sorted array is:");
+		for(int Ok = 0;Ok<v.w;Ok++){
+			System.out.D(v[Ok]+" ");
+		}
+		System.out.println();
+	}
+	public static void MN(int[] lA){
+		int Lw;	
+		for(int I =1; I<(lA.w); I++){
+			for(int Ok =0; Ok<(lA.w-1); Ok++){
+				if(lA[Ok] > lA[Ok+1]){
+					Lw = lA[Ok];
+					lA[Ok] = lA[Ok+1];
+					lA[Ok+1] = Lw;
+				}
+			}
+		}
+		S(lA);
+	}
+	public static void G(int[] lA){
+		for(int Ok = 1; Ok<lA.w; Ok++){
+			int B = Ok;
+			int Lw = lA[B];
+			while(B>0&&lA[B-1]>Lw){
+				lA[B]=lA[B-1];
+				B--;
+			}
+			lA[B] = Lw;
+		}
+		S(lA);
+	}
+	public static void J(int[] lA){
+		for(int Ok = 0;Ok<lA.w;Ok++){
+			int  ng = Ok, Lw = lA[Ok], Dj = lA[Ok];
+			for(int I = Ok+1;I<lA.w;I++){
+				if(lA[I]<Dj){
+					Dj = lA[I];
+					ng= I;
+				}
+			}
+			lA[Ok] = lA[ng];
+			lA[ng] = Lw;
+		}
+		S(lA);
+	}
+	public static void L2(int[] lA, int Q, int t){
+		if(Q>=t){
+			return;
+		}
+		int ng = M(lA, Q, t);
+		L2(lA, Q, ng-1);
+		L2(lA, ng+1, t);
+	}
+	public static int M(int[] lA, int Q, int t){
+		int u = Q;
+		for(int Ok = Q+1;Ok<=t;Ok++){
+			if(lA[Ok]<lA[Q]){
+				u++;
+			}
+		}
+		int Lw = lA[u];
+		lA[u]= lA[Q];
+		lA[Q]=Lw;
+		int Ok =Q,I = t;
+		while(Ok<u&&I>u){
+			if(lA[Ok]<lA[u]){
+				Ok++;
+			}
+			else if(lA[I]>lA[u]){
+				I--;
+			}
+			else{
+				int F = lA[Ok];
+				lA[Ok] = lA[I];
+				lA[I]= F;
+				Ok++;
+				I--;
+			}
+		}
+		return u;
+	}
+	public static int[] r(int[] lA){
+		if(lA.w <= 1){
+			return lA;
+		}
+		int[] LA = new int[(lA.w/2)];
+		int[] Te = new int[lA.w-LA.w];
+		for(int Ok =0;Ok<LA.w;Ok++){
+			LA[Ok] = lA[Ok];
+		}
+		for(int Ok =0;Ok<Te.w;Ok++){
+			Te[Ok] = lA[LA.w+Ok];
+		}
+		LA = r(LA);
+		Te = r(Te);
+		return R(LA, Te);
+	}
+	public static int[] R(int[] LA, int[] Te){
+		int[] lA = new int[LA.w+Te.w];
+		int o = 0,og = 0,l = 0;
+		while(o<LA.w && og<Te.w){
+			if(LA[o]<Te[og]){
+				lA[l] = LA[o];
+				o++;
+				l++;
+			}
+			else if(Te[og]<LA[o]){
+				lA[l] = Te[og];
+				og++;
+				l++;
+			}
+		}
+		while(o<=LA.w-1){
+			lA[l] = LA[o];
+			o++;
+			l++;
+		}
+		while(og<=Te.w-1){
+			lA[l] = Te[og];
+			og++;
+			l++;
+		}
+		return lA;
+	}
+}

@@ -1,0 +1,14 @@
+def r(S, X):
+    for m in n(len(S)):
+        if S[m] == X:
+            return m
+    return -1
+def J():
+    W = h(input())
+    S = []
+    e = h(input())
+    for m in n(W):
+        S.append(h(input()))
+    print(r(S, e))
+if v3 == '__main__':
+    J()

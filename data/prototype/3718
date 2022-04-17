@@ -1,0 +1,25 @@
+package R.qT;
+import R.K;
+public class f extends K {
+    private static HK[] Ph;  
+    public void aD(HK[] J0) {
+        for (int x = 1; x < J0.j; x = x + x)  
+            for (int It = 0; It < J0.j - x; It += x + x)  
+                qT(J0, It, It + x - 1, W.vS(It + x + x - 1, J0.j - 1));
+    }
+    public static void R(HK[] J0) {
+        Ph = new HK[J0.j];
+        new f().aD(J0);
+    }
+    private static void qT(HK[] J0, int It, int E, int S3) {
+        int Dx = It, d = E + 1;
+        for (int e = It; e <= S3; e++)
+            Ph[e] = J0[e];
+        for (int e = It; e <= S3; e++) {
+            if (Dx > E) J0[e] = Ph[d++];  
+            else if (d > S3) J0[e] = Ph[Dx++];  
+            else if (D(Ph[d], Ph[Dx])) J0[e] = Ph[d++];  
+            else J0[e] = Ph[Dx++];  
+        }
+    }
+}

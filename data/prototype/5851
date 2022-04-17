@@ -1,0 +1,5 @@
+def y(Q):
+    if len(Q) < 2:
+        return Q
+    t6 = Q[0]
+    return y([f for f in Q[1:] if f < t6]) + [t6] + y([f for f in Q[1:] if f >= t6])

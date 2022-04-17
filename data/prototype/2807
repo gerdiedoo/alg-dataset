@@ -1,0 +1,17 @@
+def S(y):
+    C = True
+    while C:
+        C = False
+        for u in r(0, len(y) - 1):
+            if y[u] > y[u + 1]:
+                D(y, u, u + 1)
+                C = True
+    return y
+def D(y, h, v):
+    l = y[h]
+    y[h] = y[v]
+    y[v] = l
+m = [1, 5, 65, 23, 57, 1232, -1, -5, -2, 242, 100, 4, 423, 2, 564, 9, 0, 10, 43, 64, 32, 1, 999]
+print(m)
+S(m)
+print(m)

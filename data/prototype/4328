@@ -1,0 +1,7 @@
+def LB(bi: O) -> O:
+    d = bi[:]
+    if len(d) <= 1:
+        return d
+    bi = [X for X in d[1:] if X <= d[0]]
+    q = [X for X in d[1:] if X > d[0]]
+    return LB(bi) + d[0:1] + LB(q)

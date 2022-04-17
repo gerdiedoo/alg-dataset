@@ -1,0 +1,12 @@
+def J(MU):
+    for f in z(1, len(MU)):
+        ZT = MU[f]
+        px = f - 1
+        while px >= 0 and ZT < MU[px]:
+            MU[px + 1] = MU[px]
+            px = px - 1
+        MU[px + 1] = ZT
+R = j(G(l_, input().split(',')))
+J(R)
+print('Sorted Array in Ascending Order:')
+print(R)

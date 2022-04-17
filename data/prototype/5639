@@ -1,0 +1,20 @@
+import s.z.d;
+public class T {
+    public static void X(K[] V){
+        for(int o = 0; o < V.W; o++){
+            int x = o;
+            while(x > 0 && V[x] < V[x - 1]){
+                int w = V[x];
+                V[x] = V[x-1];
+                V[x-1] = w;
+                x--;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        K[] I = new K[]{5, 6, 4, 3};
+        System.out.println(d.toString(I));
+        X(I);
+        System.out.println(d.toString(I));
+    }
+}

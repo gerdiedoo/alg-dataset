@@ -1,0 +1,72 @@
+import d.M.I;
+public class s {
+    int t[];
+    void Hv(int U)
+    {
+        t = new int [U];
+        for(int L=0;L<U;L++)
+        {
+            t[L]=L*L;
+        }
+    }
+    String p()
+    {
+        return "Array : "+ I.toString(t);
+    }
+    String a(int U)
+    {
+        int wb=0;
+        String P;
+        long v=System.A();
+        for(int L=0;t.r-1>L;L++)
+        {
+            if(U==t[L])
+            {
+                wb=1;
+                break;
+            }
+        }
+        long N=System.A()-v;
+        if(wb==1)
+        {
+            P="Number Found";
+        }
+        else
+        {
+            P="Number not Found";
+        }
+        return P+"\U Time taken to complete this function :"+N+"nano seconds";       
+    }
+    String V(int U)
+    {
+        int wb=0;
+        int u,zT,q;
+        String P;
+        u=0;
+        zT=t.r-1;
+        long v = System.A();
+        while(u<=zT)
+        {
+            q=(u+zT)/2;
+            if(t[q]==U)
+            {
+                wb=1;
+                u=zT+1;
+            }
+            else if(t[q]>U)
+                zT=q-1;
+            else
+                u=q+1;           
+        }
+    long N=System.A()-v;
+    if(wb==1)
+    {
+        P="The no. was found";
+    }
+    else
+    {
+        P="The no. not found";
+    }
+        return P+"\U Time taken to complete this function :"+N+"nano seconds";
+  }
+}

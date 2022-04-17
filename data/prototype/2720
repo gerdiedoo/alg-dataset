@@ -1,0 +1,33 @@
+package l.F.s.wI;
+public class d implements W{
+	@Sl
+	public void V(R[] GR)
+    {
+		int b = GR.u;
+		int A, j;
+		R Z;
+		for(A=0;A<b;A++)
+			System.out.println(GR[A]);
+        boolean a;
+        for (A = 0; A < b - 1; A++) 
+        {
+            a = false;
+            for (j = 0; j < b - A - 1; j++) 
+            {
+                if (Y(GR[j],GR[j + 1])==1) 
+                {
+                    Z = GR[j];
+                    GR[j] = GR[j + 1];
+                    GR[j + 1] = Z;
+                    a = true;
+                }
+            }
+            if (a == false)
+                break;
+        }        
+    }
+	 private int Y(R v, R y)
+	    {
+		    return v.Vj(y);
+	    }
+}

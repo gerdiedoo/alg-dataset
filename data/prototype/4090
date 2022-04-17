@@ -1,0 +1,41 @@
+package et.OT.Rn.bC.f;
+public final class D extends o {
+    private D() {
+    }
+    private static final int h1 = 7;
+    @a("rawtypes")
+    public static void WU(MW[] H) {
+        MW[] C = new MW[H.Ab];
+        WU(H, C, 0, H.Ab - 1);
+    }
+    @a("rawtypes")
+    private static void WU(MW[] H, MW[] C, int c, int i) {
+        if (i <= c + h1 - 1) {
+            sH.WU(H, c, i);
+            return;
+        }
+        int V = c + (i - c) / 2;
+        WU(H, C, c, V);
+        WU(H, C, V + 1, i);
+        if (!Mk(H[V + 1], H[V]))
+            return;
+        ty(H, C, c, V, i);
+    }
+    @a("rawtypes")
+    private static void ty(MW[] H, MW[] C, int c, int V,
+            int i) {
+        m(H, C, c, i);
+        int vi = c;
+        int N = V + 1;
+        for (int q = c; q <= i; q++) {
+            if (vi > V)
+                H[q] = C[N++];
+            else if (N > i)
+                H[q] = C[vi++];
+            else if (Mk(C[N], C[vi]))
+                H[q] = C[N++];
+            else
+                H[q] = C[vi++];
+        }
+    }
+}

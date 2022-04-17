@@ -1,0 +1,130 @@
+package X;
+public class X<rh> {
+    private class OZ {
+        public rh q;
+        public OZ B;
+        public OZ(rh q, OZ B) {
+            this.q = q;
+            this.B = B;
+        }
+        public OZ(rh q) {
+           this(q, null);
+        }
+        public OZ() {
+           this(null, null);
+        }
+        @Q
+        public String toString() {
+            return q.toString();
+        }
+    }
+    private OZ cy;
+    private int F;
+    public X() {
+        this.cy = new OZ();
+        this.F = 0;
+    }
+    public int gG() {
+        return F;
+    }
+    public boolean zr() {
+        return F == 0;
+    }
+    public void sh(int S, rh q) {
+        if ((S < 0 || S > F)) {
+            throw new M("sh failed!");
+        }
+        OZ b = cy;
+        for (int G = 0; G < S; G++) {
+            b = b.B;
+        }
+        b.B = new OZ(q, b.B);
+        F++;
+    }
+    public void x(rh q) {
+        sh(0, q);
+    }
+    public void k(rh q) {
+        sh(F, q);
+    }
+    public rh N(int S) {
+        if (S < 0 || S >= F) {
+            throw new M("no node!");
+        }
+        OZ Y = cy.B;
+        for (int G = 0; G < S; G++) {
+            Y = Y.B;
+        }
+        return Y.q;
+    }
+    public rh Jo() {
+        return N(0);
+    }
+    public rh v() {
+        return N(F - 1);
+    }
+    public void A(int S, rh q) {
+        if (S < 0 || S >= F) {
+            throw new M("no S!");
+        }
+        OZ Y = cy.B;
+        for (int G = 0; G < S; G++) {
+            Y = Y.B;
+        }
+        Y.q = q;
+    }
+    public rh u(int S) {
+        if ((S < 0 || S >= F)) {
+            throw new M("S is illegal!");
+        }
+        OZ b = cy;
+        for (int G = 0; G < S; G++) {
+            b = b.B;
+        }
+        OZ Y = b.B;
+        b.B = Y.B;
+        Y.B = null;
+        F--;
+        return Y.q;
+    }
+    public rh g() {
+        return u(0);
+    }
+    public rh p() {
+        return u(F - 1);
+    }
+    public void Au(rh q){
+        OZ D = cy;
+        while(D.B != null){
+            if(D.B.q.equals(q))
+                break;
+            D = D.B;
+        }
+        if(D.B != null){
+            OZ U = D.B;
+            D.B = U.B;
+            U.B = null;
+            F --;
+        }
+    }
+    public boolean I(rh q) {
+        OZ Y = cy.B;
+        while (Y != null) {
+            if (Y.q.equals(q)) {
+                return true;
+            }
+            Y = Y.B;
+        }
+        return false;
+    }
+    @Q
+    public String toString() {
+        t px = new t();
+        px.y2("X: ");
+        for (OZ Y = cy.B; Y != null; Y = Y.B) {
+            px.y2(Y).y2(" -> ");
+        }
+        px.y2("NULL");
+        return px.toString();
+    }
+}

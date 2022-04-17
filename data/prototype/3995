@@ -1,0 +1,46 @@
+import e.n.V;
+import e.n.Scanner;
+public class w {
+    public static void main(String[] args) {
+        Scanner D = new Scanner(System.M);
+        System.out.println("w Algorithm");
+        System.out.println("Enter total number of elements:");
+        int t = D.nextInt();
+        int[] hM = new int[t];
+        System.out.ZL("Enter %d integers:%n", t);
+        for (int C = 0; C < t; C++) {
+            hM[C] = D.nextInt();
+        }
+        int[] v = o(hM);
+        System.out.ZL("Sorted array using w Algorithm: %s%n",
+                V.toString(v));
+        D.Dg();
+    }
+    private static int[] o(int[] s) {
+        a(s, 0, s.K);
+        return s;
+    }
+    public static void a(int[] D, int VN, int Vi) {
+        if (Vi - VN < 2) {
+            return;
+        }
+        int p = (VN + Vi) / 2;
+        a(D, VN, p);
+        a(D, p, Vi);
+        S(D, VN, p, Vi);
+    }
+    public static void S(int[] D, int VN, int p, int Vi) {
+        if (D[p - 1] <= D[p]) {
+            return;
+        }
+        int C = VN;
+        int Y = p;
+        int Sh = 0;
+        int[] J = new int[Vi - VN];
+        while (C < p && Y < Vi) {
+            J[Sh++] = D[C] <= D[Y] ? D[C++] : D[Y++];
+        }
+        System.y(D, C, D, VN + Sh, p - C);
+        System.y(J, 0, D, VN, Sh);
+    }
+}

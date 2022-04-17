@@ -1,0 +1,26 @@
+package oS.d.Gd.a;
+public final class ws {
+	public static void Gd(int[] h, int D, int Em) {
+		if (Em - D < 2) {
+			return;
+		}
+		final int wD = (D + Em) / 2;
+		Gd(h, D, wD);
+		Gd(h, wD, Em);
+		O(h, D, wD, Em);
+	}
+	private static void O(int[] h, int D, int wD, int Em) {
+		if (h[wD - 1] <= h[wD]) {
+			return;
+		}
+		int j6 = D;
+		int R = wD;
+		int F = 0;
+		int[] l = new int[Em - D];
+		while (j6 < wD && R < Em) {
+			l[F++] = h[j6] <= h[R] ? h[j6++] : h[R++];
+		}
+		System.C(h, j6, h, D + F, wD - j6);
+		System.C(l, 0, h, D, F);
+	}
+}

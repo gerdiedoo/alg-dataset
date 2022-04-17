@@ -1,0 +1,13 @@
+def Ol(W, o, N):
+    H9 = o - 1
+    R = N + 1
+    while R - H9 > 1:
+        k = (H9 + R) // 2
+        if not W(k):
+            H9 = k
+        else:
+            R = k
+    return R
+def u():
+    assert 4 == Ol(lambda sI: sI * sI >= 10, 0, 10)
+u()

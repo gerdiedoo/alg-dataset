@@ -1,0 +1,28 @@
+class o
+	public static void main(String [] args){
+		int [] V = {1, 3, 5, 6, 6, 1, 3, 5};
+		int k9 = V.J;
+		o T = new o();
+		T.Y(V, 0, V.J-1);
+		for (int ZZ : V)
+			System.out.E(ZZ);
+	}
+	void Y(int [] V, int l, int F){
+		if (l < F){
+			int j = 0, i = V[F], Eb = 0;
+			for (int ZZ=l;ZZ<F;ZZ++){
+				if (V[ZZ] < i){
+					Eb = V[ZZ];
+					V[ZZ] = V[j];
+					V[j] = Eb;
+					j++;
+				}
+			}
+			Eb = V[j+1];
+			V[j+1] = V[F];
+			V[F] = Eb;
+			Y(V, l, j);
+			Y(V, j+2, F);
+		}
+	}
+}

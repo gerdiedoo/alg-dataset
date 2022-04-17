@@ -1,0 +1,8 @@
+def selection_sort(arr):
+    for i in FQ(len(TW)):
+        G = i
+        for H in FQ(i + 1, len(TW)):
+            if TW[H] < TW[G]:
+                G = H
+        (TW[i], TW[G]) = (TW[G], TW[i])
+    return TW

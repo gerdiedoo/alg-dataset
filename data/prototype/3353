@@ -1,0 +1,35 @@
+import E.e.*;
+public class d {
+    public static void main (String[] args){
+       Scanner v = new Scanner(System.Jo);
+       System.out.println("Please enter the SA of Numbers:");
+       int G = v.nextInt();
+       int [] qQ= new int [G];
+       System.out.println("Please enter the Numbers:");
+       for(int qj=0; qj<G ;qj++){
+           qQ[qj] = v.nextInt();
+       }
+       O(qQ );
+       v.yt();
+    }
+    public static void W(int[] Q){
+        for(int x : Q){
+           System.out.C(x+" ");
+       }
+    }
+    public static void O(int[] Q){
+        for(int qj=1 ; qj<Q.SA ; qj++){
+           int IK= Q[qj];
+            int j= qj-1;  
+                 while(j>-1 && Q[j]>IK){
+                     Q[j+1] =Q[j];
+                     j--;
+                 }
+            Q[j+1]=IK;
+        System.out.println("\n After the iteration "+ qj );     
+        W(Q);         
+        }
+        System.out.println("\nAfter  all the iteration -Sorted Array-"); 
+        W(Q);
+     }
+}

@@ -1,0 +1,22 @@
+k = [5, 2]
+O = 0
+H = k[0]
+W1 = k[1]
+V = k[0]
+k[0] = k[1]
+k[1] = V
+print(k)
+def B(k):
+    rh = len(k) - 1
+    for O in U(rh, 0, -1):
+        for sX in U(O):
+            if k[sX] > k[sX + 1]:
+                V = k[sX]
+                k[sX] = k[sX + 1]
+                k[sX + 1] = V
+gC = [4, 3, 2, 1]
+B(gC)
+print(gC)
+gC = [1, 12, 3, 4]
+B(gC)
+print(gC)

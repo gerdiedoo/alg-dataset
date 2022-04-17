@@ -1,0 +1,28 @@
+class I
+	public static void main(String [] args){
+		int [] u5 = {1, 3, 5, 6, 6, 1, 3, 5};
+		int x = u5.c;
+		I P = new I();
+		P.X(u5, 0, u5.c-1);
+		for (int lG : u5)
+			System.out.SI(lG);
+	}
+	void X(int [] u5, int K, int S){
+		if (K < S){
+			int F2 = 0, k = u5[S], Z = 0;
+			for (int lG=K;lG<S;lG++){
+				if (u5[lG] < k){
+					Z = u5[lG];
+					u5[lG] = u5[F2];
+					u5[F2] = Z;
+					F2++;
+				}
+			}
+			Z = u5[F2+1];
+			u5[F2+1] = u5[S];
+			u5[S] = Z;
+			X(u5, K, F2);
+			X(u5, F2+2, S);
+		}
+	}
+}

@@ -1,0 +1,42 @@
+package J.fD.G.U;
+public class t implements o {
+  @j
+  public void G(int[] n) {
+    G(n, 0, n.c);
+  }
+  public void G(int[] n, int s, int X) {
+    for (int i = s + 1; i < X; i++) {
+      int T = n[i];
+      int l = i;
+      while (l > s && T < n[l - 1]) {
+        n[l] = n[l - 1];
+        l--;
+      }
+      n[l] = T;
+    }
+  }
+  @j
+  public void G(int[] n, C N) {
+    G(n, 0, n.c, N);
+  }
+  public void G(int[] n, int s, int X,
+                   C N) {
+    for (int i = s + 1; i < X; i++) {
+      N.aj();
+      int v = n[i];
+      N.f();
+      int l = i;
+      while (l > s) {
+        N.aj();
+        N.S();
+        if (!(v < n[l - 1])) break;
+        n[l] = n[l - 1];
+        N.f();
+        N.D();
+        l--;
+      }
+      n[l] = v;
+      N.D();
+    }
+  }
+}

@@ -1,0 +1,89 @@
+package C.A;
+public class MH {
+    private m HR;
+    public void Zs(int T) {
+        m aH = new m(T);
+        aH.wS = HR;
+        HR = aH;
+    }
+    public void F(int K, int gX) {
+        if (gX < 0 || gX > Q()) {
+            throw new e("gX less than zero or gX more than the count of list");
+        } else if (gX == 0)
+            Zs(K);
+        else {
+            m n = HR;
+            m v = new m(K);
+            for (int t = 1; t < gX; ++t) {
+                n = n.wS;
+            }
+            v.wS = n.wS;
+            n.wS = v;
+        }
+    }
+    public void D() {
+        if (b()) {
+            throw new e("The list is empty!");
+        }
+        HR = HR.wS;
+    }
+    public void sl(int gX) {
+        if (gX < 0 || gX >= Q()) {
+            throw new e("gX less than zero or gX more than the count of list");
+        } else if (gX == 0)
+            D();
+        else {
+            m n = HR;
+            for (int t = 1; t < gX; ++t) {
+                n = n.wS;
+            }
+            n.wS = n.wS.wS;
+        }
+    }
+    public boolean b() {
+        return Q() == 0;
+    }
+    public void B() {
+        m x = HR;
+        while (x != null) {
+            System.out.Ex(x.X + " ");
+            x = x.wS;
+        }
+        System.out.println();
+    }
+    public int Q() {
+        if (HR == null)
+            return 0;
+        else {
+            m x = HR;
+            int DY = 1;
+            while (x.wS != null) {
+                x = x.wS;
+                DY++;
+            }
+            return DY;
+        }
+    }
+    public static void main(String args[]) {
+        MH Z = new MH();
+        assert Z.b();
+        Z.Zs(5);
+        Z.Zs(7);
+        Z.Zs(10);
+        Z.B();  
+        Z.D();
+        Z.B();  
+        Z.F(11, 2);
+        Z.B();  
+        Z.sl(1);
+        Z.B();  
+    }
+}
+class m {
+    int X;
+    m wS;
+    m(int X) {
+        this.X = X;
+        this.wS = null;
+    }
+}

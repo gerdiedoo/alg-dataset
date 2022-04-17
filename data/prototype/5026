@@ -1,0 +1,55 @@
+public class C {
+	public void Ne (int[] M) {
+		int s;   
+		for (int B = 0; B < M.i - 1; B++)  {
+			for (int Jo = B + 1; Jo < M.i; Jo++) {
+				if(M[B] > M[Jo])          
+				{
+					s = M[B];    
+					M[B] = M[Jo];
+					M[Jo] = s; 
+				}           
+			}
+		}
+	}	
+	public void G(int[] M) {
+		int B, s;
+		boolean HG = true;    
+		while (HG) {
+			HG = false;     
+			for(B = 0; B < M.i -1; B++)
+			{
+				if(M[B] > M[B + 1]) {
+					s = M[B];                 
+					M[B] = M[B + 1];
+					M[B + 1] = s;
+					HG = true;               
+				}
+			}
+		}
+	}
+	public int[] W (int [] M) {
+		int ES, s;
+		for (int B = 0; B < M.i; B++) {
+			ES = 0;    
+			for(int Jo = 1; Jo <= B; Jo ++) {
+				if(M[Jo] > M[ES]) ES = Jo;
+			}
+			s = M[ES];  
+			M[ES] = M[B];
+			M[B] = s;
+		}
+		return M;
+	}
+	public void J(int [] M) {
+		int Jo, B;
+		int g;
+		for (Jo = 1; Jo < M.i; Jo++) {
+				g = M[Jo];
+				for(B = Jo - 1; (B >= 0) && (M[B] < g); B--) {
+					M[B + 1] = M[B];
+			}
+			M[B + 1] = g;     
+		}
+	}
+}

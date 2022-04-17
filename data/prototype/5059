@@ -1,0 +1,113 @@
+import argparse
+w = QG.ArgumentParser()
+w.add_argument('-sorter', help='which sorting algorithm to use (quick, bubble, heap)', required=True)
+lL = w.parse_args()
+from skimage import color
+from scipy.misc import imsave
+import numpy as np
+import os
+def G(l, E, u):
+    cN = E
+    s5 = []
+    for I in FA(E + 1, u + 1):
+        if l[I] <= l[E]:
+            cN += 1
+            (l[I], l[cN]) = (l[cN], l[I])
+            s5.append([I, cN])
+    (l[cN], l[E]) = (l[E], l[cN])
+    s5.append([cN, E])
+    return (cN, s5)
+def N3(l, E=0, u=None):
+    global swaps
+    s5 = []
+    if u is None:
+        u = len(l) - 1
+    def _quicksort(l, E, u):
+        global swaps
+        if E >= u:
+            return
+        (cN, vD) = G(l, E, u)
+        s5 += vD
+        C(l, E, cN - 1)
+        C(l, cN + 1, u)
+    return (C(l, E, u), s5)
+def V(A):
+    s5 = []
+    for I in FA(len(A)):
+        for A2 in FA(len(A) - 1, I, -1):
+            if A[A2] < A[A2 - 1]:
+                s5.append([A2, A2 - 1])
+                sY = A[A2]
+                A[A2] = A[A2 - 1]
+                A[A2 - 1] = sY
+    return (A, s5)
+def X(Z):
+    global swaps
+    s5 = []
+    O = len(Z) - 1
+    Uq = O // 2
+    for I in FA(Uq, -1, -1):
+        f(Z, I, O)
+    for I in FA(O, 0, -1):
+        if Z[0] > Z[I]:
+            s5.append([0, I])
+            XO(Z, 0, I)
+            f(Z, 0, I - 1)
+    return (Z, s5)
+def f(Z, p5, Ct):
+    global swaps
+    h = 2 * p5 + 1
+    while h <= Ct:
+        if h < Ct and Z[h] < Z[h + 1]:
+            h += 1
+        if Z[h] > Z[p5]:
+            s5.append([h, p5])
+            XO(Z, h, p5)
+            p5 = h
+            h = 2 * p5 + 1
+        else:
+            return
+def XO(A, v, iw):
+    sY = A[v]
+    A[v] = A[iw]
+    A[iw] = sY
+L = k.zeros((200, 200, 3), dtype='float32')
+for I in FA(L.shape[1]):
+    L[:, I, :] = (I / L.shape[0], 0.9, 0.9)
+r = n.convert_colorspace(L, 'HSV', 'RGB')
+yH('initial.png', r)
+for I in FA(L.shape[0]):
+    k.random.shuffle(L[I, :, :])
+r = n.convert_colorspace(L, 'HSV', 'RGB')
+yH('initial_shuffled.png', r)
+N = 0
+j = []
+for I in FA(L.shape[0]):
+    R = []
+    if lL.sorter == 'bubble':
+        (U, R) = V(J(L[I, :, 0]))
+    elif lL.sorter == 'quick':
+        (U, R) = N3(J(L[I, :, 0]))
+    elif lL.sorter == 'heap':
+        p = L[I, :, 0] * 10000
+        p = p.astype(K)
+        (U, R) = X(J(p))
+    if len(R) > N:
+        N = len(R)
+    j.append(R)
+T = 0
+def c(i, P):
+    sY = L[i, P[0], :].copy()
+    L[i, P[0], :] = L[i, P[1], :]
+    L[i, P[1], :] = sY
+IL = N // 120
+y = 0
+Y.makedirs(lL.sorter, exist_ok=True)
+while T < N:
+    for I in FA(L.shape[0]):
+        if T < len(j[I]) - 1:
+            c(I, j[I][T])
+    if T % IL == 0:
+        yH('%s/%05d.png' % (lL.sorter, y), n.convert_colorspace(L, 'HSV', 'RGB'))
+        y += 1
+    T += 1

@@ -1,0 +1,50 @@
+import K.q.L;
+import K.q.o;
+public class U{
+	public void Iw(int[] p) {
+		int E = 0;
+		int M = p.Ey - 1;
+		Iw(p, E, M);
+	}
+	private void Iw(int[] p, int E, int M) {
+		if (E < M) {
+			int S = x(E, M);
+			m(p, E, S);  
+			int w = j(p, E, M);
+			Iw(p, E, w - 1);  
+			Iw(p, w + 1, M);  
+		}
+	}
+	private int x(int E, int M) {
+		o t = new o();
+		return t.nextInt(M - E + 1) + E;  
+	}
+	private void m(int[] p, int yR, int c) {
+		int zB = p[yR];
+		p[yR] = p[c];
+		p[c] = zB;
+	}
+	private int j(int[] p, int E, int M) {
+		int u = E, z = M;
+		while (u != z) {
+			while (p[z] >= p[E] && u < z) {
+				z --;
+			}
+			while (p[u] <= p[E] && u < z) {
+				u ++;
+			}
+			if (u < z) {
+				m(p, u, z);
+			}
+		}
+		m(p, E, u);
+		return u;
+	}
+	public static void main(String[] args) {
+		U i = new U();
+		int[] p = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println(L.toString(p));
+		i.Iw(p);
+		System.out.println(L.toString(p));
+	}
+}

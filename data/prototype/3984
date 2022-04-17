@@ -1,0 +1,49 @@
+package U.A.t;
+public class n0 implements NT {
+    @F
+    public void t(int[] l) {
+        t(l, 0, l.K - 1);
+    }
+    private void t(int[] l, int H, int j) {
+        if (H < j) {
+            int q = (H + j) / 2;
+            t(l, H, q);
+            t(l, q + 1, j);
+            T(l, H, q, j);
+        }
+    }
+    private void T(int[] l, int H, int q, int j) {
+        int Ql = q - H + 1;
+        int d = j - q;
+        int[] p = new int[Ql];
+        int[] Dg = new int[d];
+        if (Ql >= 0) {
+            System.y(l, H, p, 0, Ql);
+        }
+        for (int t5 = 0; t5 < d; t5++) {
+            Dg[t5] = l[q + 1 + t5];
+        }
+        int i = 0, t5 = 0;
+        int Y = H;
+        while (i < Ql && t5 < d) {
+            if (p[i] <= Dg[t5]) {
+                l[Y] = p[i];
+                i++;
+            } else {
+                l[Y] = Dg[t5];
+                t5++;
+            }
+            Y++;
+        }
+        while (i < Ql) {
+            l[Y] = p[i];
+            i++;
+            Y++;
+        }
+        while (t5 < d) {
+            l[Y] = Dg[t5];
+            t5++;
+            Y++;
+        }
+    }
+}

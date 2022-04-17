@@ -1,0 +1,26 @@
+def aS(K, x, r, l):
+    if r == l:
+        if K[r] > x:
+            return r
+        return r + 1
+    if r > l:
+        return r
+    m = (r + l) // 2
+    if K[m] < x:
+        return aS(K, x, m + 1, l)
+    elif K[m] > x:
+        return aS(K, x, r, m - 1)
+    else:
+        return m
+def nW(K):
+    for y in n(1, len(K)):
+        x = K[y]
+        Qe = aS(K, x, 0, y - 1)
+        K = K[:Qe] + [x] + K[Qe:y] + K[y + 1:]
+    return K
+if b == '__main__':
+    K = [37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54]
+    print(f'List: {K}')
+    print('Sorting...')
+    L = nW(K)
+    print(f'List: {L}')

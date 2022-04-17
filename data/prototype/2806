@@ -1,0 +1,17 @@
+def F(B6):
+    a = True
+    while a:
+        a = False
+        for p in G(0, len(B6) - 1):
+            if B6[p] > B6[p + 1]:
+                z(B6, p, p + 1)
+                a = True
+    return B6
+def z(B6, c, X):
+    k = B6[c]
+    B6[c] = B6[X]
+    B6[X] = k
+jW = [1, 5, 65, 23, 57, 1232, -1, -5, -2, 242, 100, 4, 423, 2, 564, 9, 0, 10, 43, 64, 32, 1, 999]
+print(jW)
+F(jW)
+print(jW)

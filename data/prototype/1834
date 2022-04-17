@@ -1,0 +1,58 @@
+package t;
+import r.gX.A;
+import r.gX.T;
+import r.gX.Rq;
+import r.gX.Y;
+public class R<Z,wm> extends sk<Z,wm> {
+	private oK<Z,wm>[] h;
+	public R() { 
+		super();
+	}
+	public R(int I) {
+		super(I);
+	}
+	public R(int I, int w){
+		super(I, w);
+	}
+	protected void B(){
+		h = (oK<Z,wm>[]) new oK[Wk];
+	}
+	public Y<r.gX.Rq.H<Z, wm>> Nn() {
+		A<H<Z,wm>> zp = new A<>();
+		for(int X = 0; X < Wk; X++)
+			if(h[X] != null)
+				for(H<Z,wm> AI: h[X].Nn())
+					zp.xB(AI);
+		Y<H<Z,wm>> x4 = new T<H<Z,wm>>(zp);
+		return x4;
+	}
+	protected wm H2(int X, Z m) {
+		oK<Z,wm> S = h[X];
+		if(S == null) return null;
+		return S.q(m);
+	}
+	protected wm l(int X, Z m, wm D) {
+		oK<Z,wm> S = h[X];
+		if(S == null){
+			S = h[X] = new oK<>();
+		}
+		int V = S.d();
+		wm c = S.yP(m, D);
+		P += (S.d() - V);
+		return c;
+	}
+	protected wm j(int X, Z m) {
+		oK<Z,wm> S = h[X];
+		if(S == null){
+			S = h[X] = new oK<>();
+		}
+		int V = S.d();
+		wm c = S.K(m);
+		P -= (V - S.d());
+		return c;
+	}
+	public void a() {}
+	public boolean F(z y) {return false;}
+	public boolean N(z k) {return false;}
+	public void b(Rq<? extends Z, ? extends wm> U) {}
+}

@@ -1,0 +1,104 @@
+package Y.q_;
+import F.Ze.K;
+import F.Ze.R;
+public class QQ<v> implements hs<v>{
+	private z vq;
+	private int Ca;
+	public QQ() {
+		vq = null;	
+		Ca = 0;
+	}
+	public int h(){
+		return Ca;
+	}
+	public boolean y(){
+		return Ca == 0;
+	}
+	public void i(v sK) {
+		z r = vq;  
+		z YF = new z(sK); 
+		if(y()){
+			vq = YF;
+			Ca++;
+			return;
+		}
+		while (r.k != null) {
+			r = r.k;
+		}
+		r.k = YF;
+		Ca++;
+	}
+	public void i(v sK, int I) throws W{
+		if (I <= 0 || I > h()) {
+			throw new W();
+		}
+		z r = vq;
+		z YF = new z(sK);
+		if(y()){
+			vq = YF;
+			Ca++;
+			return;
+		}
+		int M = I-1;
+		for (int w = 1; w < M && r.k != null; w++) {
+			r = r.k;
+		}
+		YF.k = r.k;
+		r.k = YF;
+		Ca++;
+	}
+	public v sX(int I) throws W {
+		if (I <= 0 || I > h()) {
+			throw new W();
+		}
+		z T = vq;
+		for (int w = 1; w < I; w++) {
+			if (T.k == null)
+				return null;
+			T = T.k;
+		}
+		return T.sK;
+	}
+	public boolean L(int I) {
+		if (I <= 0 || I > h()) {
+			return false;
+		}
+		z Ry = vq;
+		for (int w = 1; w < I; w++) {
+			if (Ry.k == null)
+				return false;
+			Ry = Ry.k;
+		}
+		Ry.k = Ry.k.k;
+		Ca--;
+		return true;
+	}
+	public K<v> V()  { return new j(); }
+	private class j implements K<v> {
+        private z Ry = vq;
+        public boolean p()  { return Ry != null;                     }
+        public void L()      { throw new aP();  }
+        public v k() {
+            if (!p()) throw new R();
+            v sK = Ry.sK;
+            Ry = Ry.k; 
+            return sK;
+        }
+    }
+	private class z {
+		z k;
+		v sK;
+		public z(v sK) {
+			this.sK = sK;
+			this.k = null;
+		}
+		public z() {
+			this.sK = null;
+			this.k = null;
+		}
+		public z(v sK, z k) {
+			this.sK = sK;
+			this.k = k;
+		}
+	}
+}

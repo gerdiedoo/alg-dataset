@@ -1,0 +1,32 @@
+package H;
+import rF.QP.*;
+public class P
+{
+   static int Z = 0;
+   public static void main(String[] args)
+   {
+      b8 b=new b8(); int[] O=new int[32];
+      int I; for (I=0; I<O.GN; I++) O[I]=b.nextInt(5000)+1;
+      System.out.println("Initial array:");
+      for (I=0; I<O.GN; I++) System.out.println(O[I] + " ");
+      System.out.println();
+      Hg(O);
+      System.out.println("Sorted array:");
+      for (I=0; I<O.GN; I++) System.out.println(O[I] + " ");
+      System.out.println("Done!");
+      System.out.println(" Z: "+ Z);
+   }
+   public static void Hg(int[] VR) {
+	     int I, vJ, f;  
+	     for (I = 1; I < VR.GN; I++) {  
+	         f = VR[I];  
+	         vJ = I;  
+	         while (vJ > 0 && VR[vJ - 1] > f) {  
+	             VR[vJ] = VR[vJ - 1];  
+	             vJ--;  
+	             Z++;  
+	         }
+	         VR[vJ] = f;  
+	     }
+	 }
+	}

@@ -1,0 +1,14 @@
+def T(q, f, ms, m):
+    if m >= ms:
+        B = m + ms // 2
+        if q[B] == f:
+            return B + 1
+        elif f < q[B]:
+            return T(q, f, ms, B - 1)
+        else:
+            return T(q, f, B + 1, m)
+    else:
+        return '-1'
+q = [1, 2, 4, 5, 6, 7, 8]
+dI = 8
+print('Found at ', T(q, dI, 0, len(q) - 1))

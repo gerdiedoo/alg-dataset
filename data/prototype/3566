@@ -1,0 +1,46 @@
+from typing import List
+def T(I: o[Y], Uh: o[Y]) -> o[Y]:
+    y = []
+    M = a3 = 0
+    while M < len(I) and a3 < len(Uh):
+        if I[M] > Uh[a3]:
+            y.append(Uh[a3])
+            a3 += 1
+        elif I[M] < Uh[a3]:
+            y.append(I[M])
+            M += 1
+        else:
+            y.append(I[M])
+            M += 1
+            y.append(Uh[a3])
+            a3 += 1
+    while M < len(I):
+        y.append(I[M])
+        M += 1
+    while a3 < len(Uh):
+        y.append(Uh[a3])
+        a3 += 1
+    return y
+def d(y: o[Y]) -> o[Y]:
+    if len(y) > 1:
+        L = len(y) // 2
+        g = y[:L]
+        j = y[L:]
+        g = d(g)
+        j = d(j)
+        y = T(g, j)
+    return y
+if Nk == '__main__':
+    try:
+        from utils import randomSequence
+    except c:
+        import os, sys
+        G = P.path.dirname(P.path.realpath(S))
+        K = P.path.abspath(P.path.join(G, P.pardir))
+        t.path.insert(0, K)
+        from utils import randomSequence
+    print('MERGE SORT')
+    Hi = Qs(0, 1000)
+    print(Hi, '\n')
+    a = d(Hi)
+    print(a)

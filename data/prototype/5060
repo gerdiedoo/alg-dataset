@@ -1,0 +1,113 @@
+import argparse
+E = M.ArgumentParser()
+E.add_argument('-sorter', help='which sorting algorithm to use (quick, bubble, heap)', required=True)
+K = E.parse_args()
+from skimage import color
+from scipy.misc import imsave
+import numpy as np
+import os
+def S(Ra, H, ky):
+    f = H
+    T = []
+    for g in JO(H + 1, ky + 1):
+        if Ra[g] <= Ra[H]:
+            f += 1
+            (Ra[g], Ra[f]) = (Ra[f], Ra[g])
+            T.append([g, f])
+    (Ra[f], Ra[H]) = (Ra[H], Ra[f])
+    T.append([f, H])
+    return (f, T)
+def uB(Ra, H=0, ky=None):
+    global swaps
+    T = []
+    if ky is None:
+        ky = len(Ra) - 1
+    def _quicksort(Ra, H, ky):
+        global swaps
+        if H >= ky:
+            return
+        (f, ST) = S(Ra, H, ky)
+        T += ST
+        I(Ra, H, f - 1)
+        I(Ra, f + 1, ky)
+    return (I(Ra, H, ky), T)
+def a(w):
+    T = []
+    for g in JO(len(w)):
+        for N in JO(len(w) - 1, g, -1):
+            if w[N] < w[N - 1]:
+                T.append([N, N - 1])
+                B = w[N]
+                w[N] = w[N - 1]
+                w[N - 1] = B
+    return (w, T)
+def r(q):
+    global swaps
+    T = []
+    u = len(q) - 1
+    yV = u // 2
+    for g in JO(yV, -1, -1):
+        lb(q, g, u)
+    for g in JO(u, 0, -1):
+        if q[0] > q[g]:
+            T.append([0, g])
+            Y(q, 0, g)
+            lb(q, 0, g - 1)
+    return (q, T)
+def lb(q, Ze, A4):
+    global swaps
+    h = 2 * Ze + 1
+    while h <= A4:
+        if h < A4 and q[h] < q[h + 1]:
+            h += 1
+        if q[h] > q[Ze]:
+            T.append([h, Ze])
+            Y(q, h, Ze)
+            Ze = h
+            h = 2 * Ze + 1
+        else:
+            return
+def Y(w, bI, y):
+    B = w[bI]
+    w[bI] = w[y]
+    w[y] = B
+O = k.zeros((200, 200, 3), dtype='float32')
+for g in JO(O.shape[1]):
+    O[:, g, :] = (g / O.shape[0], 0.9, 0.9)
+z = P.convert_colorspace(O, 'HSV', 'RGB')
+WF('initial.png', z)
+for g in JO(O.shape[0]):
+    k.random.shuffle(O[g, :, :])
+z = P.convert_colorspace(O, 'HSV', 'RGB')
+WF('initial_shuffled.png', z)
+Z = 0
+X = []
+for g in JO(O.shape[0]):
+    W = []
+    if K.sorter == 'bubble':
+        (s, W) = a(l_(O[g, :, 0]))
+    elif K.sorter == 'quick':
+        (s, W) = uB(l_(O[g, :, 0]))
+    elif K.sorter == 'heap':
+        t = O[g, :, 0] * 10000
+        t = t.astype(e)
+        (s, W) = r(l_(t))
+    if len(W) > Z:
+        Z = len(W)
+    X.append(W)
+j = 0
+def Xp(i, b):
+    B = O[i, b[0], :].copy()
+    O[i, b[0], :] = O[i, b[1], :]
+    O[i, b[1], :] = B
+A = Z // 120
+zr = 0
+m.makedirs(K.sorter, exist_ok=True)
+while j < Z:
+    for g in JO(O.shape[0]):
+        if j < len(X[g]) - 1:
+            Xp(g, X[g][j])
+    if j % A == 0:
+        WF('%s/%05d.png' % (K.sorter, zr), P.convert_colorspace(O, 'HSV', 'RGB'))
+        zr += 1
+    j += 1

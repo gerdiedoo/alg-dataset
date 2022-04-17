@@ -1,0 +1,29 @@
+def Z(jS):
+    if len(jS) > 1:
+        s = len(jS) // 2
+        l = jS[:s]
+        y = jS[s:]
+        Z(l)
+        Z(y)
+        h = 0
+        J = 0
+        k = 0
+        while h < len(l) and J < len(y):
+            if l[h] < y[J]:
+                jS[k] = l[h]
+                h = h + 1
+            else:
+                jS[k] = y[J]
+                J = J + 1
+            k = k + 1
+        while h < len(l):
+            jS[k] = l[h]
+            h = h + 1
+            k = k + 1
+        while J < len(y):
+            jS[k] = y[J]
+            J = J + 1
+            k = k + 1
+jS = [11, 2, 5, 4, 7, 6, 8, 1, 23]
+Z(jS)
+print(jS)

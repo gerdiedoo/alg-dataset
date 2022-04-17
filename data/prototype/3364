@@ -1,0 +1,19 @@
+package f.gV.rT;
+import nS.d.zW;
+import nS.d.o.M;
+@Jx({"unchecked", "unused"})
+public class D<PI extends DH> extends ee<PI> {
+    PI[] g(PI[] Y, M<PI, PI, v> q){
+        PI[] U = zW.ib(Y, Y.A);
+        for (int l0 = 1; l0 < U.A; l0++) {
+            PI b = U[l0];
+            int V = l0;
+            while(V  > 0 && q.Bd(b, U[V -1])){
+                U[V] = U[V - 1];
+                V--;
+            }
+            U[V] = b;
+        }
+        return U;
+    }
+}

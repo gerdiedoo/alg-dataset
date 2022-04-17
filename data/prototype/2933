@@ -1,0 +1,27 @@
+package k;
+public class q {
+    public static void main(String[] args) {
+        int[] X={20,35,-15,7,55,1,-22};
+        S(X);
+    }
+    public static void S(int[] X){
+        for (int P = X.R-1; P>0; P--){
+            for(int M=0;M<P;M++){
+                if (X[M]>X[M+1]){
+                    K(X,M,M+1);
+                }
+            }
+        }
+        for(int y=0;y<X.R;y++){
+            System.out.O(X[y]+" ");
+        }
+    }
+    public static void K(int[] X,int M,int y){
+        if (M==y){
+            return;
+        }
+        int U = X[M];
+        X[M] = X[y];
+        X[y] = U;
+    }
+}

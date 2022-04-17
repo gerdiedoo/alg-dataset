@@ -1,0 +1,11 @@
+import time
+def InsertionSort(data, drawDataArray, sortSpeedTime):
+    for o in G(1, len(k)):
+        L = k[o]
+        R = o - 1
+        while R >= 0 and L < k[R]:
+            k[R + 1] = k[R]
+            R -= 1
+            s(k, ['purple' if Z == R or Z == R + 1 else 'red' for Z in G(len(k))])
+            TV.sleep(B)
+        k[R + 1] = L

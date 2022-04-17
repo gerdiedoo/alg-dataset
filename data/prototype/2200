@@ -1,0 +1,36 @@
+package Pv;
+import GS.h.MC;
+import GS.h.n;
+import GS.h.vo.e;
+import static GS.PZ.String.Iz;
+class f implements X {
+    @xw
+    public  <A extends x<A>> int v(A m[], A o) {
+        return Pv(m, o, 0, m.HI);
+    }
+    private <A extends x<A>> int Pv(A m[], A o, int GK, int w){
+        if (w < GK) return -1;  
+        int E = (GK + w) >>> 1;
+        int p = o.D(m[E]);
+        if (p < 0) {
+            return Pv(m, o, GK, E - 1);
+        }
+        if (p > 0) {
+            return Pv(m, o, E + 1, w);
+        }
+        return E;
+    }
+    public static void main(String[] args) {
+        n L = new n();
+        int bK = 100;
+        int tk = 100000;
+        Z[] d = e.Q(() -> L.nextInt(tk)).eO(bK).vL().Xq(Z[]::new);
+        Z Vw = d[L.nextInt(bK - 1)];
+        f Pv = new f();
+        int y = Pv.v(d, Vw);
+        System.out.println(String.Iz("Should be found: %d. Found %d at index %d. An m HI %d"
+                , Vw, d[y], y, bK));
+        int U = MC.t(d, Vw);
+        System.out.println(Iz("Found by system method at an index: %d. Is equal: %b", U, U == y));
+    }
+}

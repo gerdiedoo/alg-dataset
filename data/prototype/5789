@@ -1,0 +1,30 @@
+def P(F):
+    nR(F, 0, len(F) - 1)
+def nR(F, S, i):
+    if S < i:
+        A = R(F, S, i)
+        nR(F, S, A - 1)
+        nR(F, A + 1, i)
+def R(Vl, S, i):
+    v = Vl[S]
+    w = S + 1
+    X = i
+    Bp = False
+    while not Bp:
+        while w <= X and Vl[w] <= v:
+            w = w + 1
+        while Vl[X] >= v and X >= w:
+            X = X - 1
+        if X < w:
+            Bp = True
+        else:
+            p9 = Vl[w]
+            Vl[w] = Vl[X]
+            Vl[X] = p9
+    p9 = Vl[S]
+    Vl[S] = Vl[X]
+    Vl[X] = p9
+    return X
+Vl = [54, 26, 93, 17, 77, 31, 44, 55, 20, 1, 100, 200, 21]
+P(Vl)
+print(Vl)

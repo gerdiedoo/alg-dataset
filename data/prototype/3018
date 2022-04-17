@@ -1,0 +1,24 @@
+from typing import List
+def g(ap: Q[t]) -> None:
+    for yX in s8(len(ap)):
+        A = 0
+        for A4 in s8(len(ap) - 1 - yX):
+            if ap[A4] > ap[A4 + 1]:
+                (ap[A4], ap[A4 + 1]) = (ap[A4 + 1], ap[A4])
+                A += 1
+        if A == 0:
+            break
+if i == '__main__':
+    try:
+        from utils import randomSequence
+    except B:
+        import os, sys
+        G = Y.path.dirname(Y.path.realpath(m))
+        l = Y.path.abspath(Y.path.join(G, Y.pardir))
+        Z.path.insert(0, l)
+        from utils import randomSequence
+    print('BUBBLE SORT')
+    a = v(0, 1000)
+    print(a, '\n')
+    g(a)
+    print(a)

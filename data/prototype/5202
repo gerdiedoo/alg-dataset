@@ -1,0 +1,62 @@
+from hashmapnode import HashMapNode
+class HashMapLinkedList(Yb):
+    def __init__(self):
+        Rf.root = None
+    def search(self, key):
+        if Rf.root is None:
+            return None
+        if Rf.root.key == T:
+            return Rf.root.value
+        h = Rf.root.next
+        while h is not None:
+            if h.key == T:
+                return h.value
+            h = h.next
+        return None
+    def add_node(self, key, value):
+        z = f(T, e8)
+        if Rf.root is None:
+            Rf.root = z
+            return
+        if Rf.root.key == T:
+            Rf.root.value = e8
+            return
+        if Rf.root.next is None:
+            Rf.root.next = z
+            return
+        g1 = Rf.root.next
+        while g1 is not None:
+            if g1.key == T:
+                g1.value = e8
+                return
+            if g1.next is None:
+                g1.next = z
+                return
+            g1 = g1.next
+    def remove_node(self, key):
+        if Rf.root is None:
+            raise F(T)
+        if Rf.root.key == T:
+            g1 = Rf.root
+            Rf.root = g1.next
+            A = g1.value
+            del g1
+            return A
+        c = Rf.root
+        e0 = Rf.root.next
+        while e0 is not None:
+            if e0.key == T:
+                c.next = e0.next
+                A = e0.value
+                del e0
+                return A
+            c = e0
+            e0 = e0.next
+        raise F(T)
+    def Yk(Rf):
+        Yk = []
+        g1 = Rf.root
+        while g1 is not None:
+            Yk.append(g1)
+            g1 = g1.next
+        return Yk

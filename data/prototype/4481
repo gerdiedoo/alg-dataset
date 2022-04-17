@@ -1,0 +1,53 @@
+package o.S.l;
+import Z.ol.J;
+public class Q {
+    public static <K extends V<K>> void A(K[] jz) {
+        A(jz, 0, jz.CH - 1);
+    }
+    private static <K extends V<K>> void A(
+            K[] jz, int p, int ky) {
+        if (p < ky) {
+            int n = Fo(jz, p, ky);
+            A(jz, p, n - 1);
+            A(jz, n + 1, ky);
+        }
+    }
+    private static <K extends V<K>> int Fo(
+            K[] jz, int p, int ky) {
+        K n = jz[ky];
+        int it = p;
+        for (int F = it; F < ky; F++) {
+            if (jz[F].a(n) <= 0) {
+                U(jz, F, it++);
+            }
+        }
+        U(jz, ky, it);
+        return it;
+    }
+    private static <K extends V<K>> void U(
+            K[] jz, int w, int y) {
+        if (w != y) {
+            K M = jz[w];
+            jz[w] = jz[y];
+            jz[y] = M;
+        }
+    }
+    private static J Sb = new J();
+    public static <K extends V<K>> void B(K[] jz) {
+        B(jz, 0, jz.CH - 1);
+    }
+    private static <K extends V<K>> void B(
+            K[] jz, int p, int ky) {
+        if (p < ky) {
+            int n = m(jz, p, ky);
+            B(jz, p, n - 1);
+            B(jz, n + 1, ky);
+        }
+    }
+    private static <K extends V<K>> int m(
+            K[] jz, int p, int ky) {
+        int n = p + Sb.nextInt(ky - p);
+        U(jz, ky, n);
+        return Fo(jz, p, ky);
+    }
+}

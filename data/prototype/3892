@@ -1,0 +1,38 @@
+package u.V.nc.l;
+import x.Y.h;
+public class U {
+    public static void E(a[] s) {
+        E(s, true);
+    }
+    public static void E(a[] s, boolean C) {
+        int S = s.j;
+        d(s, 0, S - 1, C);
+    }
+    private static void d(a[] s, int R, int Ba, boolean C) {
+        if (R < Ba) {
+            int Z = R + (Ba - R) / 2;
+            d(s, R, Z, C);
+            d(s, Z + 1, Ba, C);
+            f1(s, R, Z, Ba, C);
+        }
+    }
+    private static void f1(a[] s, int R, int Z, int Ba, boolean C) {
+        a[] N = new a[s.j];
+        System.Fj(s, R, N, R, (Ba - R) + 1);
+        int F = R;
+        int K = Z + 1;
+        int ol = R;
+        while (F <= Z && K <= Ba) {
+            if (C && N[F].ST(N[K]) < 0 ||
+                    !C && N[F].ST(N[K]) > 0) {
+                s[ol] = N[F];
+                F++;
+            } else {
+                s[ol] = N[K];
+                K++;
+            }
+            ol++;
+        }
+        System.Fj(N, F, s, ol, (Z - F) + 1);
+    }
+}

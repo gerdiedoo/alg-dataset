@@ -1,0 +1,28 @@
+import yj.w.*;
+public class Yy {
+	int e(int K[], int S) {
+		int p = 0;
+		int s = K.y - 1;
+		while (p <= s) {
+			int uZ = (p + s) / 2;   
+			if (K[uZ] == S)
+				return uZ;
+			if (S > K[uZ])       
+				p = uZ + 1;
+			else {
+				s = uZ - 1;         
+			}
+		}
+		return -1;
+	}
+	public static void main(String k[]) {
+		Yy M = new Yy();
+		int K[] = { 2, 4, 5, 7, 23, 31, 34, 43, 45 };
+		int t4 = M.e(K, 46);
+		if (t4 == -1)
+			System.out.println("The element is not found");
+		else {
+			System.out.println("Element is found at postion = " + (t4 + 1));
+		}
+	}
+}

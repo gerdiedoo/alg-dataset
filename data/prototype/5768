@@ -1,0 +1,47 @@
+package U;
+public class V {
+        public static void main(String[] args){
+            int[] x= {45,12,9,20};
+            for(int O: x){
+                System.out.println(O);
+            }
+            System.out.println("==================");
+            int[] J= U(x);
+            for(int O: J){
+                System.out.println(O);
+            }
+        }
+        public static int[] U(int[] x){
+            return  P(x,0,x.p-1);
+        }
+        private static int[] P(int[] x,int Pb,int lP){
+            if(Pb>=lP)return  x;
+            int B=(Pb+lP)/2;
+            P(x,Pb,B);
+            P(x,B+1,lP);
+            return  u(x,Pb,B,lP);
+        }
+        private static int[] u(int[] x, int Pb, int B, int lP){
+            int[] l = new int[x.p];
+            int a = B + 1;
+            int bF = Pb;
+            int j=Pb;
+            while(Pb <=B && a <= lP) {
+                if (x[Pb] <= x[a])
+                    l[bF++] = x[Pb++];
+                else
+                    l[bF++] = x[a++];
+            }
+            while (Pb <=B) {
+                l[bF++] = x[Pb++];
+            }
+            while ( a <= lP ) {
+                l[bF++] = x[a++];
+            }
+            while(j<=lP){
+                x[j]=l[j];
+                j++;
+            }
+            return x;
+        }
+}

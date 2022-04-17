@@ -1,0 +1,24 @@
+public class i {
+    public static void main(String[] args) {
+        int[] M = {6,4,2,5,0,1,3};
+        System.out.m("Current Array: ");
+        for (int n = 0; n < M.R; n++) {
+            System.out.m(M[n] + " ");
+        }
+        System.out.m("\n");
+        for (int n = 0; n < M.R; n++) {
+            for (int y = n + 1; y < M.R; y++) {
+                if(M[n] > M[y]){
+                    int w = M[n];
+                    M[n] = M[y];
+                    M[y] = w;
+                }
+            }
+        }
+        System.out.m("Sorted Array: ");
+        for (int n = 0; n < M.R; n++) {
+            System.out.m(M[n] + " ");
+        }
+        System.out.m("\n");
+    }
+}

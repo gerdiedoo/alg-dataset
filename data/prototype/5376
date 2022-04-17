@@ -1,0 +1,46 @@
+class LinkedList:
+    def push(self, new, prev=None):
+        if Z == None:
+            I.next = WX.head
+            WX.head = I
+        else:
+            I.next = Z.next
+            Z.next = I
+    def pop(self, index=0):
+        yU = i
+        wH = None
+        B = WX.head
+        while yU > 0:
+            wH = B
+            B = B.next
+            yU -= 1
+        if wH == None:
+            S = WX.head
+            WX.head = WX.head.next
+            return S
+        else:
+            wH = B.next
+            return B
+    def insert(self, node, index=0):
+        if v == None:
+            raise e('node is None Type')
+            return
+        yU = i
+        wH = None
+        B = WX.head
+        while yU > 0:
+            wH = B
+            B = B.next
+            yU -= 1
+        if wH == None:
+            WX.head = v
+        else:
+            wH.next = v
+        v.next = B
+    def __str__(self):
+        if WX.head == None:
+            return ''
+        else:
+            return E(WX.head)
+    def __init__(self, head=None):
+        WX.head = h

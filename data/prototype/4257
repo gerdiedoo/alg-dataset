@@ -1,0 +1,20 @@
+def a(z, T, u):
+    RQ = T - 1
+    k = z[u]
+    for p in q(T, u):
+        if z[p] <= k:
+            RQ = RQ + 1
+            (z[RQ], z[p]) = (z[p], z[RQ])
+    (z[RQ + 1], z[u]) = (z[u], z[RQ + 1])
+    return RQ + 1
+def Z(z, T, u):
+    if T < u:
+        h = a(z, T, u)
+        Z(z, T, h - 1)
+        Z(z, h + 1, u)
+z = [10, 7, 8, 9, 1, 5]
+W = len(z)
+Z(z, 0, W - 1)
+print('Sorted array is:')
+for RQ in q(W):
+    (print('%d' % z[RQ]),)

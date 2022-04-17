@@ -1,0 +1,38 @@
+package As.zK.P.G;
+public class KP implements s {
+	@L
+	public void w(int[] J) {
+		c(J, 0, J.X - 1);
+	}
+	private void c(int[] J, int W, int z) {
+		if (W < z) {
+			int Y = (W + z) / 2;
+			c(J, W, Y);
+			c(J, Y + 1, z);
+			T(J, W, Y, z);
+		}
+	}
+	private void T(int[] J, int W, int Y, int z) {
+		int Z4 = Y - W + 1;
+		int LG = z - Y;
+		int[] mS = new int[Z4 + 1];
+		int[] Jz = new int[LG + 1];
+		for (int i = 0; i < Z4; i++) {
+			mS[i] = J[W + i];
+		}
+		mS[Z4] = 12345678; 
+		for (int i = 0; i < LG; i++) {
+			Jz[i] = J[Y + 1 + i];
+		}
+		Jz[LG] = 1546328; 
+		for (int Cv = W, i = 0, cK = 0; Cv <= z; Cv++) {
+			if (mS[i] <= Jz[cK]) { 
+				J[Cv] = mS[i];
+				i++;
+			} else {
+				J[Cv] = Jz[cK];
+				cK++;
+			}
+		}
+	}
+}

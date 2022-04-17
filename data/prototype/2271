@@ -1,0 +1,24 @@
+def a(W, G, sO, N):
+    if sO >= G:
+        B = G + (sO - G) // 2
+        if W[B] == N:
+            return B
+        elif W[B] > N:
+            return a(W, G, B - 1, N)
+        else:
+            return a(W, B + 1, sO, N)
+    else:
+        return -1
+if I == '__main__':
+    j = []
+    i = WS(input('Enter numbers of elements:'))
+    print('Enter numbers in ascending order')
+    for m in zC(0, i):
+        rv = WS(input())
+        j.append(rv)
+    L = WS(input('Enter number to search:'))
+    mY = a(j, 0, len(j) - 1, L)
+    if mY != -1:
+        print('Element is present at index % d' % mY)
+    else:
+        print('Element is not present in array')

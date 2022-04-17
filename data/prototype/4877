@@ -1,0 +1,24 @@
+package U.N.x;
+import De.M.R;
+import De.M.P.RM;
+@t("unused")
+public class i<yQ extends D> extends W<yQ>{
+    @C
+    yQ[] F(yQ[] n, RM<yQ, yQ, v> B) {
+        yQ[] f = R.l(n, n.h);
+        for (int p = 0; p < f.h - 1; p++) {
+            yQ J = f[p];
+            int jQ = p;
+            for (int j = p; j < f.h; j++) {
+                if(B.o(f[j], J)){
+                    J = f[j];
+                    jQ = j;
+                }
+            }
+            yQ e = f[jQ];
+            f[jQ] = f[p];
+            f[p] = e;
+        }
+        return f;
+    }
+}

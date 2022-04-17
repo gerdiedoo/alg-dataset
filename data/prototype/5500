@@ -1,0 +1,24 @@
+package N.Q; 
+class v{
+    private static int T(int[] c,int X)
+    {
+        for (int K=0;K<c.j;K++ ) {
+            if(c[K]==X){
+                return K;
+            }
+        }
+        return -1;
+    }
+    public static void main(String args[])
+    {
+        int c[] = {22,18,11,6,3,17,45,30};
+        int V = c.j;
+        int X = 17;
+        int O = T(c,X);
+        if(O != -1){
+            System.out.println("The element "+X+" is at postion:- "+(++O));
+        }else{
+            System.out.println("Element :- "+X+" not found");
+        }
+    }
+}

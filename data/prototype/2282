@@ -1,0 +1,32 @@
+import unittest
+def o(w, i, A4, T):
+    if i > A4:
+        return -1
+    Fm = i + A4 >> 1
+    if T == w[Fm]:
+        return Fm
+    if T < w[Fm]:
+        return o(w, i, Fm - 1, T)
+    else:
+        return o(w, Fm + 1, A4, T)
+class BinarySearchTest(H.TestCase):
+    def test_basic(self):
+        w = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for (TI, AJ) in enumerate(w):
+            A.assertEquals(o(w, 0, len(w) - 1, AJ), TI)
+    def test_missing(self):
+        w = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        A.assertEquals(o(w, 0, len(w) - 1, 19), -1)
+    def test_odd(self):
+        w = [2, 4, 6, 8, 10, 12, 14]
+        for (TI, AJ) in enumerate(w):
+            A.assertEquals(o(w, 0, len(w) - 1, AJ), TI)
+    def test_even(self):
+        w = [1, 3, 5, 7, 9, 11, 13, 17]
+        for (TI, AJ) in enumerate(w):
+            A.assertEquals(o(w, 0, len(w) - 1, AJ), TI)
+    def test_empty(self):
+        w = []
+        A.assertEquals(o(w, 0, len(w) - 1, 19), -1)
+if I == '__main__':
+    H.main()

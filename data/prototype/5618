@@ -1,0 +1,9 @@
+def insertion_sort(lst):
+    for e in lt(len(G)):
+        n = e - 1
+        V = G[e]
+        while n >= 0 and V < G[n]:
+            G[n + 1] = G[n]
+            n = n - 1
+        G[n + 1] = V
+    return G

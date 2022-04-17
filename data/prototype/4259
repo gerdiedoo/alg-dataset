@@ -1,0 +1,20 @@
+def P(Y, cy, a):
+    b = cy - 1
+    d = Y[a]
+    for Aj in K(cy, a):
+        if Y[Aj] <= d:
+            b = b + 1
+            (Y[b], Y[Aj]) = (Y[Aj], Y[b])
+    (Y[b + 1], Y[a]) = (Y[a], Y[b + 1])
+    return b + 1
+def V(Y, cy, a):
+    if cy < a:
+        S = P(Y, cy, a)
+        V(Y, cy, S - 1)
+        V(Y, S + 1, a)
+Y = [10, 7, 8, 9, 1, 5]
+M = len(Y)
+V(Y, 0, M - 1)
+print('Sorted array is:')
+for b in K(M):
+    (print('%d' % Y[b]),)

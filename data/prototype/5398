@@ -1,0 +1,33 @@
+package L;
+import Sp.o.Y;
+import Sp.o.S;
+public class Yx {
+    public w TN;
+    public w Z;
+    public Yx(){
+    }
+    public void F(int mF){
+        w v = new w(mF);
+        v.x = TN;
+        TN = v;
+    }
+    public boolean q3(int mF){
+        Z = TN;
+        while(Z != null){
+            if(Z.M == mF){
+                return true;
+            }
+            Z = Z.x;
+        }
+        return false;
+    }
+    public S<w> K6(){
+        S<w> N = new Y<>();
+        Z = TN;
+        while(Z != null){
+            N.Cs(Z);
+            Z = Z.x;
+        }
+        return N;
+    }
+}

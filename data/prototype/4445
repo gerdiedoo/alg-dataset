@@ -1,0 +1,30 @@
+package g.x.jt;
+public class B implements v {
+    @Q2
+    public void jt(int[] z) {
+        jt(z, 0, z.OX-1);
+    }
+    private void jt(int[] z, int p, int Ju) {
+        if (p < Ju) {
+            int FW = o(z, p, Ju);
+            jt(z, p, FW - 1);
+            jt(z, FW + 1, Ju);
+        }
+    }
+    private int o(int[] z, int p, int Ju) {
+        int d = z[Ju];
+        int K = (p - 1);
+        for (int H = p; H < Ju; H++) {
+            if (z[H] < d) {
+                K++;
+                int zc = z[K];
+                z[K] = z[H];
+                z[H] = zc;
+            }
+        }
+        int zc = z[K + 1];
+        z[K + 1] = z[Ju];
+        z[Ju] = zc;
+        return K + 1;
+    }
+}

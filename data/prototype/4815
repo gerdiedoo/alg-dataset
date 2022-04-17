@@ -1,0 +1,63 @@
+package Lj.vL;
+import Lj.*;
+public class i implements IH{
+	private J[] Q4;
+	private xe F;
+	private boolean g;
+	public i(J[] Q4, xe F, boolean g) {
+		this.Q4 = Q4;
+		this.F = F;
+		this.g = g;
+	}
+	public void A() {
+		if (g) {
+			d();
+		} else {
+			G();
+		}
+		Do.P=false;
+	}
+	public void d(){
+		int N = 0;
+		int e = 0;
+		for(int S = 0; S<Q4.L; S++){
+			e = S;
+			for(int O = Q4.L-1; O>S; O--){
+				if (Q4[O] <= Q4[e]){
+					e = O;
+				}				
+			}
+			F.l(Q4);
+			try {
+				R.Ae(Do.Ae);
+			} catch (V r) {
+				r.w();
+			}
+			N = Q4[S];
+			Q4[S] = Q4[e];
+			Q4[e]= N;
+		}
+	}
+	public void G() {
+		int N = 0;
+		int e = 0;
+		for(int S = 0; S<Q4.L; S++){
+			e = S;
+			for(int O = Q4.L-1; O>S; O--){
+				if (Q4[O] <= Q4[e]){
+					e = O;
+				}
+				F.l(Q4, e, O-1);
+				try {
+					R.Ae(Do.Ae);
+				} catch (V r) {
+					r.w();
+				}				
+			}
+			N = Q4[S];
+			Q4[S] = Q4[e];
+			Q4[e]= N;
+		}
+		F.l(Q4);
+	}
+}

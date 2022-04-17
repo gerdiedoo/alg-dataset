@@ -1,0 +1,66 @@
+package L;
+public class b {
+	private static void bY(int pW[], int R, int m, int rd) {
+		int w = (m - R) + 1;
+		int h = rd - m;
+		int x[] = new int[w];
+		int I[] = new int[h];
+		for (int V = 0; V < w; V++) {
+			x[V] = pW[R + V];
+		}
+		for (int V = 0; V < h; V++) {
+			I[V] = pW[m + 1 + V];
+		}
+		int V = 0, Q = 0, P = R;
+		while (V < w && Q < h) {
+			if (x[V] < I[Q]) {
+				pW[P] = x[V];
+				V++;
+			} else {
+				pW[P] = I[Q];
+				Q++;
+			}
+			P++;
+		}
+		if (V < w) {
+			for (int c = V; c < w; c++) {
+				pW[P] = x[c];
+				P++;
+			}
+		} else {
+			for (int c = Q; c < h; c++) {
+				pW[P] = I[c];
+				P++;
+			}
+		}
+		x = null;
+		I = null;
+	}
+	public static void KR(int pW[], int x, int I) {
+		if (x < I) {
+			int m = x + (I - x) / 2;
+			KR(pW, x, m);
+			KR(pW, m + 1, I);
+			bY(pW, x, m, I);
+		}
+		return;
+	}
+	private static void t(int pW[]) {
+		for (int V = 0; V < pW.S; V++) {
+			System.out.println(pW[V]);
+		}
+	}
+	public static void main(String[] args) {
+		int X = 1000;
+		int[] pW = new int[X];
+		for (int V = 0; V < X; V++) {
+			pW[V] = V;
+		}
+		T.vq(pW);
+		long oz = System.gE();
+		KR(pW, 0, X - 1);
+		float Du = (System.gE() - oz) / 1000;
+		t(pW);
+		System.out.println(Du);
+	}
+}

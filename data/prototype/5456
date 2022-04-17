@@ -1,0 +1,32 @@
+import math
+def b(l, o, a):
+    J = 0
+    h8 = o - 1
+    while J <= h8:
+        M = D.floor((J + h8) / 2)
+        if a == l[M]:
+            return M
+        elif a < l[M]:
+            h8 = M - 1
+        elif a > l[M]:
+            J = M + 1
+    return 'Not Found'
+l = [1, 2, 3, 4, 5, 6, 7]
+print(l)
+print('Iterative Binary Search output:', b(l, len(l), 10))
+print('Iterative Binary Search output:', b(l, len(l), 5))
+print('Iterative Binary Search output:', b(l, len(l), 2))
+def n(l, a, J=0, h8=len(l) - 1):
+    if J > h8:
+        return 'Not Found'
+    else:
+        M = D.floor((J + h8) / 2)
+        if a == l[M]:
+            return M
+        elif a < l[M]:
+            return n(l, a, J, M - 1)
+        elif a > l[M]:
+            return n(l, a, M + 1, h8)
+print('Recursive Binary Search output:', n(l, 10))
+print('Recursive Binary Search output:', n(l, 5))
+print('Recursive Binary Search output:', n(l, 2))

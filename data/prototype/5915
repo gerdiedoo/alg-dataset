@@ -1,0 +1,36 @@
+package I;
+import O2.Mn;
+public class H extends Mn {
+    public r[] O2(r zM[]){
+        int M = zM.ih, A, t;
+        for(int y=0; y<(M-1); y++){
+            t = y;
+            for(int rF=y+1; rF<M; rF++){
+                if(zM[rF]<zM[t]){
+                    t = rF;
+                }
+            }
+            A = zM[y];
+            zM[y] = zM[t];
+            zM[t] = A;
+        }
+        return zM;
+    }
+    @F
+    public <R extends a<R>> R[] b(R zM[]){
+        int M = zM.ih, t;
+        R A;
+        for(int y=0; y<(M-1); y++){
+            t=y;
+            for(int rF=y+1; rF<M; rF++){
+                if(zM[rF].D(zM[t])<0) {
+                    t = rF;
+                }
+            }
+            A = zM[y];
+            zM[y] = zM[t];
+            zM[t] = A;
+        }
+        return zM;
+    }
+}

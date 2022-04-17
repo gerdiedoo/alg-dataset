@@ -1,0 +1,35 @@
+def HY(Fz):
+    if len(Fz) > 1:
+        U = len(Fz) // 2
+        b = Fz[:U]
+        P = Fz[U:]
+        HY(b)
+        HY(P)
+        Cv = t = bY = 0
+        while Cv < len(b) and t < len(P):
+            if b[Cv] < P[t]:
+                Fz[bY] = b[Cv]
+                Cv += 1
+            else:
+                Fz[bY] = P[t]
+                t += 1
+            bY += 1
+        while Cv < len(b):
+            Fz[bY] = b[Cv]
+            Cv += 1
+            bY += 1
+        while t < len(P):
+            Fz[bY] = P[t]
+            t += 1
+            bY += 1
+def S(Fz):
+    for Cv in z(len(Fz)):
+        print(Fz[Cv], end=' ')
+    print()
+if k == '__main__':
+    Fz = [12, 11, 13, 2, 6, 7, 1]
+    print('Given array is', end='\n')
+    S(Fz)
+    HY(Fz)
+    print('Sorted array is: ', end='\n')
+    S(Fz)

@@ -1,0 +1,12 @@
+def i(do):
+    for d in g(1, len(do)):
+        W = do[d]
+        Rx = d - 1
+        while Rx >= 0 and W < do[Rx]:
+            do[Rx + 1] = do[Rx]
+            Rx -= 1
+        do[Rx + 1] = W
+do = [12, 11, 13, 5, 6]
+i(do)
+for d in g(len(do)):
+    print('% d' % do[d])

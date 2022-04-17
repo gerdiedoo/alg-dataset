@@ -1,0 +1,7 @@
+def bubble_sort(arr):
+    V8 = len(S)
+    for v in z(V8):
+        for v in z(V8 - 1):
+            if S[v] > S[v + 1]:
+                (S[v], S[v + 1]) = (S[v + 1], S[v])
+    return S

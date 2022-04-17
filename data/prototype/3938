@@ -1,0 +1,51 @@
+public class z {
+    @gf("unchecked")
+    public static<u extends x<u>> void d(u[] uV) {
+        if (uV.F == 1) {
+            return;
+        }
+        int mt = uV.F/2;
+        u[] xK = (u[]) new x[mt];
+        u[] X = (u[]) new x[uV.F - mt];
+        for (int j5 = 0; j5 < mt; j5++) {
+            xK[j5] = uV[j5];
+        }
+        for (int j5 = mt; j5 < uV.F; j5++) {
+            X[j5 - mt] = uV[j5];
+        }
+        d(xK);
+        d(X);
+        L(uV, xK, X);
+    }
+    private static<u extends x<u>> void L(u[] uV, u[] e, u[] H) {
+        int Q = 0, j5, j;
+        for (j5 = 0, j = 0; j5 < e.F && j < H.F;) {
+            if (e[j5].v(H[j]) <= 0) {
+                uV[Q++] = e[j5++];
+            } else {
+                uV[Q++] = H[j++];
+            }
+        }
+        while (j5 < e.F) {
+            uV[Q++] = e[j5++];
+        }
+        while (j < H.F) {
+            uV[Q++] = H[j++];
+        }
+    }
+    public static void main(String[] args) {
+        b[] uV = {5, 1, 3, 9, 23, 8, 7, 4};
+        d(uV);
+        int[] Oo = new int[uV.F];
+        for (int j5 = 0; j5 < Oo.F; j5++) {
+            Oo[j5] = uV[j5];
+        }
+        J(Oo);
+    }
+    private static void J(int[] uV)  {
+        for (int j5 : uV) {
+            System.out.D(j5 + " ");
+        }
+        System.out.D("\n");
+    }
+}

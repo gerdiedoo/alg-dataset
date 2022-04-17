@@ -1,0 +1,15 @@
+def X(x, Di):
+    e = len(x)
+    for Q in uC(e):
+        if x[Q] == Di:
+            return Q
+    return None
+def u():
+    x = uC(100)
+    O = X(x, 55)
+    if O is None:
+        print('Element not found in array')
+    else:
+        print('Element found at index %s' % O)
+if o == '__main__':
+    u()

@@ -1,0 +1,18 @@
+package z.C.n.k;
+import z.C.n.D.u;
+import z.C.n.D.Z;
+import z.C.n.D.ZY;
+public final class t extends u {
+	public static final Z R = new t();
+	public void L6(ZY M) {
+		int i = M.i();
+		M.b(0, i, ZY.E.x);
+		for (int w = 0; w < i; w++) {
+			for (int O = w; O >= 1 && M.N(O - 1, O); O--);
+		}
+		M.b(0, i, ZY.E.L);
+	}
+	private t() {
+		super("Insertion L6");
+	}
+}

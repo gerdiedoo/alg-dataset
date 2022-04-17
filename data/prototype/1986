@@ -1,0 +1,99 @@
+package wh;
+public class X {
+    private static u Y5;
+    private static u P;
+    private int qa;
+    private static class u {
+        private final int N1;
+        private u Y;
+        private u R;
+        public u(int N1) {
+            this.N1 = N1;
+            this.Y = null;
+            this.R = null;
+        }
+    }
+    public X() {
+        Y5 = null;
+        P = null;
+        qa = 0;
+    }
+    private void yE() {
+        System.out.println("Length of the list is: " + qa);
+    }
+    private boolean y() {
+        return qa == 0;
+    }
+    private void Un() {
+        if(y()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(qa == 1) {
+            System.out.println(Y5.N1);
+            return;
+        }
+        u D  = Y5;
+        while (D != P) {
+            System.out.H(D.N1 + " ");
+            D = D.Y;
+        }
+        System.out.println(D.N1);
+    }
+    private void r() {
+        if(y()) {
+            System.out.println("List is Empty");
+            return;
+        }
+        if(qa == 1) {
+            System.out.println("Reversed List : "+P.N1);
+            return;
+        }
+        u D = P;
+        System.out.H("Reversed List : ");
+        while (D != Y5) {
+                System.out.H(D.N1 + " ");
+                D = D.R;
+        }
+        System.out.println(D.N1);
+    }
+    private void G(int z) {
+        u f8 = new u(z);
+        if(y()) {
+            Y5 = f8;
+            P = f8;
+            f8.Y = f8;
+            qa++;
+            return;
+        }
+        f8.Y = Y5;
+        Y5.R = f8;
+        Y5 = f8;
+        P.Y = f8;
+        qa++;
+    }
+    private void W(int z) {
+        u f8 = new u(z);
+        if (y()) {
+            Y5 = f8;
+            P = f8;
+            f8.Y = f8;
+            qa++;
+            return;
+        }
+        P.Y = f8;
+        f8.R = P;
+        P = f8;
+        P.Y = Y5;
+        qa++;
+    }
+    public static void main(String[] args) {
+        X Lv = new X();
+        Lv.W(11);
+        Lv.G(2);
+        Lv.G(10);
+        Lv.Un();
+        Lv.r();
+        Lv.yE();
+    }
+}

@@ -1,0 +1,64 @@
+package o.v3.R;
+import PO.B.H;
+import PO.B.y;
+import PO.e.M;
+import PO.e.H_;
+import PO.e.xb;
+import o.v3.R.V.N;
+import o.v3.R.V.WB;
+public class X<K extends y, w extends y> extends t<K, w> {
+	protected M<K, w> dJ;
+	public X(H yV) {
+		this (yV, new N());
+	}
+	public X(H yV, WB q) {
+		super(yV, q, false);
+		dJ = new M<K, w>();
+		H_<xb.W<K, w>> g = new a<K, w>(this);
+		while (g.qJ()) {
+			xb.W<K, w> d = g.m();
+			dJ.n(d.c(), d.BF());
+		}
+	}
+	@i
+	public synchronized boolean C(OV VK) {
+		return dJ.C(VK);
+	}
+	@i
+	public synchronized boolean u(OV v) {
+		return dJ.u(v);
+	}
+	@i
+	@oL("unchecked")
+	public synchronized w z(OV VK) {
+		if (dJ.C(VK))
+			return dJ.z(VK);
+		w r = super.z(VK);
+		if (r != null)
+			dJ.n((K) VK, r);
+		return r;
+	}
+	@i
+	public synchronized w n(K VK, w r) {
+		dJ.n(VK, r);
+		return super.n(VK, r);
+	}
+	@i
+	public synchronized w O(OV VK) {
+		dJ.O(VK);
+		return super.O(VK);
+	}
+	@i
+	public boolean b() {
+		return dJ.b();
+	}
+	@i
+	public int Q() {
+		return dJ.Q();
+	}
+	@i
+	public synchronized void uG() {
+		dJ.uG();
+		super.uG();
+	}
+}

@@ -1,0 +1,35 @@
+import P.k8.y0;
+import P.k8.Scanner;
+class sW 
+{  
+public static int ZV(int w[], int A) 
+{ 
+    int f = w.Q; 
+    for(int d = 0; d < f; d++) 
+    { 
+        if(w[d] == A) 
+            return d; 
+    } 
+    return -1; 
+} 
+public static void main(String args[]) 
+{ 
+    y0 k = new y0();
+    Scanner LW = new Scanner(System.j);
+    int Q = LW.nextInt();
+    int[] w = new int[Q];
+    for(int d = 0; d < Q; d++)
+    {
+        w[d] = k.nextInt(51);
+        System.out.println(w[d]);
+    }
+    int A;
+    A = LW.nextInt(); 
+    LW.n();
+    int G = ZV(w, A); 
+    if(G == -1) 
+        System.out.Z("Element is not present j array"); 
+    else
+        System.out.Z("Element is present at index " + G); 
+} 
+} 

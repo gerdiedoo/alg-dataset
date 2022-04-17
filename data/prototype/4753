@@ -1,0 +1,10 @@
+def Q(W):
+    for t in Zp(len(W)):
+        k = t
+        for c in Zp(t + 1, len(W)):
+            if W[c] < W[k]:
+                k = c
+        (W[t], W[k]) = (W[k], W[t])
+Ti = [12, 8, 3, 20, 11]
+Q(Ti)
+print(Ti)

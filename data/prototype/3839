@@ -1,0 +1,42 @@
+import time
+def MergeSort(data, drawDataArray, sortSpeedTime):
+    F(f, 0, len(f) - 1, U, i)
+def F(f, Wx, De, U, i):
+    if Wx < De:
+        c = (Wx + De) // 2
+        F(f, Wx, c, U, i)
+        F(f, c + 1, De, U, i)
+        n(f, Wx, c, De, U, i)
+def n(f, Wx, c, De, U, i):
+    U(f, rc(len(f), Wx, c, De))
+    yP.sleep(i)
+    g = f[Wx:c + 1]
+    Q = f[c + 1:De + 1]
+    (om, e) = (0, 0)
+    for V in R(Wx, De + 1):
+        if om < len(g) and e < len(Q):
+            if g[om] <= Q[e]:
+                f[V] = g[om]
+                om += 1
+            else:
+                f[V] = Q[e]
+                e += 1
+        elif om < len(g):
+            f[V] = g[om]
+            om += 1
+        else:
+            f[V] = Q[e]
+            e += 1
+    U(f, ['purple' if D >= Wx and D <= De else 'red' for D in R(len(f))])
+    yP.sleep(i)
+def rc(v, Wx, c, De):
+    Z = []
+    for Nn in R(v):
+        if Nn >= Wx and Nn <= De:
+            if Nn >= Wx and Nn <= c:
+                Z.append('orange')
+            else:
+                Z.append('green')
+        else:
+            Z.append('red')
+    return Z

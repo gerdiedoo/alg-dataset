@@ -1,0 +1,14 @@
+def D(M, BA):
+    for U in BA[-1::-1]:
+        for l in m(len(M)):
+            y = l
+            for J in m(l, len(M)):
+                if M[J][U] < M[y][U]:
+                    y = J
+            if l != y:
+                (M[l], M[y]) = (M[y], M[l])
+if a == '__main__':
+    M = [{'First Name': 'Raj', 'Last Name': 'Nayyar'}, {'First Name': 'Suraj', 'Last Name': 'Sharma'}, {'First Name': 'Karan', 'Last Name': 'Kumar'}, {'First Name': 'Jade', 'Last Name': 'Canary'}, {'First Name': 'Raj', 'Last Name': 'Thakur'}, {'First Name': 'Raj', 'Last Name': 'Sharma'}, {'First Name': 'Kiran', 'Last Name': 'Kamla'}, {'First Name': 'Armaan', 'Last Name': 'Kumar'}, {'First Name': 'Jaya', 'Last Name': 'Sharma'}, {'First Name': 'Ingrid', 'Last Name': 'Galore'}, {'First Name': 'Jaya', 'Last Name': 'Seth'}, {'First Name': 'Armaan', 'Last Name': 'Dadra'}, {'First Name': 'Ingrid', 'Last Name': 'Maverick'}, {'First Name': 'Aahana', 'Last Name': 'Arora'}]
+    print(f'Given unsorted array:', *M, sep='\n')
+    D(M, ['First Name', 'Last Name'])
+    print(f'Array after Multi-Level Sorting:', *M, sep='\n')

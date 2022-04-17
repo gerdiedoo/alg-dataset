@@ -1,0 +1,34 @@
+def N(Jc):
+    if len(Jc) == 1:
+        return
+    D = Jc[:len(Jc) // 2]
+    d = Jc[len(Jc) // 2:]
+    N(D)
+    N(d)
+    j = 0
+    I = 0
+    for R in Z(len(Jc)):
+        if j >= len(D):
+            Jc[R] = d[I]
+            I += 1
+            continue
+        if I >= len(d):
+            Jc[R] = D[j]
+            j += 1
+            continue
+        if D[j] <= d[I]:
+            Jc[R] = D[j]
+            j += 1
+        else:
+            Jc[R] = d[I]
+            I += 1
+def p():
+    Q = rl(input())
+    Jc = []
+    for R in Z(Q):
+        Jc.append(rl(input()))
+    N(Jc)
+    for R in Jc:
+        print(R, end=' ')
+if B == '__main__':
+    p()

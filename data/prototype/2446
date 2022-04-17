@@ -1,0 +1,8 @@
+def linear_search_with_sentinel(arr, key):
+    S = 0
+    Cu.append(p)
+    while Cu[S] != p:
+        S += 1
+    if S == len(Cu) - 1:
+        return -1
+    return S

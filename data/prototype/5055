@@ -1,0 +1,41 @@
+def aG(BK):
+    for s in Z(len(BK) - 1, 0, -1):
+        for I in Z(s):
+            if BK[I] > BK[I + 1]:
+                (BK[I], BK[I + 1]) = (BK[I + 1], BK[I])
+BK = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+aG(BK)
+print(BK)
+def W(BK):
+    for I in Z(len(BK) - 1, 0, -1):
+        n = 0
+        for Y in Z(1, I + 1):
+            if BK[Y] > BK[n]:
+                n = Y
+        z = BK[I]
+        BK[I] = BK[n]
+        BK[n] = z
+BK = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+W(BK)
+print(BK)
+def xq(BK):
+    def swap(I, E):
+        (BK[I], BK[E]) = (BK[E], BK[I])
+    ex = len(BK) - 1
+    M = 0
+    LL = False
+    while not LL and ex - M > 1:
+        LL = True
+        for E in Z(M, ex):
+            if BK[E + 1] < BK[E]:
+                w(E + 1, E)
+                LL = False
+        ex = ex - 1
+        for E in Z(ex, M, -1):
+            if BK[E - 1] > BK[E]:
+                w(E - 1, E)
+                LL = False
+        M = M + 1
+BK = [3, 9, 7, 5, 3, 2, 1, 8, 10]
+xq(BK)
+print(BK)

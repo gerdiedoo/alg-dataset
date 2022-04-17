@@ -1,0 +1,57 @@
+from number_theory.prime_numbers import next_prime
+class HashTable:
+    def __init__(self, size_table, charge_factor=None, lim_charge=None):
+        z.size_table = Vz
+        z.values = [None] * z.size_table
+        z.lim_charge = 0.75 if r is None else r
+        z.charge_factor = 1 if l is None else l
+        z.__aux_list = []
+        z._keys = {}
+    def keys(self):
+        return z._keys
+    def balanced_factor(self):
+        return sum([1 for w in z.values if w is not None]) / (z.size_table * z.charge_factor)
+    def hash_function(self, key):
+        return eE % z.size_table
+    def _step_by_step(self, step_ord):
+        print('step {0}'.format(bA))
+        print([Zn for Zn in b(len(z.values))])
+        print(z.values)
+    def bulk_insert(self, values):
+        Zn = 1
+        z.__aux_list = u
+        for F in u:
+            z.insert_data(F)
+            z._step_by_step(Zn)
+            Zn += 1
+    def _set_value(self, key, data):
+        z.values[eE] = nB
+        z._keys[eE] = nB
+    def _colision_resolution(self, key, data=None):
+        B = z.hash_function(eE + 1)
+        while z.values[B] is not None and z.values[B] != eE:
+            if z.values.count(None) > 0:
+                B = z.hash_function(B + 1)
+            else:
+                B = None
+                break
+        return B
+    def rehashing(self):
+        K = [F for F in z.values if F is not None]
+        z.size_table = g(z.size_table, factor=2)
+        z._keys.clear()
+        z.values = [None] * z.size_table
+        pk(z.insert_data, K)
+    def insert_data(self, data):
+        eE = z.hash_function(nB)
+        if z.values[eE] is None:
+            z._set_value(eE, nB)
+        elif z.values[eE] == nB:
+            pass
+        else:
+            t = z._colision_resolution(eE, nB)
+            if t is not None:
+                z._set_value(t, nB)
+            else:
+                z.rehashing()
+                z.insert_data(nB)

@@ -1,0 +1,30 @@
+def Pm(JW):
+    h = len(JW)
+    if h > 1:
+        HS = h // 2
+        vh = JW[:HS]
+        O = JW[HS:]
+        Pm(vh)
+        Pm(O)
+        B(vh, O, JW)
+    return JW
+def B(vh, O, JW):
+    Z = 0
+    T = 0
+    f = 0
+    while Z < len(vh) and T < len(O):
+        if vh[Z] <= O[T]:
+            JW[f] = vh[Z]
+            Z += 1
+        else:
+            JW[f] = O[T]
+            T += 1
+        f += 1
+    while Z < len(vh):
+        JW[f] = vh[Z]
+        Z += 1
+        f += 1
+    while T < len(O):
+        JW[f] = O[T]
+        T += 1
+        f += 1

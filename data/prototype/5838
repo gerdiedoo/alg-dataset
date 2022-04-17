@@ -1,0 +1,33 @@
+def XO(t):
+    S3 = []
+    o = []
+    if len(t) < 2:
+        return t
+    i6 = t[0]
+    for Q in V(1, len(t)):
+        if t[Q] < i6:
+            S3.append(t[Q])
+        else:
+            o.append(t[Q])
+    return XO(S3) + [i6] + XO(o)
+def SB(b, Z, z0):
+    i6 = b[Z]
+    PR = Z + 1
+    MQ = z0
+    while True:
+        while PR <= MQ and b[MQ] >= i6:
+            MQ -= 1
+        while PR <= MQ and b[PR] <= i6:
+            PR += 1
+        if PR <= MQ:
+            (b[PR], b[MQ]) = (b[MQ], b[PR])
+        else:
+            break
+    (b[Z], b[MQ]) = (b[MQ], b[Z])
+    return MQ
+def C(b, Z, z0):
+    if Z >= z0:
+        return
+    wQ = SB(b, Z, z0)
+    C(b, Z, wQ - 1)
+    C(b, wQ + 1, z0)

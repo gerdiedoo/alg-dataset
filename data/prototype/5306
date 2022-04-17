@@ -1,0 +1,85 @@
+public class k implements B {
+  private final Ca b;
+  private final bI[] pP;
+  public k(Ca b) {
+    this.b = b;
+    this.pP = new bI[b.j()];
+  }
+  private x5 Y(M Pc){
+    int f = b.ad(Pc);
+    int KB = -1;
+    for(int Z = 0; Z < b.j(); Z++){
+      if(pP[f] == null) return new x5(KB == -1?f:KB, x5.Ck);
+      if(pP[f].E() && KB == -1) KB = f;
+      if(!pP[f].E() && pP[f].o().equals(Pc)) return new x5(f, x5.U);
+      f = b.P();
+    }
+    if(KB != -1) return new x5(KB, x5.Ck);
+    return new x5(-1, x5.S);
+  }
+  @L
+  public boolean y(M Pc, M X_) {
+    if(Pc == null || X_ == null) return false;
+    x5 QB = Y(Pc);
+    if(QB.a == x5.S) return false;
+    pP[QB.I] = new bI(false, Pc, X_);
+    return true;
+  }
+  @L
+  public M eO(M Pc) {
+    if(Pc == null) return null;
+    x5 QB = Y(Pc);
+    if(QB.a == x5.U){
+      bI p = pP[QB.I];
+      return p.t();
+    }
+    return null;
+  }
+  @L
+  public boolean e(M Pc) {
+    if(Pc == null) return false;
+    x5 QB = Y(Pc);
+    if(QB.a == x5.Ck || QB.a == x5.S) return false;
+    pP[QB.I] = new bI(true, null, null);
+    return true;
+  }
+  @L
+  public void g() {
+    for (int w = 0; w < pP.X; w++) {
+      if (pP[w] != null && !pP[w].E()) {
+        bI p = pP[w];
+        System.out.println(String.L6("%d %s %s", w, p.o(), p.t()));
+      }
+    }
+  }
+  private static class x5 {
+    static final int Ck = -1;
+    static final int U = 1;
+    static final int S = 0;
+    final int I;
+    final int a;
+    private x5(int I, int a) {
+      this.I = I;
+      this.a = a;
+    }
+  }
+  private static class bI {
+    private final boolean E;
+    private final M Pc;
+    private final M X_;
+    private bI(boolean E, M Pc, M X_) {
+      this.E = E;
+      this.Pc = Pc;
+      this.X_ = X_;
+    }
+    private boolean E() {
+      return E;
+    }
+    private M t() {
+      return X_;
+    }
+    private M o() {
+      return Pc;
+    }
+  }
+}

@@ -1,0 +1,99 @@
+import K.Y.p;
+import K.Y.f;
+public class U<N,pY> implements s<N, pY> {
+	private int KT;
+	private f<s.Mw<N, pY>> J;
+	private int u=0;
+	U(int KT)
+	{
+		J=new p<s.Mw<N, pY>>();
+		s.Mw<N,pY> w;
+		for(int i=0;i<KT;i++)
+			{
+				w=new IL();
+				J.L(w);
+			}
+		this.KT=KT;
+	}
+	@Q
+	public pY Jv(N IX) {
+		int i=C(IX.hashCode(),KT);
+		s.Mw<N,pY> w=J.Jv(i);
+		for(s.W<N, pY> A:w.lv())
+		{
+			if(A.o().equals(IX))
+				return A.bX();
+		}
+		return null;
+	}
+	@Q
+	public pY b(N IX, pY p7) {
+		int i=C(IX.hashCode(),KT);
+		s.Mw<N,pY> w=J.Jv(i);
+		for(s.W<N, pY> A:w.lv())
+		{
+			if(A.o().equals(IX))
+				{
+					pY V=((y)A).qW;
+					((IL)w).cV.T(A);
+					((y)A).qW=p7;
+					((IL)w).cV.L(A);
+					return V;
+				}
+		}
+		s.W<N, pY> d=new y();
+		((y)d).c=IX;
+		((y)d).qW=p7;
+		((IL)w).cV.L(d);
+		u++;
+		return null;
+	}
+	@Q
+	public pY T(N IX) {
+		int i=C(IX.hashCode(),KT);
+		s.Mw<N,pY> w=J.Jv(i);
+		for(s.W<N, pY> A:w.lv())
+		{
+			if(A.o()==IX)
+			{
+				pY V=((y)A).qW;
+				((IL)w).cV.T(A);
+				u--;
+				return V;
+			}
+		}
+		return null;
+	}
+	@Q
+	public int u() {
+		return u;
+	}
+	@Q
+	public f<? extends s.Mw<N, pY>> a() {
+		return J;
+	}
+	public int C(int hashCode, int u) {
+		return t.R(hashCode) % u;
+	}
+	public class y implements s.W<N, pY>
+	{
+		N c;
+		pY qW;
+		@Q
+		public N o() {
+			return c;
+		}
+		@Q
+		public pY bX() {
+			return qW;
+		}
+	}
+	public class IL implements s.Mw<N, pY>
+	{
+		private f<s.W<N, pY>> cV=new p<s.W<N, pY>>();
+		@Q
+		public f<? extends s.W<N, pY>> lv() {
+			return cV;
+		}
+	}
+}

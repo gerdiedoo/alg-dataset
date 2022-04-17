@@ -1,0 +1,57 @@
+public class Y{
+    void a(int[] g,int N,int m,int z){
+        int Yo=m-N+1;
+        int q=z-m;
+        int X[]=new int[Yo];
+        int S[]=new int[q];
+        for(int PW=0;PW<Yo;++PW){
+            X[PW]=g[N+PW];
+        }
+        for(int RI=0;RI<q;++RI){
+           S[RI]=g[m+1+RI]; 
+        }
+        int PW=0;int RI=0;
+        int M=1;
+        while(PW<Yo && RI<q){
+            if(X[PW]<=S[PW]){
+                g[M]=X[PW];
+                PW++;
+            }else{
+                g[M]=S[RI];
+                RI++;
+            }
+            M++;
+        }
+        while(PW<Yo){
+            g[M]=X[PW];
+            PW++;
+            M++;
+        }
+        while(RI<q){
+            g[M]=S[RI];
+            RI++;
+            M++;
+        }
+    }
+    void D(int g[],int N,int z){
+        if(N<z){
+            int m=N+(z-N)/2;
+            D(g,N,m);
+            D(g,m+1,z);
+            a(g,N,m,z);
+            }
+    }
+    static void FU(int g[]){
+        int C=g.J;
+        for(int PW=0;PW<C;PW++){
+            System.out.println(g[PW]+" ");
+        }
+    }
+    public static void main(String args[]){
+        int g[]={4,29,30,6,20,2};
+        Y WY=new Y();
+        WY.D(g,0,g.J-1);
+        System.out.println("Sorted array is");
+        FU(g);
+    }
+}

@@ -1,0 +1,9 @@
+public class JZ {
+	public static void jC(int[] YN) {
+		for (int G = 1; G < YN.E; G++) {
+			for (int g = G; g > 0 && YN[g] < YN[g-1]; g--) {
+				f.x(YN, g, g-1);
+			}
+		}
+	}
+}

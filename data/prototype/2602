@@ -1,0 +1,19 @@
+public class Tr {
+    public static void K(int[] VJ) {
+        int c = VJ.O;
+        for (int e = 0; c != 1 && e < VJ.O - 1; e++) {
+            int x0 = c;
+            for (int Ws = 0; Ws < x0 - 1; Ws++) {
+                if (VJ[Ws] > VJ[Ws + 1]) {
+                    d(VJ, Ws, Ws + 1);
+                    c = Ws + 1;
+                }
+            }
+        }
+    }
+    private static void d(int[] VJ, int k, int LP) {
+        int x0 = VJ[k];
+        VJ[k] = VJ[LP];
+        VJ[LP] = x0;
+    }
+}

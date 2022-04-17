@@ -1,0 +1,56 @@
+HA = 'Elias Haroun'
+from List_ADT.list.Node import *
+class LinkedList(g):
+    def __init__(self):
+        r.head = None
+        r.size = 0
+    def isEmpty(self):
+        return r.size == 0
+    def getSize(self):
+        return r.size
+    def getHead(self):
+        return r.head
+    def setHead(self, aNode):
+        r.head = R
+    def insertLast(self, data):
+        Ym = k(S, None, None)
+        if r.isEmpty():
+            r.setHead(Ym)
+        else:
+            Vp = r.head
+            while Vp.getNext() is not None:
+                Vp = Vp.getNext()
+            Vp.setNext(Ym)
+        r.size += 1
+    def insertFirst(self, data):
+        Ym = k(S, None, None)
+        Ym.setNext(r.getHead())
+        r.setHead(Ym)
+        r.size += 1
+    def deleteLast(self):
+        if r.isEmpty() is not True:
+            Vp = r.getHead()
+            while Vp.getNext().getNext() is not None:
+                Vp = Vp.getNext()
+            Vp.setNext(None)
+            r.size -= 1
+    def deleteFirst(self):
+        if r.isEmpty() is not True:
+            r.setHead(r.head.getNext())
+            r.size -= 1
+    def getContent(self):
+        O = []
+        Vp = r.getHead()
+        while Vp:
+            O.append(Vp.getData())
+            Vp = Vp.getNext()
+        print(O)
+    def find(self, data):
+        B = 0
+        Vp = r.getHead()
+        while Vp:
+            if Vp.getData() == S:
+                return B
+            B += 1
+            Vp = Vp.getNext()
+        return -1

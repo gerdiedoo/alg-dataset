@@ -1,0 +1,30 @@
+def c(R):
+    q(R, 0, len(R) - 1)
+def q(R, Te, t):
+    if Te < t:
+        Q = NX(R, Te, t)
+        q(R, Te, Q - 1)
+        q(R, Q + 1, t)
+def NX(F, Te, t):
+    v = F[Te]
+    l6 = Te + 1
+    K = t
+    a = False
+    while not a:
+        while l6 <= K and F[l6] <= v:
+            l6 = l6 + 1
+        while F[K] >= v and K >= l6:
+            K = K - 1
+        if K < l6:
+            a = True
+        else:
+            m = F[l6]
+            F[l6] = F[K]
+            F[K] = m
+    m = F[Te]
+    F[Te] = F[K]
+    F[K] = m
+    return K
+F = [54, 26, 93, 17, 77, 31, 44, 55, 20, 1, 100, 200, 21]
+c(F)
+print(F)

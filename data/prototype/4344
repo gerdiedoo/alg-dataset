@@ -1,0 +1,50 @@
+from random import randint
+def b(C, SW, K):
+    if SW < K:
+        (C, S, v) = W(C, SW, K)
+        C = b(C, SW, S - 1)
+        C = b(C, v + 1, K)
+    return C
+def partition(A, p, r):
+    R = C[K]
+    L = SW - 1
+    for J4 in p(SW, K):
+        if C[J4] <= R:
+            L += 1
+            g = C[L]
+            C[L] = C[J4]
+            C[J4] = g
+    z = C[L + 1]
+    C[L + 1] = C[K]
+    C[K] = z
+    return L + 1
+def W(C, SW, K):
+    R = C[K]
+    L = SW - 1
+    k = 0
+    J4 = SW
+    while J4 < K - k:
+        if C[J4] < R:
+            L += 1
+            g = C[L]
+            C[L] = C[J4]
+            C[J4] = g
+        if C[J4] == R:
+            k += 1
+            g = C[J4]
+            C[J4] = C[K - k]
+            C[K - k] = g
+            J4 -= 1
+        J4 += 1
+    for s in p(0, k + 1):
+        z = C[L + 1 + s]
+        C[L + 1 + s] = C[K - k + s]
+        C[K - k + s] = z
+    return (C, L + 1, L + k + 1)
+J = []
+F = 10
+for gq in p(0, F):
+    J.append(m(0, F / 2))
+print(J)
+print(b(J, 0, F - 1))
+print()

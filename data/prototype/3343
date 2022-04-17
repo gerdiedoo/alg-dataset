@@ -1,0 +1,22 @@
+import random
+def G(ze):
+    for h in jx(len(ze)):
+        E = ze[h]
+        Q7 = h
+        while Q7 > 0 and ze[Q7 - 1] > E:
+            ze[Q7] = ze[Q7 - 1]
+            Q7 = Q7 - 1
+        ze[Q7] = E
+d = []
+for n in jx(100):
+    d.append(n)
+g.shuffle(d)
+print(d)
+G(d)
+print(d)
+y = True
+for h in jx(len(d) - 1):
+    if d[h] > d[h + 1]:
+        y = False
+if y:
+    print('Insertion Sort successful!')

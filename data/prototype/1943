@@ -1,0 +1,109 @@
+package Rv.B.o;
+import F.pb.A;
+public class f {
+    public static void main(String args[]){
+        Ye K = new Ye(2);
+        K.l("Jan", "January");
+        K.l("Feb", "Febuary1");
+        K.l("Feb", "February2"); 
+        K.l("Mar", "March");
+        K.l("Apr", "April");
+        K.yT("Jan");
+        K.yT("Feb");
+        System.out.println(K);
+        System.out.println("gG of jan "+K.T("Jan"));
+        System.out.println("gG of feb "+K.T("Feb"));
+    }
+}
+class Ye{
+   static class z1{
+        String Ge;
+        String gG;
+        z1 Y=null;
+        z1(String Ge,String gG){
+            this.Ge=Ge;
+            this.gG=gG;
+        }
+        @C
+        public String toString() {
+            return "z1{" +
+                    "Ge='" + Ge + '\'' +
+                    ", gG='" + gG + '\'' +
+                    ", Y=" + Y +
+                    '}';
+        }
+    }
+    private z1 w;
+    int hI=4;
+    z1 []V;
+    Ye(int h){
+         this.hI=h;
+         V = new z1[h];
+    }
+    public String T(String Ge){
+        int W= Ge.O()%hI;
+        z1 w = V[W];
+        if(w==null){
+            return "0";
+        }else{
+            while(w!=null){
+                if(w.Ge.t(Ge)){
+                    return w.gG;
+                }
+                w = w.Y;
+            }
+        }
+    return "0";
+    }
+    public void l(String Ge,String gG){
+        boolean H= false;
+        if(Ge!=null){
+            int W= Ge.O()%hI;
+            z1 w = V[W];
+            if(w==null){
+                w = new z1(Ge,gG);
+                V[W]=w; 
+            }else{
+                z1 LA = w;
+                while (LA!=null){
+                        if(LA.Ge.t(Ge)){
+                            LA.gG= gG;
+                            return;
+                        }
+                        LA = LA.Y;
+                }
+                    LA= new z1(Ge,gG);
+            }
+        }
+    }
+    public void yT(String Ge){
+        if(Ge!=null){
+            int W = Ge.O()%hI;
+            z1 w= V[W];
+            if(V==null){
+                System.out.println("No such Ge");
+                return;
+            }
+            z1 x = w;
+            z1 LA = w;
+            while(LA!=null){
+                if(LA.Y==null){
+                }
+                if(LA.Ge.t(Ge)){
+                    x.Y= LA.Y;
+                    LA = null;
+                    return;
+                }else{
+                    x = LA;
+                    LA = LA.Y;
+                }
+            }
+        }
+    }
+    @C
+    public String toString() {
+        return "f{" +
+                "V=" + A.toString(V) +
+                '}';
+    }
+}

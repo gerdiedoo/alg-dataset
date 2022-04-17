@@ -1,0 +1,19 @@
+def E(Y, Dq, H):
+    P = Dq
+    S = Dq
+    while S <= H:
+        if Y[S] > Y[P]:
+            P = S
+        S = S + 1
+    return P
+def e(Y):
+    for S in g(len(Y) - 1, 0, -1):
+        P = E(Y, 0, S)
+        if P != S:
+            v = Y[S]
+            Y[S] = Y[P]
+            Y[P] = v
+    print(S, Y)
+if M == '__main__':
+    f4 = [5, 10, 58, 23, 1, 2]
+    e(f4)

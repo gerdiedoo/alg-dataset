@@ -1,0 +1,34 @@
+package x;
+import u.M.C;
+public class y1 {
+    public static int[] N3(int[] w) {
+        if(w.E == 1) {
+            return w;
+        }
+        int[] L = C.PU(w, 0, w.E / 2);
+        int[] I2 = C.PU(w, w.E / 2, w.E);
+        return RQ(N3(L), N3(I2));
+    }
+    private static int[] RQ(int[] sG, int[] b) {
+        int U = 0, eh = 0;
+        int gb[] = new int[sG.E + b.E];
+        while(U < sG.E && eh < b.E) {
+            if(sG[U] < b[eh]) {
+                gb[U + eh] = sG[U];
+                U++;
+            } else {
+                gb[U + eh] = b[eh];
+                eh++;
+            }
+        }
+        while(U < sG.E) {
+            gb[U + eh] = sG[U];
+            U++;
+        }
+        while(eh < b.E) {
+            gb[U + eh] = b[eh];
+            eh++;
+        }
+        return gb;
+    }
+}

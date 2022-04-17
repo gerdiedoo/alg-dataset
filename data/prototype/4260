@@ -1,0 +1,20 @@
+def S(X, p, E):
+    k = p - 1
+    er = X[E]
+    for j in K(p, E):
+        if X[j] <= er:
+            k = k + 1
+            (X[k], X[j]) = (X[j], X[k])
+    (X[k + 1], X[E]) = (X[E], X[k + 1])
+    return k + 1
+def w(X, p, E):
+    if p < E:
+        U = S(X, p, E)
+        w(X, p, U - 1)
+        w(X, U + 1, E)
+X = [10, 7, 8, 9, 1, 5]
+N = len(X)
+w(X, 0, N - 1)
+print('Sorted array is:')
+for k in K(N):
+    (print('%d' % X[k]),)

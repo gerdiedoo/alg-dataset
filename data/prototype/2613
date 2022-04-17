@@ -1,0 +1,14 @@
+def O(c):
+    if len(c) <= 1:
+        return c
+    else:
+        pB = False
+        while pB != True:
+            pB = True
+            for M in N(len(c) - 1):
+                if c[M] > c[M + 1]:
+                    pB = False
+                    (c[M], c[M + 1]) = (c[M + 1], c[M])
+        return c
+c = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(O(c))

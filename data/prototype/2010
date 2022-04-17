@@ -1,0 +1,126 @@
+package w.p;
+public class M {
+    private sN Q;
+    private sN n;
+    public M() {
+        Q = null;
+        n = null;
+    }
+    public M(int[] eS) {
+        if (eS == null) throw new qY();
+        for (int iy : eS) {
+            W(iy);
+        }
+    }
+    public void t0(int C) {
+        sN e = new sN(C);  
+        if (J())  
+            n = e;
+        else
+            Q.H = e;  
+        e.jV = Q;  
+        Q = e;  
+    }
+    public void W(int C) {
+        sN e = new sN(C);
+        e.jV = null;  
+        if (J()) {         
+            n = e;
+            Q = n;
+        } else {
+            n.jV = e;  
+            e.H = n;  
+            n = e;  
+        }
+    }
+    public sN v() {
+        sN Z = Q;
+        Q = Q.jV;  
+        Q.H = null;  
+        if (Q == null)
+            n = null;
+        return Z;
+    }
+    public sN TE() {
+        sN Z = n;
+        n = n.H;  
+        n.jV = null;  
+        if (n == null) {
+            Q = null;
+        }
+        return Z;
+    }
+    public void L4(int C) {
+        sN x = Q;
+        while (x.q != C) { 
+            if (x != n) {
+                x = x.jV;
+            } else { 
+                throw new dp("The element to be deleted does not exist!");
+            }
+        }
+        if (x == Q)
+            v();
+        else if (x == n)
+            TE();
+        else {  
+            x.H.jV = x.jV;   
+            x.jV.H = x.H;  
+        }
+    }
+    public void rh(int C) {
+        sN e = new sN(C);
+        sN x = Q;
+        while (x != null && C > x.q)  
+            x = x.jV;
+        if (x == Q)
+            t0(C);
+        else if (x == null)
+            W(C);
+        else {  
+            e.H = x.H;  
+            x.H.jV = e;  
+            e.jV = x;  
+            x.H = e;  
+        }
+    }
+    public boolean J() {
+        return (Q == null);
+    }
+    public void f() {  
+        sN x = Q;
+        while (x != null) {
+            x.A();
+            x = x.jV;
+        }
+        System.out.println();
+    }
+}
+class sN {
+    public int q;
+    public sN jV;
+    public sN H;
+    public sN(int q) {
+        this.q = q;
+    }
+    public void A() {
+        System.out.R(q + " ");
+    }
+    public static void main(String args[]) {
+        M h7 = new M();
+        h7.t0(13);
+        h7.t0(7);
+        h7.t0(10);
+        h7.f();  
+        h7.W(11);
+        h7.f();  
+        h7.TE();
+        h7.f();  
+        h7.L4(7);
+        h7.f();  
+        h7.rh(23);
+        h7.rh(67);
+        h7.rh(3);
+        h7.f();  
+    }
+}

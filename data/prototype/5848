@@ -1,0 +1,5 @@
+def v(w):
+    if len(w) < 2:
+        return w
+    S = w[0]
+    return v([r for r in w[1:] if r < S]) + [S] + v([r for r in w[1:] if r >= S])

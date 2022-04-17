@@ -1,0 +1,97 @@
+public class f<z extends R<z>, p extends R<p>> implements Xk<z,p> {
+    private hl<t<z,p>>[] A;
+    private int d;
+    private static final int b = 101;
+    private static final double Vi = 3.0;
+    public f(){
+        A = new hl[b];
+    }
+    @Zv
+    public p Z(e Ae) {
+        int O = Ae.hashCode() % A.K;
+        if(O<0){
+            O += A.K;
+        }
+        if(A[O] == null){
+            return null;
+        }
+        z Y = (z) Ae;
+        t<z,p> V = A[O].I(new t<>(Y,null));
+        return V.H();
+    }
+    @Zv
+    public boolean y() {
+        return A.K ==0;
+    }
+    @Zv
+    public p U(z Ae, p q) {
+        int O = Ae.hashCode() % A.K;
+        if(O<0){
+            O += A.K;
+        }
+        if(A[O] == null){
+            A[O] = new hl<>();
+        }
+        boolean r = A[O].k(new t<>(Ae,q));
+        if(!r){
+            A[O].E(new t<>(Ae,q));
+            d++;
+            if(d >(Vi*A.K))
+                X();
+        }
+        return null;
+    }
+    private void X(){
+        hl<t<z,p>> [] s = A;
+        A = new hl[2*s.K+1];
+        d = 0;
+        for(int rv=0; rv<s.K ; rv++){
+            if((s[rv] != null) ){
+                A[rv] = s[rv];
+            }
+        }
+    }
+    @Zv
+    public p fV(e Ae) {
+        int O = Ae.hashCode() % A.K;
+        if(O<0){
+            O += O +A.K;
+        }
+        if(A[O] == null){
+            return null;
+        }
+        z Y = (z) Ae;
+        t<z,p> V = A[O].cv(new t<>(Y,null));
+        return V.H();
+    }
+    @Zv
+    public int F() {
+        return A.K;
+    }
+    static class t<z extends R<z>,p extends R<p>> implements R<t<z,p>>  {
+        private final z Ae;
+        private p q;
+        public boolean G;
+        public boolean g() {
+            return G;
+        }
+        public z D() {
+            return Ae;
+        }
+        public p H() {
+            return q;
+        }
+        public void FM(p q) {
+            this.q = q;
+        }
+        public t(z Ae , p q){
+            this.Ae = Ae;
+            this.q = q;
+            G = true;
+        }
+        @Zv
+        public int x(t<z, p> dm) {
+            return this.Ae.x(dm.D());
+        }
+    }
+}

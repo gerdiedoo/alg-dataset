@@ -1,0 +1,48 @@
+package U.g8.B;
+import jd.d.jY;
+import jd.d.Wj;
+import jd.d.N;
+import jd.d.tn.y;
+public class n {
+  public static <Nn extends t<Nn>> void w(N<Nn> Bb) {
+    w(Bb, 0, Bb.F() - 1);
+  }
+  private static <Nn extends t<Nn>> void w(N<Nn> Bb, int Vq, int jp) {
+    if (Vq < jp) {
+      final int W = C(Bb, Vq, jp);
+      w(Bb, Vq, W - 1);
+      w(Bb, W + 1, jp);
+    }
+  }
+  private static <Nn extends t<Nn>> int C(N<Nn> Bb, int Vq, int jp) {
+    final int e = y.x().nextInt(Vq, jp + 1);
+    Wj.m(Bb, e, jp);
+    final Nn l = Bb.hq(jp);
+    int WC = Vq - 1;
+    for (int I = Vq; I < jp; I++) {
+      final Nn a = Bb.hq(I);
+      if (a.t7(l) <= 0) {
+        WC++;
+        if (WC != I) {
+          Wj.m(Bb, WC, I);  
+        }
+      }
+    }
+    WC++;  
+    Wj.m(Bb, WC, jp);
+    return WC;
+  }
+  public static void main(String[] args) {
+    final N<f> Bb = new jY<>();
+    Bb.TT(4);
+    Bb.TT(1);
+    Bb.TT(5);
+    Bb.TT(3);
+    Bb.TT(9);
+    Bb.TT(10);
+    Bb.TT(1);
+    w(Bb);
+    w(new jY<f>());
+    System.out.println(Bb);
+  }
+}

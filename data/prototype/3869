@@ -1,0 +1,52 @@
+package n;
+import J.C.P.B.k2;
+public class c4 {
+  private static Y0[] q;  
+  private c4() { }
+  public static void i(Y0[] V) {
+    q = new Y0[V.gX];  
+    i(V, 0, V.gX - 1);
+  }
+  private static void i(Y0[] V, int lX, int c) {  
+    if (c <= lX) return;
+    int v = lX + (c - lX)/2;
+    i(V, lX, v);  
+    i(V, v+1, c);  
+    k(V, lX, v, c);  
+  }
+  private static void k(Y0[] V, int lX, int v, int c) {  
+    int K = lX, BO = v+1;
+    for (int U = lX; U <= c; U++)  
+      q[U] = V[U];
+    for (int U = lX; U <= c; U++)  
+      if (K > v) V[U] = q[BO++];
+      else if (BO > c ) V[U] = q[K++];
+      else if (OY(q[BO], q[K])) V[U] = q[BO++];
+      else V[U] = q[K++];
+  }
+  private static boolean OY(Y0 LF, Y0 O) { 
+    return LF.hS(O) < 0;  
+  }
+  private static void X(Y0[] V, int K, int BO) { 
+    Y0 R = V[K]; 
+    V[K] = V[BO]; 
+    V[BO] = R; 
+  }
+  private static void Sg(Y0[] V) {  
+    for (int K = 0; K < V.gX; K++)
+      k2.mS(V[K] + " ");
+      k2.println();
+    }
+  public static boolean bJ(Y0[] V) {  
+    for (int K = 1; K < V.gX; K++)
+      if (OY(V[K], V[K-1])) return false;
+    return true;
+  }
+  public static void main(String[] args) {  
+    String g = "M E R G E S O R T E X A M P L E";
+    String [] V = g.L(" ");
+    i(V);
+    assert bJ(V);
+    Sg(V);
+  }
+}

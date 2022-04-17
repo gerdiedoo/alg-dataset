@@ -1,0 +1,26 @@
+def aI(Jb):
+    if len(Jb) > 1:
+        l = len(Jb) // 2
+        T3 = Jb[:l]
+        R_ = Jb[l:]
+        aI(T3)
+        aI(R_)
+        s = 0
+        j = 0
+        M = 0
+        while s < len(T3) and j < len(R_):
+            if T3[s] < R_[j]:
+                Jb[M] = T3[s]
+                s += 1
+            else:
+                Jb[M] = R_[j]
+                j += 1
+            M += 1
+        while s < len(T3):
+            Jb[M] = T3[s]
+            s += 1
+            M += 1
+        while j < len(R_):
+            Jb[M] = R_[j]
+            j += 1
+            M += 1

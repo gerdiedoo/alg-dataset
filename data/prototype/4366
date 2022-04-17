@@ -1,0 +1,40 @@
+import time
+def YZ(K, lJ, q, r, bP):
+    if lJ < q:
+        MN = L(K, lJ, q, r, bP)
+        YZ(K, lJ, MN - 1, r, bP)
+        YZ(K, MN + 1, q, r, bP)
+def L(K, lJ, q, r, bP):
+    Y = lJ
+    n = K[q]
+    r(K, j(len(K), lJ, q, Y, Y))
+    t9.sleep(bP)
+    for O in v(lJ, q):
+        if K[O] < n:
+            r(K, j(len(K), lJ, q, Y, O, True))
+            t9.sleep(bP)
+            (K[Y], K[O]) = (K[O], K[Y])
+            Y += 1
+        r(K, j(len(K), lJ, q, Y, O))
+        t9.sleep(bP)
+    r(K, j(len(K), lJ, q, Y, q, True))
+    t9.sleep(bP)
+    (K[Y], K[q]) = (K[q], K[Y])
+    return Y
+def j(H, lJ, q, Y, G, Zp=False):
+    sV = []
+    for S in v(H):
+        if S >= lJ and S <= q:
+            sV.append('gray')
+        else:
+            sV.append('red')
+        if S == q:
+            sV[S] = 'orange'
+        elif S == Y:
+            sV[S] = 'green'
+        elif S == G:
+            sV[S] = 'yellow'
+        if Zp:
+            if S == Y or S == G:
+                sV[S] = 'purple'
+    return sV

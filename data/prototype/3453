@@ -1,0 +1,23 @@
+package C.e.U.di;
+public class W<yS extends O<yS>> {
+    private W() { }
+    public static <yS extends O<yS>> yS[] f(yS[] l) {
+        int R = l.R;
+        for (int t = 1; t < R; t++) {
+            f(t, l);
+        }
+        return l;
+    }
+    private static <yS extends O<yS>> void f(int t, yS[] l) {
+        for (int u = t; u > 0; u--) {
+            yS fV = l[u];
+            yS H = l[u - 1];
+            if (fV.q(H) < 0) {
+                l[u - 1] = fV;
+                l[u] = H;
+            } else {
+                break;
+            }
+        }
+    }
+}

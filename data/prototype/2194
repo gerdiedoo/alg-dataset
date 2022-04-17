@@ -1,0 +1,40 @@
+import T.M.c;
+import T.R.Sv;
+public class s<u extends Sv<u>> implements r<u> {
+    @I
+    public int indexOf(c<u> N, u R5) {
+        if (N == null || R5 == null)
+            return o;
+        return indexOf(N, R5, 0, N.i() - 1);
+    }
+    private int indexOf(c<u> N, u R5, int RI, int D) {
+        if (RI <= D) {
+            int g = (D + RI) >> 1;
+            if (N.d(g).equals(R5))
+                return g;
+            if (A(N.d(g), R5))
+                return indexOf(N, R5, g + 1, D);
+            return indexOf(N, R5, RI, g - 1);
+        }
+        return o;
+    }
+    private boolean A(u z, u y) {
+        return (z.v(y) < 0);
+    }
+    public static void main(String[] args) {
+        c<ts> k = new T.M.B0<ts>();
+        for (int fu = 0; fu < 100; fu++)
+            k.G(fu);
+        r<ts> Y = new s<ts>();
+        for (int fu = 0; fu < k.i(); fu++) {
+            int UM = Y.indexOf(k, fu);
+            if (UM == o)
+                throw new T.R.Tm("Result shouldn't be o");
+            k.F(new ts(fu));
+            UM = Y.indexOf(k, fu);
+            if (UM != o)
+                throw new T.R.Tm("Result should be o");
+        }
+        System.out.println("All tests passed.");
+    }
+}

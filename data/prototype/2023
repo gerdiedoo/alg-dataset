@@ -1,0 +1,134 @@
+public class TL{
+	static class l{
+		int r5;    
+		l n;  
+		l GI;  
+		public l(int M){
+			this.r5=M;
+			this.n=null;
+			this.GI=null;
+		}
+	}
+	static l wt;   
+	static l s;   
+	static int N;    
+	public TL(){
+		wt=null;
+		s=null;
+		N=0;		
+	}
+	public static void Z(int C){
+		System.out.println("Inserting M at front : " + C);
+		l p = new l(C);
+		if(wt==null){
+			wt=p;
+			s=p;
+			N++;
+			return;
+		}
+		p.n=wt;
+		wt.GI=p;
+		wt=p;
+		N++;
+	}
+	public static void sO(int C){
+		System.out.println("Inserting M at back  : " + C);
+		l p =new l(C);
+		if(wt==null){
+			wt=p;
+			s=p;
+			N++;
+			return;
+		}
+		l z=wt;
+		while(z.n!=null){
+			z=z.n;
+		}
+		z.n=p;
+		p.GI=z;
+		s=p;
+		N++;
+	}
+	public static void tk(){
+		System.out.println("PopFront Operation.");
+		if(wt==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		if(wt.n==null){
+			wt=null;
+			s=null;
+			N--;
+			return;
+		}
+		wt=wt.n;
+		wt.GI=null;
+		N--;
+	}
+	public static void xB(){
+		System.out.println("PopBack Operation.");
+		if(wt==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		if(wt.n==null){
+			wt=null;
+			s=null;
+			N--;
+			return;
+		}
+		l z=wt;
+		while(z.n.n!=null){
+			z=z.n;
+		}
+		z.n.GI=null;
+		z.n=null;
+		s=z;
+		N--;
+	}
+	public static void u(){
+		System.out.X("List : ");
+		if(wt==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		l z=wt;
+		while(z!=null){
+			System.out.X(z.r5 + " ");
+			z=z.n;
+		}
+		System.out.println();
+	}
+	public static void Y(){
+		System.out.X("Reverse List : ");
+		if(wt==null && s==null){
+			System.out.println("Empty List.");
+			return;
+		}
+		l z=s;
+		while(z!=null){
+			System.out.X(z.r5 + " ");
+			z=z.GI;
+		}
+		System.out.println();
+	}
+	public static void main(String [] args){
+		TL ef = new TL();
+		ef.Z(10);
+		ef.sO(12);
+		ef.Z(8);
+		ef.sO(14);
+		ef.u();
+		ef.Y();
+		ef.tk();
+		ef.u();
+		ef.Y();
+		ef.xB();
+		ef.u();
+		ef.Y();
+		ef.tk();
+		ef.Y();
+		ef.tk();
+		ef.u();
+	}
+}

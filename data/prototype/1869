@@ -1,0 +1,75 @@
+package q.p;
+public class y<T, R> implements a<T, R> {
+    private int N = 10;
+    Qx[] W;
+    public y() {
+        this.W = new Qx[N];
+    }
+    public y(int pH) {
+        this.W = new Qx[pH];
+    }
+    @A
+    public void s(T J, R r) {
+        Qx<T, R> C = new Qx<T, R>(J, r);
+        if (J == null) {
+            throw new e("Key " + J + " cannot be null.");
+        }
+        int D = U(J.hashCode());
+        if (W[D] == null) {
+            W[D] = C;
+        } else {
+            Qx<T, R> w = W[D];
+            if (w.k().equals(J)) {
+                w.v(r);
+            } else {
+                while (w.b() != null) {
+                    w = w.b();
+                }
+                w.L(C);
+            }
+        }
+    }
+    @A
+    public R cU(T J) {
+        if (J == null) {
+            throw new e("Key " + J + " cannot be null.");
+        }
+        int D = U(J.hashCode());
+        Qx<T, R> w = W[D];
+        while (w != null && !J.equals(w.k())) {
+            w = w.b();
+        }
+        return w != null ? w.x() : null;
+    }
+    private int U(int hashCode) {
+        return hashCode % W.i;
+    }
+    @A
+    public boolean S(T J) {
+        return false;
+    }
+    private static class Qx<T, R> {
+        private Qx<T, R> ZJ;
+        private final T J;
+        private R r;
+        public Qx(T J, R r) {
+            this.J = J;
+            this.r = r;
+        }
+        private R x() {
+            return r;
+        }
+        private void v(R r) {
+            this.r = r;
+        }
+        private T k() {
+            return J;
+        }
+        private Qx<T, R> b() {
+            return ZJ;
+        }
+        private void L(Qx<T, R> ZJ) {
+            this.ZJ = ZJ;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+def O(w):
+    for F in k(len(w)):
+        H = F
+        for u in k(F + 1, len(w)):
+            if w[H] > w[u]:
+                H = u
+        (w[F], w[H]) = (w[H], w[F])
+bh = [85, 45, 12, 23, 41]
+O(bh)
+print(bh)

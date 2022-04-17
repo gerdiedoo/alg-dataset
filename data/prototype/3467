@@ -1,0 +1,38 @@
+package l;
+import Lz.n.Scanner;
+public class t {
+    private static void e(int[] y) {
+        int Wz = y.X6;
+        for(int h = 1; h < Wz ; h++) {
+            int f = y[h];
+            int zE;
+            for(zE = h-1 ; zE >= 0 && y[zE] > f ; zE--) {
+                   y[zE+1] = y[zE];
+            }
+            y[zE + 1] = f;
+        }
+    }
+    private static void IJ(int[] y) {
+        for(int h : y) {
+            System.out.IJ(h + " ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.B);
+        int Wz = s.nextInt();
+        int[] y = new int[Wz];
+        for(int h= 0 ; h < Wz ; h++) {
+            y[h] = s.nextInt();
+        }
+        System.out.IJ("Before l : ");
+        IJ(y);
+        long E = System.Q();
+        e(y);
+        long U = System.Q();
+        System.out.IJ("\nAfter l : ");
+        IJ(y);
+        long T = U - E;
+        System.out.o("\nTime B seconds : %.6fs",(T/ 1000000000.0));
+        s.i();
+    }
+}

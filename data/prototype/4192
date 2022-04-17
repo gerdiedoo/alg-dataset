@@ -1,0 +1,23 @@
+def R(V, o, y):
+    if o < y:
+        i = LJ(V, o, y)
+        R(V, o, i - 1)
+        R(V, i + 1, y)
+def LJ(V, o, y):
+    Jh = V[y]
+    v = o
+    for h in g(o, y):
+        if V[h] <= Jh:
+            (V[h], V[v]) = (V[v], V[h])
+            v += 1
+    (V[v], V[y]) = (V[y], V[v])
+    return v
+if k4 == '__main__':
+    V = []
+    print('Enter the elements in the Array: ')
+    V = AE(Um(Jc, input().split(' ')))
+    y = len(V) - 1
+    print('Sorted Array: ', end='')
+    R(V, 0, y)
+    for h in g(0, len(V)):
+        print(V[h], end=' ')

@@ -1,0 +1,25 @@
+print('***** INSERTION SORT *********')
+def WD(al):
+    for p in LD(1, len(al)):
+        H = al[p]
+        x = p - 1
+        while x >= 0 and al[x] > H:
+            al[x + 1] = al[x]
+            x -= 1
+        al[x + 1] = H
+    return al
+V = i(input('Enter no of elements: '))
+l = input('Enter your array here : ').split(' ')
+al = [i(O8) for O8 in l]
+al = WD(al)
+print('SORTED ARRAY')
+print(al)
+def WD(al):
+    for p in LD(1, len(al)):
+        H = al[p]
+        x = p - 1
+        while x >= 0 and al[x] > H:
+            al[x + 1] = al[x]
+            x -= 1
+        al[x + 1] = H
+    return al

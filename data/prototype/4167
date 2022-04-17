@@ -1,0 +1,15 @@
+def e(n9):
+    if len(n9) <= 1:
+        return n9
+    else:
+        Oy = n9.pop()
+    a = []
+    t = []
+    for H in n9:
+        if H < Oy:
+            a.append(H)
+        else:
+            t.append(H)
+    return e(a) + [Oy] + e(t)
+n9 = [7, 5, 3, 1, 5, 9, 8, 4, 6, 2, 10]
+print(e(n9))

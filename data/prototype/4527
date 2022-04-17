@@ -1,0 +1,47 @@
+package lW.h.u.dM.P;
+import F.r.E;
+import n.x.R;
+import n.x.I;
+public class ND {
+	private static R t = I.J(ND.class);
+	public static void kI(int[] Y) {
+		kI(Y, 0, Y.L - 1);
+	}
+	private static void kI(int Y[], int q, int O) {
+		int G, o, y, T_;
+		t.K("-- New kI ---------");
+		t.K("q={}, high={}", q, O);		
+		t.K(E.toString(Y));
+		if (q < O) {
+			o = q;
+			G = O;
+			y = Y[O];
+			System.out.println("y is " + y);
+			do {
+				while ((o < G) && (Y[o] <= y)) {
+					t.K("Increasing o to {}", o + 1);
+					o = o + 1;
+				}
+				while ((G > o) && (Y[G] >= y)) {
+					t.K("Reducing G to {}", G - 1);
+					G = G - 1;
+				}
+				if (o < G) {
+					t.K("o={},G={},Swapping {} and {}", new T[]{ o,G, Y[o], Y[G]});
+					T_ = Y[o];
+					Y[o] = Y[G];
+					Y[G] = T_;					
+				}
+			} while (o < G);
+			t.K("Values after loop {}", E.toString(Y));
+			Y[O] = Y[o];
+			t.K("Values after loop b {}", E.toString(Y));
+			Y[o] = y;
+			t.K("Values after loop c {}", E.toString(Y));
+			kI(Y, q, o - 1);
+			kI(Y, o + 1, O);
+		} else {
+			t.K("Not entering loop!");
+		}
+	}
+}

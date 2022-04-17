@@ -1,0 +1,22 @@
+package m.e;
+public class n {
+    public int[] UG(int[] Ix) {
+        int W = Ix.a;
+        int Lc;  
+        int MP;  
+        for (int A = 0; A < W - 1; A++) {
+            Lc = A;
+            for (int R = A + 1; R < W; R++) {
+                if (Ix[R] < Ix[Lc]) {
+                    Lc = R;  
+                }
+            }
+            if (Lc != A) {
+                MP = Ix[A];
+                Ix[A] = Ix[Lc];
+                Ix[Lc] = MP;
+            }
+        }
+        return Ix;
+    }
+}

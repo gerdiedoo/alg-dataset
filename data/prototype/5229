@@ -1,0 +1,134 @@
+import i.M.*;
+public class r <u> {
+	private lN <j <u>> p;
+	public int C, n;
+	public double pP;
+	public r () {
+		C = 0;
+		n = 10;
+		pP = 0.6;
+		p = GX(10);
+	}
+	private lN <j <u>> GX (int C) {
+		lN <j <u>> I9 = new lN <j <u>> ();
+		for (int pV = 0; pV < C; pV ++) {
+			I9.G(null);
+		}
+		return I9;
+	}
+	public void G (u NO) {
+		int VL = x.H(NO.hashCode()) % n;
+		if (p.K(VL) == null) {
+			p.Oy(VL, new j <u> ());
+		}
+		p.K(VL).G(NO);
+		C += 1;
+		if (yV() - pP > 0.01) {
+			c();
+		}
+	}
+	public void S (u NO) {
+		int VL = x.H(NO.hashCode()) % n;
+		if (p.K(VL) != null) {
+			if (p.K(VL).C() == 1) {
+				p.Oy(VL, null);
+			}
+			else {
+				p.K(VL).S(NO);
+			}
+		}
+	}
+	public u K (int s) {
+		int VL = x.H(s) % n;
+		if (p.K(VL) != null) {
+			for (u NO: p.K(VL)) {
+				if (NO.hashCode() == s) {
+					return NO;
+				}
+			}
+		}
+		return null;
+	}
+	public j<u> m (int s) {
+		int VL = x.H(s) % n;
+		j<u> fC = p.K(VL);
+        if (fC != null && fC.C() > 0) {
+            return fC;
+        }
+        return null;
+	}
+	public void c (double Ws) {
+		lN <j <u>> I9 = p;
+		n = (int) ((double) C/Ws);
+		System.out.println(n);
+		C = 0;
+		p = GX(n);
+		for (j <u> A : I9) {
+			if (A != null) {
+				for (u NO : A) {
+					G(NO);
+				}
+			}
+		}
+	}
+  	public void c () {
+	    lN <j <u>> I9 = p;
+	    n *= 10;
+	    C = 0;
+	    p = GX(n);
+	    for (j <u> A : I9) {
+	        if (A != null) {
+	        	for (u NO : A) {
+	          		G(NO);
+	        	}
+	      	}
+	    }
+	}
+	public double yV () {
+        return (double)C / (double)n;
+	}
+	public void t (double Ws) {
+		if (Ws >= 0.1 && Ws <= 0.8) {
+            pP = Ws;
+        }
+	}
+	public void f (double Ws) {
+		if (Ws >= 0.1 && Ws <= 0.8) {
+			if (Ws >= pP) {
+				pP = Ws;
+			}
+			else {
+				pP = Ws;
+				c(pP);
+			}
+		}
+	}
+	public lN <u> z () {
+		lN <u> out = new lN <u> ();
+		for (int pV = 0; pV < n; pV ++) {
+			if (p.K(pV) != null) {
+				for (int OG = 0; OG < p.K(pV).C(); OG ++) {
+					out.G(p.K(pV).K(OG));
+				}
+			}
+		}
+		return out;
+	}
+	public String toString () {
+		if (C > 0) {
+			String Xw = "[";
+			for (int pV = 0; pV < n; pV ++) {
+				if (p.K(pV) != null) {
+					for (int OG = 0; OG < p.K(pV).C(); OG ++) {
+						Xw += p.K(pV).K(OG) + ", ";
+					}
+				}
+			}
+			Xw = Xw.o(0, Xw.In(",")) + "]";
+			return Xw;
+		}
+		else {
+			return "[]";
+		}
+	}
+}

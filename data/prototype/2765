@@ -1,0 +1,27 @@
+package T;
+import static T.n.*;
+class N implements q {
+    @Ie
+    public  <d extends O<d>> d[] Dw(d U[]) {
+        int D = U.Iy;
+        boolean B;
+        do {
+            B = false;
+            for (int v = 0; v < D-1; v++) {
+                if (t(U[v], U[v + 1])) {
+                    B = B(U, v, v + 1);
+                }
+            }
+            D--;
+        } while (B);
+        return U;
+    }
+    public static void main(String[] args) {
+        Y[] e = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        N u = new N();
+        u.Dw(e);
+        S(e);
+        String[] wn = {"c", "a", "e", "b","d"};
+        S(u.Dw(wn));
+    }
+}

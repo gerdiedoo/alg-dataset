@@ -1,0 +1,30 @@
+def K(O, k, w):
+    assert 0 <= k <= w < len(O)
+    if k == w:
+        return
+    xi = O[k]
+    (O[k], O[w]) = (O[w], O[k])
+    Z = k
+    ud = k
+    while ud < w:
+        if O[ud] <= xi:
+            (O[Z], O[ud]) = (O[ud], O[Z])
+            Z += 1
+        ud += 1
+    (O[Z], O[w]) = (O[w], O[Z])
+    if Z > k:
+        K(O, k, Z - 1)
+    if w > Z + 1:
+        K(O, Z + 1, w)
+def L():
+    b = [4, 1, 2, 3, 9]
+    v = [1]
+    p = [2, 2, 1, -1, 0, 4, 5, 2]
+    K(b, 0, 4)
+    assert b == [1, 2, 3, 4, 9]
+    K(v, 0, 0)
+    assert v == [1]
+    K(p, 0, 7)
+    assert p == [-1, 0, 1, 2, 2, 2, 4, 5]
+if P == '__main__':
+    L()

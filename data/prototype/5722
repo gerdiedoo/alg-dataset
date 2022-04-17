@@ -1,0 +1,31 @@
+def A(X8):
+    if len(X8) <= 1:
+        return X8
+    i = len(X8) // 2
+    Z = X8[:i]
+    g_ = X8[i:]
+    Z = A(Z)
+    g_ = A(g_)
+    return V(Z, g_)
+def V(F, t):
+    HG = []
+    N = len(F)
+    s = len(t)
+    c = J = 0
+    while c < N and J < s:
+        if F[c] <= t[J]:
+            HG.append(F[c])
+            c += 1
+        else:
+            HG.append(t[J])
+            J += 1
+    while c < N:
+        HG.append(F[c])
+        c += 1
+    while J < s:
+        HG.append(t[J])
+        J += 1
+    return HG
+if y6 == '__main__':
+    X8 = [10, 3, 15, 7, 8, 23, 98, 29]
+    print(A(X8))

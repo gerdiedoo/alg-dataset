@@ -1,0 +1,15 @@
+package K.AO.e.g;
+public class z implements x {
+	@m
+	public void X(int[] Qn) {
+		for (int L = 1; L < Qn.z0; L++) {
+			int J = Qn[L];
+			int p = L - 1;
+			while (p >= 0 && Qn[p] > J) {
+				Qn[p + 1] = Qn[p];
+				p--;
+			}
+			Qn[p + 1] = J;
+		}
+	}
+}

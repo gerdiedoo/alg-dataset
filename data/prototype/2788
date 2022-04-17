@@ -1,0 +1,21 @@
+package I;
+import FT.m.b;
+public class uS {
+    public void D(int[] Um) {
+        int N = Um.H;
+        for (int P = 0; P < N - 1; P++) {
+            boolean L = false;
+            for (int T = 1; T < N - P; T++) {
+                if (Um[T - 1] > Um[T]) {
+                    int g = Um[T - 1];
+                    Um[T - 1] = Um[T];
+                    Um[T] = g;
+                    L = true;
+                }
+            }
+            if (!L) {
+                break;
+            }
+        }
+    }
+}

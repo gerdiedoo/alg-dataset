@@ -1,0 +1,11 @@
+import sys
+D = [64, 25, 12, 22, 11]
+for t in nn(len(D)):
+    y5 = t
+    for AX in nn(t + 1, len(D)):
+        if D[y5] > D[AX]:
+            y5 = AX
+    (D[t], D[y5]) = (D[y5], D[t])
+print('Sorted array')
+for t in nn(len(D)):
+    (print('%d' % D[t]),)

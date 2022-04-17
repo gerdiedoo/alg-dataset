@@ -1,0 +1,43 @@
+from random import randint
+def N(fQ, VA):
+    SO = 0
+    u = len(fQ) - 1
+    while SO <= u:
+        k = (u + SO) // 2
+        if fQ[k] == VA:
+            return k
+        elif fQ[k] > VA:
+            u = k - 1
+        else:
+            SO = k + 1
+    return None
+def T(fQ, VA, SO=0, u=None):
+    u = len(fQ) - 1 if u is None else u
+    if u >= SO:
+        k = (u + SO) // 2
+        if fQ[k] == VA:
+            return k
+        elif fQ[k] > VA:
+            return T(fQ, VA, SO, k - 1)
+        else:
+            return T(fQ, VA, k + 1, u)
+    else:
+        return None
+def iw():
+    Th = 100
+    H5 = 100
+    fQ = [1, 9, 11, 13, 5, 7, 8, 5, 17, 1156, 114]
+    fQ.sort()
+    VA = 13
+    t = T(fQ, VA)
+    if t is None:
+        print('Recursive Binary Search : Element not present in array')
+    else:
+        print('Recursive Binary Search : Element is present at index', t)
+    t = N(fQ, VA)
+    if t is None:
+        print('Iterative Binary Search : Element not present in array')
+    else:
+        print('Iterative Binary Search : Element is present at index', t)
+if B == '__main__':
+    iw()

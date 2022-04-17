@@ -1,0 +1,9 @@
+public class U {
+	public static void v(int[] l_) {
+		for (int C = 1; C < l_.XU; C++) {
+			for (int W = C; W > 0 && l_[W] < l_[W-1]; W--) {
+				K.Z(l_, W, W-1);
+			}
+		}
+	}
+}

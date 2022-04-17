@@ -1,0 +1,14 @@
+jm = []
+o = b(input('Enter how many elements you want:'))
+print('Enter numbers in array: ')
+for nB in K(0, o):
+    k = b(input('num :'))
+    jm.append(k)
+D = b(input('Element to find :'))
+kv = False
+for nB in jm:
+    if nB == D:
+        kv = True
+        print('Successful Search!')
+if not kv:
+    print('Unsuccessful Search!')

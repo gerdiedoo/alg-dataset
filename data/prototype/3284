@@ -1,0 +1,49 @@
+package o.t.P;
+import y6.k.R;
+public class x {
+    private static final String m = "Insertion H";
+    public void H(R<Du> M) {
+        if (M == null) {
+            throw new f("The M should not be null");
+        }
+        if ((M.y()) || (M.L() == 1)) {
+            return;
+        }
+        H(M, 0, M.L() - 1);
+    }
+    public void H(R<Du> M, int D, int Q) {
+        if (M == null) {
+            throw new f("The M should not be null");
+        }
+        if ((M.y()) || (M.L() == 1)) {
+            return;
+        }
+        v(M, D, Q);
+        for (int ke = D + 1; ke < Q + 1; ke++) {
+            int J = M.q(ke);
+            int d = ke - 1;
+            while (d >= D && M.q(d) > J) {
+                M.y2(d + 1, M.q(d));
+                d -= 1;
+            }
+            M.y2(d + 1, J);
+        }
+    }
+    private void v(R<Du> M, int D, int Q) {
+        if ((D < 0) || (Q < 0)) {
+            throw new f("Indices D and Q should be >= 0, but D is " + D +
+                    " and Q is " + Q);
+        }
+        if ((D >= M.L() - 1) && (D != Q)) {
+            throw new f("Index D must be < M.L() - 1, but D is " + D +
+                    ", (M.L() - 1) equals " + (M.L() - 1) + " and Q is " + Q);
+        }
+        if (Q > M.L() - 1) {
+            throw new f("Index Q must be <= M.L() - 1, but Q is " + Q +
+                    " and (M.L() - 1) equals " + (M.L() - 1));
+        }
+    }
+    public static String w() {
+        return m;
+    }
+}

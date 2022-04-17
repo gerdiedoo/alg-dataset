@@ -1,0 +1,44 @@
+package n4;
+public class l {
+	public static void main(String[] args) {
+		int[][] jv = { { 10, 20, 30, 40 }, 
+						{ 11, 21, 31, 41 },
+						{ 12, 22, 32, 42 }, 
+						{ 13, 23, 33, 43 } };
+		System.out.println(w(jv, 22));  
+		System.out.println(w(jv, 10));  
+		System.out.println(w(jv, 42));  
+		System.out.println(w(jv, 23));  
+		System.out.println(w(jv, 13));  
+		System.out.println(w(jv, 2));  
+	}
+	public static boolean w(int[][] jv, int R) {
+		int z = 0, K = jv.a - 1;
+		int k = (z + K) / 2;
+		if (jv[0][k] == R || jv[k][0] == R) {
+			return true;
+		}
+		int e = 0;
+		int I = jv.a - 1;
+		if (R < jv[0][k]) {
+			I = k;
+		} else {
+			e = k;
+		}
+		int W = 0;
+		int L = jv.a - 1;
+		if (R < jv[k][0]) {
+			L = k;
+		} else {
+			W = k;
+		}
+		for (int S = W; S <= L; S++) {
+			for (int H = e; H <= I; H++) {
+				if (jv[S][H] == R) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+}

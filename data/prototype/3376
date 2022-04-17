@@ -1,0 +1,14 @@
+package JC.i.R.V;
+public class GU {
+	public static void jt(Lk[] Y){
+		for(int H = 1; H < Y.eZ; H++){
+			int A = Y[H];
+			int Hq = H - 1;
+			while( (Hq >= 0) && (Y[Hq] > A) ){
+				Y[Hq+1] = Y[Hq];
+				Hq--;
+			}
+			Y[Hq+1] = A;
+		}
+	}
+}

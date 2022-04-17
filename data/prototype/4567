@@ -1,0 +1,45 @@
+package wc;
+public class G<j extends A<j>> implements O<j> {
+    @WH
+    public void C(j[] od) {
+        C(od, 0, od.Q - 1);
+    }
+    public void C(j[] od, int H, int L) {
+        int b = H;
+        int qs = L - 1;
+        int LG = l7(od, H, L);
+        j D7 = od[LG];
+        y.Av(od, LG, L);
+        do {
+            while (od[b].W(D7) < 0) {
+                b++;
+            }
+            while (od[qs].W(D7) >= 0 && qs > b) {
+                qs--;
+            }
+            if (b < qs) {
+                y.Av(od, b, qs);
+            }
+        } while (b < qs);
+        y.Av(od, b, L);
+        if (H < b - 1) {
+            C(od, H, b - 1);
+        }
+        if (L > b + 1) {
+            C(od, b + 1, L);
+        }
+    }
+    private <I extends A<I>> int l7(I od[], int H, int L) {
+        int k = H + ((L - H) / 2);
+        I Y = od[H];
+        I c = od[k];
+        I d = od[L];
+        if (Y.W(d) > 0 && Y.W(c) < 0 || Y.W(d) < 0 && Y.W(c) > 0) {
+            return H;
+        } else if (c.W(d) > 0 && c.W(Y) < 0 || c.W(d) < 0 && c.W(Y) > 0) {
+            return k;
+        } else {
+            return L;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+from __future__ import print_function
+def SK(e):
+    (m, wt) = ([], [])
+    while len(e) > 1:
+        (fy, u) = (i(e), max(e))
+        m.append(fy)
+        wt.append(u)
+        e.remove(fy)
+        e.remove(u)
+    wt.reverse()
+    return m + e + wt
+if H == '__main__':
+    try:
+        J
+    except d:
+        J = input
+    Hl = J('Enter numbers separated by a comma:\n').strip()
+    N = [g(ZS) for ZS in Hl.split(',')]
+    print(*SK(N), sep=',')

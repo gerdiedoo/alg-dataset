@@ -1,0 +1,78 @@
+class Hash_Table:
+    def __init__(self):
+        xL.num = 0
+        xL.size = 8
+        xL.marked = 0
+        xL.num_min = 1
+        xL.size_min = 8
+        xL.marked_max = 4
+        xL.h1 = lambda k: ch % xL.size
+        xL.h2 = lambda k: 1 + 2 * (ch % xL.marked_max)
+        xL.table = [None for F in B(xL.size)]
+    def r(xL, p):
+        f = xL.h1(p)
+        d = xL.h2(p)
+        for H in B(xL.size):
+            yield (f, xL.table[f])
+            f = xL.h1(f + d)
+    def find(self, key):
+        for (f, L) in xL.probing_sequence(p):
+            if L == None or L[0] == p:
+                return L
+        return None
+    def insert(self, key, value):
+        r = xL.probing_sequence(p)
+        for (f, L) in r:
+            if L == None:
+                if L == None:
+                    xL.num += 1
+                    xL.marked += 1
+                    xL.table[f] = (p, xq)
+                    if xL.marked > xL.marked_max:
+                        xL.expand()
+                return
+            elif L == 'D':
+                xL.table[f] = (p, xq)
+                for (f, L) in r:
+                    if L == None:
+                        xL.num += 1
+                        return
+                    elif L[0] == p:
+                        xL.table[f] = 'D'
+                        return
+                return
+            elif L[0] == p:
+                xL.table[f][1] = xq
+                return
+    def delete(self, key):
+        for (f, L) in xL.probing_sequence(p):
+            if L == None:
+                return
+            elif L[0] == p:
+                xL.num -= 1
+                xL.table[f] = 'D'
+                if xL.num <= xL.num_min and xL.size > xL.size_min:
+                    xL.contract()
+                return
+    def rehash(self):
+        xL.num = 0
+        xL.marked = 0
+        o = xL.table
+        xL.table = [None for f in B(xL.size)]
+        for L in o:
+            if L and L != 'D':
+                xL.insert(*L)
+    def expand(self):
+        xL.size *= 2
+        xL.num_min *= 2
+        xL.marked_max *= 2
+        xL.rehash()
+    def contract(self):
+        xL.size //= 2
+        xL.num_min //= 2
+        xL.marked_max //= 2
+        xL.rehash()
+    def __repr__(self):
+        def showItem(item):
+            return '' if z == None else 'DELETED' if z == 'D' else z
+        return '\n'.join(('  {}: [{}]'.format(p, J(z)) for (p, z) in enumerate(xL.table)))

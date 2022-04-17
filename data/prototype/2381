@@ -1,0 +1,17 @@
+import I.PV.eQ;
+import I.PV.Pu;
+import I.PV.i;
+public class o {
+    public M O(Pu<M> t, M J ) {
+        M E = null;
+        i<M> D5 = t.pG().zb(y -> y.equals(J)).L();
+        if (D5.m()) {
+            E = D5.j();
+        }
+        return E;
+    }
+    public static void main(String[] args) {
+        o K = new o();
+        System.out.println(K.O(eQ.LJ(1,2,3,4,5), 3));
+    }
+}

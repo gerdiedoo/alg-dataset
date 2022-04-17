@@ -1,0 +1,192 @@
+public class x<A> implements Yf<A> {
+    private C<A> BL;
+    private C<A> Bd;
+    private int V;
+    @E
+    public void wZ(int R, A k)
+            throws h7, Vu {
+        if (R < 0 || R > this.V) {
+            throw new Vu("Index can't be negative"
+                    + " or greater than the V of the Linked List.");
+        } else if (k == null) {
+            throw new h7("Data stored in v cannot"
+                    + " be null");
+        }
+        C<A> v = BL;
+        C<A> N = new C<A>(k);
+        if (R == 0) {
+            this.F_(k);
+        } else if (R == this.V) {
+            this.dl(k);
+        } else {
+            while (--R > 0) {
+                v = v.U();
+            }
+            N.h(v.U());
+            v.h(N);
+            V++;
+        }
+    }
+    @E
+    public A e(int R) throws Vu {
+        if (R < 0 || R >= this.V) {
+            throw new Vu("Index can't be negative "
+                    + "or greater than/equal to V of linked list");
+        }
+        C<A> v = BL;
+        if (R == 0) {
+            return this.BL.f();
+        } else if (R == this.V - 1) {
+            return this.Bd.f();
+        } else {
+            while (R > 0) {
+                R--;
+                v = v.U();
+            }
+            return v.f();
+        }
+    }
+    @E
+    public A y(int R) throws Vu {
+        if (R < 0 || R >= this.V) {
+            throw new Vu("Index can't be negative "
+                    + "or greater than/equal to V of linked list");
+        }
+        C<A> v = BL;
+        C<A> s = null;
+        A c;
+        if (R == 0) {
+            c = this.X();
+        } else if (R == this.V - 1) {
+            c = this.t();
+        } else {
+            for (int H = 0; H < R; H++) {
+                s = v;
+                v = v.U();
+            }
+            if (s != null) {
+                s.h(v.U());
+            } else {
+                BL = BL.U();
+            }
+            c = v.f();
+            V--;
+        }
+        return c;
+    }
+    @E
+    public void F_(A k) throws h7 {
+        if (k == null) {
+            throw new h7("Node k cannot be null");
+        }
+        this.BL = new C<A>(k, this.BL);
+        if (this.V == 0) {
+            Bd = BL;
+        }
+        this.V++;
+    }
+    @E
+    public void dl(A k) throws h7 {
+        if (k == null) {
+            throw new h7("Node k cannot be null");
+        }
+        C<A> v = new C<A>(k, null);
+        if (BL == null) {
+            this.BL = v;
+        } else {
+            this.Bd.h(v);
+        }
+        this.Bd = v;
+        this.V++;
+    }
+    @E
+    public A X() {
+        if (BL == null) {
+            return null;
+        }
+        A c = this.BL.f();
+        this.BL = this.BL.U();
+        this.V--;
+        if (this.V == 0) {
+            this.Bd = null;
+        }
+        return c;
+    }
+    @E
+    public A t() {
+        C<A> v = BL;
+        C<A> s = null;
+        if (BL == null) {
+            return null;
+        }
+        while (v.U() != null) {
+            s = v;
+            v = v.U();
+        }
+        A c = this.Bd.f();
+        if (s != null) {
+            s.h(null);
+        } else {
+            BL = null;
+        }
+        this.Bd = s;
+        V--;
+        if (this.V == 0) {
+            this.Bd = null;
+        }
+        return c;
+    }
+    @E
+    public boolean Z(A k)
+            throws h7 {
+        boolean c = false;
+        C<A> v = BL;
+        if (k == null) {
+            throw new h7("Data cannot be null");
+        } else {
+            int R = 0;
+            while (v != null) {
+                if (v.f().equals(k)) {
+                    this.y(R);
+                    c = true;
+                } else {
+                    R++;
+                }
+                v = v.U();
+            }
+        }
+        return c;
+    }
+    @E
+    public F[] l() {
+        C<A> v = BL;
+        F[] Lx = new F[this.V];
+        for (int H = 0; H < this.V; H++) {
+            Lx[H] = v.f();
+            v = v.U();
+        }
+        return Lx;
+    }
+    @E
+    public boolean J() {
+        return (this.V == 0);
+    }
+    @E
+    public int V() {
+        return this.V;
+    }
+    @E
+    public void Ok() {
+        this.BL = null;
+        this.Bd = null;
+        this.V = 0;
+    }
+    @E
+    public C<A> xa() {
+        return BL;
+    }
+    @E
+    public C<A> W() {
+        return Bd;
+    }
+}

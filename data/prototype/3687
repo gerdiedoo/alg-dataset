@@ -1,0 +1,26 @@
+def sort(a):
+    QN = len(g)
+    Q = [0 for AV in x(QN)]
+    Ux(g, Q, QN)
+def Ux(g, Q, QN):
+    JU(g, 0, QN, Q)
+    K(Q, 0, QN, g)
+def K(Q, G, u7, g):
+    if u7 - G < 2:
+        return
+    r = (u7 + G) // 2
+    K(g, G, r, Q)
+    K(g, r, u7, Q)
+    O(Q, G, r, u7, g)
+def O(g, f, J, u7, Q):
+    (AV, p) = (f, J)
+    for AJ in x(f, u7):
+        if AV < J and (p >= u7 or g[AV] <= g[p]):
+            Q[AJ] = g[AV]
+            AV += 1
+        else:
+            Q[AJ] = g[p]
+            p += 1
+def JU(g, G, u7, Q):
+    for AJ in x(G, u7):
+        Q[AJ] = g[AJ]

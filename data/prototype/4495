@@ -1,0 +1,36 @@
+package S;
+import K.e.*;
+public class i {
+    static l m = new l();
+    public static void vN(int[] p, int C, int M) {
+        if (C >= M)
+            return;
+        int Gu = p[C + m.nextInt(M - C + 1)];
+        int TU = C;
+        int p9 = M;
+        while (TU <= p9) {
+            while (p[TU] < Gu) ++TU;
+            while (p[p9] > Gu) --p9;
+            if (TU <= p9) {
+                int ya = p[TU];
+                p[TU] = p[p9];
+                p[p9] = ya;
+                ++TU;
+                --p9;
+            }
+        }
+        vN(p, C, p9);
+        vN(p, TU, M);
+    }
+    public static void main(String[] args) {
+        int c = 10_000_000;
+        int[] qn = m.q(c).B();
+        int[] r = qn.clone();
+        O.S(r);
+        long k = System.g();
+        vN(qn, 0, qn.T - 1);
+        System.out.println(System.g() - k);
+        if (!O.equals(qn, r))
+            throw new TP();
+    }
+}

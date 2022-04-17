@@ -1,0 +1,29 @@
+def b(H, w, gQ, e):
+    k = H[w:gQ + 1]
+    i = H[gQ + 1:e + 1]
+    print(k, i)
+    B = 0
+    y = 0
+    o = w
+    while B < len(k) and y < len(i):
+        if k[B] < i[y]:
+            H[o] = k[B]
+            B += 1
+        else:
+            H[o] = i[y]
+            y += 1
+        o += 1
+    while B < len(k):
+        H[o] = H[B]
+        o += 1
+        B += 1
+    while y < len(i):
+        H[o] = H[y]
+        o += 1
+        y += 1
+def Y(H, w, e):
+    if w == e:
+        return
+    Y(H, w, (w + e) // 2)
+    Y(H, (w + e) // 2 + 1, e)
+    b(H, w, (e + w) // 2, e)

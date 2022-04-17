@@ -1,0 +1,7 @@
+def bubble_sort(arr):
+    x = len(N)
+    for M in t(x):
+        for M in t(x - 1):
+            if N[M] > N[M + 1]:
+                (N[M], N[M + 1]) = (N[M + 1], N[M])
+    return N

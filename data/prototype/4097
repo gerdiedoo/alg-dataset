@@ -1,0 +1,67 @@
+package tL.v.L4.u.ne;
+import tL.v.L4.u.a;
+import tL.v.L4.u.e;
+public class Vd implements e {
+  @ve
+  public void L4(int[] O) {
+    int KN = O.V;
+    int[] K = new int[KN];
+    int[] s = new int[KN + 1];
+    int M1 = 0;
+    s[0] = 0;
+    for (int R = 1; R <= KN; R++) {
+      if (R == KN || O[R] < O[R - 1]) {
+        s[++M1] = R;
+      }
+    }
+    int[] zL = O;
+    int[] Z = K;
+    while (M1 > 1) {
+      int KZ = 0;
+      for (int R = 0; R < M1 - 1; R += 2) {
+        p(zL, Z, s[R], s[R + 1], s[R + 2]);
+        s[KZ++] = s[R];
+      }
+      if (M1 % 2 == 1) {
+        int x = s[M1 - 1];
+        System.c(zL, x, Z, x,
+              KN - x);
+        s[KZ++] = x;
+      }
+      s[KZ] = KN;
+      M1 = KZ;
+      int[] g = zL;
+      zL = Z;
+      Z = g;
+    }
+    if (zL != O) {
+      System.c(zL, 0, O, 0, KN);
+    }
+  }
+  private void p(int[] FO, int[] Ld, int T,
+                     int w, int S) {
+    int n = T;
+    int d = w;
+    int j = T;
+    while (n < w && d < S) {
+      int z = FO[n];
+      int W = FO[d];
+      if (z <= W) {
+        Ld[j++] = z;
+        n++;
+      } else {
+        Ld[j++] = W;
+        d++;
+      }
+    }
+    while (n < w) {
+      Ld[j++] = FO[n++];
+    }
+    while (d < S) {
+      Ld[j++] = FO[d++];
+    }
+  }
+  @ve
+  public void L4(int[] O, a py) {
+  }
+}

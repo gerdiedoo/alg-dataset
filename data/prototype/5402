@@ -1,0 +1,33 @@
+package t;
+import p.W.v;
+import p.W.s;
+public class Q {
+    public q3 d;
+    public q3 z;
+    public Q(){
+    }
+    public void y(int D){
+        q3 q = new q3(D);
+        q.x = d;
+        d = q;
+    }
+    public boolean X(int D){
+        z = d;
+        while(z != null){
+            if(z.M == D){
+                return true;
+            }
+            z = z.x;
+        }
+        return false;
+    }
+    public s<q3> O(){
+        s<q3> jb = new v<>();
+        z = d;
+        while(z != null){
+            jb.F(z);
+            z = z.x;
+        }
+        return jb;
+    }
+}

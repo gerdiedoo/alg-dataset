@@ -1,0 +1,156 @@
+import N.By.V;
+import N.By.cQ;
+import N.By.Ap;
+import N.By.Tx;
+import N.By.f;
+import N.By.z;
+public class s<Z, w> implements JC<Z, w> {
+    private z<o<Z, w>>[] G;
+    private int K;
+    public s() {
+        G = new z[T];
+        K = 0;
+    }
+    public s(int IT) {
+        G = new z[IT];
+        K = 0;
+    }
+    @ne
+    public w mB(Z J, w c) {
+        if (J == null || c == null) {
+            throw new n("Input data cannot be null.");
+        }
+        if ((double) (K + 1) / G.e > I) {
+            p(G.e * 2 + 1);
+        }
+        int X = H.R(J.hashCode()) % G.e;
+        if (G[X] == null) {
+            G[X] = new z<>();
+        } else {
+            for (o<Z, w> M : G[X]) {
+                if (M.b() == J) {
+                    w Y = M.Ou();
+                    M.D(c);
+                    return Y;
+                }
+            }
+        }
+        G[X].a(new o<>(J, c));
+        ++K;
+        return null;
+    }
+    @ne
+    public w d(Z J) {
+        if (J == null) {
+            throw new n("Input J is null");
+        }
+        int X = H.R(J.hashCode()) % G.e;
+        o<Z, w> Eo;
+        if (G[X] != null) {
+            Ap<o<Z, w>> GB = G[X].cd();
+            while (GB.C()) {
+                Eo = GB.P();
+                if (Eo.b() == J) {
+                    w Y = Eo.Ou();
+                    GB.d();
+                    --K;
+                    return Y;
+                }
+            }
+        }
+        throw new N.By.A("Key does not exist");
+    }
+    @ne
+    public w q(Z J) {
+        if (J == null) {
+            throw new n("Input J is null");
+        }
+        int X = H.R(J.hashCode()) % G.e;
+        o<Z, w> Eo;
+        if (G[X] != null) {
+            Ap<o<Z, w>> GB = G[X].cd();
+            while (GB.C()) {
+                Eo = GB.P();
+                if (Eo.b() == J) {
+                    return Eo.Ou();
+                }
+            }
+        }
+        throw new N.By.A("Key does not exist");
+    }
+    @ne
+    public boolean i(Z J) {
+        if (J == null) {
+            throw new n("Input J is null");
+        }
+        int X = H.R(J.hashCode()) % G.e;
+        o<Z, w> Eo;
+        if (G[X] != null) {
+            Ap<o<Z, w>> GB = G[X].cd();
+            while (GB.C()) {
+                Eo = GB.P();
+                if (Eo.b() == J) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    @ne
+    public void x() {
+        G = new z[T];
+        K = 0;
+    }
+    @ne
+    public int K() {
+        return K;
+    }
+    @ne
+    public f<Z> gK() {
+        f<Z> E = new cQ<>();
+        for (int O = 0; O < G.e; ++O) {
+            if (G[O] != null) {
+                for (o<Z, w> M : G[O]) {
+                    E.r(M.b());
+                }
+            }
+        }
+        return E;
+    }
+    @ne
+    public Tx<w> U() {
+        Tx<w> m = new V<>();
+        for (int O = 0; O < G.e; ++O) {
+            if (G[O] != null) {
+                for (o<Z, w> M : G[O]) {
+                    m.r(M.Ou());
+                }
+            }
+        }
+        return m;
+    }
+    @ne
+    public void p(int e) {
+        if (e <= 0) {
+            throw new n("Input e cannot be "
+                    + "negative");
+        }
+        z<o<Z, w>>[] W = new z[e];
+        for (int O = 0; O < G.e; ++O) {
+            if (G[O] != null) {
+                for (o<Z, w> M : G[O]) {
+                    int X = H.R(M.b().hashCode()) % e;
+                    if (W[X] == null) {
+                        W[X] = new z<>();
+                    }
+                    W[X].a(M);
+                }
+            }
+        }
+        G = W;
+    }
+    @ne
+    public z<o<Z, w>>[] Q_() {
+        return G;
+    }
+}

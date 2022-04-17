@@ -1,0 +1,19 @@
+import time
+from colors import *
+def m(es, M, iP, s, D):
+    iM = M + 1
+    F = es[M]
+    for p in wu(M + 1, iP + 1):
+        if es[p] < F:
+            (es[iM], es[p]) = (es[p], es[iM])
+            iM += 1
+    (es[M], es[iM - 1]) = (es[iM - 1], es[M])
+    return iM - 1
+def l(es, M, iP, s, D):
+    if M < iP:
+        H = m(es, M, iP, s, D)
+        l(es, M, H - 1, s, D)
+        l(es, H + 1, iP, s, D)
+        s(es, [LY if f >= M and f < H else h if f == H else e if f > H and f <= iP else g for f in wu(len(es))])
+        J.sleep(D)
+    s(es, [g for f in wu(len(es))])

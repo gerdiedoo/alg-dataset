@@ -1,0 +1,36 @@
+package m;
+import X.q.g;
+import X.q.xN;
+import X.q.j.cV;
+import static X.a.String.w;
+class s implements k {
+    @G
+    public  <u extends ch<u>> int v(u o[], u b) {
+        return m(o, b, 0, o.F);
+    }
+    private <u extends ch<u>> int m(u o[], u b, int fF, int Q){
+        if (Q < fF) return -1;  
+        int p = (fF + Q) >>> 1;
+        int I = b.x(o[p]);
+        if (I < 0) {
+            return m(o, b, fF, p - 1);
+        }
+        if (I > 0) {
+            return m(o, b, p + 1, Q);
+        }
+        return p;
+    }
+    public static void main(String[] args) {
+        xN r = new xN();
+        int Lt = 100;
+        int P = 100000;
+        U[] f = cV.Z(() -> r.nextInt(P)).lH(Lt).K().ZI(U[]::new);
+        U R = f[r.nextInt(Lt - 1)];
+        s m = new s();
+        int xV = m.v(f, R);
+        System.out.println(String.w("Should be found: %d. Found %d at index %d. An o F %d"
+                , R, f[xV], xV, Lt));
+        int wJ = g.E(f, R);
+        System.out.println(w("Found by system method at an index: %d. Is equal: %b", wJ, wJ == xV));
+    }
+}

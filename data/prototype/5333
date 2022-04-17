@@ -1,0 +1,182 @@
+package O.F;
+class B {
+    public int W;
+    public B R;
+    public B c;
+    B() {
+        W = 0;
+        R = null;
+        c = null;
+    }
+    B(int Sl) {
+        W = Sl;
+        R = null;
+        c = null;
+    }
+}
+public class L {
+    protected B Y8;
+    protected long T;
+    public L() {
+        Y8 = new B();
+        Y8.W = f.C;
+        Y8.c = Y8;
+        Y8.R = Y8;
+        T = 0;
+    }
+    public L(int F6) {
+        Y8 = new B();
+        Y8.W = f.C;
+        Y8.c = new B();
+        Y8.c.W = F6;
+        Y8.R = Y8.c;
+        Y8.c.R = Y8;
+        Y8.R.c = Y8;
+        T = 1;
+    }
+    public L(int F6, int y) {
+        Y8 = new B();
+        Y8.W = f.C;
+        Y8.c = new B();
+        Y8.c.W = F6;
+        Y8.R = new B();
+        Y8.R.W = y;
+        Y8.c.R = Y8;
+        Y8.c.c = Y8.R;
+        Y8.R.c = Y8;
+        Y8.R.R = Y8.c;
+        T = 2;
+    }
+    public boolean W3(){
+        return T == 0;
+    }
+    public long ne(){
+        return T;
+    }
+    public Z Y8(){
+        if(T == 0){
+            return null;
+        }
+        return Y8.c.W;
+    }
+    public Z s(){
+        if(T == 0){
+            return null;
+        }
+        return Y8.R.W;
+    }
+    public void m(int Sl) {
+        B T1 = new B(Sl);
+        T1.R = Y8;
+        T1.c = Y8.c;
+        Y8.c.R = T1;
+        Y8.c = T1;
+        T++;
+    }
+    public void n(int Sl){
+        B T1 = new B(Sl);
+        T1.c = Y8;
+        T1.R = Y8.R;
+        Y8.R.c = T1;
+        Y8.R = T1;
+        T++;
+    }
+    public void r8() {
+        if(T == 0){
+            return;
+        }
+        B T1 = Y8.c;
+        T1.c.R = Y8;
+        Y8.c = T1.c;
+        T--;
+    }
+    public void S(){
+        if(T == 0){
+            return;
+        }
+        B T1 = Y8.R;
+        T1.R.c = Y8;
+        Y8.R = T1.R;
+        T--;
+    }
+    public String toString() {
+        String E = "[  ";
+        B lB = Y8.c;
+        while (lB != Y8) {
+            E = E + lB.W + "  ";
+            lB = lB.c;
+        }
+        return E + "]";
+    }
+    public static void main(String[] args) {
+        L Q = new L();
+        System.out.println("Here is F6 list after construction: "
+                + Q.toString());
+        System.out.println("W3() should be true. It is: " +
+                Q.W3());
+        System.out.println("ne() should be 0. It is: " +
+                Q.ne());
+        Q.m(3);
+        System.out.println("Here is F6 list after m(3) to an empty list: "
+                + Q.toString());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+        Q = new L();
+        Q.m(3);
+        Q.m(2);
+        Q.m(1);
+        System.out.println();
+        System.out.println("Here is F6 list after m 3, 2, 1: "
+                + Q.toString());
+        System.out.println("W3() should be false. It is: " +
+                Q.W3());
+        System.out.println("ne() should be 3. It is: " +
+                Q.ne());
+        Q.n(4);
+        System.out.println("Here is the same list after n(4): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+        Q = new L();
+        Q.n(6);
+        Q.n(7);
+        System.out.println();
+        System.out.println("Here is F6 list after n 6, 7: "
+                + Q.toString());
+        System.out.println("W3() should be false. It is: " +
+                Q.W3());
+        System.out.println("ne() should be 2. It is: " +
+                Q.ne());
+        Q.m(5);
+        System.out.println("Here is the same list after m(5): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+        Q = new L();
+        Q.n(1);
+        Q.n(2);
+        Q.n(3);
+        Q.n(4);
+        Q.n(5);
+        Q.n(6);
+        System.out.println();
+        System.out.println("Here is F6 list after n 1,2,3,4,5,6: "
+                + Q.toString());
+        System.out.println("W3() should be false. It is: " +
+                Q.W3());
+        System.out.println("ne() should be 6. It is: " +
+                Q.ne());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+        Q.m(5);
+        System.out.println("Here is the same list after m(5): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+        Q.r8();
+        Q.r8();
+        System.out.println("Here is the same list after two r8(): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+        Q.S();
+        Q.S();
+        System.out.println("Here is the same list after two S(): "
+                + Q.toString());
+        System.out.println("Head is: " + Q.Y8() + "\nTail is: " + Q.s());
+    }
+}

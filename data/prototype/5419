@@ -1,0 +1,192 @@
+public class x<S> implements Cd<S> {
+    private Q<S> L;
+    private Q<S> P;
+    private int G;
+    @mU
+    public void j(int Hr, S m)
+            throws Rw, JF {
+        if (Hr < 0 || Hr > this.G) {
+            throw new JF("Index can't be negative"
+                    + " or greater than the G of the Linked List.");
+        } else if (m == null) {
+            throw new Rw("Data stored in j_ cannot"
+                    + " be null");
+        }
+        Q<S> j_ = L;
+        Q<S> N = new Q<S>(m);
+        if (Hr == 0) {
+            this.lx(m);
+        } else if (Hr == this.G) {
+            this.W(m);
+        } else {
+            while (--Hr > 0) {
+                j_ = j_.x6();
+            }
+            N.T(j_.x6());
+            j_.T(N);
+            G++;
+        }
+    }
+    @mU
+    public S d(int Hr) throws JF {
+        if (Hr < 0 || Hr >= this.G) {
+            throw new JF("Index can't be negative "
+                    + "or greater than/equal to G of linked list");
+        }
+        Q<S> j_ = L;
+        if (Hr == 0) {
+            return this.L.lz();
+        } else if (Hr == this.G - 1) {
+            return this.P.lz();
+        } else {
+            while (Hr > 0) {
+                Hr--;
+                j_ = j_.x6();
+            }
+            return j_.lz();
+        }
+    }
+    @mU
+    public S J(int Hr) throws JF {
+        if (Hr < 0 || Hr >= this.G) {
+            throw new JF("Index can't be negative "
+                    + "or greater than/equal to G of linked list");
+        }
+        Q<S> j_ = L;
+        Q<S> vj = null;
+        S c;
+        if (Hr == 0) {
+            c = this.r();
+        } else if (Hr == this.G - 1) {
+            c = this.a();
+        } else {
+            for (int yb = 0; yb < Hr; yb++) {
+                vj = j_;
+                j_ = j_.x6();
+            }
+            if (vj != null) {
+                vj.T(j_.x6());
+            } else {
+                L = L.x6();
+            }
+            c = j_.lz();
+            G--;
+        }
+        return c;
+    }
+    @mU
+    public void lx(S m) throws Rw {
+        if (m == null) {
+            throw new Rw("Node m cannot be null");
+        }
+        this.L = new Q<S>(m, this.L);
+        if (this.G == 0) {
+            P = L;
+        }
+        this.G++;
+    }
+    @mU
+    public void W(S m) throws Rw {
+        if (m == null) {
+            throw new Rw("Node m cannot be null");
+        }
+        Q<S> j_ = new Q<S>(m, null);
+        if (L == null) {
+            this.L = j_;
+        } else {
+            this.P.T(j_);
+        }
+        this.P = j_;
+        this.G++;
+    }
+    @mU
+    public S r() {
+        if (L == null) {
+            return null;
+        }
+        S c = this.L.lz();
+        this.L = this.L.x6();
+        this.G--;
+        if (this.G == 0) {
+            this.P = null;
+        }
+        return c;
+    }
+    @mU
+    public S a() {
+        Q<S> j_ = L;
+        Q<S> vj = null;
+        if (L == null) {
+            return null;
+        }
+        while (j_.x6() != null) {
+            vj = j_;
+            j_ = j_.x6();
+        }
+        S c = this.P.lz();
+        if (vj != null) {
+            vj.T(null);
+        } else {
+            L = null;
+        }
+        this.P = vj;
+        G--;
+        if (this.G == 0) {
+            this.P = null;
+        }
+        return c;
+    }
+    @mU
+    public boolean z(S m)
+            throws Rw {
+        boolean c = false;
+        Q<S> j_ = L;
+        if (m == null) {
+            throw new Rw("Data cannot be null");
+        } else {
+            int Hr = 0;
+            while (j_ != null) {
+                if (j_.lz().equals(m)) {
+                    this.J(Hr);
+                    c = true;
+                } else {
+                    Hr++;
+                }
+                j_ = j_.x6();
+            }
+        }
+        return c;
+    }
+    @mU
+    public X[] l() {
+        Q<S> j_ = L;
+        X[] nk = new X[this.G];
+        for (int yb = 0; yb < this.G; yb++) {
+            nk[yb] = j_.lz();
+            j_ = j_.x6();
+        }
+        return nk;
+    }
+    @mU
+    public boolean Ae() {
+        return (this.G == 0);
+    }
+    @mU
+    public int G() {
+        return this.G;
+    }
+    @mU
+    public void qr() {
+        this.L = null;
+        this.P = null;
+        this.G = 0;
+    }
+    @mU
+    public Q<S> Z() {
+        return L;
+    }
+    @mU
+    public Q<S> H() {
+        return P;
+    }
+}

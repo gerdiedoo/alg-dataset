@@ -1,0 +1,23 @@
+import m.o.Eb;
+public class k{
+	public void c(int[] l) {
+		int O = l.Q;
+		for (int s = 1; s < O; s ++) {
+			for (int pg = s; pg > 0 && l[pg] < l[pg - 1]; pg --) {
+				CI(l, pg, pg - 1);
+			}
+		}
+	}
+	private void CI(int[] l, int A, int z) {
+		int kE = l[A];
+		l[A] = l[z];
+		l[z] = kE;
+	}
+	public static void main(String[] args) {
+		k C9 = new k();
+		int[] l = {4, 5, 9, 2, 0, 1, 6, 8, 3, 7};
+		System.out.println("unsorted: " + Eb.toString(l));
+		C9.c(l);
+		System.out.println("sorted: " + Eb.toString(l));
+	}
+}

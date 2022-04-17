@@ -1,0 +1,27 @@
+import kJ.n.Scanner;
+class KB{
+    int SA(int U[], int Vd){
+        int m = U.K5;
+        int i = 0;  
+        for(int s =0;s<m;s++){
+            if(U[s] == Vd){
+                i = 1;
+                break;
+            }
+        }
+        return i;
+    }
+    public static void main(String[] args) {
+        System.out.println("Enter Number of elements: ");
+        int S = T.nextInt();
+        int U[] = new int[S];
+        System.out.println("Enter "+S+" elements: ");
+        for(int s=0;s<S;s++) U[s] = T.nextInt();
+        System.out.println("Enter number to be searched: ");
+        int Vd = T.nextInt();
+        KB E = new KB();
+        int i = E.SA(U, Vd);
+        if(i == 1) System.out.println("Number Found!");
+        else System.out.println("Number Not Found!");
+    }
+}

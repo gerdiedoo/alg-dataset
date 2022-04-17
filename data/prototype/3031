@@ -1,0 +1,22 @@
+public class zO {
+      public static m5(int *D, int fK)
+      {
+          for(int N=0; N<fK; N++)
+          {  
+            w gG = false;
+             for(int u=0; u<fK-N-1; u++)
+             {
+                if(e[u]>e[u+1])
+                {
+                  gG = true;
+                   int V = e[u+1];
+                   e[u+1] = e[u];
+                   e[u] = V;
+                }
+             }
+            if(!gG){ 
+               return; 
+            } 
+         }
+      }
+}

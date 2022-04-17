@@ -1,0 +1,37 @@
+package QP;
+import T.Z.YP;
+import T.Z.qH;
+import T.Z.M;
+public class o<u extends DM<u>> extends h<u> {
+    @vQ
+    public void p(u[] x) {
+        z(x);
+        p(x, 0, x.L - 1);
+    }
+    private void p(u[] x, int eW, int I) {
+        if (I <= eW) {
+            return;
+        }
+        int j = G(x, eW, I);
+        p(x, eW, j - 1);
+        p(x, j + 1, I);
+    }
+    private void z(u[] x) {
+        M<DM> y = YP.N(x);
+        qH.z(y);
+        y.c(x);
+    }
+    private int G(u[] x, int eW, int I) {
+        int A = eW, j = I + 1;
+        u v = x[eW];
+        while (true) {
+            while (H(x[++A], v) && A != I) ;
+            while (H(v, x[--j]) && j != eW) ;
+            if (A >= j)
+                break;
+            JP(x, A, j);
+        }
+        JP(x, eW, j);
+        return j;
+    }
+}

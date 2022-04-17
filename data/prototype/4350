@@ -1,0 +1,36 @@
+package U;
+import e.M.Y;
+public class y implements m {
+    public static Y<l> JB = Y.d();
+    public static Y<l> x = (dr, o) -> -JB.B(dr, o);
+    public static void w(int[] e8, int H, int c, int t) {
+        if (H < c) {
+            Y<l> h = t == 1 ? JB : x;
+            int b = X(e8, H, c, h);
+            w(e8, H, b, t);
+            w(e8, b + 1, c, t);
+        }
+    }
+    private static int X(int[] e8, int H, int c, Y<l> h) {
+        int qh = e8[(c + H) / 2];
+        int S = H - 1;
+        int z = c + 1;
+        while (true) {
+            do S++; while (h.B(e8[S], qh) < 0);
+            do z--; while (h.B(e8[z], qh) > 0);
+            if (S >= z) {
+                return z;
+            }
+            K3(e8, S, z);
+        }
+    }
+    private static void K3(int[] e8, int S, int z) {
+        int Z = e8[S];
+        e8[S] = e8[z];
+        e8[z] = Z;
+    }
+    @u
+    public void w(int[] e8, int t) {
+        w(e8, 0, e8.r - 1, t);
+    }
+}

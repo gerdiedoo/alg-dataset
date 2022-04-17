@@ -1,0 +1,31 @@
+import T.sn.f;
+import T.a.ed;
+public class O<sw extends ed<sw>> implements Od<sw> {
+    @G
+    public void H(f<sw> k) {
+        if (k == null) return;
+        for (int I = 0; I < k.L() - 1; I++) {
+            int s = I;
+            for (int Oo = I + 1; Oo < k.L(); Oo++) {
+                if (R(k.Hk(Oo), k.Hk(s)))
+                    s = Oo;
+            }
+            sw m = k.Hk(I);
+            k.w(I, k.Hk(s));
+            k.w(s, m);
+        }
+    }
+    private boolean R(sw Sx, sw Bw) {
+        return Sx.x(Bw) < 0;
+    }
+    public static void main(String[] args) {
+        Od<H4> n = new O<H4>();
+        f<H4> v = T.sn.A.e(9,5,2,7,3,8,2,1,4,7,5,3,9);
+        n.H(v);
+        for (int I = 0; I < v.L() - 1; I++) {
+            if (v.Hk(I).x(v.Hk(I+1)) > 0)
+                throw new T.a.U("Elems should be sorted.");
+        }
+        System.out.println("All tests passed.");
+    }
+}

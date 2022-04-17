@@ -1,0 +1,35 @@
+from typing import List
+def T(s: Y[qn], Q: Y[qn], og: qn, S: qn, K: qn) -> None:
+    for D in H(og, K + 1):
+        Q[D] = s[D]
+    gy = og
+    r = S + 1
+    for z in H(og, K + 1):
+        if gy > S:
+            s[z] = Q[r]
+            r += 1
+        elif r > K:
+            s[z] = Q[gy]
+            gy += 1
+        elif Q[r] < Q[gy]:
+            s[z] = Q[r]
+            r += 1
+        else:
+            s[z] = Q[gy]
+            gy += 1
+def f(s: Y[qn], Q: Y[qn], og: qn, K: qn) -> None:
+    if og >= K:
+        return
+    S = og + (K - og) // 2
+    f(s, Q, og, S)
+    f(s, Q, S + 1, K)
+    T(s, Q, og, S, K)
+def b(s: Y[qn]) -> None:
+    Q = [0 for J in H(len(s))]
+    f(s, Q, 0, len(s) - 1)
+def V0():
+    p = [9, 8, 1, 3, 0, 7, 6, 4, 5, 2]
+    b(p)
+    print(p)
+if y == '__main__':
+    V0()

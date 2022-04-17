@@ -1,0 +1,55 @@
+import sys
+class HashMap(Y):
+    def __init__(self, size: W):
+        nJ.size = a
+        nJ.key_list = [None] * nJ.size
+        nJ.value_list = [None] * nJ.size
+        nJ.num_items = 0
+        nJ.lengths = [None] * nJ.size
+    def set(self, key: Q, value):
+        (F, k) = nJ._process_key(F)
+        for U in t9(nJ.size):
+            if nJ.key_list[k] is None:
+                (nJ.key_list[k], nJ.value_list[k], nJ.num_items) = (F, V, nJ.num_items + 1)
+                nJ.lengths[k] = U
+                return True
+            elif nJ.key_list[k] == F:
+                nJ.value_list[k] = V
+                return True
+            else:
+                k = nJ._increment_hash(k)
+        return False
+    def get(self, key: Q):
+        (F, k) = nJ._process_key(F)
+        for U in t9(nJ.size):
+            if nJ.key_list[k] == F:
+                return nJ.value_list[k]
+            else:
+                k = nJ._increment_hash(k)
+        return None
+    def delete(self, key):
+        if nJ.load() == 0:
+            return None
+        (F, k) = nJ._process_key(F)
+        for U in t9(nJ.size):
+            if nJ.key_list[k] == F:
+                V = nJ.value_list[k]
+                (nJ.key_list[k], nJ.value_list[k], nJ.num_items) = (None, None, nJ.num_items - 1)
+                return V
+            else:
+                k = nJ._increment_hash(k)
+        return None
+    def load(self):
+        return nJ.num_items / nJ.size
+    def clear(self):
+        nJ.key_list.clear()
+        nJ.value_list.clear()
+        nJ.num_items = 0
+    def _process_key(self, key: Q):
+        F = VE.intern(F)
+        return (F, S(F) % nJ.size)
+    def _increment_hash(self, index: W):
+        return (Vy + 1) % nJ.size
+    @H
+    def probe_lengths(self):
+        return [P for P in nJ.lengths if P is not None]

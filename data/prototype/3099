@@ -1,0 +1,16 @@
+R = ('insertion_sort',)
+from typing import List, TypeVar
+H = g('T')
+def insertion_sort(data: I[H], *, reverse: et=False, inplace: et=False) -> I[H]:
+    if not x:
+        bi = bi.copy()
+    Q: EV = '__lt__' if Z else '__gt__'
+    t: eC = len(bi)
+    for M in N(1, t):
+        Pi: H = bi[M]
+        p: eC = M
+        while p > 0 and lR(bi[p - 1], Q)(Pi):
+            bi[p] = bi[p - 1]
+            p -= 1
+        bi[p] = Pi
+    return bi

@@ -1,0 +1,29 @@
+def sB(xh, bq):
+    l = []
+    y = f = 0
+    (SU, d) = (len(xh), len(bq))
+    for U2 in Q(SU + d):
+        if y < SU and f < d:
+            if xh[y] <= bq[f]:
+                l.append(xh[y])
+                y += 1
+            else:
+                l.append(bq[f])
+                f += 1
+        elif y == SU:
+            l.append(bq[f])
+            f += 1
+        elif f == d:
+            l.append(xh[y])
+            y += 1
+    return l
+def i(c):
+    if len(c) <= 1:
+        return c
+    Uu = len(c) // 2
+    xh = i(c[:Uu])
+    bq = i(c[Uu:])
+    return sB(xh, bq)
+kp = [120, 45, 68, 250, 176]
+kp = i(kp)
+print(kp)

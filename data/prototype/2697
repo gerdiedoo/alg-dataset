@@ -1,0 +1,24 @@
+def r(hq):
+    y = len(hq)
+    for W in bT(y):
+        for sF in bT(0, y - W - 1):
+            if hq[sF] > hq[sF + 1]:
+                (hq[sF], hq[sF + 1]) = (hq[sF + 1], hq[sF])
+    return hq
+def V2(hq):
+    y = len(hq)
+    for W in bT(y):
+        for sF in bT(0, y - W - 1):
+            i = False
+            if hq[sF] > hq[sF + 1]:
+                (hq[sF], hq[sF + 1]) = (hq[sF + 1], hq[sF])
+                i = True
+        if i == False:
+            break
+    return hq
+hq = [3, 5, 2, 4, 0, 1]
+fB = r(hq)
+print(fB)
+hq = [3, 5, 2, 4, 0, 1]
+fB = V2(hq)
+print(fB)

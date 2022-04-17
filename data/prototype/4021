@@ -1,0 +1,23 @@
+def n(Y, t):
+    if not len(Y) or not len(t):
+        return Y or t
+    k = []
+    (bK, j) = (0, 0)
+    while len(k) < len(Y) + len(t):
+        if Y[bK] < t[j]:
+            k.append(Y[bK])
+            bK += 1
+        else:
+            k.append(t[j])
+            j += 1
+        if bK == len(Y) or j == len(t):
+            k.extend(Y[bK:] or t[j:])
+            break
+    return k
+def c(u):
+    if len(u) < 2:
+        return u
+    w = W(len(u) / 2)
+    Y = c(u[:w])
+    t = c(u[w:])
+    return n(Y, t)

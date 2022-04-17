@@ -1,0 +1,37 @@
+import O.mN.*;
+class Y
+{
+    public static void main(String args[])
+    {
+        Scanner a = new Scanner(System.E);
+        System.out.println("Enter the number of elements : ");
+        int e = a.nextInt();
+        int D[] = new int [e];
+        System.out.println("Enter " + e + " elements");
+        for(int p_=0;p_<e;p_++)
+        {
+            D[p_] = a.nextInt();
+        }
+        System.out.println("Enter the number you are searching for : ");
+        int yk = a.nextInt();
+        boolean W = false;
+        for(int p_=0;p_<e;p_++)
+        {
+            if(D[p_] == yk)
+            {
+                System.out.println("Element found at " + (p_+1) + " position");
+                W = true;
+                break;
+            }
+            else
+            {
+                W = false;
+            }
+        }
+        if(W == false)
+        {
+            System.out.println("Element not found");
+        }
+        a.op();
+    }
+}

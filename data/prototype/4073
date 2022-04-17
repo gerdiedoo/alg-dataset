@@ -1,0 +1,37 @@
+package z;
+import B.l.V;
+import B.l.n;
+import B.l.nC;
+public class c<E> extends jX<E> {
+	public void A(nC<E> P, n<E> j) {
+		int jz = P.H_();
+		if (jz <= 1)
+			return;
+		int dJ = jz / 2;
+		nC<E> a = new V<>(P.T(0, dJ));
+		nC<E> e = new V<>(P.T(dJ, jz));
+		A(a, j);
+		A(e, j);
+		N(a, e, P, j);
+	}
+	private void N(nC<E> a, nC<E> e, nC<E> P, n<E> j) {
+		int Z = 0;
+		int EX = 0;
+		int sr = 0;
+		E D9;
+		while (Z < a.H_() && EX < e.H_()) {
+			D9 = j.zC(a.lR(Z), e.lR(EX)) <= 0 
+					? a.lR(Z++) : e.lR(EX++);
+			P.I(sr++, D9);
+		}
+		while (Z < a.H_()) {
+			P.I(sr++, a.lR(Z++));
+		}
+		while (EX < e.H_()) {
+			P.I(sr++, e.lR(EX++));
+		}
+	}
+	public String L() {
+		return "Merge Sort";
+	}
+}

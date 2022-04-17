@@ -1,0 +1,99 @@
+package j;
+import u.Uv.jk.J.y;
+public class mJ<F> {
+    y<Y<F>> N;
+    public mJ() {
+        N = new y<Y<F>>(null, false);
+    }
+    public Y<F> Ox(long iL, F q) {
+        y<Y<F>> PE = N;
+        Y<F> w = PE.S();
+        if (PE.S() == null || iL > PE.S().Z) {
+            Y<F> Oy = new Y<F>(PE.S(), iL, q);
+            if (!N.r(w, Oy, false, false)) {
+                return Ox(iL, q);
+            }
+            return Oy;
+        }
+        y<Y<F>> G = PE;
+        while(true) {
+            y<Y<F>> f = G.S().f;
+            Y<F> T = f.S();
+            if (T == null || iL > T.Z) {
+                if (T != null && f.nK()) {
+                    continue;
+                }
+                Y Oy = new Y<F>(f.S(), iL, q);
+                if (!f.r(T, Oy, false, false)) {
+                    return Ox(iL, q);
+                };
+                return Oy;
+            }
+            G = G.S().f;
+        }
+    }
+    public F k() {
+        return N.S().HL;
+    }
+    public F Q(long iL) {
+        y<Y<F>> P = N;
+        while (P.S() != null && P.S().Z > iL) {
+            P = P.S().f;
+        }
+        if (P.S() == null) {
+            return null;
+        }
+        return P.S().HL;
+    }
+    public void W(long Z) {
+        y<Y<F>> Ot = new y<Y<F>>(null, false);
+        y<Y<F>> PE = N;
+        y<Y<F>> G = N;
+        while(true) {
+            if (G == null || G.S() == null)
+                break;
+            Y<F> B = G.S();
+            if (G.S().Z == Z) {
+                if (!G.x(B, true)) {
+                    W(Z);
+                    return;
+                }
+                boolean H = false;
+                y<Y<F>> f;
+                if (Ot.S() != null) {
+                    H = Ot.S().f.r(Ot.S().f.S(), G.S().f.S(), true, false);
+                } else {
+                    H = PE.r(PE.S(), G.S().f.S(), true, false);
+                }
+                if (!H) {
+                    W(Z);
+                    return;
+                }
+                break;
+            }
+            Ot = G;
+            G = G.S().f;
+        }
+    }
+    public long[] p() {
+        int L = 0;
+        y<Y<F>> G = N;
+        while (G.S() != null) {
+            if (!G.nK()) {
+                L++;
+            }
+            G = G.S().f;
+        }
+        long[] EN = new long[L];
+        L = 0;
+        G = N;
+        while (G.S() != null) {
+            if (!G.nK()) {
+                EN[L] = G.S().Z;
+                L++;
+            }
+            G = G.S().f;
+        }
+        return EN;
+    }
+}

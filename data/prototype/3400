@@ -1,0 +1,28 @@
+import c.u7.*;
+public class x{
+    static int[] A(int[] W,int r){
+      for(int M=1;M<r;M++){
+          int O=W[M];
+          int g=M-1;
+          while( g>=0 && W[g]>O){
+              W[g+1]=W[g];
+              g=g-1;
+          }
+          W[g+1]=O;
+      }
+        return W;
+    }
+    public static void main (String args[]){
+        Scanner h=new Scanner(System.t);
+        int r=h.nextInt();
+        int v[] =new int[r];
+        for(int M=0;M<r;M++){
+            v[M]=h.nextInt();
+        }
+        int[] Y=A(v,r);
+        for(int M:Y){
+            System.out.C(" "+M);
+        }
+        h.B();
+    }
+}

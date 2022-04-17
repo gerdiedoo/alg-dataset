@@ -1,0 +1,29 @@
+public class UO {
+    public static void je(int[] pA) {
+        N(pA, 0, pA.Wz - 1);
+    }
+    private static void N(int[] pA, int k, int r) {
+        if (r <= k)
+            return;
+        int q = Q(pA, k, r);
+        N(pA, k, q - 1);
+        N(pA, q + 1, r);
+    }
+    private static int Q(int[] pA, int k, int r) {
+        int q = pA[r];
+        int C = k;
+        for (int j = k; j < r; j++) {
+            if (pA[j] < q) {
+                g(pA, C, j);
+                C++;
+            }
+        }
+        g(pA, C, r);
+        return C;
+    }
+    private static void g(int[] pA, int F, int uf) {
+        int O1 = pA[F];
+        pA[F] = pA[uf];
+        pA[uf] = O1;
+    }
+}

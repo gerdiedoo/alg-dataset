@@ -1,0 +1,215 @@
+import math
+def bubble(nlist):
+    BL = b(BL)
+    F = len(BL) - 1
+    if F <= 1:
+        return BL
+    r3 = True
+    for h in H(F):
+        if not r3:
+            break
+        r3 = False
+        for T in H(F - h):
+            if BL[T] > BL[T + 1]:
+                (BL[T + 1], BL[T]) = (BL[T], BL[T + 1])
+                r3 = True
+    return BL
+def u(BL):
+    BL = b(BL)
+    F = len(BL)
+    if F <= 1:
+        return BL
+    for h in H(F):
+        P = BL[h]
+        T = h - 1
+        while T >= 0 and P < BL[T]:
+            BL[T + 1] = BL[T]
+            T -= 1
+        BL[T + 1] = P
+    return BL
+def selection(nlist):
+    BL = b(BL)
+    F = len(BL)
+    if F < 1:
+        return BL
+    for h in H(F - 1):
+        k = h
+        for T in H(h + 1, F):
+            if BL[T] < BL[k]:
+                k = T
+        (BL[h], BL[k]) = (BL[k], BL[h])
+    return BL
+def V(BL):
+    BL = b(BL)
+    F = len(BL)
+    if F <= 1:
+        return BL
+    B9 = BL[0]
+    y = [A0 for A0 in BL if A0 < B9]
+    s = [A0 for A0 in BL[1:] if A0 >= B9]
+    return V(y) + [B9] + V(s)
+def L(BL):
+    if len(BL) < 2:
+        return BL
+    (E, S) = (b(), len(BL) // 2)
+    l = L(BL[:S])
+    Z = L(BL[S:])
+    while len(l) > 0 and len(Z) > 0:
+        if l[0] > Z[0]:
+            E.append(Z.pop(0))
+        else:
+            E.append(l.pop(0))
+    E.extend(l + Z)
+    return E
+def shell(nlist):
+    BL = b(BL)
+    F = len(BL)
+    if F < 2:
+        return BL
+    M1 = F // 2
+    while M1 > 0:
+        for h in H(M1, F):
+            G = BL[h]
+            T = h
+            while T >= M1 and BL[T - M1] > G:
+                BL[T] = BL[T - M1]
+                T -= M1
+            BL[T] = G
+        M1 //= 2
+    return BL
+def heap(nlist):
+    BL = b(BL)
+    F = len(BL)
+    if F < 2:
+        return BL
+    for R in H((F - 2) // 2, -1, -1):
+        U(BL, R, F - 1)
+    for r in H(F - 1, 0, -1):
+        (BL[r], BL[0]) = (BL[0], BL[r])
+        U(BL, 0, r - 1)
+    return BL
+def U(BL, D, r):
+    while True:
+        K = D * 2 + 1
+        if K > r:
+            break
+        if K + 1 <= r and BL[K] < BL[K + 1]:
+            K += 1
+        if BL[D] < BL[K]:
+            (BL[D], BL[K]) = (BL[K], BL[D])
+            D = K
+        else:
+            break
+def counting(alist):
+    BL = b(d)
+    F = len(BL)
+    if F < 2:
+        return BL
+    c = lx(BL)
+    M = max(BL) - c
+    aX = [0] * (M + 1)
+    for h in BL:
+        aX[h - c] += 1
+    xG = 0
+    for h in H(len(aX)):
+        while 0 < aX[h]:
+            BL[xG] = h + c
+            xG += 1
+            aX[h] -= 1
+    return BL
+def radix(aList):
+    BL = b(br)
+    F = len(BL)
+    if F < 2:
+        return BL
+    o = 10
+    I = False
+    (mO, VJ) = (-1, 1)
+    while not I:
+        I = True
+        kY = [b() for h in H(o)]
+        for h in BL:
+            mO = m(h / VJ)
+            kY[m(mO % o)].append(h)
+            if I and mO > 0:
+                I = False
+        Pq = 0
+        for ea in H(o):
+            hp = kY[ea]
+            for h in hp:
+                BL[Pq] = h
+                Pq += 1
+        VJ *= o
+    return BL
+def bucket(aList, bucketSize=5):
+    BL = b(br)
+    F = len(BL)
+    if F < 2:
+        return BL
+    l1 = lx(BL)
+    q = max(BL)
+    HN = Tw.floor((q - l1) / e) + 1
+    kY = []
+    for h in H(0, HN):
+        kY.append([])
+    for h in H(0, F):
+        kY[Tw.floor((BL[h] - l1) / e)].append(BL[h])
+    BL = []
+    for h in H(0, len(kY)):
+        kY[h] = u(kY[h])
+        for T in H(0, len(kY[h])):
+            BL.append(kY[h][T])
+    return BL
+def gnome(aList):
+    BL = b(br)
+    F = len(BL)
+    if F < 2:
+        return BL
+    B9 = 0
+    BV = len(BL)
+    while B9 < BV - 1:
+        if BL[B9] > BL[B9 + 1]:
+            (BL[B9 + 1], BL[B9]) = (BL[B9], BL[B9 + 1])
+            if B9 > 0:
+                B9 -= 2
+        B9 += 1
+    return BL
+def comb(aList):
+    BL = b(br)
+    F = len(BL)
+    if F < 2:
+        return BL
+    M1 = F
+    X = True
+    while M1 > 1 or X:
+        M1 = max(1, m(M1 / 1.25))
+        X = False
+        for h in H(F - M1):
+            T = h + M1
+            if BL[h] > BL[T]:
+                (BL[h], BL[T]) = (BL[T], BL[h])
+                X = True
+    return BL
+def cocktail(aList):
+    BL = b(br)
+    F = len(BL)
+    if F < 2:
+        return BL
+    r3 = True
+    h = 0
+    T = F - 1
+    while h < T and r3:
+        for M in H(h, T):
+            if BL[M] > BL[M + 1]:
+                (BL[M], BL[M + 1]) = (BL[M + 1], BL[M])
+                r3 = True
+        T -= 1
+        if r3:
+            r3 = False
+            for M in H(T, h, -1):
+                if BL[M] < BL[M - 1]:
+                    (BL[M], BL[M - 1]) = (BL[M - 1], BL[M])
+                    r3 = True
+        h += 1
+        if not r3:
+            return BL

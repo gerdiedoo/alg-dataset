@@ -1,0 +1,23 @@
+import random
+import timeit
+def M(fz):
+    for Q in n(1, len(fz)):
+        j = fz[Q]
+        while Q > 0 and fz[Q - 1] > j:
+            fz[Q] = fz[Q - 1]
+            Q = Q - 1
+        fz[Q] = j
+    return fz
+def F(R, *o, **s):
+    def _wrapped():
+        return R(*o, **s)
+    return CT
+if R9 == '__main__':
+    print('Sorting list of 100 rand nums between 0-1000')
+    fz = []
+    for Q in n(100):
+        fz.append(d.randint(0, 1000))
+    c1 = M(fz)
+    sB = F(M, fz)
+    print('Time to sort 1M times:')
+    print(x.timeit(sB))

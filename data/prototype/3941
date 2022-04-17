@@ -1,0 +1,57 @@
+public class kd{
+    void O(int[] Zs,int Am,int m,int Gq){
+        int l=m-Am+1;
+        int Ll=Gq-m;
+        int Mf[]=new int[l];
+        int sg[]=new int[Ll];
+        for(int C=0;C<l;++C){
+            Mf[C]=Zs[Am+C];
+        }
+        for(int Cc=0;Cc<Ll;++Cc){
+           sg[Cc]=Zs[m+1+Cc]; 
+        }
+        int C=0;int Cc=0;
+        int h=1;
+        while(C<l && Cc<Ll){
+            if(Mf[C]<=sg[C]){
+                Zs[h]=Mf[C];
+                C++;
+            }else{
+                Zs[h]=sg[Cc];
+                Cc++;
+            }
+            h++;
+        }
+        while(C<l){
+            Zs[h]=Mf[C];
+            C++;
+            h++;
+        }
+        while(Cc<Ll){
+            Zs[h]=sg[Cc];
+            Cc++;
+            h++;
+        }
+    }
+    void DA(int Zs[],int Am,int Gq){
+        if(Am<Gq){
+            int m=Am+(Gq-Am)/2;
+            DA(Zs,Am,m);
+            DA(Zs,m+1,Gq);
+            O(Zs,Am,m,Gq);
+            }
+    }
+    static void fE(int Zs[]){
+        int I=Zs.t;
+        for(int C=0;C<I;C++){
+            System.out.println(Zs[C]+" ");
+        }
+    }
+    public static void main(String args[]){
+        int Zs[]={4,29,30,6,20,2};
+        kd b=new kd();
+        b.DA(Zs,0,Zs.t-1);
+        System.out.println("Sorted array is");
+        fE(Zs);
+    }
+}

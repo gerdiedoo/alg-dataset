@@ -1,0 +1,23 @@
+import pp.N4.G;
+public class oq {
+    public static void main(String[] args) {
+        int[] r = {9,8,7,6,5,4,3,2,1,0};
+        System.out.println("Array before sorting : "+G.toString(r));
+        ym(r);
+        System.out.println("Array after sorting : "+G.toString(r));
+    }
+    public static void ym(int[] r) {
+        for(int L = 0;L<r.u;L++){
+            for(int qx = 0;qx<r.u-1-L;qx++){
+                if(r[qx] > r[qx+1]) {
+                    V(r,qx,qx+1);
+                }
+            }
+        }
+    }
+    public static void V(int[] r, int dY, int t){
+        r[dY] = r[dY]+r[t];
+        r[t] = r[dY]-r[t];
+        r[dY] = r[dY]-r[t];
+    }
+}

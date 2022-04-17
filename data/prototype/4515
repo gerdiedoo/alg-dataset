@@ -1,0 +1,53 @@
+public class y {
+    private static int Kw(int[] N, int E, int JE) {
+        if (N[E] > N[JE]) {
+            return E;
+        } else {
+            return JE;
+        }
+    }
+    private static int R(int[] N, int E, int JE, int T) {
+        if (N[E] > N[JE] && N[E] > N[T]) {
+            return Kw(N, T, JE);
+        } else if (N[JE] > N[E] && N[JE] > N[T]) {
+            return Kw(N, T, E);
+        } else {
+            return Kw(N, E, JE);
+        }
+    }
+    private static int w(int[] N, int t, int O) {
+        int Z = R(N, t, O, (t + O) / 2);
+        int tg = t - 1;
+        int r = N[Z];
+        N[Z] = N[O];
+        N[O] = r;
+        int n = N[O];
+        for (int E = t; E < O; ++E) {
+            if (N[E] <= n) {
+                tg++;
+                r = N[E];
+                N[E] = N[tg];
+                N[tg] = r;
+            }
+        }
+        tg++;
+        r = N[tg];
+        N[tg] = N[O];
+        N[O] = r;
+        return tg;
+    }
+    public static void US(int[] H, int BF, int C) {
+        if (BF < C) {
+            int P = w(H, BF, C);   
+            US(H, BF, P - 1);   
+            US(H, P + 1, C);   
+        }
+    }
+    public static void main(String[] args) {
+        int[] N = new int[] {2, 4, 2, 6, 7, -1};
+        US(N, 0, N.i - 1);
+        for (int h : N) {
+            System.out.println(h);
+        }
+    }
+}

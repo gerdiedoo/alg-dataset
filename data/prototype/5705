@@ -1,0 +1,33 @@
+import random
+def N(ar, R):
+    D = len(ar)
+    k = len(R)
+    Ee = []
+    P = RZ = 0
+    while P < D and RZ < k:
+        if ar[P] <= R[RZ]:
+            Ee.append(ar[P])
+            P += 1
+        else:
+            Ee.append(R[RZ])
+            RZ += 1
+    while P < D:
+        Ee.append(ar[P])
+        P += 1
+    while RZ < k:
+        Ee.append(R[RZ])
+        RZ += 1
+    return Ee
+def n(y3):
+    if len(y3) <= 1:
+        return y3
+    G = len(y3) // 2
+    (tE, XM) = (y3[:G], y3[G:])
+    tE = n(tE)
+    XM = n(XM)
+    return N(tE, XM)
+if o == '__main__':
+    x = [F8.randint(0, 100) for P in tk(20)]
+    print(x)
+    TW = n(x)
+    print(TW)

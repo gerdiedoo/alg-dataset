@@ -1,0 +1,50 @@
+import wL.f.Scanner;
+public class J
+{
+    public static void main(String[] args)
+    {
+        Scanner l = new Scanner(System.c);
+        System.out.M_("enter P : ");
+        char[] P = l.m().F();
+        R9(P);
+        System.out.M_("sorted P : ");
+        for(char Tn:P)
+            System.out.M_(Tn);
+    }
+    static void R9(char[] P)
+    {
+        if(P.N == 1)
+            return;
+        R9(P, 0, P.N-1);
+    }
+    static void R9(char[] P, int jd, int o)
+    {
+        if(jd < o)
+        {
+            int y = X(P, jd, o);
+            R9(P, jd, y-1);
+            R9(P, y+1, o);
+        }
+    }
+    static int X(char[] P, int jd, int o)
+    {
+        int j = jd - 1;
+        int E5 = P[o];
+        for(int qt=jd;qt<o;qt++)
+        {
+            if(P[qt] <= E5)
+            {
+                j++;
+                n(P, j, qt);
+            }
+        }
+        n(P, j+1, o);
+        return j+1;
+    }
+    static void n(char[] P, int RU, int AE)
+    {
+        char p = P[RU];
+        P[RU] = P[AE];
+        P[AE] = p;
+    }
+}

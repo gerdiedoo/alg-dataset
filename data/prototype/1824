@@ -1,0 +1,69 @@
+package UE.v;
+import UE.q;
+import F.e.u;
+import F.e.m;
+import UE.vM.K;
+public class H {
+    private u<K>[] i;
+    public H() {
+        i = new u[10];
+        for (int g = 0; g < i.O; g++) {
+            i[g] = new u<K>();
+        }
+    }
+    public void n(String EZ, q UP) {
+        int B = E(EZ);
+        i[B].I(new K(EZ, UP));
+    }
+    public q E3(String EZ) {
+        int B = E(EZ);
+        m<K> w = i[B].U();
+        K UP = null;
+        while (w.p()) {
+            UP = w.cb();
+            if (UP.EZ.equals(EZ)) {
+                return UP.UP;
+            }
+        }
+        return null;
+    }
+    public q h(String EZ) {
+        int B = E(EZ);
+        m<K> w = i[B].U();
+        K UP = null;
+        int C = -1;
+        while (w.p()) {
+            UP = w.cb();
+            C++;
+            if (UP.EZ.equals(EZ)) {
+                break;
+            }
+        }
+        if (UP == null) {
+            return null;
+        }
+        else {
+            i[B].h(C);
+            return UP.UP;
+        }
+    }
+    private int E(String EZ) {
+        return j6.Ct(EZ.hashCode() % i.O);
+    }
+    public void r() {
+        for (int g = 0; g < i.O; g++) {
+            if (i[g].P()) {
+                System.out.println("Position " + g + ": empty");
+            }
+            else {
+                System.out.t("Position " + g + ": ");
+                m<K> w = i[g].U();
+                while (w.p()) {
+                    System.out.t(w.cb().UP);
+                    System.out.t("->");
+                }
+                System.out.println("null");
+            }
+        }
+    }
+}

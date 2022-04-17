@@ -1,0 +1,24 @@
+package n.q6.G.U;
+public class DB<j extends L<j>> {
+    private DB() { }
+    public static <j extends L<j>> j[] Y(j[] e) {
+        boolean B = true;
+        int J = e.J;
+        while (B) {
+            B = false;
+            for (int i = 1; i < J; i++) {
+                if (e[i].M(e[i - 1]) < 0) {
+                    E(i, i - 1, e);
+                    B = true;
+                }
+            }
+            J--;
+        }
+        return e;
+    }
+    private static <j extends L<j>> void E(int k0, int K, j[] e) {
+        j l = e[k0];
+        e[k0] = e[K];
+        e[K] = l;
+    }
+}

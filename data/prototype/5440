@@ -1,0 +1,17 @@
+def F(j2, Z, e, c):
+    if e > c:
+        return -1
+    q = (e + c) // 2
+    s = j2[q]
+    if s == Z:
+        return q
+    if Z > s:
+        e = q + 1
+    else:
+        c = q - 1
+    return F(j2, Z, e, c)
+if M == '__main__':
+    C5 = [12, 15, 17, 19, 21, 24, 45, 67]
+    v = 88
+    o = F(C5, v, 0, len(C5) - 1)
+    print(o)

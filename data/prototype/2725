@@ -1,0 +1,46 @@
+package P.U.Z9;
+import T.wz.E;
+import T.wz.I;
+import T.wz.d;
+import T.wz.m;
+public class M {
+  public static <u extends t<? super u>> void nx(m<u> B) {
+    final int R = B.h();
+    for (int K = 0; K < R; K++) {
+      for (int Ud = R - 1; Ud > K; Ud--) {
+        final u W = B.e(Ud);
+        final u l = B.e(Ud - 1);
+        if (W.D(l) < 0) {
+          d.lp(B, Ud, Ud - 1);
+        }
+      }
+    }
+  }
+  public static <u extends t<u>> void nx(u[] B) {
+    for (int p = 0; p < B.O; p++) {
+      for (int C = B.O - 1; C > p; C--) {
+        final u W = B[C];
+        final u l = B[C - 1];
+        if (W.D(l) < 0) {
+          B[C] = l;
+          B[C - 1] = W;
+        }
+      }
+    }
+  }
+  public static void main(String[] args) {
+    final m<nm> J = new E<>();
+    J.G(4);
+    J.G(1);
+    J.G(5);
+    J.G(3);
+    J.G(9);
+    J.G(10);
+    J.G(1);
+    nx(J);
+    System.out.println(J);
+    final nm[] f = new nm[]{4, 1, 5, 3, 9, 10, 1};
+    nx(f);
+    System.out.println(I.toString(f));
+  }
+}

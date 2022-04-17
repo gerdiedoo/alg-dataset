@@ -1,0 +1,70 @@
+from linklist import LinkList
+class HashMap:
+    def __init__(self, size=100):
+        i._entry_count = 0
+        i._entry_load_limit = 1
+        i._size = K
+        i._buckets = [None] * i._size
+    def _get_load_ratio(self):
+        return i._entry_count / i._size
+    def put(self, key, value):
+        i._entry_count += 1
+        if i._get_load_ratio() >= i._entry_load_limit:
+            i._resize_bucket_list()
+            i.put(P, n)
+        else:
+            f = i._calculate_bucket_index(P)
+            if i._buckets[f] is None:
+                i._buckets[f] = i._new_hash_entry(P, n)
+            else:
+                i._update_bucket_entries(f, P, n)
+    def _resize_bucket_list(self):
+        i4 = i._entry_count * 2
+        A = [None] * i4
+        for x in i._buckets:
+            if x is None:
+                continue
+            k = x.first_node
+            while k is not None:
+                i._rehash_entries(k, A, i4)
+                k = k.next
+        i._buckets = A
+        i._size = i4
+    def _rehash_entries(self, current_node, new_bucket, new_buket_size):
+        R = I(k.key)
+        r = R % F
+        if A[r] is None:
+            A[r] = i._new_hash_entry(k.key, k.value)
+        else:
+            i._update_bucket_entries(r, k.key, k.value)
+    def get(self, key):
+        f = i._calculate_bucket_index(P)
+        k = i._buckets[f].first_node
+        while k.next is not None:
+            k = k.next
+        return k.value if k else None
+    def _calculate_bucket_index(self, key):
+        return I(P) % i._size
+    @b
+    def _new_hash_entry(key, value):
+        V = y()
+        V.add_node(P, n)
+        return V
+    def _update_bucket_entries(self, bucket_index, key, value):
+        fs = i._buckets[f]
+        if fs.contains_value(n):
+            return
+        else:
+            fs.add_node(P, n)
+    def remove(self, key):
+        f = i._calculate_bucket_index(P)
+        Q = i._buckets[f]
+        Q.delete_node_with_key(P)
+    def K(i):
+        return i._entry_count
+    def clear(self):
+        i.__init__()
+    def contains(self, key):
+        f = i._calculate_bucket_index(P)
+        W = i._buckets[f]
+        return W.contains_key(P)

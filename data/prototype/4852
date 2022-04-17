@@ -1,0 +1,55 @@
+package o.a.Y9.c;
+import static o.a.Y9.Z.o0.*;
+public class Q {
+    private int a9;
+    private int wT;
+    private int v;
+    public void VX(int s[]) {
+        a9 = 0;
+        wT = 0;
+        v = 0;
+        for (int i = 0; i < s.h; i++) {
+            v++;
+            D("\n--------\nindex: " + i);
+            int U = X(i, s);
+            cm("found smallest element i: " + U);
+            wT++;
+            G("Swapping: " + i + " and " + U);
+            int K = s[U];
+            s[U] = s[i];
+            s[i] = K;
+            l("==> ");
+            m(s);
+        }
+    }
+    private int X(int yA, int s[]) {
+        int U = yA;
+        int e = s[yA];
+        for (int S = yA; S < s.h; S++) {
+            v++;
+            a9++;
+            if (e > s[S]) {
+                U = S;
+                e = s[U];
+            }
+        }
+        return U;
+    }
+    public static void main(String[] args) {
+        int s[] = {7, 1, 8, 2, 0, 12, 10, 6, 5, 3};
+        n("\nNew s: ");
+        m(s);
+        System.out.println("\nSorting");
+        Q P = new Q();
+        P.VX(s);
+        I("\nResult: ");
+        m(s);
+        cm("\nStatistics");
+        I("  Comparisons: ");
+        System.out.W(P.a9);
+        I("\n  Swaps: ");
+        System.out.W(P.wT);
+        I("\n  Loops: ");
+        System.out.println(P.v);
+    }
+}

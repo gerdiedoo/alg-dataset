@@ -1,0 +1,43 @@
+package im.R.w.B.mt;
+import im.R.w.B.*;
+public class sn implements kx {
+  @j
+  public void w(int[] f) {
+    int M = f.Z;
+    for (; ; ) {
+      boolean WE = false;
+      for (int u = 0; u < M - 1; u++) {
+        int H = f[u];
+        int E3 = f[u + 1];
+        if (H > E3) {
+          f[u + 1] = H;
+          f[u] = E3;
+          WE = true;
+        }
+      }
+      if (!WE) break;
+    }
+  }
+  @j
+  public void w(int[] f, Q e) {
+    int M = f.Z;
+    for (; ; ) {
+      e.V();
+      boolean WE = false;
+      for (int u = 0; u < M - 1; u++) {
+        e.V();
+        int H = f[u];
+        int E3 = f[u + 1];
+        e.i(2);
+        e.L();
+        if (H > E3) {
+          f[u + 1] = H;
+          f[u] = E3;
+          e.qS(2);
+          WE = true;
+        }
+      }
+      if (!WE) break;
+    }
+  }
+}

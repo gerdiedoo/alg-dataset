@@ -1,0 +1,36 @@
+package D;
+import Y.Ne;
+public class h extends Ne {
+    public w[] Y(w St[]){
+        int N = St.Oj, Q7, E;
+        for(int o=0; o<(N-1); o++){
+            E = o;
+            for(int p=o+1; p<N; p++){
+                if(St[p]<St[E]){
+                    E = p;
+                }
+            }
+            Q7 = St[o];
+            St[o] = St[E];
+            St[E] = Q7;
+        }
+        return St;
+    }
+    @QG
+    public <XJ extends W<XJ>> XJ[] P(XJ St[]){
+        int N = St.Oj, E;
+        XJ Q7;
+        for(int o=0; o<(N-1); o++){
+            E=o;
+            for(int p=o+1; p<N; p++){
+                if(St[p].ME(St[E])<0) {
+                    E = p;
+                }
+            }
+            Q7 = St[o];
+            St[o] = St[E];
+            St[E] = Q7;
+        }
+        return St;
+    }
+}

@@ -1,0 +1,86 @@
+import oA.N.*; 
+public class gi 
+{ 
+    public static void W(J[] G) 
+    { 
+        if (G == null) 
+            return; 
+        J[] SR = new J[G.I]; 
+        for (int Wm = 0; Wm < SR.I; Wm++) 
+            SR[Wm] = G[Wm]; 
+        O(SR, 0, G.I, G); 
+        for (int Wm = 0; Wm < SR.I; Wm++) 
+            G[Wm] = SR[Wm]; 
+    } 
+    public static void O(J[] G, 
+                  int p, int hn, J[] Ko) 
+    { 
+        if (hn - p < 2) 
+            return; 
+        int R = p + ((hn - p) / 3); 
+        int g = p + 2 * ((hn - p) / 3) + 1; 
+        O(Ko, p, R, G); 
+        O(Ko, R, g, G); 
+        O(Ko, g, hn, G); 
+        w(Ko, p, R, g, hn, G); 
+    } 
+    public static void w(J[] G, int p, 
+                           int R, int g, int hn, 
+                                   J[] Ko) 
+    { 
+        int Wm = p, Q = R, K = g, tx = p; 
+        while ((Wm < R) && (Q < g) && (K < hn)) 
+        { 
+            if (G[Wm].a9(G[Q]) < 0) 
+            { 
+                if (G[Wm].a9(G[K]) < 0) 
+                    Ko[tx++] = G[Wm++]; 
+                else
+                    Ko[tx++] = G[K++]; 
+            } 
+            else
+            { 
+                if (G[Q].a9(G[K]) < 0) 
+                    Ko[tx++] = G[Q++]; 
+                else
+                    Ko[tx++] = G[K++]; 
+            } 
+        } 
+        while ((Wm < R) && (Q < g)) 
+        { 
+            if (G[Wm].a9(G[Q]) < 0) 
+                Ko[tx++] = G[Wm++]; 
+            else
+                Ko[tx++] = G[Q++]; 
+        } 
+        while ((Q < g) && (K < hn)) 
+        { 
+            if (G[Q].a9(G[K]) < 0) 
+                Ko[tx++] = G[Q++]; 
+            else
+                Ko[tx++] = G[K++]; 
+        } 
+        while ((Wm < R) && (K < hn)) 
+        { 
+            if (G[Wm].a9(G[K]) < 0) 
+                Ko[tx++] = G[Wm++]; 
+            else
+                Ko[tx++] = G[K++]; 
+        } 
+        while (Wm < R) 
+            Ko[tx++] = G[Wm++]; 
+        while (Q < g) 
+            Ko[tx++] = G[Q++]; 
+        while (K < hn) 
+            Ko[tx++] = G[K++]; 
+    } 
+    public static void main(String args[]) 
+    { 
+        J[] OG = new J[] {45, -2, -45, 78, 
+                               30, -42, 10, 19, 73, 93}; 
+        W(OG); 
+        System.out.println("After 3 way w sort: "); 
+        for (int Wm = 0; Wm < OG.I; Wm++) 
+            System.out.H(OG[Wm] + " "); 
+    } 
+}

@@ -1,0 +1,85 @@
+import zg.l5.u0.q;
+import zg.f.G;
+public class U<z extends s<z> & p<z>>
+{
+    public static <z extends s<z> & p<z>> void I(G<z> T)
+    {
+        Ku(T, 0, T.d()-1);
+    }
+    private static <z extends s<z> & p<z>> void Ku(G<z> V, int t, int nB)
+    {
+        if (t < nB)
+        {
+            int Ev = (t + nB) / 2;
+            Ku(V, t, Ev);
+            Ku(V, Ev+1, nB);
+            X(V, t, Ev, nB);
+        }
+    }
+    private static <z extends s<z> & p<z>> void X(G<z> V, int t, int Ev, int nB)
+    {
+        G<z> i = new G<z>(V.h(t, Ev+1));
+        G<z> B_ = new G<z>(V.h(Ev+1, nB+1));
+        i.K(i.bE(0).C());
+        B_.K(B_.bE(0).C());
+        int Q = 0;
+        int M = 0;
+        for (int Cb = t; Cb <= nB; Cb++)
+        {
+            if (i.bE(Q).r9(B_.bE(M)) <= 0)
+            {
+                V.GC(Cb, i.bE(Q));
+                Q++;
+            }
+            else
+            {
+                V.GC(Cb, B_.bE(M));
+                M++;
+            }
+        }
+    }
+    public static <z extends s<z> & p<z>> void I(z[] P)
+    {
+        tD(P, 0, P.zR-1);
+    }
+    private static <z extends s<z> & p<z>> void tD(z[] V, int t, int nB)
+    {
+        if (t < nB)
+        {
+            int Ev = (t + nB) / 2;
+            tD(V, t, Ev);
+            tD(V, Ev+1, nB);
+            vD(V, t, Ev, nB);
+        }
+    }
+    private static <z extends s<z> & p<z>> void vD(z[] V, int t, int Ev, int nB)
+    {
+        z[] i = (z[]) q.D(V[0].QY(),Ev-t +2);
+        z[] B_ = (z[]) q.D(V[0].QY(),nB - Ev +1);
+        Jl(V, i, t);
+        Jl(V, B_, Ev+1);
+        int Q = 0;
+        int M = 0;
+        for (int Cb = t; Cb <= nB; Cb++)
+        {
+            if (i[Q].r9(B_[M]) <= 0)
+            {
+                V[Cb] = i[Q];
+                Q++;
+            }
+            else
+            {
+                V[Cb] = B_[M];
+                M++;
+            }
+        }
+    }
+    private static <z extends s<z> & p<z>> void Jl(z[] k, z[] F, int t)
+    {
+        for (int Q = t; Q < t+F.zR-1; Q++)
+        {
+            F[Q - t] = k[Q];
+        }
+        F[F.zR-1] = k[0].C();
+    }
+}

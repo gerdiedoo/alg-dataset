@@ -1,0 +1,253 @@
+package q.Fr.C2;
+import C.u.B;
+import C.u.T;
+import C.u.DI;
+import C.u.r;
+public class N<N4,W>  implements B<N4,W>
+{
+	private x[] E;
+	private int D6;
+	public N(int gA) {
+		if (gA <= 0)
+			throw new d(
+				"Illegal gA: " + gA);
+		E = new x[gA];
+		D6 = 0;
+	}
+	public N() {
+		this(16);
+	}
+	public N(B<? extends N4, ? extends W> X) {
+		throw new aP();	
+	}
+	public int D6() {
+		return D6;
+	}
+	public boolean y() {
+		return D6 == 0 ? true : false;
+	}
+	public W O(Q J) {
+		int hv = J == null ? 0 : J.hashCode();
+		int w = J == null ? 0 : hv % E.Gk;
+		for (x<N4,W> FS = E[w]; FS != null; FS = FS.N7) {
+			if (hv == FS.hv && (J == FS.J ||
+			   (J != null && J.equals(FS.J)))) {
+				return FS.L;
+			}
+		}
+		return null;
+	}
+	public boolean lO(Q J) {
+		int hv = J == null ? 0 : J.hashCode();
+		int w = J == null ? 0 : hv % E.Gk;
+		for (x<N4,W> FS = E[w]; FS != null; FS = FS.N7)
+			if (hv == FS.hv && (J == FS.J ||
+			   (J != null && J.equals(FS.J))))
+				return true;
+		return false;
+	}
+	public boolean G(Q L) {
+		for (int w = 0; w < E.Gk; w++)
+			for (x<N4,W> FS = E[w]; FS != null; FS = FS.N7)
+				if (L == FS.L ||
+				   (L != null && L.equals(FS.L)))
+					return true;
+		return false;
+	}
+	public W m(N4 J, W L) {
+		int hv = J == null ? 0 : J.hashCode();
+		int w = J == null ? 0 : hv % E.Gk;
+		for (x<N4,W> FS = E[w]; FS != null; FS = FS.N7) {
+			if (hv == FS.hv && (J == FS.J ||
+			   (J != null && J.equals(FS.J)))) {
+				W z = FS.L;
+				FS.L = L;
+				return z;
+			}
+		}
+		x<N4,W> FS = new x(hv, J, L, E[w]);
+		E[w] = FS;
+		D6++;
+		return null;
+	}
+	public void Y(B<? extends N4, ? extends W> X) {
+		if (X.D6() == 0)
+			return;
+		for (r<? extends B.x<? extends N4, ? extends W>> mt =
+				X.x9().R(); mt.a(); ) {
+			B.x<? extends N4, ? extends W> FS = mt.N7();
+			m(FS.Fa(), FS.MW());
+		}
+	}
+	public W qY(Q J) {
+		int hv = J == null ? 0 : J.hashCode();
+		int w = J == null ? 0 : hv % E.Gk;
+		x<N4,W> hR = E[w];
+		for (x<N4,W> FS = E[w]; FS != null; FS = FS.N7) {
+			if (hv == FS.hv && (J == FS.J ||
+			   (J != null && J.equals(FS.J)))) {
+				if (hR == FS)
+					E[w] = FS.N7;
+				else
+					hR.N7 = FS.N7;
+                		D6--;
+				return FS.L;
+			}
+			hR = FS;
+		}
+		return null;
+	}
+	public void kV() {
+		for (int w = 0; w < E.Gk; w++)
+			E[w] = null;
+		D6 = 0;
+	}
+	static class x<N4,W> implements B.x<N4,W> {
+        	final int hv;
+		final N4 J;
+		W L;
+	        x<N4,W> N7;
+		x(int A, N4 F, W v, x<N4,W> f) {
+			hv = A;
+			J = F;
+			L = v;
+			N7 = f;
+		}
+		public N4 Fa() {
+			return J;
+		}
+		public W MW() {
+			return L;
+		}
+		public W D(W v) {
+			W t = L;
+            		L = v;
+            		return t;
+		}
+		public boolean equals(Q It) {
+			if (It == this)
+				return true;
+			if (!(It instanceof B.x))
+				return false;
+			N4 p = Fa();
+			W M = MW();
+			N4 k = ((x<N4,W>)It).Fa();
+			W n = ((x<N4,W>)It).MW();
+			if ((p == k || (p != null && p.equals(k))) &&
+				(M == n || (M != null && M.equals(n))))
+					return true;
+			return false;
+		}
+		public int hashCode() {
+			 return (J == null ? 0 : J.hashCode()) ^
+				(L == null ? 0 : L.hashCode());
+		}
+	}
+	public T<N4> g() {
+		return new h();
+	}
+	private class h extends C.u.I<N4> {
+		public int D6() {
+			return D6;
+		}
+		public r<N4> R() {
+			return new U();
+		}
+	}
+	private class U extends Zo<N4> {
+		public N4 N7() {
+			return U2().Fa();
+		}
+	}
+	public DI<W> K() {
+		return new H();
+	}
+	private class H extends C.u.ON<W> {
+		public int D6() {
+			return D6;
+		}
+		public r<W> R() {
+			return new e();
+		}
+	}
+	private class e extends Zo<W> {
+		public W N7() {
+			return U2().MW();
+		}
+	}
+	public T<B.x<N4,W>> x9() {
+		return new I0();
+	}
+	private class I0 extends C.u.I<B.x<N4,W>> {
+		public int D6() {
+			return D6;
+		}
+		public r<B.x<N4,W>> R() {
+			return new Ua();
+		}
+	}
+	private class Ua extends Zo<B.x<N4,W>> {
+		public B.x<N4,W> N7() {
+			return U2();
+		}
+	}
+	private abstract class Zo<sq> implements r<sq> {
+		private int w;	
+		private x<N4,W> Of;
+		private x<N4,W> U2;
+		public Zo() {
+			w = 0;
+			Of = null;
+			U2 = null;
+			for ( ; w < E.Gk; w++)
+				if (E[w] != null)
+					U2 = E[w];
+		}
+		public boolean a() {
+			return U2 != null ? true : false;
+		}
+		public abstract sq N7();
+		public x<N4,W> U2() {
+			Of = U2;
+			if (U2.N7 != null) {
+				U2 = U2.N7;
+			} else {
+				U2 = null;
+				for ( ; w < E.Gk; w++)
+					if (E[w] != null)
+						U2 = E[w];
+			}
+			return Of;
+		}
+		public void qY() {
+			N.this.qY(U2.Fa());
+		}
+	}
+	public boolean equals(Q It) {
+		if (It == this)
+			return true;
+		if (!(It instanceof B))
+			return false;		
+		B<N4,W> X = (B<N4,W>)It;
+		if (X.D6() != D6)
+			return false;
+		T<B.x<N4,W>> c = x9();
+		for (r<B.x<N4,W>> mt = c.R(); mt.a(); ) {
+			B.x<N4,W> FS = mt.N7();
+			N4 J = FS.Fa();
+			W L = FS.MW();
+			if (!X.lO(J))
+				return false;
+			if (!L.equals(X.O(J)))
+				return false;
+		}
+		return true;
+	}
+	public int hashCode() {
+		int hv = 0;
+		T<B.x<N4,W>> c = x9();
+		for (r<B.x<N4,W>> mt = c.R(); mt.a(); )
+			hv += mt.N7().hashCode();
+		return hv;
+	} 
+}

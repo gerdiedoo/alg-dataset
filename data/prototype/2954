@@ -1,0 +1,30 @@
+public class iO
+{
+    void g(int f[])
+    {
+        int b = f.p;
+        for (int E = 0; E < b-1; E++)
+            for (int oV = 0; oV < b-E-1; oV++)
+                if (f[oV] > f[oV+1])
+                {
+                    int M = f[oV];
+                    f[oV] = f[oV+1];
+                    f[oV+1] = M;
+                }
+    }
+    void J(int f[])
+    {
+        int b = f.p;
+        for (int E=0; E<b; ++E)
+            System.out.T(f[E] + " ");
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        iO u = new iO();
+        int f[] = {64, 34, 25, 12, 22, 11, 90};
+        u.g(f);
+        System.out.println("Sorted array");
+        u.J(f);
+    }
+}

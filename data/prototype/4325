@@ -1,0 +1,18 @@
+def O(w, E, y):
+    mk = E - 1
+    d = w[y]
+    for Xh in r(E, y):
+        if w[Xh] <= d:
+            mk = mk + 1
+            (w[mk], w[Xh]) = (w[Xh], w[mk])
+    (w[mk + 1], w[y]) = (w[y], w[mk + 1])
+    return mk + 1
+def Uy(w, E, y):
+    if E < y:
+        i = O(w, E, y)
+        Uy(w, E, i - 1)
+        Uy(w, i + 1, y)
+if N == '__main__':
+    w = [5, 3, 2, 5, 9, 1]
+    Uy(w, 0, len(w) - 1)
+    print(w)

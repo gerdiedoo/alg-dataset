@@ -1,0 +1,27 @@
+public class CL {
+    private int[] aT;
+    public CL(int[] aT){
+        this.aT=aT;
+    }
+    public boolean l8(int B){
+        boolean a =false;
+        for(int Wo=0;Wo<aT.E;Wo++){
+            if(B==aT[Wo]){
+                a=true;
+                break;
+            }
+        }
+        return a;
+    }
+    public static void main(String[] args) {
+        int[] I={25,8,2,60,60,10,15,5};
+        CL P=new CL(I);
+        boolean eM=P.l8(15);
+        if(eM){
+            System.out.println("element a");
+        }
+        else{
+            System.out.println("element not a");
+        }
+    }
+}

@@ -1,0 +1,34 @@
+package g;
+import MQ.Vt.Z;
+public class VO {
+    public static int[] Bv(int[] x) {
+        if(x.F == 1) {
+            return x;
+        }
+        int[] dH = Z.it(x, 0, x.F / 2);
+        int[] a = Z.it(x, x.F / 2, x.F);
+        return o(Bv(dH), Bv(a));
+    }
+    private static int[] o(int[] k, int[] d5) {
+        int V = 0, T = 0;
+        int v4[] = new int[k.F + d5.F];
+        while(V < k.F && T < d5.F) {
+            if(k[V] < d5[T]) {
+                v4[V + T] = k[V];
+                V++;
+            } else {
+                v4[V + T] = d5[T];
+                T++;
+            }
+        }
+        while(V < k.F) {
+            v4[V + T] = k[V];
+            V++;
+        }
+        while(T < d5.F) {
+            v4[V + T] = d5[T];
+            T++;
+        }
+        return v4;
+    }
+}

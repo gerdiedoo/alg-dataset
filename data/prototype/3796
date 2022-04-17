@@ -1,0 +1,49 @@
+package D.O.Z.c.T;
+import z.m.V;
+import He.a.E;
+import He.a.L;
+public class l {
+	private static E R = L.y(l.class);
+	public static int[] t(int[] zx) {
+		R.LK("Sorting {}", V.toString(zx));
+		if(zx.K <= 1) {
+			return zx;
+		}
+		int u0 = zx.K / 2;
+		int EZ = zx.K - u0;
+		int[] W, fU;
+		W = new int[u0];
+		fU = new int[EZ];
+		R.LK("Left {} and Right {}", V.toString(W), V.toString(fU));
+		for (int G = 0; G < u0; G++) {
+			W[G] = zx[G];
+		}
+		for (int G = u0; G <zx.K; G++) {
+			fU[G - u0] = zx[G];
+		}
+		R.LK("Left {} and Right {}", V.toString(W), V.toString(fU));
+		W = t(W);
+		fU = t(fU);
+		return T(W, fU);
+	}
+	private static int[] T(int[] W, int[] fU) {
+		R.LK("Merging {} with {}", V.toString(W), V.toString(fU));
+		int[] H = new int[W.K + fU.K];
+		int G=0, n=0, M=0;
+		while(n != W.K && M != fU.K) {
+			if(W[n] < fU[M]) {
+				H[G++] = W[n++];
+			} else {
+				H[G++] = fU[M++];
+			}
+		}
+		while(n != W.K) {
+			H[G++] = W[n++];
+		}
+		while(M != fU.K) {
+			H[G++] = fU[M++];
+		}
+		R.LK("Merge H: {}", V.toString(H));
+		return H;
+	}
+}

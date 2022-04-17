@@ -1,0 +1,106 @@
+package jB;
+import Q.Zf.E;
+import Q.Zf.n;
+import Q.Zf.M;
+import Q.Zf.RR;
+import Q.Zf.ct;
+import Q.Zf.q;
+public class b<Z,p> extends I<Z,p>{
+	private E<eP<Z,p>> Li = new E<>();
+	public b(){	}
+	public void Xs() {
+		Li.Xs();
+	}
+	private int GS(Z J){
+		int U = Li.Go();
+		for(int L = 0; L < U; L++){
+			if(Li.IV(L).m().equals(J)){
+				return L;
+			}
+		}
+		return -1;
+	}
+	private int P(p N){
+		int U = Li.Go();
+		for(int L = 0; L < U; L++){
+			if(Li.IV(L).t() == N){
+				return L;
+			}
+		}
+		return -1;
+	}
+	public boolean O(r J) {
+		int L = GS((Z)J);
+		if(L == -1){
+			return false;
+		} else{
+			return true;
+		}
+	}
+	public boolean eo(r N) {
+		int L = P((p)N);
+		if(L == -1){
+			return false;
+		} else{
+			return true;
+		}
+	}
+	private class R implements M<H<Z,p>> {
+		private int L = 0;
+		public boolean g(){
+			return L < Li.Go();
+		}
+		public H<Z,p> c(){
+			if(L == Li.Go()){
+				throw new ct();
+			}
+			return Li.IV(L++);
+		}
+		public void h(){
+			throw new y();
+		}
+	}
+	private class G implements D<H<Z,p>> {
+		public M<H<Z, p>> oi() {
+			return new R();
+		}
+	}
+	public q<H<Z, p>> ty() {
+		return (q<H<Z, p>>) new G();
+	}
+	public p IV(r J) {
+		int L = GS((Z)J);
+		if(L == -1){
+			return null;
+		}
+		return Li.IV(L).t();
+	}
+	public p f(Z J, p N) {
+		int L = GS(J);
+		if(L == -1){
+			Li.XH(new eP<>(J,N));
+			return null;
+		} else {
+			return Li.IV(L).v(N);
+		}
+	}
+	public void EM(RR<? extends Z, ? extends p> k) {
+		Li.a((n<? extends eP<Z, p>>) k);
+	}
+	public p h(r J) {
+		int L = GS((Z)J);
+		int U = Go();
+		if(L == -1){
+			return null;
+		} 
+		p z = Li.IV(L).t();
+		if(L != U - 1){
+			Li.w(L, Li.IV(U-1));
+		}
+		Li.h(U-1);
+		return z;
+	}
+	public int Go() {
+		return Li.Go();
+	}
+}

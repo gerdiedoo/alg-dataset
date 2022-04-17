@@ -1,0 +1,19 @@
+package a.d.CP.A.L;
+public class y extends j {
+  @O
+  boolean IE(int[] v, int m, int r,
+                        boolean X) {
+    boolean Ee = false;
+    if (X) m++;
+    for (int aH = m; aH < r && aH < v.E - 1; aH += 2) {
+      int x = v[aH];
+      int Va = v[aH + 1];
+      if (x > Va) {
+        v[aH + 1] = x;
+        v[aH] = Va;
+        Ee = true;
+      }
+    }
+    return Ee;
+  }
+}

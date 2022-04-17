@@ -1,0 +1,608 @@
+package lg;
+import yN.r.KK;
+import yN.r.s.F;
+import o.Q;
+import o.U;
+public class H {
+	final static int w = 1 << 13;
+	public static void d8(byte[] t) {
+		new co.g(t, 0, t.O - 1).sR();
+	}
+	private static final class co {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final byte[] t;
+			final int k;
+			final int h;
+			g(byte[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(byte[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(byte[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			byte sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(byte[] t, int I, int T) {
+			byte Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(char[] t) {
+		new D_.g(t, 0, t.O - 1).sR();
+	}
+	private static final class D_ {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final char[] t;
+			final int k;
+			final int h;
+			g(char[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(char[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(char[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			char sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(char[] t, int I, int T) {
+			char Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(short[] t) {
+		new p.g(t, 0, t.O - 1).sR();
+	}
+	private static final class p {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final short[] t;
+			final int k;
+			final int h;
+			g(short[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(short[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(short[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			short sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(short[] t, int I, int T) {
+			short Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(int[] t) {
+		new ue.g(t, 0, t.O - 1).sR();
+	}
+	private static final class ue {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final int[] t;
+			final int k;
+			final int h;
+			g(int[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(int[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(int[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			int sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(int[] t, int I, int T) {
+			int Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(long[] t) {
+		new x7.g(t, 0, t.O - 1).sR();
+	}
+	private static final class x7 {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final long[] t;
+			final int k;
+			final int h;
+			g(long[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(long[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(long[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			long sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(long[] t, int I, int T) {
+			long Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(float[] t) {
+		new K.g(t, 0, t.O - 1).sR();
+	}
+	private static final class K {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final float[] t;
+			final int k;
+			final int h;
+			g(float[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(float[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(float[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			float sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(float[] t, int I, int T) {
+			float Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(double[] t) {
+		new u.g(t, 0, t.O - 1).sR();
+	}
+	private static final class u {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final double[] t;
+			final int k;
+			final int h;
+			g(double[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(double[] t, int k, int h) {	
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		private static int S3(double[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			double sU = t[AO];	
+			while(k < h) {
+				while(t[h] > sU) --h;
+				while(t[k] <= sU && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(double[] t, int I, int T) {
+			double Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static <vq> void d8(vq[] t, KK<? super vq> q) {
+		if(q == null) {
+			d8(t);
+		}
+		else {
+			new KV.g<>(t, 0, t.O - 1, q).sR();
+		}
+	}
+	public static void d8(j[] t) {
+		new f.g(t, 0, t.O - 1).sR();
+	}
+	private static final class f {	
+		private static final class g extends F {
+			private static final long S = 1L;
+			final j[] t;
+			final int k;
+			final int h;
+			g(j[] t, int k, int h) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h);
+				if(h - k < w) {
+					Cy(t, k, sU - 1);
+					Cy(t, sU + 1, h);
+				}
+				else {
+					g AO = new g(t, k, sU - 1);
+					g C = new g(t, sU + 1, h);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static void Cy(j[] t, int k, int h) {
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h);	
+			Cy(t, k, sU - 1);
+			Cy(t, sU + 1, h);
+		}
+		@kE({ "rawtypes", "unchecked" })
+		private static int S3(j[] t, int AO, int C) {
+			int k = AO;
+			int h = C;
+			a sU = ((a) t[AO]);	
+			while(k < h) {
+				while(sU.MJ(t[h]) < 0) --h;
+				while(sU.MJ(t[k]) >= 0 && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static void ZJ(j[] t, int I, int T) {
+			j Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	private static final class KV {
+		private static final class g<vq> extends F {
+			private static final long S = 1L;
+			final vq[] t;
+			final int k;
+			final int h;
+			final KK<? super vq> q;
+			g(vq[] t, int k, int h, KK<? super vq> q) {
+				this.t = t;
+				this.k = k;
+				this.h = h;
+				this.q = q;
+			}
+			public final void mv() {
+				if(k >= h) {
+					return;
+				}
+				int sU = S3(t, k, h, q);	
+				if(h - k < w) {
+					Cy(t, k, sU - 1, q);
+					Cy(t, sU + 1, h, q);
+				}
+				else {
+					g<vq> AO = new g<>(t, k, sU - 1, q);
+					g<vq> C = new g<>(t, sU + 1, h, q);
+					AO.YM();
+					C.mv();
+					AO.n();
+				}
+			}
+		}
+		private static <vq> void Cy(vq[] t, int k, int h, KK<? super vq> q) {
+			if(k >= h) {
+				return;
+			}
+			int sU = S3(t, k, h, q);	
+			Cy(t, k, sU - 1, q);
+			Cy(t, sU + 1, h, q);
+		}
+		private static <vq> int S3(vq[] t, int AO, int C, KK<? super vq> q) {
+			int k = AO;
+			int h = C;
+			vq sU = t[AO];
+			while(k < h) {
+				while(q.dC(sU, t[h]) < 0) --h;
+				while(q.dC(t[k], sU) <= 0 && k < h) ++k;
+				ZJ(t, k, h);
+			}
+			ZJ(t, AO, k);
+			return k;
+		}
+		private static <vq> void ZJ(vq[] t, int I, int T) {
+			vq Oc = t[I];
+			t[I] = t[T];
+			t[T] = Oc;
+		}
+	}
+	public static void d8(byte[] t, boolean A) {
+		if(A) {
+			mO[] qF = Q.G(t);
+			d8(qF, U.yD());
+			Q.m(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+	public static void d8(char[] t, boolean A) {
+		if(A) {
+			uZ[] qF = Q.y(t);
+			d8(qF, U.yD());
+			Q.D(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+	public static void d8(short[] t, boolean A) {
+		if(A) {
+			Uy[] qF = Q.GH(t);
+			d8(qF, U.yD());
+			Q.d(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+	public static void d8(int[] t, boolean A) {
+		if(A) {
+			Y[] qF = Q.hy(t);
+			d8(qF, U.yD());
+			Q.b(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+	public static void d8(long[] t, boolean A) {
+		if(A) {
+			q7[] qF = Q.M(t);
+			d8(qF, U.yD());
+			Q.z(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+	public static void d8(float[] t, boolean A) {
+		if(A) {
+			eV[] qF = Q.o8(t);
+			d8(qF, U.yD());
+			Q.V(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+	public static void d8(double[] t, boolean A) {
+		if(A) {
+			v[] qF = Q.L(t);
+			d8(qF, U.yD());
+			Q.N(qF, t);
+		}
+		else {
+			d8(t);
+		}
+	}
+}

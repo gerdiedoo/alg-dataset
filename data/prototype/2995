@@ -1,0 +1,15 @@
+public class H {
+	public static void dk(int P4[]) {
+		int z = P4.zX;
+		for (boolean W = true; W == true;) {
+			W = false;
+			for (int C = 0; C < z-1; C++) {
+				if (P4[C] > P4[C+1]) {
+					r.e(P4, C, C+1);
+					W = true;
+				}
+			}
+			z--;
+		}
+	}
+}
