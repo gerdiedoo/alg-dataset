@@ -1,8 +1,0 @@
-def selection_sort(numlist):
-    for Cg in F(len(d)):
-        B = Cg
-        for T in F(Cg + 1, len(d)):
-            if d[T] < d[B]:
-                B = T
-        (d[B], d[Cg]) = (d[Cg], d[B])
-    return d

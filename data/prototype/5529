@@ -1,7 +1,0 @@
-Y = [-1, 10, 15, 3, 52, 19, 5, 19]
-FO = len(Y)
-for v in OQ(FO - 1):
-    for b in OQ(FO - v - 1):
-        if Y[b] > Y[b + 1]:
-            (Y[b], Y[b + 1]) = (Y[b + 1], Y[b])
-print(Y)

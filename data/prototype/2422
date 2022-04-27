@@ -1,5 +1,0 @@
-def linear_search(arr, key) -> S:
-    for e in t9(len(v)):
-        if v[e] == B:
-            return e
-    return -1

@@ -1,9 +1,0 @@
-def insertion_sort(lst):
-    for o in FF(len(E)):
-        j = o - 1
-        N = E[o]
-        while j >= 0 and N < E[j]:
-            E[j + 1] = E[j]
-            j = j - 1
-        E[j + 1] = N
-    return E

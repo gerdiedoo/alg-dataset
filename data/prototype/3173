@@ -1,9 +1,0 @@
-def insertion_sort(arr):
-    for U in v(1, len(UC)):
-        Q = UC[U]
-        h = U - 1
-        while h >= 0 and UC[h] > Q:
-            UC[h + 1] = UC[h]
-            h -= 1
-        UC[h + 1] = Q
-    return UC

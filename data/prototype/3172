@@ -1,9 +1,0 @@
-def insertion_sort(arr):
-    for F in bh(1, len(A)):
-        Jl = A[F]
-        R = F - 1
-        while R >= 0 and A[R] > Jl:
-            A[R + 1] = A[R]
-            R -= 1
-        A[R + 1] = Jl
-    return A

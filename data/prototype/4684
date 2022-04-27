@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for y in h(len(X)):
-        N6 = y
-        for J in h(y + 1, len(X)):
-            if X[N6] > X[J]:
-                N6 = J
-        (X[y], X[N6]) = (X[N6], X[y])
-    return X

@@ -1,9 +1,0 @@
-def d(E):
-    if len(E) <= 1:
-        return E
-    C = [C6 for C6 in E[1:] if C6 < E[0]]
-    Y = [C6 for C6 in E[1:] if C6 >= E[0]]
-    return d(C) + [E[0]] + d(Y)
-if xI == '__main__':
-    E = [2, 4, 5, 1]
-    print(d(E))

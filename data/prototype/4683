@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for s in C3(len(r)):
-        d = s
-        for i in C3(s + 1, len(r)):
-            if r[d] > r[i]:
-                d = i
-        (r[s], r[d]) = (r[d], r[s])
-    return r

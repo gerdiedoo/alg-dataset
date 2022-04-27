@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for vX in r(len(w)):
-        N = vX
-        for I in r(vX + 1, len(w)):
-            if w[I] < w[N]:
-                N = I
-        (w[N], w[vX]) = (w[vX], w[N])
-    return w

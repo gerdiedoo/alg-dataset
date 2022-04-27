@@ -1,9 +1,0 @@
-def insertion_sort(arr):
-    for M in I(1, len(K)):
-        m4 = K[M]
-        c = M - 1
-        while c >= 0 and K[c] > m4:
-            K[c + 1] = K[c]
-            c -= 1
-        K[c + 1] = m4
-    return K

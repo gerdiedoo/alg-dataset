@@ -1,5 +1,0 @@
-def k(Q):
-    if len(Q) < 2:
-        return Q
-    E = Q[0]
-    return k([oz for oz in Q[1:] if oz < E]) + [E] + k([oz for oz in Q[1:] if oz >= E])

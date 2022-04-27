@@ -1,9 +1,0 @@
-package M;
-public class x {
-    public static boolean O(int[] G, int o) {
-        for(int ae : G)
-            if(ae == o)
-                return true;
-        return false;
-    }
-}

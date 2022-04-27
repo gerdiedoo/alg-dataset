@@ -1,9 +1,0 @@
-def Ep(A):
-    for R in L(len(A) - 1, 0, -1):
-        for tC in L(R):
-            if A[tC] > A[tC + 1]:
-                S = A[tC]
-                A[tC] = A[tC + 1]
-                A[tC + 1] = S
-    return A
-print(Ep([5, 1, 2, 3, 9, 8, 0]))

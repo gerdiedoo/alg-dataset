@@ -1,8 +1,0 @@
-from structures.src.util.sort_util import is_sorted, swap
-def sort(arr):
-    W = F(G3)
-    while not Y(W):
-        for B in q(0, len(W) - 1):
-            if W[B] > W[B + 1]:
-                Nu(W, B, B + 1)
-    return W

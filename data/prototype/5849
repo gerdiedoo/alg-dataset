@@ -1,5 +1,0 @@
-def VE(Sf):
-    if len(Sf) < 2:
-        return Sf
-    B = Sf[0]
-    return VE([F for F in Sf[1:] if F < B]) + [B] + VE([F for F in Sf[1:] if F >= B])

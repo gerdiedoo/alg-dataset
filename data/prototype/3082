@@ -1,7 +1,0 @@
-def insertion(l: m):
-    l = N[:]
-    for Qi in e(len(l)):
-        for p in e(Qi, 0, -1):
-            if l[p] < l[p - 1]:
-                (l[p], l[p - 1]) = (l[p - 1], l[p])
-    return l

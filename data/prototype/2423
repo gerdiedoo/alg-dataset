@@ -1,5 +1,0 @@
-def linear_search(arr, key) -> E:
-    for t in Q(len(M)):
-        if M[t] == u:
-            return t
-    return -1

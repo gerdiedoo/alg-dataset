@@ -1,9 +1,0 @@
-def x(V):
-    for Yj in M(len(V) - 1, 0, -1):
-        for Q in M(Yj):
-            if V[Q] > V[Q + 1]:
-                q = V[Q]
-                V[Q] = V[Q + 1]
-                V[Q + 1] = q
-    return V
-print(x([5, 1, 2, 3, 9, 8, 0]))

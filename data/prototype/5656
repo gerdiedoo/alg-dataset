@@ -1,9 +1,0 @@
-def insertionSort(arr):
-    for w in Y(1, len(v)):
-        ja = w
-        z = v[ja]
-        while ja > 0 and z < v[ja - 1]:
-            v[ja] = v[ja - 1]
-            ja -= 1
-        v[ja] = z
-    return v

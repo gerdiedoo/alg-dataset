@@ -1,7 +1,0 @@
-A = [-1, 10, 15, 3, 52, 19, 5, 19]
-C = len(A)
-for g in N(C - 1):
-    for s in N(C - g - 1):
-        if A[s] > A[s + 1]:
-            (A[s], A[s + 1]) = (A[s + 1], A[s])
-print(A)

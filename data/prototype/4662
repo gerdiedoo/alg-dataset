@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for n in W(len(g)):
-        F = n
-        for N9 in W(n + 1, len(g)):
-            if g[N9] < g[F]:
-                F = N9
-        (g[F], g[n]) = (g[n], g[F])
-    return g

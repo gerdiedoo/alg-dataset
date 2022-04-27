@@ -1,6 +1,0 @@
-package cuckoo;
-public class NeedExpansionException extends Exception {
-    NeedExpansionException(String s) {
-        super(s);
-    }
-}

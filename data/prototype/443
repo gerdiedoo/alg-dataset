@@ -1,8 +1,0 @@
-from structures.src.util.sort_util import is_sorted, swap
-def sort(arr):
-    out = list(arr)
-    while not is_sorted(out):
-        for i in range(0, len(out) - 1):
-            if out[i] > out[i + 1]:
-                swap(out, i, i + 1)
-    return out

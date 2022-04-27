@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for c in F(len(V)):
-        f = c
-        for T in F(c + 1, len(V)):
-            if V[T] < V[f]:
-                f = T
-        (V[c], V[f]) = (V[f], V[c])
-    return V

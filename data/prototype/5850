@@ -1,5 +1,0 @@
-def F(Us):
-    if len(Us) < 2:
-        return Us
-    n = Us[0]
-    return F([l for l in Us[1:] if l < n]) + [n] + F([l for l in Us[1:] if l >= n])

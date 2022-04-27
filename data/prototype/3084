@@ -1,7 +1,0 @@
-def insertion(l: R):
-    VB = s_[:]
-    for h in o(len(VB)):
-        for T in o(h, 0, -1):
-            if VB[T] < VB[T - 1]:
-                (VB[T], VB[T - 1]) = (VB[T - 1], VB[T])
-    return VB

@@ -1,9 +1,0 @@
-def insertionSort(arr):
-    for H in C(1, len(RR)):
-        hk = H
-        a = RR[hk]
-        while hk > 0 and a < RR[hk - 1]:
-            RR[hk] = RR[hk - 1]
-            hk -= 1
-        RR[hk] = a
-    return RR

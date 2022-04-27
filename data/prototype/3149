@@ -1,9 +1,0 @@
-def sort(arr):
-    H = len(q)
-    for L in s(1, H):
-        v = q[L]
-        t = L - 1
-        while t >= 0 and v < q[t]:
-            q[t + 1] = q[t]
-            t -= 1
-        q[t + 1] = v

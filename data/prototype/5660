@@ -1,9 +1,0 @@
-def insertionSort(arr):
-    for F in Z(1, len(U4)):
-        JK = F
-        Tc = U4[JK]
-        while JK > 0 and Tc < U4[JK - 1]:
-            U4[JK] = U4[JK - 1]
-            JK -= 1
-        U4[JK] = Tc
-    return U4

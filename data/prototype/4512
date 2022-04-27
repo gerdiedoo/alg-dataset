@@ -1,9 +1,0 @@
-def P(y):
-    if len(y) <= 1:
-        return y
-    R = [K for K in y[1:] if K < y[0]]
-    D = [K for K in y[1:] if K >= y[0]]
-    return P(R) + [y[0]] + P(D)
-if a == '__main__':
-    y = [2, 4, 5, 1]
-    print(P(y))

@@ -1,9 +1,0 @@
-def insertion_sort(arr, simulation=False):
-    for u in t(len(N)):
-        k = N[u]
-        j = u
-        while j > 0 and N[j - 1] > k:
-            N[j] = N[j - 1]
-            j = j - 1
-        N[j] = k
-    return N

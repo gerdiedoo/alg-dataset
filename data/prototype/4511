@@ -1,9 +1,0 @@
-def C(u):
-    if len(u) <= 1:
-        return u
-    dp = [r for r in u[1:] if r < u[0]]
-    w = [r for r in u[1:] if r >= u[0]]
-    return C(dp) + [u[0]] + C(w)
-if k == '__main__':
-    u = [2, 4, 5, 1]
-    print(C(u))

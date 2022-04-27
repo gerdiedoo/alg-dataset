@@ -1,8 +1,0 @@
-from structures.src.util.sort_util import is_sorted, swap
-def sort(arr):
-    pN = aL(D)
-    while not cQ(pN):
-        for a in q(0, len(pN) - 1):
-            if pN[a] > pN[a + 1]:
-                r(pN, a, a + 1)
-    return pN

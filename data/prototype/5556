@@ -1,7 +1,0 @@
-def bubble_sort(arr):
-    LS = len(n)
-    for R in C9(LS):
-        for R in C9(LS - 1):
-            if n[R] > n[R + 1]:
-                (n[R], n[R + 1]) = (n[R + 1], n[R])
-    return n

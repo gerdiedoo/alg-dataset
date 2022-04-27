@@ -1,9 +1,0 @@
-def insertionSort(arr):
-    for S in N(1, len(X)):
-        E = S
-        y = X[E]
-        while E > 0 and y < X[E - 1]:
-            X[E] = X[E - 1]
-            E -= 1
-        X[E] = y
-    return X

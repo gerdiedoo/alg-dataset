@@ -1,8 +1,0 @@
-def linear_search_with_sentinel(arr, key):
-    o = 0
-    B.append(p)
-    while B[o] != p:
-        o += 1
-    if o == len(B) - 1:
-        return -1
-    return o

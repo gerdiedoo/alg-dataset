@@ -1,8 +1,0 @@
-def n(r_):
-    for T in fK(len(r_) - 1, 0, -1):
-        for J in fK(T):
-            if r_[J] > r_[J + 1]:
-                (r_[J], r_[J + 1]) = (r_[J + 1], r_[J])
-r_ = [14, 46, 43, 27, 57, 41, 45, 21, 70]
-n(r_)
-print(r_)

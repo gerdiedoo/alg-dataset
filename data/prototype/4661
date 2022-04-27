@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for C in d(len(f)):
-        m = C
-        for u in d(C + 1, len(f)):
-            if f[u] < f[m]:
-                m = u
-        (f[m], f[C]) = (f[C], f[m])
-    return f

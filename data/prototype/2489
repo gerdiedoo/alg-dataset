@@ -1,9 +1,0 @@
-package G;
-public class g {
-    public static boolean n(int[] Z, int Pu) {
-        for(int gJ : Z)
-            if(gJ == Pu)
-                return true;
-        return false;
-    }
-}

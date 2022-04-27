@@ -1,9 +1,0 @@
-package N;
-public class Fy {
-    public static boolean lm(int[] SC, int M) {
-        for(int L : SC)
-            if(L == M)
-                return true;
-        return false;
-    }
-}

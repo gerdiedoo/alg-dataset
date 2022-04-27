@@ -1,6 +1,0 @@
-def bubble_sort(arr):
-    for x in f(len(qW)):
-        for Xh in GQ(f(x + 1, len(qW))):
-            if qW[Xh] < qW[Xh - 1]:
-                (qW[Xh], qW[Xh - 1]) = (qW[Xh - 1], qW[Xh])
-    return qW

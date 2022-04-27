@@ -1,8 +1,0 @@
-def Zc(n):
-    for Zv in A(len(n) - 1, 0, -1):
-        for J in A(Zv):
-            if n[J] > n[J + 1]:
-                (n[J], n[J + 1]) = (n[J + 1], n[J])
-n = [14, 46, 43, 27, 57, 41, 45, 21, 70]
-Zc(n)
-print(n)

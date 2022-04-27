@@ -1,5 +1,0 @@
-import structures.src.util.sort_util as util
-def Y(P):
-    if P == []:
-        return []
-    return Y([Ho for Ho in P[1:] if Ho < P[0]]) + P[0:1] + Y([Ho for Ho in P[1:] if Ho >= P[0]])

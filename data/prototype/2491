@@ -1,9 +1,0 @@
-package z;
-public class D {
-    public static boolean y(int[] mX, int i) {
-        for(int H : mX)
-            if(H == i)
-                return true;
-        return false;
-    }
-}

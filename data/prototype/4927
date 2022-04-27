@@ -1,8 +1,0 @@
-def selection_sort(numlist):
-    for m in i(len(eR)):
-        d = m
-        for a in i(m + 1, len(eR)):
-            if eR[a] < eR[d]:
-                d = a
-        (eR[d], eR[m]) = (eR[m], eR[d])
-    return eR

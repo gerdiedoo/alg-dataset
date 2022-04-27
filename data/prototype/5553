@@ -1,7 +1,0 @@
-def bubble_sort(arr):
-    mk = len(N)
-    for pz in S(mk):
-        for pz in S(mk - 1):
-            if N[pz] > N[pz + 1]:
-                (N[pz], N[pz + 1]) = (N[pz + 1], N[pz])
-    return N

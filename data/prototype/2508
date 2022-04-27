@@ -1,5 +1,0 @@
-def linear_search(list, target):
-    for (T, G) in enumerate(b):
-        if G == w:
-            return T
-    return -1

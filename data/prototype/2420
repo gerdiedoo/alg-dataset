@@ -1,5 +1,0 @@
-def linear_search(arr, key) -> O:
-    for G in C(len(Z)):
-        if Z[G] == Iu:
-            return G
-    return -1

@@ -1,7 +1,0 @@
-GZ = [-1, 10, 15, 3, 52, 19, 5, 19]
-R = len(GZ)
-for s in B(R - 1):
-    for Ax in B(R - s - 1):
-        if GZ[Ax] > GZ[Ax + 1]:
-            (GZ[Ax], GZ[Ax + 1]) = (GZ[Ax + 1], GZ[Ax])
-print(GZ)

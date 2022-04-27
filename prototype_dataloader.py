@@ -6,9 +6,9 @@ import io, tokenize, re, os
 
 from torch.utils.data import Dataset, DataLoader
 
-def get_datasets(df, tokenizer, split = 0.08, data_folder = "./data/prototype/", labels='all'):
+def get_datasets(df, tokenizer, split = 0.9, data_folder = "./data/prototype/", labels='all'):
     x, y = df.shape
-    test_size = int(x * 0.08)
+    test_size = int(x * split)
     train_size = x - test_size    
     indices = torch.randperm(x)
 

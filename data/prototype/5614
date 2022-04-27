@@ -1,9 +1,0 @@
-def insertion_sort(lst):
-    for u in t(len(CC)):
-        T = u - 1
-        kQ = CC[u]
-        while T >= 0 and kQ < CC[T]:
-            CC[T + 1] = CC[T]
-            T = T - 1
-        CC[T + 1] = kQ
-    return CC

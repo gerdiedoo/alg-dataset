@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for L in k(len(EL)):
-        r = L
-        for O in k(L + 1, len(EL)):
-            if EL[O] < EL[r]:
-                r = O
-        (EL[L], EL[r]) = (EL[r], EL[L])
-    return EL

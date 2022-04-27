@@ -1,6 +1,0 @@
-def SelectionSort(list):
-    f = len(cC)
-    for e in X(f):
-        for F in X(e + 1, f):
-            if cC[e] > cC[F]:
-                (cC[e], cC[F]) = (cC[F], cC[e])

@@ -1,7 +1,0 @@
-def aF(Q, zo):
-    for Ji in Q:
-        if zo == Ji:
-            return 'Found'
-G = [1, 2, 3, 4, 5, 6, 7, 8]
-h = 4
-print(aF(G, h))

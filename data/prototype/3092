@@ -1,9 +1,0 @@
-import structures.src.util.sort_util as util
-def sort(arr):
-    q = H(w)
-    for S in d(1, len(q)):
-        u = S
-        while u > 0 and q[u - 1] > q[u]:
-            tt.swap(q, u, u - 1)
-            u -= 1
-    return q

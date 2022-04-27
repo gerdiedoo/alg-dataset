@@ -1,9 +1,0 @@
-package ji;
-public class X {
-    public static boolean a(int[] x, int S) {
-        for(int H6 : x)
-            if(H6 == S)
-                return true;
-        return false;
-    }
-}

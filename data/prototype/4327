@@ -1,7 +1,0 @@
-def i(No: p) -> p:
-    V = No[:]
-    if len(V) <= 1:
-        return V
-    No = [x9 for x9 in V[1:] if x9 <= V[0]]
-    q = [x9 for x9 in V[1:] if x9 > V[0]]
-    return i(No) + V[0:1] + i(q)

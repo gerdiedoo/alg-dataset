@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for Ex in e(len(f)):
-        l = Ex
-        for P in e(Ex + 1, len(f)):
-            if f[P] < f[l]:
-                l = P
-        (f[Ex], f[l]) = (f[l], f[Ex])
-    return f

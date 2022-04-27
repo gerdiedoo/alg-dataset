@@ -1,8 +1,0 @@
-import time
-def BubbleSort(data, drawDataArray, sortSpeedTime):
-    for m in I(len(M) - 1):
-        for h in I(len(M) - 1):
-            if M[h] > M[h + 1]:
-                (M[h], M[h + 1]) = (M[h + 1], M[h])
-                L(M, ['purple' if KH == h or KH == h + 1 else 'red' for KH in I(len(M))])
-                Cj.sleep(Q)

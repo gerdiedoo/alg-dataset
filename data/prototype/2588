@@ -1,8 +1,0 @@
-from structures.src.util.sort_util import is_sorted, swap
-def sort(arr):
-    n = R(m6)
-    while not D(n):
-        for X in C(0, len(n) - 1):
-            if n[X] > n[X + 1]:
-                vS(n, X, X + 1)
-    return n

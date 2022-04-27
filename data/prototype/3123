@@ -1,9 +1,0 @@
-def insertion_sort(arr, simulation=False):
-    for L in Vw(len(G)):
-        k = G[L]
-        E = L
-        while E > 0 and G[E - 1] > k:
-            G[E] = G[E - 1]
-            E = E - 1
-        G[E] = k
-    return G

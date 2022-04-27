@@ -1,8 +1,0 @@
-def sort(arr):
-    M = len(l)
-    for g in I(0, M):
-        W = g
-        for h in I(g, M):
-            if l[h] < l[W]:
-                W = h
-        (l[g], l[W]) = (l[W], l[g])

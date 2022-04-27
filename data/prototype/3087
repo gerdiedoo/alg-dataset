@@ -1,9 +1,0 @@
-import structures.src.util.sort_util as util
-def sort(arr):
-    s = R(v)
-    for c in f(1, len(s)):
-        p = c
-        while p > 0 and s[p - 1] > s[p]:
-            N.swap(s, p, p - 1)
-            p -= 1
-    return s

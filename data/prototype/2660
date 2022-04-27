@@ -1,6 +1,0 @@
-def bubble_sort(arr):
-    for W in U(len(l)):
-        for xP in R(U(W + 1, len(l))):
-            if l[xP] < l[xP - 1]:
-                (l[xP], l[xP - 1]) = (l[xP - 1], l[xP])
-    return l

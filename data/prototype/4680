@@ -1,8 +1,0 @@
-def selection_sort(arr):
-    for c in it(len(D)):
-        g = c
-        for E in it(c + 1, len(D)):
-            if D[g] > D[E]:
-                g = E
-        (D[c], D[g]) = (D[g], D[c])
-    return D

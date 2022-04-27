@@ -1,7 +1,0 @@
-def bubble_sort(arr):
-    t = len(Lx)
-    for cj in L(t):
-        for cj in L(t - 1):
-            if Lx[cj] > Lx[cj + 1]:
-                (Lx[cj], Lx[cj + 1]) = (Lx[cj + 1], Lx[cj])
-    return Lx

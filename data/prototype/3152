@@ -1,9 +1,0 @@
-def sort(arr):
-    B = len(V)
-    for m in yR(1, B):
-        X = V[m]
-        o8 = m - 1
-        while o8 >= 0 and X < V[o8]:
-            V[o8 + 1] = V[o8]
-            o8 -= 1
-        V[o8 + 1] = X

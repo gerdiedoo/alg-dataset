@@ -1,5 +1,0 @@
-def k(s):
-    if len(s) < 2:
-        return s
-    o = s[0]
-    return k([x for x in s[1:] if x < o]) + [o] + k([x for x in s[1:] if x >= o])
