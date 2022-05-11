@@ -1,10 +1,20 @@
 import torch 
 import pandas as pd
-import pytorch_lightning as pl
+from torch.utils.data import Dataset
 
-import io, tokenize, re, os
+def get_datasets_2(train_df, test_df, tokenizer, train_folder='./data/train', test_folder='./data/test', labels='all'):
+    train_size, _ = train_df.shape
+    test_size, _ = test_df.shape
 
-from torch.utils.data import Dataset, DataLoader
+
+
+    train_idx = torch.randperm(train_size)
+    test_idx = torch.randperm(test_size)
+
+    train = CodesDataset(train_df, train_idx, data_folder=train_folder, transform=VectorizeData(tokenizer), labels=labels)
+    test = CodesDataset(test_df, test_idx, data_folder=test_folder, transform=VectorizeData(tokenizer), labels=labels)
+
+    return train, test
 
 def get_datasets(df, tokenizer, split = 0.9, data_folder = "./data/prototype/", labels='all'):
     x, y = df.shape
